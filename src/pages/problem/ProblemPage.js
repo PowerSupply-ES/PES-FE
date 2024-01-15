@@ -1,5 +1,6 @@
 import { AdPart, ProblemItem } from "components";
 import styled from "styled-components";
+import { Problems } from "./test";
 
 const Filter = styled.div`
     width: 1376px;
@@ -43,37 +44,14 @@ const ProblemPage = () => {
             <Button>FAIL</Button>
             <Button>CLEAR</Button>
         </Filter>
-        <ProblemItem
-            pid = {`1001`}
-            ptitle = {`Hello World`}
-            grade = "50"
-            problemcolor = "#04CA00"
-            buttoncolor = "#5094f9"
-            state = "challenge"
+        {Problems.map((problem) => (
+            <ProblemItem
+            pid = {problem.problem_id}
+            ptitle = {problem.title}
+            grade = {problem.grade}
+            state = {problem.state}
         />
-        <ProblemItem
-            pid = {`1002`}
-            ptitle = {`터렛`}
-            grade = "50"
-            problemcolor = "#FF8412"
-            buttoncolor = "#FF8412"
-            state = "RETRY"
-        />
-        <ProblemItem
-            pid = {`1003`}
-            ptitle = {`피보나치 함수`}
-            grade = "50"
-            fontcolor = "#6A6B6F"
-            state = "challenge"
-        />
-        <ProblemItem
-            pid = {`1004`}
-            ptitle = {`어린 왕자`}
-            grade = "50"
-            fontcolor = "#6A6B6F"
-            state = "challenge"
-            lock = "true"
-        />
+        ))}
       </div>
     );
 };
