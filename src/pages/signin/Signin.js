@@ -1,79 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import serverConfig from '../config';
-import '../css/signin.css';
+import serverConfig from '../../config';
+import '../../styles/intro.css';
+
 
 
 const Signin = () => {
-  const [memberEmail, setMemberEmail] = useState('');
-  const [memberPw, setMemberPw] = useState('');
+    const [formData, setFormData] = useState({
+      memberEmail: '',
+      memberPw: ''
+    });
 
-  const handleFormSubmit = async (event) => {
 
-    // POST 요청에 보낼 데이터를 JavaScript 객체로 준비
-    const formData = {
-      memberEmail: memberEmail,
-      memberPw: memberPw
+    const handleChange = (e) => {
+      const { id, value } = e.target;
+      setFormData((prevData) => ({ ...prevData, [id]: value }));
     };
 
 
-    try {
-      const response = await fetch(`${serverConfig.serverUrl}/api/signin`, {
-        credentials: 'include',
+    const handleSubmit = (e) => {
+      // e.preventDefault();
+
+      const uri = '/api/signin';
+
+      fetch(uri, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+      })
+      .then((response) => {
+        if (!response.ok) {
+          console.log('응답:', response);
+          throw new Error('네트워크 응답이 실패했다고.');
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        const resultMessage = '로그인 성공: ' + responseData.message;
+        alert(resultMessage);
+        window.location.href = '/main';
+
+        localStorage.setItem('status', true);
+        localStorage.setItem('memberEmail', responseData.memberEmail);
+        
+        
+      })
+      .catch((error) => {
+        const errorMessage = '오류 발생: ' + error.message;
+        alert(errorMessage);
       });
+    };
 
-
-      if (!response.ok) {
-        throw new Error('네트워크 응답이 실패했습니다.');
-      }
-
-      const responseData = await response.json();
-
-      // if (responseData.message) {
-      //   localStorage.setItem('stuNum', memberEmail);
-      // }
-
-        //   const actualToken = document.cookie.replace(/(?:(?:^|.*;\s*)Authorization\s*=\s*([^;]*).*$)|^.*$/, "$1");
-        //   localStorage.setItem('storageToken', actualToken);
-
-      // 페이지 이동
-      // window.location.href = `${serverConfig.serverUrl}/Main`;
-      window.location.href = `${serverConfig.serverUrl}/Main`;
-
-
-    } catch (error) {
-      const errorMessage = '로그인 실패';
-      console.error(errorMessage);
-    }
-  };
 
   return (
     <div className="login-container">
       <h1>로그인</h1>
-      <form onSubmit={handleFormSubmit}>
+      {/* onsubmit 이벤트 발생시 handlesubmit 함수호출 */}
+      <form onSubmit={handleSubmit}> 
         <div className="input-container">
-          <label htmlFor="member_email">이메일</label>
+          <label htmlFor="memberEmail">이메일</label>
           <input
             type="text"
-            id="member_email"
-            name="member_email"
-            value={memberEmail}
-            onChange={(e) => setMemberEmail(e.target.value)}
+            id="memberEmail"
+            name="memberEmail"
+            value={formData.memberEmail}
+            onChange={handleChange} // 입력값변경처리
             required
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">비밀번호</label>
+          <label htmlFor="memberPw">비밀번호</label>
           <input
             type="password"
-            id="password"
-            name="password"
-            value={memberPw}
-            onChange={(e) => setMemberPw(e.target.value)}
+            id="memberPw"
+            name="memberPw"
+            value={formData.memberPw}
+            onChange={handleChange}
             required
           />
         </div>

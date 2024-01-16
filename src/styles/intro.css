@@ -1,0 +1,102 @@
+.App {
+    text-align: center;
+  }
+  
+/* 로그인, 회원가입 공통body */
+.intro {
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #333;
+}
+
+#signin-form,
+#signup-form{
+  margin-top: 20px;
+}
+
+.input-container {
+  margin-bottom: 15px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin: 8px;
+  color: #555;
+  width: 100px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #ccc;
+}
+
+/* 로그인,회원가입 버튼 */
+.btn_intro {
+  display: flex;
+  justify-content: center;
+  width: 300px;
+  
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+/* 마우스 호버(Hover) 시 배경색을 변경 */
+button:hover {
+  background-color: #87c1ff;
+}
+
+
+/* --------------로그인 페이지-------------- */
+/* 회원가입링크 */
+.move{
+  display: flex;
+  justify-content: center;
+}
+
+.move > a {
+  margin-top: 10px;
+  margin-right: 30px; /* 오른쪽 마진을 10px로 설정 */
+  font-size: 14px;
+}
+
+.move > a:last-child {
+  margin-right: 0; /* 마지막 요소의 오른쪽 마진을 0으로 설정하여 간격 조절 */
+}
+
+.login-container {
+  width: 300px;
+}
+/* 링크 스타일 수정 */
+a {
+  color: #555; /* 글자색을 검은색으로 설정 */
+}
+
+/* -------------- 회원가입 -------------- */
+
+.signup-container {
+  width: 300px;
+}

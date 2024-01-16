@@ -2,8 +2,8 @@ import styled from "styled-components";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {type} from "@testing-library/user-event/dist/type";
+import serverConfig from '../../config';
 
-const pythonUrl = "http://127.0.0.1:8000";
 
 // 문제 헤더 - 번호, 제목
 const Header = styled.div `
@@ -197,7 +197,7 @@ const QuestionPage = () => {
     async function getTest() {
         try {
             const {data: response} = await axios.get(
-                pythonUrl + `/api2/problem/${problemId}`,
+                serverConfig.pythonUrl + `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -225,7 +225,7 @@ const QuestionPage = () => {
     async function submitTest(request, problemId, userName) {
         try {
             const {data: response} = await axios.post(
-                pythonUrl + `/api2/submit/${problemId}/${userName}`,
+                serverConfig.pythonUrl + `/api2/submit/${problemId}/${userName}`,
                 {
                     code: request,
                     problemId: problemId,

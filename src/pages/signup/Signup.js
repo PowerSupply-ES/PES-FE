@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import serverConfig from '../config';
-import '../css/signin.css';
+import React, { useState} from 'react';
+import serverConfig from '../../config';
+import '../../styles/intro.css';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const Signup = () => {
     const serverUrl = serverConfig.serverUrl;
     const uri = '/api/signup';
 
-    fetch(serverUrl + uri, {
+    fetch(uri, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -34,14 +34,15 @@ const Signup = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('네트워크 응답이 실패했습니다.');
+          console.log('응답:', response);
+          throw new Error('네트워크 응답이 실패했다고.');
         }
         return response.json();
       })
       .then((responseData) => {
         const resultMessage = '회원가입 성공: ' + responseData.message;
         alert(resultMessage);
-        window.location.href = serverUrl + '/signin';
+        window.location.href = '/signin';
       })
       .catch((error) => {
         const errorMessage = '오류 발생: ' + error.message;
@@ -83,7 +84,7 @@ const Signup = () => {
         <div className="input-container">
           <label htmlFor="memberPw"> 비밀번호</label>
           <input
-            type="text"
+            type="password"
             id="memberPw"
             name="memberPw"
             value={formData.memberPw}

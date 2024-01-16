@@ -1,6 +1,8 @@
-import { AdPart, ProblemItem } from "components";
 import styled from "styled-components";
 import { Problems } from "./test";
+import AdPart from "components/problem/AdPart";
+import ProblemItem from "components/problem/ProblemItem";
+
 
 const Filter = styled.div`
     width: 1376px;
