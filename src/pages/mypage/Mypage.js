@@ -17,7 +17,7 @@ const MyPage = () => {
       memberGitUrl: '',
     });
   
-    const serverUrl = serverConfig.serverUrl;
+    // const serverUrl = serverConfig.serverUrl;
     const uri = 'api/mypage';
   
     const sendGetRequest = () => {
@@ -56,13 +56,12 @@ const MyPage = () => {
           <h2>마이페이지</h2>
           
           <div className="memberInfo">
-            <p>이메일: {memberData.memberEmail}</p>
-            <p>백준 아이디: {memberData.memberBaekId}</p>
-            <p>이름: {memberData.memberName}</p>
-            <p>기수: {memberData.memberGen}</p>
-            <p>상태: {memberData.memberStatus}</p>
-            <p>학과: {memberData.memberMajor}</p>
-            <p>전화번호: {memberData.memberPhone}</p>
+            <div><p>백준 아이디</p><p>{memberData.memberBaekId}</p></div>
+            <div><p>이름</p><p>{memberData.memberName}</p></div>
+            <div><p>기수</p><p>{memberData.memberGen}</p></div>
+            <div><p>상태</p><p>{memberData.memberStatus}</p></div>
+            <div><p>학과</p><p>{memberData.memberMajor}</p></div>
+            <div><p>전화번호</p><p>{memberData.memberPhone}</p></div>
           </div>
         </div>
       </div>

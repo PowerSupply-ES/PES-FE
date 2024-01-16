@@ -1,9 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import serverConfig from '../../config';
+import { FaUserCircle } from "react-icons/fa";
+
+
 
 function Header() {
 
   const status = localStorage.getItem('status');
+  const memberEmail = localStorage.getItem('memberEmail');
+
+  
+  
 
 
   return (
@@ -24,8 +32,9 @@ function Header0(){
 
          <div className='navbar'>
            <a className='logo' href="#">PES</a>
-           <a className='menu2' href="#">풀이</a>
-           <a className='menu1' href="#">문제</a>
+           {/* 주석처리하기! */}
+           <a className='solution' href="#">풀이</a>
+           <a className='menu1' href="problem">문제</a>
          </div>
 
        </div>
@@ -34,10 +43,46 @@ function Header0(){
 
 // 로그인o 넷바
 function Header1(){ 
+
  const[isDropdownOpen,setIsDropdownOpen] = useState(false);
  const toggleDropdown = () =>{
    setIsDropdownOpen((상태)=>!상태);
  }
+
+  const uri = 'api/exp';
+  const memberEmail = localStorage.getItem('memberEmail');
+ 
+  const [memberData, setMemberData] = useState({
+    memberName: '',
+    memberScore: ''
+  });
+
+
+  // 넷바 사용자 정보
+  const userInfo = () =>{
+    fetch(`${uri}?memberEmail=${memberEmail}`, {
+      method: 'GET',
+    })
+      .then(response => {
+        if (!response.ok) {
+          console.log('서버응답:', response);
+          throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setMemberData(data);
+      })
+      .catch(error => {
+        console.error('데이터 가져오기 실패:', error);
+      });
+
+  };
+
+  useEffect(() => {
+    userInfo();
+  }, []);
+
 
  const logout = () =>{
   // 쿠키 제거
@@ -55,16 +100,16 @@ function Header1(){
      <div className='btns'>
        <button className='userLevel'>level</button>
        <button className='userId' onClick={toggleDropdown}>
-         아이디
+          {memberEmail}
          {isDropdownOpen &&(
            <div className='dropdown-content'>
-              <div className='userImage'></div>
-              <div>이름</div>
-              <div>레벨</div>
-              <div>경험치</div>
+              {/* <div className='userImage'></div> */}
+              <FaUserCircle size={92}></FaUserCircle>
+              <div>이름: {memberData.memberName}</div>
+              <div>점수: {memberData.memberScore}</div>
               <div>
                 <a href="/mypage">마이페이지</a>
-                <button onClick={logout} className='btn_logout'>로그아웃</button>
+                <a onClick={logout} className='btn_logout'>로그아웃</a>
               </div>
            </div>
          )}
@@ -74,8 +119,9 @@ function Header1(){
      
      <div className='navbar'>
        <a className='logo' href="#">PES</a>
-       <a className='menu2' href="#">풀이</a>
-       <a className='menu1' href="#">문제</a>
+        {/* 주석처리하기! */}
+       <a className='menu2' href="solution">풀이</a>
+       <a className='menu1' href="problem">문제</a>
      </div>
    </div>
  )
