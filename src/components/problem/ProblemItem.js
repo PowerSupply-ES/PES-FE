@@ -25,6 +25,7 @@ const ProblemId = styled.span`
 const ProblemTitle = styled.span`
     flex: 1; /* Take up remaining space */
     font-size: 28px;
+    text-align: left; 
     &:hover {
         cursor: pointer;
     }
