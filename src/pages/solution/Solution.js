@@ -1,11 +1,26 @@
 import React from 'react';
 import { useState } from 'react';
-import { Header } from 'components/main';
+import Header from 'components/main/Header';
+
 
 function Solution() {
+
+  // 문제받아오기
+
+
+
+  
+
+  // 풀이받아오기
+
+
+
+
+
   return (
     <>
       <Header></Header>
+
       <div className="solution_container">
         
           {/* 풀이 타이틀 */}
@@ -17,10 +32,10 @@ function Solution() {
             </div>
         
             {/* 버튼 */}
-            <div className="solutionBtn">
+            {/* <div className="solutionBtn">
                 <button className="btn_baekjoon">baekjoon</button>
                 <button className="btn_challenge">challenge</button>
-            </div>
+            </div> */}
           </div>
 
 
