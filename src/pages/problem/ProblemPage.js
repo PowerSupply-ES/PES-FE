@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { Problems } from "./test";
+import {useState, useEffect} from "react";
+import {Problems} from "./test";
 import AdPart from "components/problem/AdPart";
 import ProblemItem from "components/problem/ProblemItem";
+import axios from "axios";
+import serverConfig from '../../config';
 
-
-const Filter = styled.div`
+const Filter = styled.div `
     width: 1376px;
     height: 62px;
     margin: auto;
@@ -12,7 +14,7 @@ const Filter = styled.div`
     align-items: center;
     margin-bottom: 48px;
 `
-const Button = styled.button`
+const Button = styled.button `
     height: 42px;
     background-color: #FFFFFF;
     color: #6A6B6F;
@@ -36,25 +38,46 @@ const Button = styled.button`
 `
 
 const ProblemPage = () => {
+
+    const [list, setList] = useState([]);
+
+    // 문제 목록 불러오기 (get)
+    async function getList() {
+        try {
+            const {data: response} = await axios.get(
+                `/api/problemlist`,
+                {withCredentials: true}
+            );
+            setList(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getList();
+    }, []);
+
     return (
-      <div>
-        <AdPart/>
-        <Filter>
-            <Button>푼 문제 보기</Button>
-            <Button>안 푼 문제 보기</Button>
-            <Button>풀이 중인 문제 보기</Button>
-            <Button>FAIL</Button>
-            <Button>CLEAR</Button>
-        </Filter>
-        {Problems.map((problem) => (
-            <ProblemItem
-            pid = {problem.problem_id}
-            ptitle = {problem.title}
-            grade = {problem.grade}
-            state = {problem.state}
-        />
-        ))}
-      </div>
+        <div>
+            <AdPart/>
+            <Filter>
+                <Button>푼 문제 보기</Button>
+                <Button>안 푼 문제 보기</Button>
+                <Button>풀이 중인 문제 보기</Button>
+                <Button>FAIL</Button>
+                <Button>CLEAR</Button>
+            </Filter>
+            {
+                list.map((problem) => (
+                    <ProblemItem
+                        pid={problem.problemId}
+                        ptitle={problem.problemTitle}
+                        grade={problem.problemScore}
+                        state="challenge"/>
+                ))
+            }
+        </div>
     );
 };
 

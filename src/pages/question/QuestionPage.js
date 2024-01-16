@@ -25,6 +25,7 @@ const HeaderTitle = styled.span `
     font-size: 28px;
     font-weight: bold;
     flex: 1;
+    text-align: left;
 `
 // 문제 설명
 const Description = styled.div `
@@ -192,6 +193,7 @@ const QuestionPage = () => {
     var problemId = url
         .pathname
         .split('/')[2];
+    console.log(problemId);
 
     // 문제 불러오기 (get)
     async function getTest() {
