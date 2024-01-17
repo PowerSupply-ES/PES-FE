@@ -190,6 +190,7 @@ const QuestionPage = () => {
     const [answerFst, setAnswerFst] = useState("");
     const [answerSec, setAnswerSec] = useState("");
     const [feedbacks, setFeedbacks] = useState([]);
+    const [comment, setComment] = useState("");
 
     const userName = "minjeong";
     var answerId = 1;
@@ -224,11 +225,20 @@ const QuestionPage = () => {
         }
     }
 
+    function submitComment() {
+        if (!comment) {
+            alert("내용을 입력해주세요!");
+        }
+        else {
+            postFeedback(comment);
+        }
+    }
+
     // 문제 불러오기 (get)
     async function getTest() {
         try {
             const {data: response} = await axios.get(
-                serverConfig.pythonUrl + `/api2/problem/${problemId}`,
+                `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -245,7 +255,7 @@ const QuestionPage = () => {
     async function postCode(request, problemId, userName) {
         try {
             const {data: response} = await axios.post(
-                serverConfig.pythonUrl + `/api2/submit/${problemId}/${userName}`,
+                `/api2/submit/${problemId}/${userName}`,
                 {
                     code: request,
                     problemId: problemId,
@@ -264,7 +274,7 @@ const QuestionPage = () => {
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                serverConfig.pythonUrl + `/api2/answer/${problemId}/${userName}`,
+                `/api2/answer/${problemId}/${userName}`,
                 {withCredentials: true}
             );
             setCode(response.detail);
@@ -306,7 +316,7 @@ const QuestionPage = () => {
         }
     }
 
-    // 피드백 불러오기 (get)
+    // 피드백 불러오기 (get) => 미완
     async function getFeedback() {
         try {
             const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
@@ -326,7 +336,7 @@ const QuestionPage = () => {
     }, []);
 
     // 피드백 달기 (post) 
-    async function postFeedback(email2, comment) {
+    async function postFeedback(comment) {
         try {
             const {data: response} = await axios.post(
                 `/api/comment/${answerId}?memberEmail=${email}`,
@@ -334,6 +344,7 @@ const QuestionPage = () => {
                     comment: comment
                 }
             )
+            getFeedback();
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -425,13 +436,35 @@ const QuestionPage = () => {
 
     // 피드백 UI
     function renderFeedbackUI() {
+
+        const feedbackArray = feedbacks
+            ? Object.values(feedbacks)
+            : [];
+            
         return (
             <div>
-                <QuestionHeader>
-                    <Title>피드백 달기</Title>
-                </QuestionHeader>
-                <AnswerInput></AnswerInput>
-                <AnswerBtn>답변하기</AnswerBtn>
+            <QuestionHeader>
+                <Title>피드백 달기</Title>
+            </QuestionHeader>
+
+            {feedbackArray.length > 0 && (
+                feedbackArray.map((feedback, index) => (
+                    <div key={index}>
+                        <QuestionHeader>
+                            <Title>{`이메일: ${feedback.writerEmail}`}</Title>
+                            <Title>{`Writer Name: ${feedback.writerName}`}</Title>
+                        </QuestionHeader>
+                        <CodeContainer>{feedback.commentContent}</CodeContainer>
+                    </div>
+                ))
+            )}
+
+            {feedbackArray.length <= 1 && (
+                <div>
+                    <AnswerInput onChange={(e) => setComment(e.target.value)}></AnswerInput>
+                    <AnswerBtn onClick={() => submitComment()}>답변하기</AnswerBtn>
+                </div>
+            )}
             </div>
         );
     }
