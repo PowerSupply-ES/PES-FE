@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import {type} from "@testing-library/user-event/dist/type";
 import serverConfig from '../../config';
-
+import Header from "components/main/Header";
 
 // 문제 헤더 - 번호, 제목
-const Header = styled.div `
+const ProbHeader = styled.div `
     width: 1376px;
     height: 78px;
     display: flex;
@@ -34,6 +33,7 @@ const Description = styled.div `
     align-items: center;
     margin: auto;
     background-color: beige;
+    text-align: left;
 `
 const ContentContainer = styled.div `
     display: flex;
@@ -93,6 +93,9 @@ const CodeContainer = styled.div `
     align-items: center;
     margin: auto;
     border-radius: 5px;
+    background-color: beige;
+    font-size: 20px;
+    white-space: pre-line; 
 `
 const QuestionHeader = styled.div ` // 질문1,2에 대한 컨테이너
     width: 1376px;
@@ -140,29 +143,6 @@ const AnswerBtn = styled.button `
     align-items: center;
     cursor: pointer;
 `
-
-// table
-const StyledTable = styled.table `
-  width: 200px;
-  margin-top: 20px;
-  border-collapse: collapse;
-  text-align: left;
-`;
-
-const StyledThTd = styled.td `
-  border: 1px solid #ddd;
-  padding: 10px;
-  font-size: 1em;
-`;
-
-const StyledTh = styled.th `
-  background-color: #f2f2f2;
-`;
-
-const StyledTrEven = styled.tr `
-  background-color: #f9f9f9;
-`;
-
 const Title = styled.span `
     width: 1376px;
     display: flex;
@@ -176,30 +156,104 @@ const ResultContainer = styled.div `
     width: 1376px;
     height: auto;
     background-color: #eee;
-    padding: 10px;
     margin: 0 auto;
     margin-bottom: 20px;
     font-size: 20px;
     white-space: pre-line; 
+    text-align: left;
+`
+// table
+const StyledTable = styled.table `
+  width: 200px;
+  margin-top: 20px;
+  border-collapse: collapse;
+  text-align: left;
+`;
+const StyledThTd = styled.td `
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1em;
+`;
+const StyledTh = styled.th `
+  background-color: #f2f2f2;
+`;
+const StyledTrEven = styled.tr `
+  background-color: #f9f9f9;
+`;
+const FeedbackContainer = styled.div `
+    width: 1376px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    border-radius: 5px;
+    background-color: beige;
+    font-size: 20px;
+    white-space: pre-line; 
+    margin-bottom: 10px;
 `
 
 const QuestionPage = () => {
 
     const [problem, setProblem] = useState([]);
-    const [code, setCode] = useState();
+    const [code, setCode] = useState("");
     const [request, setRequest] = useState("");
     const [result, setResult] = useState("");
+    const [qnA, setQnA] = useState([]);
+    const [answerFst, setAnswerFst] = useState("");
+    const [answerSec, setAnswerSec] = useState("");
+    const [feedbacks, setFeedbacks] = useState([]);
+    const [comment, setComment] = useState("");
+
+    // 일단 고정
+    var answerId = 1;
+
+    const memberEmail = localStorage.getItem('memberEmail');
+
     var url = new URL(window.location.href);
     var problemId = url
         .pathname
         .split('/')[2];
-    console.log(problemId);
+      
+    const userName = localStorage.getItem('memberName');
+
+    function submitCode() {
+        const data = {
+            request: request,
+            problemId: problemId,
+            userName: userName
+        };
+        if (!request) {
+            alert("코드를 입력해주세요!");
+        }
+        else {
+            postCode(request, problemId, userName);
+        }
+    }
+
+    function submitAnswer() {
+        if (!answerFst || !answerSec) {
+            alert("내용을 입력해주세요!");
+        }
+        else {
+            postAnswer(memberEmail, answerFst, answerSec);
+        }
+    }
+
+    function submitComment() {
+        if (!comment) {
+            alert("내용을 입력해주세요!");
+        }
+        else {
+            postFeedback(comment);
+        }
+    }
 
     // 문제 불러오기 (get)
     async function getTest() {
         try {
             const {data: response} = await axios.get(
-                serverConfig.pythonUrl + `/api2/problem/${problemId}`,
+                `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -212,30 +266,20 @@ const QuestionPage = () => {
         getTest();
     }, []);
 
-    const userName = "minjeong";
-
-    function submitClick() {
-        const data = {
-            request: request,
-            problemId: problemId,
-            userName: userName
-        };
-        submitTest(request, problemId, userName);
-    }
-
     // 코드 제출하기 (post)
-    async function submitTest(request, problemId, userName) {
+    async function postCode(request, problemId, userName) {
         try {
             const {data: response} = await axios.post(
-                serverConfig.pythonUrl + `/api2/submit/${problemId}/${userName}`,
+                `/api2/submit/${problemId}/${userName}`,
                 {
                     code: request,
                     problemId: problemId,
                     userName: userName
                 }
             )
-            console.log(response);
+            // console.log(response);
             setResult(response.detail);
+            getCode();
         } catch (error) {
             console.log(error);
         }
@@ -244,41 +288,85 @@ const QuestionPage = () => {
     // 사용자가 작성한 코드 불러오기 (get)
     async function getCode() {
         try {
-            const {data: response} = await axios.get(`url`, {withCredentials: true});
-            //console.log(response)
-            setCode(response);
+            const {data: response} = await axios.get(
+                `/api2/answer/${problemId}/${userName}`,
+                {withCredentials: true}
+            );
+            setCode(response.detail);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // 질문, 답변 블러오기 (get)
+    async function getQuestions() {
+        try {
+            const {data: response} = await axios.get(
+                `/api/answer/${answerId}`,
+                {withCredentials: true}
+            );
+            setQnA(response);
         } catch (error) {
             console.log(error);
         }
     }
 
     useEffect(() => {
-        getCode();
-    }, "");
+        getQuestions();
+    }, []);
 
-    // 질문 블러오기 (get)
-    async function getQuestions() {
+    // 질문 답변하기 (post)
+    async function postAnswer(memberEmail, answerFst, answerSec) {
         try {
-            const {data: response} = await axios.get(``, {withCredentials: true});
-            //console.log(response) setQuestion(...response);
+            const {data: response} = await axios.post(
+                `/api/answer/${answerId}?memberEmail=${memberEmail}`,
+                {
+                    answerFst: answerFst,
+                    answerSec: answerSec
+                }
+            )
+            getQuestions();
         } catch (error) {
             console.log(error);
         }
     }
 
-    // 피드백 불러오기 (get) 질문 답변하기 (post)
-    async function postAnswer() {
+    // 피드백 불러오기 (get) => 미완
+    async function getFeedback() {
         try {
-            const response = await axios.post("", {
-                //answer1: answer1, answer2: answer2,
-            }, {withCredentials: true});
+            const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
+            // writerEmail
+            // writerName
+            // commentContent
+            setFeedbacks(response);
+            console.log("getFeedback response: " + response);
+            console.log("getFeedback type: " + typeof(response));
         } catch (error) {
             console.log(error);
         }
     }
 
-    // 피드백 달기 (post)
+    useEffect(() => {
+        getFeedback();
+    }, []);
 
+    // 피드백 달기 (post) 
+    async function postFeedback(comment) {
+        try {
+            const {data: response} = await axios.post(
+                `/api/comment/${answerId}?memberEmail=${memberEmail}`,
+                {
+                    comment: comment
+                }
+            )
+            getFeedback();
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // 문제 UI
     function renderProbUI() {
 
         const inputArray = problem.sample_inputs
@@ -291,10 +379,10 @@ const QuestionPage = () => {
 
         return (
             <div>
-                <Header>
+                <ProbHeader>
                     <ProbId>{problemId}</ProbId>
                     <HeaderTitle>{problem.title}</HeaderTitle>
-                </Header>
+                </ProbHeader>
                 <Description>{problem.context}</Description>
                 <ContentContainer>
                     <h2>Sample Inputs:
@@ -313,57 +401,92 @@ const QuestionPage = () => {
                     code
                         ? (<CodeContainer>{code}</CodeContainer>)
                         : (
-                            <CodeInput
-                                placeholder="코드를 입력해주세요."
-                                onChange={e => setRequest(e.target.value)}/>
+                            <> <CodeInput placeholder = "코드를 입력해주세요." onChange = {
+                                (e) => setRequest(e.target.value)
+                            }/> <SubmitBtn onClick={() => submitCode()}>제출</SubmitBtn>
+                        </>
                         )
                 }
-                <SubmitBtn onClick={() => submitClick()}>제출</SubmitBtn>
                 {
                     result
-                        ? (<Title>결과</Title>)
+                        ? (<><Title> 결과</Title> < ResultContainer > {
+                            result
+                        }</ResultContainer></>)
                         : (<div/>)
                 }
-                {
-                    result
-                        ? (<ResultContainer>{result}</ResultContainer>)
-                        : (<div/>)
-                }
-            </div>
-        );
-    }
-    function renderAnswerUI() {
-        return (
-            <div>
-                <QuestionHeader>
-                    <QuestionId>질문 1</QuestionId>
-                    <HeaderTitle>내용</HeaderTitle>
-                </QuestionHeader>
-                <AnswerInput/>
-                <QuestionHeader>
-                    <QuestionId>질문 2</QuestionId>
-                    <HeaderTitle>내용</HeaderTitle>
-                </QuestionHeader>
-                <AnswerInput/>
-                <AnswerBtn>답변하기</AnswerBtn>
             </div>
         );
     }
 
-    function renderFeedbackUI() {
+    // 질문 UI
+    function renderAnswerUI() {
         return (
             <div>
-                <QuestionHeader>
-                    <Title>피드백 달기</Title>
-                </QuestionHeader>
-                <AnswerInput></AnswerInput>
-                <AnswerBtn>답변하기</AnswerBtn>
+                {
+                    (!qnA.answerFst || !qnA.answerSec)
+                        ? <> < QuestionHeader > <QuestionId>질문 1</QuestionId>
+                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
+                    </QuestionHeader>
+                    <AnswerInput onChange={(e) => setAnswerFst(e.target.value)}/>
+                    <QuestionHeader>
+                        <QuestionId>질문 2</QuestionId>
+                        <HeaderTitle>{qnA.questionContentSec}</HeaderTitle>
+                    </QuestionHeader>
+                    <AnswerInput onChange={(e) => setAnswerSec(e.target.value)}/>
+                    <AnswerBtn onClick={() => submitAnswer()}>답변하기</AnswerBtn> </>
+                    : <>
+                    < QuestionHeader > <QuestionId>질문 1</QuestionId>
+                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
+                    </QuestionHeader>
+                            <CodeContainer>{qnA.answerFst}</CodeContainer>
+                            < QuestionHeader > <QuestionId>질문 1</QuestionId>
+                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
+                    </QuestionHeader>
+                            <CodeContainer>{qnA.answerSec}</CodeContainer>
+                        </>
+                }
+            </div>
+        );
+    }
+
+    // 피드백 UI
+    function renderFeedbackUI() {
+
+        const feedbackArray = feedbacks
+            ? Object.values(feedbacks)
+            : [];
+            
+        return (
+            <div>
+            <QuestionHeader>
+                <Title>피드백 달기</Title>
+            </QuestionHeader>
+
+            {feedbackArray.length > 0 && (
+                feedbackArray.map((feedback, index) => (
+                    <div key={index}>
+                        <QuestionHeader>
+                            <Title>{`이메일: ${feedback.writerEmail}`}</Title>
+                            <Title>{`Writer Name: ${feedback.writerName}`}</Title>
+                        </QuestionHeader>
+                        <FeedbackContainer>{feedback.commentContent}</FeedbackContainer>
+                    </div>
+                ))
+            )}
+
+            {feedbackArray.length <= 1 && (
+                <div>
+                    <AnswerInput onChange={(e) => setComment(e.target.value)}></AnswerInput>
+                    <AnswerBtn onClick={() => submitComment()}>답변하기</AnswerBtn>
+                </div>
+            )}
             </div>
         );
     }
 
     return (
         <div>
+            <Header/>
             {renderProbUI()}
             {renderAnswerUI()}
             {renderFeedbackUI()}

@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {Problems} from "./test";
 import AdPart from "components/problem/AdPart";
 import ProblemItem from "components/problem/ProblemItem";
+import Header from "components/main/Header";
 import axios from "axios";
 import serverConfig from '../../config';
 
@@ -40,14 +41,25 @@ const Button = styled.button `
 const ProblemPage = () => {
 
     const [list, setList] = useState([]);
+    const memberEmail = localStorage.getItem('memberEmail');
 
     // 문제 목록 불러오기 (get)
     async function getList() {
+        console.log("memberEmail: " + memberEmail)
         try {
-            const {data: response} = await axios.get(
+            const config = {
+                withCredentials: true,
+            };
+    
+            if (memberEmail) {
+                config.params = { memberEmail };
+            }
+    
+            const { data: response } = await axios.get(
                 `/api/problemlist`,
-                {withCredentials: true}
+                config
             );
+            console.log(response);
             setList(response);
         } catch (error) {
             console.log(error);
@@ -60,6 +72,7 @@ const ProblemPage = () => {
 
     return (
         <div>
+            <Header/>
             <AdPart/>
             <Filter>
                 <Button>푼 문제 보기</Button>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import serverConfig from '../../config';
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -9,10 +10,6 @@ function Header() {
 
   const status = localStorage.getItem('status');
   const memberEmail = localStorage.getItem('memberEmail');
-
-  
-  
-
 
   return (
     <div>
@@ -26,15 +23,18 @@ function Header() {
 
 // 로그인x 넷바
 function Header0(){ 
+
+  const navigate = useNavigate();
+  
     return(
        <div className='container'>
          <a className='logout' href="/signin">로그인</a>
 
          <div className='navbar'>
-           <a className='logo' href="#">PES</a>
+           <p className='logo' onClick={()=>navigate('/main')}>PES</p>
            {/* 주석처리하기! */}
            <a className='solution' href="#">풀이</a>
-           <a className='menu1' href="problem">문제</a>
+           <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
          </div>
 
        </div>
@@ -43,6 +43,7 @@ function Header0(){
 
 // 로그인o 넷바
 function Header1(){ 
+  const navigate = useNavigate();
 
  const[isDropdownOpen,setIsDropdownOpen] = useState(false);
  const toggleDropdown = () =>{
@@ -72,6 +73,7 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
+        localStorage.setItem('memberName', memberData.memberName);
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
@@ -118,10 +120,10 @@ function Header1(){
      </div>
      
      <div className='navbar'>
-       <a className='logo' href="#">PES</a>
+       <a className='logo' onClick={()=>navigate('/main')}>PES</a>
         {/* 주석처리하기! */}
-       <a className='menu2' href="solution">풀이</a>
-       <a className='menu1' href="problem">문제</a>
+       <a className='menu2' onClick={()=>navigate('/solution')}>풀이</a>
+       <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
      </div>
    </div>
  )
