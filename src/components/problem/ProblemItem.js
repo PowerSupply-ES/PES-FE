@@ -31,7 +31,6 @@ const ProblemTitle = styled.span`
     }
 `
 const Grade = styled.span`
-    width: 100px;
     height: 34px;
     font-size: 28px;
     text-align: center;
@@ -60,7 +59,7 @@ const ProblemItem = (props) => {
             <ProblemId state={props.state} onClick={() => { navigate(`/question/${props.pid}`); }}>{props.pid}</ProblemId>
             <ProblemTitle onClick={() => { navigate(`/question/${props.pid}`); }}>{props.ptitle}</ProblemTitle>
             <Grade>점수 {props.grade}</Grade>
-            <Button state={props.state}>{props.state === "retry" ? "RE TRY" : "challenge"}</Button>
+            <Button state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>{props.state === "retry" ? "RE TRY" : "풀이보기"}</Button>
         </Container>
     );
 }
