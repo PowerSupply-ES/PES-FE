@@ -4,6 +4,10 @@ import Header from 'components/main/Header';
 import serverConfig from '../../config';
 
 function Solution() {
+  const url = new URL(window.location.href);
+  const problemId = url
+      .pathname
+      .split('/')[2];
 
   const [problemData, setProblemData] = useState({
     problem_id: '',
@@ -11,14 +15,8 @@ function Solution() {
   });
 
   
-
   const sendGetProblem = () => {
-    const serverUrl = serverConfig.pythonUrl;
-
-    // 코드합치면 위아래 주석바꾸기
-    // const problemId = localStorage.getItem('problemId');
-    const problemId= 1;
-
+    const serverUrl = serverConfig.serverUrl;
     const uri = `/api2/problem/`;
 
     fetch(`${serverUrl}${uri}${problemId}`, {
@@ -39,10 +37,6 @@ function Solution() {
         console.error('데이터 가져오기 실패:', error);
       });
 
-      console.log('problemData.problem_id:', problemData.problem_id);
-      
-      localStorage.setItem('problemId', problemData.problem_id);
-
 
       console.log('problemId:', problemId);
       
@@ -55,11 +49,8 @@ function Solution() {
   const [solveData, setSolveData] = useState([]);
 
   const sendGetSolve = () => {
-    // 코드합치면 위아래 주석바꾸기
-    // const problemId = localStorage.getItem('problemId');
-    const problemId= 1
-    
-    const uri = 'api/answerlist/';
+
+    const uri = '../api/answerlist/';
 
     fetch(`${uri}${problemId}`, {
       method: 'GET',

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 function Header() {
 
   const status = localStorage.getItem('status');
-  const memberEmail = localStorage.getItem('memberEmail');
+  // const memberEmail = localStorage.getItem('memberEmail');
 
   return (
     <div>
@@ -33,7 +33,7 @@ function Header0(){
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
            {/* 주석처리하기! */}
-           <a className='solution' href="#">풀이</a>
+           {/* <a className='solution' href="#">풀이</a> */}
            <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
          </div>
 
@@ -50,7 +50,7 @@ function Header1(){
    setIsDropdownOpen((상태)=>!상태);
  }
 
-  const uri = 'api/exp';
+  const uri = '../api/exp';
   const memberEmail = localStorage.getItem('memberEmail');
  
   const [memberData, setMemberData] = useState({
@@ -122,7 +122,7 @@ function Header1(){
      <div className='navbar'>
        <a className='logo' onClick={()=>navigate('/main')}>PES</a>
         {/* 주석처리하기! */}
-       <a className='menu2' onClick={()=>navigate('/solution')}>풀이</a>
+       {/* <a className='menu2' onClick={()=>navigate('/solution')}>풀이</a> */}
        <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
      </div>
    </div>
