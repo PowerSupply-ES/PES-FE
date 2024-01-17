@@ -253,7 +253,7 @@ const QuestionPage = () => {
     async function getTest() {
         try {
             const {data: response} = await axios.get(
-                serverConfig.pythonUrl + `/api2/problem/${problemId}`,
+                `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -270,7 +270,7 @@ const QuestionPage = () => {
     async function postCode(request, problemId, userName) {
         try {
             const {data: response} = await axios.post(
-                serverConfig.pythonUrl + `/api2/submit/${problemId}/${userName}`,
+                `/api2/submit/${problemId}/${userName}`,
                 {
                     code: request,
                     problemId: problemId,
@@ -289,7 +289,7 @@ const QuestionPage = () => {
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                serverConfig.pythonUrl + `/api2/answer/${problemId}/${userName}`,
+                `/api2/answer/${problemId}/${userName}`,
                 {withCredentials: true}
             );
             setCode(response.detail);

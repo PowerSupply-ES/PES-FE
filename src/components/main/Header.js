@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import serverConfig from '../../config';
 import { FaUserCircle } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -9,10 +10,6 @@ function Header() {
 
   const status = localStorage.getItem('status');
   const memberEmail = localStorage.getItem('memberEmail');
-
-  
-  
-
 
   return (
     <div>
