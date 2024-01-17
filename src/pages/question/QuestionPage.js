@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import serverConfig from '../../config';
+import Header from "components/main/Header";
 
 // 문제 헤더 - 번호, 제목
-const Header = styled.div `
+const ProbHeader = styled.div `
     width: 1376px;
     height: 78px;
     display: flex;
@@ -179,6 +180,18 @@ const StyledTh = styled.th `
 const StyledTrEven = styled.tr `
   background-color: #f9f9f9;
 `;
+const FeedbackContainer = styled.div `
+    width: 1376px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    border-radius: 5px;
+    background-color: beige;
+    font-size: 20px;
+    white-space: pre-line; 
+    margin-bottom: 10px;
+`
 
 const QuestionPage = () => {
 
@@ -192,15 +205,17 @@ const QuestionPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
 
-    const userName = "minjeong";
+    // 일단 고정
     var answerId = 1;
-    var email = "minjeongs0202@gmail.com";
-    var email2 = "mcmong@naver.com";
+
+    const memberEmail = localStorage.getItem('memberEmail');
 
     var url = new URL(window.location.href);
     var problemId = url
         .pathname
         .split('/')[2];
+      
+    const userName = localStorage.getItem('memberName');
 
     function submitCode() {
         const data = {
@@ -221,7 +236,7 @@ const QuestionPage = () => {
             alert("내용을 입력해주세요!");
         }
         else {
-            postAnswer(email, answerFst, answerSec);
+            postAnswer(memberEmail, answerFst, answerSec);
         }
     }
 
@@ -238,7 +253,7 @@ const QuestionPage = () => {
     async function getTest() {
         try {
             const {data: response} = await axios.get(
-                `/api2/problem/${problemId}`,
+                serverConfig.pythonUrl + `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -255,7 +270,7 @@ const QuestionPage = () => {
     async function postCode(request, problemId, userName) {
         try {
             const {data: response} = await axios.post(
-                `/api2/submit/${problemId}/${userName}`,
+                serverConfig.pythonUrl + `/api2/submit/${problemId}/${userName}`,
                 {
                     code: request,
                     problemId: problemId,
@@ -274,7 +289,7 @@ const QuestionPage = () => {
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                `/api2/answer/${problemId}/${userName}`,
+                serverConfig.pythonUrl + `/api2/answer/${problemId}/${userName}`,
                 {withCredentials: true}
             );
             setCode(response.detail);
@@ -301,10 +316,10 @@ const QuestionPage = () => {
     }, []);
 
     // 질문 답변하기 (post)
-    async function postAnswer(email, answerFst, answerSec) {
+    async function postAnswer(memberEmail, answerFst, answerSec) {
         try {
             const {data: response} = await axios.post(
-                `/api/answer/${answerId}?memberEmail=${email}`,
+                `/api/answer/${answerId}?memberEmail=${memberEmail}`,
                 {
                     answerFst: answerFst,
                     answerSec: answerSec
@@ -339,7 +354,7 @@ const QuestionPage = () => {
     async function postFeedback(comment) {
         try {
             const {data: response} = await axios.post(
-                `/api/comment/${answerId}?memberEmail=${email}`,
+                `/api/comment/${answerId}?memberEmail=${memberEmail}`,
                 {
                     comment: comment
                 }
@@ -364,10 +379,10 @@ const QuestionPage = () => {
 
         return (
             <div>
-                <Header>
+                <ProbHeader>
                     <ProbId>{problemId}</ProbId>
                     <HeaderTitle>{problem.title}</HeaderTitle>
-                </Header>
+                </ProbHeader>
                 <Description>{problem.context}</Description>
                 <ContentContainer>
                     <h2>Sample Inputs:
@@ -454,7 +469,7 @@ const QuestionPage = () => {
                             <Title>{`이메일: ${feedback.writerEmail}`}</Title>
                             <Title>{`Writer Name: ${feedback.writerName}`}</Title>
                         </QuestionHeader>
-                        <CodeContainer>{feedback.commentContent}</CodeContainer>
+                        <FeedbackContainer>{feedback.commentContent}</FeedbackContainer>
                     </div>
                 ))
             )}
@@ -471,6 +486,7 @@ const QuestionPage = () => {
 
     return (
         <div>
+            <Header/>
             {renderProbUI()}
             {renderAnswerUI()}
             {renderFeedbackUI()}

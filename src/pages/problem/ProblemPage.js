@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {Problems} from "./test";
 import AdPart from "components/problem/AdPart";
 import ProblemItem from "components/problem/ProblemItem";
+import Header from "components/main/Header";
 import axios from "axios";
 import serverConfig from '../../config';
 
@@ -58,7 +59,7 @@ const ProblemPage = () => {
                 `/api/problemlist`,
                 config
             );
-    
+            console.log(response);
             setList(response);
         } catch (error) {
             console.log(error);
@@ -71,6 +72,7 @@ const ProblemPage = () => {
 
     return (
         <div>
+            <Header/>
             <AdPart/>
             <Filter>
                 <Button>푼 문제 보기</Button>
