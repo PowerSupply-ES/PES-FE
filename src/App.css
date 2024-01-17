@@ -1,6 +1,294 @@
 .App {
   text-align: center;
+  font-family: 'Pretendard-Regular';
+
 }
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* -----공통요소----- */
+*{
+  list-style-type: none;
+  color: black;
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+button:hover {
+  cursor: pointer;
+}
+
+
+
+/* -----네비게이션바----- */
+.logout, .userId, .userLevel{
+  height: fit-content;
+  width: fit-content;
+  padding: 4px 32px;
+  color: white;
+  border: solid white;
+  border-radius: 5px;
+}
+.logout{
+  width: fit-content;
+  background-color: #5094F9;
+  margin: 20px 60px 0px auto;
+}
+.userId{
+  width: fit-content;
+  background-color: #5094F9;
+}
+.userLevel{
+  width: fit-content;
+  background-color: #FF8412;
+  padding: 5px 10px;
+}
+.btns{
+  margin: 20px 60px 0px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* 수직으로 배치 */
+  align-items: center;
+}
+.navbar{
+  display: flex;
+  /* background-color: red; */
+  width: 70%;
+  margin: 0px auto;
+  align-items: flex-end;
+}
+.navbar > *{
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.logo{
+  width: 140px;
+  height: 100px;
+  /* background-color: aquamarine; */
+  font-size: 48px;
+  font-weight: bold;
+}
+.menu1, .menu2{
+  height: fit-content;
+  font-size: 24px;
+  margin-left: 56px;
+  /* background-color: yellow; */
+}
+
+.content1, .content2{
+  width: 70%;
+  height: 360px;
+  margin: 40px auto;
+  align-items: flex-end;
+  background-color: #CFCFCF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* -----마이페이지----- */
+.content_mypage{
+  margin-top: 100px;
+}
+.memberInfo{
+  width: 70%;
+  height: 360px;
+  margin: 48px auto;
+  background-color: #cfcef998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: 10px;
+}
+.memberInfo > *{
+  width: 30%;
+  display: flex;
+  justify-content: left;
+  
+}
+.memberInfo > div>*:not(:last-child){
+  width: 100px;
+  /* display: flex;
+  justify-content: left; */
+  margin-right: 40px;
+
+}
+
+/* -----드롭다운----- */
+.dropdown-content{
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  width: 200px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0;
+  background-color: #fefdfd;
+  border: solid 2px rgb(232, 232, 232);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dropdown-content > :not(:last-child){
+  color: rgb(37, 37, 37);
+  font-size: 17px;
+}
+.dropdown-content > :first-child{
+  margin: 15px auto;
+}
+.dropdown-content > :last-child{
+  margin-top: 20px;
+  font-size: 14px;
+  color: #808080;
+
+}
+.userImage{
+  width: 100px;
+  height: 100px;
+  background-color: rgb(212, 212, 212);
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.btn_logout{
+  margin-left: 20px;
+}
+
+
+/* -----풀이----- */
+/* 풀이타이틀 */
+.solution_container{
+  width: 1142px;
+  height: 493px;
+  margin: 60px auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.solution_bar, .solution,.solutionBtn, .solving, .left, .right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-medium);
+}
+
+.solution_bar{
+  justify-content: space-between;
+}
+
+.solution_num{
+  margin-right: 16px;
+  color: #FF8412;
+  font-weight: bold;
+  font-size: 22px;
+}
+.solution_title{
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 60px;
+
+}
+.solution_score{
+  font-size: 20px;
+}
+/* 풀이버튼 */
+.btn_baekjoon, .btn_challenge{
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  border: 2px solid;
+  background: #FFF;
+  padding: 10px 24px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn_baekjoon{
+  border-color: #325CC7;
+  color: #325CC7;
+  margin-right: 12px;
+}
+.btn_challenge{
+  border-color: #DEDEDE;
+  color: #6A6B6F;
+}
+
+/* 성공인원수 */
+.pass_num{
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: auto;
+  margin: 40px 0px 40px auto;
+}
+
+/* 풀이목록 */
+.solving_list{
+  margin-top: var(--margin-middle);
+}
+
+.solving{
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+
+.solving > .right{
+  /* 수정 */
+  display: flex;
+  font-size: var(--font-medium);
+}
+.left > .userNum{
+  color: #04CA00;
+  font-size: 20px;
+}
+.left > .userName, .right > .process_num{
+  color: black;
+  font-size: 20px;
+}
+
+.process_num, .userNum {
+  margin-right: 32px;
+}
+
+.btn_goto_challenge{
+  height: fit-content;
+  width: fit-content;
+  padding: 6px 32px;
+  color: white;
+  border: solid white;
+  border-radius: 5px;
+  background-color: #5094F9;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .App-logo {
   height: 40vmin;

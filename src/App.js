@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import ProblemPage from "pages/problem/ProblemPage";
+import QuestionPage from "pages/question/QuestionPage";
+import Signin from "pages/signin/Signin";
+import Signup from "pages/signup/Signup";
+import Main from "pages/main/Main";
+import Mypage from "pages/mypage/Mypage";
+import Solution from "pages/solution/Solution";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/main" element={<Main/>}></Route>
+        <Route path="/signin" element={<Signin/>}></Route>
+        <Route path="/signup" element={<Signup/>}></Route>
+        <Route path="/mypage" element={<Mypage/>}></Route>
+        <Route path="/solution" element={<Solution/>}></Route>
+        <Route path="/problem" element={<ProblemPage/>}></Route>
+        <Route path="/question/:id" element={<QuestionPage/>}></Route>
+
+      </Routes>
     </div>
   );
 }
