@@ -1,6 +1,6 @@
 const serverConfig = {
-    serverUrl: 'https://localhost:8080',
-    pythonUrl: 'http://127.0.0.1:8000'
+    serverUrl: 'http://localhost:8080',
+    pythonUrl: 'http://localhost:8000'
   };
   
   export default serverConfig;
