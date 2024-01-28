@@ -73,7 +73,7 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        localStorage.setItem('memberName', memberData.memberName);
+        localStorage.setItem('memberName', data.memberName);
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
