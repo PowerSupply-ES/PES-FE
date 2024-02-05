@@ -29,16 +29,12 @@ function Header0(){
   const navigate = useNavigate();
   
     return(
-       <div className='container' 
-      //  style={{ backgroundImage: `url(${img1})`}}
-       >
+       <div className='container'>
          <a className='logout' href="/signin">로그인</a>
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
-           {/* 주석처리하기! */}
-           {/* <a className='solution' href="#">풀이</a> */}
-           {/* <a className='menu1' onClick={()=>navigate('/problem')}>문제</a> */}
+           <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
          </div>
 
        </div>
@@ -59,7 +55,8 @@ function Header1(){
  
   const [memberData, setMemberData] = useState({
     memberName: '',
-    memberScore: ''
+    memberScore: '',
+    memberData: ''
   });
 
 
@@ -113,6 +110,8 @@ function Header1(){
               <FaUserCircle size={92}></FaUserCircle>
               <div>이름: {memberData.memberName}</div>
               <div>점수: {memberData.memberScore}</div>
+              <div>상태: {memberData.memberStatus}</div>
+
               <div>
                 <a href="/mypage">마이페이지</a>
                 <a onClick={logout} className='btn_logout'>로그아웃</a>

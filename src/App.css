@@ -36,7 +36,7 @@ button:hover {
   padding: 6px 30px;
   color: white;
   border: solid white;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .logout{
   width: fit-content;
@@ -46,17 +46,23 @@ button:hover {
 }
 .userId{
   width: fit-content;
-  background-color: #5a2cda;
+  color: #000000;
+  /* background-color: #5a2cda; */
 }
-.userId:hover,.logout:hover{
+.logout:hover{
   background-color: #5a2cda92;
   border-color
   :#5a2cda92;
 
 }
+.userId:hover{
+  background-color: rgb(216, 216, 216);
+  
+}
 .userLevel{
   width: fit-content;
-  background-color: #FF8412;
+  background-color: #000000;
+  color: #ffffff;
   padding: 5px 10px;
 }
 .userLevel:hover {
@@ -70,6 +76,8 @@ button:hover {
   display: flex;
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
+  background-color: #ffffff;
+
 }
 .navbar{
   display: flex;
@@ -99,7 +107,8 @@ button:hover {
   font-size: 24px;
   margin-left: 56px;
   margin-bottom: 20px;
-  color: #d5e6ff;
+  font-weight: bold;
+  color: #686868;
 
   /* background-color: yellow; */
 }
