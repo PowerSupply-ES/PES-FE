@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import serverConfig from '../../config';
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import img1 from '../../assets/images/coding.jpg';
+
 
 
 
@@ -27,14 +29,16 @@ function Header0(){
   const navigate = useNavigate();
   
     return(
-       <div className='container'>
+       <div className='container' 
+      //  style={{ backgroundImage: `url(${img1})`}}
+       >
          <a className='logout' href="/signin">로그인</a>
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
            {/* 주석처리하기! */}
            {/* <a className='solution' href="#">풀이</a> */}
-           <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
+           {/* <a className='menu1' onClick={()=>navigate('/problem')}>문제</a> */}
          </div>
 
        </div>
