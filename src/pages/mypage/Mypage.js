@@ -6,24 +6,21 @@ import '../../App.css';
 
 const MyPage = () => {
     const [memberData, setMemberData] = useState({
-      memberStuNum: '',
+      memberEmail: '',
       memberName: '',
       memberGen: '',
+      memberStatus: '',
       memberMajor: '',
       memberPhone: '',
-      memberStatus: '',
-      memberEmail: '',
-      memberScore: '',
-      memberGitUrl: '',
+      // memberScore: ''
     });
   
     // const serverUrl = serverConfig.serverUrl;
     const uri = 'api/mypage';
   
     const sendGetRequest = () => {
-      const memberEmail = localStorage.getItem('memberEmail');
   
-      fetch(`${uri}?memberEmail=${memberEmail}`, {
+      fetch(`${uri}`, {
         method: 'GET',
       })
         .then(response => {
@@ -56,7 +53,7 @@ const MyPage = () => {
           <h2>마이페이지</h2>
           
           <div className="memberInfo">
-            <div><p>백준 아이디</p><p>{memberData.memberBaekId}</p></div>
+            <div><p>이메일</p><p>{memberData.memberEmail}</p></div>
             <div><p>이름</p><p>{memberData.memberName}</p></div>
             <div><p>기수</p><p>{memberData.memberGen}</p></div>
             <div><p>상태</p><p>{memberData.memberStatus}</p></div>

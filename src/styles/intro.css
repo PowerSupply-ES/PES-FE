@@ -7,24 +7,61 @@
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
+
 }
   
 /* 로그인, 회원가입 공통body */
 .intro {
-  background-color: #f2f2f2;
+  background-color: #CCD1FF;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-h1 {
+.intro > .introduce{
   display: flex;
+  flex-direction: column;
+  text-align: left;
   justify-content: center;
-  color: #333;
+  margin-right: 160px;
+  width: 38vh;
+  height: 60vh;
+}
+.intro > .introduce > *{
+  color: #FFFFFF;
+  word-break:keep-all;
+  font-weight: bold;
+}
+.intro > .introduce > :first-child{
+  color: #00000080;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.intro > .introduce > :last-child{
+
+  font-size: 20px;
+}
+.intro > .introduce > h2{
+  margin-bottom: 50px;
+}
+
+h2 {
+  /* display: flex;
+  justify-content: center; */
+  color: #424242;
+  font-size: 32px;
+}
+
+h4{
+  color: #949494;
+  margin: 12px auto 22px;
+}
+.signup-container > h4{
+  color: #949494;
+  margin: 12px auto 2px;
 }
 
 #signin-form,
@@ -32,50 +69,95 @@ h1 {
   margin-top: 20px;
 }
 
+.login-container{
+  width: 320px;
+  height: fit-content;
+  border: solid 2px #C3C2C2;
+  border-radius: 10px;
+  background-color: #F6F8FA;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.signup-container{
+  width: 320px;
+  /* width: 38vh; */
+  /* height: 80vh; */
+  height:fit-content;
+  border: solid 2px #C3C2C2;
+  border-radius: 10px;
+  background-color: #F6F8FA;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  
+}
+
+.login-container > form,
+.signup-container > form{
+  width: 100%;
+  margin-top: 10px;
+
+}
+.login-container > a{
+  margin: 15px 15px 25px auto;
+  font-size: 13px;
+  color: #6B6B6B;
+}
+.signup-container > a{
+  margin: 15px 15px 10px auto;
+  font-size: 13px;
+  color: #6B6B6B;
+}
+
 .input-container {
-  margin-bottom: 15px;
+  width: 75%;
+  margin: 0 auto 15px;
   text-align: left;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 label {
   display: block;
-  margin: 8px;
-  color: #555;
-  width: 100px;
+  margin: 3px;
+  color: #3D3D3D;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
-  width: 100%;
+input[type="email"],
+input[type="tel"] {
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  background-color: #ccc;
+  border: 1px solid #5094f9;
+  border-radius: 10px;
+  background-color: #FFFFFF;
 }
 
 /* 로그인,회원가입 버튼 */
 .btn_intro {
   display: flex;
   justify-content: center;
-  width: 300px;
-  
-  background-color: #007bff;
+  width: 75%;
+  background-color: #5a2cda99;
   color: #fff;
   border: none;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 5px;
+  margin: 30px auto 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 14px
 }
-
-/* 마우스 호버(Hover) 시 배경색을 변경 */
-button:hover {
-  background-color: #87c1ff;
+.btn_intro:hover{
+  background-color: #5a2cdac6;
 }
-
 
 /* --------------로그인 페이지-------------- */
 /* 회원가입링크 */
@@ -85,8 +167,7 @@ button:hover {
 }
 
 .move > a {
-  margin-top: 10px;
-  margin-right: 30px; /* 오른쪽 마진을 10px로 설정 */
+  margin: 24px 30px 15px 0;
   font-size: 14px;
 }
 
@@ -94,19 +175,8 @@ button:hover {
   margin-right: 0; /* 마지막 요소의 오른쪽 마진을 0으로 설정하여 간격 조절 */
 }
 
-.login-container {
-  width: 300px;
-}
-.intro{
-  background-color: #f2f2f2;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+
+
 /* 링크 스타일 수정 */
 a {
   color: #555; /* 글자색을 검은색으로 설정 */
@@ -115,6 +185,6 @@ a {
 
 /* -------------- 회원가입 -------------- */
 
-.signup-container {
+/* .signup-container {
   width: 300px;
-}
+} */

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import serverConfig from '../../config';
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import img1 from '../../assets/images/coding.jpg';
+
 
 
 
@@ -32,8 +34,6 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
-           {/* 주석처리하기! */}
-           {/* <a className='solution' href="#">풀이</a> */}
            <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
          </div>
 
@@ -55,7 +55,8 @@ function Header1(){
  
   const [memberData, setMemberData] = useState({
     memberName: '',
-    memberScore: ''
+    memberScore: '',
+    memberData: ''
   });
 
 
@@ -73,7 +74,7 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        localStorage.setItem('memberName', memberData.memberName);
+        localStorage.setItem('memberName', data.memberName);
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
@@ -109,6 +110,8 @@ function Header1(){
               <FaUserCircle size={92}></FaUserCircle>
               <div>이름: {memberData.memberName}</div>
               <div>점수: {memberData.memberScore}</div>
+              <div>상태: {memberData.memberStatus}</div>
+
               <div>
                 <a href="/mypage">마이페이지</a>
                 <a onClick={logout} className='btn_logout'>로그아웃</a>

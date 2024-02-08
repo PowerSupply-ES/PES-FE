@@ -56,15 +56,24 @@ const Signin = () => {
     e.preventDefault();
     postSignin();
   };
-      
+  
+  const goBack = () =>{
+    window.history.back();
+  }
     
-
 
   return (
     <div className='intro'>
+      <div className='introduce'>
+        <p>PowerSupply Education System</p>
+        <h2>PowerSupply에 오신 것을<br></br> 환영합니다</h2>
+        <p>지금 바로 시작해보세요</p>
+      </div>
 
       <div className="login-container">
-        <h1>로그인</h1>
+        <a onClick={()=>goBack()}>뒤로가기</a>
+        <h2>PES</h2>
+        <h4>로그인</h4>
 
         <form onSubmit={handleSubmit}> 
           <div className="input-container">
@@ -74,6 +83,7 @@ const Signin = () => {
               id="memberEmail"
               name="memberEmail"
               value={formData.memberEmail}
+              placeholder='이메일을 입력해주세요'
               onChange={handleInputChange} /* 입력 값이 변경될 때 핸들러 추가 */
               required
             />
@@ -85,6 +95,8 @@ const Signin = () => {
               id="memberPw"
               name="memberPw"
               value={formData.memberPw}
+              placeholder='비밀번호를 입력해주세요'
+
               onChange={handleInputChange} /* 입력 값이 변경될 때 핸들러 추가 */
               required
             />

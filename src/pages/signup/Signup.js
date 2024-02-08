@@ -7,7 +7,6 @@ const Signup = () => {
     memberEmail: '',
     memberPw: '',
     memberName: '',
-    memberBaekId: '',
     memberGen: '',
     memberMajor: '',
     memberPhone: ''
@@ -57,11 +56,22 @@ const Signup = () => {
     postSignup();
   };
 
+  const goBack = () =>{
+    window.history.back();
+  }
+
   return (
     <div className='intro'>
+      <div className='introduce'>
+        <p>PowerSupply Education System</p>
+        <h2>PowerSupply에 오신 것을<br></br> 환영합니다</h2>
+        <p>지금 바로 시작해보세요</p>
+      </div>
 
       <div className="signup-container">
-        <h1>회원가입</h1>
+        <a onClick={()=>goBack()}>뒤로가기</a>
+        <h2>PES</h2>
+        <h4>회원가입</h4>
         
         <form onSubmit={handleSubmit}>
 
@@ -72,6 +82,7 @@ const Signup = () => {
               id="memberName"
               name="memberName"
               value={formData.memberName}
+              placeholder='이름을 입력해주세요'
               onChange={handleInputChange}
               required
             />
@@ -84,6 +95,7 @@ const Signup = () => {
               id="memberEmail"
               name="memberEmail"
               value={formData.memberEmail}
+              placeholder='이메일을 입력해주세요'
               onChange={handleInputChange}
               required
             />
@@ -96,18 +108,7 @@ const Signup = () => {
               id="memberPw"
               name="memberPw"
               value={formData.memberPw}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <div className="input-container">
-            <label htmlFor="memberBaekId"> 백준 아이디</label>
-            <input
-              type="text"
-              id="memberBaekId"
-              name="memberBaekId"
-              value={formData.memberBaekId}
+              placeholder='비밀번호를 입력해주세요'
               onChange={handleInputChange}
               required
             />
@@ -120,6 +121,7 @@ const Signup = () => {
               id="memberGen"
               name="memberGen"
               value={formData.memberGen}
+              placeholder='기수를 입력해주세요'
               onChange={handleInputChange}
               required
             />
@@ -132,6 +134,7 @@ const Signup = () => {
               id="memberMajor"
               name="memberMajor"
               value={formData.memberMajor}
+              placeholder='학과를 입력해주세요'
               onChange={handleInputChange}
               required
             />
@@ -140,10 +143,11 @@ const Signup = () => {
           <div className="input-container">
             <label htmlFor="memberPhone"> 전화번호</label>
             <input
-              type="text"
+              type="tel"
               id="memberPhone"
               name="memberPhone"
               value={formData.memberPhone}
+              placeholder='전화번호를 입력해주세요'
               onChange={handleInputChange}
               required
             />
