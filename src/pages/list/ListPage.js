@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useState, useEffect} from "react";
-import AdPart from "components/problem/AdPart";
-import ProblemItem from "components/problem/ProblemItem";
+import AdPart from "components/list/AdPart";
+import ProblemItem from "components/list/ListItem";
 import Header from "components/main/Header";
 import axios from "axios";
 import serverConfig from '../../config';
@@ -37,7 +37,7 @@ const Button = styled.button `
     }
 `
 
-const ProblemPage = () => {
+const ListPage = () => {
 
     const [list, setList] = useState([]);
     const memberEmail = localStorage.getItem('memberEmail');
@@ -93,4 +93,4 @@ const ProblemPage = () => {
     );
 };
 
-export default ProblemPage;
+export default ListPage;
