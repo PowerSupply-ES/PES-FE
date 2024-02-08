@@ -1,97 +1,120 @@
-import styled from "styled-components";
-import {useState, useEffect} from "react";
-import {Problems} from "./test";
-import AdPart from "components/problem/AdPart";
-import ProblemItem from "components/problem/ProblemItem";
-import Header from "components/main/Header";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import serverConfig from '../../config';
+import Header from "components/main/Header";
+import { StyledProblem } from 'styles/Problem-styled';
+import { useNavigate } from "react-router-dom";
 
-const Filter = styled.div `
-    width: 1376px;
-    height: 62px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 48px;
-`
-const Button = styled.button `
-    height: 42px;
-    background-color: #FFFFFF;
-    color: #6A6B6F;
-    font-weight: bold;
-    font-size: 28px;
-    border-radius: 5px;
-    border: 2px solid #DEDEDE;
-    margin-right: 20px;
-    text-align: center;
+const ProblemPage = (props) => {
+    const navigate = useNavigate();
 
-    &:hover {
-        background-color: #FFAC30;
-        color: white;
+    var url = new URL(window.location.href);
+    var problemId = url
+        .pathname
+        .split('/')[2];
+
+    if (props.answerId) {
+        setAnswerId(props.answerId);
+        // console.log(answerId);
     }
 
-    &:focus {
-        background-color: #FFAC30;
-        color: white;
-        outline: none;
+    const [answerId, setAnswerId] = useState();
+    const [problem, setProblem] = useState([]);
+    const [request, setRequest] = useState("");
+    const [result, setResult] = useState();
+
+    function submitCode() {
+        if (!request) {
+            alert("코드를 입력해주세요!");
+        }
+        else {
+            postCode(request, problemId, userName);
+            // if (result === 0) { // 문제 맞은 경우
+                navigate(`/question/${answerId}`);
+            // }
+            // else { // 문제 틀린 경우
+                // 리렌더링하기 -> answerId가 생겼으므로, UI 바뀜
+            // }
+        }
     }
-`
 
-const ProblemPage = () => {
-
-    const [list, setList] = useState([]);
-    const memberEmail = localStorage.getItem('memberEmail');
-
-    // 문제 목록 불러오기 (get)
-    async function getList() {
-        console.log("memberEmail: " + memberEmail)
-        try {
-            const config = {
-                withCredentials: true,
-            };
-    
-            if (memberEmail) {
-                config.params = { memberEmail };
+    // 문제 불러오기 (get)
+    async function getProblem() {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problem/${problemId}`,
+                    {withCredentials: true}
+                );
+                setProblem(response);
+            } catch (error) {
+                console.log(error);
             }
+    }
+
+    useEffect(() => {
+        getProblem();
+    }, []);
     
-            const { data: response } = await axios.get(
-                `/api/problemlist`,
-                config
-            );
+    // 코드 제출하기 (post)
+    async function postCode(request, problemId, memberEmail) {
+        try {
+            const {data: response} = await axios.post(
+                `/api2/submit/${problemId}/${memberEmail}`,
+                {
+                    code: request,
+                    problemId: problemId,
+                    userEmail: memberEmail
+                }
+            )
             console.log(response);
-            setList(response);
+            setResult(response.detail);
+            setAnswerId(response.answerId);
         } catch (error) {
             console.log(error);
         }
     }
 
-    useEffect(() => {
-        getList();
-    }, []);
+    function renderProbUI() {
+        const inputArray = problem.sample_inputs
+            ? Object.values(problem.sample_inputs)
+            : [];
 
+        const outputArray = problem.sample_outputs
+            ? Object.values(problem.sample_outputs)
+            : [];
+
+        return (
+            <StyledProblem>
+                <div className="problem_header">
+                    <span className="problem_id">{problemId}</span>
+                    <span className="header_title">{problem.title}</span>
+                </div>
+                <div className="description">{problem.context}</div>
+                <div className="content_container">
+                    <h2>Sample Inputs:
+                    </h2>
+                    <div className="input_data">
+                        {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
+                    </div>
+                    <h2>Sample Outputs:
+                    </h2>
+                    <div className="output_data">
+                        {outputArray.map((i) => (<p>{i}</p>))}
+                    </div>
+                </div>
+                <span className="title">코드 입력</span>
+                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                        onChange = {(e) => setRequest(e.target.value)}/> 
+                <button className="submit_button" onClick={() => submitCode()}>제출</button>
+            </StyledProblem>
+        );
+    }
+    
     return (
         <div>
             <Header/>
-            <AdPart/>
-            <Filter>
-                <Button>푼 문제 보기</Button>
-                <Button>안 푼 문제 보기</Button>
-                <Button>풀이 중인 문제 보기</Button>
-                <Button>FAIL</Button>
-                <Button>CLEAR</Button>
-            </Filter>
-            {
-                list.map((problem) => (
-                    <ProblemItem
-                        pid={problem.problemId}
-                        ptitle={problem.problemTitle}
-                        grade={problem.problemScore}
-                        state="challenge"/>
-                ))
-            }
+            {renderProbUI()}
         </div>
     );
-};
+}
 
 export default ProblemPage;
