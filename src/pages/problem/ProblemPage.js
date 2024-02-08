@@ -28,6 +28,7 @@ const ProblemPage = (props) => {
         }
         else {
             postCode(request, problemId, userName);
+            alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
             // if (result === 0) { // 문제 맞은 경우
                 navigate(`/question/${answerId}`);
             // }
