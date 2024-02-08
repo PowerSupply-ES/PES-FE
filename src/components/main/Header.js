@@ -101,7 +101,7 @@ function Header1(){
    //토글버튼
    <div className='container'>
      <div className='btns'>
-       <button className='userLevel'>level</button>
+       <div className='userLevel'>level</div>
        <button className='userId' onClick={toggleDropdown}>
           {memberEmail}
          {isDropdownOpen &&(
