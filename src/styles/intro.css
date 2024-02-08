@@ -59,6 +59,10 @@ h4{
   color: #949494;
   margin: 12px auto 22px;
 }
+.signup-container > h4{
+  color: #949494;
+  margin: 12px auto 2px;
+}
 
 #signin-form,
 #signup-form{
@@ -66,8 +70,8 @@ h4{
 }
 
 .login-container{
-  width: 38vh;
-  height: 55vh;
+  width: 320px;
+  height: fit-content;
   border: solid 2px #C3C2C2;
   border-radius: 10px;
   background-color: #F6F8FA;
@@ -78,8 +82,10 @@ h4{
 }
 
 .signup-container{
-  width: 38vh;
-  height: 80vh;
+  width: 320px;
+  /* width: 38vh; */
+  /* height: 80vh; */
+  height:fit-content;
   border: solid 2px #C3C2C2;
   border-radius: 10px;
   background-color: #F6F8FA;
@@ -90,19 +96,19 @@ h4{
   
 }
 
-
-
-
-
 .login-container > form,
 .signup-container > form{
   width: 100%;
   margin-top: 10px;
 
 }
-.login-container > a,
-.signup-container > a{
+.login-container > a{
   margin: 15px 15px 25px auto;
+  font-size: 13px;
+  color: #6B6B6B;
+}
+.signup-container > a{
+  margin: 15px 15px 10px auto;
   font-size: 13px;
   color: #6B6B6B;
 }
@@ -121,6 +127,7 @@ label {
   margin: 3px;
   color: #3D3D3D;
   font-weight: bold;
+  font-size: 14px;
 }
 
 input[type="text"],
@@ -144,7 +151,7 @@ input[type="tel"] {
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  margin: 30px auto 5px;
+  margin: 30px auto 15px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-size: 14px
 }
@@ -160,8 +167,7 @@ input[type="tel"] {
 }
 
 .move > a {
-  margin-top: 24px;
-  margin-right: 30px; /* 오른쪽 마진을 10px로 설정 */
+  margin: 24px 30px 15px 0;
   font-size: 14px;
 }
 

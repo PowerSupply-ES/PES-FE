@@ -69,7 +69,7 @@ const Signup = () => {
       </div>
 
       <div className="signup-container">
-      <a onClick={()=>goBack()}>뒤로가기</a>
+        <a onClick={()=>goBack()}>뒤로가기</a>
         <h2>PES</h2>
         <h4>회원가입</h4>
         
