@@ -86,6 +86,7 @@ const ListPage = () => {
                         pid={problem.problemId}
                         ptitle={problem.problemTitle}
                         grade={problem.problemScore}
+                        answerId={problem.answerId}
                         state={problem.answerState}/>
                 ))
             }
