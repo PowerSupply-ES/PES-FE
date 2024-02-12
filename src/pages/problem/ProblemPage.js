@@ -4,18 +4,13 @@ import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import { useNavigate } from "react-router-dom";
 
-const ProblemPage = (props) => {
+const ProblemPage = () => {
     const navigate = useNavigate();
 
     var url = new URL(window.location.href);
     var problemId = url
         .pathname
         .split('/')[2];
-
-    if (props.answerId) {
-        setAnswerId(props.answerId);
-        // console.log(answerId);
-    }
 
     const [answerId, setAnswerId] = useState();
     const [problem, setProblem] = useState([]);
@@ -27,14 +22,14 @@ const ProblemPage = (props) => {
             alert("코드를 입력해주세요!");
         }
         else {
-            postCode(request, problemId, userName);
-            alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
-            // if (result === 0) { // 문제 맞은 경우
+            postCode(request, problemId);
+            if (answerId) {
+                alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 navigate(`/question/${answerId}`);
-            // }
-            // else { // 문제 틀린 경우
-                // 리렌더링하기 -> answerId가 생겼으므로, UI 바뀜
-            // }
+            }
+            else {
+                window.location.reload();
+            }
         }
     }
 

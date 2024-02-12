@@ -44,15 +44,10 @@ const ListPage = () => {
 
     // 문제 목록 불러오기 (get)
     async function getList() {
-        console.log("memberEmail: " + memberEmail)
         try {
             const config = {
                 withCredentials: true,
             };
-    
-            if (memberEmail) {
-                config.params = { memberEmail };
-            }
     
             const { data: response } = await axios.get(
                 `/api/problemlist`,

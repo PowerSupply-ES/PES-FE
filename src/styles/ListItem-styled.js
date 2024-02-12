@@ -8,19 +8,19 @@ export const StyledListItem = styled.div`
     align-items: center;
     margin: auto;
     border-radius: 5px;
-    background-color: ${props => props.state == "locked" ? "#DEDEDE" : "white"};
+    background-color: ${props => props.state === "locked" ? "#DEDEDE" : "white"};
     transition: background-color 0.3s; /* Add transition for smooth color change */
     &:hover {
-        background-color: ${props => props.state == "locked" ? "#DEDEDE" : "#DEDEDE80"};
+        background-color: ${props => props.state === "locked" ? "#DEDEDE" : "#DEDEDE80"};
     }
     }
 
     .problem_id {
         width: 100px;
-    height: 34px;
-    color: ${props => props.state === "solved" ? "#04CA00" : props.state === "retry" ? "#FF8412" : "black"};
-    font-size: 28px;
-    text-align: center;
+        height: 34px;
+        color: ${props => props.state === "success" ? "#04CA00" : props.state === "fail" ? "#FF8412" : "black"};
+        font-size: 28px;
+        text-align: center;
     }
 
     .problem_title {
@@ -41,14 +41,14 @@ export const StyledListItem = styled.div`
 
     .button {
         width: 150px;
-    height: 42px;
-    color: ${props => props.state == "locked" ? "#6A6B6F" : "white"};
-    background-color: ${props => props.state === "baekjoon" ? "#5094f9" : props.state === "challenge" ? "#5094f9" : props.state === "solved" ? "#04CA00" : props.state === "retry" ? "#FF8412" : "white"};
-    border-radius: 5px;
-    font-size: 28px;
-    text-align: center;
-    border: ${props => props.state == "locked" ? "2px solid #DEDEDE" : "none"};
-    transition: background-color 0.3s;
+        height: 42px;
+        color: ${props => props.state === "locked" ? "#6A6B6F" : "white"};
+        background-color: ${props => props.state === "comment" ? "#5094f9" : props.state === "success" ? "#04CA00" : props.state === "fail" ? "#FF8412" : "white"};
+        border-radius: 5px;
+        font-size: 28px;
+        text-align: center;
+        border: ${props => props.state === "locked" ? "2px solid #DEDEDE" : "none"};
+        transition: background-color 0.3s;
     /* &:hover {
         background-color: ${props => props.color ? `${props.color}80` : "rgba(255, 255, 255, 0.8)"};
     } */
