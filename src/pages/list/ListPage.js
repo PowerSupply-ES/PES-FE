@@ -9,9 +9,9 @@ import axios from "axios";
 import serverConfig from '../../config';
 
 const Filter = styled.div `
-    width: 1376px;
+    width: 80%;
     height: 62px;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     margin-bottom: 48px;
