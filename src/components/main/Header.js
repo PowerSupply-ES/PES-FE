@@ -34,7 +34,7 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
-           <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
+           <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
          </div>
 
        </div>
@@ -126,7 +126,7 @@ function Header1(){
        <a className='logo' onClick={()=>navigate('/main')}>PES</a>
         {/* 주석처리하기! */}
        {/* <a className='menu2' onClick={()=>navigate('/solution')}>풀이</a> */}
-       <a className='menu1' onClick={()=>navigate('/problem')}>문제</a>
+       <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
      </div>
    </div>
  )
