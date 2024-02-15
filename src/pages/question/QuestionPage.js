@@ -3,6 +3,12 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
+import serverConfig from "config";
+
+const OPTIONS =    [
+    { value: 0, name: "fail"},
+    { value: 1, name: "pass"},
+];
 
 const QuestionPage = () => {
     var url = new URL(window.location.href);
@@ -11,6 +17,7 @@ const QuestionPage = () => {
         .split('/')[2];
     var passCount = 0;
     const problemId = localStorage.getItem('problemId');
+    const userName = localStorage.getItem('memberName');
 
     const [state, setState] = useState("");
     const [problem, setProblem] = useState([]);
@@ -29,9 +36,7 @@ const QuestionPage = () => {
     // getFeedback은 아래 상태일 때만 call
 
     if (state === "comment" || "success" || "fail") {
-        useEffect(() => {
-            getFeedback();
-        }, []);
+        getFeedback();
     } 
 
     // answerState 구분
@@ -53,7 +58,7 @@ const QuestionPage = () => {
     async function getProblem() {
         try {
             const {data: response} = await axios.get(
-                `/api2/problem/${problemId}`,
+                `${serverConfig.pythonUrl}/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -116,7 +121,7 @@ const QuestionPage = () => {
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                `/api2/answer/${answerId}`, // answerId로 사용자 코드 구분해야 할 듯?
+                `${serverConfig.pythonUrl}/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
                 {withCredentials: true}
             );
             setCode(response.detail);
@@ -133,7 +138,7 @@ const QuestionPage = () => {
     async function getQuestions() {
         try {
             const {data: response} = await axios.get(
-                `/api/answer/${answerId}`,
+                `${serverConfig.serverUrl}/api/answer/${answerId}`,
                 {withCredentials: true}
             );
             setQnA(response);
@@ -151,7 +156,7 @@ const QuestionPage = () => {
     async function postAnswer(answerFst, answerSec) {
         try {
             const {data: response} = await axios.post(
-                `/api/answer/${answerId}`,
+                `${serverConfig.serverUrl}/api/answer/${answerId}`,
                 {
                     answerFst: answerFst,
                     answerSec: answerSec
@@ -165,7 +170,7 @@ const QuestionPage = () => {
     // 댓글 불러오기 (get)
     async function getFeedback() {
         try {
-            const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
+            const {data: response} = await axios.get(`${serverConfig.serverUrl}/api/comment/${answerId}`, {withCredentials: true});
             // writerEmail
             // writerName
             // commentContent
@@ -185,7 +190,7 @@ const QuestionPage = () => {
     async function postFeedback(comment, selected) {
         try {
             const {data: response} = await axios.post(
-                `/api/comment/${answerId}`,
+                `${serverConfig.serverUrl}/api/comment/${answerId}`,
                 {
                     comment: comment,
                     commentPassFail: selected
