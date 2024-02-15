@@ -3,12 +3,21 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
+import serverConfig from "config";
+
+const OPTIONS =    [
+    { value: 0, name: "fail"},
+    { value: 1, name: "pass"},
+];
 
 const QuestionPage = () => {
     var url = new URL(window.location.href);
     var answerId = url
         .pathname
         .split('/')[2];
+    var passCount = 0;
+    const problemId = localStorage.getItem('problemId');
+    const userName = localStorage.getItem('memberName');
 
     const [state, setState] = useState("");
     const [problem, setProblem] = useState([]);
@@ -19,7 +28,7 @@ const QuestionPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
     const [selected, setSelected] = useState(0);
-
+    
     // 렌더링 시, answerState 필요
     // 질문 줄 때 (get /question) 같이 넘겨줌
 
@@ -27,7 +36,7 @@ const QuestionPage = () => {
     // getFeedback은 아래 상태일 때만 call
 
     if (state === "comment" || "success" || "fail") {
-        // getFeedback
+        getFeedback();
     } 
 
     // answerState 구분
@@ -46,6 +55,34 @@ const QuestionPage = () => {
     // 2명까지만 달 수 있음 처리
 
     // 문제 불러오기
+    async function getProblem() {
+        try {
+            const {data: response} = await axios.get(
+                `/api2/problem/${problemId}`,
+                {withCredentials: true}
+            );
+            setProblem(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getProblem();
+    }, []);
+
+    // pass, fail 선택
+    const SelectBox = (props) => {
+        return (
+            <select onChange={ e => setSelected(e.target.value)} value={selected}>
+                {props.options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                        {option.name}
+                    </option>
+                ))}
+            </select>
+        );
+    };
 
     // 답변 제출
     function submitAnswer() {
@@ -57,11 +94,34 @@ const QuestionPage = () => {
         }
     }
 
+    // 댓글 제출
+    function submitComment() {
+        if (!comment) {
+            alert("내용을 입력해주세요!");
+        }
+        if (!selected) {
+            alert("통과 여부를 선택해주세요!");
+        }
+        else {
+            postFeedback(comment, selected);
+        }
+    }
+
+    // 댓글 제출 결과 alert
+    function getAlert(response) {
+        if (response === 400) {
+            alert("이미 댓글을 달았습니다.");
+        }
+        else if (response === 403) {
+            alert("댓글을 달 수 없습니다.");
+        }
+    }
+
     // 사용자가 작성한 코드 불러오기 (get)
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                `/api2/answer/${problemId}/${memberEmail}`,
+                `/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
                 {withCredentials: true}
             );
             setCode(response.detail);
@@ -107,8 +167,41 @@ const QuestionPage = () => {
         }
     }
 
-    // 댓글 불러오기
-    // 댓글 달기
+    // 댓글 불러오기 (get)
+    async function getFeedback() {
+        try {
+            const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
+            // writerEmail
+            // writerName
+            // commentContent
+            // pass, fail 여부 받아야 할 듯? (최종 success, fail 결과 출력을 위해서)
+            setFeedbacks(response);
+            for (let i = 0; i < response.length; i++) {
+                if (response[i].commentPassFail === 1) {
+                    passCount++;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // 댓글 달기 (post)
+    async function postFeedback(comment, selected) {
+        try {
+            const {data: response} = await axios.post(
+                `/api/comment/${answerId}`,
+                {
+                    comment: comment,
+                    commentPassFail: selected
+                }
+            )
+            getFeedback();
+            getAlert(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function renderAnswerUI() {
         return (
@@ -151,10 +244,47 @@ const QuestionPage = () => {
         );
     }
 
+    function renderFeedbackUI() {
+
+        const feedbackArray = feedbacks
+            ? Object.values(feedbacks)
+            : [];
+            
+        return (
+            <StyledQuestion>
+            {feedbackArray.length > 0 && (
+                feedbackArray.map((feedback, index) => (
+                    <div key={index}>
+                        <div className="question_header">
+                        <span className="title">{`이메일: ${feedback.writerEmail}`}</span>
+                        <span className="title">{`Writer Name: ${feedback.writerName}`}</span>
+                        </div>
+                        <div className="feedback_container">{feedback.commentContent}</div>
+                        {(feedback.commentPassFail === 1) ? <><div>pass</div></> : <><div>fail</div></>}
+                    </div>
+                ))
+            )}
+
+            {(feedbackArray.length <= 1) && (state === "comment") && (
+                <div>
+                    <div className="question_header">
+                        <SelectBox options={OPTIONS} defaultValue="pass"></SelectBox>
+                    </div>
+                    <textarea className="answer_input" onChange={(e) => setComment(e.target.value)}/>
+                    <button className="answer_button" onClick={() => submitComment()}>답변하기</button>
+                </div>
+            )}
+
+            {(passCount >= 2) ? <><div>pass</div></> : <><div>fail</div></>}
+            </StyledQuestion>
+        );
+    }
+
     return(
         <div>
             <Header/>
             {renderAnswerUI()}
+            {renderFeedbackUI()}
         </div>
     );
 }
