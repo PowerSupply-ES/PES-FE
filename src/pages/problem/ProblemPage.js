@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import { useNavigate } from "react-router-dom";
+import serverConfig from "config";
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -12,22 +13,26 @@ const ProblemPage = () => {
         .pathname
         .split('/')[2];
 
-    const [answerId, setAnswerId] = useState();
+    // const [answerId, setAnswerId] = useState();
     const [problem, setProblem] = useState([]);
     const [request, setRequest] = useState("");
     const [result, setResult] = useState();
 
-    function submitCode() {
+    const memberName = localStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
+
+    async function submitCode() {
         if (!request) {
             alert("코드를 입력해주세요!");
         }
         else {
-            postCode(request, problemId);
+            const answerId = postCode(request, problemId, memberName);
             if (answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 navigate(`/question/${answerId}`);
             }
             else {
+                alert("문제를 틀렸습니다! 다시 풀어보세요.");
+                console.log(answerId);
                 window.location.reload();
             }
         }
@@ -37,7 +42,7 @@ const ProblemPage = () => {
     async function getProblem() {
             try {
                 const {data: response} = await axios.get(
-                    `/api2/problem/${problemId}`,
+                    `${serverConfig.pythonUrl}/api2/problem/${problemId}`,
                     {withCredentials: true}
                 );
                 setProblem(response);
@@ -51,19 +56,20 @@ const ProblemPage = () => {
     }, []);
     
     // 코드 제출하기 (post)
-    async function postCode(request, problemId, memberEmail) {
+    async function postCode(request, problemId, memberName) {
         try {
             const {data: response} = await axios.post(
-                `/api2/submit/${problemId}/${memberEmail}`,
+                `${serverConfig.pythonUrl}/api2/submit/${problemId}/${memberName}`,
                 {
                     code: request,
                     problemId: problemId,
-                    userEmail: memberEmail
+                    userName: memberName
                 }
             )
             console.log(response);
             setResult(response.detail);
-            setAnswerId(response.answerId);
+            // setAnswerId(response.answerId);
+            return response.answerId;
         } catch (error) {
             console.log(error);
         }
