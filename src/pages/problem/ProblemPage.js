@@ -42,7 +42,7 @@ const ProblemPage = () => {
     async function getProblem() {
             try {
                 const {data: response} = await axios.get(
-                    `${serverConfig.pythonUrl}/api2/problem/${problemId}`,
+                    `/api2/problem/${problemId}`,
                     {withCredentials: true}
                 );
                 setProblem(response);
@@ -59,7 +59,7 @@ const ProblemPage = () => {
     async function postCode(request, problemId, memberName) {
         try {
             const {data: response} = await axios.post(
-                `${serverConfig.pythonUrl}/api2/submit/${problemId}/${memberName}`,
+                `/api2/submit/${problemId}/${memberName}`,
                 {
                     code: request,
                     problemId: problemId,

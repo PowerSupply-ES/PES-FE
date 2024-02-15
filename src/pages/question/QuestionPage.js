@@ -58,7 +58,7 @@ const QuestionPage = () => {
     async function getProblem() {
         try {
             const {data: response} = await axios.get(
-                `${serverConfig.pythonUrl}/api2/problem/${problemId}`,
+                `/api2/problem/${problemId}`,
                 {withCredentials: true}
             );
             setProblem(response);
@@ -121,7 +121,7 @@ const QuestionPage = () => {
     async function getCode() {
         try {
             const {data: response} = await axios.get(
-                `${serverConfig.pythonUrl}/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
+                `/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
                 {withCredentials: true}
             );
             setCode(response.detail);
@@ -138,7 +138,7 @@ const QuestionPage = () => {
     async function getQuestions() {
         try {
             const {data: response} = await axios.get(
-                `${serverConfig.serverUrl}/api/answer/${answerId}`,
+                `/api/answer/${answerId}`,
                 {withCredentials: true}
             );
             setQnA(response);
@@ -156,7 +156,7 @@ const QuestionPage = () => {
     async function postAnswer(answerFst, answerSec) {
         try {
             const {data: response} = await axios.post(
-                `${serverConfig.serverUrl}/api/answer/${answerId}`,
+                `/api/answer/${answerId}`,
                 {
                     answerFst: answerFst,
                     answerSec: answerSec
@@ -170,7 +170,7 @@ const QuestionPage = () => {
     // 댓글 불러오기 (get)
     async function getFeedback() {
         try {
-            const {data: response} = await axios.get(`${serverConfig.serverUrl}/api/comment/${answerId}`, {withCredentials: true});
+            const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
             // writerEmail
             // writerName
             // commentContent
@@ -190,7 +190,7 @@ const QuestionPage = () => {
     async function postFeedback(comment, selected) {
         try {
             const {data: response} = await axios.post(
-                `${serverConfig.serverUrl}/api/comment/${answerId}`,
+                `/api/comment/${answerId}`,
                 {
                     comment: comment,
                     commentPassFail: selected
