@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
+import Footer from "components/footer/Footer";
 import serverConfig from '../../config';
 import '../../App.css';
 
@@ -16,7 +17,7 @@ const MyPage = () => {
     });
   
     // const serverUrl = serverConfig.serverUrl;
-    const uri = 'api/mypage';
+    const uri = 'api/mypage/information';
   
     const sendGetRequest = () => {
   
@@ -50,17 +51,40 @@ const MyPage = () => {
 
         <div className='content_mypage'>
 
-          <h2>마이페이지</h2>
-          
-          <div className="memberInfo">
-            <div><p>이메일</p><p>{memberData.memberEmail}</p></div>
-            <div><p>이름</p><p>{memberData.memberName}</p></div>
-            <div><p>기수</p><p>{memberData.memberGen}</p></div>
-            <div><p>상태</p><p>{memberData.memberStatus}</p></div>
-            <div><p>학과</p><p>{memberData.memberMajor}</p></div>
-            <div><p>전화번호</p><p>{memberData.memberPhone}</p></div>
+          <h2>My 페이지</h2>
+          <div className='mypage_content'>
+            <div className='left'>
+              {/* 사용자 정보 */}
+              <div className="memberInfo">
+                <div className='info_name'><p>{memberData.memberName}</p><p>님</p></div>
+
+                <div><p>{memberData.memberEmail}</p></div>
+                <div><p>{memberData.memberGen}</p><p>기</p></div>
+                <div><p>{memberData.memberStatus}</p><p>중</p></div>
+                <div><p>{memberData.memberMajor}</p><p>학과</p></div>
+                <div><p>{memberData.memberPhone}</p></div>
+              </div>
+            </div>
+
+            <div className='right'>
+              {/* 내가 푼 문제 */}
+              <div className='top'>
+                <div className='mypage_btn'>내가 푼 문제</div>
+                <div className='myProblem'></div>
+              </div>
+              
+
+              {/* 내 피드백 */}
+              <div className='bottom'>
+                <div className='mypage_btn'>my feedback</div>
+                <div className='myFeedback'></div>
+              </div>
+
+            </div>
+
           </div>
         </div>
+        <Footer></Footer>
       </div>
     );
   };

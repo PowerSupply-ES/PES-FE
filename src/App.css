@@ -4,9 +4,6 @@
   /* background-color: #f9fafb; */
   /* background-color: #1c1c1c; */
   background-color: #f2f7ff;
-
-
-
 }
 @font-face {
   font-family: 'Pretendard-Regular';
@@ -210,34 +207,93 @@ button:hover {
 }
 
 /* -----마이페이지----- */
-.content_mypage{
-  margin-top: 100px;
+.mypage_content{
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: 0 auto;
 }
-.memberInfo{
-  width: 70%;
-  height: 360px;
-  margin: 48px auto;
-  background-color: #f2f7ff;
+.mypage_content > .left{
+  margin-right: 60px;
+}
+.mypage_content > .right{
+  display: flex;
+  flex-direction: column;
+}
+.mypage_btn{
+  width: fit-content;
+  height: fit-content;
+  padding: 2px 6px;
+  color: #ffffff;
+  background-color: #9747FF; opacity: 60%;
+  border: solid #9747FF; opacity: 60%;
+  border-radius: 20px;
+  margin: 0 0 6px 8px;
+}
+
+.content_mypage{
+  padding-top: 40px;
+  background-color: #ECEAFF;
+  height: 100vh;
+  padding-bottom: 300px;
+  margin-bottom: -300px;
+}
+.content_mypage > h2{
+  width: 100%;
+  text-align: left;
+  margin-left: 40px;
+  color: #000000; opacity: 60%;
+  font-size: 26px;
+}
+
+
+.memberInfo,.myProblem, .myFeedback{
+  padding: 10px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  border-radius: 10px;
+  border: solid #C3C2C2 2px;
+  border-radius: 20px;
 }
-.memberInfo > *{
-  width: 30%;
+.memberInfo{
+  height: 360px;
+  width: 200px;
+  margin: 48px auto;
+}
+.myProblem, .myFeedback{
+  height: 240px;
+  width: 800px;
+}
+.myProblem{
+  margin-bottom:16px;
+}
+
+
+.memberInfo > .info_name{
+  margin-bottom: 20px;
   display: flex;
-  justify-content: left;
   
 }
-.memberInfo > div>*:not(:last-child){
-  width: 100px;
-  /* display: flex;
-  justify-content: left; */
-  margin-right: 40px;
-
+.memberInfo > .info_name > p{
+  font-size: 24px;
+  color: #000000;
 }
+.memberInfo > *{
+  color: #000000; opacity: 80%;
+}
+.memberInfo > :not(:first-child){
+  width: 50%;
+  display: flex;
+  justify-content: left;
+}
+.memberInfo > .info_name{
+  font-size: 32px;
+  color: #060606;
+}
+
 
 /* -----드롭다운----- */
 .dropdown-content{
