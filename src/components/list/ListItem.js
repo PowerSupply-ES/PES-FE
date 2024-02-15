@@ -17,10 +17,10 @@ const ProblemItem = (props) => {
     return (
         <StyledListItem>
             <div className="container" state={props.state}>
-            <span className="problem_id" state={props.state} onClick={() => { goTo(props.answerId); }}>{props.pid}</span>
-            <span className="problem_title" onClick={() => { goTo(props.answerId); }}>{props.ptitle}</span>
-            <span className="grade">점수 {props.grade}</span>
-            <button className="button" state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>{props.state === "retry" ? "RE TRY" : "풀이보기"}</button>
+                <div className="problem_id" state={props.state} onClick={() => { goTo(props.answerId); }}>{props.pid}</div>
+                <div className="problem_title" onClick={() => { goTo(props.answerId); }}>{props.ptitle}</div>
+                <div className="grade">점수 {props.grade}</div>
+                <button className="button" state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>{props.state === "retry" ? "RE TRY" : "풀이보기"}</button>
             </div>
         </StyledListItem>
 

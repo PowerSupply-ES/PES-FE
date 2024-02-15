@@ -3,6 +3,8 @@ import {useState, useEffect} from "react";
 import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
 import Header from "components/main/Header";
+import Footer from "components/footer/Footer";
+
 import axios from "axios";
 import serverConfig from '../../config';
 
@@ -15,23 +17,24 @@ const Filter = styled.div `
     margin-bottom: 48px;
 `
 const Button = styled.button `
-    height: 42px;
+    height: fit-content;
     background-color: #FFFFFF;
     color: #6A6B6F;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 22px;
     border-radius: 5px;
     border: 2px solid #DEDEDE;
     margin-right: 20px;
     text-align: center;
+    padding: 3px;
 
     &:hover {
-        background-color: #FFAC30;
+        background-color: #6D63E4;opacity : 0.5;
         color: white;
     }
 
     &:focus {
-        background-color: #FFAC30;
+        background-color: #6D63E4;opacity : 0.5;
         color: white;
         outline: none;
     }
@@ -85,6 +88,7 @@ const ListPage = () => {
                         state={problem.answerState}/>
                 ))
             }
+            <Footer></Footer>
         </div>
     );
 };

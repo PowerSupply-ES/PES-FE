@@ -78,7 +78,6 @@ button:hover {
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
   background-color: #ffffff;
-
 }
 .navbar{
   display: flex;
@@ -126,31 +125,12 @@ button:hover {
   width: 100%;
   height: 80vh;
   margin: 0px auto;
-  /* padding-top: 120px; */
-  /* background-color: #d5e6ff; */
-  /* background-color: #1c1c1c; */
   background-color: #f2f7ff;
-
   color: #373737;
   font-size: 28px;
   font-weight: bold;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
-  
 }
-.slid{
-  /* background-color: #f2f7ff; */
-  background-color: #cab6d339;
 
-  width: 86%;
-  height: 75vh;
-  margin: 0 auto;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .content1{
   width: 100%;
   height: 75vh;
@@ -369,11 +349,21 @@ button:hover {
 
 
 
+/* footer */
+.footer{
+  height: 200px;
+  background-color: #272727;
+  margin-top: 300px;
+}
 
+/* 슬라이드 */
 
-
-
-
+.img_slid{
+  display:block;
+	height:100%;
+  margin-right: auto;
+  width: 100%;
+}
 
 
 

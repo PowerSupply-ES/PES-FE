@@ -1,20 +1,23 @@
 import styled from "styled-components";
+import img1 from '../../assets/images/coding.jpg';
+import '../../App.css';
+
 
 const AdContainer = styled.div`
     display:flex;
     align-items: center;
+    background-color: #272727;
     justify-content:center;
-    width:1374px;
-    height: 100px;
-    background-color: #DEDEDE;
+    width:100%;
+    height: 50vh;
     margin: auto;
     margin-bottom: 48px;
-    margin-top: 48px;
 `
+
 const AdPart = () => {
     return (
         <AdContainer>
-            광고 배너
+            <img src={img1} className="img_slid"/>
         </AdContainer>
     );
 };
