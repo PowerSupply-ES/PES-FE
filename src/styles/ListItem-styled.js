@@ -22,13 +22,13 @@ export const StyledListItem = styled.div`
         width: 100px;
         height: 34px;
         color: ${props => props.state === "success" ? "#04CA00" : props.state === "fail" ? "#FF8412" : "black"};
-        font-size: 28px;
+        font-size: 22px;
         text-align: center;
     }
 
     .problem_title {
         flex: 1; /* Take up remaining space */
-        font-size: 28px;
+        font-size: 22px;
         text-align: left; 
         &:hover {
             cursor: pointer;
@@ -37,7 +37,7 @@ export const StyledListItem = styled.div`
 
     .grade {
         height: 34px;
-        font-size: 28px;
+        font-size: 22px;
         text-align: center;
         margin-right: 20px;
         }

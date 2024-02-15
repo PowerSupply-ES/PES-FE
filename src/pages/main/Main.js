@@ -21,10 +21,10 @@ function Main() {
           </div>
           
           <div className='main_btn'>
-            <button className='btn1'>바로가기</button>
-            <button className='btn2'>로그인</button>
+            <a href="/list" className='btn1'>바로가기</a>
+            <a href="/Signin" className='btn2'>로그인</a>
           </div>
-          
+
         </div>
         <div className='content1'>
           <img src={img1} ></img>

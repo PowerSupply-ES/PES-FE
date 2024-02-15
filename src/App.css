@@ -104,7 +104,7 @@ button:hover {
 }
 .menu1, .menu2{
   height: fit-content;
-  font-size: 30px;
+  font-size: 26px;
   margin-left: 56px;
   margin-bottom: 20px;
   font-weight: bold;
@@ -140,11 +140,11 @@ button:hover {
 }
 .ps > .p1{
   color: #CACACA; opacity: 60%;
-  font-size: 30px;
+  font-size: 25px;
 }
 .ps > .p2{
   color: #ffffff;
-  font-size: 40px;
+  font-size: 36px;
 }
 .main_btn{
   display: flex;
@@ -154,14 +154,14 @@ button:hover {
 .main_btn > .btn1,
 .main_btn > .btn2{
   border-radius: 20px;
-  font-size: 27px;
+  font-size: 22px;
   color: #ffffff;
-  width: 150px;
+  width: 132px;
   height: fit-content;
   padding: 5px 0px;
 }
 .main_btn > .btn1{
-  background-color: #000000; opacity: 80%;
+  background-color: #000000; opacity: 90%;
   border: solid #ffffff 2px;
   margin-right: 50px;
 }
