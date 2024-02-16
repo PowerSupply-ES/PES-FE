@@ -25,19 +25,17 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            await postCode(request, problemId, memberName);
-            // console.log(result);
-            // console.log(response);
-            // if (answerId != null) {
-            //     console.log("success answerId 값: " + answerId);
+            const response = postCode(request, problemId, memberName);
+            if (response.answerId) {
+                 console.log(response);
                 // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 // navigate(`/question/${answerId}`);
-            // }
-            // else {
-            //    console.log("failanswerId 값: " + answerId);
+            }
+            else {
+                console.log(response);
                 // alert("문제를 틀렸습니다! 다시 풀어보세요.");
                 // window.location.reload();
-            // }
+            }
         }
     }
 
@@ -70,7 +68,6 @@ const ProblemPage = () => {
                 }
             )
             console.log(response);
-            console.log(response.status);
             if (response.status === 201) {
                 // setResult(response);
                 console.log(response);
