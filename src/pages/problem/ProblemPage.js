@@ -28,6 +28,7 @@ const ProblemPage = () => {
             const response = await postCode(request, problemId, memberName);
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
+                localStorage.setItem('problemId', props.pid);
                 navigate(`/question/${response.answerId}`);
             }
             else {
