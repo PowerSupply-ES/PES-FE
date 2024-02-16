@@ -27,15 +27,12 @@ const ProblemPage = () => {
         else {
             const response = await postCode(request, problemId, memberName);
             if (response.answerId) {
-                 console.log("answerId 있? " + response);
-                // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
-                // navigate(`/question/${answerId}`);
+                alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
+                navigate(`/question/${response.answerId}`);
             }
             else {
-                console.log("이게 실행돼야 하는데");
-                console.log(response);
-                // alert("문제를 틀렸습니다! 다시 풀어보세요.");
-                // window.location.reload();
+                alert("문제를 틀렸습니다! 다시 풀어보세요.");
+                window.location.reload();
             }
         }
     }
@@ -68,7 +65,7 @@ const ProblemPage = () => {
                     userName: memberName
                 }
             )
-            console.log(response);
+            // console.log(response);
             
             return response;
         } catch (error) {
