@@ -33,7 +33,6 @@ const ProblemPage = () => {
             }
             else {
                 alert("문제를 틀렸습니다! 다시 풀어보세요.");
-                window.location.reload();
             }
         }
     }
