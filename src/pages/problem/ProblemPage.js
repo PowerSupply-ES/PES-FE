@@ -25,7 +25,7 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            const response = postCode(request, problemId, memberName);
+            const response = await postCode(request, problemId, memberName);
             if (response.answerId) {
                  console.log("answerId 있? " + response);
                 // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
@@ -68,8 +68,8 @@ const ProblemPage = () => {
                     userName: memberName
                 }
             )
-            console.log("post 함수 안에 있는 response" + response);
-            console.log("response type 확인" + typeof(response));
+            console.log(response);
+            
             return response;
         } catch (error) {
             console.log(error);
