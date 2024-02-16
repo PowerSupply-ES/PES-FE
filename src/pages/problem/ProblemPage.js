@@ -27,11 +27,12 @@ const ProblemPage = () => {
         else {
             const response = postCode(request, problemId, memberName);
             if (response.answerId) {
-                 console.log(response);
+                 console.log("answerId 있? " + response);
                 // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 // navigate(`/question/${answerId}`);
             }
             else {
+                console.log("이게 실행돼야 하는데");
                 console.log(response);
                 // alert("문제를 틀렸습니다! 다시 풀어보세요.");
                 // window.location.reload();
@@ -67,19 +68,9 @@ const ProblemPage = () => {
                     userName: memberName
                 }
             )
-            console.log(response);
-            if (response.status === 201) {
-                // setResult(response);
-                console.log(response);
-                console.log("상태코드값: " + response.status);
-                // return response;
-            }
-            else if (response.status === 202) {
-                // setResult(response);
-                console.log(response);
-                console.log("상태코드값: " + response.status);
-                // return response;
-            }
+            console.log("post 함수 안에 있는 response" + response);
+            console.log("response type 확인" + typeof(response));
+            return response;
         } catch (error) {
             console.log(error);
         }
