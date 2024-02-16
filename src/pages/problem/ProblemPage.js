@@ -29,7 +29,7 @@ const ProblemPage = () => {
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
-                localStorage.setItem('problemId', props.pid);
+                localStorage.setItem('problemId', problemId);
                 navigate(`/question/${response.answerId}`);
             }
             else {
