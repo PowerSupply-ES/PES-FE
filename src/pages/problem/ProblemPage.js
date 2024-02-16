@@ -25,7 +25,7 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            postCode(request, problemId, memberName);
+            await postCode(request, problemId, memberName);
             // console.log(result);
             // console.log(response);
             // if (answerId != null) {
@@ -69,7 +69,8 @@ const ProblemPage = () => {
                     userName: memberName
                 }
             )
-            // console.log(response);
+            console.log(response);
+            console.log(response.status);
             if (response.status === 201) {
                 // setResult(response);
                 console.log(response);
