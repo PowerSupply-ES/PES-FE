@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
@@ -28,6 +28,8 @@ const QuestionPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
     const [selected, setSelected] = useState(0);
+    const textFst = useRef("");
+    const textSec = useRef("");
     
     // 렌더링 시, answerState 필요
     // 질문 줄 때 (get /question) 같이 넘겨줌
@@ -83,9 +85,19 @@ const QuestionPage = () => {
             </select>
         );
     };
+    
+    function FstHandler(e) {
+        textFst.current = e.target.value;
+    }
+
+    function SecHandler(e) {
+        textSec.current = e.target.value;
+    }
 
     // 답변 제출
     function submitAnswer() {
+        setAnswerFst(textFst.current);
+        setAnswerSec(textSec.current);
         if (!answerFst || !answerSec) {
             alert("내용을 입력해주세요!");
         }
@@ -96,6 +108,7 @@ const QuestionPage = () => {
 
     // 댓글 제출
     function submitComment() {
+        setComment(textFst.current);
         if (!comment) {
             alert("내용을 입력해주세요!");
         }
@@ -203,6 +216,7 @@ const QuestionPage = () => {
         }
     }
 
+    
     function renderAnswerUI() {
         return (
             <StyledQuestion>
@@ -219,13 +233,13 @@ const QuestionPage = () => {
                         ? <> <div className="question_header"> <div className="question_id">질문 1</div>
                         <span className="header_title">{qnA.questionContentFst}</span>
                     </div>
-                    <textarea className="answer_input" onChange={(e) => setAnswerFst(e.target.value)}/>
+                    <textarea className="answer_input" onChange={FstHandler}/>
                     <div className="question_header">
                         <div className="question_id">질문 2</div>
                         <span className="header_title">{qnA.questionContentSec}</span>
                     </div>
-                    <textarea className="answer_input" onChange={(e) => setAnswerSec(e.target.value)}/>
-                    <button className="answer_button" onClick={() => submitAnswer()}>답변하기</button> </>
+                    <textarea className="answer_input" onChange={SecHandler}/>
+                    <button className="answer_button" onClick={submitAnswer}>답변하기</button> </>
                     // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
                     // answerState: success
                     // answerState: fail
@@ -270,8 +284,8 @@ const QuestionPage = () => {
                     <div className="question_header">
                         <SelectBox options={OPTIONS} defaultValue="pass"></SelectBox>
                     </div>
-                    <textarea className="answer_input" onChange={(e) => setComment(e.target.value)}/>
-                    <button className="answer_button" onClick={() => submitComment()}>답변하기</button>
+                    <textarea className="answer_input" onChange={FstHandler}/>
+                    <button className="answer_button" onClick={submitComment}>답변하기</button>
                 </div>
             )}
 

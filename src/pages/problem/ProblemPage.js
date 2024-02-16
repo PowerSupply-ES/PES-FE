@@ -26,13 +26,12 @@ const ProblemPage = () => {
         }
         else {
             const answerId = postCode(request, problemId, memberName);
-            if (answerId) {
+            if (answerId != null) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 navigate(`/question/${answerId}`);
             }
             else {
                 alert("문제를 틀렸습니다! 다시 풀어보세요.");
-                console.log(answerId);
                 window.location.reload();
             }
         }
@@ -67,9 +66,12 @@ const ProblemPage = () => {
                 }
             )
             console.log(response);
-            setResult(response.detail);
-            // setAnswerId(response.answerId);
-            return response.answerId;
+            if (response.status === 201) {
+                return response.answerId;
+            }
+            else if (response.status === 202) {
+                return null;
+            }
         } catch (error) {
             console.log(error);
         }
