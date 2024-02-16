@@ -25,7 +25,9 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            postCode(request, problemId, memberName);
+            const response = postCode(request, problemId, memberName);
+            console.log(result);
+            console.log(response);
             // if (answerId != null) {
             //     console.log("success answerId 값: " + answerId);
                 // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
@@ -67,7 +69,7 @@ const ProblemPage = () => {
                     userName: memberName
                 }
             )
-            console.log(response);
+            // console.log(response);
             if (response.status === 201) {
                 setResult(response);
                 console.log("상태코드값: " + response.status);
