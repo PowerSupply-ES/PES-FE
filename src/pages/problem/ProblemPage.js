@@ -25,17 +25,17 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            const answerId = postCode(request, problemId, memberName);
-            if (answerId != null) {
-                console.log("success answerId 값: " + answerId);
+            postCode(request, problemId, memberName);
+            // if (answerId != null) {
+            //     console.log("success answerId 값: " + answerId);
                 // alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 // navigate(`/question/${answerId}`);
-            }
-            else {
-                console.log("failanswerId 값: " + answerId);
+            // }
+            // else {
+            //    console.log("failanswerId 값: " + answerId);
                 // alert("문제를 틀렸습니다! 다시 풀어보세요.");
                 // window.location.reload();
-            }
+            // }
         }
     }
 
@@ -69,12 +69,14 @@ const ProblemPage = () => {
             )
             console.log(response);
             if (response.status === 201) {
+                setResult(response);
                 console.log("상태코드값: " + response.status);
-                return response.answerId;
+                return response;
             }
             else if (response.status === 202) {
+                setResult(response);
                 console.log("상태코드값: " + response.status);
-                return null;
+                return response;
             }
         } catch (error) {
             console.log(error);
