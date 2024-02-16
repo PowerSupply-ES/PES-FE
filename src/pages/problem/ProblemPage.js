@@ -28,11 +28,13 @@ const ProblemPage = () => {
             const response = await postCode(request, problemId, memberName);
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
+                console.log(response);
                 localStorage.setItem('problemId', props.pid);
                 navigate(`/question/${response.answerId}`);
             }
             else {
                 alert("문제를 틀렸습니다! 다시 풀어보세요.");
+                console.log(response);
             }
         }
     }
