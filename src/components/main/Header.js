@@ -1,12 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import serverConfig from '../../config';
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-import img1 from '../../assets/images/coding.jpg';
-
-
-
 
 function Header() {
 

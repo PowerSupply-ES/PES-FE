@@ -44,7 +44,7 @@ function Solution() {
 
   useEffect(() => {
     sendGetProblem();
-  }, []);
+  }, [sendGetProblem]);
 
   const [solveData, setSolveData] = useState([]);
 
@@ -74,7 +74,7 @@ function Solution() {
 
   useEffect(() => {
     sendGetSolve();
-  }, []);
+  }, [sendGetSolve]);
 
   return (
     <>

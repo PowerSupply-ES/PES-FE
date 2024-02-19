@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import img1 from '../../assets/images/coding.jpg';
 import '../../App.css';
 
 
@@ -17,7 +16,6 @@ const AdContainer = styled.div`
 const AdPart = () => {
     return (
         <AdContainer>
-            <img src={img1} className="img_slid"/>
         </AdContainer>
     );
 };

@@ -1,11 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import serverConfig from '../../config';
-import { FaUserCircle } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
-import '../../App.css';
-
-
 
 function Footer() {
 
@@ -24,7 +17,5 @@ function Bottom(){
        </div>
     )
 }
-
-
 
 export default Footer;
