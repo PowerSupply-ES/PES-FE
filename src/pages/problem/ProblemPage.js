@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import { useNavigate } from "react-router-dom";
-import serverConfig from "config";
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -16,7 +15,6 @@ const ProblemPage = () => {
     // const [answerId, setAnswerId] = useState();
     const [problem, setProblem] = useState([]);
     const [request, setRequest] = useState("");
-    const [result, setResult] = useState();
 
     const memberName = localStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
 
@@ -54,7 +52,7 @@ const ProblemPage = () => {
 
     useEffect(() => {
         getProblem();
-    }, []);
+    }, [getProblem]);
     
     // 코드 제출하기 (post)
     async function postCode(request, problemId, memberName) {

@@ -1,11 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
 import '../../App.css';
 import img1 from '../../assets/images/coding.jpg';
-
-
 
 function Main() {
   return (

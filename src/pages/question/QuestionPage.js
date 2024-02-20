@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
-import serverConfig from "config";
 
 const OPTIONS =    [
     { value: 0, name: "fail"},
@@ -71,7 +70,7 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getProblem();
-    }, []);
+    }, [getProblem]);
 
     // pass, fail 선택
     const SelectBox = (props) => {
@@ -145,7 +144,7 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getCode();
-    }, []);
+    }, [getCode]);
 
     // 질문, 답변 블러오기 (get)
     async function getQuestions() {
@@ -163,12 +162,12 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getQuestions();
-    }, []);
+    }, [getQuestions]);
 
     // 질문 답변하기 (post)
     async function postAnswer(answerFst, answerSec) {
         try {
-            const {data: response} = await axios.post(
+            await axios.post(
                 `/api/answer/${answerId}`,
                 {
                     answerFst: answerFst,

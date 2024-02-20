@@ -6,7 +6,6 @@ import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 
 import axios from "axios";
-import serverConfig from '../../config';
 
 const Filter = styled.div `
     width: 80%;
@@ -43,7 +42,6 @@ const Button = styled.button `
 const ListPage = () => {
 
     const [list, setList] = useState([]);
-    const memberEmail = localStorage.getItem('memberEmail');
 
     // 문제 목록 불러오기 (get)
     async function getList() {
