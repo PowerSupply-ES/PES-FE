@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
@@ -38,7 +38,7 @@ const QuestionPage = () => {
 
     if (state === "comment" || "success" || "fail") {
         getFeedback();
-    } 
+    }
 
     // answerState 구분
     // - 질문 상태(question): 코드가 정상적으로 실행되어 질문에 답해야하는 상태 → 질문 테스트로 이동
@@ -56,7 +56,7 @@ const QuestionPage = () => {
     // 2명까지만 달 수 있음 처리
 
     // 문제 불러오기
-    async function getProblem() {
+    const getProblem = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
                 `/api2/problem/${problemId}`,
@@ -66,7 +66,7 @@ const QuestionPage = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [problemId]);
 
     useEffect(() => {
         getProblem();
@@ -130,7 +130,7 @@ const QuestionPage = () => {
     }
 
     // 사용자가 작성한 코드 불러오기 (get)
-    async function getCode() {
+    const getCode = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
                 `/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
@@ -140,14 +140,14 @@ const QuestionPage = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
 
     useEffect(() => {
         getCode();
     }, [getCode]);
 
     // 질문, 답변 블러오기 (get)
-    async function getQuestions() {
+    const getQuestions = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
                 `/api/answer/${answerId}`,
@@ -158,7 +158,7 @@ const QuestionPage = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
 
     useEffect(() => {
         getQuestions();
