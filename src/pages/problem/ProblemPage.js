@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
+import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 const ProblemPage = () => {
@@ -85,25 +86,39 @@ const ProblemPage = () => {
         return (
             <StyledProblem>
                 <div className="problem_header">
-                    <span className="problem_id">{problemId}</span>
-                    <span className="header_title">{problem.title}</span>
+                    <div className="problem_id">문제{problemId}</div>
+                    <div className="header_title">제목{problem.title}</div>
                 </div>
                 <div className="description">{problem.context}</div>
-                <div className="content_container">
-                    <h2>Sample Inputs:
-                    </h2>
-                    <div className="input_data">
-                        {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
+
+
+                <div className="promblem_section">
+
+                    <div className="content_container">
+                        <div className="top">
+                            <h2>Sample Inputs:</h2>
+                            <div className="input_data">
+                                {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
+                            </div>
+                        </div>
+                        <div className="bottom">
+                            <h2>Sample Outputs:</h2>
+                            <div className="output_data">
+                                {outputArray.map((i) => (<p>{i}</p>))}
+                            </div>
+                        </div>
                     </div>
-                    <h2>Sample Outputs:
-                    </h2>
-                    <div className="output_data">
-                        {outputArray.map((i) => (<p>{i}</p>))}
+
+                    <div className="code_section">
+                        <div className="title">코드 입력</div>
+                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                            onChange = {(e) => setRequest(e.target.value)}/> 
+                       
                     </div>
+                    
+                    
                 </div>
-                <span className="title">코드 입력</span>
-                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                        onChange = {(e) => setRequest(e.target.value)}/> 
+                
                 <button className="submit_button" onClick={() => submitCode()}>제출</button>
             </StyledProblem>
         );
@@ -113,6 +128,8 @@ const ProblemPage = () => {
         <div>
             <Header/>
             {renderProbUI()}
+            <Footer></Footer>
+
         </div>
     );
 }
