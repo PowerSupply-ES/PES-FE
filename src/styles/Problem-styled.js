@@ -41,7 +41,8 @@ export const StyledProblem = styled.div`
 
 
     .promblem_section{
-        width:100%;
+        width:80%;
+        height:100vh;
         margin: 0 auto;
         display: flex;
         justify-content: center;
@@ -53,19 +54,26 @@ export const StyledProblem = styled.div`
         // margin: auto;
         // padding: 20px;
 
-        flex: 1;
+
+        flex: 3;
 
         display: flex;
-
         flex-direction: column;
-        // margin-right: 80px;
+        background-color: #ffffff;
+        border-radius : 20px;
+        box-shadow: 1px 3px #CCC9C9;
+        margin : 64px 40px 0 0;
+
+
+    }
+
     }
     .code_section{
-        flex: 2;
+        flex: 5;
+
         
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
     }
 
     .content_container > .top,
@@ -94,9 +102,6 @@ export const StyledProblem = styled.div`
         text-align: center;
         align-items: center;
         margin: auto;
-        background-color: lavender;
-        border-radius : 20px;
-        box-shadow: 1px 3px #CCC9C9;
 
     }
     .output_data {
@@ -106,18 +111,13 @@ export const StyledProblem = styled.div`
         text-align: center;
         align-items: center;
         margin: auto;
-
-        background-color: lavender;
-        border-radius : 20px;
-        box-shadow: 1px 3px #CCC9C9;
-
     }
 
     
     .code_input {
-        width: 80%;
-        height: 500px;
-        font-size: 20px;
+        // width: 80%;
+        // height: 500px;
+        // font-size: 20px;
         display: flex;
         justify-content: center;
         margin: 10px auto;
@@ -125,11 +125,10 @@ export const StyledProblem = styled.div`
         overflow-wrap: break-word;
         border-radius : 20px;
         padding: 16px 8px 0 8px;
-        color: #ffffff;
+        // color: #ffffff;
         box-shadow: 1px 3px #CCC9C9;
-
-
     }
+
     .submit_button {
         width: fit-content;
         height: fit-content;

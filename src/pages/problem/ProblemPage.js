@@ -1,9 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
+
+// 에디터에 사용할 언어 및 테마를 불러옵니다.
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
+import 'ace-builds/src-noconflict/theme-monokai';
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -95,6 +100,7 @@ const ProblemPage = () => {
                 <div className="promblem_section">
 
                     <div className="content_container">
+
                         <div className="top">
                             <h2>Sample Inputs:</h2>
                             <div className="input_data">
@@ -111,8 +117,37 @@ const ProblemPage = () => {
 
                     <div className="code_section">
                         <div className="title">코드 입력</div>
-                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                            onChange = {(e) => setRequest(e.target.value)}/> 
+                        {/* 원래코드 */}
+                        {/* <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                            onChange = {(e) => setRequest(e.target.value)}/>  */}
+                            
+
+                        {/* 변경코드 */}
+                        <AceEditor 
+                            className="code_input" 
+                            mode="c_cpp"
+                            theme="monokai"
+                            placeholder = "코드를 입력해주세요." 
+                            onChange={(newCode) => setRequest(newCode)}
+                            value={request}
+                            name="code-editor"
+                            editorProps={{ 
+                                $blockScrolling: Infinity, // 스크롤 이동 허용
+                                style: {
+                                    background: '#ffffff',
+                                    overflowY: 'auto' // 세로 스크롤이 필요할 경우 스크롤 표시
+                                }
+                            }}
+                            fontSize={"20px"}
+                            setOptions={{
+                                highlightActiveLine: true, // 활성 줄 강조
+                            }}
+                            style={{
+                                height: '100%',
+                                width: '100%'
+                            }}
+                            
+                            /> 
                        
                     </div>
                     
