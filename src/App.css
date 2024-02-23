@@ -273,9 +273,9 @@ button:hover {
 
 
 .memberInfo > .info_name{
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
-  
+  font-weight: bold;
 }
 .memberInfo > .info_name > p{
   font-size: 24px;
