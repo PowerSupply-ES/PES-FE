@@ -31,7 +31,7 @@ const Signin = () => {
     .then((responseData) => {
       const resultMessage = responseData.message;
       alert(resultMessage);
-      window.location.href = '/main';
+      window.location.href = '/list';
 
       localStorage.setItem('status', true);
       localStorage.setItem('memberEmail', formData.memberEmail);
