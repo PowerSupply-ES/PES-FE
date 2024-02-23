@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
@@ -44,7 +44,7 @@ const ProblemPage = () => {
     }
 
     // 문제 불러오기 (get)
-    async function getProblem() {
+    const getProblem = useCallback(async () => {
             try {
                 const {data: response} = await axios.get(
                     `/api2/problem/${problemId}`,
@@ -54,7 +54,7 @@ const ProblemPage = () => {
             } catch (error) {
                 console.log(error);
             }
-    }
+    }, [problemId]);
 
     useEffect(() => {
         getProblem();
