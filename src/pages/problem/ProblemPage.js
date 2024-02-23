@@ -39,7 +39,7 @@ const ProblemPage = () => {
     }
 
     // 문제 불러오기 (get)
-    async function getProblem() {
+    const getProblem = useCallback(async () => {
             try {
                 const {data: response} = await axios.get(
                     `/api2/problem/${problemId}`,
@@ -49,7 +49,7 @@ const ProblemPage = () => {
             } catch (error) {
                 console.log(error);
             }
-    }
+    }, [problemId]);
 
     useEffect(() => {
         getProblem();
