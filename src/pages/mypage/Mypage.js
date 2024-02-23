@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
-import serverConfig from '../../config';
 import '../../App.css';
 
 const MyPage = () => {

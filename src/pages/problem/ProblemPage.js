@@ -12,23 +12,27 @@ const ProblemPage = () => {
         .pathname
         .split('/')[2];
 
-    const [answerId, setAnswerId] = useState();
+    // const [answerId, setAnswerId] = useState();
     const [problem, setProblem] = useState([]);
     const [request, setRequest] = useState("");
-    const [result, setResult] = useState();
 
-    function submitCode() {
+    const memberName = localStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
+
+    async function submitCode() {
         if (!request) {
             alert("코드를 입력해주세요!");
         }
         else {
-            postCode(request, problemId);
-            if (answerId) {
+            const response = await postCode(request, problemId, memberName);
+            if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
-                navigate(`/question/${answerId}`);
+                console.log(response);
+                localStorage.setItem('problemId', problemId);
+                navigate(`/question/${response.answerId}`);
             }
             else {
-                window.location.reload();
+                alert("문제를 틀렸습니다! 다시 풀어보세요.");
+                console.log(response);
             }
         }
     }
@@ -48,22 +52,22 @@ const ProblemPage = () => {
 
     useEffect(() => {
         getProblem();
-    }, []);
+    }, [getProblem]);
     
     // 코드 제출하기 (post)
-    async function postCode(request, problemId, memberEmail) {
+    async function postCode(request, problemId, memberName) {
         try {
             const {data: response} = await axios.post(
-                `/api2/submit/${problemId}/${memberEmail}`,
+                `/api2/submit/${problemId}/${memberName}`,
                 {
                     code: request,
                     problemId: problemId,
-                    userEmail: memberEmail
+                    userName: memberName
                 }
             )
-            console.log(response);
-            setResult(response.detail);
-            setAnswerId(response.answerId);
+            // console.log(response);
+            
+            return response;
         } catch (error) {
             console.log(error);
         }

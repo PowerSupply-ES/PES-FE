@@ -1,5 +1,4 @@
-import React, { useState, useEffect} from 'react';
-import serverConfig from '../../config';
+import React, { useState } from 'react';
 import '../../styles/intro.css';
 
 const Signup = () => {
