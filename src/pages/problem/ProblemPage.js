@@ -23,15 +23,19 @@ const ProblemPage = () => {
 
     const [title, setTitle] = useState([]);
     const [problem, setProblem] = useState([]);
-    const [request, setRequest] = useState("");
+    const text = useRef("");
     const [detail, setDetail] = useState("");
 
+    function textHandler(e) {
+        text.current = e.target.value;
+    }
+
     async function submitCode() {
-        if (!request) {
+        if (!text.current) {
             alert("코드를 입력해주세요!");
         }
         else {
-            const response = await postCode(request, problemId);
+            const response = await postCode(text.current, problemId);
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
@@ -151,8 +155,8 @@ const ProblemPage = () => {
                             mode="c_cpp"
                             theme="monokai"
                             placeholder = "코드를 입력해주세요." 
-                            onChange={(e) => setRequest(e.target.value)}
-                            value={request}
+                            onChange={textHandler}
+                            value={text.current}
                             name="code-editor"
                             editorProps={{ 
                                 $blockScrolling: Infinity, // 스크롤 이동 허용
