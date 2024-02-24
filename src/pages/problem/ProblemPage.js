@@ -5,10 +5,13 @@ import { StyledProblem } from 'styles/Problem-styled';
 import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-// 에디터에 사용할 언어 및 테마를 불러옵니다.
+// 에디터에 사용할 언어 및 테마를 불러옴.
+import "ace-builds";
+import "ace-builds/webpack-resolver";
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
 import 'ace-builds/src-noconflict/theme-monokai';
+
 
 const ProblemPage = () => {
     const navigate = useNavigate();
