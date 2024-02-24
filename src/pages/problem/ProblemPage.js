@@ -100,6 +100,7 @@ const ProblemPage = () => {
                 <div className="promblem_section">
 
                     <div className="content_container">
+                        <div className="title">문제 설명</div>
 
                         <div className="top">
                             <h2>Sample Inputs:</h2>
