@@ -3,14 +3,16 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import Footer from "components/footer/Footer";
+
 import { useNavigate } from "react-router-dom";
 
 // 에디터에 사용할 언어 및 테마를 불러옴.
-import "ace-builds";
-import "ace-builds/webpack-resolver";
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
-import 'ace-builds/src-noconflict/theme-monokai';
+//import "ace-builds";
+//import "ace-builds/webpack-resolver";
+//import AceEditor from 'react-ace';
+//import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
+//import 'ace-builds/src-noconflict/theme-monokai';
+import Editor from '@monaco-editor/react';
 
 
 const ProblemPage = () => {
@@ -82,6 +84,7 @@ const ProblemPage = () => {
         }
     }
 
+
     function renderProbUI() {
         const inputArray = problem.sample_inputs
             ? Object.values(problem.sample_inputs)
@@ -127,7 +130,7 @@ const ProblemPage = () => {
                             
 
                         {/* 변경코드 */}
-                        <AceEditor 
+                        {/* <AceEditor 
                             className="code_input" 
                             mode="c_cpp"
                             theme="monokai"
@@ -151,7 +154,25 @@ const ProblemPage = () => {
                                 width: '100%'
                             }}
                             
-                            /> 
+                            />  */}
+
+                        <Editor
+                            height='100%'
+                            width= '100%'
+                            theme="vs-dark"
+                            defaultLanguage="c"
+                            className="code_input" 
+                            placeholder = "코드를 입력해주세요." 
+                            options={{
+                                fontSize: 15,
+                                minimap: { enabled: false },
+                                scrollbar: {
+                                  vertical: 'auto',
+                                  horizontal: 'auto'
+                                }
+                            }}
+                            onChange={(newCode) => setRequest(newCode)}
+                        /> 
                        
                     </div>
                     
