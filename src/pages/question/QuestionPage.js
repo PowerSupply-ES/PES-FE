@@ -19,6 +19,7 @@ const QuestionPage = () => {
     const userName = localStorage.getItem('memberName');
 
     const [state, setState] = useState("");
+    const [title, setTitle] = useState([]);
     const [problem, setProblem] = useState([]);
     const [code, setCode] = useState("");
     const [qnA, setQnA] = useState([]);
@@ -55,22 +56,22 @@ const QuestionPage = () => {
     // 댓글 중복으로 달 수 없음 처리
     // 2명까지만 달 수 있음 처리
 
-    // 문제 불러오기
-    const getProblem = useCallback(async () => {
-        try {
-            const {data: response} = await axios.get(
-                `/api2/problem/${problemId}`,
-                {withCredentials: true}
-            );
-            setProblem(response);
-        } catch (error) {
-            console.log(error);
-        }
+    // 문제 제목 불러오기 (get)
+    const getTitle = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problemtitle/${problemId}`,
+                    {withCredentials: true}
+                );
+                setTitle(response);
+            } catch (error) {
+                console.log(error);
+            }
     }, [problemId]);
 
     useEffect(() => {
-        getProblem();
-    }, [getProblem]);
+        getTitle();
+    }, [getTitle]);
 
     // pass, fail 선택
     const SelectBox = (props) => {
@@ -133,10 +134,10 @@ const QuestionPage = () => {
     const getCode = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
-                `/api2/question/${answerId}/${userName}`, // answerId로 사용자 코드 구분해야 할 듯?
+                `/api2/question/${answerId}`, 
                 {withCredentials: true}
             );
-            setCode(response.detail);
+            setCode(response.code);
         } catch (error) {
             console.log(error);
         }
@@ -214,7 +215,6 @@ const QuestionPage = () => {
             console.log(error);
         }
     }
-
     
     function renderAnswerUI() {
         return (
@@ -222,7 +222,8 @@ const QuestionPage = () => {
                 <StyledProblem>
                     <div className="problem_header">
                         <span className="problem_id">{problemId}</span>
-                        <span className="header_title">{problem.title}</span>
+                        <span className="header_title">{title.problemTitle}</span>
+                        <span>{title.problemScore}</span>
                         <div className="code_container">{code}</div>
                     </div>
                 </StyledProblem>
