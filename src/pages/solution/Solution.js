@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
 import serverConfig from '../../config';
@@ -48,7 +48,7 @@ function Solution() {
 
   const [solveData, setSolveData] = useState([]);
 
-  const sendGetSolve = () => {
+  const sendGetSolve = useCallback(async() => {
 
     const uri = '../api/answerlist/';
 
@@ -70,7 +70,7 @@ function Solution() {
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
       });
-  };
+  }, [problemId]);
 
   useEffect(() => {
     sendGetSolve();

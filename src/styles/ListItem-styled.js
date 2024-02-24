@@ -53,6 +53,7 @@ export const StyledListItem = styled.div`
         border: ${props => props.state === "locked" ? "2px solid #DEDEDE" : "none"};
         transition: background-color 0.3s;
         margin-right: 14px;
+        pointer-events: ${props => (props.state === "success" || props.state === "fail") ? "auto" : "none"};
     /* &:hover {
         background-color: ${props => props.color ? `${props.color}80` : "rgba(255, 255, 255, 0.8)"};
     } */
