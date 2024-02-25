@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
+
+
 function Header() {
 
   const status = sessionStorage.getItem('status');
@@ -90,7 +92,7 @@ function Header1(){
       sessionStorage.clear();
       localStorage.clear();
       alert('로그아웃되었습니다.');
-      window.location.href = 'signin';
+      window.location.href = 'main';
   }
 
  return(
@@ -109,7 +111,7 @@ function Header1(){
               <div>상태: {memberData.memberStatus}</div>
 
               <div>
-                <a href="/mypage">마이페이지</a>
+                <a className='btn_mypage' href="/mypage">마이페이지</a>
                 <a onClick={logout} className='btn_logout'>로그아웃</a>
               </div>
            </div>

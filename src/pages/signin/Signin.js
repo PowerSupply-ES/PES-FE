@@ -98,7 +98,7 @@ const Signin = () => {
               required
             />
           </div>
-          <button type="submit" className="btn_intro">
+          <button type="submit" className="btn_signin">
             로그인
           </button>
           <div className="move">

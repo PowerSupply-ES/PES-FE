@@ -152,7 +152,7 @@ const Signup = () => {
             />
           </div>
 
-          <button type="submit" className="btn_intro">
+          <button type="submit" className="btn_signup">
             회원가입
           </button>
         </form>

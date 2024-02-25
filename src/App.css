@@ -29,14 +29,14 @@ button:hover {
 .logout, .userId, .userLevel{
   height: fit-content;
   width: fit-content;
-  padding: 6px 30px;
+  padding: 5px 30px;
   color: white;
   border: solid white;
   border-radius: 10px;
 }
 .logout{
   width: fit-content;
-  background-color: #5a2cda;
+  background-color: #5a2cda; opacity: 70%;
   margin: 15px 50px 0px auto;
   border-color: #5a2cda;;
 }
@@ -46,10 +46,7 @@ button:hover {
   /* background-color: #5a2cda; */
 }
 .logout:hover{
-  background-color: #5a2cda92;
-  border-color
-  :#5a2cda92;
-
+  background-color: #5a2cda; opacity: 100%;
 }
 .userId:hover{
   background-color: rgb(216, 216, 216);
@@ -149,7 +146,7 @@ button:hover {
 }
 .main_btn > .btn1,
 .main_btn > .btn2{
-  border-radius: 20px;
+  border-radius: 18px;
   font-size: 22px;
   color: #ffffff;
   width: 132px;
@@ -255,7 +252,7 @@ button:hover {
   justify-content: center;
   font-size: 18px;
   border: solid #C3C2C2 2px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .memberInfo{
   height: 360px;
@@ -271,7 +268,22 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: start;
+  /* 내용 초과시 스크롤바 */
+  overflow-y: auto;
 }
+/* 스크롤바 */
+
+.myProblem::-webkit-scrollbar {
+  width: 10px;  
+}
+.myProblem::-webkit-scrollbar-thumb {
+  background: #c0c0c0; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.myProblem::-webkit-scrollbar-track {
+  background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+}
+
 .problems{
   width: 100%;
   display: flex;
@@ -385,7 +397,20 @@ button:hover {
 }
 
 .btn_logout{
-  margin-left: 20px;
+  margin-left: 12px;
+}
+.btn_mypage, .btn_logout{
+  background-color: #6D63E4; opacity: 60%;
+  width: fit-content;
+  height: fit-content;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+}
+.btn_mypage:hover,
+.btn_logout:hover{
+  background-color: #6D63E4; opacity: 90%;
 }
 
 

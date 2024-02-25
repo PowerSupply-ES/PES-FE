@@ -141,7 +141,7 @@ input[type="tel"] {
 }
 
 /* 로그인,회원가입 버튼 */
-.btn_intro {
+.btn_signin, .btn_signup {
   display: flex;
   justify-content: center;
   width: 75%;
@@ -151,12 +151,19 @@ input[type="tel"] {
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
-  margin: 30px auto 15px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-size: 14px
 }
-.btn_intro:hover{
+.btn_signin:hover,
+.btn_signup:hover{
   background-color: #5a2cdac6;
+}
+.btn_signup{
+  margin: 30px auto 20px;
+}
+.btn_signin{
+  margin: 30px auto 15px;
+
 }
 
 /* --------------로그인 페이지-------------- */
@@ -167,7 +174,7 @@ input[type="tel"] {
 }
 
 .move > a {
-  margin: 24px 30px 25px 0;
+  margin: 24px 30px 45px 0;
   font-size: 14px;
 }
 
