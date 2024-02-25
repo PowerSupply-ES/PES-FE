@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "components/main/Header";
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
+import { useNavigate } from "react-router-dom";
 
 const OPTIONS =    [
     { value: 0, name: "fail"},
@@ -16,7 +17,7 @@ const QuestionPage = () => {
         .split('/')[2];
     var passCount = 0;
     const problemId = sessionStorage.getItem('problemId');
-    const userName = sessionStorage.getItem('memberName');
+    const navigate = useNavigate();
 
     const [state, setState] = useState("");
     const [title, setTitle] = useState([]);
@@ -37,9 +38,12 @@ const QuestionPage = () => {
     // getCode와 getQuestions는 항상 call
     // getFeedback은 아래 상태일 때만 call
 
-    if (state === "comment" || "success" || "fail") {
-        getFeedback();
-    }
+    useEffect(() => {
+        if (state === "comment" || state === "success" || state === "fail") {
+            getFeedback();
+        }
+    }, [state]);
+    
 
     // answerState 구분
     // - 질문 상태(question): 코드가 정상적으로 실행되어 질문에 답해야하는 상태 → 질문 테스트로 이동
@@ -181,7 +185,7 @@ const QuestionPage = () => {
     }
 
     // 댓글 불러오기 (get)
-    async function getFeedback() {
+    const getFeedback = useCallback(async () => {
         try {
             const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
             // writerEmail
@@ -197,7 +201,7 @@ const QuestionPage = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
 
     // 댓글 달기 (post)
     async function postFeedback(comment, selected) {
@@ -293,7 +297,12 @@ const QuestionPage = () => {
                 </div>
             )}
 
-            {(passCount >= 2) ? <><div>pass</div></> : <><div>fail</div></>}
+            <div className={((passCount >= 2) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
+                onClick={() => navigate(`/main`)}>
+                {((passCount >= 2) && (feedbackArray.length > 1)) ? 
+                    '축하합니다! 성공적으로 통과했습니다! ( 2/2 )' : `잘문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+            </div>
+
             </StyledQuestion>
         );
     }

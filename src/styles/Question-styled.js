@@ -106,4 +106,25 @@ export const StyledQuestion = styled.div`
     white-space: pre-line; 
     margin-bottom: 10px;
     }
+    
+    .pass {
+        width: 1057px;
+        height: 60px;
+        background-color: #04ca00;
+        color: #ffffff;
+        border-radius: 15px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .fail {
+        width: 1057px;
+        height: 60px;
+        background-color: #EB3434;
+        color: #ffffff;
+        border-radius: 15px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
 `;
