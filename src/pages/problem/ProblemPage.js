@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 //import AceEditor from 'react-ace';
 //import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
 //import 'ace-builds/src-noconflict/theme-monokai';
-import Editor from '@monaco-editor/react';
+// import Editor  from '@monaco-editor/react';
 
 
 const ProblemPage = () => {
@@ -23,21 +23,18 @@ const ProblemPage = () => {
         .pathname
         .split('/')[2];
 
-    const [title, setTitle] = useState([]);
+    // const [answerId, setAnswerId] = useState();
     const [problem, setProblem] = useState([]);
-    const text = useRef("");
-    const [detail, setDetail] = useState("");
+    const [request, setRequest] = useState("");
 
-    function textHandler(e) {
-        text.current = e.target.value;
-    }
+    const memberName = localStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
 
     async function submitCode() {
-        if (!text.current) {
+        if (!request) {
             alert("코드를 입력해주세요!");
         }
         else {
-            const response = await postCode(text.current, problemId);
+            const response = await postCode(request, problemId, memberName);
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
@@ -45,31 +42,13 @@ const ProblemPage = () => {
                 navigate(`/question/${response.answerId}`);
             }
             else {
-                setDetail(response.detail);
                 alert("문제를 틀렸습니다! 다시 풀어보세요.");
                 console.log(response);
             }
         }
     }
 
-    // 문제 제목 불러오기 (get)
-    const getTitle = useCallback(async () => {
-            try {
-                const {data: response} = await axios.get(
-                    `/api2/problemtitle/${problemId}`,
-                    {withCredentials: true}
-                );
-                setTitle(response);
-            } catch (error) {
-                console.log(error);
-            }
-    }, [problemId]);
-
-    useEffect(() => {
-        getTitle();
-    }, [getTitle]);
-
-    // 문제 내용 불러오기 (get)
+    // 문제 불러오기 (get)
     const getProblem = useCallback(async () => {
             try {
                 const {data: response} = await axios.get(
@@ -87,13 +66,14 @@ const ProblemPage = () => {
     }, [getProblem]);
     
     // 코드 제출하기 (post)
-    async function postCode(request, problemId) {
+    async function postCode(request, problemId, memberName) {
         try {
             const {data: response} = await axios.post(
-                `/api2/submit/${problemId}`,
+                `/api2/submit/${problemId}/${memberName}`,
                 {
                     code: request,
                     problemId: problemId,
+                    userName: memberName
                 }
             )
             // console.log(response);
@@ -118,20 +98,17 @@ const ProblemPage = () => {
             <StyledProblem>
                 <div className="problem_header">
                     <div className="problem_id">문제{problemId}</div>
-                    <div className="header_title">제목{title.problemTitle}</div>
-                    <div>점수{title.problemScore}</div>
+                    <div className="header_title">제목{problem.title}</div>
                 </div>
+                <div className="description">{problem.context}</div>
+
 
                 <div className="promblem_section">
 
                     <div className="content_container">
-                        <div className="title">{problem.problemContent}</div>
-                        {/* 변경 코드 */}
-                        <div>{problem.sampleInputs}</div>
-                        <div>{problem.sampleOutputs}</div>
+                        <div className="title">문제 설명</div>
 
-                        {/* 원래 코드 */}
-                        {/* <div className="top">
+                        <div className="top">
                             <h2>Sample Inputs:</h2>
                             <div className="input_data">
                                 {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
@@ -142,14 +119,14 @@ const ProblemPage = () => {
                             <div className="output_data">
                                 {outputArray.map((i) => (<p>{i}</p>))}
                             </div>
-                        </div> */}
+                        </div>
                     </div>
 
                     <div className="code_section">
                         <div className="title">코드 입력</div>
                         {/* 원래코드 */}
-                        {/* <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                            onChange = {(e) => setRequest(e.target.value)}/>  */}
+                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                            onChange = {(e) => setRequest(e.target.value)}/> 
                             
 
                         {/* 변경코드 */}
@@ -158,8 +135,8 @@ const ProblemPage = () => {
                             mode="c_cpp"
                             theme="monokai"
                             placeholder = "코드를 입력해주세요." 
-                            onChange={textHandler}
-                            value={text.current}
+                            onChange={(newCode) => setRequest(newCode)}
+                            value={request}
                             name="code-editor"
                             editorProps={{ 
                                 $blockScrolling: Infinity, // 스크롤 이동 허용
@@ -179,7 +156,7 @@ const ProblemPage = () => {
                             
                             />  */}
 
-                        <Editor
+                        {/* <Editor
                             height='100%'
                             width= '100%'
                             theme="vs-dark"
@@ -195,16 +172,11 @@ const ProblemPage = () => {
                                 }
                             }}
                             onChange={(newCode) => setRequest(newCode)}
-                        /> 
+                        />  */}
                        
-                    
-
                     </div>
-
-                    { (detail) &&
-                        <div>{detail}
-                        </div>
-                    }
+                    
+                    
                 </div>
                 
                 <button className="submit_button" onClick={() => submitCode()}>제출</button>
