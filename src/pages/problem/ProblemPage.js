@@ -6,12 +6,12 @@ import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 // 에디터에 사용할 언어 및 테마를 불러옴.
-import "ace-builds";
-import "ace-builds/webpack-resolver";
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
-import 'ace-builds/src-noconflict/theme-monokai';
-
+// import "ace-builds";
+// import "ace-builds/webpack-resolver";
+//import AceEditor from 'react-ace';
+//import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
+//import 'ace-builds/src-noconflict/theme-monokai';
+// import Editor  from '@monaco-editor/react';
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -145,11 +145,11 @@ const ProblemPage = () => {
                     <div className="code_section">
                         <div className="title">코드 입력</div>
                         {/* 원래코드 */}
-                        {/* <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                            onChange = {(e) => setRequest(e.target.value)}/>  */}
+                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                            onChange = {textHandler}/>
                             
-
-                        {/* 변경코드 */}
+                        {/* AceEditor 주석 */}
+                        {/*
                         <AceEditor 
                             className="code_input" 
                             mode="c_cpp"
@@ -175,8 +175,17 @@ const ProblemPage = () => {
                             }}
                             
                             /> 
-                       
-                    
+                        */}
+
+                        {/* <Editor
+                            height='100%'
+                            width= '100%'
+                            theme="vs-dark"
+	@@ -195,16 +172,11 @@ const ProblemPage = () => {
+                                }
+                            }}
+                            onChange={(newCode) => setRequest(newCode)}
+                        />  */}
 
                     </div>
 
