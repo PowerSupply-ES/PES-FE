@@ -31,6 +31,12 @@ export const StyledProblem = styled.div`
         flex: 1;
         text-align: left;
     }
+    .header_score {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 20px;
+    }
     .description {
         width: 1376px;
         font-size: 20px;
@@ -55,6 +61,8 @@ export const StyledProblem = styled.div`
         // margin: auto;
         // padding: 20px;
 
+        width: 606px;
+        height: 564px;
 
         flex: 3;
 
@@ -68,11 +76,8 @@ export const StyledProblem = styled.div`
 
     }
 
-    }
     .code_section{
         flex: 5;
-
-        
         display: flex;
         flex-direction: column;
     }
@@ -115,16 +120,16 @@ export const StyledProblem = styled.div`
     }
 
     
-    .code_input {
-        width: 80%;
-        height: 500px;
+    .code_input textarea {
+        width: 817px;
+        height: 564px;
         font-size: 20px;
         color: #ffffff;
 
         display: flex;
         justify-content: center;
         margin: 10px auto;
-        background-color: #3E3E3E;
+        background-color: #3e3e3e;
         overflow-wrap: break-word;
         border-radius : 20px;
         padding: 16px 8px 0 12px;
