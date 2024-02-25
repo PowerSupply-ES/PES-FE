@@ -3,7 +3,7 @@
   font-family: 'Pretendard-Regular';
   /* background-color: #f9fafb; */
   /* background-color: #1c1c1c; */
-  background-color: #f2f7ff;
+  background-color: #E9E9EB;
 }
 @font-face {
   font-family: 'Pretendard-Regular';
@@ -272,7 +272,6 @@ button:hover {
   overflow-y: auto;
 }
 /* 스크롤바 */
-
 .myProblem::-webkit-scrollbar {
   width: 10px;  
 }

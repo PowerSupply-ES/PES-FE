@@ -221,38 +221,42 @@ const QuestionPage = () => {
             <StyledQuestion>
                 <StyledProblem>
                     <div className="problem_header">
-                        <span className="problem_id">{problemId}</span>
-                        <span className="header_title">{title.problemTitle}</span>
-                        <span>{title.problemScore}</span>
+                        <div className="problem_id">{problemId}</div>
+                        <div className="header_title">{title.problemTitle}</div>
+                        <div>{title.problemScore}</div>
                         <div className="code_container">{code}</div>
                     </div>
                 </StyledProblem>
                 {
                     (!qnA.answerFst || !qnA.answerSec) 
                     // answerState: question (qnA만 있음, 답변해야 하는 상태)
-                        ? <> <div className="question_header"> <div className="question_id">질문 1</div>
-                        <span className="header_title">{qnA.questionContentFst}</span>
-                    </div>
-                    <textarea className="answer_input" onChange={FstHandler}/>
-                    <div className="question_header">
-                        <div className="question_id">질문 2</div>
-                        <span className="header_title">{qnA.questionContentSec}</span>
-                    </div>
-                    <textarea className="answer_input" onChange={SecHandler}/>
-                    <button className="answer_button" onClick={submitAnswer}>답변하기</button> </>
-                    // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
+                        ? <> 
+                        <div className="question_header"> 
+                            <div className="question_id">질문 1</div>
+                            <div className="header_title">{qnA.questionContentFst}</div>
+                        </div>
+                        <textarea className="answer_input" onChange={FstHandler}/>
+                        <div className="question_header">
+                            <div className="question_id">질문 2</div>
+                            <div className="header_title">{qnA.questionContentSec}</div>
+                        </div>
+                        <textarea className="answer_input" onChange={SecHandler}/>
+                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> </>
+                        // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
                     // answerState: success
                     // answerState: fail
                     : <> 
-                    <div className="question_header"> <div className="question_id">질문 1</div>
-                        <span className="header_title">{qnA.questionContentFst}</span>
+                    <div className="question_header"> 
+                        <div className="question_id">질문 1</div>
+                        <div className="header_title">{qnA.questionContentFst}</div>
                     </div>
-                        <div className="code_container">{qnA.answerFst}</div>
-                        <div className="question_header"> <div className="question_id">질문 2</div>
-                        <span className="header_title">{qnA.questionContentSec}</span>
+                    <div className="code_container">{qnA.answerFst}</div>
+                    <div className="question_header"> 
+                        <div className="question_id">질문 2</div>
+                        <div className="header_title">{qnA.questionContentSec}</div>
                     </div>
-                            <div className="code_container">{qnA.answerSec}</div>
-                        </>
+                    <div className="code_container">{qnA.answerSec}</div>
+                    </>
                 }
             </StyledQuestion>
         );
@@ -270,8 +274,8 @@ const QuestionPage = () => {
                 feedbackArray.map((feedback, index) => (
                     <div key={index}>
                         <div className="question_header">
-                        <span className="title">{`이메일: ${feedback.writerEmail}`}</span>
-                        <span className="title">{`Writer Name: ${feedback.writerName}`}</span>
+                        <div className="title">{`이메일: ${feedback.writerEmail}`}</div>
+                        <div className="title">{`Writer Name: ${feedback.writerName}`}</div>
                         </div>
                         <div className="feedback_container">{feedback.commentContent}</div>
                         {(feedback.commentPassFail === 1) ? <><div>pass</div></> : <><div>fail</div></>}

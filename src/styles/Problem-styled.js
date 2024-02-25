@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledProblem = styled.div`
     
+    
     .problem_header {
         width: 100%;
         height: 78px;
@@ -10,14 +11,14 @@ export const StyledProblem = styled.div`
         margin: 40px;
     }
     .problem_id {
-        width: fit-content;
+        width: 80px;
         height: fit-content;
-        padding: 8px 12px;
+        padding: 8px 0;
         font-size: 20px;
         font-weight: bold;
         background-color: #ffffff;
         color : #325CC7;
-        border : solid #325CC7;
+        // border : solid #325CC7;
         border-radius : 5px;
         text-align: center;
         // line-height: 60px;
@@ -25,7 +26,7 @@ export const StyledProblem = styled.div`
         box-shadow: 1px 3px #CCC9C9;
     }
     .header_title {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         flex: 1;
         text-align: left;
