@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Header() {
 
-  const status = localStorage.getItem('status');
+  const status = sessionStorage.getItem('status');
   // const memberEmail = localStorage.getItem('memberEmail');
 
   return (
@@ -46,7 +46,7 @@ function Header1(){
  }
 
   const uri = '../api/exp';
-  const memberEmail = localStorage.getItem('memberEmail');
+  const memberEmail = sessionStorage.getItem('memberEmail');
  
   const [memberData, setMemberData] = useState({
     memberName: '',
@@ -69,7 +69,7 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        localStorage.setItem('memberName', data.memberName);
+        sessionStorage.setItem('memberName', data.memberName);
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
@@ -87,6 +87,7 @@ function Header1(){
       // 과거의 날짜로 설정하여 쿠키를 즉시 만료
       document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       // 로컬 스토리지 클리어
+      sessionStorage.clear();
       localStorage.clear();
       alert('로그아웃되었습니다.');
       window.location.href = 'signin';

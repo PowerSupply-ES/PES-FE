@@ -27,7 +27,7 @@ const ProblemPage = () => {
     const [problem, setProblem] = useState([]);
     const [request, setRequest] = useState("");
 
-    const memberName = localStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
+    const memberName = sessionStorage.getItem('memberEmail'); // name 받을 곳이 없어서 일단 email로 씀
 
     async function submitCode() {
         if (!request) {
@@ -38,7 +38,7 @@ const ProblemPage = () => {
             if (response.answerId) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
-                localStorage.setItem('problemId', problemId);
+                sessionStorage.setItem('problemId', problemId);
                 navigate(`/question/${response.answerId}`);
             }
             else {

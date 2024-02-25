@@ -112,10 +112,18 @@ const MyPage = () => {
       sendGetFeedback();
     }, []);
   
+    useEffect(() => {
+      // 로그인 상태를 체크하여 로그인되어 있지 않다면 리스트 페이지로 이동하고 알림창 띄우기
+      if (!sessionStorage.getItem('status')) {
+        console.log("렌더링!");
+        alert("로그인 하셈~.");
+        window.location.href = 'main';
+        return; // 함수를 여기서 종료시킴
+      }
+    }, []);
 
   
     return (
-
       <div>
         <Header></Header>
 
@@ -162,7 +170,7 @@ const MyPage = () => {
                   <div><p>{myFeedback.mameberName}</p></div>
                   <div><p>{myFeedback.commentPassFail}</p></div>
                   <div><p>{myFeedback.commentContent}</p></div>
-                  
+
                 </div>
               </div>
 

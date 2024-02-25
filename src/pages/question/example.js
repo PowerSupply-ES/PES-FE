@@ -2,8 +2,8 @@ import serverConfig from './config.js';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    const storageToken = localStorage.getItem('storageToken');
-    const seniorNum = localStorage.getItem('stuNum');
+    const storageToken = sessionStorage.getItem('storageToken');
+    const seniorNum = sessionStorage.getItem('stuNum');
     console.log(`학번: ${seniorNum}`);
     
     const serverUrl = serverConfig.serverUrl; // serverUrl을 정의

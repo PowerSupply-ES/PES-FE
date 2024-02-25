@@ -15,8 +15,8 @@ const QuestionPage = () => {
         .pathname
         .split('/')[2];
     var passCount = 0;
-    const problemId = localStorage.getItem('problemId');
-    const userName = localStorage.getItem('memberName');
+    const problemId = sessionStorage.getItem('problemId');
+    const userName = sessionStorage.getItem('memberName');
 
     const [state, setState] = useState("");
     const [title, setTitle] = useState([]);

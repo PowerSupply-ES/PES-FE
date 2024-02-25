@@ -6,7 +6,7 @@ const ProblemItem = (props) => {
 
     function goTo(answerId) {
         if (answerId) {
-            localStorage.setItem('problemId', props.pid);
+            sessionStorage.setItem('problemId', props.pid);
             navigate(`/question/${props.answerId}`);
         }
         else {

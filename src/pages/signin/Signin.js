@@ -30,8 +30,8 @@ const Signin = () => {
       alert(resultMessage);
       window.location.href = '/list';
 
-      localStorage.setItem('status', true);
-      localStorage.setItem('memberEmail', formData.memberEmail);
+      sessionStorage.setItem('status', true);
+      sessionStorage.setItem('memberEmail', formData.memberEmail);
     })
     .catch((error) => {
       const errorMessage = '오류 발생: ' + error.message;
