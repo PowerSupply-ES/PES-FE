@@ -151,8 +151,6 @@ const MyPage = () => {
                 
                 <div className='myProblem'>
                   <MyProblem myProb={myProb}></MyProblem>
-                  
-                  
                 </div>
               </div>
               
@@ -202,7 +200,6 @@ const MyPage = () => {
 
       ))}
     </div>
-
   );
 }
 

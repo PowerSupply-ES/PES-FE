@@ -115,17 +115,18 @@ export const StyledProblem = styled.div`
 
     
     .code_input {
-        // width: 80%;
-        // height: 500px;
-        // font-size: 20px;
+        width: 80%;
+        height: 500px;
+        font-size: 20px;
+        color: #ffffff;
+
         display: flex;
         justify-content: center;
         margin: 10px auto;
         background-color: #3E3E3E;
         overflow-wrap: break-word;
         border-radius : 20px;
-        padding: 16px 8px 0 8px;
-        // color: #ffffff;
+        padding: 16px 8px 0 12px;
         box-shadow: 1px 3px #CCC9C9;
     }
 

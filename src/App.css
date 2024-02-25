@@ -270,6 +270,7 @@ button:hover {
   margin-bottom:16px;
   display: flex;
   flex-direction: column;
+  align-items: start;
 }
 .problems{
   width: 100%;
