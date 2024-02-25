@@ -85,7 +85,7 @@ function Header1(){
  const logout = () =>{
   // 쿠키 제거
       // 과거의 날짜로 설정하여 쿠키를 즉시 만료
-      document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=pes23.com";  
       // 로컬 스토리지 클리어
       sessionStorage.clear();
       localStorage.clear();

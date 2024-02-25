@@ -17,23 +17,24 @@ const MyPage = () => {
     });
 
     //내문제리스트
-    const [myProb, setMyProb] = useState({
-      problemId: '',
-      problemTitle: '',
-      problemScore: '',
-      answerId: '',
-      answerState: '',
-      finalScore: ''
-    });
+    // const [myProb, setMyProb] = useState({
+    //   problemId: '',
+    //   problemTitle: '',
+    //   problemScore: '',
+    //   answerId: '',
+    //   answerState: '',
+    //   finalScore: ''
+    // });
+    const [myProb, setMyProb] = useState([]);
   
     //내피드백리스트
-    const [myFeedback, setMyFeedback] = useState({
-      answerId: '',
-      memberGen: '',
-      mameberName: '',
-      commentPassFail: '',
-      commentContent: ''
-    });
+    // const [myFeedback, setMyFeedback] = useState({
+    //   answerId: '',
+    //   memberGen: '',
+    //   mameberName: '',
+    //   commentPassFail: '',
+    //   commentContent: ''
+    // });
 
 
     // const serverUrl = serverConfig.serverUrl;
@@ -84,39 +85,39 @@ const MyPage = () => {
 
 
     // 내 feedback
-    const sendGetFeedback = () => {
-      const uri = 'api/mypage/myfeedback';
+    // const sendGetFeedback = () => {
+    //   const uri = 'api/mypage/myfeedback';
   
-      fetch(`${uri}`, {
-        method: 'GET',
-      })
-        .then(response => {
-          if (!response.ok) {
-            console.log('서버응답:', response);
-            throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          setMyFeedback(data);
-        })
-        .catch(error => {
-          console.error('데이터 가져오기 실패:', error);
-        });
-    };
+    //   fetch(`${uri}`, {
+    //     method: 'GET',
+    //   })
+    //     .then(response => {
+    //       if (!response.ok) {
+    //         console.log('서버응답:', response);
+    //         throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
+    //       }
+    //       return response.json();
+    //     })
+    //     .then(data => {
+    //       setMyFeedback(data);
+    //     })
+    //     .catch(error => {
+    //       console.error('데이터 가져오기 실패:', error);
+    //     });
+    // };
 
 
     useEffect(() => {
       sendGetInfo();
       sendGetProb();
-      sendGetFeedback();
+      // sendGetFeedback();
     }, []);
+    
   
     useEffect(() => {
       // 로그인 상태를 체크하여 로그인되어 있지 않다면 리스트 페이지로 이동하고 알림창 띄우기
       if (!sessionStorage.getItem('status')) {
-        console.log("렌더링!");
-        alert("로그인 하셈~.");
+        alert("로그인 해주세요.");
         window.location.href = 'main';
         return; // 함수를 여기서 종료시킴
       }
@@ -135,7 +136,6 @@ const MyPage = () => {
               {/* 사용자 정보 */}
               <div className="memberInfo">
                 <div className='info_name'><p>{memberData.memberName}</p><p>님</p></div>
-
                 <div><p>{memberData.memberEmail}</p></div>
                 <div><p>{memberData.memberGen}</p><p>기</p></div>
                 <div><p>{memberData.memberStatus}</p><p>중</p></div>
@@ -150,12 +150,9 @@ const MyPage = () => {
                 <div className='mypage_btn'>내가 푼 문제</div>
                 
                 <div className='myProblem'>
-                  <div><p>{myProb.problemId}</p></div>
-                  <div><p>{myProb.problemTitle}</p></div>
-                  <div><p>{myProb.problemScore}</p></div>
-                  <div><p>{myProb.answerId}</p></div>
-                  <div><p>{myProb.answerState}</p></div>
-                  <div><p>{myProb.finalScore}</p></div>
+                  <MyProblem myProb={myProb}></MyProblem>
+                  
+                  
                 </div>
               </div>
               
@@ -165,11 +162,12 @@ const MyPage = () => {
               <div className='bottom'>
                 <div className='mypage_btn'>my feedback</div>
                 <div className='myFeedback'>
-                  <div><p>{myFeedback.answerId}</p></div>
+                  {/* <div><p>{myFeedback.answerId}</p></div>
                   <div><p>{myFeedback.memberGen}</p></div>
                   <div><p>{myFeedback.mameberName}</p></div>
                   <div><p>{myFeedback.commentPassFail}</p></div>
-                  <div><p>{myFeedback.commentContent}</p></div>
+                  <div><p>{myFeedback.commentContent}</p></div> */}
+                  <div>준비중이에요!</div>
 
                 </div>
               </div>
@@ -182,5 +180,31 @@ const MyPage = () => {
       </div>
     );
   };
+
+
+
+  // 내가 푼 문제 컴포넌트
+  function MyProblem({myProb}){
+
+    const gotoProb = ( problemId ) =>{
+      console.log('problemId: ',problemId);
+      window.location=`problem/${problemId}`;
+    }
+    return (
+    <div className ='problemList' >
+      {myProb.map((it) => (
+
+        <div className='problems' key={it.answerId}>
+          <p className='problemId'>{it.problemId}</p>
+          <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
+          <div className='answerState'>{it.answerState}</div>
+        </div>
+
+      ))}
+    </div>
+
+  );
+}
+
   
-  export default MyPage;
+export default MyPage;
