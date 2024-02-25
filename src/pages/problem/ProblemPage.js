@@ -36,7 +36,7 @@ const ProblemPage = () => {
         }
         else {
             const response = await postCode(text.current, problemId);
-            if (response.answerId) {
+            if (response.hasOwnProperty('answerId')) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
                 sessionStorage.setItem('problemId', problemId);
@@ -115,17 +115,31 @@ const ProblemPage = () => {
             <StyledProblem>
                 <div className="problem_header">
                     <div className="problem_id">문제{problemId}</div>
-                    <div className="header_title">제목{title.problemTitle}</div>
-                    <div>점수{title.problemScore}</div>
+                    <div className="header_title">{title.problemTitle}</div>
+                    <div className="header_score">점수 {title.problemScore}</div>
                 </div>
 
                 <div className="promblem_section">
 
                     <div className="content_container">
-                        <div className="title">{problem.problemContent}</div>
+                        {
+                            problem.problemContent.split('\n').map((data) => {
+                                <div className="title">{data}<br/></div>
+                            })
+                        }
                         {/* 변경 코드 */}
-                        <div>{problem.sampleInputs}</div>
-                        <div>{problem.sampleOutputs}</div>
+                        <div>Sample Inputs: </div>
+                        {
+                            problem.sampleInputs.split('\n').map((data) => {
+                                <div>{data}<br/></div>
+                            })
+                        }
+                        <div>Sample Outputs: </div>
+                        {
+                            problem.sampleOutputs.split('\n').map((data) => {
+                                <div>{data}<br/></div>
+                            })
+                        }
 
                         {/* 원래 코드 */}
                         {/* <div className="top">
@@ -143,7 +157,6 @@ const ProblemPage = () => {
                     </div>
 
                     <div className="code_section">
-                        <div className="title">코드 입력</div>
                         {/* 원래코드 */}
                         <textarea className="code_input" placeholder = "코드를 입력해주세요." 
                             onChange = {textHandler}/>
