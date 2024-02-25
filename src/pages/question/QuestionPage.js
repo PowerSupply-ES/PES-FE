@@ -228,10 +228,13 @@ const QuestionPage = () => {
                         <div className="problem_id">{problemId}</div>
                         <div className="header_title">{title.problemTitle}</div>
                         <div>{title.problemScore}</div>
-                        <div className="code_container">{code}</div>
                     </div>
                 </StyledProblem>
-                {
+
+                <div className="code_question_container">
+                    <div className="code_container">{code}</div>
+                    <div className="question_container">
+                    {
                     (!qnA.answerFst || !qnA.answerSec) 
                     // answerState: question (qnA만 있음, 답변해야 하는 상태)
                         ? <> 
@@ -245,23 +248,30 @@ const QuestionPage = () => {
                             <div className="header_title">{qnA.questionContentSec}</div>
                         </div>
                         <textarea className="answer_input" onChange={SecHandler}/>
-                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> </>
+                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
+                        </>
                         // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
-                    // answerState: success
-                    // answerState: fail
+                        // answerState: success
+                        // answerState: fail
                     : <> 
-                    <div className="question_header"> 
-                        <div className="question_id">질문 1</div>
-                        <div className="header_title">{qnA.questionContentFst}</div>
-                    </div>
-                    <div className="code_container">{qnA.answerFst}</div>
-                    <div className="question_header"> 
-                        <div className="question_id">질문 2</div>
-                        <div className="header_title">{qnA.questionContentSec}</div>
-                    </div>
-                    <div className="code_container">{qnA.answerSec}</div>
+                        <div className="question_header"> 
+                            <div className="question_id">질문 1</div>
+                            <div className="header_title">{qnA.questionContentFst}</div>
+                        </div>
+                        <div className="answer_input">{qnA.answerFst}</div>
+                        <div className="question_header"> 
+                            <div className="question_id">질문 2</div>
+                            <div className="header_title">{qnA.questionContentSec}</div>
+                        </div>
+                        <div className="answer_input">{qnA.answerSec}</div>
                     </>
-                }
+                    }
+                    </div>
+                </div>
+
+                
+
+                
             </StyledQuestion>
         );
     }

@@ -8,23 +8,28 @@ export const StyledQuestion = styled.div`
     flex: 1;
     text-align: left;
     }
+    .code_question_container {
+        display: flex; 
+        justify-content: space-between; 
+    }
     .code_container {
-        width: 1376px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    border-radius: 5px;
-    background-color: beige;
-    font-size: 20px;
-    white-space: pre-line; 
+        width: 657px;
+        height: 564px;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        border-radius: 20px;
+        background-color: #3E3E3E;
+        font-size: 20px;
+        white-space: pre-line; 
+        color: white;
     }
     .question_header {
-        width: 1376px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    margin: auto;
+        width: 822px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        margin: auto;
     }
     .question_id {
         width: 80px;
@@ -43,15 +48,15 @@ export const StyledQuestion = styled.div`
         box-shadow: 1px 3px #CCC9C9;
     }
     .answer_input {
-        width: 90%;
-        height: 250px;
+        width: 822;
+        height: 181px;
         font-size: 20px;
         display: flex;
         justify-content: center;
         margin: auto;
         background-color: #ffffff;
         border: solid #ffffff;
-        border-radius : 5px;
+        border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
         overflow-wrap: break-word;
     }
