@@ -291,12 +291,10 @@ button:hover {
 }
 .problemList{
   width: 100%;
-
 }
-.problems > *:not(:first-child){
+.problems > *{
   display: flex;
   align-items: center;
-  justify-content: left;
 }
 .problems > *:not(:first-child){
   margin-right: 40px;
@@ -310,6 +308,7 @@ button:hover {
   font-weight: bold;
 }
 .problems > .problemTitle{
+  justify-content: left;
   width: 70%;
   font-weight: bold;
   cursor: pointer;
@@ -318,23 +317,24 @@ button:hover {
   background-color: rgba(243, 242, 242, 0.737);
 }
 
-.problems > .answerState{
-  border: solid 2px rgb(173, 173, 173);
-  color: rgb(78, 78, 78);
+/* 성공여부에 따라 버튼색 변화 */
+
+.btn_fail, .btn_success, .btn_state{
+  display: flex;
+  justify-content: center;
   border-radius: 5px;
   width: 80px;
   height: 28px;
-  display: flex;
-  justify-content: center;
+  font-weight: bold;
 }
-/* 성공여부에 따라 버튼색 변화 */
 .btn_success{
-
+  border: solid 3px #5094F9;
+  color: #5094F9; 
 }
 .btn_fail{
-
+  border: solid 3px #EB3434; opacity: 80%;
+  color: #EB3434; opacity: 80%;
 }
-
 .memberInfo > .info_name{
   margin-bottom: 40px;
   display: flex;

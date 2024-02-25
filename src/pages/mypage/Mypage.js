@@ -195,7 +195,8 @@ const MyPage = () => {
         <div className='problems' key={it.answerId}>
           <p className='problemId'>{it.problemId}</p>
           <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
-          <div className='answerState'>{it.answerState}</div>
+          <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
+            {it.answerState}</div>
         </div>
 
       ))}
