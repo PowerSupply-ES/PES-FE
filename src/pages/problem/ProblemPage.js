@@ -36,7 +36,7 @@ const ProblemPage = () => {
         }
         else {
             const response = await postCode(text.current, problemId);
-            if (response.answerId) {
+            if (response.hasOwnProperty('answerId')) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
                 sessionStorage.setItem('problemId', problemId);
