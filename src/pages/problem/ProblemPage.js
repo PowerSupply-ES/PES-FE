@@ -43,7 +43,7 @@ const ProblemPage = () => {
             }
             else if (response === 403) {
                 alert("인증된 사용자가 아닙니다. 메인 페이지로 돌아갑니다.");
-                navigate("/main");
+                navigate("/signin");
             }
             else if (response.hasOwnProperty('answerId')) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
