@@ -103,6 +103,12 @@ const ProblemPage = () => {
     }
 
     function renderProbUI() {
+
+        console.log(`problem type :` + typeof(problem));
+        console.log(`problemContent type :` + typeof(problem.problemContent));
+        console.log(`sampleInputs type :` + typeof(problem.sampleInputs));
+        console.log(`sampleOutputs type :` + typeof(problem.sampleOutputs));
+
         const inputArray = problem.sample_inputs
             ? Object.values(problem.sample_inputs)
             : [];
@@ -123,22 +129,16 @@ const ProblemPage = () => {
 
                     <div className="content_container">
                         {
-                            problem.problemContent.split('\n').map((data) => {
-                                <div className="title">{data}<br/></div>
-                            })
+                            problem.problemContent
                         }
                         {/* 변경 코드 */}
                         <div>Sample Inputs: </div>
                         {
-                            problem.sampleInputs.split('\n').map((data) => {
-                                <div>{data}<br/></div>
-                            })
+                            problem.sampleInputs
                         }
                         <div>Sample Outputs: </div>
                         {
-                            problem.sampleOutputs.split('\n').map((data) => {
-                                <div>{data}<br/></div>
-                            })
+                            problem.sampleOutputs
                         }
 
                         {/* 원래 코드 */}
