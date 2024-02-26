@@ -104,10 +104,10 @@ const ProblemPage = () => {
 
     function renderProbUI() {
 
-        console.log(`problem type :` + typeof(problem));
-        console.log(`problemContent type :` + typeof(problem.problemContent));
-        console.log(`sampleInputs type :` + typeof(problem.sampleInputs));
-        console.log(`sampleOutputs type :` + typeof(problem.sampleOutputs));
+        console.log(`problem :` + problem);
+        console.log(`problemContent :` + problem.problemContent);
+        console.log(`sampleInputs :` + problem.sampleInputs);
+        console.log(`sampleOutputs :` + problem.sampleOutputs);
 
         const inputArray = problem.sample_inputs
             ? Object.values(problem.sample_inputs)
@@ -216,7 +216,7 @@ const ProblemPage = () => {
     return (
         <div>
             <Header/>
-            {renderProbUI()}
+            {problem ? renderProbUI() : <p>Loading...</p>}
             <Footer></Footer>
 
         </div>

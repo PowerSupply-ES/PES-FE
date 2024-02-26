@@ -4,7 +4,7 @@ export const StyledProblem = styled.div`
     
     
     .problem_header {
-        width: 100%;
+        width: 80%;
         height: 78px;
         display: flex;
         align-items: center;
@@ -46,13 +46,12 @@ export const StyledProblem = styled.div`
         text-align: left;
     }
 
-
     .promblem_section{
         width:80%;
-        height:100vh;
+        height:auto;
         margin: 0 auto;
         display: flex;
-        justify-content: space-between; ;
+        justify-content: space-between;
     }
     .content_container {
         // display: flex;
@@ -71,6 +70,7 @@ export const StyledProblem = styled.div`
         background-color: #ffffff;
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
+        margin-right: 20px;
     }
 
     .code_section{
@@ -124,7 +124,6 @@ export const StyledProblem = styled.div`
         color: #ffffff;
         display: flex;
         justify-content: center;
-        margin: 10px auto;
         background-color: #3e3e3e;
         overflow-wrap: break-word;
         border-radius : 20px;
