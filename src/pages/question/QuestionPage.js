@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
+import Footer from "components/footer/Footer";
+
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
 import { useNavigate } from "react-router-dom";
@@ -238,16 +240,21 @@ const QuestionPage = () => {
                     (!qnA.answerFst || !qnA.answerSec) 
                     // answerState: question (qnA만 있음, 답변해야 하는 상태)
                         ? <> 
-                        <div className="question_header"> 
-                            <div className="question_id">질문 1</div>
-                            <div className="header_title">{qnA.questionContentFst}</div>
+                        <div className="question_layout">
+                            <div className="question_header"> 
+                                <div className="question_id">질문 1</div>
+                                <div className="header_title">{qnA.questionContentFst}</div>
+                            </div>
+                            <textarea className="answer_input" onChange={FstHandler}/>
                         </div>
-                        <textarea className="answer_input" onChange={FstHandler}/>
-                        <div className="question_header">
-                            <div className="question_id">질문 2</div>
-                            <div className="header_title">{qnA.questionContentSec}</div>
+
+                        <div className="question_layout">
+                            <div className="question_header">
+                                <div className="question_id">질문 2</div>
+                                <div className="header_title">{qnA.questionContentSec}</div>
+                            </div>
+                            <textarea className="answer_input" onChange={SecHandler}/>
                         </div>
-                        <textarea className="answer_input" onChange={SecHandler}/>
                         <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
                         </>
                         // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
@@ -259,6 +266,7 @@ const QuestionPage = () => {
                             <div className="header_title">{qnA.questionContentFst}</div>
                         </div>
                         <div className="answer_input">{qnA.answerFst}</div>
+                        
                         <div className="question_header"> 
                             <div className="question_id">질문 2</div>
                             <div className="header_title">{qnA.questionContentSec}</div>
@@ -314,6 +322,7 @@ const QuestionPage = () => {
             </div>
 
             </StyledQuestion>
+            
         );
     }
 
@@ -322,6 +331,7 @@ const QuestionPage = () => {
             <Header/>
             {renderAnswerUI()}
             {renderFeedbackUI()}
+            <Footer></Footer>
         </div>
     );
 }
