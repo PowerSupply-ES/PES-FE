@@ -36,7 +36,16 @@ const ProblemPage = () => {
         }
         else {
             const response = await postCode(text.current, problemId);
-            if (response.hasOwnProperty('answerId')) {
+
+            if (response === undefined) {
+                alert("알 수 없는 오류가 발생했습니다. 메인 페이지로 이동합니다.");
+                navigate("/main");
+            }
+            else if (response === 403) {
+                alert("인증된 사용자가 아닙니다. 메인 페이지로 돌아갑니다.");
+                navigate("/main");
+            }
+            else if (response.hasOwnProperty('answerId')) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 console.log(response);
                 sessionStorage.setItem('problemId', problemId);
@@ -97,8 +106,13 @@ const ProblemPage = () => {
             // console.log(response);
             
             return response;
+
         } catch (error) {
-            console.log(error);
+            if (error.response && error.response.status === 403) {
+                return error.response.status;
+            } else {
+                console.log(error);
+            }
         }
     }
 
