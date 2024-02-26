@@ -52,7 +52,7 @@ export const StyledProblem = styled.div`
         height:100vh;
         margin: 0 auto;
         display: flex;
-        justify-content: center;
+        justify-content: space-between; ;
     }
     .content_container {
         // display: flex;
@@ -71,9 +71,6 @@ export const StyledProblem = styled.div`
         background-color: #ffffff;
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
-        margin : 64px 40px 0 0;
-
-
     }
 
     .code_section{
@@ -120,12 +117,11 @@ export const StyledProblem = styled.div`
     }
 
     
-    .code_input textarea {
+    .code_input {
         width: 817px;
         height: 564px;
         font-size: 20px;
         color: #ffffff;
-
         display: flex;
         justify-content: center;
         margin: 10px auto;
