@@ -8,7 +8,11 @@ export const StyledProblem = styled.div`
         height: 78px;
         display: flex;
         align-items: center;
-        margin: 40px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .problem_id {
         width: 80px;
