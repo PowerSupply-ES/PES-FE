@@ -123,13 +123,15 @@ const ProblemPage = () => {
         console.log(`sampleInputs :` + problem.sampleInputs);
         console.log(`sampleOutputs :` + problem.sampleOutputs);
 
-        const inputArray = problem.sample_inputs
-            ? Object.values(problem.sample_inputs)
+        const inputArray = problem.sampleInputs
+            ? Object.values(problem.sampleInputs)
             : [];
+        console.log(`inputArray :` + inputArray);
 
-        const outputArray = problem.sample_outputs
-            ? Object.values(problem.sample_outputs)
+        const outputArray = problem.sampleOutputs
+            ? Object.values(problem.sampleOutputs)
             : [];
+        console.log(`outputArray :` + outputArray);
 
         return (
             <StyledProblem>
