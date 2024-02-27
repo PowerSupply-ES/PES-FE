@@ -59,7 +59,6 @@ export const StyledQuestion = styled.div`
         height: 181px;
         font-size: 20px;
         display: flex;
-        justify-content: center;
         margin: auto;
         background-color: #ffffff;
         border: solid #ffffff;
