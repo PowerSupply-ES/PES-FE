@@ -13,9 +13,8 @@ function Solution() {
     problem_id: '',
     context: ''
   });
-
   
-  const sendGetProblem = () => {
+  const sendGetProblem = useCallback(async() => {
     const serverUrl = serverConfig.serverUrl;
     const uri = `/api2/problem/`;
 
@@ -40,7 +39,7 @@ function Solution() {
 
       console.log('problemId:', problemId);
       
-  };
+  }, [problemId]);
 
   useEffect(() => {
     sendGetProblem();
