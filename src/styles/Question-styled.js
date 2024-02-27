@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledQuestion = styled.div`
 
     .code_question_container {
+        width: 90%;
         display: flex; 
         justify-content: space-between; 
         position: relative;
@@ -65,6 +66,12 @@ export const StyledQuestion = styled.div`
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
         overflow-wrap: break-word;
+
+        div {
+            text-align: left;
+            padding: 10px;
+            box-sizing: border-box;
+        }
     }
     /* 스크롤바 */
     .answer_input::-webkit-scrollbar {
@@ -96,12 +103,6 @@ export const StyledQuestion = styled.div`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
-
-        div {
-            text-align: left;
-            padding: 10px;
-            box-sizing: border-box;
-        }
     }
     .title {
         width: 1376px;
