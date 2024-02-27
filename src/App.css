@@ -523,7 +523,7 @@ button:hover {
 
 /* footer */
 .footer{
-  height: 200px;
+  height: 240px;
   width: 100%;
   background-color: #272727;
   margin-top: 300px;
@@ -539,7 +539,17 @@ button:hover {
   margin-left: 40px;
 }
 .footer_left > .logo{
-  margin-top: 8px;
+  margin-top: 20px;
+}
+.footer_left > .info > *{
+  display: flex;
+  align-items: center;
+}
+.info > * > p{
+  margin-left: 12px;
+}
+.info > *{
+  margin-bottom: 8px;
 }
 .footer_right{
   height: 80%;
@@ -547,6 +557,9 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  margin-top: 12px;
+}
+.footer_right > .sns{
   margin-top: 12px;
 }
 .footer :not(.info1, .info2, .footer_logout){
@@ -561,7 +574,7 @@ button:hover {
 }
 .footer_logout{
   text-align: right;
-  margin: 40px 20px 0 0;
+  margin: 8px 20px 0 0;
   color: #D4D4D4;
 }
 
