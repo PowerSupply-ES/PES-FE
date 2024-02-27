@@ -42,7 +42,7 @@ const ProblemPage = () => {
                 navigate("/main");
             }
             else if (response === 403) {
-                alert("인증된 사용자가 아닙니다. 메인 페이지로 돌아갑니다.");
+                alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
                 navigate("/signin");
             }
             else if (response.hasOwnProperty('answerId')) {
