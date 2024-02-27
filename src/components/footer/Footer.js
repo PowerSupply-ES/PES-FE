@@ -13,6 +13,16 @@ function Footer() {
     </div>
   );
 }
+const logout = () =>{
+  // 쿠키 제거
+      // 과거의 날짜로 설정하여 쿠키를 즉시 만료
+      document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=pes23.com";  
+      // 로컬 스토리지 클리어
+      sessionStorage.clear();
+      localStorage.clear();
+      alert('로그아웃되었습니다.');
+      window.location.href = '../main';
+  }
 
 function Bottom(){ 
     return(
@@ -35,7 +45,7 @@ function Bottom(){
               <BiLogoInstagramAlt size={32}></BiLogoInstagramAlt >
             </div>
         
-            <div className='footer_logout'>로그아웃</div>
+            <div onClick={logout} className='footer_logout'>로그아웃</div>
         </div>
 
       </div>
