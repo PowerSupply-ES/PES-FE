@@ -69,6 +69,7 @@ const ListPage = () => {
         <div>
             <Header/>
             <AdPart/>
+            {/*
             <Filter>
                 <Button>푼 문제 보기</Button>
                 <Button>안 푼 문제 보기</Button>
@@ -76,6 +77,7 @@ const ListPage = () => {
                 <Button>FAIL</Button>
                 <Button>CLEAR</Button>
             </Filter>
+            */}
             {
                 list.map((problem) => (
                     <ProblemItem
