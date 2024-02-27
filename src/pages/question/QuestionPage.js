@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const OPTIONS =    [
     { value: 0, name: "fail"},
     { value: 1, name: "pass"},
+    { value: 2, name: "선택"},
 ];
 
 const QuestionPage = () => {
@@ -29,38 +30,16 @@ const QuestionPage = () => {
     const [answerSec, setAnswerSec] = useState("");
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
-    const [selected, setSelected] = useState(0);
+    const [selected, setSelected] = useState(2);
     const [passCount, setPassCount] = useState(0);
     const textFst = useRef("");
     const textSec = useRef("");
     
-    // 렌더링 시, answerState 필요
-    // 질문 줄 때 (get /question) 같이 넘겨줌
-
-    // getCode와 getQuestions는 항상 call
-    // getFeedback은 아래 상태일 때만 call
-
     useEffect(() => {
         if (state === "comment" || state === "success" || state === "fail") {
             getFeedback();
         }
     }, [state]);
-    
-
-    // answerState 구분
-    // - 질문 상태(question): 코드가 정상적으로 실행되어 질문에 답해야하는 상태 → 질문 테스트로 이동
-    // => qnA O
-    // - 커멘트 상태(comment): 커멘트를 기다리는 상태 → 질문테스트 답변 결과로 이동
-    // => qnA O / qnA.answerFst, qnA.answerSec O / feedback 있을 수도 없을 수도
-    // - 성공 상태(success): 모든 커멘트 sucess → 다른 사람의 코드도 확인 가능
-    // - 실패 상태(fail): 실패 상태, 커멘트 중 fail있음→ 다른 사람의 코드 확인 가능
-
-    // 피드백 구분
-    // 모든 커멘트 pass
-    // fail 있는 경우
-    // 신입생, 본인 글에는 댓글 달 수 없음 처리
-    // 댓글 중복으로 달 수 없음 처리
-    // 2명까지만 달 수 있음 처리
 
     // 문제 제목 불러오기 (get)
     const getTitle = useCallback(async () => {
@@ -84,7 +63,7 @@ const QuestionPage = () => {
         return (
             <select onChange={ e => setSelected(e.target.value)} value={selected}>
                 {props.options.map((option) => (
-                    <option key={option.value} value={option.value}>
+                    <option key={option.value} value={option.value} disabled={option.value === 2}>
                         {option.name}
                     </option>
                 ))}
@@ -190,10 +169,6 @@ const QuestionPage = () => {
     const getFeedback = useCallback(async () => {
         try {
             const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
-            // writerEmail
-            // writerName
-            // commentContent
-            // pass, fail 여부 받아야 할 듯? (최종 success, fail 결과 출력을 위해서)
             let passCount = 0;
             setFeedbacks(response);
             for (let i = 0; i < response.length; i++) {
@@ -310,7 +285,7 @@ const QuestionPage = () => {
             {(feedbackArray.length <= 1) && (state === "comment") && (
                 <div>
                     <div className="question_header">
-                        <SelectBox options={OPTIONS} defaultValue="pass"></SelectBox>
+                        <SelectBox options={OPTIONS}></SelectBox>
                     </div>
                     <textarea className="answer_input" onChange={FstHandler}/>
                     <button className="answer_button" onClick={submitComment}>답변하기</button>
@@ -341,3 +316,24 @@ const QuestionPage = () => {
 }
 
 export default QuestionPage;
+
+    // 렌더링 시, answerState 필요
+    // 질문 줄 때 (get /question) 같이 넘겨줌
+
+    // getCode와 getQuestions는 항상 call
+    // getFeedback은 아래 상태일 때만 call
+
+        // answerState 구분
+    // - 질문 상태(question): 코드가 정상적으로 실행되어 질문에 답해야하는 상태 → 질문 테스트로 이동
+    // => qnA O
+    // - 커멘트 상태(comment): 커멘트를 기다리는 상태 → 질문테스트 답변 결과로 이동
+    // => qnA O / qnA.answerFst, qnA.answerSec O / feedback 있을 수도 없을 수도
+    // - 성공 상태(success): 모든 커멘트 sucess → 다른 사람의 코드도 확인 가능
+    // - 실패 상태(fail): 실패 상태, 커멘트 중 fail있음→ 다른 사람의 코드 확인 가능
+
+    // 피드백 구분
+    // 모든 커멘트 pass
+    // fail 있는 경우
+    // 신입생, 본인 글에는 댓글 달 수 없음 처리
+    // 댓글 중복으로 달 수 없음 처리
+    // 2명까지만 달 수 있음 처리
