@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
+import Footer from "components/footer/Footer";
 import serverConfig from '../../config';
 
 function Solution() {
@@ -92,6 +93,7 @@ function Solution() {
         {/* 풀이 목록 */}
         <SolvingList solveData={solveData}></SolvingList>
       </div>
+      <Footer></Footer>
     </>
   );
 }
