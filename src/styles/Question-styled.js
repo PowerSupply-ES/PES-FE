@@ -131,6 +131,7 @@ export const StyledQuestion = styled.div`
         font-weight: bold;
         box-shadow: 1px 3px #CCC9C9;
 
+        cursor: pointer;
     }
 
     .fail {
@@ -148,7 +149,8 @@ export const StyledQuestion = styled.div`
         font-size: 20px;
         font-weight: bold;
         box-shadow: 1px 3px #CCC9C9;
-
+        
+        cursor: pointer;
     }
 
 `;

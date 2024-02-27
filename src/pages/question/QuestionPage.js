@@ -17,7 +17,6 @@ const QuestionPage = () => {
     var answerId = url
         .pathname
         .split('/')[2];
-    var passCount = 0;
     const problemId = sessionStorage.getItem('problemId');
     const navigate = useNavigate();
 
@@ -31,6 +30,7 @@ const QuestionPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
     const [selected, setSelected] = useState(0);
+    const [passCount, setPassCount] = useState(0);
     const textFst = useRef("");
     const textSec = useRef("");
     
@@ -167,10 +167,6 @@ const QuestionPage = () => {
         }
     }, [answerId]);
 
-    useEffect(() => {
-        getQuestions();
-    }, [getQuestions]);
-
     // 질문 답변하기 (post)
     async function postAnswer(answerFst, answerSec) {
         try {
@@ -194,12 +190,14 @@ const QuestionPage = () => {
             // writerName
             // commentContent
             // pass, fail 여부 받아야 할 듯? (최종 success, fail 결과 출력을 위해서)
+            let passCount = 0;
             setFeedbacks(response);
             for (let i = 0; i < response.length; i++) {
                 if (response[i].commentPassFail === 1) {
                     passCount++;
                 }
             }
+            setPassCount(passCount);
         } catch (error) {
             console.log(error);
         }
@@ -223,6 +221,10 @@ const QuestionPage = () => {
     }
     
     function renderAnswerUI() {
+        useEffect(() => {
+            getQuestions();
+        }, [getQuestions]);
+
         return (
             <StyledQuestion>
                 <StyledProblem>
@@ -315,13 +317,15 @@ const QuestionPage = () => {
                 </div>
             )}
 
-            <div className={((passCount >= 2) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
-                onClick={() => navigate(`/main`)}>
-                {((passCount >= 2) && (feedbackArray.length > 1)) ? 
-                    '축하합니다! 성공적으로 통과했습니다! ( 2/2 )' : `잘문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
-            </div>
-
+            {(feedbackArray.length >= 2) && (
+                <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
+                    onClick={() => navigate(`/main`)}>
+                    {((passCount >= 1) && (feedbackArray.length > 1)) ? 
+                        `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+                </div>
+            )}
             </StyledQuestion>
+            
             
         );
     }
