@@ -167,6 +167,10 @@ const QuestionPage = () => {
         }
     }, [answerId]);
 
+    useEffect(() => {
+        getQuestions();
+    }, [getQuestions]);
+
     // 질문 답변하기 (post)
     async function postAnswer(answerFst, answerSec) {
         try {
@@ -221,17 +225,13 @@ const QuestionPage = () => {
     }
     
     function renderAnswerUI() {
-        useEffect(() => {
-            getQuestions();
-        }, [getQuestions]);
-
         return (
             <StyledQuestion>
                 <StyledProblem>
                     <div className="problem_header">
-                        <div className="problem_id">{problemId}</div>
+                        <div className="problem_id">문제{problemId}</div>
                         <div className="header_title">{title.problemTitle}</div>
-                        <div>{title.problemScore}</div>
+                        <div className="header_score">점수 {title.problemScore}</div>
                     </div>
                 </StyledProblem>
 
@@ -333,7 +333,7 @@ const QuestionPage = () => {
     return(
         <div>
             <Header/>
-            {renderAnswerUI()}
+            {state ? renderAnswerUI() : <p>Loading...</p>}
             {renderFeedbackUI()}
             <Footer></Footer>
         </div>

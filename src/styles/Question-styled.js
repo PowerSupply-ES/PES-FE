@@ -2,15 +2,12 @@ import styled from "styled-components";
 
 export const StyledQuestion = styled.div`
 
-    .header_title {
-        font-size: 20px;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-    }
     .code_question_container {
         display: flex; 
         justify-content: space-between; 
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .code_container {
         width: 40%;
@@ -24,8 +21,11 @@ export const StyledQuestion = styled.div`
         white-space: pre-line; 
         color: white;
     }
+    .question_container{
+        width: 50%;
+    }
     .question_header {
-        width: 822px;
+        width: 100%;
         height: 70px;
         display: flex;
         align-items: center;
@@ -47,8 +47,11 @@ export const StyledQuestion = styled.div`
         background-color: #ffffff;
         box-shadow: 1px 3px #CCC9C9;
     }
-    .question_container{
-        width: 50%;
+    .header_title {
+        font-size: 20px;
+        font-weight: bold;
+        flex: 1;
+        text-align: left;
     }
     .answer_input {
         width: 100%;
@@ -75,6 +78,9 @@ export const StyledQuestion = styled.div`
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
     .answer_button {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
         width: fit-content;
         height: fit-content;
         padding: 8px 32px;
@@ -86,12 +92,16 @@ export const StyledQuestion = styled.div`
         border: none;
         display: flex;
         justify-content: center;
-        margin: auto;
-        margin-top: 80px;
+        margin-top: 10px;
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
 
+        div {
+            text-align: left;
+            padding: 10px;
+            box-sizing: border-box;
+        }
     }
     .title {
         width: 1376px;
@@ -149,7 +159,7 @@ export const StyledQuestion = styled.div`
         font-size: 20px;
         font-weight: bold;
         box-shadow: 1px 3px #CCC9C9;
-        
+
         cursor: pointer;
     }
 
