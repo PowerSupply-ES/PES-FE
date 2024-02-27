@@ -21,7 +21,7 @@ const ProblemItem = (props) => {
                 <div className="problem_title" onClick={() => { goTo(props.answerId); }}>{props.ptitle}</div>
                 <div className="grade">점수 {props.grade}</div>
                 <button className="button" state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>
-                    {(props.state === "success" || props.state === "fail") ? "풀이보기" : "LOCKED"}
+                    풀이보기
                 </button>
             </div>
         </StyledListItem>
