@@ -24,6 +24,7 @@ export const StyledListItem = styled.div`
         color: ${props => props.state === "success" ? "#04CA00" : props.state === "fail" ? "#FF8412" : "black"};
         font-size: 22px;
         text-align: center;
+        line-height: 34px;
     }
 
     .problem_title {
@@ -38,25 +39,21 @@ export const StyledListItem = styled.div`
     .grade {
         height: 34px;
         font-size: 22px;
-        text-align: center;
         margin-right: 20px;
+        line-height: 34px;
         }
 
     .button {
         width: 150px;
         height: 42px;
-        color: ${props => props.state === "locked" ? "#6A6B6F" : "white"};
-        background-color: ${props => props.state === "comment" ? "#5094f9" : props.state === "success" ? "#6D63E4; opacity : 0.9" : props.state === "fail" ? "#F47575 ; opacity : 0.9" : "white"};
-        border-radius: 5px;
+        color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#565656"};
+        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.9)" : props.state === "fail" ? "rgba(244, 117, 117, 0.9)" : "white"};
+        border-radius: 10px;
         font-size: 24px;
         text-align: center;
-        border: ${props => props.state === "locked" ? "2px solid #DEDEDE" : "none"};
+        border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
         transition: background-color 0.3s;
         margin-right: 14px;
         pointer-events: ${props => (props.state === "success" || props.state === "fail") ? "auto" : "none"};
-    /* &:hover {
-        background-color: ${props => props.color ? `${props.color}80` : "rgba(255, 255, 255, 0.8)"};
-    } */
     }
 `;
-

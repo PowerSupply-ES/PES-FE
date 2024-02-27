@@ -15,16 +15,14 @@ const ProblemItem = (props) => {
     }
 
     return (
-        <StyledListItem>
+        <StyledListItem state={props.state}>
             <div className="container" state={props.state}>
                 <div className="problem_id" state={props.state} onClick={() => { goTo(props.answerId); }}>{props.pid}</div>
                 <div className="problem_title" onClick={() => { goTo(props.answerId); }}>{props.ptitle}</div>
                 <div className="grade">점수 {props.grade}</div>
-                { (props.state === "success" || props.state === "fail") && 
-                    <button className="button" onClick={() => navigate(`/solution/${props.pid}`)}>
-                        {props.state === "retry" ? "RE TRY" : "풀이보기"}
-                    </button>
-                }
+                <button className="button" state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>
+                    {(props.state === "success" || props.state === "fail") ? "풀이보기" : "LOCKED"}
+                </button>
             </div>
         </StyledListItem>
 
