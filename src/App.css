@@ -524,8 +524,45 @@ button:hover {
 /* footer */
 .footer{
   height: 200px;
+  width: 100%;
   background-color: #272727;
   margin-top: 300px;
+  display: flex;
+}
+.footer_left{
+  width: 60%;
+}
+.footer_left > .info{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 40px;
+}
+.footer_left > .logo{
+  margin-top: 8px;
+}
+.footer_right{
+  height: 80%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: 12px;
+}
+.footer :not(.info1, .info2, .footer_logout){
+  color: #ffffff;
+}
+.info1, .info2{
+  color: #C8C4C4; opacity: 57%;
+}
+.about{
+  margin-bottom: 8px;
+
+}
+.footer_logout{
+  text-align: right;
+  margin: 40px 20px 0 0;
+  color: #D4D4D4;
 }
 
 /* 슬라이드 */
