@@ -160,8 +160,20 @@ const QuestionPage = () => {
                     answerSec: answerSec
                 }
             )
+
+            alert("성공적으로 답변을 등록했습니다.");
+
         } catch (error) {
-            console.log(error);
+            if (error.response && error.response.status === 400) {
+                alert("이미 답변이 등록되어 있습니다.");
+            } 
+            else if (error.response && error.response.status === 403) {
+                alert("접근할 수 있는 사용자가 아닙니다. 로그인 페이지로 이동합니다.");
+                navigate("/signin");
+            }
+            else {
+                console.log(error);
+            }
         }
     }
 
