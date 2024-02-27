@@ -64,7 +64,8 @@ export const StyledProblem = styled.div`
         // margin: auto;
         // padding: 20px;
 
-        width: 606px;
+        // width: 606px;
+        width: 40%;
         height: 564px;
 
         flex: 3;
@@ -122,7 +123,8 @@ export const StyledProblem = styled.div`
 
     
     .code_input {
-        width: 817px;
+        // width: 817px;
+        width: 60%;
         height: 564px;
         font-size: 20px;
         color: #ffffff;

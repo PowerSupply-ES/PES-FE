@@ -115,8 +115,10 @@ const MyPage = () => {
     
   
     useEffect(() => {
+      sendGetInfo();
+
       // 로그인 상태를 체크하여 로그인되어 있지 않다면 리스트 페이지로 이동하고 알림창 띄우기
-      if (!sessionStorage.getItem('status')) {
+      if (sessionStorage.getItem('status') === null || sessionStorage.getItem('status') === undefined) {
         alert("로그인 해주세요.");
         window.location.href = 'main';
         return; // 함수를 여기서 종료시킴

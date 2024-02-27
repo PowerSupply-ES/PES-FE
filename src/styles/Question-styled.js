@@ -13,7 +13,7 @@ export const StyledQuestion = styled.div`
         justify-content: space-between; 
     }
     .code_container {
-        width: 657px;
+        width: 40%;
         height: 564px;
         display: flex;
         align-items: center;
@@ -47,8 +47,11 @@ export const StyledQuestion = styled.div`
         background-color: #ffffff;
         box-shadow: 1px 3px #CCC9C9;
     }
+    .question_container{
+        width: 50%;
+    }
     .answer_input {
-        width: 822;
+        width: 100%;
         height: 181px;
         font-size: 20px;
         display: flex;
@@ -73,8 +76,8 @@ export const StyledQuestion = styled.div`
     }
     .answer_button {
         width: fit-content;
-        height: content;
-        padding: 12px 32px;
+        height: fit-content;
+        padding: 8px 32px;
         background-color: #9747FF;
         color: white;
         font-size: 20px;
@@ -113,23 +116,39 @@ export const StyledQuestion = styled.div`
     }
     
     .pass {
-        width: 1057px;
-        height: 60px;
+        width: 70%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 100px auto;
+        padding: 12px 0;
+
         background-color: #04ca00;
         color: #ffffff;
         border-radius: 15px;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
+        box-shadow: 1px 3px #CCC9C9;
+
     }
 
     .fail {
-        width: 1057px;
-        height: 60px;
+        width: 70%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 100px auto;
+        padding: 12px 0;
+
         background-color: #EB3434;
         color: #ffffff;
         border-radius: 15px;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
+        box-shadow: 1px 3px #CCC9C9;
+
     }
 
 `;
