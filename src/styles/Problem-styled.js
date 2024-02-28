@@ -72,6 +72,8 @@ export const StyledProblem = styled.div`
     .code_section{
         flex: 5;
         display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .content_container > .top,
@@ -110,6 +112,7 @@ export const StyledProblem = styled.div`
     .code_input {
         width: 100%;
         height: auto;
+        min-height: 564px;
         font-size: 20px;
         color: #ffffff;
         display: flex;
@@ -119,6 +122,7 @@ export const StyledProblem = styled.div`
         border-radius : 20px;
         padding: 16px 8px 0 12px;
         box-shadow: 1px 3px #CCC9C9;
+        box-sizing: border-box;
     }
     .submit_button {
         width: fit-content;
@@ -170,5 +174,21 @@ export const StyledProblem = styled.div`
     }
     .loading {
         height: 1500px
+    }
+    .detail_container {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        text-align: left;
+        margin-top: 40px;
+    }
+    .detail_content {
+        min-height: 150px;
+        text-align: left;
+        padding: 16px 8px 0 12px;
+        box-shadow: 1px 3px #CCC9C9;
+        box-sizing: border-box;
+        background-color: rgba(151, 71, 255, 0.4);
+        font-size: 20px;
     }
 `;
