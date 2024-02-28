@@ -168,4 +168,7 @@ export const StyledProblem = styled.div`
     white-space: pre-line; 
     text-align: left;
     }
+    .loading {
+        height: 1500px
+    }
 `;

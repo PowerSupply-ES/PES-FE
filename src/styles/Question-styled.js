@@ -277,4 +277,7 @@ export const StyledQuestion = styled.div`
 
         cursor: pointer;
     }
+    .loading {
+        height: 1500px
+    }
 `;

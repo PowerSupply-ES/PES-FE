@@ -317,12 +317,12 @@ const QuestionPage = () => {
             <MemberStatus>
                 {(memberStatus) => {
                     if (!memberStatus) {
-                        return <p>Loading...</p>;
+                        return <div className="loading">Loading...</div>;
                     }
 
                     return (
                         <div>
-                            {state ? renderAnswerUI() : <p>Loading...</p>}
+                            {state ? renderAnswerUI() : <div className="loading">Loading...</div>}
                             {renderFeedbackUI(memberStatus)}
                         </div>
                     );

@@ -180,7 +180,7 @@ const ProblemPage = () => {
     return (
         <div>
             <Header/>
-            {problem ? renderProbUI() : <p>Loading...</p>}
+            {problem ? renderProbUI() : <div className="loading">Loading...</div>}
             <Footer/>
         </div>
     );
