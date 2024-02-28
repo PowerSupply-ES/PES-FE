@@ -232,7 +232,6 @@ const QuestionPage = () => {
                             </div>
                             <textarea className="answer_input" onChange={SecHandler}/>
                         </div>
-                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
                         </>
                         // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
                         // answerState: success
@@ -252,6 +251,9 @@ const QuestionPage = () => {
                     </>
                     }
                     </div>
+                    {(!qnA.answerFst || !qnA.answerSec) && (
+                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
+                    )}
                 </div>
 
             </StyledQuestion>
