@@ -234,7 +234,7 @@ const QuestionPage = () => {
                             <div className="question_id">질문 1</div>
                             <div className="header_title">{qnA.questionContentFst}</div>
                         </div>
-                        <div className="answer_input">{qnA.answerFst}</div>
+                        <div className="answer_input display">{qnA.answerFst}</div>
                         
                         <div className="question_header"> 
                             <div className="question_id">질문 2</div>
