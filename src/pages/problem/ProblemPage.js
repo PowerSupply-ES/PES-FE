@@ -116,23 +116,17 @@ const ProblemPage = () => {
         }
     }
 
+    function renderNewlines(text) {
+        return text.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
+    }
+    
+
     function renderProbUI() {
-
-        console.log(`problem :` + problem);
-        console.log(`problemContent :` + problem.problemContent);
-        console.log(`sampleInputs :` + problem.sampleInputs);
-        console.log(`sampleOutputs :` + problem.sampleOutputs);
-
-        const inputArray = problem.sampleInputs
-            ? Object.values(problem.sampleInputs)
-            : [];
-        console.log(`inputArray :` + inputArray);
-
-        const outputArray = problem.sampleOutputs
-            ? Object.values(problem.sampleOutputs)
-            : [];
-        console.log(`outputArray :` + outputArray);
-
         return (
             <StyledProblem>
                 <div className="problem_header">
@@ -144,18 +138,55 @@ const ProblemPage = () => {
                 <div className="promblem_section">
 
                     <div className="content_container">
-                        {
-                            problem.problemContent
-                        }
-                        {/* 변경 코드 */}
+
+                        {renderNewlines(problem.problemContent)}
+
                         <div>Sample Inputs: </div>
-                        {
-                            problem.sampleInputs
-                        }
+                        
+                        {problem.sampleInputs.map((input, index) => (
+                            <React.Fragment key={index}>
+                                {renderNewlines(input)}
+                            </React.Fragment>
+                        ))}
+                        
                         <div>Sample Outputs: </div>
-                        {
-                            problem.sampleOutputs
-                        }
+
+                        {problem.sampleOutputs.map((output, index) => (
+                            <React.Fragment key={index}>
+                                {renderNewlines(output)}
+                            </React.Fragment>
+                        ))}
+
+                    </div>
+
+                    <div className="code_section">
+                        {/* 원래코드 */}
+                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                            onChange = {textHandler}/>
+                    </div>
+
+                    { (detail) &&
+                        <div>{detail}
+                        </div>
+                    }
+                </div>
+                
+                <button className="submit_button" onClick={() => submitCode()}>제출</button>
+            </StyledProblem>
+        );
+    }
+    
+    return (
+        <div>
+            <Header/>
+            {problem ? renderProbUI() : <p>Loading...</p>}
+            <Footer/>
+
+        </div>
+    );
+}
+
+export default ProblemPage;
 
                         {/* 원래 코드 */}
                         {/* <div className="top">
@@ -170,13 +201,7 @@ const ProblemPage = () => {
                                 {outputArray.map((i) => (<p>{i}</p>))}
                             </div>
                         </div> */}
-                    </div>
 
-                    <div className="code_section">
-                        {/* 원래코드 */}
-                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                            onChange = {textHandler}/>
-                            
                         {/* AceEditor 주석 */}
                         {/*
                         <AceEditor 
@@ -215,28 +240,3 @@ const ProblemPage = () => {
                             }}
                             onChange={(newCode) => setRequest(newCode)}
                         />  */}
-
-                    </div>
-
-                    { (detail) &&
-                        <div>{detail}
-                        </div>
-                    }
-                </div>
-                
-                <button className="submit_button" onClick={() => submitCode()}>제출</button>
-            </StyledProblem>
-        );
-    }
-    
-    return (
-        <div>
-            <Header/>
-            {problem ? renderProbUI() : <p>Loading...</p>}
-            <Footer></Footer>
-
-        </div>
-    );
-}
-
-export default ProblemPage;
