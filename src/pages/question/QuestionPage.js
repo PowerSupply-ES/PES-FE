@@ -247,15 +247,14 @@ const QuestionPage = () => {
                             <div className="question_id">질문 2</div>
                             <div className="header_title">{qnA.questionContentSec}</div>
                         </div>
-                        <div className="answer_input">{qnA.answerSec}</div>
+                        <div className="answer_input display">{qnA.answerSec}</div>
                     </>
                     }
                     </div>
-                    {(!qnA.answerFst || !qnA.answerSec) && (
-                        <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
-                    )}
                 </div>
-
+                {(!qnA.answerFst || !qnA.answerSec) && (
+                    <button className="answer_button" onClick={submitAnswer}>답변하기</button> 
+                )}
             </StyledQuestion>
         );
     }
@@ -269,15 +268,18 @@ const QuestionPage = () => {
         return (
             <StyledQuestion>
                 <div className="feedback_section">
+                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (
+                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다.</div>
+                    )}
                     {feedbackArray.length > 0 && (
                         feedbackArray.map((feedback, index) => (
                         <div className="feedback_container" key={index}>
-                            {(feedback.commentPassFail === 1) ? <div className="feedback_result" id="pass">PASS</div> : <div className="feedback_result" id="fail">FAIL</div>}
+                            {(feedback.commentPassFail === 1) ? <div className="feedback_result pass">PASS</div> : <div className="feedback_result fail">FAIL</div>}
                             <div className="question_header">
-                                <div className="feedback_index">{`Feedback ${index}`}</div>
+                                <div className="feedback_index">{`Feedback ${index+1}`}</div>
                                 <div className="feedback_writer">{feedback.writerName}</div>
                             </div>
-                            <div className="feedback_content">{feedback.commentContent}</div>
+                            <div className="feedback_content display">{feedback.commentContent}</div>
                         </div>
                         ))
                     )}
@@ -287,12 +289,12 @@ const QuestionPage = () => {
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
                             </div>
-                            <textarea className="feedback_content" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
+                            <textarea className="feedback_content input" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
                             {/* PASS FAIL 선택 */}
                             <div className="feedback_select_section">
                                 <div className="button_container">
-                                    <div className="select_button" id="pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
-                                    <div className="select_button" id="fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
+                                    <div className="select_button pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
+                                    <div className="select_button fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
                                 </div>
                                 <p className="select_comment">PASS 혹은 FAIL을 선택해주세요.</p>
                             </div>

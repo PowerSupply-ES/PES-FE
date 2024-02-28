@@ -5,7 +5,8 @@ export const StyledQuestion = styled.div`
     .code_question_container {
         width: 90%;
         display: flex; 
-        justify-content: space-between; 
+        justify-content: center;
+        gap: 2%;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -15,7 +16,6 @@ export const StyledQuestion = styled.div`
         height: 564px;
         display: flex;
         align-items: center;
-        margin: auto;
         border-radius: 20px;
         background-color: #3E3E3E;
         font-size: 20px;
@@ -24,6 +24,9 @@ export const StyledQuestion = styled.div`
     }
     .question_container{
         width: 50%;
+    }
+    .question_layout {
+        width: 100%;
     }
     .question_header {
         width: 100%;
@@ -64,12 +67,11 @@ export const StyledQuestion = styled.div`
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
         overflow-wrap: break-word;
-
-        div {
-            text-align: left;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+    }
+    .answer_input.display {
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
     }
     /* 스크롤바 */
     .answer_input::-webkit-scrollbar {
@@ -109,7 +111,21 @@ export const StyledQuestion = styled.div`
         display: flex;
         left: 50%;
         transform: translateX(-50%);
-       position: relative;
+        position: relative;
+        margin-top: 40px;
+    }
+    .feedback_waiting_bar {
+        width: 60%;
+        margin: 100px auto;
+        padding: 12px 0;
+        background-color: rgba(109,99,228,0.6);
+        color: #ffffff;
+        border-radius: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        box-shadow: 1px 3px #CCC9C9;
+
+        cursor: pointer;
     }
     .feedback_container {
         width: 45%;
@@ -117,27 +133,29 @@ export const StyledQuestion = styled.div`
     .feedback_result {
         width: 100px;
         text-align: left;
-        font-size: 50px;
+        font-size: 40px;
         font-weight: bold;
-
-        #pass {
-            color: #04ca00;
-        }
-
-        #fail {
-            color: rgba(244, 117, 117, 0.9);
-        }
+        margin-bottom: 10px;
+    }
+    .feedback_result.pass {
+        color: #04ca00;
+    }
+    .feedback_result.fail {
+        color: rgba(244, 117, 117, 0.9);
     }
     .feedback_index {
-        width: 200px;
+        width: 150px;
         height: 60px;
         border-radius: 50px;
         line-height: 60px;
         text-align: center;
         background-color: #9747FF;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
     }
     .feedback_writer {
-        margin-left: 10px;
+        margin-left: 20px;
         font-size: 35px;
     }
     .feedback_content {
@@ -148,17 +166,16 @@ export const StyledQuestion = styled.div`
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
         overflow-wrap: break-word;
-        
-        textarea {
-            height: 270px;
-        }
-
-        div {
-            height: 250px;
-            text-align: left;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+        margin-top: 10px;
+    }
+    .feedback_content.input {
+        height: 270px;
+    }
+    .feedback_content.display {
+        height: 250px;
+        text-align: left;
+        padding: 10px;
+        box-sizing: border-box;
     }
     .feedback_content::-webkit-scrollbar {
     width: 10px;  
@@ -181,22 +198,23 @@ export const StyledQuestion = styled.div`
         display: flex;
         justify-content: center;
         gap: 20px;
+        margin-top: 10px;
     }
     .select_button {
         font-size: 50px;
         font-weight: bold;
         cursor: pointer;
-        #pass {
-            color: ${(props) => (props.isSelected ? "rgba(4, 202, 0, 1)" : "rgba(4, 202, 0, 0.6)")};
-            &:hover {
-                color: rgba(4, 202, 0, 1);
-            }
+    }
+    .select_button.pass {
+        color: ${(props) => (props.isSelected ? "rgba(4, 202, 0, 1)" : "rgba(4, 202, 0, 0.6)")};
+        &:hover {
+            color: rgba(4, 202, 0, 1);
         }
-        #fail {
-            color: ${(props) => (props.isSelected ? "rgba(244, 117, 117, 1)" : "rgba(244, 117, 117, 0.6)")};
-            &:hover {
-                color: rgba(244, 117, 117, 1);
-            }
+    }
+    .select_button.fail {
+        color: ${(props) => (props.isSelected ? "rgba(244, 117, 117, 1)" : "rgba(244, 117, 117, 0.6)")};
+        &:hover {
+            color: rgba(244, 117, 117, 1);
         }
     }
     .select_comment {
@@ -212,10 +230,11 @@ export const StyledQuestion = styled.div`
         font-size: 30px;
         font-weight: bold;
         align-items: center;
+        margin-top: 10px;
         cursor: pointer;
     }
     .feedback_button:hover {
-    background-color: rgba(109,99,228,1);
+        background-color: rgba(109,99,228,1);
     }
     .pass {
         width: 70%;
