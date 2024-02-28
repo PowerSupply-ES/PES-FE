@@ -179,17 +179,7 @@ const ProblemPage = () => {
     return (
         <div>
             <Header/>
-            {(problem) => {
-                    if (!problem) {
-                        return <p>Loading...</p>;
-                    }
-
-                    return (
-                        <div>
-                            {renderProbUI()}
-                        </div>
-                    );
-                }}
+            {problem ? renderProbUI() : <p>Loading...</p>}
             <Footer/>
         </div>
     );
