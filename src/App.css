@@ -434,6 +434,13 @@ button:hover {
 .solution_bar{
   justify-content: space-between;
 }
+.solution{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+
+}
 
 .solution_num{
   margin-right: 16px;
@@ -445,7 +452,12 @@ button:hover {
   font-weight: bold;
   font-size: 20px;
   margin-right: 60px;
-
+}
+.prob_score{
+  display: flex;
+  font-weight: bold;
+  font-size: 20px;
+  /* float: right; */
 }
 .solution_score{
   font-size: 20px;
@@ -486,6 +498,8 @@ button:hover {
 }
 
 .solving{
+  width: 90%;
+  margin: auto;
   margin-bottom: 8px;
   justify-content: space-between;
 }
@@ -498,6 +512,7 @@ button:hover {
 .left > .userNum{
   color: #04CA00;
   font-size: 20px;
+  display: flex;
 }
 .left > .userName, .right > .process_num{
   color: black;
@@ -511,12 +526,15 @@ button:hover {
 .btn_goto_challenge{
   height: fit-content;
   width: fit-content;
-  padding: 9px 32px;
+  padding: 6px 32px;
   color: white;
   border: solid #5094F9;
   border-radius: 5px;
   background-color: #5094F9;
   font-size: 16px;
+  font-weight: bold;
+  box-shadow: 1px 3px #CCC9C9;
+
 }
 
 
