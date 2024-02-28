@@ -249,7 +249,7 @@ const QuestionPage = () => {
                     <button className="button answer" onClick={submitAnswer}>답변하기</button> 
                 )}
                 {(state === "success" || state === "fail") && (
-                    <button className="button solution" onClick={navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
+                    <button className="button solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                 )}
             </StyledQuestion>
         );
