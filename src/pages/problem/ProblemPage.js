@@ -136,27 +136,28 @@ const ProblemPage = () => {
                 </div>
 
                 <div className="promblem_section">
-
                     <div className="content_container">
+                        <div className="content">
+                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                        </div>
 
-                        {problem.problemContent && renderNewlines(problem.problemContent)}
-
-                        <div>Sample Inputs: </div>
+                        <div className="sample_inputs">
+                            <h3>Sample Inputs:</h3>
+                            {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                <React.Fragment key={index}>
+                                    {renderNewlines(input)}
+                                </React.Fragment>
+                            ))}
+                        </div>
                         
-                        {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
-                            <React.Fragment key={index}>
-                                {renderNewlines(input)}
-                            </React.Fragment>
-                        ))}
-                        
-                        <div>Sample Outputs: </div>
-
-                        {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
-                            <React.Fragment key={index}>
-                                {renderNewlines(output)}
-                            </React.Fragment>
-                        ))}
-
+                        <div className="sample_outputs">
+                            <h3>Sample Outputs:</h3>
+                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                <React.Fragment key={index}>
+                                    {renderNewlines(output)}
+                                </React.Fragment>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="code_section">
@@ -179,7 +180,7 @@ const ProblemPage = () => {
     return (
         <div>
             <Header/>
-            {problem ? renderProbUI() : <p>Loading...</p>}
+            {problem ? renderProbUI() : <div className="loading">Loading...</div>}
             <Footer/>
         </div>
     );
