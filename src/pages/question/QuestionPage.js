@@ -268,7 +268,7 @@ const QuestionPage = () => {
         return (
             <StyledQuestion>
                 <div className="feedback_section">
-                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (
+                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "feedback") (
                         <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다.</div>
                     )}
                     {feedbackArray.length > 0 && (
