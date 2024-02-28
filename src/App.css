@@ -563,6 +563,10 @@ button:hover {
   margin-top: 12px;
   cursor: pointer;
 }
+.footer_right > .sns a {
+  text-decoration: none;
+  color: inherit;
+}
 .footer :not(.info1, .info2, .footer_logout){
   color: #ffffff;
 }

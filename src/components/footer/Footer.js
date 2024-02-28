@@ -42,7 +42,9 @@ function Bottom(){
             <p className='info1'>영남대학교 로봇공학과 동아리 PowerSupply의</p>
             <p className='info2'>교육시스템 개발팀 PES</p>
             <div className='sns'>
-              <BiLogoInstagramAlt size={32}></BiLogoInstagramAlt >
+              <a href="https://www.instagram.com/team.pes23/" target="_blank" rel="noopener noreferrer">
+                <BiLogoInstagramAlt size={32}></BiLogoInstagramAlt >
+              </a>
             </div>
         
             <div onClick={logout} className='footer_logout'>로그아웃</div>
