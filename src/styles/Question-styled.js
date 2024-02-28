@@ -84,14 +84,13 @@ export const StyledQuestion = styled.div`
     .answer_input::-webkit-scrollbar-track {
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
-    .answer_button {
+    .button {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         width: fit-content;
         height: fit-content;
         padding: 8px 32px;
-        background-color: #9747FF;
         color: white;
         font-size: 20px;
         font-weight: bold;
@@ -103,6 +102,12 @@ export const StyledQuestion = styled.div`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
+    }
+    .button.answer {
+        background-color: #9747FF;
+    }
+    .button.solution {
+        background-color: rgba(109,99,228,0.6);
     }
     /* feedback (comment) */
     .feedback_section {
@@ -272,5 +277,4 @@ export const StyledQuestion = styled.div`
 
         cursor: pointer;
     }
-
 `;
