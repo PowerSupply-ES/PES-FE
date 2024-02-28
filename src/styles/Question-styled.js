@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const StyledQuestion = styled.div`
 
     .code_question_container {
-        width: 90%;
+        width: 95%;
         display: flex; 
         justify-content: center;
-        gap: 2%;
+        gap: 5%;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -23,7 +23,7 @@ export const StyledQuestion = styled.div`
         color: white;
     }
     .question_container{
-        width: 50%;
+        width: 40%;
     }
     .question_layout {
         width: 100%;
@@ -58,7 +58,7 @@ export const StyledQuestion = styled.div`
         text-align: left;
     }
     .answer_input {
-        width: 80%;
+        width: 100%;
         height: 181px;
         font-size: 20px;
         display: flex;
