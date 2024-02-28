@@ -245,7 +245,7 @@ const QuestionPage = () => {
                     }
                     </div>
                 </div>
-                {(!qnA.answerFst || !qnA.answerSec) && (
+                {(state === "comment") && (!qnA.answerFst || !qnA.answerSec) && (
                     <button className="button answer" onClick={submitAnswer}>답변하기</button> 
                 )}
                 {(state === "success" || state === "fail") && (
@@ -264,7 +264,7 @@ const QuestionPage = () => {
         return (
             <StyledQuestion>
                 <div className="feedback_section">
-                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "feedback") && (
+                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
                         <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다.</div>
                     )}
                     {feedbackArray.length > 0 && (
@@ -300,7 +300,7 @@ const QuestionPage = () => {
                 </div>
 
                 {(feedbackArray.length >= 2) && (
-                    <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
+                    <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
                         onClick={() => navigate(`/main`)}>
                         {((passCount >= 1) && (feedbackArray.length > 1)) ? 
                             `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}

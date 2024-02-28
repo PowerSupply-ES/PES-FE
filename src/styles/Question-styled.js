@@ -241,7 +241,7 @@ export const StyledQuestion = styled.div`
     .feedback_button:hover {
         background-color: rgba(109,99,228,1);
     }
-    .pass {
+    .result.success {
         width: 70%;
         height: fit-content;
         display: flex;
@@ -259,7 +259,7 @@ export const StyledQuestion = styled.div`
 
         cursor: pointer;
     }
-    .fail {
+    .result.fail {
         width: 70%;
         height: fit-content;
         display: flex;
