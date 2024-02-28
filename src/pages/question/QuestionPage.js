@@ -71,11 +71,11 @@ const QuestionPage = () => {
     function submitAnswer() {
         setAnswerFst(textFst.current);
         setAnswerSec(textSec.current);
-        if (!answerFst || !answerSec) {
+        if (!textFst.current || !textSec.current) {
             alert("내용을 입력해주세요!");
         }
         else {
-            postAnswer(answerFst, answerSec);
+            postAnswer(textFst.current, textSec.current);
         }
     }
 
