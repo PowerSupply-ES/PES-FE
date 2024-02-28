@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const StyledProblem = styled.div`
-    
-    
     .problem_header {
         width: 80%;
         height: 78px;
@@ -49,7 +47,6 @@ export const StyledProblem = styled.div`
         background-color: beige;
         text-align: left;
     }
-
     .promblem_section{
         width:80%;
         height:auto;
@@ -81,7 +78,6 @@ export const StyledProblem = styled.div`
     .code_section{
         flex: 5;
         display: flex;
-        flex-direction: column;
     }
 
     .content_container > .top,
@@ -124,7 +120,7 @@ export const StyledProblem = styled.div`
     
     .code_input {
         // width: 817px;
-        width: 60%;
+        width: 100%;
         height: 564px;
         font-size: 20px;
         color: #ffffff;
