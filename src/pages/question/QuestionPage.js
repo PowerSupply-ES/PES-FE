@@ -18,13 +18,9 @@ const QuestionPage = () => {
 
     const [state, setState] = useState("");
     const [title, setTitle] = useState([]);
-    const [problem, setProblem] = useState([]);
     const [code, setCode] = useState("");
     const [qnA, setQnA] = useState([]);
-    const [answerFst, setAnswerFst] = useState("");
-    const [answerSec, setAnswerSec] = useState("");
     const [feedbacks, setFeedbacks] = useState([]);
-    const [comment, setComment] = useState("");
     const [passCount, setPassCount] = useState(0);
     const textFst = useRef("");
     const textSec = useRef("");
@@ -69,8 +65,6 @@ const QuestionPage = () => {
 
     // 답변 제출
     function submitAnswer() {
-        setAnswerFst(textFst.current);
-        setAnswerSec(textSec.current);
         if (!textFst.current || !textSec.current) {
             alert("내용을 입력해주세요!");
         }
@@ -81,7 +75,6 @@ const QuestionPage = () => {
 
     // 댓글 제출
     function submitComment() {
-        setComment(textFst.current);
         if (!textFst.current) {
             alert("내용을 입력해주세요!");
         }
