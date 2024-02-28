@@ -139,11 +139,11 @@ const ProblemPage = () => {
 
                     <div className="content_container">
 
-                        {renderNewlines(problem.problemContent)}
+                        {problem.problemContent && renderNewlines(problem.problemContent)}
 
                         <div>Sample Inputs: </div>
                         
-                        {problem.sampleInputs.map((input, index) => (
+                        {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
                             <React.Fragment key={index}>
                                 {renderNewlines(input)}
                             </React.Fragment>
@@ -151,7 +151,7 @@ const ProblemPage = () => {
                         
                         <div>Sample Outputs: </div>
 
-                        {problem.sampleOutputs.map((output, index) => (
+                        {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                             <React.Fragment key={index}>
                                 {renderNewlines(output)}
                             </React.Fragment>
@@ -179,9 +179,18 @@ const ProblemPage = () => {
     return (
         <div>
             <Header/>
-            {problem ? renderProbUI() : <p>Loading...</p>}
-            <Footer/>
+            {(problem) => {
+                    if (!problem) {
+                        return <p>Loading...</p>;
+                    }
 
+                    return (
+                        <div>
+                            {renderProbUI()}
+                        </div>
+                    );
+                }}
+            <Footer/>
         </div>
     );
 }
