@@ -55,7 +55,7 @@ export const StyledQuestion = styled.div`
         text-align: left;
     }
     .answer_input {
-        width: 100%;
+        width: 80%;
         height: 181px;
         font-size: 20px;
         display: flex;
@@ -98,7 +98,7 @@ export const StyledQuestion = styled.div`
         border: none;
         display: flex;
         justify-content: center;
-        margin-top: 10px;
+        margin-top: 40px;
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
