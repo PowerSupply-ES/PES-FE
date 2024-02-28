@@ -20,10 +20,8 @@ export const StyledProblem = styled.div`
         font-weight: bold;
         background-color: #ffffff;
         color : #325CC7;
-        // border : solid #325CC7;
         border-radius : 5px;
         text-align: center;
-        // line-height: 60px;
         margin-right: 20px;
         box-shadow: 1px 3px #CCC9C9;
     }
@@ -55,15 +53,11 @@ export const StyledProblem = styled.div`
         justify-content: space-between;
     }
     .content_container {
-        // display: flex;
-        // justify-content: space-between;
-        // width: 1376px;
-        // margin: auto;
-        // padding: 20px;
-
-        // width: 606px;
         width: 40%;
-        height: 564px;
+        height: auto;
+
+        justify-content: center;
+        font-size: 18px;
 
         flex: 3;
 
@@ -97,31 +91,25 @@ export const StyledProblem = styled.div`
         margin: 15px auto;
     }
 
-    .input_data {
-        width: 80%;
-        height: 300px;
-        font-size: 20px;
-        display: flex;
-    
-        text-align: center;
-        align-items: center;
+    .content_container > .content {
+        width: 90%;
+        text-align: left;
         margin: auto;
-
     }
-    .output_data {
-        width: 80%;
-        height: 300px;
-        font-size: 20px;
-        text-align: center;
-        align-items: center;
+    .content_container > .sample_inputs {
+        width: 90%;
+        text-align: left;
+        margin: auto;
+    }
+    .content_container > .sample_outputs {
+        width: 90%;
+        text-align: left;
         margin: auto;
     }
 
-    
     .code_input {
-        // width: 817px;
         width: 100%;
-        height: 564px;
+        height: auto;
         font-size: 20px;
         color: #ffffff;
         display: flex;
@@ -132,7 +120,6 @@ export const StyledProblem = styled.div`
         padding: 16px 8px 0 12px;
         box-shadow: 1px 3px #CCC9C9;
     }
-
     .submit_button {
         width: fit-content;
         height: fit-content;
