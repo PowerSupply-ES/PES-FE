@@ -2,16 +2,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
+import MemberStatus from "components/question/MemberStatus";
 
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
 import { useNavigate } from "react-router-dom";
-
-const OPTIONS =    [
-    { value: 0, name: "fail"},
-    { value: 1, name: "pass"},
-    { value: 2, name: "선택"},
-];
 
 const QuestionPage = () => {
     var url = new URL(window.location.href);
@@ -30,10 +25,11 @@ const QuestionPage = () => {
     const [answerSec, setAnswerSec] = useState("");
     const [feedbacks, setFeedbacks] = useState([]);
     const [comment, setComment] = useState("");
-    const [selected, setSelected] = useState(2);
     const [passCount, setPassCount] = useState(0);
     const textFst = useRef("");
     const textSec = useRef("");
+
+    const [selectedOption, setSelectedOption] = useState(null);
     
     useEffect(() => {
         if (state === "comment" || state === "success" || state === "fail") {
@@ -59,17 +55,9 @@ const QuestionPage = () => {
     }, [getTitle]);
 
     // pass, fail 선택
-    const SelectBox = (props) => {
-        return (
-            <select onChange={ e => setSelected(e.target.value)} value={selected}>
-                {props.options.map((option) => (
-                    <option key={option.value} value={option.value} disabled={option.value === 2}>
-                        {option.name}
-                    </option>
-                ))}
-            </select>
-        );
-    };
+    const handleOption = (option) => {
+        setSelectedOption(option);
+    }
     
     function FstHandler(e) {
         textFst.current = e.target.value;
@@ -94,14 +82,14 @@ const QuestionPage = () => {
     // 댓글 제출
     function submitComment() {
         setComment(textFst.current);
-        if (!comment) {
+        if (!textFst.current) {
             alert("내용을 입력해주세요!");
         }
-        if (!selected) {
+        if (!selectedOption) {
             alert("통과 여부를 선택해주세요!");
         }
         else {
-            postFeedback(comment, selected);
+            postFeedback(textFst.current, selectedOption);
         }
     }
 
@@ -266,14 +254,11 @@ const QuestionPage = () => {
                     </div>
                 </div>
 
-                
-
-                
             </StyledQuestion>
         );
     }
 
-    function renderFeedbackUI() {
+    function renderFeedbackUI(memberStatus) {
 
         const feedbackArray = feedbacks
             ? Object.values(feedbacks)
@@ -281,48 +266,69 @@ const QuestionPage = () => {
             
         return (
             <StyledQuestion>
-            {feedbackArray.length > 0 && (
-                feedbackArray.map((feedback, index) => (
-                    <div key={index}>
-                        <div className="question_header">
-                        <div className="title">{`이메일: ${feedback.writerEmail}`}</div>
-                        <div className="title">{`Writer Name: ${feedback.writerName}`}</div>
+                <div className="feedback_section">
+                    {feedbackArray.length > 0 && (
+                        feedbackArray.map((feedback, index) => (
+                        <div className="feedback_container" key={index}>
+                            {(feedback.commentPassFail === 1) ? <div className="feedback_result" id="pass">PASS</div> : <div className="feedback_result" id="fail">FAIL</div>}
+                            <div className="question_header">
+                                <div className="feedback_index">{`Feedback ${index}`}</div>
+                                <div className="feedback_writer">{feedback.writerName}</div>
+                            </div>
+                            <div className="feedback_content">{feedback.commentContent}</div>
                         </div>
-                        <div className="feedback_container">{feedback.commentContent}</div>
-                        {(feedback.commentPassFail === 1) ? <><div>pass</div></> : <><div>fail</div></>}
-                    </div>
-                ))
-            )}
+                        ))
+                    )}
 
-            {(feedbackArray.length <= 1) && (state === "comment") && (
-                <div>
-                    <div className="question_header">
-                        <SelectBox options={OPTIONS}></SelectBox>
-                    </div>
-                    <textarea className="answer_input" onChange={FstHandler}/>
-                    <button className="answer_button" onClick={submitComment}>답변하기</button>
+                    {(memberStatus === "student") && (feedbackArray.length <= 1) && (state === "comment") && (
+                        <div>
+                            <div className="question_header">
+                                <div className="feedback_index">Feedback</div>
+                            </div>
+                            <textarea className="feedback_content" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
+                            {/* PASS FAIL 선택 */}
+                            <div className="feedback_select_section">
+                                <div className="button_container">
+                                    <div className="select_button" id="pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
+                                    <div className="select_button" id="fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
+                                </div>
+                                <p className="select_comment">PASS 혹은 FAIL을 선택해주세요.</p>
+                            </div>
+                            <button className="feedback_button" onClick={submitComment}>답변하기</button>
+                        </div>
+                    )}
                 </div>
-            )}
 
-            {(feedbackArray.length >= 2) && (
-                <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
-                    onClick={() => navigate(`/main`)}>
-                    {((passCount >= 1) && (feedbackArray.length > 1)) ? 
-                        `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
-                </div>
-            )}
+                {(feedbackArray.length >= 2) && (
+                    <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'pass' : 'fail'} 
+                        onClick={() => navigate(`/main`)}>
+                        {((passCount >= 1) && (feedbackArray.length > 1)) ? 
+                            `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+                    </div>
+                )}
+
             </StyledQuestion>
-            
-            
         );
     }
 
     return(
         <div>
             <Header/>
-            {state ? renderAnswerUI() : <p>Loading...</p>}
-            {renderFeedbackUI()}
-            <Footer></Footer>
+            <MemberStatus>
+                {(memberStatus) => {
+                    if (!memberStatus) {
+                        return <p>Loading...</p>;
+                    }
+
+                    return (
+                        <div>
+                            {state ? renderAnswerUI() : <p>Loading...</p>}
+                            {renderFeedbackUI(memberStatus)}
+                        </div>
+                    );
+                }}
+            </MemberStatus>
+            <Footer/>
         </div>
     );
 }
