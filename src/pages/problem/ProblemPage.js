@@ -35,26 +35,27 @@ const ProblemPage = () => {
             alert("코드를 입력해주세요!");
         }
         else {
-            const response = await postCode(text.current, problemId);
+            const { data: response, status} = await postCode(text.current, problemId);
 
-            if (response === undefined) {
-                alert("알 수 없는 오류가 발생했습니다. 메인 페이지로 이동합니다.");
-                navigate("/main");
+            if (!response) {
+                if (status === 403) {
+                    alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
+                    navigate("/signin");
+                } else {
+                    alert("알 수 없는 오류가 발생했습니다. 메인 페이지로 이동합니다.");
+                    navigate("/main");
+                }
             }
-            else if (response === 403) {
-                alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
-                navigate("/signin");
-            }
-            else if (response.hasOwnProperty('answerId')) {
+            else if (status === 201) {
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
-                console.log(response);
+                console.log(response, status);
                 sessionStorage.setItem('problemId', problemId);
                 navigate(`/question/${response.answerId}`);
             }
-            else {
-                setDetail(response.detail);
-                alert("문제를 틀렸습니다! 다시 풀어보세요.");
-                console.log(response);
+            else if (status === 202) {
+                await setDetail(response.detail);
+                await alert("문제를 틀렸습니다! 다시 풀어보세요.");
+                console.log(response, status);
             }
         }
     }
@@ -96,23 +97,19 @@ const ProblemPage = () => {
     // 코드 제출하기 (post)
     async function postCode(request, problemId) {
         try {
-            const {data: response} = await axios.post(
+            const response = await axios.post(
                 `/api2/submit/${problemId}`,
                 {
                     code: request,
                     problemId: problemId,
                 }
             )
-            // console.log(response);
             
-            return response;
+            return { data: response.data, status: response.status };
 
         } catch (error) {
-            if (error.response && error.response.status === 403) {
-                return error.response.status;
-            } else {
-                console.log(error);
-            }
+            console.log(error);
+            return { status: error.response ? error.response.status : 500 };
         }
     }
 
