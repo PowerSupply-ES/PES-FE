@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { BsFillHexagonFill } from "react-icons/bs";
 
 
 
@@ -101,7 +102,7 @@ function Header1(){
      <div className='btns'>
        <div className='userLevel'>level</div>
        <button className='userId' onClick={toggleDropdown}>
-          {memberEmail}
+          {memberEmail}{'님'}
          {isDropdownOpen &&(
            <div className='dropdown-content'>
               {/* <div className='userImage'></div> */}

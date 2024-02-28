@@ -58,9 +58,7 @@ button:hover {
   color: #ffffff;
   padding: 5px 10px;
 }
-/* .userLevel:hover {
-  background-color: #575757;
-} */
+
 .btns{
   display: flex;
   margin: 20px 60px 0px auto;
@@ -95,6 +93,7 @@ button:hover {
   color: #1c1c1dc3;
   
 }
+
 .menu1, .menu2{
   height: fit-content;
   font-size: 26px;
