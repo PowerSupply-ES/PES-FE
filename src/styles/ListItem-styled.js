@@ -24,16 +24,18 @@ export const StyledListItem = styled.div`
         font-size: 18px;
         text-align: center;
         line-height: 34px;
-        font-weight: bold;
+        
     }
 
     .problem_title {
         flex: 1; /* Take up remaining space */
-        font-size: 22px;
+        font-size: 20px;
         text-align: left; 
         &:hover {
             cursor: pointer;
         }
+        font-weight: bold;
+        color: #000000; opacity:80%;
     }
 
     .grade {
@@ -42,7 +44,7 @@ export const StyledListItem = styled.div`
         margin-right: 20px;
         line-height: 34px;
         font-weight: bold;
-        color: #000000; opacity:70%;
+        color: #000000; opacity:60%;
         }
 
     .button {
@@ -54,7 +56,9 @@ export const StyledListItem = styled.div`
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
         background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.9)" : props.state === "fail" ? "rgba(244, 117, 117, 0.9)" : "white"};
         border-radius: 8px;
-        font-size: 18px;
+        font-size: 17px;
+        font-weight: bold;
+
         text-align: center;
         border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
         transition: background-color 0.3s;

@@ -581,6 +581,7 @@ button:hover {
   background-color: #272727;
   margin-top: 300px;
   display: flex;
+  padding: 20px 0;
 }
 .footer_left{
   width: 60%;
@@ -596,7 +597,7 @@ button:hover {
   height: 100px;
   font-size: 40px;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 24px;
   color: #ffffffec;
 }
 .footer_left > .info > *{
