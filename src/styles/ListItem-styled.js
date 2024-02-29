@@ -51,7 +51,7 @@ export const StyledListItem = styled.div`
         
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
         background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.9)" : props.state === "fail" ? "rgba(244, 117, 117, 0.9)" : "white"};
-        border-radius: 10px;
+        border-radius: 8px;
         font-size: 20px;
         text-align: center;
         border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};

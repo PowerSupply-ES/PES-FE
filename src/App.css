@@ -40,17 +40,19 @@ button:hover {
   margin: 15px 50px 0px auto;
   border-color: #5a2cda;;
 }
-.userId{
+.container > .btns > button{
   width: fit-content;
-  color: #000000;
-  /* background-color: #5a2cda; */
+  color: #ffffff;
+  font-size: 16px;
+  background-color: #000000;
 }
+
 .logout:hover{
   background-color: #5a2cda; opacity: 100%;
 }
 .userId:hover{
   background-color: rgb(216, 216, 216);
-  
+
 }
 .userLevel{
   width: fit-content;
@@ -161,6 +163,13 @@ button:hover {
   background-color: #5A2CDA;
   border: solid #5A2CDA 2px;
   /* padding: 0px 15px; */
+}
+.main_btn > .btn1:hover{
+  background-color: rgba(255, 255, 255, 0.201);
+}
+.main_btn > .btn2:hover{
+  background-color: #a289e5;
+  border: solid #a289e5 2px;
 }
 
 .content1{
