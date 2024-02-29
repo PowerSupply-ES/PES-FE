@@ -245,7 +245,7 @@ const QuestionPage = () => {
                     }
                     </div>
                 </div>
-                {(state === "comment") && (!qnA.answerFst || !qnA.answerSec) && (
+                {(state === "question") && (!qnA.answerFst || !qnA.answerSec) && (
                     <button className="button answer" onClick={submitAnswer}>답변하기</button> 
                 )}
                 {(state === "success" || state === "fail") && (
