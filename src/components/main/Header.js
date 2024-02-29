@@ -118,8 +118,9 @@ function Header1(){
                 현재<p>{memberData.memberScore}</p>점
               </div>
 
-              <div>
+              <div className='navbar_bottom'>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
+                <p>|</p>
                 <a onClick={logout} className='btn_logout'>로그아웃</a>
               </div>
            </div>

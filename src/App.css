@@ -409,8 +409,7 @@ button:hover {
 .dropdown-content > :last-child{
   margin-top: 20px;
   font-size: 14px;
-  color: #808080;
-
+  color: #000000; opacity:55%;
 }
 .dropdown-content > .memberName{
   margin-bottom: 8px;
@@ -439,26 +438,22 @@ button:hover {
   border-radius: 8px;
   margin: 8px;
 }
-
-.btn_logout{
-  margin-left: 12px;
+.navbar_bottom{
+  display: flex;
 }
-.btn_mypage, .btn_logout{
-  /* background-color: #6D63E4; opacity: 60%; */
-  background-color: #000000; opacity:36%;
+.navbar_bottom > p{
+  margin: 0 8px;
+}
 
-  width: fit-content;
-  height: fit-content;
-  padding: 6px 12px;
-  border-radius: 8px;
-  color: #ffffff;
+.btn_mypage, .btn_logout{
   font-size: 13px;
 }
+
 .btn_mypage:hover,
 .btn_logout:hover{
-  background-color: #000000; opacity:60%;
+  color: #000000;
+  font-weight: bold;
 }
-
 
 /* -----풀이----- */
 /* 풀이타이틀 */
