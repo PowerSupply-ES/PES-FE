@@ -209,7 +209,9 @@ button:hover {
   margin: 0 auto;
 }
 .mypage_content > .left{
-  margin-right: 100px;
+  margin-right: 60px;
+  display: flex;
+  align-items: baseline;
 }
 .mypage_content > .right{
   display: flex;
@@ -228,7 +230,9 @@ button:hover {
 
 .content_mypage{
   padding-top: 40px;
-  background-color: #ECEAFF;
+  /* background-color: #ECEAFF; */
+  background-color: #f2f1fe;
+
   height: 100vh;
   padding-bottom: 300px;
   margin-bottom: -300px;
@@ -254,13 +258,17 @@ button:hover {
   border-radius: 10px;
 }
 .memberInfo{
-  height: 360px;
-  width: 200px;
-  margin: 48px auto;
+  height: 60%;
+  width: 220px;
+  /* margin-bottom: 140px; */
+  margin: 36px auto;
 }
 .myProblem, .myFeedback{
   height: 240px;
   width: 800px;
+}
+.myFeedback{
+  color: #C3C2C2;
 }
 .myProblem{
   margin-bottom:16px;
@@ -334,18 +342,18 @@ button:hover {
   color: #EB3434; opacity: 80%;
 }
 .memberInfo > .info_name{
-  margin-bottom: 40px;
+  margin: 20px auto 40px;
   display: flex;
   font-weight: bold;
 }
 .memberInfo > .info_name > p{
-  font-size: 24px;
+  font-size: 23px;
   color: #000000;
 }
 .memberInfo > *{
   color: #000000; opacity: 80%;
 }
-.memberInfo > :not(:first-child){
+.memberInfo > *:not(:first-child, .info_name){
   width: 50%;
   display: flex;
   justify-content: left;

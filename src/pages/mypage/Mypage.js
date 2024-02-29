@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
+import { FaCircleUser } from "react-icons/fa6";
 import '../../App.css';
 
 const MyPage = () => {
@@ -55,7 +56,6 @@ const MyPage = () => {
         })
         .then(data => {
           setMemberData(data);
-          console.log('정보가져오기!');
 
         })
         .catch(error => {
@@ -79,7 +79,6 @@ const MyPage = () => {
         })
         .then(data => {
           setMyProb(data);
-          console.log('문제가져오기!');
 
         })
         .catch(error => {
@@ -133,15 +132,19 @@ const MyPage = () => {
 
         <div className='content_mypage'>
 
-          <h2>My 페이지</h2>
+          {/* <h2>My 페이지</h2> */}
           <div className='mypage_content'>
             <div className='left'>
               {/* 사용자 정보 */}
               <div className="memberInfo">
-                <div className='info_name'><p>{memberData.memberName}</p><p>님</p></div>
+                <FaCircleUser size={60} style={{color:'grey'}}></FaCircleUser>
+                <div className='info_name'>
+                  <p>{memberData.memberName}</p>
+                  <p>님</p>
+                </div>
                 <div><p>{memberData.memberEmail}</p></div>
                 <div><p>{memberData.memberGen}</p><p>기</p></div>
-                <div><p>{memberData.memberStatus}</p><p>중</p></div>
+                <div><p>{memberData.memberStatus}</p></div>
                 <div><p>{memberData.memberMajor}</p><p>학과</p></div>
                 <div><p>{memberData.memberPhone}</p></div>
               </div>

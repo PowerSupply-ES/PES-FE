@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import { FaUserCircle } from "react-icons/fa";
 import { FaRobot } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
-import { BsFillHexagonFill } from "react-icons/bs";
+import { FaCircleUser } from "react-icons/fa6";
+
 
 
 
@@ -108,7 +109,9 @@ function Header1(){
            <div className='dropdown-content'>
               {/* <div className='userImage'></div> */}
               {/* <FaUserCircle size={92}></FaUserCircle> */}
-              <FaRobot size={72}></FaRobot>
+              {/* <FaRobot size={72}></FaRobot> */}
+              <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
+
               <div className='memberName'>{memberData.memberName}님</div>
               <div className='memberStatus'>{memberData.memberStatus}</div>
               <div className='memberScore'>
