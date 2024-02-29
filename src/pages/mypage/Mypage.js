@@ -14,6 +14,7 @@ const MyPage = () => {
       memberStatus: '',
       memberMajor: '',
       memberPhone: '',
+      memberId:''
       // memberScore: ''
     });
 
@@ -142,6 +143,7 @@ const MyPage = () => {
                   <p>{memberData.memberName}</p>
                   {/* <p>님</p> */}
                 </div>
+                <div><p>{memberData.memberId}</p></div>
                 <div><p>{memberData.memberEmail}</p></div>
                 <div><p>{memberData.memberGen}</p><p>기</p></div>
                 <div><p>{memberData.memberStatus}</p></div>
