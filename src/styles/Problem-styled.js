@@ -11,6 +11,11 @@ export const StyledProblem = styled.div`
         position: relative;
         left: 50%;
         transform: translateX(-50%);
+        justify-content: space-between;
+    }
+    .problem_group {
+        display: flex;
+        align-items: center;
     }
     .problem_id {
         width: 80px;
@@ -28,14 +33,27 @@ export const StyledProblem = styled.div`
     .header_title {
         font-size: 20px;
         font-weight: bold;
-        flex: 1;
         text-align: left;
+        margin-right: 20px;
     }
     .header_score {
         font-size: 20px;
         font-weight: bold;
         text-align: left;
         margin-left: 20px;
+    }
+    .header_answer_state {
+        width: 70px;
+        padding: 5px 0;
+        color: ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "#EB3434" : "#6A6B6F"};
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 10px;
+        border-radius : 5px;
+        background-color: #ffffff;
+        box-shadow: 1px 3px #CCC9C9;
+        border: solid 3px ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "#EB3434" : "#DEDEDE"};
+        box-sizing: border-box;
     }
     .description {
         width: 1376px;
