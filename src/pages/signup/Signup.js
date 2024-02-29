@@ -3,6 +3,7 @@ import '../../styles/intro.css';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
+    memberId:'',
     memberEmail: '',
     memberPw: '',
     memberName: '',
@@ -74,7 +75,7 @@ const Signup = () => {
         
         <form onSubmit={handleSubmit}>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberName"> 이름</label>
             <input
               type="text"
@@ -86,8 +87,20 @@ const Signup = () => {
               required
             />
           </div>
+          <div className="signin-input">
+            <label htmlFor="memberId">아이디(학번)</label>
+            <input
+              type="text"
+              id="memberId"
+              name="memberId"
+              value={formData.memberId}
+              placeholder='학번을 입력해주세요'
+              onChange={handleInputChange}
+              required
+            />
+          </div>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberEmail">이메일</label>
             <input
               type="text"
@@ -100,7 +113,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberPw"> 비밀번호</label>
             <input
               type="password"
@@ -113,7 +126,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberGen"> 기수</label>
             <input
               type="text"
@@ -126,7 +139,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberMajor"> 학과</label>
             <input
               type="text"
@@ -139,7 +152,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-container">
+          <div className="signin-input">
             <label htmlFor="memberPhone"> 전화번호</label>
             <input
               type="tel"

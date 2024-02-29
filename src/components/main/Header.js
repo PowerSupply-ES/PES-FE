@@ -8,6 +8,7 @@ import { FaCircleUser } from "react-icons/fa6";
 
 
 
+
 function Header() {
 
   const status = sessionStorage.getItem('status');
@@ -87,16 +88,33 @@ function Header1(){
   }, []);
 
 
+ const status = sessionStorage.getItem('status');
  const logout = () =>{
-  // 쿠키 제거
-      // 과거의 날짜로 설정하여 쿠키를 즉시 만료
-      document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=pes23.com";  
-      // 로컬 스토리지 클리어
-      sessionStorage.clear();
-      localStorage.clear();
-      alert('로그아웃되었습니다.');
-      window.location.href = '../main';
+  // if(!status){
+  //   alert('로그아웃 상태입니다.');
+  //   return;
+  // }
+    // 쿠키 제거
+    // 과거의 날짜로 설정하여 쿠키를 즉시 만료
+    document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=pes23.com; Secure;" 
+
+    // 로컬 스토리지 클리어
+    sessionStorage.clear();
+    localStorage.clear();
+    alert('로그아웃되었습니다.');
+    window.location.href = '../main';
   }
+
+
+// const [, , removeCookie] = useCookies('Authorization')
+
+// const handleLogout = () => {			// 로그아웃 버튼을 누르면 실행되는 함수
+//   removeCookie('Authorization', { path: '/' });    // 쿠키삭제후
+//   alert('로그아웃되었습니다.');
+//   sessionStorage.clear();
+//   localStorage.clear();
+//   window.location.href = '../main';
+// };
 
  return(
    //토글버튼
@@ -122,6 +140,10 @@ function Header1(){
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
                 <p>|</p>
                 <a onClick={logout} className='btn_logout'>로그아웃</a>
+                {/* <Logout></Logout> */}
+                {/* <a onClick={handleLogout} className='btn_logout'>로그아웃</a> */}
+
+                
               </div>
            </div>
          )}

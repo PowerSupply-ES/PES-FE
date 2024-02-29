@@ -551,18 +551,27 @@ button:hover {
   display: flex;
   font-size: var(--font-medium);
 }
-.left > .userNum{
-  color: #04CA00;
+.left > .userGen{
+  /* color: #04CA00; */
+  width: 44px;
   font-size: 20px;
   display: flex;
+  color: #04CA00;
+
 }
-.left > .userName, .right > .process_num{
+.right > .process_num{
   color: black;
   font-size: 20px;
 }
+.left > .userName{
+  width: 100px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-.process_num, .userNum {
-  margin-right: 32px;
+.process_num, .userGen {
+  margin-right: 20px;
 }
 
 .btn_goto_challenge{

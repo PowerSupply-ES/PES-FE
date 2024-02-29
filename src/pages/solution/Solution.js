@@ -50,9 +50,10 @@ function Solution() {
     sendGetProblem();
   }, [sendGetProblem]);
 
+  
+  //풀이 불러오기
   const [solveData, setSolveData] = useState([]);
 
-  //풀이 불러오기
   const sendGetSolve = useCallback(async() => {
 
     const uri = '../api/answerlist/';
@@ -122,8 +123,8 @@ function SolvingList({ solveData }) {
       {solveData.map((it) => (
         <div className="solving" key={it.answerId}>
           <div className="left">
-            <div className="userNum">{it.answerId}<p>님</p></div>
-            <div className="userName">{it.memberEmail}</div>
+            <div className="userGen">{it.memberGen}<p>기 </p></div>
+            <div className="userName">{it.memberName}</div>
           </div>
           <div className="right">
             {/* <div className="process_num">1/2</div> */}

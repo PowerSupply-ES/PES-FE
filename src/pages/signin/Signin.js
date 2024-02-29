@@ -3,7 +3,7 @@ import '../../styles/intro.css';
 
 const Signin = () => {
   const [formData, setFormData] = useState({
-    memberEmail: '',
+    memberId: '',
     memberPw: ''
   });
 
@@ -31,7 +31,7 @@ const Signin = () => {
       window.location.href = '/list';
 
       sessionStorage.setItem('status', true);
-      sessionStorage.setItem('memberEmail', formData.memberEmail);
+      sessionStorage.setItem('memberId', formData.memberId);
     })
     .catch((error) => {
       const errorMessage = '오류 발생: ' + error.message;
@@ -73,19 +73,19 @@ const Signin = () => {
         <h4>로그인</h4>
 
         <form onSubmit={handleSubmit}> 
-          <div className="input-container">
-            <label htmlFor="memberEmail">이메일</label>
+          <div className="login-input">
+            <label htmlFor="memberId">아이디(학번)</label>
             <input
               type="text"
-              id="memberEmail"
-              name="memberEmail"
-              value={formData.memberEmail}
-              placeholder='이메일을 입력해주세요'
+              id="memberId"
+              name="memberId"
+              value={formData.memberId}
+              placeholder='학번을 입력해주세요'
               onChange={handleInputChange} /* 입력 값이 변경될 때 핸들러 추가 */
               required
             />
           </div>
-          <div className="input-container">
+          <div className="login-input">
             <label htmlFor="memberPw">비밀번호</label>
             <input
               type="password"

@@ -26,7 +26,7 @@
   flex-direction: column;
   text-align: left;
   justify-content: center;
-  margin-right: 160px;
+  margin-right: 180px;
   width: 38vh;
   height: 60vh;
 }
@@ -55,23 +55,22 @@ h2 {
   font-size: 32px;
 }
 
-h4{
-  color: #949494;
-  margin: 12px auto 22px;
-}
 .signup-container > h4{
   color: #949494;
-  margin: 12px auto 2px;
+  margin: 12px auto 40px;
 }
-
+.login-container > h4{
+  color: #949494;
+  margin: 12px auto 32px;
+}
 #signin-form,
 #signup-form{
   margin-top: 20px;
 }
 
 .login-container{
-  width: 320px;
-  height: fit-content;
+  width: 380px;
+  height: 72%;
   border: solid 2px #C3C2C2;
   border-radius: 10px;
   background-color: #F6F8FA;
@@ -82,9 +81,9 @@ h4{
 }
 
 .signup-container{
-  width: 320px;
+  width: 380px;
   /* width: 38vh; */
-  /* height: 80vh; */
+  height: 90%;
   height:fit-content;
   border: solid 2px #C3C2C2;
   border-radius: 10px;
@@ -100,7 +99,6 @@ h4{
 .signup-container > form{
   width: 100%;
   margin-top: 10px;
-
 }
 .login-container > a{
   margin: 15px 15px 25px auto;
@@ -108,36 +106,64 @@ h4{
   color: #6B6B6B;
 }
 .signup-container > a{
-  margin: 15px 15px 10px auto;
+  margin: 15px 15px 25px auto;
   font-size: 13px;
   color: #6B6B6B;
 }
 
-.input-container {
-  width: 75%;
-  margin: 0 auto 15px;
+.login-input {
+  width: 100%;
+  margin: 0 auto 24px;
   text-align: left;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.signin-input {
+  width: 80%;
+  margin: 0 auto 15px;
+  text-align: left;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
   justify-content: center;
 }
 
-label {
+.signin-input > label {
+  width: 25%;
   display: block;
   margin: 3px;
   color: #3D3D3D;
   font-weight: bold;
   font-size: 14px;
 }
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"] {
+.login-input > label {
+  width: 70%;
+  display: block;
+  margin: 3px;
+  color: #3D3D3D;
+  font-weight: bold;
+  font-size: 14px;
+}
+.signin-input > input[type="text"],
+.signin-input > input[type="password"],
+.signin-input > input[type="email"],
+.signin-input > input[type="tel"] {
+  width: 60%;
   padding: 10px;
   border: 1px solid #5094f9;
   border-radius: 10px;
   background-color: #FFFFFF;
+}
+.login-input > input[type="text"],
+.login-input > input[type="password"]{
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #5094f9;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  margin-top: 4px;
 }
 
 /* 로그인,회원가입 버튼 */
@@ -159,10 +185,10 @@ input[type="tel"] {
   background-color: #5a2cdac6;
 }
 .btn_signup{
-  margin: 30px auto 20px;
+  margin: 40px auto 40px;
 }
 .btn_signin{
-  margin: 30px auto 15px;
+  margin: 40px auto 0;
 
 }
 
