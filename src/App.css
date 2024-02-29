@@ -584,6 +584,8 @@ button:hover {
 }
 .footer_left > .logo{
   margin-top: 20px;
+  color: #ffffffec;
+
 }
 .footer_left > .info > *{
   display: flex;
@@ -611,8 +613,9 @@ button:hover {
   text-decoration: none;
   color: inherit;
 }
-.footer :not(.info1, .info2, .footer_logout){
-  color: #ffffff;
+.footer :not(.logo, .info1, .info2, .footer_logout){
+  color: #ffffffec;
+  ;
 }
 .info1, .info2{
   color: #C8C4C4; opacity: 57%;

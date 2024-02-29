@@ -44,12 +44,15 @@ export const StyledListItem = styled.div`
         }
 
     .button {
-        width: 150px;
-        height: 42px;
-        color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#565656"};
+        width: fit-content;
+        height: fit-content;
+        padding: 6px 30px;
+        box-shadow: 1px 1px #CCC9C9;
+        
+        color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
         background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.9)" : props.state === "fail" ? "rgba(244, 117, 117, 0.9)" : "white"};
         border-radius: 10px;
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
         border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
         transition: background-color 0.3s;
