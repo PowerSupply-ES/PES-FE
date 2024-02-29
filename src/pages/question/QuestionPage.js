@@ -194,15 +194,24 @@ const QuestionPage = () => {
     
     function renderAnswerUI() {
         return (
-            <StyledQuestion>
-                <StyledProblem>
+            <StyledQuestion className="problem_answer_section">
+                <StyledProblem className="problem_section" state={state}>
                     <div className="problem_header">
-                        <div className="problem_id">문제{problemId}</div>
-                        <div className="header_title">{title.problemTitle}</div>
-                        <div className="header_score">점수 {title.problemScore}</div>
+                        <div className="problem_group">
+                            <div className="problem_id">문제{problemId}</div>
+                            <div className="header_title">{title.problemTitle}</div>
+                            <div className="header_answer_state">
+                                {state === "success" ? "성공" : state === "fail" ? "실패" : "미완료"}
+                            </div>
+                        </div>
+                        <div className="button_group">
+                            <button className="button problem"></button>
+                            {(state === "success" || state === "fail") && (
+                                <button className="button solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
+                            )}
+                        </div>
                     </div>
                 </StyledProblem>
-
                 <div className="code_question_container">
                     <div className="code_container">{code}</div>
                     <div className="question_container">
@@ -248,9 +257,6 @@ const QuestionPage = () => {
                 {(state === "question") && (!qnA.answerFst || !qnA.answerSec) && (
                     <button className="button answer" onClick={submitAnswer}>답변하기</button> 
                 )}
-                {(state === "success" || state === "fail") && (
-                    <button className="button solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
-                )}
             </StyledQuestion>
         );
     }
@@ -262,7 +268,7 @@ const QuestionPage = () => {
             : [];
             
         return (
-            <StyledQuestion>
+            <StyledQuestion className="feedback_section_1">
                 <div className="feedback_section">
                     {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
                         <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다.</div>

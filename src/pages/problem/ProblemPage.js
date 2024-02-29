@@ -125,11 +125,11 @@ const ProblemPage = () => {
 
     function renderProbUI() {
         return (
-            <StyledProblem>
+            <StyledProblem state={"null"}>
                 <div className="problem_header">
                     <div className="problem_id">문제{problemId}</div>
                     <div className="header_title">{title.problemTitle}</div>
-                    <div className="header_score">점수 {title.problemScore}</div>
+                    <div className="header_answer_state">미완료</div>
                 </div>
 
                 <div className="promblem_section">
