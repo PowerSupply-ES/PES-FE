@@ -78,6 +78,7 @@ const ListPage = () => {
                 <Button>CLEAR</Button>
             </Filter>
             */}
+            
             {
                 list.map((problem) => (
                     <ProblemItem
