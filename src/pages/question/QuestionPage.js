@@ -322,7 +322,7 @@ const QuestionPage = () => {
 
                     return (
                         <div>
-                            {state ? renderAnswerUI() : <div className="loading">Loading...</div>}
+                            {renderAnswerUI()}
                             {renderFeedbackUI(memberStatus)}
                         </div>
                     );

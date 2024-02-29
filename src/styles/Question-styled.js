@@ -85,9 +85,6 @@ export const StyledQuestion = styled.div`
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
     .button {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
         width: fit-content;
         height: fit-content;
         padding: 8px 32px;
@@ -117,7 +114,6 @@ export const StyledQuestion = styled.div`
         left: 50%;
         transform: translateX(-50%);
         position: relative;
-        margin-top: 40px;
     }
     .feedback_waiting_bar {
         width: 60%;
