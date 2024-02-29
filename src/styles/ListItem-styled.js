@@ -13,7 +13,7 @@ export const StyledListItem = styled.div`
         background-color: ${props => props.state === "locked" ? "#DEDEDE" : "white"};
         transition: background-color 0.3s; /* Add transition for smooth color change */
         &:hover {
-            background-color: ${props => props.state === "locked" ? "#DEDEDE" : "#DEDEDE80"};
+            background-color: ${props => props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
         }
     }
 
@@ -31,11 +31,13 @@ export const StyledListItem = styled.div`
         flex: 1; /* Take up remaining space */
         font-size: 20px;
         text-align: left; 
+        font-weight: bold;
+
         &:hover {
             cursor: pointer;
         }
-        font-weight: bold;
-        color: #000000; opacity:80%;
+        color: #000000; opacity:70%;
+        
     }
 
     .grade {
@@ -54,7 +56,10 @@ export const StyledListItem = styled.div`
         box-shadow: 1px 1px #CCC9C9;
         
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
-        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.9)" : props.state === "fail" ? "rgba(244, 117, 117, 0.9)" : "white"};
+        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" : "white"};
+        &:hover {
+            background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 1.0)" : props.state === "fail" ? "rgba(244, 117, 117, 1.0)" : ""};
+          }
         border-radius: 8px;
         font-size: 17px;
         font-weight: bold;

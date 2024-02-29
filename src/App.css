@@ -36,22 +36,31 @@ button:hover {
 }
 .logout{
   width: fit-content;
-  background-color: #5a2cda; opacity: 70%;
+  /* background-color: #5a2cda; opacity: 70%; */
+  background-color: #ffffff;
   margin: 15px 50px 0px auto;
-  border-color: #5a2cda;;
-}
-.container > .btns > button{
-  width: fit-content;
-  color: #ffffff;
-  font-size: 16px;
-  background-color: #000000;
+  color: #555555;
+  font-weight: bold;
+  font-size: 17px;
+  /* border-color: #5a2cda;; */
+  border:solid 3px #7d7d7d;
 }
 .logout:hover{
-  background-color: #5a2cda; opacity: 100%;
-}
-.btns > .userId:hover{
-  background-color: rgb(186, 186, 186);
+  background-color: #414141;
+  border-color: #414141;
+  color: #ffffff;
 
+}
+.container > .btns > .userId{
+  width: fit-content;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: #5a2cda;
+}
+
+.btns > .userId:hover{
+  background-color: #9171e9;
 }
 .userLevel{
   width: fit-content;
@@ -416,6 +425,7 @@ button:hover {
 .dropdown-content > .memberScore{
   display: flex;
   align-items: center;
+  margin-bottom: 12px;
 }
 .memberScore > p{
   color: #04CA00;
@@ -434,7 +444,9 @@ button:hover {
   margin-left: 12px;
 }
 .btn_mypage, .btn_logout{
-  background-color: #6D63E4; opacity: 60%;
+  /* background-color: #6D63E4; opacity: 60%; */
+  background-color: #000000; opacity:36%;
+
   width: fit-content;
   height: fit-content;
   padding: 6px 12px;
@@ -444,7 +456,7 @@ button:hover {
 }
 .btn_mypage:hover,
 .btn_logout:hover{
-  background-color: #6D63E4; opacity: 90%;
+  background-color: #000000; opacity:60%;
 }
 
 

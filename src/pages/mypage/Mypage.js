@@ -140,7 +140,7 @@ const MyPage = () => {
                 <FaCircleUser size={60} style={{color:'grey'}}></FaCircleUser>
                 <div className='info_name'>
                   <p>{memberData.memberName}</p>
-                  <p>님</p>
+                  {/* <p>님</p> */}
                 </div>
                 <div><p>{memberData.memberEmail}</p></div>
                 <div><p>{memberData.memberGen}</p><p>기</p></div>
