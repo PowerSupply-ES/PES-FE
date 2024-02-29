@@ -57,7 +57,8 @@ function Header1(){
   const [memberData, setMemberData] = useState({
     memberName: '',
     memberScore: '',
-    memberData: ''
+    memberData: '',
+    memberGen:''
   });
 
 
@@ -122,7 +123,7 @@ function Header1(){
      <div className='btns'>
        {/* <div className='userLevel'>level</div> */}
        <button className='userId' onClick={toggleDropdown}>
-          {memberEmail}님
+          {memberData.memberName}님
          {isDropdownOpen &&(
            <div className='dropdown-content'>
               {/* <div className='userImage'></div> */}
@@ -131,11 +132,12 @@ function Header1(){
               <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
 
               <div className='memberName'>{memberData.memberName}님</div>
-              <div className='memberStatus'>{memberData.memberStatus}</div>
-              <div className='memberScore'>
-                현재<p>{memberData.memberScore}</p>점
+              
+              <div className='navbarInfo'>
+                <div className='memberStatus'>{memberData.memberStatus}</div>
+                <div className='memberGen'>{memberData.memberStatus}기</div>
+                <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
               </div>
-
               <div className='navbar_bottom'>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
                 <p>|</p>

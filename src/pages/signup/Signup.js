@@ -55,7 +55,7 @@ const Signup = () => {
     e.preventDefault();
     postSignup();
   };
-
+  
   const goBack = () =>{
     window.history.back();
   }
@@ -75,7 +75,7 @@ const Signup = () => {
         
         <form onSubmit={handleSubmit}>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberName"> 이름</label>
             <input
               type="text"
@@ -87,7 +87,7 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberId">아이디(학번)</label>
             <input
               type="text"
@@ -100,7 +100,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberEmail">이메일</label>
             <input
               type="text"
@@ -113,7 +113,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberPw"> 비밀번호</label>
             <input
               type="password"
@@ -126,7 +126,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberGen"> 기수</label>
             <input
               type="text"
@@ -139,7 +139,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberMajor"> 학과</label>
             <input
               type="text"
@@ -152,7 +152,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="signin-input">
+          <div className="signup-input">
             <label htmlFor="memberPhone"> 전화번호</label>
             <input
               type="tel"

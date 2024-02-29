@@ -399,29 +399,30 @@ button:hover {
   z-index: 999;
 }
 
-.dropdown-content > :not(:last-child){
+.dropdown-content > .memberName{
   color: rgb(37, 37, 37);
   font-size: 17px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .dropdown-content > :first-child{
   margin: 15px auto;
 }
-.dropdown-content > :last-child{
+.dropdown-content > .navbar_bottom{
   margin-top: 20px;
   font-size: 14px;
   color: #000000; opacity:55%;
 }
-.dropdown-content > .memberName{
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: bold;
+.navbarInfo{
+  width: 40%;
+  text-align: left;
 }
-.dropdown-content > .memberScore,
-.dropdown-content > .memberStatus{
-  font-size: 17px;
+.navbarInfo > *{
+  font-size: 15px;
   color: #808080;
 }
-.dropdown-content > .memberScore{
+.navbarInfo > .memberScore{
   display: flex;
   align-items: center;
   margin-bottom: 12px;
