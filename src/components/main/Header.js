@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { FaUserCircle } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { BsFillHexagonFill } from "react-icons/bs";
 
@@ -102,14 +103,17 @@ function Header1(){
      <div className='btns'>
        <div className='userLevel'>level</div>
        <button className='userId' onClick={toggleDropdown}>
-          {memberEmail}{'님'}
+          {memberEmail}님
          {isDropdownOpen &&(
            <div className='dropdown-content'>
               {/* <div className='userImage'></div> */}
-              <FaUserCircle size={92}></FaUserCircle>
-              <div>이름: {memberData.memberName}</div>
-              <div>점수: {memberData.memberScore}</div>
-              <div>상태: {memberData.memberStatus}</div>
+              {/* <FaUserCircle size={92}></FaUserCircle> */}
+              <FaRobot size={72}></FaRobot>
+              <div className='memberName'>{memberData.memberName}님</div>
+              <div className='memberStatus'>{memberData.memberStatus}</div>
+              <div className='memberScore'>
+                현재<p>{memberData.memberScore}</p>점
+              </div>
 
               <div>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>

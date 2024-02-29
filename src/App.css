@@ -367,9 +367,9 @@ button:hover {
   align-items: center;
   margin-right: 0;
   background-color: #fefdfd;
-  border: solid 2px rgb(232, 232, 232);
+  border: solid 2px rgb(200, 200, 200);
   border-radius: 8px;
-  padding: 12px;
+  padding: 16px 12px;
   z-index: 999;
 }
 
@@ -385,6 +385,25 @@ button:hover {
   font-size: 14px;
   color: #808080;
 
+}
+.dropdown-content > .memberName{
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.dropdown-content > .memberScore,
+.dropdown-content > .memberStatus{
+  font-size: 17px;
+  color: #808080;
+}
+.dropdown-content > .memberScore{
+  display: flex;
+  align-items: center;
+}
+.memberScore > p{
+  color: #04CA00;
+  font-weight: bold;
+  margin-left: 8px;
 }
 .userImage{
   width: 100px;
