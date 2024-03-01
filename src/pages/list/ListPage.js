@@ -4,6 +4,7 @@ import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
+import { HiQuestionMarkCircle } from "react-icons/hi";
 
 import axios from "axios";
 
@@ -38,6 +39,16 @@ const Button = styled.button `
         outline: none;
     }
 `
+const Icon = styled.div `
+    width: 80%;
+    margin:auto;
+    display:flex;
+    justify-content: right;
+    padding: 40px 40px 20px 0;
+    cursor:pointer;
+
+`
+
 
 const ListPage = () => {
 
@@ -69,6 +80,9 @@ const ListPage = () => {
         <div>
             <Header/>
             <AdPart/>
+            <Icon>
+                <HiQuestionMarkCircle size={36}></HiQuestionMarkCircle>
+            </Icon>
             {/*
             <Filter>
                 <Button>푼 문제 보기</Button>
