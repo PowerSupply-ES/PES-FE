@@ -205,9 +205,9 @@ const QuestionPage = () => {
                             </div>
                         </div>
                         <div className="button_group">
-                            <button className="button problem"></button>
+                            <button className="button_problem">문제보기</button>
                             {(state === "success" || state === "fail") && (
-                                <button className="button solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
+                                <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                             )}
                         </div>
                     </div>
@@ -253,9 +253,12 @@ const QuestionPage = () => {
                     </>
                     }
                     </div>
-                </div>
+                </div>                
+
                 {(state === "question") && (!qnA.answerFst || !qnA.answerSec) && (
-                    <button className="button answer" onClick={submitAnswer}>답변하기</button> 
+                    <div className="btn_container">
+                        <button className="button answer" onClick={submitAnswer}>답변하기</button> 
+                    </div>
                 )}
             </StyledQuestion>
         );
@@ -269,14 +272,17 @@ const QuestionPage = () => {
             
         return (
             <StyledQuestion className="feedback_section_1">
+                <hr style={{height:1, border:"none", backgroundColor: "#3E3E3E", marginTop:100}}></hr>
+
                 <div className="feedback_section">
                     {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
-                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다.</div>
+                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다...</div>
                     )}
+                    
                     {feedbackArray.length > 0 && (
                         feedbackArray.map((feedback, index) => (
                         <div className="feedback_container" key={index}>
-                            {(feedback.commentPassFail === 1) ? <div className="feedback_result pass">PASS</div> : <div className="feedback_result fail">FAIL</div>}
+                            {(feedback.commentPassFail === 1) ? <div className="feedback_result_pass">PASS</div> : <div className="feedback_result_fail">FAIL</div>}
                             <div className="question_header">
                                 <div className="feedback_index">{`Feedback ${index+1}`}</div>
                                 <div className="feedback_writer">{feedback.writerName}</div>
@@ -306,10 +312,13 @@ const QuestionPage = () => {
                 </div>
 
                 {(feedbackArray.length >= 2) && (
-                    <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
-                        onClick={() => navigate(`/main`)}>
-                        {((passCount >= 1) && (feedbackArray.length > 1)) ? 
-                            `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+                    <div className="result_container">
+                        <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
+                            onClick={() => navigate(`/main`)}>
+                            {((passCount >= 1) && (feedbackArray.length > 1)) ? 
+                                `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+                        </div>
+                        <p>클릭시 홈화면으로 이동합니다</p>
                     </div>
                 )}
 

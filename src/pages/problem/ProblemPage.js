@@ -134,31 +134,49 @@ const ProblemPage = () => {
                     </div>
                 </div>
 
-                <div className="promblem_section">
+                <div className="problem_section">
+
+                    
+
                     <div className="content_container">
-                        <div className="content">
+
+                        {/* 상단문제 */}
+                        <div className="top">
+                            <p className="underline">문제</p>
+
+                            <div>
+                            con<br></br>t<br></br>ent<br></br>content<br></br>content<br></br>cont<br></br>entcontent
+                            con<br></br>tent<br></br>cont<br></br>entcont<br></br>entcon<br></br>tentcontent
+                            conten<br></br>tcontentc<br></br>ontent<br></br>cont<br></br>entcontent
+                            </div>
                             {problem.problemContent && renderNewlines(problem.problemContent)}
                         </div>
+                    
 
-                        <div className="sample_inputs">
-                            <h3>Sample Inputs:</h3>
-                            {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
-                                <React.Fragment key={index}>
-                                    {renderNewlines(input)}
-                                </React.Fragment>
-                            ))}
-                        </div>
-                        
-                        <div className="sample_outputs">
-                            <h3>Sample Outputs:</h3>
+                        {/* 하단 sample input */}
+                        <div className="bottom">
+                            <div className="sample_inputs">
+                                <p className="underline">Sample Inputs</p>
+                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                    <React.Fragment key={index}>
+                                        {renderNewlines(input)}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+
+                            <div className="sample_outputs">
+                            <p className="underline">Sample Outputs</p>
                             {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                                 <React.Fragment key={index}>
                                     {renderNewlines(output)}
                                 </React.Fragment>
                             ))}
-                        </div>
+                            </div>
+                        </div> 
                     </div>
 
+
+                    {/* 우측 코드 입력 */}
                     <div className="code_section">
                         {/* 원래코드 */}
                         <textarea className="code_input" placeholder = "코드를 입력해주세요." 
