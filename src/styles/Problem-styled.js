@@ -73,10 +73,8 @@ export const StyledProblem = styled.div`
     .content_container {
         width: 40%;
         height: auto;
-
         justify-content: center;
         font-size: 18px;
-
         flex: 3;
 
         display: flex;
@@ -85,6 +83,7 @@ export const StyledProblem = styled.div`
         border-radius : 20px;
         box-shadow: 1px 3px #CCC9C9;
         margin-right: 20px;
+        overflow-wrap: break-word;
     }
 
     .code_section{

@@ -57,7 +57,7 @@ function Header1(){
   const [memberData, setMemberData] = useState({
     memberName: '',
     memberScore: '',
-    memberData: '',
+    memberStatus: '',
     memberGen:''
   });
 
@@ -135,7 +135,7 @@ function Header1(){
               
               <div className='navbarInfo'>
                 <div className='memberStatus'>{memberData.memberStatus}</div>
-                <div className='memberGen'>{memberData.memberStatus}기</div>
+                <div className='memberGen'>{memberData.memberGen}기</div>
                 <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
               </div>
               <div className='navbar_bottom'>

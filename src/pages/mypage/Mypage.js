@@ -195,6 +195,7 @@ const MyPage = () => {
     const gotoProb = ( problemId ) =>{
       console.log('problemId: ',problemId);
       window.location=`problem/${problemId}`;
+      // question/answerid
     }
     return (
     <div className ='problemList' >
