@@ -127,9 +127,11 @@ const ProblemPage = () => {
         return (
             <StyledProblem state={"null"}>
                 <div className="problem_header">
-                    <div className="problem_id">문제{problemId}</div>
-                    <div className="header_title">{title.problemTitle}</div>
-                    <div className="header_answer_state">미완료</div>
+                    <div className="problem_group">
+                        <div className="problem_id">문제{problemId}</div>
+                        <div className="header_title">{title.problemTitle}</div>
+                        <div className="header_answer_state">미완료</div>
+                    </div>
                 </div>
 
                 <div className="promblem_section">
