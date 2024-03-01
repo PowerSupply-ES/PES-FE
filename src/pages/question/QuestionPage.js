@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
@@ -22,10 +22,20 @@ const QuestionPage = () => {
     const [qnA, setQnA] = useState([]);
     const [feedbacks, setFeedbacks] = useState([]);
     const [passCount, setPassCount] = useState(0);
+    const [problem, setProblem] = useState([]);
+
     const textFst = useRef("");
     const textSec = useRef("");
 
     const [selectedOption, setSelectedOption] = useState(null);
+    const[isDropdownOpen,setIsDropdownOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        if (!isDropdownOpen) {
+            getProblem();
+        }
+        setIsDropdownOpen((상태)=>!상태);
+    }
     
     useEffect(() => {
         if (state === "comment" || state === "success" || state === "fail") {
@@ -191,6 +201,27 @@ const QuestionPage = () => {
             console.log(error);
         }
     }
+
+    function renderNewlines(text) {
+        return text.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
+    }
+
+    const getProblem = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problem/${problemId}`,
+                    {withCredentials: true}
+                );
+                setProblem(response);
+            } catch (error) {
+                console.log(error);
+            }
+    }, [problemId]);
     
     function renderAnswerUI() {
         return (
@@ -205,7 +236,33 @@ const QuestionPage = () => {
                             </div>
                         </div>
                         <div className="button_group">
-                            <button className="button_problem">문제보기</button>
+                            <button className="button problem" onClick={toggleDropdown}>문제보기
+                                 {isDropdownOpen && (
+                                    <div className='dropdown-content'>
+                                        <div className="content">
+                                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                                        </div>
+
+                                        <div className="sample_inputs">
+                                            <h3>Sample Inputs:</h3>
+                                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                                <React.Fragment key={index}>
+                                                    {renderNewlines(input)}
+                                                </React.Fragment>
+                                            ))}
+                                        </div>
+                        
+                                        <div className="sample_outputs">
+                                            <h3>Sample Outputs:</h3>
+                                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                                <React.Fragment key={index}>
+                                                    {renderNewlines(output)}
+                                                </React.Fragment>
+                                            ))}
+                                        </div>
+                                    </div>
+                                 )}
+                            </button>
                             {(state === "success" || state === "fail") && (
                                 <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                             )}
@@ -285,6 +342,7 @@ const QuestionPage = () => {
                             {(feedback.commentPassFail === 1) ? <div className="feedback_result_pass">PASS</div> : <div className="feedback_result_fail">FAIL</div>}
                             <div className="question_header">
                                 <div className="feedback_index">{`Feedback ${index+1}`}</div>
+                                <div className="feedback_writer">{feedback.writerGen}기</div>
                                 <div className="feedback_writer">{feedback.writerName}</div>
                             </div>
                             <div className="feedback_content display">{feedback.commentContent}</div>
