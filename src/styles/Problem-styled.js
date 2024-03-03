@@ -172,7 +172,7 @@ export const StyledProblem = styled.div`
         text-underline-offset : 6px;
         text-decoration-color: #5094F9; opacity:70%;
 
-        font-size: 18px;
+        font-size: 19px;
         // color:#6D63E4; opacity:80%;
         font-weight:bold;
         margin-bottom: 12px;

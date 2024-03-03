@@ -143,12 +143,7 @@ const ProblemPage = () => {
                         {/* 상단문제 */}
                         <div className="top">
                             <p className="underline">문제</p>
-
-                            <div>
-                            con<br></br>t<br></br>ent<br></br>content<br></br>content<br></br>cont<br></br>entcontent
-                            con<br></br>tent<br></br>cont<br></br>entcont<br></br>entcon<br></br>tentcontent
-                            conten<br></br>tcontentc<br></br>ontent<br></br>cont<br></br>entcontent
-                            </div>
+                            
                             {problem.problemContent && renderNewlines(problem.problemContent)}
                         </div>
                     

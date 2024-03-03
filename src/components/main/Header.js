@@ -1,12 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+// import Logout from 'components/logout/Logout';
+
 import { FaUserCircle } from "react-icons/fa";
 import { FaRobot } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
-
-
-
 
 
 function Header() {
@@ -88,34 +87,43 @@ function Header1(){
     userInfo();
   }, []);
 
+  //로그아웃 api호출 함수
+  const logoutUser = () => {
+    const uri = 'api/logout';
+  
+    fetch(uri, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // 여기에 필요한 헤더를 추가할 수 있습니다.
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          console.error('로그아웃 실패:', response.status, response.statusText);
+          throw new Error(`로그아웃 실패: ${response.status} ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // 로컬 스토리지 클리어
+        sessionStorage.clear();
+        localStorage.clear();
+        alert(data.message);
 
- const status = sessionStorage.getItem('status');
- const logout = () =>{
-  // if(!status){
-  //   alert('로그아웃 상태입니다.');
-  //   return;
-  // }
-    // 쿠키 제거
-    // 과거의 날짜로 설정하여 쿠키를 즉시 만료
-    document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=pes23.com; Secure;" 
-
-    // 로컬 스토리지 클리어
-    sessionStorage.clear();
-    localStorage.clear();
-    alert('로그아웃되었습니다.');
-    window.location.href = '../main';
-  }
+        window.location.href = '../main';
+        // 추가적으로 필요한 정보가 있다면 제거해주세요.
+      })
+      .catch(error => {
+        console.error('로그아웃 실패:', error);
+      });
+  };
 
 
-// const [, , removeCookie] = useCookies('Authorization')
-
-// const handleLogout = () => {			// 로그아웃 버튼을 누르면 실행되는 함수
-//   removeCookie('Authorization', { path: '/' });    // 쿠키삭제후
-//   alert('로그아웃되었습니다.');
-//   sessionStorage.clear();
-//   localStorage.clear();
-//   window.location.href = '../main';
-// };
+  const handleLogoutClick = () => {
+    console.log("로그아웃");
+    logoutUser();
+  };
 
  return(
    //토글버튼
@@ -141,7 +149,7 @@ function Header1(){
               <div className='navbar_bottom'>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
                 <p>|</p>
-                <a onClick={logout} className='btn_logout'>로그아웃</a>
+                <a onClick={handleLogoutClick} className='btn_logout'>로그아웃</a>
                 {/* <Logout></Logout> */}
                 {/* <a onClick={handleLogout} className='btn_logout'>로그아웃</a> */}
 
@@ -155,8 +163,6 @@ function Header1(){
      
      <div className='navbar'>
        <a className='logo' onClick={()=>navigate('/main')}>PES</a>
-        {/* 주석처리하기! */}
-       {/* <a className='menu2' onClick={()=>navigate('/solution')}>풀이</a> */}
        <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
      </div>
    </div>
