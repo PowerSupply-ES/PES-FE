@@ -34,8 +34,8 @@ font-style: normal;
     width: 180px;
     height: fit-content;
     font-size: 25px;
-    border: solid 2px rgb(91, 91, 91);
-    background-color: rgb(91, 91, 91);
+    /* rgb(91, 91, 91); */
+    background-color: #785accce;
     color: white;
     border-radius: 8px;
     padding: 8px 16px;
