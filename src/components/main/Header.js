@@ -35,6 +35,8 @@ function Header0(){
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/main')}>PES</p>
            <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+           <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
+
          </div>
 
        </div>

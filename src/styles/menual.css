@@ -1,0 +1,55 @@
+.App {
+    text-align: center;
+    font-family: 'Pretendard-Regular';
+}
+@font-face {
+font-family: 'Pretendard-Regular';
+src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+font-weight: 400;
+font-style: normal;
+}
+
+
+.menual_intro,.menual_problem{
+    /* background-color: red; */
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.content_menual{
+    display: flex;
+    justify-content: center;
+}
+.menual_intro > h2{
+    margin-top: -80px;
+    margin-bottom: 80px;
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrap > .keyword{
+    width: 180px;
+    height: fit-content;
+    font-size: 25px;
+    border: solid 2px rgb(91, 91, 91);
+    background-color: rgb(91, 91, 91);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    font-weight: bold;
+
+}
+.wrap > *:last-child{
+    width: 300px;
+    height: fit-content;
+    font-size: 23px;
+}
+
+.menual_problem{
+    background-color: #000000;
+    opacity: 81%;
+}
