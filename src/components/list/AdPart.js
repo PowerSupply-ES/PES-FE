@@ -11,7 +11,7 @@ const AdContainer = styled.div`
     justify-content:center;
     width:100%;
     height: 90px;
-    padding:0px 0;
+    padding:20px 0;
     margin: auto;
     margin-bottom: 48px;
 `
