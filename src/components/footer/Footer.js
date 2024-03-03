@@ -25,6 +25,8 @@ const logout = () =>{
   }
 
 function Bottom(){ 
+  const status = sessionStorage.getItem('status');
+
     return(
       <div className='footer'>
 
@@ -47,7 +49,13 @@ function Bottom(){
               </a>
             </div>
         
-            <div onClick={logout} className='footer_logout'>로그아웃</div>
+            {/* 로그아웃 상태시 안보이게 */}
+            {status ? (
+              <div onClick={logout} className='footer_logout'>로그아웃</div>
+            ) : (
+              <>
+              </>
+            )}
         </div>
 
       </div>
