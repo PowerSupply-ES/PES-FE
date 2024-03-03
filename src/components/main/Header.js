@@ -94,8 +94,7 @@ function Header1(){
     fetch(uri, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        // 여기에 필요한 헤더를 추가할 수 있습니다.
+        'Content-Type': 'application/json'
       },
     })
       .then(response => {
@@ -112,7 +111,6 @@ function Header1(){
         alert(data.message);
 
         window.location.href = '../main';
-        // 추가적으로 필요한 정보가 있다면 제거해주세요.
       })
       .catch(error => {
         console.error('로그아웃 실패:', error);
@@ -149,11 +147,7 @@ function Header1(){
               <div className='navbar_bottom'>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
                 <p>|</p>
-                <a onClick={handleLogoutClick} className='btn_logout'>로그아웃</a>
-                {/* <Logout></Logout> */}
-                {/* <a onClick={handleLogout} className='btn_logout'>로그아웃</a> */}
-
-                
+                <a onClick={handleLogoutClick} className='btn_logout'>로그아웃</a>    
               </div>
            </div>
          )}

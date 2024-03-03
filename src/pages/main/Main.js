@@ -5,6 +5,9 @@ import '../../App.css';
 import img1 from '../../assets/images/coding.jpg';
 
 function Main() {
+
+  const status = sessionStorage.getItem('status');
+
   return (
     <div>
       <Header></Header>
@@ -18,8 +21,15 @@ function Main() {
           </div>
           
           <div className='main_btn'>
-            <a href="/list" className='btn1'>바로가기</a>
-            <a href="/Signin" className='btn2'>로그인</a>
+            {/* status 값이 있으면 btn1만 렌더링, 없으면 btn1과 btn2 모두 렌더링 */}
+            {status ? (
+              <a href="/list" className='btn1'>바로가기</a>
+            ) : (
+              <>
+                <a href="/list" className='btn1'>바로가기</a>
+                <a href="/signin" className='btn2'>로그인</a>
+              </>
+            )}
           </div>
 
         </div>
