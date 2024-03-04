@@ -149,7 +149,8 @@ h2 {
 .signup-input > input[type="text"],
 .signup-input > input[type="password"],
 .signup-input > input[type="email"],
-.signup-input > input[type="tel"] {
+.signup-input > input[type="tel"],
+.signup-input > input[type="number"]{
   width: 60%;
   padding: 10px;
   border: 1px solid #5094f9;

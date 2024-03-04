@@ -12,9 +12,34 @@ const Signup = () => {
     memberPhone: ''
   });
 
+  // 이메일 형식 검사
+  const isEmailValid = (email) => {
+    // 이메일 형식 검사 정규식
+    // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    // 이메일이 .net 또는 .com 으로 끝나는지 확인
+    const validEndings = ['.net', '.com'];
+    const hasValidEnding = validEndings.some(ending => email.endsWith(ending));
+
+    // return emailRegex.test(email) && hasValidEnding;
+    return hasValidEnding;
+
+  };
+  
   const uri = 'api/signup';
 
   const postSignup = () => {
+
+    // 이메일 형식이 유효한지 체크
+    if (!isEmailValid(formData.memberEmail)) {
+      alert('이메일 형식이 아닙니다');
+      return;
+    }
+    // 이름이 문자로만 입력되었는지 체크
+    if (!/^[a-zA-Z가-힣]+$/.test(formData.memberName)) {
+      alert('이름은 문자로 입력해주세요');
+      return;
+    }
 
     fetch(uri, {
       method: 'POST',
@@ -25,8 +50,12 @@ const Signup = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          console.log('서버응답:', response);
-          throw new Error(`${response.status} ${response.statusText}`);
+          // console.log('서버응답:', response);
+          if (response.status === 400) {
+            throw new Error("이미 사용 중인 이메일입니다.");
+          } else {
+            throw new Error(`${response.status} ${response.statusText}`);
+          }
         }
         return response.json();
       })
@@ -36,7 +65,7 @@ const Signup = () => {
         window.location.href = '/signin';
       })
       .catch((error) => {
-        const errorMessage = '오류 발생: ' + error.message;
+        const errorMessage = error.message;
         alert(errorMessage);
       });
   }
@@ -90,7 +119,7 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberId">아이디(학번)</label>
             <input
-              type="text"
+              type="number"
               id="memberId"
               name="memberId"
               value={formData.memberId}
@@ -103,7 +132,7 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberEmail">이메일</label>
             <input
-              type="text"
+              type="email"
               id="memberEmail"
               name="memberEmail"
               value={formData.memberEmail}
@@ -129,11 +158,11 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberGen"> 기수</label>
             <input
-              type="text"
+              type="number"
               id="memberGen"
               name="memberGen"
               value={formData.memberGen}
-              placeholder='기수를 입력해주세요'
+              placeholder='신입생은 34기입니다'
               onChange={handleInputChange}
               required
             />
@@ -155,7 +184,7 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberPhone"> 전화번호</label>
             <input
-              type="tel"
+              type="number"
               id="memberPhone"
               name="memberPhone"
               value={formData.memberPhone}

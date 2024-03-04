@@ -20,7 +20,7 @@ const Signin = () => {
     })
     .then((response) => {
       if (!response.ok) {
-        console.log('서버응답:', response);
+        // console.log('서버응답:', response);
         if (response.status === 401) {
           throw new Error('일치하는 정보가 없습니다');
         } else {
