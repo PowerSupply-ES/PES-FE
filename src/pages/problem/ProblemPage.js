@@ -26,6 +26,8 @@ const ProblemPage = () => {
     const text = useRef("");
     const [detail, setDetail] = useState("");
 
+    const isLogin = sessionStorage.getItem('status');
+
     function textHandler(e) {
         text.current = e.target.value;
     }
