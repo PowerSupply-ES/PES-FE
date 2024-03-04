@@ -160,6 +160,7 @@ function Header1(){
      <div className='navbar'>
        <a className='logo' onClick={()=>navigate('/main')}>PES</a>
        <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+       <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
      </div>
    </div>
  )
