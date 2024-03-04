@@ -22,7 +22,8 @@ export const StyledQuestion = styled.div`
         white-space: pre-line; 
         color: white;
         overflow-wrap: break-word;
-
+        justify-content: center;
+        text-align: left;
     }
     .question_container{
         width: 40%;
@@ -341,5 +342,29 @@ export const StyledQuestion = styled.div`
     }
     .loading {
         height: 1500px
+    }
+    
+    .dropdown_content {
+        align-items: center;
+        background-color: #fefdfd;
+        border: 2px solid #c8c8c8;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 0;
+        padding: 16px 12px;
+        position: absolute;
+        right: 30px;
+        top: 60px;
+        width: fit-content;
+        z-index: 999;
+        color: black;
+    }
+    
+    .sample_inputs {
+        text-align: left;
+    }
+    .sample_outputs {
+        text-align: left;
     }
 `;

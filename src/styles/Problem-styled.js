@@ -72,6 +72,11 @@ export const StyledProblem = styled.div`
         justify-content: space-between;
     }
 
+    &.problem_header_section {
+        z-index: 999;
+        position: relative;
+    }
+
     // .content_container > .top,
     // .content_container > .bottom{
     //     width: 100%;

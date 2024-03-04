@@ -226,7 +226,7 @@ const QuestionPage = () => {
     function renderAnswerUI() {
         return (
             <StyledQuestion className="problem_answer_section">
-                <StyledProblem className="problem_section" state={state}>
+                <StyledProblem className="problem_header_section" state={state}>
                     <div className="problem_header">
                         <div className="problem_group">
                             <div className="problem_id">문제{problemId}</div>
@@ -236,9 +236,9 @@ const QuestionPage = () => {
                             </div>
                         </div>
                         <div className="button_group">
-                            <button className="button problem" onClick={toggleDropdown}>문제보기
+                            <button className="button_problem" onClick={toggleDropdown}>문제보기</button>
                                  {isDropdownOpen && (
-                                    <div className='dropdown-content'>
+                                    <div className='dropdown_content'>
                                         <div className="content">
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
@@ -262,7 +262,6 @@ const QuestionPage = () => {
                                         </div>
                                     </div>
                                  )}
-                            </button>
                             {(state === "success" || state === "fail") && (
                                 <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                             )}

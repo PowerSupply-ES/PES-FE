@@ -135,9 +135,6 @@ const ProblemPage = () => {
                 </div>
 
                 <div className="problem_section">
-
-                    
-
                     <div className="content_container">
 
                         {/* 상단문제 */}
