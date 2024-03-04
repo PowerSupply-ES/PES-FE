@@ -174,21 +174,26 @@ const ProblemPage = () => {
                     {/* 우측 코드 입력 */}
                     <div className="code_section">
                         {/* 원래코드 */}
-                        <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                            onChange = {textHandler}/>
-                        
-                        { (detail) &&
-                            <div className="detail_container">
-                                <h3>틀린 이유</h3>
-                                <div className="detail_content">{detail}</div>
-                            </div>
+                        {
+                            isLogin ?
+                            <>
+                                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                                    onChange = {textHandler}/>
+                                { (detail) &&
+                                    <div className="detail_container">
+                                        <h3>틀린 이유</h3>
+                                        <div className="detail_content">{detail}</div>
+                                    </div>
+                                }
+                            </>
+                            :
+                            <textarea disabled className="code_input" placeholder = "로그인 후 이용해주세요." />
                         }
                     </div>
                 </div>
                 
-                <button className="submit_button" onClick={() => submitCode()}>제출</button>
-
-                
+                <button className={isLogin ? "submit_button" : "submit_button disabled"} 
+                    onClick={() => isLogin && submitCode()}>제출</button>
                 
             </StyledProblem>
         );

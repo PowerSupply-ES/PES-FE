@@ -218,6 +218,11 @@ export const StyledProblem = styled.div`
         box-shadow: 1px 3px #CCC9C9;
 
     }
+    .submit_button:disabled {
+        background-color: #dedede;
+        cursor: not-allowed;
+    }
+
     .code_container {
         width: 1376px;
         height: auto;
