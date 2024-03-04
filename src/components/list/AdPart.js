@@ -19,6 +19,7 @@ const AdContainer = styled.div`
 const AdPart = () => {
     //카카오 에드핏 광고
     const scriptElement = useRef(null);
+
     // script 태그를 동적으로 추가
     useEffect(() => {
         const script = document.createElement("script");
@@ -30,7 +31,6 @@ const AdPart = () => {
         "charset",
         "utf-8"
         );
-    
         script.setAttribute("async", "true");
         scriptElement.current?.appendChild(script);
     }, []);

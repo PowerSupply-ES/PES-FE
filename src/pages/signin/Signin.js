@@ -21,7 +21,11 @@ const Signin = () => {
     .then((response) => {
       if (!response.ok) {
         console.log('서버응답:', response);
-        throw new Error(`${response.status} ${response.statusText}`);
+        if (response.status === 401) {
+          throw new Error('일치하는 정보가 없습니다');
+        } else {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
       }
       return response.json();
     })
@@ -34,7 +38,7 @@ const Signin = () => {
       sessionStorage.setItem('memberId', formData.memberId);
     })
     .catch((error) => {
-      const errorMessage = '오류 발생: ' + error.message;
+      const errorMessage = error.message;
       alert(errorMessage);
     });
   }
