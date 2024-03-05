@@ -153,6 +153,7 @@ const QuestionPage = () => {
             )
 
             alert("성공적으로 답변을 등록했습니다.");
+            window.location.reload(); 
 
         } catch (error) {
             if (error.response && error.response.status === 400) {
