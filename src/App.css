@@ -614,7 +614,7 @@ button:hover {
   height: 100px;
   font-size: 40px;
   font-weight: bold;
-  margin-top: 24px;
+  margin-top: 28px;
   color: #ffffffec;
 }
 .footer_left > .info > *{
@@ -636,13 +636,19 @@ button:hover {
   margin-top: 12px;
 }
 .footer_right > .sns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 12px;
   cursor: pointer;
 }
-.footer_right > .sns a {
+.sns > *:first-child{
+  margin-right: 12px;
+}
+/* .footer_right > .sns a {
   text-decoration: none;
   color: inherit;
-}
+} */
 .footer :not(.logo, .info1, .info2, .footer_logout){
   color: #ffffffec;
   ;
