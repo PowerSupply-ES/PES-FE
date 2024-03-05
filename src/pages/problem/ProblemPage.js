@@ -172,7 +172,7 @@ const ProblemPage = () => {
                             <>
                                 <textarea className="code_input" placeholder = "코드를 입력해주세요." 
                                     onChange = {textHandler}/>
-                                { (detail) &&
+                                { (detail !== null && detail !== undefined) &&
                                     <div className="detail_container">
                                         <h3>틀린 이유</h3>
                                         <div className="detail_content">{detail}</div>
