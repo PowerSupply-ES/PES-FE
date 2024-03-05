@@ -47,7 +47,7 @@ const ProblemPage = () => {
                 console.log(response);
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
                 sessionStorage.setItem('problemId', problemId);
-                navigate(`/question/${response.answerId}`);
+                navigate(`/question/${response.answer_id}`);
             }
             else if (status === 202) {
                 await setDetail(response.detail);
