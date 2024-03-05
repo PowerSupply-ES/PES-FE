@@ -41,6 +41,12 @@ const Signup = () => {
       return;
     }
 
+
+    // 전화번호 형식이 맞는지 체크?
+
+    // 아이디가 숫자로만 입력되었는지 체크?
+
+
     fetch(uri, {
       method: 'POST',
       headers: {
@@ -119,7 +125,7 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberId">아이디(학번)</label>
             <input
-              type="number"
+              type="text"
               id="memberId"
               name="memberId"
               value={formData.memberId}
@@ -184,7 +190,7 @@ const Signup = () => {
           <div className="signup-input">
             <label htmlFor="memberPhone"> 전화번호</label>
             <input
-              type="number"
+              type="tel"
               id="memberPhone"
               name="memberPhone"
               value={formData.memberPhone}
