@@ -40,24 +40,18 @@ const ProblemPage = () => {
             const { data: response, status} = await postCode(text.current, problemId);
 
             if (!response) {
-                if (status === 403) {
-                    alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
-                    navigate("/signin");
-                } else {
-                    alert("알 수 없는 오류가 발생했습니다. 메인 페이지로 이동합니다.");
-                    navigate("/main");
-                }
+                alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
+                navigate("/signin");
             }
             else if (status === 201) {
+                console.log(response);
                 alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
-                console.log(response, status);
                 sessionStorage.setItem('problemId', problemId);
                 navigate(`/question/${response.answerId}`);
             }
             else if (status === 202) {
                 await setDetail(response.detail);
                 await alert("문제를 틀렸습니다! 다시 풀어보세요.");
-                console.log(response, status);
             }
         }
     }
