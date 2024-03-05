@@ -44,6 +44,7 @@ button:hover {
   font-size: 17px;
   /* border-color: #5a2cda;; */
   border:solid 3px #7d7d7d;
+  border-radius: 80px;
 }
 .logout:hover{
   background-color: #414141;
@@ -56,11 +57,14 @@ button:hover {
   color: #ffffff;
   font-size: 17px;
   font-weight: bold;
-  background-color: #5a2cda;
+  /* background-color: #5a2cda; */
+  background-color: #555555;
+  border-radius: 80px;
 }
 
 .btns > .userId:hover{
-  background-color: #9171e9;
+  /* background-color: #9171e9; */
+  background-color: #787777da;
 }
 .userLevel{
   width: fit-content;
