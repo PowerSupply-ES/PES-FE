@@ -3,6 +3,7 @@ import { AiFillPhone} from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";
+import { FaGithub } from "react-icons/fa";
 
 function Footer() {
 
@@ -33,10 +34,8 @@ function Bottom(){
         <div className='footer_left'>
           <p className='logo'>PES</p>
           <div className='info'>
-            <div className='phone'><AiFillPhone></AiFillPhone> <p>010-8012-0865</p></div>
-            <div className='address'><FaMapMarkerAlt></FaMapMarkerAlt> <p>경북 경산시 대학로 280 생산기술연구원 G15 213호</p></div>
-            <div className='email'><IoIosMail></IoIosMail> <p>csi9926@gmail.com</p></div>
-            
+            <div className='phone'><AiFillPhone /> <p>010-3500-0165</p></div>
+            <div className='address'><FaMapMarkerAlt /><p>경북 경산시 대학로 280 생산기술연구원 G15 213호</p></div>            
           </div>
         </div>
         <div className='footer_right'>
@@ -45,7 +44,10 @@ function Bottom(){
             <p className='info2'>교육시스템 개발팀 PES</p>
             <div className='sns'>
               <a href="https://www.instagram.com/team.pes23/" target="_blank" rel="noopener noreferrer">
-                <BiLogoInstagramAlt size={32}></BiLogoInstagramAlt >
+                <BiLogoInstagramAlt size={36} />
+              </a>
+              <a href="https://github.com/PowerSupply-ES" target="_blank" rel="noopener noreferrer">
+                <FaGithub size={30} />
               </a>
             </div>
         

@@ -91,7 +91,7 @@ function Header1(){
 
   //로그아웃 api호출 함수
   const logoutUser = () => {
-    const uri = 'api/logout';
+    const uri = '../api/logout';
   
     fetch(uri, {
       method: 'POST',

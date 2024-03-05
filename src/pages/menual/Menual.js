@@ -6,6 +6,21 @@ import AdPart from "components/list/AdPart";
 import { FaCircleUser } from "react-icons/fa6";
 import '../../styles/menual.css';
 
+import img_probList from '../../assets/images/probList.png';
+import img_solving from '../../assets/images/solving.png';
+import img_pass from '../../assets/images/pass.png';
+import img_pass_feed from '../../assets/images/pass_feedback.png';
+import img_fail from '../../assets/images/fail.png';
+import img_fail_feed from '../../assets/images/fail_feedback.png';
+
+
+
+
+
+
+
+
+
 
 const Menual = () => {
 
@@ -36,24 +51,60 @@ const Menual = () => {
 
         {/* 문제 목록 */}
         <div className='menual_problem'>
+            {/* <div className='title'>문제 풀기</div> */}
+            <div className='img_container'>
+                <img src={img_probList} className='img1'></img>
+            </div>
+            <div className='prob_info'><h2>문제Step.</h2>문제와 질문테스트 통과 시<br></br>
+            다른 사람의 풀이들을 열람할 수 있어요
+            </div>
+        </div>
+
+
+        {/* 문제 풀이 */}
+        <div className='menual_solve'>
+            <div className='solve_info'><h2>풀이Step.</h2>문제와 질문테스트 통과 시<br></br>
+                다른 사람의 풀이들을 열람할 수 있어요
+            </div>
+            <div className='img_container'>
+              <img src={img_solving} className='img2'></img>
+            </div>
             
         </div>
 
 
 
+        {/* 질문 테스트*/}
+             {/* pass */}
+        <div className='menual_ques_pass'>
+            <div className='ques_info'><h2>질문Step.</h2>문제와 질문테스트 통과 시<br></br>
+                다른 사람의 풀이들을 열람할 수 있어요
+            </div>
+            <p>질문테스트 통과 시</p>
+            <div className='img_container'>
+              <img src={img_pass} className='img3'></img>
+              <p>성공한다면 ~~~~</p>
+              <img src={img_pass_feed} className='img4'></img>
 
-        {/* 문제 풀기 */}
+            </div>
+        </div>
+              {/* fail */}
+        <div className='menual_ques_fail'>
+            <p>질문테스트 실패 시</p>
+            <div className='img_container'>
+              <img src={img_fail} className='img5'></img>
+              <p>실패한다면 ~~~~</p>
+              <img src={img_fail_feed} className='img6'></img>
 
-
-
-
-        {/* 질문 테스트 */}
+            </div>
+        </div>
 
 
         {/* 풀이 보기 */}
 
 
-        {/* 피드백 하기 */}
+
+        {/* feedback_재학생 */}
 
 
         <Footer></Footer>

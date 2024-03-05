@@ -10,7 +10,7 @@ font-style: normal;
 }
 
 
-.menual_intro,.menual_problem{
+.menual_intro{
     /* background-color: red; */
     height: 90vh;
     display: flex;
@@ -34,14 +34,17 @@ font-style: normal;
     width: 180px;
     height: fit-content;
     font-size: 25px;
-    /* rgb(91, 91, 91); */
-    background-color: #785accce;
-    color: white;
-    border-radius: 8px;
+    background-color: #ffffff;
+    /* background-color: rgb(66, 66, 66); */
+    /* background-color: #785accce; */
+    color: rgb(133, 0, 242);
+    /* color: white; */
+    border: solid rgb(213, 176, 244);
+    border-radius: 20px;
     padding: 8px 16px;
     margin-bottom: 32px;
     font-weight: bold;
-
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .wrap > *:last-child{
     width: 300px;
@@ -49,7 +52,124 @@ font-style: normal;
     font-size: 23px;
 }
 
+
 .menual_problem{
-    background-color: #000000;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #111111; */
+    background-color: #f7f6f6;
     opacity: 81%;
+}
+.menual_solve{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #e5e5e5; */
+
+}
+
+/* 문제풀기 */
+.menual_problem > .title{
+    height: fit-content;
+    width: fit-content;
+    margin: 40px 0 40px 40px;
+
+    background-color: #3e3e3e; opacity: 89%;
+    border: solid #f6f6db;
+    /* #f6f6db */
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 12px 28px;
+    /* box-shadow: 1px 2px #605e5e; */
+}
+.img_container{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 40px;
+}
+
+    /* 이미지 깨짐 효과 개선 */
+img{
+    image-rendering: -moz-crisp-edges; /* firefox */
+    image-rendering: -o-crisp-edges; /* opera */
+    image-rendering: -webkit-optimize-contrast; /* chrome(비표준) */
+    image-rendering: crisp-edges;
+}
+.img1{
+    width: 1040px;
+    height: 180px;
+    object-fit: cover;
+}
+.img2{
+    width: 1000px;
+    height: 500px;
+    object-fit: cover;
+}
+.img3{
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+.img4{
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+.img5{
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+.img6{
+    width: 700px;
+    height: 400px;
+    object-fit: cover;
+}
+
+
+.prob_info,.solve_info,.ques_info{
+    font-size: 20px;
+    text-align: left;
+
+}
+.prob_info > h2,
+.solve_info > h2,
+.ques_info > h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #774af5;
+    text-align: left;
+}
+
+
+.menual_ques_pass,
+.menual_ques_fail{
+    height: 160vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #d7d7d7; */
+}
+.menual_ques_pass{
+    margin-top: 80px;
+
+}
+
+.ques_info{
+    width: 90%;
+    margin-bottom: 20px;
+}
+.menual_ques_pass > p,
+.menual_ques_fail > p,
+.img_container > p{
+    font-size: 25px;
 }
