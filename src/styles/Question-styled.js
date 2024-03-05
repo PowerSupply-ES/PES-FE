@@ -14,6 +14,8 @@ export const StyledQuestion = styled.div`
     .code_container {
         width: 40%;
         height: 564px;
+        box-sizing: border-box;
+        padding: 20px;
         display: flex;
         align-items: center;
         border-radius: 20px;
@@ -121,6 +123,7 @@ export const StyledQuestion = styled.div`
     .button_problem {
         width: fit-content;
         height: fit-content;
+        position: relative;
         padding: 8px 20px;
         color: white;
         font-weight: bold;
@@ -345,7 +348,6 @@ export const StyledQuestion = styled.div`
     }
     
     .dropdown_content {
-        align-items: center;
         background-color: #fefdfd;
         border: 2px solid #c8c8c8;
         border-radius: 8px;
@@ -354,9 +356,9 @@ export const StyledQuestion = styled.div`
         margin-right: 0;
         padding: 16px 12px;
         position: absolute;
-        right: 30px;
-        top: 60px;
+        top: 40px;
         width: fit-content;
+        min-width: 200px;
         z-index: 999;
         color: black;
     }

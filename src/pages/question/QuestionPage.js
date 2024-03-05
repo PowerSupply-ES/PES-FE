@@ -236,7 +236,7 @@ const QuestionPage = () => {
                             </div>
                         </div>
                         <div className="button_group">
-                            <button className="button_problem" onClick={toggleDropdown}>문제보기</button>
+                            <button className="button_problem" onClick={toggleDropdown}>문제보기
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
                                         <div className="content">
@@ -262,6 +262,7 @@ const QuestionPage = () => {
                                         </div>
                                     </div>
                                  )}
+                                </button>
                             {(state === "success" || state === "fail") && (
                                 <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                             )}
