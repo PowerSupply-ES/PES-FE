@@ -80,7 +80,7 @@ const Signin = () => {
           <div className="login-input">
             <label htmlFor="memberId">아이디(학번)</label>
             <input
-              type="number"
+              type="text"
               id="memberId"
               name="memberId"
               value={formData.memberId}
