@@ -23,7 +23,10 @@ function Main() {
           <div className='main_btn'>
             {/* status 값이 있으면 btn1만 렌더링, 없으면 btn1과 btn2 모두 렌더링 */}
             {status ? (
+              <>
               <a href="/list" className='btn1'>바로가기</a>
+              <a href="/menual" className='btn3'>소개보기</a>
+              </>
             ) : (
               <>
                 <a href="/list" className='btn1'>바로가기</a>

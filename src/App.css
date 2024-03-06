@@ -159,7 +159,8 @@ button:hover {
   margin-top: 100px;
 }
 .main_btn > .btn1,
-.main_btn > .btn2{
+.main_btn > .btn2,
+.main_btn > .btn3{
   border-radius: 18px;
   font-size: 22px;
   color: #ffffff;
@@ -172,7 +173,8 @@ button:hover {
   border: solid #ffffff 2px;
   margin-right: 50px;
 }
-.main_btn > .btn2{
+.main_btn > .btn2,
+.main_btn > .btn3{
   background-color: #5A2CDA;
   border: solid #5A2CDA 2px;
   /* padding: 0px 15px; */
