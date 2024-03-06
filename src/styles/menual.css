@@ -94,7 +94,13 @@ font-style: normal;
     align-items: center;
     margin-right: 40px;
 }
-
+.img_container > p{
+    color:#0c0c0cb9;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    
+}
     /* 이미지 깨짐 효과 개선 */
 img{
     image-rendering: -moz-crisp-edges; /* firefox */
@@ -106,11 +112,14 @@ img{
     width: 1040px;
     height: 180px;
     object-fit: cover;
+    padding-top: 60px;
 }
 .img2{
-    width: 1000px;
+    width: 900px;
     height: 500px;
     object-fit: cover;
+    
+    margin-left: 48px;
 }
 .img3{
     width: 700px;
@@ -163,6 +172,30 @@ img{
     margin-top: 80px;
 
 }
+.case_container{
+    width: 70%;
+}
+.case_container > .ques_case{
+    width: fit-content;
+    height: fit-content;
+    border-radius: 40px;
+    padding: 6px 18px;
+    background-color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 3px #CCC9C9;
+    margin-top: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.menual_ques_pass > .case_container > .ques_case{
+    border: solid rgb(46, 218, 55) 3px;
+    color: rgba(47, 205, 55, 0.69);
+}
+.menual_ques_fail > .case_container > .ques_case{
+    border: solid #F47575 3px;
+    color: #F47575; opacity: 80%;
+}
 
 .ques_info{
     width: 90%;
@@ -171,5 +204,15 @@ img{
 .menual_ques_pass > p,
 .menual_ques_fail > p,
 .img_container > p{
-    font-size: 25px;
+    font-size: 22px;
+}
+
+
+.menual_solving{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d4d4d497;
+
 }

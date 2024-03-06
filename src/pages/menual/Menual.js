@@ -52,19 +52,24 @@ const Menual = () => {
         {/* 문제 목록 */}
         <div className='menual_problem'>
             {/* <div className='title'>문제 풀기</div> */}
+
+
             <div className='img_container'>
                 <img src={img_probList} className='img1'></img>
             </div>
             <div className='prob_info'><h2>문제Step.</h2>문제와 질문테스트 통과 시<br></br>
             다른 사람의 풀이들을 열람할 수 있어요
             </div>
+
+
+            
         </div>
 
 
         {/* 문제 풀이 */}
         <div className='menual_solve'>
-            <div className='solve_info'><h2>풀이Step.</h2>문제와 질문테스트 통과 시<br></br>
-                다른 사람의 풀이들을 열람할 수 있어요
+            <div className='solve_info'><h2>풀이Step.</h2>문제에 대한 예시를 보고<br></br>
+                우측에 코드를 입력하여 문제풀이해요
             </div>
             <div className='img_container'>
               <img src={img_solving} className='img2'></img>
@@ -77,23 +82,35 @@ const Menual = () => {
         {/* 질문 테스트*/}
              {/* pass */}
         <div className='menual_ques_pass'>
-            <div className='ques_info'><h2>질문Step.</h2>문제와 질문테스트 통과 시<br></br>
-                다른 사람의 풀이들을 열람할 수 있어요
+            <div className='ques_info'>
+              <h2>질문Step.</h2>
+              문제풀이 후, 2개 질문에 답변 시<br></br>
+              재학생들의 피드백이 이루어집니다
             </div>
-            <p>질문테스트 통과 시</p>
+
+            <div className='case_container'>
+            <div className='ques_case'>질문테스트 통과 시</div>
+            </div>
             <div className='img_container'>
               <img src={img_pass} className='img3'></img>
-              <p>성공한다면 ~~~~</p>
+              <p>1명 이상의 재학생에게 PASS를 받으면<br></br>
+              통과!!
+              </p>
               <img src={img_pass_feed} className='img4'></img>
 
             </div>
         </div>
               {/* fail */}
         <div className='menual_ques_fail'>
-            <p>질문테스트 실패 시</p>
+          <div className='case_container'>
+            <div className='ques_case'>질문테스트 실패 시</div>
+          </div>
+
             <div className='img_container'>
               <img src={img_fail} className='img5'></img>
-              <p>실패한다면 ~~~~</p>
+              <p>1명 이상의 재학생에게 PASS를 받지 못하면<br></br>
+              실패..
+              </p>
               <img src={img_fail_feed} className='img6'></img>
 
             </div>
@@ -101,7 +118,15 @@ const Menual = () => {
 
 
         {/* 풀이 보기 */}
-
+        <div className='menual_solving'>
+            <div className='solve_info'><h2>풀이Step.</h2>문제에 대한 예시를 보고<br></br>
+                우측에 코드를 입력하여 문제풀이해요
+            </div>
+            <div className='img_container'>
+              <img src={img_solving} className='img2'></img>
+            </div>
+            
+        </div>
 
 
         {/* feedback_재학생 */}
