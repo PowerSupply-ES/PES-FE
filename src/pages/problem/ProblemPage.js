@@ -24,7 +24,7 @@ const ProblemPage = () => {
     const [title, setTitle] = useState([]);
     const [problem, setProblem] = useState([]);
     const text = useRef("");
-    const [detail, setDetail] = useState("");
+    const [detail, setDetail] = useState(null);
 
     const isLogin = sessionStorage.getItem('status');
 
