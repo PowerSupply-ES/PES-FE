@@ -17,14 +17,12 @@ export const StyledQuestion = styled.div`
         box-sizing: border-box;
         padding: 20px;
         display: flex;
-        align-items: center;
         border-radius: 20px;
         background-color: #3E3E3E;
         font-size: 20px;
         white-space: pre-line; 
         color: white;
         overflow-wrap: break-word;
-        justify-content: center;
         text-align: left;
     }
     .question_container{
