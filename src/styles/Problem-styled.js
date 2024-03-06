@@ -275,7 +275,8 @@ export const StyledProblem = styled.div`
         padding: 16px 8px 0 12px;
         box-shadow: 1px 3px #CCC9C9;
         box-sizing: border-box;
-        background-color: rgba(151, 71, 255, 0.4);
+        background-color: rgba(109, 99, 228, 0.3);
         font-size: 20px;
+        border-radius: 15px;
     }
 `;
