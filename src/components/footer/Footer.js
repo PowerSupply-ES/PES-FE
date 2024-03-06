@@ -34,7 +34,7 @@ function Bottom(){
         <div className='footer_left'>
           <p className='logo'>PES</p>
           <div className='info'>
-            <div className='phone'><AiFillPhone /> <p>010-3500-0165</p></div>
+            <div className='phone'><IoIosMail /> <p>123qpq@naver.com5</p></div>
             <div className='address'><FaMapMarkerAlt /><p>경북 경산시 대학로 280 생산기술연구원 G15 213호</p></div>            
           </div>
         </div>
