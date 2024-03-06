@@ -2,6 +2,7 @@ import React from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
 import AdPart from "components/list/AdPart";
+import { useNavigate } from 'react-router-dom';
 
 import { FaCircleUser } from "react-icons/fa6";
 import '../../styles/menual.css';
@@ -12,17 +13,11 @@ import img_pass from '../../assets/images/pass.png';
 import img_pass_feed from '../../assets/images/pass_feedback.png';
 import img_fail from '../../assets/images/fail.png';
 import img_fail_feed from '../../assets/images/fail_feedback.png';
-
-
-
-
-
-
-
-
+import img_solvingList from '../../assets/images/solvingList.png';
 
 
 const Menual = () => {
+  const navigate = useNavigate();
 
     return (
       <div>
@@ -119,13 +114,21 @@ const Menual = () => {
 
         {/* 풀이 보기 */}
         <div className='menual_solving'>
-            <div className='solve_info'><h2>풀이Step.</h2>문제에 대한 예시를 보고<br></br>
-                우측에 코드를 입력하여 문제풀이해요
-            </div>
             <div className='img_container'>
-              <img src={img_solving} className='img2'></img>
+              <img src={img_solvingList} className='img7'></img>
+            </div>
+            <div className='solve_info'>
+                다른 학생들의 풀이도 볼 수 있어요
             </div>
             
+        </div>
+
+        {/* 마무리멘트 */}
+        <div className='finish'>
+            <div className='info'>
+                그럼, 시작해보세요!
+            </div>
+            <a onClick={()=>navigate('/list')}>문제 풀러 가기</a>
         </div>
 
 
@@ -140,28 +143,28 @@ const Menual = () => {
 
 
   // 내가 푼 문제 컴포넌트
-  function MyProblem({myProb}){
+  // function MyProblem({myProb}){
 
-    const gotoProb = ( problemId ) =>{
-      console.log('problemId: ',problemId);
-      window.location=`question/${problemId}`;
-      // question/answerid
-    }
-    return (
-    <div className ='problemList' >
-      {myProb.map((it) => (
+  //   const gotoProb = ( problemId ) =>{
+  //     console.log('problemId: ',problemId);
+  //     window.location=`question/${problemId}`;
+  //     // question/answerid
+  //   }
+  //   return (
+  //   <div className ='problemList' >
+  //     {myProb.map((it) => (
 
-        <div className='problems' key={it.answerId}>
-          <p className='problemId'>{it.problemId}</p>
-          <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
-          <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
-            {it.answerState}</div>
-        </div>
+  //       <div className='problems' key={it.answerId}>
+  //         <p className='problemId'>{it.problemId}</p>
+  //         <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
+  //         <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
+  //           {it.answerState}</div>
+  //       </div>
 
-      ))}
-    </div>
-  );
-}
+  //     ))}
+  //   </div>
+//   );
+// }
 
   
 export default Menual;
