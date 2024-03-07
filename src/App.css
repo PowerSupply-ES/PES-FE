@@ -3,10 +3,7 @@
   font-family: 'Pretendard-Regular';
   /* background-color: #f9fafb; */
   /* background-color: #1c1c1c; */
-  background-color: #f2f7ff;
-
-
-
+  background-color: #E9E9EB;
 }
 @font-face {
   font-family: 'Pretendard-Regular';
@@ -18,7 +15,6 @@
 /* -----공통요소----- */
 *{
   list-style-type: none;
-  color: black;
   text-decoration: none;
   margin: 0px;
   padding: 0px;
@@ -33,31 +29,42 @@ button:hover {
 .logout, .userId, .userLevel{
   height: fit-content;
   width: fit-content;
-  padding: 6px 30px;
+  padding: 5px 30px;
   color: white;
   border: solid white;
   border-radius: 10px;
 }
 .logout{
   width: fit-content;
-  background-color: #5a2cda;
+  /* background-color: #5a2cda; opacity: 70%; */
+  background-color: #ffffff;
   margin: 15px 50px 0px auto;
-  border-color: #5a2cda;;
-}
-.userId{
-  width: fit-content;
-  color: #000000;
-  /* background-color: #5a2cda; */
+  color: #555555;
+  font-weight: bold;
+  font-size: 17px;
+  /* border-color: #5a2cda;; */
+  border:solid 3px #7d7d7d;
+  border-radius: 80px;
 }
 .logout:hover{
-  background-color: #5a2cda92;
-  border-color
-  :#5a2cda92;
+  background-color: #414141;
+  border-color: #414141;
+  color: #ffffff;
 
 }
-.userId:hover{
-  background-color: rgb(216, 216, 216);
-  
+.container > .btns > .userId{
+  width: fit-content;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: #5a2cdad2;
+  /* background-color: #555555; */
+  border-radius: 80px;
+}
+
+.btns > .userId:hover{
+  /* background-color: #9171e9; */
+  background-color: #787777da;
 }
 .userLevel{
   width: fit-content;
@@ -65,10 +72,9 @@ button:hover {
   color: #ffffff;
   padding: 5px 10px;
 }
-.userLevel:hover {
-  background-color: #feb36d;
-}
+
 .btns{
+  display: flex;
   margin: 20px 60px 0px auto;
 }
 
@@ -77,7 +83,6 @@ button:hover {
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
   background-color: #ffffff;
-
 }
 .navbar{
   display: flex;
@@ -92,7 +97,7 @@ button:hover {
   /* text-align: center; */
 }
 
-.logo{
+.navbar > .logo{
   width: 140px;
   height: 100px;
   /* background-color: aquamarine; */
@@ -100,11 +105,12 @@ button:hover {
   font-weight: bold;
   /* color: #373737; */
   color: #1c1c1dc3;
-  
+  cursor: pointer;
 }
+
 .menu1, .menu2{
   height: fit-content;
-  font-size: 24px;
+  font-size: 26px;
   margin-left: 56px;
   margin-bottom: 20px;
   font-weight: bold;
@@ -113,43 +119,74 @@ button:hover {
   /* background-color: yellow; */
 }
 .menu1:hover{
-  background-color: #d5e6ff;
+  /* background-color: #d5e6ff; */
   border-radius: 5px;
-  
-}
-.content{
-  /* margin-top: 20px; */
+  color: #000000;
+
 }
 
 .content0{
   width: 100%;
   height: 80vh;
   margin: 0px auto;
-  /* padding-top: 120px; */
-  /* background-color: #d5e6ff; */
-  /* background-color: #1c1c1c; */
-  background-color: #f2f7ff;
-
+  background-color: #000000; opacity:81%;
   color: #373737;
   font-size: 28px;
   font-weight: bold;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
-  
-}
-.slid{
-  /* background-color: #f2f7ff; */
-  background-color: #cab6d339;
-
-  width: 86%;
-  height: 75vh;
-  margin: 0 auto;
-  border-radius: 40px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
+.content0 > .ps{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: fit-content;
+  text-align: start;
+  margin: 0 auto;
+}
+.ps > .p1{
+  color: #CACACA; opacity: 60%;
+  font-size: 25px;
+}
+.ps > .p2{
+  color: #ffffff;
+  font-size: 36px;
+}
+.main_btn{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.main_btn > .btn1,
+.main_btn > .btn2,
+.main_btn > .btn3{
+  border-radius: 18px;
+  font-size: 22px;
+  color: #ffffff;
+  width: 132px;
+  height: fit-content;
+  padding: 5px 0px;
+}
+.main_btn > .btn1{
+  background-color: #000000; opacity: 90%;
+  border: solid #ffffff 2px;
+  margin-right: 50px;
+}
+.main_btn > .btn2,
+.main_btn > .btn3{
+  background-color: #5A2CDA;
+  border: solid #5A2CDA 2px;
+  /* padding: 0px 15px; */
+}
+.main_btn > .btn1:hover{
+  background-color: rgba(255, 255, 255, 0.201);
+}
+.main_btn > .btn2:hover{
+  background-color: #a289e5;
+  border: solid #a289e5 2px;
+}
+
 .content1{
   width: 100%;
   height: 75vh;
@@ -189,34 +226,167 @@ button:hover {
 }
 
 /* -----마이페이지----- */
-.content_mypage{
-  margin-top: 100px;
+.mypage_content{
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin: 0 auto;
 }
-.memberInfo{
-  width: 70%;
-  height: 360px;
-  margin: 48px auto;
-  background-color: #f2f7ff;
+.mypage_content > .left{
+  margin-right: 60px;
+  display: flex;
+  align-items: baseline;
+}
+.mypage_content > .right{
+  display: flex;
+  flex-direction: column;
+}
+.mypage_btn{
+  width: fit-content;
+  height: fit-content;
+  padding: 2px 6px;
+  color: #ffffff;
+  background-color: #9747FF; opacity: 60%;
+  border: solid #9747FF; opacity: 60%;
+  border-radius: 20px;
+  margin: 0 0 6px 8px;
+}
+
+.content_mypage{
+  padding-top: 40px;
+  /* background-color: #ECEAFF; */
+  background-color: #f2f1fe;
+
+  height: 100vh;
+  padding-bottom: 300px;
+  margin-bottom: -300px;
+}
+.content_mypage > h2{
+  width: 100%;
+  text-align: left;
+  margin-left: 40px;
+  color: #000000; opacity: 60%;
+  font-size: 26px;
+}
+
+
+.memberInfo,.myProblem, .myFeedback{
+  padding: 10px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  border: solid #C3C2C2 2px;
   border-radius: 10px;
 }
+.memberInfo{
+  height: 60%;
+  width: 220px;
+  /* margin-bottom: 140px; */
+  margin: 36px auto;
+}
+.myProblem, .myFeedback{
+  height: 240px;
+  width: 800px;
+}
+.myFeedback{
+  color: #C3C2C2;
+}
+.myProblem{
+  margin-bottom:16px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* 내용 초과시 스크롤바 */
+  overflow-y: auto;
+}
+/* 스크롤바 */
+.myProblem::-webkit-scrollbar {
+  width: 10px;  
+}
+.myProblem::-webkit-scrollbar-thumb {
+  background: #c0c0c0; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.myProblem::-webkit-scrollbar-track {
+  background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+}
+
+.problems{
+  width: 100%;
+  display: flex;
+  padding: 4px 0;
+}
+.problemList{
+  width: 100%;
+}
+.problems > *{
+  display: flex;
+  align-items: center;
+}
+.problems > *:not(:first-child){
+  margin-right: 40px;
+}
+.problems > .problemId{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  color: #04CA00;
+  font-weight: bold;
+}
+.problems > .problemTitle{
+  justify-content: left;
+  width: 70%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.problemList :hover {
+  background-color: rgba(243, 242, 242, 0.737);
+}
+
+/* 성공여부에 따라 버튼색 변화 */
+
+.btn_fail, .btn_success, .btn_state{
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  width: 80px;
+  height: 28px;
+  font-weight: bold;
+}
+.btn_success{
+  border: solid 3px #5094F9;
+  color: #5094F9; 
+}
+.btn_fail{
+  border: solid 3px #EB3434; opacity: 80%;
+  color: #EB3434; opacity: 80%;
+}
+.memberInfo > .info_name{
+  margin: 20px auto 40px;
+  display: flex;
+  font-weight: bold;
+}
+.memberInfo > .info_name > p{
+  font-size: 23px;
+  color: #000000;
+}
 .memberInfo > *{
-  width: 30%;
+  color: #000000; opacity: 80%;
+}
+.memberInfo > *:not(:first-child, .info_name){
+  width: 50%;
   display: flex;
   justify-content: left;
-  
 }
-.memberInfo > div>*:not(:last-child){
-  width: 100px;
-  /* display: flex;
-  justify-content: left; */
-  margin-right: 40px;
+.memberInfo > .info_name{
+  font-size: 32px;
+  color: #060606;
+}
 
-}
 
 /* -----드롭다운----- */
 .dropdown-content{
@@ -229,23 +399,44 @@ button:hover {
   align-items: center;
   margin-right: 0;
   background-color: #fefdfd;
-  border: solid 2px rgb(232, 232, 232);
+  border: solid 2px rgb(200, 200, 200);
   border-radius: 8px;
-  padding: 12px;
+  padding: 16px 12px;
+  z-index: 999;
 }
 
-.dropdown-content > :not(:last-child){
+.dropdown-content > .memberName{
   color: rgb(37, 37, 37);
   font-size: 17px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: bold;
 }
 .dropdown-content > :first-child{
   margin: 15px auto;
 }
-.dropdown-content > :last-child{
+.dropdown-content > .navbar_bottom{
   margin-top: 20px;
   font-size: 14px;
+  color: #000000; opacity:55%;
+}
+.navbarInfo{
+  width: 40%;
+  text-align: left;
+}
+.navbarInfo > *{
+  font-size: 15px;
   color: #808080;
-
+}
+.navbarInfo > .memberScore{
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.memberScore > p{
+  color: #04CA00;
+  font-weight: bold;
+  margin-left: 8px;
 }
 .userImage{
   width: 100px;
@@ -254,11 +445,22 @@ button:hover {
   border-radius: 8px;
   margin: 8px;
 }
-
-.btn_logout{
-  margin-left: 20px;
+.navbar_bottom{
+  display: flex;
+}
+.navbar_bottom > p{
+  margin: 0 8px;
 }
 
+.btn_mypage, .btn_logout{
+  font-size: 13px;
+}
+
+.btn_mypage:hover,
+.btn_logout:hover{
+  color: #000000;
+  font-weight: bold;
+}
 
 /* -----풀이----- */
 /* 풀이타이틀 */
@@ -281,6 +483,13 @@ button:hover {
 .solution_bar{
   justify-content: space-between;
 }
+.solution{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+
+}
 
 .solution_num{
   margin-right: 16px;
@@ -292,7 +501,12 @@ button:hover {
   font-weight: bold;
   font-size: 20px;
   margin-right: 60px;
-
+}
+.prob_score{
+  display: flex;
+  font-weight: bold;
+  font-size: 20px;
+  /* float: right; */
 }
 .solution_score{
   font-size: 20px;
@@ -333,6 +547,8 @@ button:hover {
 }
 
 .solving{
+  width: 90%;
+  margin: auto;
   margin-bottom: 8px;
   justify-content: space-between;
 }
@@ -342,37 +558,129 @@ button:hover {
   display: flex;
   font-size: var(--font-medium);
 }
-.left > .userNum{
-  color: #04CA00;
+.left > .userGen{
+  /* color: #04CA00; */
+  width: 44px;
   font-size: 20px;
+  display: flex;
+  color: #04CA00;
+
 }
-.left > .userName, .right > .process_num{
+.right > .process_num{
   color: black;
   font-size: 20px;
 }
+.left > .userName{
+  width: 100px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-.process_num, .userNum {
-  margin-right: 32px;
+.process_num, .userGen {
+  margin-right: 20px;
 }
 
 .btn_goto_challenge{
   height: fit-content;
   width: fit-content;
-  padding: 9px 32px;
+  padding: 6px 32px;
   color: white;
-  border: solid white;
+  border: solid #5094F9;
   border-radius: 5px;
   background-color: #5094F9;
   font-size: 16px;
+  font-weight: bold;
+  box-shadow: 1px 3px #CCC9C9;
+
 }
 
 
 
+/* footer */
+.footer{
+  height: 240px;
+  width: 100%;
+  background-color: #272727;
+  margin-top: 300px;
+  display: flex;
+  padding: 20px 0;
+}
+.footer_left{
+  width: 60%;
+}
+.footer_left > .info{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 40px;
+}
+.footer_left > .logo{
+  width: 140px;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 28px;
+  color: #ffffffec;
+}
+.footer_left > .info > *{
+  display: flex;
+  align-items: center;
+}
+.info > * > p{
+  margin-left: 12px;
+}
+.info > *{
+  margin-bottom: 8px;
+}
+.footer_right{
+  height: 80%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: 12px;
+}
+.footer_right > .sns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.sns > *:first-child{
+  margin-right: 12px;
+}
+/* .footer_right > .sns a {
+  text-decoration: none;
+  color: inherit;
+} */
+.footer :not(.logo, .info1, .info2, .footer_logout){
+  color: #ffffffec;
+  ;
+}
+.info1, .info2{
+  color: #C8C4C4; opacity: 57%;
+}
+.about{
+  margin-bottom: 8px;
 
+}
+.footer_logout{
+  text-align: right;
+  margin: 8px 20px 0 0;
+  color: #D4D4D4;
+  cursor: pointer;
+}
 
+/* 슬라이드 */
 
-
-
+.img_slid{
+  display:block;
+	height:100%;
+  margin-right: auto;
+  width: 100%;
+}
 
 
 

@@ -1,0 +1,73 @@
+import styled from "styled-components";
+
+export const StyledListItem = styled.div`
+    .container {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        height: fit-content;
+        align-items: center;
+        margin: auto;
+        padding: 8px 0px;
+
+        background-color: ${props => props.state === "locked" ? "#DEDEDE" : "white"};
+        transition: background-color 0.3s; /* Add transition for smooth color change */
+        &:hover {
+            background-color: ${props => props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
+        }
+    }
+
+    .problem_id {
+        width: 100px;
+        height: 34px;
+        color: ${props => props.state === "success" ? "#04CA00" : props.state === "fail" ? "#FF8412" : "black"};
+        font-size: 18px;
+        text-align: center;
+        line-height: 34px;
+        
+    }
+
+    .problem_title {
+        flex: 1; /* Take up remaining space */
+        font-size: 20px;
+        text-align: left; 
+        font-weight: bold;
+
+        &:hover {
+            cursor: pointer;
+        }
+        color: #000000; opacity:70%;
+        
+    }
+
+    .grade {
+        height: 34px;
+        font-size: 16px;
+        margin-right: 20px;
+        line-height: 34px;
+        font-weight: bold;
+        color: #000000; opacity:60%;
+        }
+
+    .button {
+        width: fit-content;
+        height: fit-content;
+        padding: 7px 30px;
+        box-shadow: 1px 1px #CCC9C9;
+        
+        color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
+        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" : "white"};
+        &:hover {
+            background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 1.0)" : props.state === "fail" ? "rgba(244, 117, 117, 1.0)" : ""};
+          }
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: bold;
+
+        text-align: center;
+        border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
+        transition: background-color 0.3s;
+        margin-right: 14px;
+        pointer-events: ${props => (props.state === "success" || props.state === "fail") ? "auto" : "none"};
+    }
+`;

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
+import Footer from "components/footer/Footer";
 import serverConfig from '../../config';
+
 
 function Solution() {
   const url = new URL(window.location.href);
@@ -9,15 +11,17 @@ function Solution() {
       .pathname
       .split('/')[2];
 
-  const [problemData, setProblemData] = useState({
-    problem_id: '',
-    context: ''
-  });
 
+  const [problemData, setProblemData] = useState({
+    problemId: '',
+    problemTitle: '',
+    problemScore:''
+  });
   
-  const sendGetProblem = () => {
+  //문제 불러오기
+  const sendGetProblem = useCallback(async() => {
     const serverUrl = serverConfig.serverUrl;
-    const uri = `/api2/problem/`;
+    const uri = `/api2/problemtitle/`;
 
     fetch(`${serverUrl}${uri}${problemId}`, {
       method: 'GET',
@@ -40,15 +44,17 @@ function Solution() {
 
       console.log('problemId:', problemId);
       
-  };
+  }, [problemId]);
 
   useEffect(() => {
     sendGetProblem();
-  }, []);
+  }, [sendGetProblem]);
 
+  
+  //풀이 불러오기
   const [solveData, setSolveData] = useState([]);
 
-  const sendGetSolve = () => {
+  const sendGetSolve = useCallback(async() => {
 
     const uri = '../api/answerlist/';
 
@@ -70,11 +76,11 @@ function Solution() {
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
       });
-  };
+  }, [problemId]);
 
   useEffect(() => {
     sendGetSolve();
-  }, []);
+  }, [sendGetSolve]);
 
   return (
     <>
@@ -83,8 +89,13 @@ function Solution() {
       <div className="solution_container">
         <div className="solution_bar">
           <div className="solution">
-            <div className="solution_num">{problemData.problem_id}</div>
-            <div className="solution_title">{problemData.context}</div>
+            <div className='left'>
+              <div className="solution_num">{problemData.problemId}</div>
+              <div className="solution_title">{problemData.problemTitle}</div>
+            </div>
+            
+            <div className="prob_score">{problemData.problemScore}<p>점</p></div>
+
           </div>
         </div>
 
@@ -93,6 +104,7 @@ function Solution() {
         {/* 풀이 목록 */}
         <SolvingList solveData={solveData}></SolvingList>
       </div>
+      <Footer></Footer>
     </>
   );
 }
@@ -102,7 +114,7 @@ function SolvingList({ solveData }) {
 
   const gotoProblem = ( answerId ) =>{
     console.log('answerId: ',answerId);
-    window.location=`question/${answerId}`;
+    window.location=`../question/${answerId}`;
   }
 
 
@@ -111,12 +123,12 @@ function SolvingList({ solveData }) {
       {solveData.map((it) => (
         <div className="solving" key={it.answerId}>
           <div className="left">
-            <div className="userNum">{it.answerId}</div>
-            <div className="userName">{it.memberEmail}</div>
+            <div className="userGen">{it.memberGen}<p>기 </p></div>
+            <div className="userName">{it.memberName}</div>
           </div>
           <div className="right">
             {/* <div className="process_num">1/2</div> */}
-            <button className="btn_goto_challenge" onClick={() => gotoProblem(it.answerId)}>challenge</button>
+            <button className="btn_goto_challenge" onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
           </div>
         </div>
       ))}

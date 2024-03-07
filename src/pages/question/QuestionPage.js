@@ -1,497 +1,431 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import serverConfig from '../../config';
 import Header from "components/main/Header";
+import Footer from "components/footer/Footer";
+import MemberStatus from "components/question/MemberStatus";
 
-// 문제 헤더 - 번호, 제목
-const ProbHeader = styled.div `
-    width: 1376px;
-    height: 78px;
-    display: flex;
-    align-items: center;
-    margin: auto;
-`
-const ProbId = styled.span `
-    width: 100px;
-    height: 60px;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 60px;
-`
-const HeaderTitle = styled.span `
-    font-size: 28px;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
-`
-// 문제 설명
-const Description = styled.div `
-    width: 1376px;
-    font-size: 20px;
-    align-items: center;
-    margin: auto;
-    background-color: beige;
-    text-align: left;
-`
-const ContentContainer = styled.div `
-    display: flex;
-    justify-content: space-between;
-    width: 1376px;
-    margin: auto;
-    padding: 20px;
-`;
-const InputData = styled.div `
-    width: 300px;
-    height: 300px;
-    font-size: 20px;
-    text-align: center;
-    align-items: center;
-    background-color: lavender;
-`
-const OutputData = styled.div `
-    width: 300px;
-    height: 300px;
-    font-size: 20px;
-    text-align: center;
-    align-items: center;
-    background-color: lavender;
-`
-// 코드 작성 칸
-const CodeInput = styled.textarea `
-    width: 1376px;
-    height: 300px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    background-color: beige;
-    overflow-wrap: break-word;
-`
-// 문제 제출 버튼
-const SubmitBtn = styled.button `
-    width: 100px;
-    height: 52px;
-    background-color: #FF8412;
-    color: white;
-    font-size: 28px;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-top: 20px;
-    align-items: center;
-    cursor: pointer;
-`
-// 코드 보여주는 칸
-const CodeContainer = styled.div `
-    width: 1376px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    border-radius: 5px;
-    background-color: beige;
-    font-size: 20px;
-    white-space: pre-line; 
-`
-const QuestionHeader = styled.div ` // 질문1,2에 대한 컨테이너
-    width: 1376px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    margin: auto;
-`
-const QuestionId = styled.div `
-    width: 100px;
-    height: 60px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    border-radius: 5px;
-    border: 2px solid #325cc7;
-    color: #325cc7;
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 10px;
-`
-const AnswerInput = styled.textarea `
-    width: 1376px;
-    height: 250px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    background-color: beige;
-    overflow-wrap: break-word;
-`
-const AnswerBtn = styled.button `
-    width: 216px;
-    height: 60px;
-    background-color: #FFAC30;
-    color: white;
-    font-size: 28px;
-    border-radius: 10px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-top: 20px;
-    align-items: center;
-    cursor: pointer;
-`
-const Title = styled.span `
-    width: 1376px;
-    display: flex;
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
-`
-const ResultContainer = styled.div `
-    width: 1376px;
-    height: auto;
-    background-color: #eee;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    font-size: 20px;
-    white-space: pre-line; 
-    text-align: left;
-`
-// table
-const StyledTable = styled.table `
-  width: 200px;
-  margin-top: 20px;
-  border-collapse: collapse;
-  text-align: left;
-`;
-const StyledThTd = styled.td `
-  border: 1px solid #ddd;
-  padding: 10px;
-  font-size: 1em;
-`;
-const StyledTh = styled.th `
-  background-color: #f2f2f2;
-`;
-const StyledTrEven = styled.tr `
-  background-color: #f9f9f9;
-`;
-const FeedbackContainer = styled.div `
-    width: 1376px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    margin: auto;
-    border-radius: 5px;
-    background-color: beige;
-    font-size: 20px;
-    white-space: pre-line; 
-    margin-bottom: 10px;
-`
+import { StyledQuestion } from 'styles/Question-styled';
+import { StyledProblem } from "styles/Problem-styled";
+import { useNavigate } from "react-router-dom";
 
 const QuestionPage = () => {
-
-    const [problem, setProblem] = useState([]);
-    const [code, setCode] = useState("");
-    const [request, setRequest] = useState("");
-    const [result, setResult] = useState("");
-    const [qnA, setQnA] = useState([]);
-    const [answerFst, setAnswerFst] = useState("");
-    const [answerSec, setAnswerSec] = useState("");
-    const [feedbacks, setFeedbacks] = useState([]);
-    const [comment, setComment] = useState("");
-
-    // 일단 고정
-    var answerId = 1;
-
-    const memberEmail = localStorage.getItem('memberEmail');
-
     var url = new URL(window.location.href);
-    var problemId = url
+    var answerId = url
         .pathname
         .split('/')[2];
-      
-    const userName = localStorage.getItem('memberName');
+    const problemId = sessionStorage.getItem('problemId');
+    const navigate = useNavigate();
 
-    function submitCode() {
-        const data = {
-            request: request,
-            problemId: problemId,
-            userName: userName
-        };
-        if (!request) {
-            alert("코드를 입력해주세요!");
-        }
-        else {
-            postCode(request, problemId, userName);
-        }
-    }
+    const [state, setState] = useState("");
+    const [title, setTitle] = useState([]);
+    const [code, setCode] = useState("");
+    const [qnA, setQnA] = useState([]);
+    const [feedbacks, setFeedbacks] = useState([]);
+    const [passCount, setPassCount] = useState(0);
+    const [problem, setProblem] = useState([]);
 
-    function submitAnswer() {
-        if (!answerFst || !answerSec) {
-            alert("내용을 입력해주세요!");
-        }
-        else {
-            postAnswer(memberEmail, answerFst, answerSec);
-        }
-    }
+    const textFst = useRef("");
+    const textSec = useRef("");
 
-    function submitComment() {
-        if (!comment) {
-            alert("내용을 입력해주세요!");
-        }
-        else {
-            postFeedback(comment);
-        }
-    }
+    const [selectedOption, setSelectedOption] = useState(null);
+    const[isDropdownOpen,setIsDropdownOpen] = useState(false);
 
-    // 문제 불러오기 (get)
-    async function getTest() {
-        try {
-            const {data: response} = await axios.get(
-                `/api2/problem/${problemId}`,
-                {withCredentials: true}
-            );
-            setProblem(response);
-        } catch (error) {
-            console.log(error);
+    const toggleDropdown = () => {
+        if (!isDropdownOpen) {
+            getProblem();
         }
+        setIsDropdownOpen((상태)=>!상태);
     }
+    
+    useEffect(() => {
+        if (state === "comment" || state === "success" || state === "fail") {
+            getFeedback();
+        }
+    }, [state]);
+
+    // 문제 제목 불러오기 (get)
+    const getTitle = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problemtitle/${problemId}`,
+                    {withCredentials: true}
+                );
+                setTitle(response);
+            } catch (error) {
+                console.log(error);
+            }
+    }, [problemId]);
 
     useEffect(() => {
-        getTest();
-    }, []);
+        getTitle();
+    }, [getTitle]);
 
-    // 코드 제출하기 (post)
-    async function postCode(request, problemId, userName) {
-        try {
-            const {data: response} = await axios.post(
-                `/api2/submit/${problemId}/${userName}`,
-                {
-                    code: request,
-                    problemId: problemId,
-                    userName: userName
-                }
-            )
-            // console.log(response);
-            setResult(response.detail);
-            getCode();
-        } catch (error) {
-            console.log(error);
+    // pass, fail 선택
+    const handleOption = (option) => {
+        setSelectedOption(option);
+    }
+    
+    function FstHandler(e) {
+        textFst.current = e.target.value;
+    }
+
+    function SecHandler(e) {
+        textSec.current = e.target.value;
+    }
+
+    // 답변 제출
+    function submitAnswer() {
+        if (!textFst.current || !textSec.current) {
+            alert("내용을 입력해주세요!");
+        }
+        else {
+            postAnswer(textFst.current, textSec.current);
+        }
+    }
+
+    // 댓글 제출
+    function submitComment() {
+        if (!textFst.current) {
+            alert("내용을 입력해주세요!");
+        }
+        if (!selectedOption) {
+            alert("통과 여부를 선택해주세요!");
+        }
+        else {
+            postFeedback(textFst.current, selectedOption);
+        }
+    }
+
+    // 댓글 제출 결과 alert
+    function getAlert(response) {
+        if (response === 400) {
+            alert("이미 댓글을 달았습니다.");
+        }
+        else if (response === 403) {
+            alert("댓글을 달 수 없습니다.");
         }
     }
 
     // 사용자가 작성한 코드 불러오기 (get)
-    async function getCode() {
+    const getCode = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
-                `/api2/answer/${problemId}/${userName}`,
+                `/api2/question/${answerId}`, 
                 {withCredentials: true}
             );
-            setCode(response.detail);
+            setCode(response.code);
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
+
+    useEffect(() => {
+        getCode();
+    }, [getCode]);
 
     // 질문, 답변 블러오기 (get)
-    async function getQuestions() {
+    const getQuestions = useCallback(async () => {
         try {
             const {data: response} = await axios.get(
                 `/api/answer/${answerId}`,
                 {withCredentials: true}
             );
             setQnA(response);
+            setState(response.answerState);
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
 
     useEffect(() => {
         getQuestions();
-    }, []);
+    }, [getQuestions]);
 
     // 질문 답변하기 (post)
-    async function postAnswer(memberEmail, answerFst, answerSec) {
+    async function postAnswer(answerFst, answerSec) {
         try {
-            const {data: response} = await axios.post(
-                `/api/answer/${answerId}?memberEmail=${memberEmail}`,
+            await axios.post(
+                `/api/answer/${answerId}`,
                 {
                     answerFst: answerFst,
                     answerSec: answerSec
                 }
             )
-            getQuestions();
+
+            alert("성공적으로 답변을 등록했습니다.");
+            window.location.reload(); 
+
         } catch (error) {
-            console.log(error);
+            if (error.response && error.response.status === 400) {
+                alert("이미 답변이 등록되어 있습니다.");
+            } 
+            else if (error.response && error.response.status === 403) {
+                alert("접근할 수 있는 사용자가 아닙니다. 로그인 페이지로 이동합니다.");
+                navigate("/signin");
+            }
+            else {
+                console.log(error);
+            }
         }
     }
 
-    // 피드백 불러오기 (get) => 미완
-    async function getFeedback() {
+    // 댓글 불러오기 (get)
+    const getFeedback = useCallback(async () => {
         try {
             const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
-            // writerEmail
-            // writerName
-            // commentContent
+            let passCount = 0;
             setFeedbacks(response);
-            console.log("getFeedback response: " + response);
-            console.log("getFeedback type: " + typeof(response));
+            for (let i = 0; i < response.length; i++) {
+                if (response[i].commentPassFail === 1) {
+                    passCount++;
+                }
+            }
+            setPassCount(passCount);
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [answerId]);
 
-    useEffect(() => {
-        getFeedback();
-    }, []);
-
-    // 피드백 달기 (post) 
-    async function postFeedback(comment) {
+    // 댓글 달기 (post)
+    async function postFeedback(comment, selected) {
         try {
             const {data: response} = await axios.post(
-                `/api/comment/${answerId}?memberEmail=${memberEmail}`,
+                `/api/comment/${answerId}`,
                 {
-                    comment: comment
+                    comment: comment,
+                    commentPassFail: selected
                 }
             )
             getFeedback();
-            console.log(response);
+            getAlert(response);
         } catch (error) {
             console.log(error);
         }
     }
 
-    // 문제 UI
-    function renderProbUI() {
-
-        const inputArray = problem.sample_inputs
-            ? Object.values(problem.sample_inputs)
-            : [];
-
-        const outputArray = problem.sample_outputs
-            ? Object.values(problem.sample_outputs)
-            : [];
-
-        return (
-            <div>
-                <ProbHeader>
-                    <ProbId>{problemId}</ProbId>
-                    <HeaderTitle>{problem.title}</HeaderTitle>
-                </ProbHeader>
-                <Description>{problem.context}</Description>
-                <ContentContainer>
-                    <h2>Sample Inputs:
-                    </h2>
-                    <InputData>
-                        {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
-                    </InputData>
-                    <h2>Sample Outputs:
-                    </h2>
-                    <OutputData>
-                        {outputArray.map((i) => (<p>{i}</p>))}
-                    </OutputData>
-                </ContentContainer>
-                <Title>코드 입력</Title>
-                {
-                    code
-                        ? (<CodeContainer>{code}</CodeContainer>)
-                        : (
-                            <> <CodeInput placeholder = "코드를 입력해주세요." onChange = {
-                                (e) => setRequest(e.target.value)
-                            }/> <SubmitBtn onClick={() => submitCode()}>제출</SubmitBtn>
-                        </>
-                        )
-                }
-                {
-                    result
-                        ? (<><Title> 결과</Title> < ResultContainer > {
-                            result
-                        }</ResultContainer></>)
-                        : (<div/>)
-                }
-            </div>
-        );
+    function renderNewlines(text) {
+        return text.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
     }
 
-    // 질문 UI
+    const getProblem = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problem/${problemId}`,
+                    {withCredentials: true}
+                );
+                setProblem(response);
+            } catch (error) {
+                console.log(error);
+            }
+    }, [problemId]);
+    
     function renderAnswerUI() {
         return (
-            <div>
-                {
-                    (!qnA.answerFst || !qnA.answerSec)
-                        ? <> < QuestionHeader > <QuestionId>질문 1</QuestionId>
-                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
-                    </QuestionHeader>
-                    <AnswerInput onChange={(e) => setAnswerFst(e.target.value)}/>
-                    <QuestionHeader>
-                        <QuestionId>질문 2</QuestionId>
-                        <HeaderTitle>{qnA.questionContentSec}</HeaderTitle>
-                    </QuestionHeader>
-                    <AnswerInput onChange={(e) => setAnswerSec(e.target.value)}/>
-                    <AnswerBtn onClick={() => submitAnswer()}>답변하기</AnswerBtn> </>
-                    : <>
-                    < QuestionHeader > <QuestionId>질문 1</QuestionId>
-                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
-                    </QuestionHeader>
-                            <CodeContainer>{qnA.answerFst}</CodeContainer>
-                            < QuestionHeader > <QuestionId>질문 1</QuestionId>
-                        <HeaderTitle>{qnA.questionContentFst}</HeaderTitle>
-                    </QuestionHeader>
-                            <CodeContainer>{qnA.answerSec}</CodeContainer>
+            <StyledQuestion className="problem_answer_section">
+                <StyledProblem className="problem_header_section" state={state}>
+                    <div className="problem_header">
+                        <div className="problem_group">
+                            <div className="problem_id">문제{problemId}</div>
+                            <div className="header_title">{title.problemTitle}</div>
+                            <div className="header_answer_state">
+                                {state === "success" ? "성공" : state === "fail" ? "실패" : "미완료"}
+                            </div>
+                        </div>
+                        <div className="button_group">
+                            <button className="button_problem" onClick={toggleDropdown}>문제보기
+                                 {isDropdownOpen && (
+                                    <div className='dropdown_content'>
+                                        <div className="content">
+                                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                                        </div>
+
+                                        <div className="sample_inputs">
+                                            <h3>Sample Inputs:</h3>
+                                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                                <React.Fragment key={index}>
+                                                    {renderNewlines(input)}
+                                                </React.Fragment>
+                                            ))}
+                                        </div>
+                        
+                                        <div className="sample_outputs">
+                                            <h3>Sample Outputs:</h3>
+                                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                                <React.Fragment key={index}>
+                                                    {renderNewlines(output)}
+                                                </React.Fragment>
+                                            ))}
+                                        </div>
+                                    </div>
+                                 )}
+                                </button>
+                            {(state === "success" || state === "fail") && (
+                                <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
+                            )}
+                        </div>
+                    </div>
+                </StyledProblem>
+                <div className="code_question_container">
+                    <div className="code_container">{code}</div>
+                    <div className="question_container">
+                    {
+                    (!qnA.answerFst || !qnA.answerSec) 
+                    // answerState: question (qnA만 있음, 답변해야 하는 상태)
+                        ? <> 
+                        <div className="question_layout">
+                            <div className="question_header"> 
+                                <div className="question_id">질문 1</div>
+                                <div className="header_title">{qnA.questionContentFst}</div>
+                            </div>
+                            <textarea className="answer_input" onChange={FstHandler}/>
+                        </div>
+
+                        <div className="question_layout">
+                            <div className="question_header">
+                                <div className="question_id">질문 2</div>
+                                <div className="header_title">{qnA.questionContentSec}</div>
+                            </div>
+                            <textarea className="answer_input" onChange={SecHandler}/>
+                        </div>
                         </>
-                }
-            </div>
+                        // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
+                        // answerState: success
+                        // answerState: fail
+                    : <> 
+                        <div className="question_header"> 
+                            <div className="question_id">질문 1</div>
+                            <div className="header_title">{qnA.questionContentFst}</div>
+                        </div>
+                        <div className="answer_input display">{qnA.answerFst}</div>
+                        
+                        <div className="question_header"> 
+                            <div className="question_id">질문 2</div>
+                            <div className="header_title">{qnA.questionContentSec}</div>
+                        </div>
+                        <div className="answer_input display">{qnA.answerSec}</div>
+                    </>
+                    }
+                    </div>
+                </div>                
+
+                {(state === "question") && (!qnA.answerFst || !qnA.answerSec) && (
+                    <div className="btn_container">
+                        <button className="button answer" onClick={submitAnswer}>답변하기</button> 
+                    </div>
+                )}
+            </StyledQuestion>
         );
     }
 
-    // 피드백 UI
-    function renderFeedbackUI() {
+    function renderFeedbackUI(memberStatus) {
 
         const feedbackArray = feedbacks
             ? Object.values(feedbacks)
             : [];
             
         return (
-            <div>
-            <QuestionHeader>
-                <Title>피드백 달기</Title>
-            </QuestionHeader>
+            <StyledQuestion className="feedback_section_1">
+                <hr style={{height:1, border:"none", backgroundColor: "#3E3E3E", marginTop:100}}></hr>
 
-            {feedbackArray.length > 0 && (
-                feedbackArray.map((feedback, index) => (
-                    <div key={index}>
-                        <QuestionHeader>
-                            <Title>{`이메일: ${feedback.writerEmail}`}</Title>
-                            <Title>{`Writer Name: ${feedback.writerName}`}</Title>
-                        </QuestionHeader>
-                        <FeedbackContainer>{feedback.commentContent}</FeedbackContainer>
-                    </div>
-                ))
-            )}
+                <div className="feedback_section">
+                    {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
+                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다...</div>
+                    )}
+                    
+                    {feedbackArray.length > 0 && (
+                        feedbackArray.map((feedback, index) => (
+                        <div className="feedback_container" key={index}>
+                            {(feedback.commentPassFail === 1) ? <div className="feedback_result_pass">PASS</div> : <div className="feedback_result_fail">FAIL</div>}
+                            <div className="question_header">
+                                <div className="feedback_index">{`Feedback ${index+1}`}</div>
+                                <div className="feedback_writer">{feedback.writerGen}기</div>
+                                <div className="feedback_writer">{feedback.writerName}</div>
+                            </div>
+                            <div className="feedback_content display">{feedback.commentContent}</div>
+                        </div>
+                        ))
+                    )}
 
-            {feedbackArray.length <= 1 && (
-                <div>
-                    <AnswerInput onChange={(e) => setComment(e.target.value)}></AnswerInput>
-                    <AnswerBtn onClick={() => submitComment()}>답변하기</AnswerBtn>
+                    {(memberStatus === "student") && (feedbackArray.length <= 1) && (state === "comment") && (
+                        <div>
+                            <div className="question_header">
+                                <div className="feedback_index">Feedback</div>
+                            </div>
+                            <textarea className="feedback_content input" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
+                            {/* PASS FAIL 선택 */}
+                            <div className="feedback_select_section">
+                                <div className="button_container">
+                                    <div className="select_button pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
+                                    <div className="select_button fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
+                                </div>
+                                <p className="select_comment">PASS 혹은 FAIL을 선택해주세요.</p>
+                            </div>
+                            <button className="feedback_button" onClick={submitComment}>답변하기</button>
+                        </div>
+                    )}
                 </div>
-            )}
-            </div>
+
+                {(feedbackArray.length >= 2) && (
+                    <div className="result_container">
+                        <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
+                            onClick={() => navigate(`/main`)}>
+                            {((passCount >= 1) && (feedbackArray.length > 1)) ? 
+                                `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
+                        </div>
+                        <p>클릭시 홈화면으로 이동합니다</p>
+                    </div>
+                )}
+
+            </StyledQuestion>
         );
     }
 
-    return (
+    return(
         <div>
             <Header/>
-            {renderProbUI()}
-            {renderAnswerUI()}
-            {renderFeedbackUI()}
+            <MemberStatus>
+                {(memberStatus) => {
+                    if (!memberStatus) {
+                        return <div className="loading">Loading...</div>;
+                    }
+
+                    return (
+                        <div>
+                            {renderAnswerUI()}
+                            {renderFeedbackUI(memberStatus)}
+                        </div>
+                    );
+                }}
+            </MemberStatus>
+            <Footer/>
         </div>
     );
-};
+}
 
 export default QuestionPage;
+
+    // 렌더링 시, answerState 필요
+    // 질문 줄 때 (get /question) 같이 넘겨줌
+
+    // getCode와 getQuestions는 항상 call
+    // getFeedback은 아래 상태일 때만 call
+
+        // answerState 구분
+    // - 질문 상태(question): 코드가 정상적으로 실행되어 질문에 답해야하는 상태 → 질문 테스트로 이동
+    // => qnA O
+    // - 커멘트 상태(comment): 커멘트를 기다리는 상태 → 질문테스트 답변 결과로 이동
+    // => qnA O / qnA.answerFst, qnA.answerSec O / feedback 있을 수도 없을 수도
+    // - 성공 상태(success): 모든 커멘트 sucess → 다른 사람의 코드도 확인 가능
+    // - 실패 상태(fail): 실패 상태, 커멘트 중 fail있음→ 다른 사람의 코드 확인 가능
+
+    // 피드백 구분
+    // 모든 커멘트 pass
+    // fail 있는 경우
+    // 신입생, 본인 글에는 댓글 달 수 없음 처리
+    // 댓글 중복으로 달 수 없음 처리
+    // 2명까지만 달 수 있음 처리

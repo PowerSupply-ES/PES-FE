@@ -1,97 +1,257 @@
-import styled from "styled-components";
-import {useState, useEffect} from "react";
-import {Problems} from "./test";
-import AdPart from "components/problem/AdPart";
-import ProblemItem from "components/problem/ProblemItem";
-import Header from "components/main/Header";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
-import serverConfig from '../../config';
+import Header from "components/main/Header";
+import { StyledProblem } from 'styles/Problem-styled';
+import Footer from "components/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
-const Filter = styled.div `
-    width: 1376px;
-    height: 62px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 48px;
-`
-const Button = styled.button `
-    height: 42px;
-    background-color: #FFFFFF;
-    color: #6A6B6F;
-    font-weight: bold;
-    font-size: 28px;
-    border-radius: 5px;
-    border: 2px solid #DEDEDE;
-    margin-right: 20px;
-    text-align: center;
-
-    &:hover {
-        background-color: #FFAC30;
-        color: white;
-    }
-
-    &:focus {
-        background-color: #FFAC30;
-        color: white;
-        outline: none;
-    }
-`
+// 에디터에 사용할 언어 및 테마를 불러옴.
+// import "ace-builds";
+// import "ace-builds/webpack-resolver";
+//import AceEditor from 'react-ace';
+//import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
+//import 'ace-builds/src-noconflict/theme-monokai';
+// import Editor  from '@monaco-editor/react';
 
 const ProblemPage = () => {
+    const navigate = useNavigate();
 
-    const [list, setList] = useState([]);
-    const memberEmail = localStorage.getItem('memberEmail');
+    var url = new URL(window.location.href);
+    var problemId = url
+        .pathname
+        .split('/')[2];
 
-    // 문제 목록 불러오기 (get)
-    async function getList() {
-        console.log("memberEmail: " + memberEmail)
-        try {
-            const config = {
-                withCredentials: true,
-            };
-    
-            if (memberEmail) {
-                config.params = { memberEmail };
+    const [title, setTitle] = useState([]);
+    const [problem, setProblem] = useState([]);
+    const text = useRef("");
+    const [detail, setDetail] = useState(null);
+
+    const isLogin = sessionStorage.getItem('status');
+
+    function textHandler(e) {
+        text.current = e.target.value;
+    }
+
+    async function submitCode() {
+        if (!text.current) {
+            alert("코드를 입력해주세요!");
+        }
+        else {
+            const { data: response, status} = await postCode(text.current, problemId);
+
+            if (!response) {
+                alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
+                navigate("/signin");
             }
-    
-            const { data: response } = await axios.get(
-                `/api/problemlist`,
-                config
-            );
-            console.log(response);
-            setList(response);
-        } catch (error) {
-            console.log(error);
+            else if (status === 201) {
+                console.log(response);
+                alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다.");
+                sessionStorage.setItem('problemId', problemId);
+                navigate(`/question/${response.answer_id}`);
+            }
+            else if (status === 202) {
+                await setDetail(response.detail);
+                await alert("문제를 틀렸습니다! 다시 풀어보세요.");
+            }
         }
     }
 
-    useEffect(() => {
-        getList();
-    }, []);
+    // 문제 제목 불러오기 (get)
+    const getTitle = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problemtitle/${problemId}`,
+                    {withCredentials: true}
+                );
+                setTitle(response);
+            } catch (error) {
+                console.log(error);
+            }
+    }, [problemId]);
 
+    useEffect(() => {
+        getTitle();
+    }, [getTitle]);
+
+    // 문제 내용 불러오기 (get)
+    const getProblem = useCallback(async () => {
+            try {
+                const {data: response} = await axios.get(
+                    `/api2/problem/${problemId}`,
+                    {withCredentials: true}
+                );
+                setProblem(response);
+            } catch (error) {
+                console.log(error);
+            }
+    }, [problemId]);
+
+    useEffect(() => {
+        getProblem();
+    }, [getProblem]);
+    
+    // 코드 제출하기 (post)
+    async function postCode(request, problemId) {
+        try {
+            const response = await axios.post(
+                `/api2/submit/${problemId}`,
+                {
+                    code: request,
+                    problemId: problemId,
+                }
+            )
+            
+            return { data: response.data, status: response.status };
+
+        } catch (error) {
+            console.log(error);
+            return { status: error.response ? error.response.status : 500 };
+        }
+    }
+
+    function renderNewlines(text) {
+        return text.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
+    }
+    
+
+    function renderProbUI() {
+        return (
+            <StyledProblem state={"null"}>
+                <div className="problem_header">
+                    <div className="problem_group">
+                        <div className="problem_id">문제{problemId}</div>
+                        <div className="header_title">{title.problemTitle}</div>
+                        <div className="header_answer_state">미완료</div>
+                    </div>
+                </div>
+
+                <div className="problem_section">
+                    <div className="content_container">
+
+                        {/* 상단문제 */}
+                        <div className="top">
+                            <p className="underline">문제</p>
+                            
+                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                        </div>
+                    
+
+                        {/* 하단 sample input */}
+                        <div className="bottom">
+                            <div className="sample_inputs">
+                                <p className="underline">Sample Inputs</p>
+                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                    <React.Fragment key={index}>
+                                        {renderNewlines(input)}
+                                    </React.Fragment>
+                                ))}
+                            </div>
+
+                            <div className="sample_outputs">
+                            <p className="underline">Sample Outputs</p>
+                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                <React.Fragment key={index}>
+                                    {renderNewlines(output)}
+                                </React.Fragment>
+                            ))}
+                            </div>
+                        </div> 
+                    </div>
+
+
+                    {/* 우측 코드 입력 */}
+                    <div className="code_section">
+                        {/* 원래코드 */}
+                        {
+                            isLogin ?
+                            <>
+                                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
+                                    onChange = {textHandler}/>
+                                { (detail !== null && detail !== undefined) &&
+                                    <div className="detail_container">
+                                        <h3>틀린 이유</h3>
+                                        <div className="detail_content">{detail}</div>
+                                    </div>
+                                }
+                            </>
+                            :
+                            <textarea disabled className="code_input" placeholder = "로그인 후 이용해주세요." />
+                        }
+                    </div>
+                </div>
+                
+                <button className={isLogin ? "submit_button" : "submit_button disabled"} 
+                    onClick={() => isLogin && submitCode()}>제출</button>
+                
+            </StyledProblem>
+        );
+    }
+    
     return (
         <div>
             <Header/>
-            <AdPart/>
-            <Filter>
-                <Button>푼 문제 보기</Button>
-                <Button>안 푼 문제 보기</Button>
-                <Button>풀이 중인 문제 보기</Button>
-                <Button>FAIL</Button>
-                <Button>CLEAR</Button>
-            </Filter>
-            {
-                list.map((problem) => (
-                    <ProblemItem
-                        pid={problem.problemId}
-                        ptitle={problem.problemTitle}
-                        grade={problem.problemScore}
-                        state="challenge"/>
-                ))
-            }
+            {problem ? renderProbUI() : <div className="loading">Loading...</div>}
+            <Footer/>
         </div>
     );
-};
+}
 
 export default ProblemPage;
+
+                        {/* 원래 코드 */}
+                        {/* <div className="top">
+                            <h2>Sample Inputs:</h2>
+                            <div className="input_data">
+                                {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
+                            </div>
+                        </div>
+                        <div className="bottom">
+                            <h2>Sample Outputs:</h2>
+                            <div className="output_data">
+                                {outputArray.map((i) => (<p>{i}</p>))}
+                            </div>
+                        </div> */}
+
+                        {/* AceEditor 주석 */}
+                        {/*
+                        <AceEditor 
+                            className="code_input" 
+                            mode="c_cpp"
+                            theme="monokai"
+                            placeholder = "코드를 입력해주세요." 
+                            onChange={textHandler}
+                            value={text.current}
+                            name="code-editor"
+                            editorProps={{ 
+                                $blockScrolling: Infinity, // 스크롤 이동 허용
+                                style: {
+                                    background: '#ffffff',
+                                    overflowY: 'auto' // 세로 스크롤이 필요할 경우 스크롤 표시
+                                }
+                            }}
+                            fontSize={"20px"}
+                            setOptions={{
+                                highlightActiveLine: true, // 활성 줄 강조
+                            }}
+                            style={{
+                                height: '100%',
+                                width: '100%'
+                            }}
+                            
+                            /> 
+                        */}
+
+                        {/* <Editor
+                            height='100%'
+                            width= '100%'
+                            theme="vs-dark"
+	@@ -195,16 +172,11 @@ const ProblemPage = () => {
+                                }
+                            }}
+                            onChange={(newCode) => setRequest(newCode)}
+                        />  */}

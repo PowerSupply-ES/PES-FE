@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import serverConfig from '../../config';
+import React, { useState } from 'react';
 import '../../styles/intro.css';
-
-
 
 const Signin = () => {
   const [formData, setFormData] = useState({
-    memberEmail: '',
+    memberId: '',
     memberPw: ''
   });
 
@@ -23,21 +20,25 @@ const Signin = () => {
     })
     .then((response) => {
       if (!response.ok) {
-        console.log('서버응답:', response);
-        throw new Error(`${response.status} ${response.statusText}`);
+        // console.log('서버응답:', response);
+        if (response.status === 401) {
+          throw new Error('일치하는 정보가 없습니다');
+        } else {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
       }
       return response.json();
     })
     .then((responseData) => {
       const resultMessage = responseData.message;
       alert(resultMessage);
-      window.location.href = '/main';
+      window.location.href = '/list';
 
-      localStorage.setItem('status', true);
-      localStorage.setItem('memberEmail', formData.memberEmail);
+      sessionStorage.setItem('status', true);
+      sessionStorage.setItem('memberId', formData.memberId);
     })
     .catch((error) => {
-      const errorMessage = '오류 발생: ' + error.message;
+      const errorMessage = error.message;
       alert(errorMessage);
     });
   }
@@ -76,19 +77,19 @@ const Signin = () => {
         <h4>로그인</h4>
 
         <form onSubmit={handleSubmit}> 
-          <div className="input-container">
-            <label htmlFor="memberEmail">이메일</label>
+          <div className="login-input">
+            <label htmlFor="memberId">아이디(학번)</label>
             <input
               type="text"
-              id="memberEmail"
-              name="memberEmail"
-              value={formData.memberEmail}
-              placeholder='이메일을 입력해주세요'
+              id="memberId"
+              name="memberId"
+              value={formData.memberId}
+              placeholder='학번을 입력해주세요'
               onChange={handleInputChange} /* 입력 값이 변경될 때 핸들러 추가 */
               required
             />
           </div>
-          <div className="input-container">
+          <div className="login-input">
             <label htmlFor="memberPw">비밀번호</label>
             <input
               type="password"
@@ -101,7 +102,7 @@ const Signin = () => {
               required
             />
           </div>
-          <button type="submit" className="btn_intro">
+          <button type="submit" className="btn_signin">
             로그인
           </button>
           <div className="move">
