@@ -25,9 +25,9 @@ function Header() {
 
 // 로그인x 넷바
 function Header0(){ 
-
-  const navigate = useNavigate();
   
+  const navigate = useNavigate();
+
     return(
        <div className='container'>
          <a className='logout' href="/signin">로그인</a>
@@ -47,20 +47,19 @@ function Header0(){
 function Header1(){ 
   const navigate = useNavigate();
 
- const[isDropdownOpen,setIsDropdownOpen] = useState(false);
- const toggleDropdown = () =>{
-   setIsDropdownOpen((상태)=>!상태);
- }
+ const [isDropdownOpen,setIsDropdownOpen] = useState(false);
+ const [memberData, setMemberData] = useState({
+  memberName: '',
+  memberScore: '',
+  memberStatus: '',
+  memberGen:''
+});
 
+ const toggleDropdown = () =>{
+   setIsDropdownOpen((state)=>!state);
+ }
   const uri = '../api/exp';
   const memberEmail = sessionStorage.getItem('memberEmail');
- 
-  const [memberData, setMemberData] = useState({
-    memberName: '',
-    memberScore: '',
-    memberStatus: '',
-    memberGen:''
-  });
 
 
   // 넷바 사용자 정보
@@ -81,14 +80,17 @@ function Header1(){
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
+        // if(error.response.status === 401){
+        //   logoutUser();
+        // }
       });
 
   };
-
   useEffect(() => {
     userInfo();
   }, []);
 
+  
   //로그아웃 api호출 함수
   const logoutUser = () => {
     const uri = '../api/logout';
