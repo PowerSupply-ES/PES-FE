@@ -352,6 +352,7 @@ button:hover {
 .btn_fail, .btn_success, .btn_state{
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 5px;
   width: 80px;
   height: 28px;
@@ -387,6 +388,16 @@ button:hover {
   color: #060606;
 }
 
+
+/* 풀이 > 버튼 */
+.right > .btn_fail,
+.right > .btn_success{
+  width: fit-content;
+  height: fit-content;
+  font-size: 18px;
+  padding: 7px 12px;
+  margin-left: 20px;
+}
 
 /* -----드롭다운----- */
 .dropdown-content{
@@ -511,10 +522,28 @@ button:hover {
 .solution_score{
   font-size: 20px;
 }
+
+/* btn_process */
+.btn_process{
+  height: fit-content;
+    background-color: #FFFFFF;
+    color: #6A6B6F;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid #DEDEDE;
+    margin-right: 20px;
+    text-align: center;
+    padding: 3px;
+}
+
+
+
 /* 풀이버튼 */
 .btn_baekjoon, .btn_challenge{
   width: fit-content;
   height: fit-content;
+
   border-radius: 5px;
   border: 2px solid;
   background: #FFF;
@@ -569,6 +598,7 @@ button:hover {
 .right > .process_num{
   color: black;
   font-size: 20px;
+  font-weight: bold;
 }
 .left > .userName{
   width: 100px;
@@ -584,15 +614,20 @@ button:hover {
 .btn_goto_challenge{
   height: fit-content;
   width: fit-content;
-  padding: 6px 32px;
+  padding: 6px 28px;
   color: white;
-  border: solid #5094F9;
+  border: solid #565656;
+  /* #5094F9 */
   border-radius: 5px;
-  background-color: #5094F9;
+  background-color: #565656;
   font-size: 16px;
   font-weight: bold;
   box-shadow: 1px 3px #CCC9C9;
-
+  margin-left: 12px;
+  &:hover{
+    background-color: #262626;
+    border-color: #262626;
+  }
 }
 
 

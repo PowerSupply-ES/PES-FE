@@ -7,36 +7,13 @@ import '../../App.css';
 
 const MyPage = () => {
     //정보리스트
-    const [memberData, setMemberData] = useState({
-      memberEmail: '',
-      memberName: '',
-      memberGen: '',
-      memberStatus: '',
-      memberMajor: '',
-      memberPhone: '',
-      memberId:''
-      // memberScore: ''
-    });
+    const [memberData, setMemberData] = useState([]);
 
     //내문제리스트
-    // const [myProb, setMyProb] = useState({
-    //   problemId: '',
-    //   problemTitle: '',
-    //   problemScore: '',
-    //   answerId: '',
-    //   answerState: '',
-    //   finalScore: ''
-    // });
     const [myProb, setMyProb] = useState([]);
   
     //내피드백리스트
-    // const [myFeedback, setMyFeedback] = useState({
-    //   answerId: '',
-    //   memberGen: '',
-    //   mameberName: '',
-    //   commentPassFail: '',
-    //   commentContent: ''
-    // });
+    // const [myFeedback, setMyFeedback] = useState([]);
 
 
     // const serverUrl = serverConfig.serverUrl;

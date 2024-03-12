@@ -129,8 +129,12 @@ function SolvingList({ solveData }) {
             <div className="userName">{it.memberName}</div>
           </div>
           <div className="right">
-            {/* <div className="process_num">1/2</div> */}
-            <button className="btn_goto_challenge" onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
+            <div className="process_num">{it.commentCount}/2</div>
+            <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
+              {it.answerState}</div>
+            
+            <button className="btn_goto_challenge" 
+            onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
           </div>
         </div>
       ))}
