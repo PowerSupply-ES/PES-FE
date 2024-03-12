@@ -123,6 +123,8 @@ function SolvingList({ solveData }) {
   return (
     <div className="solving_list">
       {solveData.map((it) => (
+        // answerId가 "question"과 일치하지 않을 때에만 렌더링
+        it.answerId !== "question" && (
         <div className="solving" key={it.answerId}>
           <div className="left">
             <div className="userGen">{it.memberGen}<p>기 </p></div>
@@ -137,6 +139,7 @@ function SolvingList({ solveData }) {
             onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
           </div>
         </div>
+      )
       ))}
     </div>
   );
