@@ -6,10 +6,12 @@ import serverConfig from '../../config';
 
 
 function Solution() {
-  const url = new URL(window.location.href);
-  const problemId = url
+  var url = new URL(window.location.href);
+  var problemId = url
       .pathname
       .split('/')[2];
+
+  sessionStorage.setItem('problemId', problemId);
 
 
   const [problemData, setProblemData] = useState({

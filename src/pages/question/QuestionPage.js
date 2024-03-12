@@ -13,7 +13,10 @@ const QuestionPage = () => {
     var answerId = url
         .pathname
         .split('/')[2];
+
     const problemId = sessionStorage.getItem('problemId');
+    console.log("problemId = ",problemId);
+
     const navigate = useNavigate();
 
     const [state, setState] = useState("");
