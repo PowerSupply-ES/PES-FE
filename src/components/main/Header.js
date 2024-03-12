@@ -53,7 +53,7 @@ function Header1(){
   memberScore: '',
   memberStatus: '',
   memberGen:''
-});
+  });
 
  const toggleDropdown = () =>{
    setIsDropdownOpen((state)=>!state);
@@ -68,7 +68,15 @@ function Header1(){
       method: 'GET',
     })
       .then(response => {
-        if (!response.ok) {
+        if(response.status === 403){
+          // logoutUser();
+          alert("로그인이 만료됐습니다!");
+          // logoutUser();
+          sessionStorage.clear();
+          localStorage.clear();
+          navigate('/signin');
+        }
+        else if (!response.ok) {
           console.log('서버응답:', response);
           throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
         }
@@ -80,9 +88,6 @@ function Header1(){
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
-        // if(error.response.status === 401){
-        //   logoutUser();
-        // }
       });
 
   };
