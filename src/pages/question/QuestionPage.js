@@ -82,7 +82,7 @@ const QuestionPage = () => {
             alert("내용을 입력해주세요!");
         }
         else {
-            const isConfirmed = confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+            const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
     
             if (isConfirmed) {
                 postAnswer(textFst.current, textSec.current);
@@ -100,7 +100,7 @@ const QuestionPage = () => {
             alert("통과 여부를 선택해주세요!");
         }
         else {
-            const isConfirmed = confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+            const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
     
             if (isConfirmed) {
                 postFeedback(textFst.current, selectedOption);
