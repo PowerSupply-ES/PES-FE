@@ -326,9 +326,9 @@ button:hover {
   display: flex;
   align-items: center;
 }
-.problems > *:not(:first-child){
+/* .problems > *:not(:first-child){
   margin-right: 40px;
-}
+} */
 .problems > .problemId{
   display: flex;
   align-items: center;
@@ -337,9 +337,28 @@ button:hover {
   color: #04CA00;
   font-weight: bold;
 }
-.problems > .problemTitle{
+.problems > .finalScore,
+.problems > .problemScore{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7%;
+  color: #aaaaaad3;
+  font-weight: bold;
+}
+.dash{
+  width: 1%;
+  color: #1f1f1fb3;
+  color: #aaaaaad3;
+  font-weight: bold;
+}
+.problems > .problemScore{
+  margin-right: 10px;
+}
+.problems > .problemTitle,
+.problems > .mameberName{
   justify-content: left;
-  width: 70%;
+  width: 60%;
   font-weight: bold;
   cursor: pointer;
 }

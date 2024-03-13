@@ -13,7 +13,7 @@ const MyPage = () => {
     const [myProb, setMyProb] = useState([]);
   
     //내피드백리스트
-    // const [myFeedback, setMyFeedback] = useState([]);
+    const [myFeedback, setMyFeedback] = useState([]);
 
 
     // const serverUrl = serverConfig.serverUrl;
@@ -66,26 +66,26 @@ const MyPage = () => {
 
 
     // 내 feedback
-    // const sendGetFeedback = () => {
-    //   const uri = 'api/mypage/myfeedback';
+    const sendGetFeedback = () => {
+      const uri = 'api/mypage/myfeedback';
   
-    //   fetch(`${uri}`, {
-    //     method: 'GET',
-    //   })
-    //     .then(response => {
-    //       if (!response.ok) {
-    //         console.log('서버응답:', response);
-    //         throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
-    //       }
-    //       return response.json();
-    //     })
-    //     .then(data => {
-    //       setMyFeedback(data);
-    //     })
-    //     .catch(error => {
-    //       console.error('데이터 가져오기 실패:', error);
-    //     });
-    // };
+      fetch(`${uri}`, {
+        method: 'GET',
+      })
+        .then(response => {
+          if (!response.ok) {
+            console.log('서버응답:', response);
+            throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          setMyFeedback(data);
+        })
+        .catch(error => {
+          console.error('데이터 가져오기 실패:', error);
+        });
+    };
 
 
     useEffect(() => {
@@ -99,7 +99,7 @@ const MyPage = () => {
         return; // 함수를 여기서 종료시킴
       }
       sendGetProb();
-      // sendGetFeedback();
+      sendGetFeedback();
     }, []);
     
 
@@ -144,13 +144,16 @@ const MyPage = () => {
               {/* 신입생,재학생에 따라 feedback 띄워주기 */}
               <div className='bottom'>
                 <div className='mypage_btn'>my feedback</div>
+
                 <div className='myFeedback'>
-                  {/* <div><p>{myFeedback.answerId}</p></div>
-                  <div><p>{myFeedback.memberGen}</p></div>
+                 <MyFeed myFeedback={myFeedback}></MyFeed>
+
+                  {/* <div><p>{myFeedback.answerId}1번</p></div>
+                  <div><p>{myFeedback.memberGen}사칙연산배우쟈</p></div>
                   <div><p>{myFeedback.mameberName}</p></div>
                   <div><p>{myFeedback.commentPassFail}</p></div>
                   <div><p>{myFeedback.commentContent}</p></div> */}
-                  <div>준비중이에요!</div>
+                  {/* <div>준비중이에요!</div> */}
 
                 </div>
               </div>
@@ -175,20 +178,82 @@ const MyPage = () => {
       // question/answerid
     }
     return (
-    <div className ='problemList' >
-      {myProb.map((it) => (
-
-        <div className='problems' key={it.answerId}>
-          <p className='problemId'>{it.problemId}</p>
-          <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
-          <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
-            {it.answerState}</div>
+    <div className="problemList">
+      {myProb.length === 0 ? (
+        <div className="noProblems">
+          <p>아직 푼 문제가 없어요!</p>
         </div>
+      ) : (
+        myProb.map((it) => (
+          <div className="problems" key={it.answerId}>
+            <p className="problemId">{it.problemId}</p>
+            <p className="problemTitle" onClick={() => gotoProb(it.answerId)}>
+              {it.problemTitle}
+            </p>
 
-      ))}
+            <p className="finalScore">{it.finalScore}점</p>
+            <p className="dash">/</p>
+            <p className="problemScore">{it.problemScore}점</p>
+
+            <div
+              className={`${
+                it.answerState === 'success'
+                  ? 'btn_success'
+                  : it.answerState === 'fail'
+                  ? 'btn_fail'
+                  : 'btn_state'
+              }`}
+            >
+              {it.answerState}
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 }
+
+  // 내 피드백 컴포넌트
+  function MyFeed({myFeedback}){
+
+    const gotoFeed = ( problemId ) =>{
+      console.log('problemId: ',problemId);
+      window.location=`question/${problemId}`;
+      // question/answerid
+    }
+    return (
+      // 클래스이름 수정하기
+    <div className ='problemList' >
+      {myFeedback.length === 0 ? (
+        <div className="noProblems">
+          <p>아직 받은 피드백이 없어요!</p>
+        </div>
+      ) : (
+      myFeedback.map((it) => (
+        <div className='problems' key={it.answerId}>
+          <p className='problemId'>{it.answerId}</p>
+
+          <p className='memberGen'>{it.memberGen}기</p>
+          <p className='mameberName' onClick={() => gotoFeed(it.answerId)}>{it.mameberName}</p>
+
+          <div className={`${
+            it.commentPassFail === 'success' 
+            ? 'btn_success' 
+            : it.commentPassFail === 'fail' 
+            ? 'btn_fail' 
+            : 'btn_state'
+          }`}
+          >
+            {it.commentPassFail}
+            </div>
+        </div>
+
+      ))
+    )
+    }
+    </div>
+  );
+  }
 
   
 export default MyPage;
