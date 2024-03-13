@@ -385,6 +385,11 @@ button:hover {
   border: solid 3px #EB3434; opacity: 80%;
   color: #EB3434; opacity: 80%;
 }
+.btn_state{
+  border: solid 3px #c2c2c2;
+  color: #999999; opacity: 80%;
+  font-size: 16px;
+}
 .memberInfo > .info_name{
   margin: 20px auto 40px;
   display: flex;

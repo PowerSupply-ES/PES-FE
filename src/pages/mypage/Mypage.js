@@ -204,7 +204,11 @@ const MyPage = () => {
                   : 'btn_state'
               }`}
             >
-              {it.answerState}
+            {it.answerState==='question'
+              ?'질문대기'
+              :it.answerState==='comment'
+              ?'피드백대기'
+              :it.answerState}
             </div>
           </div>
         ))
