@@ -77,6 +77,7 @@ export const StyledQuestion = styled.div`
         padding: 10px;
         box-sizing: border-box;
     }
+    
     /* 스크롤바 */
     .answer_input::-webkit-scrollbar {
     width: 10px;  
@@ -88,6 +89,8 @@ export const StyledQuestion = styled.div`
     .answer_input::-webkit-scrollbar-track {
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
+
+
     .button_group {
         display: flex;
     }
@@ -116,6 +119,7 @@ export const StyledQuestion = styled.div`
 
         width: 80%;
         margin: auto;
+
     }
 
     .button_problem {
@@ -132,6 +136,7 @@ export const StyledQuestion = styled.div`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
+
 
         background-color: #3B3B3B;
         font-size:16px;
