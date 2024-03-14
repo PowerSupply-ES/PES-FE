@@ -356,7 +356,8 @@ button:hover {
   margin-right: 10px;
 }
 .problems > .problemTitle,
-.problems > .mameberName{
+.problems > .mameberName
+.problems > .memberGen{
   justify-content: left;
   width: 60%;
   font-weight: bold;

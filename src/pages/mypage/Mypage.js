@@ -239,6 +239,7 @@ const MyPage = () => {
 
           <p className='memberGen'>{it.memberGen}기</p>
           <p className='mameberName' onClick={() => gotoFeed(it.answerId)}>{it.mameberName}</p>
+          {/* commentContent도 띄워주기! */}
 
           <div className={`${
             it.commentPassFail === 1 

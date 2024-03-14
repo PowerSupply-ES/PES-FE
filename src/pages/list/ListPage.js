@@ -80,9 +80,9 @@ const ListPage = () => {
         <div>
             <Header/>
             <AdPart/>
-            <Icon>
+            {/* <Icon>
                 <HiQuestionMarkCircle size={36}></HiQuestionMarkCircle>
-            </Icon>
+            </Icon> */}
             {/*
             <Filter>
                 <Button>푼 문제 보기</Button>

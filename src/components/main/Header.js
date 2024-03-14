@@ -69,7 +69,6 @@ function Header1(){
     })
       .then(response => {
         if(response.status === 403){
-          // logoutUser();
           alert("로그인이 만료됐습니다!");
           // logoutUser();
           sessionStorage.clear();
