@@ -71,6 +71,7 @@ export const StyledProblem = styled.div`
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        margin-bottom:20px;
     }
 
     &.problem_header_section {

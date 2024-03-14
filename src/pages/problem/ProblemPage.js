@@ -4,7 +4,7 @@ import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
-// import CodeEditor from "components/problem/CodeEditor";
+import CodeEditor from "components/problem/CodeEditor";
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -14,15 +14,22 @@ const ProblemPage = () => {
         .pathname
         .split('/')[2];
 
+    const text = useRef("");
+
     const [title, setTitle] = useState([]);
     const [problem, setProblem] = useState([]);
-    const text = useRef("");
     const [detail, setDetail] = useState(null);
 
     const isLogin = sessionStorage.getItem('status');
 
-    function textHandler(e) {
-        text.current = e.target.value;
+    // 기존코드
+    // function textHandler(e) {
+    //     text.current = e.target.value;
+    // }
+
+    // 수정코드
+    function textHandler(newCode) {
+        text.current = newCode;
     }
 
     async function submitCode() {
@@ -163,17 +170,22 @@ const ProblemPage = () => {
                             isLogin ?
                             <>
                                 {/* 변경코드 */}
-                                {/* <CodeEditor></CodeEditor> */}
+                                {/* CodeEditor 컴포넌트 추가 및 코드 전달 */}
+                                <CodeEditor onChange={textHandler} />
 
                                 {/* 원래코드 */}
-                                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                                    onChange = {textHandler}/>
+                                {/* <textarea className="code_input" 
+                                    placeholder = "코드를 입력해주세요." 
+                                    onChange = {textHandler}/> */}
+                                    
                                 { (detail !== null && detail !== undefined) &&
                                     <div className="detail_container">
                                         <h3>틀린 이유</h3>
                                         <div className="detail_content">{detail}</div>
                                     </div>
                                 }
+
+
                             </>
                             :
                             <textarea disabled className="code_input" placeholder = "로그인 후 이용해주세요." />
