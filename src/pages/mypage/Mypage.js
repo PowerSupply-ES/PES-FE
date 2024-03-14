@@ -241,9 +241,9 @@ const MyPage = () => {
           <p className='mameberName' onClick={() => gotoFeed(it.answerId)}>{it.mameberName}</p>
 
           <div className={`${
-            it.commentPassFail === 'success' 
+            it.commentPassFail === 1 
             ? 'btn_success' 
-            : it.commentPassFail === 'fail' 
+            : it.commentPassFail === 0
             ? 'btn_fail' 
             : 'btn_state'
           }`}
