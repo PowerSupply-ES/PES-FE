@@ -81,6 +81,7 @@ const MyPage = () => {
         })
         .then(data => {
           setMyFeedback(data);
+          console.log("data : ", data);
         })
         .catch(error => {
           console.error('데이터 가져오기 실패:', error);
@@ -227,19 +228,22 @@ const MyPage = () => {
     }
     return (
       // 클래스이름 수정하기
-    <div className ='problemList' >
+    <div className ='FeedList' >
       {myFeedback.length === 0 ? (
-        <div className="noProblems">
+        <div className="noFeed">
           <p>아직 받은 피드백이 없어요!</p>
         </div>
       ) : (
       myFeedback.map((it) => (
-        <div className='problems' key={it.answerId}>
+        <div className='feeds' key={it.answerId}>
           <p className='problemId'>{it.answerId}</p>
 
-          <p className='memberGen'>{it.memberGen}기</p>
-          <p className='mameberName' onClick={() => gotoFeed(it.answerId)}>{it.mameberName}</p>
-          {/* commentContent도 띄워주기! */}
+          <p className='memberGenName'>{it.memberGen}기{it.mameberName}최성임</p>
+
+          <p className='commentContent' onClick={() => gotoFeed(it.answerId)}>
+            제피드백은요 실패라고요{it.commentContent}
+          </p>
+
 
           <div className={`${
             it.commentPassFail === 1 
@@ -249,7 +253,9 @@ const MyPage = () => {
             : 'btn_state'
           }`}
           >
-            {it.commentPassFail}
+            {it.commentPassFail === 1 ? "success"
+            :it.commentPassFail === 0 ? "fail"
+            :it.commentPassFail}
             </div>
         </div>
 

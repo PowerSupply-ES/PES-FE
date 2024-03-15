@@ -314,22 +314,24 @@ button:hover {
   background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
 }
 
-.problems{
+.problems, .feeds{
   width: 100%;
   display: flex;
   padding: 4px 0;
 }
-.problemList{
+.problemList, .FeedList{
   width: 100%;
 }
-.problems > *{
+.problems > *,
+.feeds > *{
   display: flex;
   align-items: center;
 }
 /* .problems > *:not(:first-child){
   margin-right: 40px;
 } */
-.problems > .problemId{
+.problems > .problemId,
+.feeds > .problemId{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,14 +358,27 @@ button:hover {
   margin-right: 10px;
 }
 .problems > .problemTitle,
-.problems > .mameberName
+.problems > .mameberName,
 .problems > .memberGen{
   justify-content: left;
   width: 60%;
   font-weight: bold;
   cursor: pointer;
 }
-.problemList :hover {
+.feeds > .memberGenName{
+  justify-content: left;
+  width: 10%;
+  font-weight: bold;
+  cursor: pointer;
+  color: #262626;
+}
+.feeds > .commentContent{
+  margin: 0 20px 0 20px;
+  width: 60%;
+  color: #1f1f1f;
+}
+.problemList :hover,
+.FeedList :hover {
   background-color: rgba(243, 242, 242, 0.737);
 }
 
