@@ -461,7 +461,7 @@ button:hover {
 /* 풀이 > 버튼 */
 .right > .btn_fail,
 .right > .btn_success{
-  width: fit-content;
+  width: 80px;
   height: fit-content;
   font-size: 18px;
   padding: 7px 12px;
@@ -586,8 +586,12 @@ button:hover {
   display: flex;
   font-weight: bold;
   font-size: 20px;
+  color: #04CA00;
   /* float: right; */
 }
+/* .prob_score > p{
+  color:#060606bb;
+} */
 .solution_score{
   font-size: 20px;
 }
@@ -662,6 +666,7 @@ button:hover {
   font-size: 20px;
   display: flex;
   color: #04CA00;
+  font-weight: bold;
 
 }
 .right > .process_num{
