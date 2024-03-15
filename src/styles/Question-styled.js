@@ -357,7 +357,7 @@ export const StyledQuestion = styled.div`
         display: flex;
         flex-direction: column;
         margin-right: 0;
-        padding: 16px 12px;
+        padding: 40px 12px;
         position: absolute;
         top: 40px;
         width: fit-content;
