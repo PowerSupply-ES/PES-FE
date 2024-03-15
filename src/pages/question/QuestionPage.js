@@ -29,12 +29,6 @@ const QuestionPage = () => {
     const [passCount, setPassCount] = useState(0);
     const [problem, setProblem] = useState([]);
 
-    const text = useRef("");
-
-    function textHandler(newCode) {
-        text.current = newCode;
-    }
-
     const textFst = useRef("");
     const textSec = useRef("");
 
@@ -297,7 +291,7 @@ const QuestionPage = () => {
                         {/* 에디터로 수정_by성임 */}
                         <CodeEditor
                             value={code}
-                            onChange={textHandler}>
+                            readOnly={true}>
                             
                             {/* question_container<br></br>
                             question_container<br></br>
