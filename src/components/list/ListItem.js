@@ -7,7 +7,7 @@ const ProblemItem = (props) => {
 
     // console.log('memberStatus = ',memberStatus);
     // console.log('props = ',props);
-    console.log('props.state = ',props.state);
+    // console.log('props.state = ',props.state);
 
 
     function goTo(answerId) {

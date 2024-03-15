@@ -65,7 +65,7 @@ const ListPage = () => {
                 `/api/problemlist`,
                 config
             );
-            console.log(response);
+            // console.log(response);
             setList(response);
         } catch (error) {
             console.log(error);
