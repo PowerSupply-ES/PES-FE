@@ -6,6 +6,7 @@ import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import CodeEditor from "components/problem/CodeEditor";
 
+
 const ProblemPage = () => {
     const navigate = useNavigate();
 
@@ -170,8 +171,20 @@ const ProblemPage = () => {
                             isLogin ?
                             <>
                                 {/* 변경코드 */}
-                                {/* CodeEditor 컴포넌트 추가 및 코드 전달 */}
                                 <CodeEditor onChange={textHandler} />
+                                {/* <CodeMirror
+                                    value={text.current}
+                                    options={{
+                                        mode: 'text/x-csrc', // C 언어 모드 설정
+                                        theme: 'aura', // 테마 설정
+                                        keyMap: 'default',
+                                        lineNumbers: true, // 라인 번호 표시 여부
+                                       
+                                    }}
+                                    onChange={textHandler}
+                            
+                                /> */}
+
 
                                 {/* 원래코드 */}
                                 {/* <textarea className="code_input" 

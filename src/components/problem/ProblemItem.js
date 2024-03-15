@@ -59,7 +59,9 @@ const ProblemItem = (props) => {
             <ProblemId state={props.state} onClick={() => { navigate(`/question/${props.pid}`); }}>{props.pid}</ProblemId>
             <ProblemTitle onClick={() => { navigate(`/question/${props.pid}`); }}>{props.ptitle}</ProblemTitle>
             <Grade>점수 {props.grade}</Grade>
-            <Button state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>{props.state === "retry" ? "RE TRY" : "풀이보기"}</Button>
+            <Button state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>
+                {props.state === "retry" ? "RE TRY" : "풀이보기"}
+            </Button>
         </Container>
     );
 }
