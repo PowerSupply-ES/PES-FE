@@ -207,7 +207,20 @@ const ProblemPage = () => {
                 </div>
                 
                 <button className={isLogin ? "submit_button" : "submit_button disabled"} 
-                    onClick={() => isLogin && submitCode()}>제출</button>
+                    onClick={() => 
+                    //기존코드
+                    //isLogin && submitCode()
+
+                    //수정코드 by성임
+                    {
+                        if (isLogin) {
+                            if (window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?")) {
+                                submitCode();
+                            }
+                        }}
+                    }>
+                    제출
+                    </button>
                 
             </StyledProblem>
         );
