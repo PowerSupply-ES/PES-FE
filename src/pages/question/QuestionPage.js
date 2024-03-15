@@ -296,16 +296,7 @@ const QuestionPage = () => {
                             onChange={setCode}
                             readOnly={true} // 코드 수정 비활성화
                             code={code}
-                            // readOnly={true}
                             >
-                            
-                            {/* question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br> */}
                         </CodeEditor>
                         {/* {code} */}
                     </div>
