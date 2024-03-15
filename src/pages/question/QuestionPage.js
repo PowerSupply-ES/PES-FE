@@ -129,7 +129,6 @@ const QuestionPage = () => {
             );
             setCode(response.code);
             console.log("response.code = ", response.code);
-            console.log("code = ",code);
 
         } catch (error) {
             console.log(error);
@@ -243,6 +242,9 @@ const QuestionPage = () => {
     }, [problemId]);
     
     function renderAnswerUI() {
+        console.log("code = ",code);
+        console.log("code = ", {code});
+
         return (
             <StyledQuestion className="problem_answer_section">
                 <StyledProblem className="problem_header_section" state={state}>
