@@ -17,7 +17,7 @@ const QuestionPage = () => {
         .split('/')[2];
 
     const problemId = sessionStorage.getItem('problemId');
-    console.log("problemId = ",problemId);
+    // console.log("problemId = ",problemId);
 
     const navigate = useNavigate();
 
@@ -28,6 +28,12 @@ const QuestionPage = () => {
     const [feedbacks, setFeedbacks] = useState([]);
     const [passCount, setPassCount] = useState(0);
     const [problem, setProblem] = useState([]);
+
+    const text = useRef("");
+
+    function textHandler(newCode) {
+        text.current = newCode;
+    }
 
     const textFst = useRef("");
     const textSec = useRef("");
@@ -135,6 +141,8 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getCode();
+        console.log("code = ",code);
+
     }, [getCode]);
 
     // 질문, 답변 블러오기 (get)
@@ -288,7 +296,8 @@ const QuestionPage = () => {
                     <div className="code_container">
                         {/* 에디터로 수정_by성임 */}
                         <CodeEditor
-                            value={code}>
+                            value={code}
+                            onChange={textHandler}>
                             
                             {/* question_container<br></br>
                             question_container<br></br>
