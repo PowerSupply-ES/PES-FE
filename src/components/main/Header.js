@@ -54,6 +54,7 @@ function Header1(){
   memberStatus: '',
   memberGen:''
   });
+  
 
  const toggleDropdown = () =>{
    setIsDropdownOpen((state)=>!state);
@@ -84,6 +85,10 @@ function Header1(){
       .then(data => {
         setMemberData(data);
         sessionStorage.setItem('memberName', data.memberName);
+        // sessionStorage.setItem('memberStatus', memberData.memberStatus);
+        sessionStorage.setItem('memberStatus', data.memberStatus);
+
+
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
