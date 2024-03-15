@@ -221,6 +221,8 @@ export const StyledQuestion = styled.div`
         margin-left: 20px;
         font-size: 20px;
         color:#3E3E3E;
+        font-weight: bold;
+
     }
     .feedback_content {
         width: 100%;

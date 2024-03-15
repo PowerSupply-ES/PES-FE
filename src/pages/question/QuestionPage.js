@@ -242,8 +242,7 @@ const QuestionPage = () => {
     }, [problemId]);
     
     function renderAnswerUI() {
-        console.log("code = ",code);
-        // console.log("code = ", {code});
+        // console.log("code = ",code);
 
         return (
             <StyledQuestion className="problem_answer_section">
@@ -295,6 +294,7 @@ const QuestionPage = () => {
                         {/* 에디터로 수정_by성임 */}
                         <CodeEditor
                             onChange={setCode}
+                            readOnly={true} // 코드 수정 비활성화
                             code={code}
                             // readOnly={true}
                             >
