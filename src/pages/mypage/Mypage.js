@@ -116,17 +116,17 @@ const MyPage = () => {
             <div className='left'>
               {/* 사용자 정보 */}
               <div className="memberInfo">
-                <FaCircleUser size={60} style={{color:'grey'}}></FaCircleUser>
                 <div className='info_name'>
+                  <FaCircleUser size={40} style={{color:'grey'}}></FaCircleUser>
                   <p>{memberData.memberName}</p>
                   {/* <p>님</p> */}
                 </div>
-                <div className='text'><div>학번</div><p>{memberData.memberId}</p></div>
+                <div className='text'><div>학 번</div><p>{memberData.memberId}</p></div>
                 <div className='text'><div>이메일</div><p>{memberData.memberEmail}</p></div>
-                <div className='text'><div>기수</div><p>{memberData.memberGen}</p></div>
-                <div className='text'><div>상태</div><p>{memberData.memberStatus}</p></div>
-                <div className='text'><div>학과</div><p>{memberData.memberMajor}</p></div>
-                <div className='text'><div>번호</div><p>{memberData.memberPhone}</p></div>
+                <div className='text'><div>기 수</div><p>{memberData.memberGen}</p></div>
+                <div className='text'><div>상 태</div><p>{memberData.memberStatus}</p></div>
+                <div className='text'><div>학 과</div><p>{memberData.memberMajor}</p></div>
+                <div className='text'><div>번 호</div><p>{memberData.memberPhone}</p></div>
               </div>
             </div>
 

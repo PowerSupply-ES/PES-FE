@@ -233,7 +233,7 @@ button:hover {
   margin: 0 auto;
 }
 .mypage_content > .left{
-  margin-right: 60px;
+  margin:  60px 60px 0 0;
   display: flex;
   align-items: baseline;
 }
@@ -253,7 +253,7 @@ button:hover {
 }
 
 .content_mypage{
-  padding-top: 40px;
+  padding-top: 80px;
   /* background-color: #ECEAFF; */
   background-color: #f2f1fe;
 
@@ -286,11 +286,12 @@ button:hover {
   border-radius: 10px;
 }
 .memberInfo{
-  height: 60%;
-  width: 220px;
+  height: 50%;
+  width: 400px;
   /* margin-bottom: 140px; */
   margin: 36px auto;
   justify-content: center;
+  padding: 20px;
 }
 .myProblem, .myFeedback{
   height: 240px;
@@ -415,45 +416,47 @@ button:hover {
   font-size: 16px;
 }
 .memberInfo > .text{
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 .text > :first-child{
-  width: 30%;
+  width: 22%;
   text-align: left;
   margin-right: 12px;
   color: #a7a7a7;
   font-weight: bold;
+  font-size: 17px;
 }
 .text > :last-child{
-  width: 55%;
+  width: 78%;
   text-align: left;
   font-weight: bold;
   color: hsla(0, 0%, 0%, 0.725);
-
-
+  font-size: 17px;
 }
 .memberInfo > .info_name{
-  margin: 20px auto 40px;
+  margin: 20px 0 40px 0;
   display: flex;
+  flex-direction: column;
   font-weight: bold;
-}
-.memberInfo > .info_name > p{
-  font-size: 23px;
-  color: #000000;
-}
-.memberInfo > *{
-  color: #000000; opacity: 80%;
-}
-.memberInfo > *:not(:first-child, .info_name){
-  width: 80%;
-  display: flex;
-  justify-content: left;
-}
-.memberInfo > .info_name{
   font-size: 32px;
   color: #060606;
 }
-
+.memberInfo > .info_name > p{
+  font-size: 26px;
+  color: #000000;
+  margin-top: 12px;
+}
+.memberInfo > *:not(:first-child){
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+.memberInfo > *:first-child{
+  color: #000000; opacity: 80%;
+  width: fit-content;
+  display: flex;
+  justify-content: left;
+}
 
 /* 풀이 > 버튼 */
 .right > .btn_fail,
