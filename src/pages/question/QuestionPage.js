@@ -128,7 +128,7 @@ const QuestionPage = () => {
                 {withCredentials: true}
             );
             setCode(response.code);
-            console.log("response.code = ", response.code);
+            // console.log("response.code = ", response.code);
 
         } catch (error) {
             console.log(error);
@@ -243,7 +243,7 @@ const QuestionPage = () => {
     
     function renderAnswerUI() {
         console.log("code = ",code);
-        console.log("code = ", {code});
+        // console.log("code = ", {code});
 
         return (
             <StyledQuestion className="problem_answer_section">
@@ -294,8 +294,10 @@ const QuestionPage = () => {
                     <div className="code_container">
                         {/* 에디터로 수정_by성임 */}
                         <CodeEditor
+                            onChange={setCode}
                             value={code}
-                            readOnly={true}>
+                            // readOnly={true}
+                            >
                             
                             {/* question_container<br></br>
                             question_container<br></br>
