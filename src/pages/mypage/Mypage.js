@@ -121,12 +121,12 @@ const MyPage = () => {
                   <p>{memberData.memberName}</p>
                   {/* <p>님</p> */}
                 </div>
-                <div><p>{memberData.memberId}</p></div>
-                <div><p>{memberData.memberEmail}</p></div>
-                <div><p>{memberData.memberGen}</p><p>기</p></div>
-                <div><p>{memberData.memberStatus}</p></div>
-                <div><p>{memberData.memberMajor}</p><p>학과</p></div>
-                <div><p>{memberData.memberPhone}</p></div>
+                <div className='text'><div>학번</div><p>{memberData.memberId}</p></div>
+                <div className='text'><div>이메일</div><p>{memberData.memberEmail}</p></div>
+                <div className='text'><div>기수</div><p>{memberData.memberGen}</p></div>
+                <div className='text'><div>상태</div><p>{memberData.memberStatus}</p></div>
+                <div className='text'><div>학과</div><p>{memberData.memberMajor}</p></div>
+                <div className='text'><div>번호</div><p>{memberData.memberPhone}</p></div>
               </div>
             </div>
 

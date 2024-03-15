@@ -369,13 +369,14 @@ button:hover {
   justify-content: left;
   width: 10%;
   font-weight: bold;
-  cursor: pointer;
   color: #262626;
 }
 .feeds > .commentContent{
   margin: 0 20px 0 20px;
   width: 60%;
   color: #1f1f1f;
+  cursor: pointer;
+
 }
 .problemList :hover,
 .FeedList :hover {
@@ -406,6 +407,24 @@ button:hover {
   color: #999999; opacity: 80%;
   font-size: 16px;
 }
+.memberInfo > .text{
+  margin-bottom: 2px;
+}
+.text > :first-child{
+  width: 30%;
+  text-align: left;
+  margin-right: 12px;
+  color: #a7a7a7;
+  font-weight: bold;
+}
+.text > :last-child{
+  width: 55%;
+  text-align: left;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.725);
+
+
+}
 .memberInfo > .info_name{
   margin: 20px auto 40px;
   display: flex;
@@ -419,7 +438,7 @@ button:hover {
   color: #000000; opacity: 80%;
 }
 .memberInfo > *:not(:first-child, .info_name){
-  width: 50%;
+  width: 80%;
   display: flex;
   justify-content: left;
 }
