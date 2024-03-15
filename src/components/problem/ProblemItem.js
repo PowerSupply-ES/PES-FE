@@ -40,7 +40,11 @@ const Button = styled.button`
     width: 150px;
     height: 42px;
     color: ${props => props.state == "locked" ? "#6A6B6F" : "white"};
-    background-color: ${props => props.state === "baekjoon" ? "#5094f9" : props.state === "challenge" ? "#5094f9" : props.state === "solved" ? "#04CA00" : props.state === "retry" ? "#FF8412" : "white"};
+    background-color: ${props => props.state === "baekjoon" ? "#5094f9" 
+        : props.state === "challenge" ? "#5094f9" 
+        : props.state === "solved" ? "#04CA00" 
+        : props.state === "retry" ? "#FF8412" 
+        : "white"};
     border-radius: 5px;
     font-size: 28px;
     text-align: center;

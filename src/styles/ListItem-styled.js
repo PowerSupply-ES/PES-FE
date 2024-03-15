@@ -56,7 +56,11 @@ export const StyledListItem = styled.div`
         box-shadow: 1px 1px #CCC9C9;
         
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
-        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" : "white"};
+        
+        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" 
+            : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" 
+            : props.state === null ? "#d6d6d6cc"
+            : "white"};
         &:hover {
             background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 1.0)" : props.state === "fail" ? "rgba(244, 117, 117, 1.0)" : ""};
           }
@@ -65,7 +69,9 @@ export const StyledListItem = styled.div`
         font-weight: bold;
 
         text-align: center;
-        border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
+        border: ${props => (props.state === "success" || props.state === "fail") ? "none" 
+            : props.state === null ? "#d6d6d6cc"
+            : "2px solid #DEDEDE"};
         transition: background-color 0.3s;
         margin-right: 14px;
         pointer-events: ${props => (props.state === "success" || props.state === "fail") ? "auto" : "none"};
