@@ -10,10 +10,15 @@ export const StyledListItem = styled.div`
         margin: auto;
         padding: 8px 0px;
 
-        background-color: ${props => props.state === "locked" ? "#DEDEDE" : "white"};
+        background-color: ${props => props.state === "locked" ? "#DEDEDE"
+            : props.state === "comment" ? "rgba(243, 242, 242, 0.737)"
+            : props.state === "question" ? "rgba(243, 242, 242, 0.737)"
+            
+            : "white"};
         transition: background-color 0.3s; /* Add transition for smooth color change */
         &:hover {
-            background-color: ${props => props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
+            background-color: ${props => props.state === "locked" ? "#DEDEDE" 
+            : "rgba(243, 242, 242, 0.737)"};
         }
     }
 
@@ -58,9 +63,12 @@ export const StyledListItem = styled.div`
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
         
         background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" 
-            : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" 
-            : props.state === null ? "#d6d6d6cc"
-            : "white"};
+            : props.state === "fail" ? "rgba(244, 117, 117, 0.8)"
+            // 문제를 푼상태는 버튼 흰색(comment이나 question)
+            : props.state === "comment" || "question" ? "white"
+            // : props.state === null ? "#d6d6d6cc"
+            // 그외는 회색
+            : "#d6d6d6cc"};
         &:hover {
             background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 1.0)" : props.state === "fail" ? "rgba(244, 117, 117, 1.0)" : ""};
           }

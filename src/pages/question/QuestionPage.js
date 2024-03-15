@@ -3,6 +3,8 @@ import axios from "axios";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 import MemberStatus from "components/question/MemberStatus";
+import CodeEditor from "components/problem/CodeEditor";
+
 
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
@@ -253,6 +255,8 @@ const QuestionPage = () => {
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
                                         <div className="content">
+                                            dddd
+                                            dashd
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -283,7 +287,21 @@ const QuestionPage = () => {
                     </div>
                 </StyledProblem>
                 <div className="code_question_container">
-                    <div className="code_container">{code}</div>
+                    <div className="code_container">
+                        {/* 에디터로 수정_by성임 */}
+                        <CodeEditor
+                            value={code}>
+                            
+                            question_container<br></br>
+                            question_container<br></br>
+                            question_container<br></br>
+                            question_container<br></br>
+                            question_container<br></br>
+                            question_container<br></br>
+                            question_container<br></br>
+                        </CodeEditor>
+                        {/* {code} */}
+                    </div>
                     <div className="question_container">
                     {
                     (!qnA.answerFst || !qnA.answerSec) 

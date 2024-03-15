@@ -14,16 +14,17 @@ export const StyledQuestion = styled.div`
     .code_container {
         width: 40%;
         height: 564px;
-        box-sizing: border-box;
-        padding: 20px;
-        display: flex;
-        border-radius: 20px;
-        background-color: #3E3E3E;
         font-size: 20px;
-        white-space: pre-line; 
-        color: white;
-        overflow-wrap: break-word;
-        text-align: left;
+
+        // box-sizing: border-box;
+        // padding: 20px;
+        // display: flex;
+        // border-radius: 20px;
+        // background-color: #3E3E3E;
+        // white-space: pre-line; 
+        // color: white;
+        // overflow-wrap: break-word;
+        // text-align: left;
     }
     .question_container{
         width: 40%;
@@ -357,10 +358,10 @@ export const StyledQuestion = styled.div`
         display: flex;
         flex-direction: column;
         margin-right: 0;
-        padding: 40px 12px;
+        padding: 40px 20px;
         position: absolute;
         top: 40px;
-        width: fit-content;
+        width: 480px;
         min-width: 200px;
         z-index: 999;
         color: black;

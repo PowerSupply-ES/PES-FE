@@ -28,7 +28,7 @@ const ProblemPage = () => {
     //     text.current = e.target.value;
     // }
 
-    // 수정코드
+    // 수정코드_by성임
     function textHandler(newCode) {
         text.current = newCode;
     }
@@ -172,19 +172,6 @@ const ProblemPage = () => {
                             <>
                                 {/* 변경코드 */}
                                 <CodeEditor onChange={textHandler} />
-                                {/* <CodeMirror
-                                    value={text.current}
-                                    options={{
-                                        mode: 'text/x-csrc', // C 언어 모드 설정
-                                        theme: 'aura', // 테마 설정
-                                        keyMap: 'default',
-                                        lineNumbers: true, // 라인 번호 표시 여부
-                                       
-                                    }}
-                                    onChange={textHandler}
-                            
-                                /> */}
-
 
                                 {/* 원래코드 */}
                                 {/* <textarea className="code_input" 

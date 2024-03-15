@@ -6,18 +6,15 @@ import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 import
 import 'ace-builds/src-noconflict/theme-monokai'; // 다크 모드 테마 import
 
 
-const CodeEditor = ({ onChange }) => {
-    // const [code, setCode] = useState('');
+const CodeEditor = ({ code, onChange }) => {
 
     return (
         <AceEditor
             mode="c_cpp"
             theme="monokai"
-
-            // onChange={(onChange) => setCode(newCode)}
             onChange={onChange}
             
-            // value={code}
+            value={code} // 코드 표시를 위해 value props 사용
             fontSize={16}
             showPrintMargin={true}
             showGutter={true}
