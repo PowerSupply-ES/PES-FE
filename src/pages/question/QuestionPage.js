@@ -128,6 +128,9 @@ const QuestionPage = () => {
                 {withCredentials: true}
             );
             setCode(response.code);
+            console.log("response.code = ", response.code);
+            console.log("code = ",code);
+
         } catch (error) {
             console.log(error);
         }
@@ -135,7 +138,6 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getCode();
-        console.log("code = ",code);
 
     }, [getCode]);
 
