@@ -270,13 +270,17 @@ button:hover {
 }
 
 
+.noFeed, .noProblems{
+  height: 100%;
+  font-weight: bold;
+  color: hsl(0, 0%, 78%);
+}
 .memberInfo,.myProblem, .myFeedback{
   padding: 10px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: 18px;
   border: solid #C3C2C2 2px;
   border-radius: 10px;
@@ -286,10 +290,12 @@ button:hover {
   width: 220px;
   /* margin-bottom: 140px; */
   margin: 36px auto;
+  justify-content: center;
 }
 .myProblem, .myFeedback{
   height: 240px;
   width: 800px;
+  justify-content: center;
 }
 .myFeedback{
   color: #C3C2C2;
@@ -318,6 +324,7 @@ button:hover {
   width: 100%;
   display: flex;
   padding: 4px 0;
+  
 }
 .problemList, .FeedList{
   width: 100%;

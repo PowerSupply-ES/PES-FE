@@ -182,7 +182,7 @@ const MyPage = () => {
     <div className="problemList">
       {myProb.length === 0 ? (
         <div className="noProblems">
-          <p>아직 푼 문제가 없어요!</p>
+          <div>아직 푼 문제가 없어요!</div>
         </div>
       ) : (
         myProb.map((it) => (
@@ -231,7 +231,7 @@ const MyPage = () => {
     <div className ='FeedList' >
       {myFeedback.length === 0 ? (
         <div className="noFeed">
-          <p>아직 받은 피드백이 없어요!</p>
+          <div>아직 받은 피드백이 없어요!</div>
         </div>
       ) : (
       myFeedback.map((it) => (
