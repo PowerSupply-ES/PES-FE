@@ -255,8 +255,6 @@ const QuestionPage = () => {
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
                                         <div className="content">
-                                            dddd
-                                            dashd
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -292,13 +290,13 @@ const QuestionPage = () => {
                         <CodeEditor
                             value={code}>
                             
+                            {/* question_container<br></br>
                             question_container<br></br>
                             question_container<br></br>
                             question_container<br></br>
                             question_container<br></br>
                             question_container<br></br>
-                            question_container<br></br>
-                            question_container<br></br>
+                            question_container<br></br> */}
                         </CodeEditor>
                         {/* {code} */}
                     </div>
