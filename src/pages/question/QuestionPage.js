@@ -295,7 +295,7 @@ const QuestionPage = () => {
                         {/* 에디터로 수정_by성임 */}
                         <CodeEditor
                             onChange={setCode}
-                            value={code}
+                            code={code}
                             // readOnly={true}
                             >
                             
