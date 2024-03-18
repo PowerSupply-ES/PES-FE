@@ -391,7 +391,7 @@ const QuestionPage = () => {
                     {/* 신입생 : feedback 있을때 */}
                     {feedbackArray.length > 0 && (
                         feedbackArray.map((feedback, index) => (
-                        <div className="feedback_container" key={index}>ㄴ
+                        <div className="feedback_container" key={index}>
                             {(feedback.commentPassFail === 1) ? <div className="feedback_result_pass">PASS</div> : <div className="feedback_result_fail">FAIL</div>}
                             <div className="question_header">
                                 <div className="feedback_index">{`Feedback ${index+1}`}</div>
