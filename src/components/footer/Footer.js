@@ -22,7 +22,7 @@ const logout = () =>{
       sessionStorage.clear();
       localStorage.clear();
       alert('로그아웃되었습니다.');
-      window.location.href = '../main';
+      window.location.href = '../';
   }
 
 function Bottom(){ 

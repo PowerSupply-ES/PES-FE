@@ -362,7 +362,7 @@ const QuestionPage = () => {
 
                 <div className="feedback_section">
                     {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
-                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다...</div>
+                        <div className="feedback_waiting_bar" onClick={() => navigate(`/`)}>피드백을 기다리는 중입니다...</div>
                     )}
                     
                     {feedbackArray.length > 0 && (
@@ -401,7 +401,7 @@ const QuestionPage = () => {
                 {(feedbackArray.length >= 2) && (
                     <div className="result_container">
                         <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
-                            onClick={() => navigate(`/main`)}>
+                            onClick={() => navigate(`/`)}>
                             {((passCount >= 1) && (feedbackArray.length > 1)) ? 
                                 `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
                         </div>
