@@ -35,6 +35,23 @@ const QuestionPage = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const[isDropdownOpen,setIsDropdownOpen] = useState(false);
 
+    const [buttonColor1, setButtonColor1] = useState('rgba(4, 202, 0, 0.6)');
+    const [buttonColor2, setButtonColor2] = useState('rgba(244, 117, 117, 0.6)');
+
+
+    const passButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setButtonColor2('rgba(244, 117, 117, 0.6)');
+        // 현재 버튼 색깔 변경
+        setButtonColor1('rgba(4, 202, 0, 1)');
+    }
+    const failButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setButtonColor1('rgba(4, 202, 0, 0.6)');
+        // 현재 버튼 색깔 변경
+        setButtonColor2('rgba(244, 117, 117, 1)');
+    }
+
     const toggleDropdown = () => {
         if (!isDropdownOpen) {
             getProblem();
@@ -382,8 +399,8 @@ const QuestionPage = () => {
                     )}
 
                     {/* 재학생_ feedback 선택 */}
-                    {(memberStatus === "student") && (feedbackArray.length <= 1) && (state === "comment") && (
-                        <div>
+                    {(memberStatus === "재학생") && (feedbackArray.length <= 1) && (state === "comment") && (
+                        <div className="feed_section">
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
                             </div>
@@ -391,8 +408,20 @@ const QuestionPage = () => {
                             {/* PASS FAIL 선택 */}
                             <div className="feedback_select_section">
                                 <div className="button_container">
-                                    <div className="select_button pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
-                                    <div className="select_button fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
+                                    <div className="select_button pass" isSelected={selectedOption === '1' } 
+                                    style={{ color: buttonColor1 }} 
+                                    onClick={() => {
+                                        handleOption('1'); 
+                                        passButtonClick();
+                                        }}>
+                                            PASS</div>
+                                    <div className="select_button fail" isSelected={selectedOption === '0'} 
+                                    style={{ color: buttonColor2 }} 
+                                    onClick={() => {
+                                        handleOption('0');
+                                        failButtonClick();
+                                        }}>
+                                            FAIL</div>
                                 </div>
                                 <p className="select_comment">PASS 혹은 FAIL을 선택해주세요.</p>
                             </div>
