@@ -233,7 +233,12 @@ const QuestionPage = () => {
             getFeedback();
             getAlert(response);
         } catch (error) {
-            console.log(error);
+            // 403에러 예외처리 추가 by.성임
+            if (error.response && error.response.status === 403) {
+                alert("권한이 없습니다!");
+            } else {
+                console.log(error);
+            }
         }
     }
 
