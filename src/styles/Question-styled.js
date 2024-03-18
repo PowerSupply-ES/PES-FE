@@ -363,6 +363,8 @@ export const StyledQuestion = styled.div`
         padding: 40px 20px;
         position: absolute;
         top: 40px;
+        right: 0px;
+
         width: 480px;
         min-width: 200px;
         z-index: 999;

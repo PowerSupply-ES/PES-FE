@@ -361,13 +361,15 @@ const QuestionPage = () => {
                 <hr style={{height:1, border:"none", backgroundColor: "#3E3E3E", marginTop:100}}></hr>
 
                 <div className="feedback_section">
+                    {/* 신입생 : comment상태일때, feedback 없을때 */}
                     {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
                         <div className="feedback_waiting_bar" onClick={() => navigate(`/`)}>피드백을 기다리는 중입니다...</div>
                     )}
                     
+                    {/* 신입생 : feedback 있을때 */}
                     {feedbackArray.length > 0 && (
                         feedbackArray.map((feedback, index) => (
-                        <div className="feedback_container" key={index}>
+                        <div className="feedback_container" key={index}>ㄴ
                             {(feedback.commentPassFail === 1) ? <div className="feedback_result_pass">PASS</div> : <div className="feedback_result_fail">FAIL</div>}
                             <div className="question_header">
                                 <div className="feedback_index">{`Feedback ${index+1}`}</div>
@@ -379,6 +381,7 @@ const QuestionPage = () => {
                         ))
                     )}
 
+                    {/* 재학생_ feedback 선택 */}
                     {(memberStatus === "student") && (feedbackArray.length <= 1) && (state === "comment") && (
                         <div>
                             <div className="question_header">
