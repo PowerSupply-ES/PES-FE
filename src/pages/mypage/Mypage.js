@@ -239,7 +239,8 @@ const MyPage = () => {
           <p className='problemId'>{it.answerId}</p>
 
           <p className='memberGenName'>{it.memberGen}기&nbsp;&nbsp;
-            {it.mameberName}</p>
+            {it.memberName}
+          </p>
 
           <p className='commentContent' onClick={() => gotoFeed(it.answerId)}>
             {it.commentContent}
