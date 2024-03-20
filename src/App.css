@@ -338,19 +338,12 @@ button:hover {
 /* .problems > *:not(:first-child){
   margin-right: 40px;
 } */
-.problems > .problemId{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10%;
-  color: #04CA00;
-  font-weight: bold;
-}
+.problems > .problemId,
 .feeds > .problemId{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 8%;
+  width: 10%;
   color: #04CA00;
   font-weight: bold;
 }
@@ -382,7 +375,7 @@ button:hover {
 }
 .feeds > .memberGenName{
   justify-content: left;
-  width: 12%;
+  width: 10%;
   font-weight: bold;
   color: #262626;
 }
