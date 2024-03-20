@@ -238,10 +238,11 @@ const MyPage = () => {
         <div className='feeds' key={it.answerId}>
           <p className='problemId'>{it.answerId}</p>
 
-          <p className='memberGenName'>{it.memberGen}기{it.mameberName}최성임</p>
+          <p className='memberGenName'>{it.memberGen}기&nbsp;&nbsp;
+            {it.mameberName}</p>
 
           <p className='commentContent' onClick={() => gotoFeed(it.answerId)}>
-            제피드백은요 실패라고요{it.commentContent}
+            {it.commentContent}
           </p>
 
 
