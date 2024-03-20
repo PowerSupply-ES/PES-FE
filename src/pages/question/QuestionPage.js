@@ -3,6 +3,8 @@ import axios from "axios";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 import MemberStatus from "components/question/MemberStatus";
+import CodeEditor from "components/problem/CodeEditor";
+
 
 import { StyledQuestion } from 'styles/Question-styled';
 import { StyledProblem } from "styles/Problem-styled";
@@ -13,7 +15,10 @@ const QuestionPage = () => {
     var answerId = url
         .pathname
         .split('/')[2];
+
     const problemId = sessionStorage.getItem('problemId');
+    // console.log("problemId = ",problemId);
+
     const navigate = useNavigate();
 
     const [state, setState] = useState("");
@@ -29,6 +34,23 @@ const QuestionPage = () => {
 
     const [selectedOption, setSelectedOption] = useState(null);
     const[isDropdownOpen,setIsDropdownOpen] = useState(false);
+
+    const [buttonColor1, setButtonColor1] = useState('rgba(4, 202, 0, 0.6)');
+    const [buttonColor2, setButtonColor2] = useState('rgba(244, 117, 117, 0.6)');
+
+
+    const passButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setButtonColor2('rgba(244, 117, 117, 0.6)');
+        // 현재 버튼 색깔 변경
+        setButtonColor1('rgba(4, 202, 0, 1)');
+    }
+    const failButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setButtonColor1('rgba(4, 202, 0, 0.6)');
+        // 현재 버튼 색깔 변경
+        setButtonColor2('rgba(244, 117, 117, 1)');
+    }
 
     const toggleDropdown = () => {
         if (!isDropdownOpen) {
@@ -79,9 +101,14 @@ const QuestionPage = () => {
             alert("내용을 입력해주세요!");
         }
         else {
-            postAnswer(textFst.current, textSec.current);
+            const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+    
+            if (isConfirmed) {
+                postAnswer(textFst.current, textSec.current);
+            }
         }
     }
+    
 
     // 댓글 제출
     function submitComment() {
@@ -92,7 +119,11 @@ const QuestionPage = () => {
             alert("통과 여부를 선택해주세요!");
         }
         else {
-            postFeedback(textFst.current, selectedOption);
+            const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+    
+            if (isConfirmed) {
+                postFeedback(textFst.current, selectedOption);
+            }
         }
     }
 
@@ -114,6 +145,8 @@ const QuestionPage = () => {
                 {withCredentials: true}
             );
             setCode(response.code);
+            // console.log("response.code = ", response.code);
+
         } catch (error) {
             console.log(error);
         }
@@ -121,6 +154,7 @@ const QuestionPage = () => {
 
     useEffect(() => {
         getCode();
+
     }, [getCode]);
 
     // 질문, 답변 블러오기 (get)
@@ -199,7 +233,17 @@ const QuestionPage = () => {
             getFeedback();
             getAlert(response);
         } catch (error) {
-            console.log(error);
+            // 403에러 예외처리 추가 by.성임
+            if (error.response && error.response.status === 403) {
+                alert("권한이 없습니다!");
+            } 
+            else if(error.response && error.response.status === 400){
+                alert("이미 댓글을 달았어요!");
+
+            }
+            else {
+                console.log(error);
+            }
         }
     }
 
@@ -225,6 +269,8 @@ const QuestionPage = () => {
     }, [problemId]);
     
     function renderAnswerUI() {
+        // console.log("code = ",code);
+
         return (
             <StyledQuestion className="problem_answer_section">
                 <StyledProblem className="problem_header_section" state={state}>
@@ -271,7 +317,16 @@ const QuestionPage = () => {
                     </div>
                 </StyledProblem>
                 <div className="code_question_container">
-                    <div className="code_container">{code}</div>
+                    <div className="code_container">
+                        {/* 에디터로 수정_by성임 */}
+                        <CodeEditor
+                            onChange={setCode}
+                            readOnly={true} // 코드 수정 비활성화
+                            code={code}
+                            >
+                        </CodeEditor>
+                        {/* {code} */}
+                    </div>
                     <div className="question_container">
                     {
                     (!qnA.answerFst || !qnA.answerSec) 
@@ -333,10 +388,12 @@ const QuestionPage = () => {
                 <hr style={{height:1, border:"none", backgroundColor: "#3E3E3E", marginTop:100}}></hr>
 
                 <div className="feedback_section">
+                    {/* 신입생 : comment상태일때, feedback 없을때 */}
                     {(memberStatus === "신입생") && (feedbackArray.length <= 0) && (state === "comment") && (
-                        <div className="feedback_waiting_bar" onClick={() => navigate(`/main`)}>피드백을 기다리는 중입니다...</div>
+                        <div className="feedback_waiting_bar" onClick={() => navigate(`/`)}>피드백을 기다리는 중입니다...</div>
                     )}
                     
+                    {/* 신입생 : feedback 있을때 */}
                     {feedbackArray.length > 0 && (
                         feedbackArray.map((feedback, index) => (
                         <div className="feedback_container" key={index}>
@@ -351,8 +408,9 @@ const QuestionPage = () => {
                         ))
                     )}
 
-                    {(memberStatus === "student") && (feedbackArray.length <= 1) && (state === "comment") && (
-                        <div>
+                    {/* 재학생_ feedback 선택 */}
+                    {(memberStatus === "재학생") && (feedbackArray.length <= 1) && (state === "comment") && (
+                        <div className="feed_section">
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
                             </div>
@@ -360,8 +418,20 @@ const QuestionPage = () => {
                             {/* PASS FAIL 선택 */}
                             <div className="feedback_select_section">
                                 <div className="button_container">
-                                    <div className="select_button pass" isSelected={selectedOption === '1'} onClick={() => handleOption('1')}>PASS</div>
-                                    <div className="select_button fail" isSelected={selectedOption === '0'} onClick={() => handleOption('0')}>FAIL</div>
+                                    <div className="select_button pass" isSelected={selectedOption === '1' } 
+                                    style={{ color: buttonColor1 }} 
+                                    onClick={() => {
+                                        handleOption('1'); 
+                                        passButtonClick();
+                                        }}>
+                                            PASS</div>
+                                    <div className="select_button fail" isSelected={selectedOption === '0'} 
+                                    style={{ color: buttonColor2 }} 
+                                    onClick={() => {
+                                        handleOption('0');
+                                        failButtonClick();
+                                        }}>
+                                            FAIL</div>
                                 </div>
                                 <p className="select_comment">PASS 혹은 FAIL을 선택해주세요.</p>
                             </div>
@@ -373,7 +443,7 @@ const QuestionPage = () => {
                 {(feedbackArray.length >= 2) && (
                     <div className="result_container">
                         <div className={((passCount >= 1) && (feedbackArray.length > 1)) ? 'result success' : 'result fail'} 
-                            onClick={() => navigate(`/main`)}>
+                            onClick={() => navigate(`/`)}>
                             {((passCount >= 1) && (feedbackArray.length > 1)) ? 
                                 `축하합니다! 성공적으로 통과했습니다!  ( ${passCount}/2 )` : `질문테스트에 통과하지 못했습니다.  ( ${passCount}/2 )`}
                         </div>

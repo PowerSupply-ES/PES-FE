@@ -12,6 +12,7 @@ export const StyledProblem = styled.div`
         left: 50%;
         transform: translateX(-50%);
         justify-content: space-between;
+        
     }
     .problem_group {
         display: flex;
@@ -70,10 +71,11 @@ export const StyledProblem = styled.div`
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        margin-bottom:20px;
     }
 
     &.problem_header_section {
-        z-index: 999;
+        z-index: 998;
         position: relative;
     }
 
@@ -195,7 +197,7 @@ export const StyledProblem = styled.div`
         height: 100%;
         min-height: 564px;
         font-size: 18px;
-        color: #ffffff;
+        // color: #ffffff;
         display: flex;
         justify-content: center;
         background-color: #3e3e3e;

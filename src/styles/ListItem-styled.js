@@ -10,10 +10,15 @@ export const StyledListItem = styled.div`
         margin: auto;
         padding: 8px 0px;
 
-        background-color: ${props => props.state === "locked" ? "#DEDEDE" : "white"};
+        background-color: ${props => props.state === "locked" ? "#DEDEDE"
+            : props.state === "comment" ? "rgba(243, 242, 242, 0.737)"
+            : props.state === "question" ? "rgba(243, 242, 242, 0.737)"
+            
+            : "white"};
         transition: background-color 0.3s; /* Add transition for smooth color change */
         &:hover {
-            background-color: ${props => props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
+            background-color: ${props => props.state === "locked" ? "#DEDEDE" 
+            : "rgba(243, 242, 242, 0.737)"};
         }
     }
 
@@ -56,7 +61,14 @@ export const StyledListItem = styled.div`
         box-shadow: 1px 1px #CCC9C9;
         
         color: ${props => (props.state === "success" || props.state === "fail") ? "white" : "#56565692"};
-        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" : props.state === "fail" ? "rgba(244, 117, 117, 0.8)" : "white"};
+        
+        background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 0.8)" 
+            : props.state === "fail" ? "rgba(244, 117, 117, 0.8)"
+            // 문제를 푼상태는 버튼 흰색(comment이나 question)
+            : props.state === "comment" || "question" ? "white"
+            // : props.state === null ? "#d6d6d6cc"
+            // 그외는 회색
+            : "#d6d6d6cc"};
         &:hover {
             background-color: ${props => props.state === "success" ? "rgba(109, 99, 228, 1.0)" : props.state === "fail" ? "rgba(244, 117, 117, 1.0)" : ""};
           }
@@ -65,7 +77,9 @@ export const StyledListItem = styled.div`
         font-weight: bold;
 
         text-align: center;
-        border: ${props => (props.state === "success" || props.state === "fail") ? "none" : "2px solid #DEDEDE"};
+        border: ${props => (props.state === "success" || props.state === "fail") ? "none" 
+            : props.state === null ? "#d6d6d6cc"
+            : "2px solid #DEDEDE"};
         transition: background-color 0.3s;
         margin-right: 14px;
         pointer-events: ${props => (props.state === "success" || props.state === "fail") ? "auto" : "none"};

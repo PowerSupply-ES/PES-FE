@@ -33,7 +33,7 @@ function Header0(){
          <a className='logout' href="/signin">로그인</a>
 
          <div className='navbar'>
-           <p className='logo' onClick={()=>navigate('/main')}>PES</p>
+           <p className='logo' onClick={()=>navigate('/')}>PES</p>
            <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
 
@@ -53,7 +53,8 @@ function Header1(){
   memberScore: '',
   memberStatus: '',
   memberGen:''
-});
+  });
+  
 
  const toggleDropdown = () =>{
    setIsDropdownOpen((state)=>!state);
@@ -68,7 +69,14 @@ function Header1(){
       method: 'GET',
     })
       .then(response => {
-        if (!response.ok) {
+        if(response.status === 403){
+          alert("로그인이 만료됐습니다!");
+          // logoutUser();
+          sessionStorage.clear();
+          localStorage.clear();
+          navigate('/signin');
+        }
+        else if (!response.ok) {
           console.log('서버응답:', response);
           throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
         }
@@ -77,12 +85,13 @@ function Header1(){
       .then(data => {
         setMemberData(data);
         sessionStorage.setItem('memberName', data.memberName);
+        // sessionStorage.setItem('memberStatus', memberData.memberStatus);
+        sessionStorage.setItem('memberStatus', data.memberStatus);
+
+
       })
       .catch(error => {
         console.error('데이터 가져오기 실패:', error);
-        // if(error.response.status === 401){
-        //   logoutUser();
-        // }
       });
 
   };
@@ -114,7 +123,7 @@ function Header1(){
         localStorage.clear();
         alert(data.message);
 
-        window.location.href = '../main';
+        window.location.href = '../';
       })
       .catch(error => {
         console.error('로그아웃 실패:', error);
@@ -160,7 +169,7 @@ function Header1(){
      </div>
      
      <div className='navbar'>
-       <a className='logo' onClick={()=>navigate('/main')}>PES</a>
+       <a className='logo' onClick={()=>navigate('/')}>PES</a>
        <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
        <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
      </div>

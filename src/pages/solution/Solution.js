@@ -6,10 +6,12 @@ import serverConfig from '../../config';
 
 
 function Solution() {
-  const url = new URL(window.location.href);
-  const problemId = url
+  var url = new URL(window.location.href);
+  var problemId = url
       .pathname
       .split('/')[2];
+
+  sessionStorage.setItem('problemId', problemId);
 
 
   const [problemData, setProblemData] = useState({
@@ -121,16 +123,23 @@ function SolvingList({ solveData }) {
   return (
     <div className="solving_list">
       {solveData.map((it) => (
+        // answerId가 "question"과 일치하지 않을 때에만 렌더링
+        it.answerId !== "question" && (
         <div className="solving" key={it.answerId}>
           <div className="left">
             <div className="userGen">{it.memberGen}<p>기 </p></div>
             <div className="userName">{it.memberName}</div>
           </div>
           <div className="right">
-            {/* <div className="process_num">1/2</div> */}
-            <button className="btn_goto_challenge" onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
+            <div className="process_num">{it.commentCount}/2</div>
+            <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
+              {it.answerState}</div>
+            
+            <button className="btn_goto_challenge" 
+            onClick={() => gotoProblem(it.answerId)}>풀이보기</button>
           </div>
         </div>
+      )
       ))}
     </div>
   );

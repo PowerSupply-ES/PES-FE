@@ -14,16 +14,17 @@ export const StyledQuestion = styled.div`
     .code_container {
         width: 40%;
         height: 564px;
-        box-sizing: border-box;
-        padding: 20px;
-        display: flex;
-        border-radius: 20px;
-        background-color: #3E3E3E;
         font-size: 20px;
-        white-space: pre-line; 
-        color: white;
-        overflow-wrap: break-word;
-        text-align: left;
+
+        // box-sizing: border-box;
+        // padding: 20px;
+        // display: flex;
+        // border-radius: 20px;
+        // background-color: #3E3E3E;
+        // white-space: pre-line; 
+        // color: white;
+        // overflow-wrap: break-word;
+        // text-align: left;
     }
     .question_container{
         width: 40%;
@@ -36,7 +37,7 @@ export const StyledQuestion = styled.div`
         height: 70px;
         display: flex;
         align-items: center;
-        margin: auto;
+        margin: 40px auto 0;
     }
     .question_id {
         width: 80px;
@@ -77,6 +78,7 @@ export const StyledQuestion = styled.div`
         padding: 10px;
         box-sizing: border-box;
     }
+    
     /* 스크롤바 */
     .answer_input::-webkit-scrollbar {
     width: 10px;  
@@ -88,6 +90,8 @@ export const StyledQuestion = styled.div`
     .answer_input::-webkit-scrollbar-track {
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
+
+
     .button_group {
         display: flex;
     }
@@ -116,6 +120,7 @@ export const StyledQuestion = styled.div`
 
         width: 80%;
         margin: auto;
+
     }
 
     .button_problem {
@@ -132,6 +137,7 @@ export const StyledQuestion = styled.div`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
+
 
         background-color: #3B3B3B;
         font-size:16px;
@@ -215,6 +221,8 @@ export const StyledQuestion = styled.div`
         margin-left: 20px;
         font-size: 20px;
         color:#3E3E3E;
+        font-weight: bold;
+
     }
     .feedback_content {
         width: 100%;
@@ -227,8 +235,12 @@ export const StyledQuestion = styled.div`
         margin-top: 10px;
         color:#3E3E3E;
     }
+    .feed_section{
+        width: 40%;
+    }
     .feedback_content.input {
         height: 270px;
+        padding: 12px;
     }
     .feedback_content.display {
         height: 250px;
@@ -257,10 +269,10 @@ export const StyledQuestion = styled.div`
         display: flex;
         justify-content: center;
         gap: 20px;
-        margin-top: 10px;
+        margin: 40px 0 40px;
     }
     .select_button {
-        font-size: 50px;
+        font-size: 36px;
         font-weight: bold;
         cursor: pointer;
     }
@@ -269,6 +281,7 @@ export const StyledQuestion = styled.div`
         &:hover {
             color: rgba(4, 202, 0, 1);
         }
+        margin-right: 20px;
     }
     .select_button.fail {
         color: ${(props) => (props.isSelected ? "rgba(244, 117, 117, 1)" : "rgba(244, 117, 117, 0.6)")};
@@ -277,16 +290,18 @@ export const StyledQuestion = styled.div`
         }
     }
     .select_comment {
-        font-size: 24px;
+        font-size: 20px;
         color: #6F6F6F;
     }
     .feedback_button {
         width: 100%;
-        height: 80px;
-        border-radius: 5px;
+        height: fit-content;
+        padding: 10px 0;
+        border: solid  1px rgba(109,99,228,0.6);
+        border-radius: 60px;
         background-color: rgba(109,99,228,0.6);
         color: #ffffff;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
         align-items: center;
         margin-top: 10px;
@@ -352,10 +367,12 @@ export const StyledQuestion = styled.div`
         display: flex;
         flex-direction: column;
         margin-right: 0;
-        padding: 16px 12px;
+        padding: 40px 20px;
         position: absolute;
         top: 40px;
-        width: fit-content;
+        right: 0px;
+
+        width: 480px;
         min-width: 200px;
         z-index: 999;
         color: black;

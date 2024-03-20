@@ -4,14 +4,8 @@ import Header from "components/main/Header";
 import { StyledProblem } from 'styles/Problem-styled';
 import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
+import CodeEditor from "components/problem/CodeEditor";
 
-// 에디터에 사용할 언어 및 테마를 불러옴.
-// import "ace-builds";
-// import "ace-builds/webpack-resolver";
-//import AceEditor from 'react-ace';
-//import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 추가
-//import 'ace-builds/src-noconflict/theme-monokai';
-// import Editor  from '@monaco-editor/react';
 
 const ProblemPage = () => {
     const navigate = useNavigate();
@@ -21,15 +15,22 @@ const ProblemPage = () => {
         .pathname
         .split('/')[2];
 
+    const text = useRef("");
+
     const [title, setTitle] = useState([]);
     const [problem, setProblem] = useState([]);
-    const text = useRef("");
     const [detail, setDetail] = useState(null);
 
     const isLogin = sessionStorage.getItem('status');
 
-    function textHandler(e) {
-        text.current = e.target.value;
+    // 기존코드
+    // function textHandler(e) {
+    //     text.current = e.target.value;
+    // }
+
+    // 수정코드_by성임
+    function textHandler(newCode) {
+        text.current = newCode;
     }
 
     async function submitCode() {
@@ -166,18 +167,25 @@ const ProblemPage = () => {
 
                     {/* 우측 코드 입력 */}
                     <div className="code_section">
-                        {/* 원래코드 */}
                         {
                             isLogin ?
                             <>
-                                <textarea className="code_input" placeholder = "코드를 입력해주세요." 
-                                    onChange = {textHandler}/>
+                                {/* 변경코드 */}
+                                <CodeEditor onChange={textHandler} />
+
+                                {/* 원래코드 */}
+                                {/* <textarea className="code_input" 
+                                    placeholder = "코드를 입력해주세요." 
+                                    onChange = {textHandler}/> */}
+                                    
                                 { (detail !== null && detail !== undefined) &&
                                     <div className="detail_container">
                                         <h3>틀린 이유</h3>
                                         <div className="detail_content">{detail}</div>
                                     </div>
                                 }
+
+
                             </>
                             :
                             <textarea disabled className="code_input" placeholder = "로그인 후 이용해주세요." />
@@ -186,7 +194,20 @@ const ProblemPage = () => {
                 </div>
                 
                 <button className={isLogin ? "submit_button" : "submit_button disabled"} 
-                    onClick={() => isLogin && submitCode()}>제출</button>
+                    onClick={() => 
+                    //기존코드
+                    //isLogin && submitCode()
+
+                    //수정코드 by성임
+                    {
+                        if (isLogin) {
+                            if (window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?")) {
+                                submitCode();
+                            }
+                        }}
+                    }>
+                    제출
+                    </button>
                 
             </StyledProblem>
         );
@@ -202,56 +223,3 @@ const ProblemPage = () => {
 }
 
 export default ProblemPage;
-
-                        {/* 원래 코드 */}
-                        {/* <div className="top">
-                            <h2>Sample Inputs:</h2>
-                            <div className="input_data">
-                                {inputArray.map((i) => (<p>{i.map((k) => (`${k} `))}</p>))}
-                            </div>
-                        </div>
-                        <div className="bottom">
-                            <h2>Sample Outputs:</h2>
-                            <div className="output_data">
-                                {outputArray.map((i) => (<p>{i}</p>))}
-                            </div>
-                        </div> */}
-
-                        {/* AceEditor 주석 */}
-                        {/*
-                        <AceEditor 
-                            className="code_input" 
-                            mode="c_cpp"
-                            theme="monokai"
-                            placeholder = "코드를 입력해주세요." 
-                            onChange={textHandler}
-                            value={text.current}
-                            name="code-editor"
-                            editorProps={{ 
-                                $blockScrolling: Infinity, // 스크롤 이동 허용
-                                style: {
-                                    background: '#ffffff',
-                                    overflowY: 'auto' // 세로 스크롤이 필요할 경우 스크롤 표시
-                                }
-                            }}
-                            fontSize={"20px"}
-                            setOptions={{
-                                highlightActiveLine: true, // 활성 줄 강조
-                            }}
-                            style={{
-                                height: '100%',
-                                width: '100%'
-                            }}
-                            
-                            /> 
-                        */}
-
-                        {/* <Editor
-                            height='100%'
-                            width= '100%'
-                            theme="vs-dark"
-	@@ -195,16 +172,11 @@ const ProblemPage = () => {
-                                }
-                            }}
-                            onChange={(newCode) => setRequest(newCode)}
-                        />  */}

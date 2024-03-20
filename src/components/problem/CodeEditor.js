@@ -1,41 +1,41 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
-import React, { useEffect } from 'react';
-import Editor, { useMonaco } from '@monaco-editor/react';
-import tomorrowTheme from 'monaco-themes/themes/Tomorrow.json';
+import React from 'react';
+import AceEditor from 'react-ace';
+import '../../App.css';
+
+import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 import
+import 'ace-builds/src-noconflict/theme-monokai'; // 다크 모드 테마 import
 
 
+const CodeEditor = ({ code, onChange, readOnly }) => {
+    const handleChange = (newCode) => {
+        // 부모 컴포넌트의 코드 상태 업데이트
+        onChange(newCode);
+    };
 
-const CodeEditor = () => {
-    // useMonaco 훅을 사용해서 monaco 객체 가져옴
-    const monaco = useMonaco();
-
-    useEffect(() => {
-        // monaco 객체가 없으면 초기화되지 않았으므로 함수 종료
-        if (!monaco) return;
-    
-        // 'tomorrow'라는 테마 이름으로 monaco-themes에서 가져온 테마 등록
-        monaco.editor.defineTheme('tomorrow', tomorrowTheme);
-    
-        // 현재 사용 중인 모나코 에디터에 'tomorrow' 테마 적용
-        monaco.editor.setTheme('tomorrow');
-    }, [monaco]);
-
-
-	return <Editor 
-    theme="tomorrow"
-    height='100%' />
-}
+    return (
+        <AceEditor
+            mode="c_cpp"
+            theme="monokai"
+            // onChange={onChange}
+            onChange={handleChange} // handleChange 함수를 전달
+            readOnly={readOnly}
+            value={code} // 코드 표시를 위해 value props 사용
+            fontSize={16}
+            showPrintMargin={true}
+            showGutter={true}
+            highlightActiveLine={true}
+            setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+                showLineNumbers: true,
+                tabSize: 4,
+            }}
+            style={{ width: '90%', height: '100%' }} // 필요에 따라 크기 조정
+            editorProps={{ $blockScrolling: true }}
+            
+        />
+    );
+};
 
 export default CodeEditor;
-
-
-// const CodeEditor = () => {
-//   useEffect(() => {
-//     // Monaco Editor 초기화
-//     monaco.editor.create(document.getElementById('editor'), {
-//       language: 'javascript',
-//     });
-//   }, []);
-
-//   return <div id="editor" style={{ height: '500px' }}></div>;
-// };

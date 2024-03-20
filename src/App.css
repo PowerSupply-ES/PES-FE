@@ -233,7 +233,7 @@ button:hover {
   margin: 0 auto;
 }
 .mypage_content > .left{
-  margin-right: 60px;
+  margin:  60px 60px 0 0;
   display: flex;
   align-items: baseline;
 }
@@ -253,7 +253,7 @@ button:hover {
 }
 
 .content_mypage{
-  padding-top: 40px;
+  padding-top: 80px;
   /* background-color: #ECEAFF; */
   background-color: #f2f1fe;
 
@@ -270,26 +270,33 @@ button:hover {
 }
 
 
+.noFeed, .noProblems{
+  height: 100%;
+  font-weight: bold;
+  color: hsl(0, 0%, 78%);
+}
 .memberInfo,.myProblem, .myFeedback{
   padding: 10px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: 18px;
   border: solid #C3C2C2 2px;
   border-radius: 10px;
 }
 .memberInfo{
-  height: 60%;
-  width: 220px;
+  height: 50%;
+  width: 400px;
   /* margin-bottom: 140px; */
   margin: 36px auto;
+  justify-content: center;
+  padding: 20px;
 }
 .myProblem, .myFeedback{
   height: 240px;
   width: 800px;
+  justify-content: center;
 }
 .myFeedback{
   color: #C3C2C2;
@@ -314,22 +321,25 @@ button:hover {
   background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
 }
 
-.problems{
+.problems, .feeds{
   width: 100%;
   display: flex;
   padding: 4px 0;
+  
 }
-.problemList{
+.problemList, .FeedList{
   width: 100%;
 }
-.problems > *{
+.problems > *,
+.feeds > *{
   display: flex;
   align-items: center;
 }
-.problems > *:not(:first-child){
+/* .problems > *:not(:first-child){
   margin-right: 40px;
-}
-.problems > .problemId{
+} */
+.problems > .problemId,
+.feeds > .problemId{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -337,13 +347,47 @@ button:hover {
   color: #04CA00;
   font-weight: bold;
 }
-.problems > .problemTitle{
+.problems > .finalScore,
+.problems > .problemScore{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7%;
+  color: #aaaaaad3;
+  font-weight: bold;
+}
+.dash{
+  width: 1%;
+  color: #1f1f1fb3;
+  color: #aaaaaad3;
+  font-weight: bold;
+}
+.problems > .problemScore{
+  margin-right: 10px;
+}
+.problems > .problemTitle,
+.problems > .mameberName,
+.problems > .memberGen{
   justify-content: left;
-  width: 70%;
+  width: 60%;
   font-weight: bold;
   cursor: pointer;
 }
-.problemList :hover {
+.feeds > .memberGenName{
+  justify-content: left;
+  width: 10%;
+  font-weight: bold;
+  color: #262626;
+}
+.feeds > .commentContent{
+  margin: 0 20px 0 20px;
+  width: 60%;
+  color: #1f1f1f;
+  cursor: pointer;
+
+}
+.problemList :hover,
+.FeedList :hover {
   background-color: rgba(243, 242, 242, 0.737);
 }
 
@@ -352,6 +396,7 @@ button:hover {
 .btn_fail, .btn_success, .btn_state{
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 5px;
   width: 80px;
   height: 28px;
@@ -365,28 +410,63 @@ button:hover {
   border: solid 3px #EB3434; opacity: 80%;
   color: #EB3434; opacity: 80%;
 }
-.memberInfo > .info_name{
-  margin: 20px auto 40px;
-  display: flex;
+.btn_state{
+  border: solid 3px #c2c2c2;
+  color: #999999; opacity: 80%;
+  font-size: 16px;
+}
+.memberInfo > .text{
+  margin-bottom: 3px;
+}
+.text > :first-child{
+  width: 22%;
+  text-align: left;
+  margin-right: 12px;
+  color: #a7a7a7;
   font-weight: bold;
+  font-size: 17px;
 }
-.memberInfo > .info_name > p{
-  font-size: 23px;
-  color: #000000;
-}
-.memberInfo > *{
-  color: #000000; opacity: 80%;
-}
-.memberInfo > *:not(:first-child, .info_name){
-  width: 50%;
-  display: flex;
-  justify-content: left;
+.text > :last-child{
+  width: 78%;
+  text-align: left;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.725);
+  font-size: 17px;
 }
 .memberInfo > .info_name{
+  margin: 20px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
   font-size: 32px;
   color: #060606;
 }
+.memberInfo > .info_name > p{
+  font-size: 26px;
+  color: #000000;
+  margin-top: 12px;
+}
+.memberInfo > *:not(:first-child){
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+.memberInfo > *:first-child{
+  color: #000000; opacity: 80%;
+  width: fit-content;
+  display: flex;
+  justify-content: left;
+}
 
+/* 풀이 > 버튼 */
+.right > .btn_fail,
+.right > .btn_success{
+  width: 80px;
+  height: fit-content;
+  font-size: 18px;
+  padding: 7px 12px;
+  margin-left: 20px;
+}
 
 /* -----드롭다운----- */
 .dropdown-content{
@@ -506,15 +586,37 @@ button:hover {
   display: flex;
   font-weight: bold;
   font-size: 20px;
+  color: #04CA00;
   /* float: right; */
 }
+/* .prob_score > p{
+  color:#060606bb;
+} */
 .solution_score{
   font-size: 20px;
 }
+
+/* btn_process */
+.btn_process{
+  height: fit-content;
+    background-color: #FFFFFF;
+    color: #6A6B6F;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid #DEDEDE;
+    margin-right: 20px;
+    text-align: center;
+    padding: 3px;
+}
+
+
+
 /* 풀이버튼 */
 .btn_baekjoon, .btn_challenge{
   width: fit-content;
   height: fit-content;
+
   border-radius: 5px;
   border: 2px solid;
   background: #FFF;
@@ -564,11 +666,13 @@ button:hover {
   font-size: 20px;
   display: flex;
   color: #04CA00;
+  font-weight: bold;
 
 }
 .right > .process_num{
   color: black;
   font-size: 20px;
+  font-weight: bold;
 }
 .left > .userName{
   width: 100px;
@@ -584,15 +688,20 @@ button:hover {
 .btn_goto_challenge{
   height: fit-content;
   width: fit-content;
-  padding: 6px 32px;
+  padding: 6px 28px;
   color: white;
-  border: solid #5094F9;
+  border: solid #565656;
+  /* #5094F9 */
   border-radius: 5px;
-  background-color: #5094F9;
+  background-color: #565656;
   font-size: 16px;
   font-weight: bold;
   box-shadow: 1px 3px #CCC9C9;
-
+  margin-left: 12px;
+  &:hover{
+    background-color: #262626;
+    border-color: #262626;
+  }
 }
 
 
@@ -681,8 +790,6 @@ button:hover {
   margin-right: auto;
   width: 100%;
 }
-
-
 
 
 
