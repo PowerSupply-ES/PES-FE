@@ -41,8 +41,8 @@ const ProblemPage = () => {
             const { data: response, status} = await postCode(text.current, problemId);
 
             if (!response) {
-                alert("인증된 사용자가 아닙니다. 로그인 페이지로 돌아갑니다.");
-                navigate("/signin");
+                alert("인증된 사용자가 아닙니다.");
+                // navigate("/signin");
             }
             else if (status === 201) {
                 console.log(response);

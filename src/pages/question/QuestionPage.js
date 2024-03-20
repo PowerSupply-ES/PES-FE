@@ -194,8 +194,8 @@ const QuestionPage = () => {
                 alert("이미 답변이 등록되어 있습니다.");
             } 
             else if (error.response && error.response.status === 403) {
-                alert("접근할 수 있는 사용자가 아닙니다. 로그인 페이지로 이동합니다.");
-                navigate("/signin");
+                alert("접근할 수 있는 사용자가 아닙니다.");
+                // navigate("/signin");
             }
             else {
                 console.log(error);
@@ -287,9 +287,6 @@ const QuestionPage = () => {
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
                                         <div className="content">
-                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
-                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
-                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -388,7 +385,7 @@ const QuestionPage = () => {
             
         return (
             <StyledQuestion className="feedback_section_1">
-                <hr style={{height:1, border:"none", backgroundColor: "#3E3E3E", marginTop:100}}></hr>
+                <hr style={{height:2, border:"none", backgroundColor: "gray", marginTop:100}}></hr>
 
                 <div className="feedback_section">
                     {/* 신입생 : comment상태일때, feedback 없을때 */}
