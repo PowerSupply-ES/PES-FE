@@ -377,6 +377,9 @@ export const StyledQuestion = styled.div`
         z-index: 999;
         color: black;
     }
+    .dropdown_content > .content{
+        text-align: left;
+    }
     
     .sample_inputs {
         text-align: left;

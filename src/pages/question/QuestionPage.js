@@ -287,6 +287,9 @@ const QuestionPage = () => {
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
                                         <div className="content">
+                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
+                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
+                                            이게내용이다 내용이게내용이다 내용이게내용이다 내용이게내용이다 내용
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
