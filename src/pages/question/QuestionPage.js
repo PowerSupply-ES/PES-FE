@@ -236,7 +236,12 @@ const QuestionPage = () => {
             // 403에러 예외처리 추가 by.성임
             if (error.response && error.response.status === 403) {
                 alert("권한이 없습니다!");
-            } else {
+            } 
+            else if(error.response && error.response.status === 400){
+                alert("이미 댓글을 달았어요!");
+
+            }
+            else {
                 console.log(error);
             }
         }

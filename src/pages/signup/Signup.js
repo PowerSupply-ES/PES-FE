@@ -168,7 +168,7 @@ const Signup = () => {
               id="memberGen"
               name="memberGen"
               value={formData.memberGen}
-              placeholder='신입생은 34기입니다'
+              placeholder='신입생은 35기입니다'
               onChange={handleInputChange}
               required
             />
