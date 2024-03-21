@@ -215,7 +215,6 @@ const QuestionPage = () => {
                 }
             }
             setPassCount(passCount);
-            window.location.reload(); 
         } catch (error) {
             console.log(error);
         }
@@ -232,7 +231,9 @@ const QuestionPage = () => {
                 }
             )
             getFeedback();
-            getAlert(response.status);
+            // 예외 처리 (400, 403 에러) 함수
+            getAlert(response.status); 
+            window.location.reload(); 
         } catch (error) {
             // 403에러 예외처리 추가 by.성임
             if (error.response && error.response.status === 403) {
