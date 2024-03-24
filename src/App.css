@@ -322,7 +322,7 @@ button:hover {
 }
 
 
-.MyFeed{
+.myFeedback{
   margin-bottom:16px;
   display: flex;
   flex-direction: column;
@@ -331,14 +331,14 @@ button:hover {
   overflow-y: auto;
 }
 /* 스크롤바 */
-.MyFeed::-webkit-scrollbar {
+.myFeedback::-webkit-scrollbar {
   width: 10px;  
 }
-.MyFeed::-webkit-scrollbar-thumb {
+.myFeedback::-webkit-scrollbar-thumb {
   background: #c0c0c0; /* 스크롤바 색상 */
   border-radius: 10px; /* 스크롤바 둥근 테두리 */
 }
-.MyFeed::-webkit-scrollbar-track {
+.myFeedback::-webkit-scrollbar-track {
   background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
 }
 

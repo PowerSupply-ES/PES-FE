@@ -149,11 +149,13 @@ const MyPage = () => {
                 <div className='myFeedback'>
                  <MyFeed myFeedback={myFeedback}></MyFeed>
 
-                  {/* <div><p>{myFeedback.answerId}1번</p></div>
+                  {/* 
+                  <div><p>{myFeedback.answerId}1번</p></div>
                   <div><p>{myFeedback.memberGen}사칙연산배우쟈</p></div>
                   <div><p>{myFeedback.mameberName}</p></div>
                   <div><p>{myFeedback.commentPassFail}</p></div>
-                  <div><p>{myFeedback.commentContent}</p></div> */}
+                  <div><p>{myFeedback.commentContent}</p></div> 
+                  */}
                   {/* <div>준비중이에요!</div> */}
 
                 </div>
