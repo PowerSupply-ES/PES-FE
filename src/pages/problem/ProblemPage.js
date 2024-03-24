@@ -153,7 +153,7 @@ const ProblemPage = () => {
                                 ))}
                             </div>
 
-                            <div className="sample_outputs">
+                            <div className="sample_outputs" style={{ whiteSpace: 'pre' }}>
                             <p className="underline">Sample Outputs</p>
                             {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                                 <React.Fragment key={index}>

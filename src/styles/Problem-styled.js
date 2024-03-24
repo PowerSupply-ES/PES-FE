@@ -188,6 +188,8 @@ export const StyledProblem = styled.div`
         width: 90%;
         text-align: left;
         margin: auto;
+        // white-space: pre;
+
     }
     .sample_outputs > .underline{
         margin-top:40px;

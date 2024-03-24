@@ -133,7 +133,7 @@ const QuestionPage = () => {
             alert("이미 댓글을 달았습니다.");
         }
         else if (response === 403) {
-            alert("댓글을 달 수 없습니다.");
+            alert("접근할 수 있는 사용자가 아닙니다.");
         }
     }
 
@@ -223,7 +223,7 @@ const QuestionPage = () => {
     // 댓글 달기 (post)
     async function postFeedback(comment, selected) {
         try {
-            const {data: response} = await axios.post(
+            const response = await axios.post(
                 `/api/comment/${answerId}`,
                 {
                     comment: comment,
@@ -231,7 +231,9 @@ const QuestionPage = () => {
                 }
             )
             getFeedback();
-            getAlert(response);
+            // 예외 처리 (400, 403 에러) 함수
+            getAlert(response.status); 
+            window.location.reload(); 
         } catch (error) {
             // 403에러 예외처리 추가 by.성임
             if (error.response && error.response.status === 403) {
@@ -239,7 +241,6 @@ const QuestionPage = () => {
             } 
             else if(error.response && error.response.status === 400){
                 alert("이미 댓글을 달았어요!");
-
             }
             else {
                 console.log(error);
