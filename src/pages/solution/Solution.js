@@ -105,6 +105,7 @@ function Solution() {
 
         {/* 풀이 목록 */}
         <SolvingList solveData={solveData}></SolvingList>
+
       </div>
       <Footer></Footer>
     </>

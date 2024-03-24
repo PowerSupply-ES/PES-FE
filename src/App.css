@@ -575,7 +575,8 @@ button:hover {
 /* 풀이타이틀 */
 .solution_container{
   width: 1142px;
-  height: 493px;
+  /* height: 493px; */
+  height: fit-content;
   margin: 60px auto;
 
   display: flex;
