@@ -148,6 +148,12 @@ const MyPage = () => {
 
                 <div className='myFeedback'>
                  <MyFeed myFeedback={myFeedback}></MyFeed>
+                 <MyFeed myFeedback={myFeedback}></MyFeed>
+                 <MyFeed myFeedback={myFeedback}></MyFeed>
+                 <MyFeed myFeedback={myFeedback}></MyFeed>
+
+
+
 
                   {/* 
                   <div><p>{myFeedback.answerId}1번</p></div>
