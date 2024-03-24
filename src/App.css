@@ -350,6 +350,7 @@ button:hover {
 }
 .problemList, .FeedList{
   width: 100%;
+  padding: 20px 0;
 }
 .problems > *,
 .feeds > *{
@@ -465,6 +466,7 @@ button:hover {
 .memberInfo > .info_name{
   margin: 20px 0 40px 0;
   display: flex;
+  align-items: center;
   flex-direction: column;
   font-weight: bold;
   font-size: 32px;
@@ -676,6 +678,7 @@ button:hover {
 /* 풀이목록 */
 .solving_list{
   margin-top: var(--margin-middle);
+  height: fit-content;
 }
 
 .solving{
