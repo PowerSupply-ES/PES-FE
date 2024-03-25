@@ -287,7 +287,7 @@ const QuestionPage = () => {
                             <button className="button_problem" onClick={toggleDropdown}>문제보기
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
-                                        <div className="content">
+                                        <div className="content" style={{ whiteSpace: 'pre' }}>
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
