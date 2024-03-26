@@ -14,7 +14,7 @@ const ListPage = () => {
     const [selectedOption, setSelectedOption] = useState('junior');
 
     const [juniorButtonColor, setJuniorButtonColor] = useState('rgba(109, 99, 228, 0.9)');
-    const [seniorButtonColor, setSeniorButtonColor] = useState('rgba(109, 99, 228, 0.9)');
+    const [seniorButtonColor, setSeniorButtonColor] = useState('rgba(109, 99, 228, 0.5)');
 
     const juniorButtonClick = () => {
         // 다른 버튼 색상 초기화
