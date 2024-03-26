@@ -1,6 +1,7 @@
 import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import { StyledListPage } from "styles/ListPage-styled";
+import RankingItem from "./rankingItem";
 
 const JuniorRank = () => {
 
