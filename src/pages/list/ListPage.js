@@ -1,58 +1,29 @@
-import styled from "styled-components";
 import {useState, useEffect} from "react";
+import axios from "axios";
 import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
-import { HiQuestionMarkCircle } from "react-icons/hi";
-
-import axios from "axios";
-
-const Filter = styled.div `
-    width: 80%;
-    height: 62px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 48px;
-`
-const Button = styled.button `
-    height: fit-content;
-    background-color: #FFFFFF;
-    color: #6A6B6F;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 5px;
-    border: 2px solid #DEDEDE;
-    margin-right: 20px;
-    text-align: center;
-    padding: 3px;
-
-    &:hover {
-        background-color: #6D63E4;opacity : 0.5;
-        color: white;
-    }
-
-    &:focus {
-        background-color: #6D63E4;opacity : 0.5;
-        color: white;
-        outline: none;
-    }
-`
-const Icon = styled.div `
-    width: 80%;
-    margin:auto;
-    display:flex;
-    justify-content: right;
-    padding: 40px 40px 20px 0;
-    cursor:pointer;
-
-`
-
+import JuniorRank from "components/ranking/JuniorRank";
+// import SeniorRank from "components/ranking/SeniorRank";
+import { StyledListPage } from "styles/ListPage-styled";
 
 const ListPage = () => {
 
     const [list, setList] = useState([]);
+    const [selectedOption, setSelectedOption] = useState('junior');
+
+    const [juniorButtonColor, setJuniorButtonColor] = useState('rgba(109, 99, 228, 0.9)');
+    const [seniorButtonColor, setSeniorButtonColor] = useState('rgba(109, 99, 228, 0.9)');
+
+    const juniorButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setSeniorButtonColor('rgba(109, 99, 228, 0.5)');
+    }
+    const seniorButtonClick = () => {
+        // 다른 버튼 색상 초기화
+        setJuniorButtonColor('rgba(109, 99, 228, 0.5)');
+    }
 
     // 문제 목록 불러오기 (get)
     async function getList() {
@@ -76,33 +47,54 @@ const ListPage = () => {
         getList();
     }, []);
 
+    // junior, senior 선택
+    const handleOption = (option) => {
+        setSelectedOption(option);
+    }
+
     return (
         <div>
             <Header/>
             <AdPart/>
-            {/* <Icon>
-                <HiQuestionMarkCircle size={36}></HiQuestionMarkCircle>
-            </Icon> */}
-            {/*
-            <Filter>
-                <Button>푼 문제 보기</Button>
-                <Button>안 푼 문제 보기</Button>
-                <Button>풀이 중인 문제 보기</Button>
-                <Button>FAIL</Button>
-                <Button>CLEAR</Button>
-            </Filter>
-            */}
-            
-            {
-                list.map((problem) => (
-                    <ProblemItem
-                        pid={problem.problemId}
-                        ptitle={problem.problemTitle}
-                        grade={problem.problemScore}
-                        answerId={problem.answerId}
-                        state={problem.answerState}/>
-                ))
-            }
+            <StyledListPage style="width: 100%; display: flex; justify-content: center;">
+                {/* 문제 섹션 */}
+                <div className="list_container">
+                    <div className="container_header">📌 문제</div>
+                    {
+                        list.map((problem) => (
+                        <ProblemItem
+                            pid={problem.problemId}
+                            ptitle={problem.problemTitle}
+                            grade={problem.problemScore}
+                            answerId={problem.answerId}
+                            state={problem.answerState}/>
+                        ))
+                    }
+                </div>
+                {/* 랭킹 섹션 */}
+                <div className="ranking_container">
+                    <div className="container_header">🏆 랭킹</div>
+                    {/* 신입생, 재학생 선택 버튼 */}
+                    <div className="student_container">
+                        <button className="student_button" 
+                        style={{backgroundColor: juniorButtonColor}} 
+                        onClick={() => {
+                            handleOption('junior'); 
+                            juniorButtonClick();
+                        }}>
+                            신입생</button>
+                        <button className="student_button" 
+                        style={{backgroundColor: seniorButtonColor}} 
+                        onClick={() => {
+                            handleOption('senior'); 
+                            seniorButtonClick();
+                        }}>
+                            재학생</button>
+                    </div>
+                    {selectedOption === 'junior' && <JuniorRank />}
+                    {/*{selectedOption === 'senior' && <SeniorRank />}*/}
+                </div>
+            </StyledListPage>
             <Footer></Footer>
         </div>
     );
