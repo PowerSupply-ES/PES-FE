@@ -38,7 +38,7 @@ const SeniorRank = (props) => {
             <RankingItem rank="순위" memberName="이름" score="답변수" style="margin-bottom: 10px;"/>
             {
                 newRank.map((rank, index) => (
-                <RankingItem key={index} id={index + 1} name={rank.memberName} score={`${rank.score}개`} />
+                <RankingItem key={index} rank={index + 1} memberName={rank.memberName} score={`${rank.score}개`} />
                 ))
             }        
         </StyledListPage>

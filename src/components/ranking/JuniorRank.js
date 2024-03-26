@@ -44,10 +44,10 @@ const JuniorRank = () => {
             <select className="select_box" value={memberGen} onChange={handleSelectChange}>
                 <option value="35">35기</option>
             </select>
-            <RankingItem id="순위" name="이름" score="점수" style="margin-bottom: 10px;"/>
+            <RankingItem rank="순위" memberName="이름" score="점수" style="margin-bottom: 10px;"/>
             {
                 newRank.map((rank, index) => (
-                <RankingItem key={index} id={index + 1} name={rank.memberName} score={`${rank.score}점`} />
+                <RankingItem key={index} rank={index + 1} memberName={rank.memberName} score={`${rank.score}점`} />
                 ))
             }        
         </StyledListPage>
