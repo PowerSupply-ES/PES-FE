@@ -41,7 +41,7 @@ const ProblemPage = () => {
             const { data: response, status} = await postCode(text.current, problemId);
 
             if (!response) {
-                alert("인증된 사용자가 아닙니다.");
+                alert("오류!");
                 // navigate("/signin");
             }
             else if (status === 201) {
@@ -53,6 +53,9 @@ const ProblemPage = () => {
             else if (status === 202) {
                 await setDetail(response.detail);
                 await alert("문제를 틀렸습니다! 다시 풀어보세요.");
+            }
+            else if (status === 500){
+                alert("server가 응답하지 않네요! 관리자에게 상황을 공유해주세요! : ", response.message);
             }
         }
     }
