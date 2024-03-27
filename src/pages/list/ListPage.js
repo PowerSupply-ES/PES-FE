@@ -56,7 +56,7 @@ const ListPage = () => {
         <div>
             <Header/>
             <AdPart/>
-            <StyledListPage style="width: 100%; display: flex; justify-content: center;">
+            <StyledListPage style={{width: "100%", display: "flex", justifyContent: "center"}}>
                 {/* 문제 섹션 */}
                 <div className="list_container">
                     <div className="container_header">📌 문제</div>
