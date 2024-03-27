@@ -15,7 +15,7 @@ export const StyledListPage = styled.div`
         margin-bottom: 10px;
         font-weight: bold;
         align-items: center;
-        font-size: 20px;
+        font-size: 30px;
         display: flex;
         width: 100%;
     }

@@ -17,12 +17,12 @@ const ListPage = () => {
     const [seniorButtonColor, setSeniorButtonColor] = useState('rgba(109, 99, 228, 0.5)');
 
     const juniorButtonClick = () => {
-        // 다른 버튼 색상 초기화
         setSeniorButtonColor('rgba(109, 99, 228, 0.5)');
+        setJuniorButtonColor('rgba(109, 99, 228, 0.9)');
     }
     const seniorButtonClick = () => {
-        // 다른 버튼 색상 초기화
         setJuniorButtonColor('rgba(109, 99, 228, 0.5)');
+        setSeniorButtonColor('rgba(109, 99, 228, 0.9)');
     }
 
     // 문제 목록 불러오기 (get)
