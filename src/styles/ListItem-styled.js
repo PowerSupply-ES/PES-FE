@@ -4,7 +4,6 @@ export const StyledListItem = styled.div`
     .container {
         display: flex;
         flex-direction: row;
-        width: 80%;
         height: fit-content;
         align-items: center;
         margin: auto;
