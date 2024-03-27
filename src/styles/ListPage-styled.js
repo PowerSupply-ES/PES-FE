@@ -12,7 +12,7 @@ export const StyledListPage = styled.div`
     }
 
     .container_header {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-weight: bold;
         align-items: center;
         font-size: 30px;
