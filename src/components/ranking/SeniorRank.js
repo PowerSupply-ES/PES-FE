@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 import { StyledListPage } from "styles/ListPage-styled";
-import RankingItem from "./rankingItem";
+import RankingItem from "./RankingItem";
 
 const SeniorRank = (props) => {
 
