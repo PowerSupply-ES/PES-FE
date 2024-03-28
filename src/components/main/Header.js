@@ -36,6 +36,7 @@ function Header0(){
            <p className='logo' onClick={()=>navigate('/')}>PES</p>
            <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
+           {/* <a className='menu3' onClick={()=>navigate('/info')}>공지사항</a> */}
 
          </div>
 
@@ -85,7 +86,6 @@ function Header1(){
       .then(data => {
         setMemberData(data);
         sessionStorage.setItem('memberName', data.memberName);
-        // sessionStorage.setItem('memberStatus', memberData.memberStatus);
         sessionStorage.setItem('memberStatus', data.memberStatus);
 
 
@@ -172,6 +172,8 @@ function Header1(){
        <a className='logo' onClick={()=>navigate('/')}>PES</a>
        <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
        <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
+       {/* <a className='menu3' onClick={()=>navigate('/info')}>공지사항</a> */}
+
      </div>
    </div>
  )

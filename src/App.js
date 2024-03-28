@@ -8,6 +8,7 @@ import Main from "pages/main/Main";
 import Mypage from "pages/mypage/Mypage";
 import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
+import Info from "pages/info/Info"
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/mypage" element={<Mypage/>}></Route>
         <Route path="/menual" element={<Menual/>}></Route>
+        <Route path="/info" element={<Info/>}></Route>
+
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>
