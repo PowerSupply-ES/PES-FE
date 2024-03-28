@@ -108,7 +108,7 @@ button:hover {
   cursor: pointer;
 }
 
-.menu1, .menu2{
+.menu1, .menu2, .menu3{
   height: fit-content;
   font-size: 26px;
   margin-left: 56px;
