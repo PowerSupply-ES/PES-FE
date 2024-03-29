@@ -287,7 +287,8 @@ const QuestionPage = () => {
                             <button className="button_problem" onClick={toggleDropdown}>문제보기
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
-                                        <div className="content" style={{ whiteSpace: 'pre' }}>
+                                        {/* 띄워쓰기 표현_ by성임*/}
+                                        <div className="content" style={{ whiteSpace: 'pre'}}>
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -300,7 +301,7 @@ const QuestionPage = () => {
                                             ))}
                                         </div>
                         
-                                        <div className="sample_outputs">
+                                        <div className="sample_outputs" style={{ whiteSpace: 'pre'}}>
                                             <h3>Sample Outputs:</h3>
                                             {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                                                 <React.Fragment key={index}>
