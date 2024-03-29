@@ -34,7 +34,7 @@ const Info = () => {
                     <div className='info'>
                         <div className='title_0'>
                             {/* 버튼 변경 */}
-                            <button className='imp'>중요</button>
+                            <div className='imp'>중요</div>
                         </div>
                         <div className='title_1'>번호</div>
                         <div className='title_2'>제목</div>
@@ -44,7 +44,7 @@ const Info = () => {
                     <div className='info'>
                         <div className='title_0'>
                             {/* 버튼 변경 */}
-                            <button className='new'>new</button>
+                            <div className='new'>new</div>
                         </div>
                         <div className='title_1'>번호</div>
                         <div className='title_2'>제목</div>

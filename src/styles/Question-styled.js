@@ -376,6 +376,8 @@ export const StyledQuestion = styled.div`
         min-width: 200px;
         z-index: 999;
         color: black;
+        // 글자 튀어나옴 방지_ by성임
+        word-break: break-all
     }
     .dropdown_content > .content{
         text-align: left;
