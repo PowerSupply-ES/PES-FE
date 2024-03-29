@@ -38,7 +38,7 @@
     display: flex;
     font-size: 24px;
     font-weight: bold;
-    margin-top: 40px;
+    margin: 40px 0;
     width: 100%;
     text-align: left;
     color: #393939;
@@ -76,12 +76,13 @@
     font-size: 19px;
 
   }
-  .info{
+  .info_list > .info{
     background-color: #FCFCFC;
     font-size: 18px;
     align-items: center;
   }
-  .info_title, .info{
+  .info_title, 
+  .info_list > .info{
     display: flex;
     color: #282828;
     height: fit-content;
@@ -90,7 +91,7 @@
   }
 
   .info_title > *:not(:last-child),
-  .info > *:not(:last-child){
+  .info_list > .info > *:not(:last-child){
     margin-right: 20px;
   }
 
@@ -98,7 +99,8 @@
   .title_2{flex:3}
   .title_3{flex:2}
 
-  .title_0 > button{
+  .title_0 > div{
+    margin: auto;
     width: fit-content;
     border-radius: 50px;
     color: #FCFCFC;
@@ -115,13 +117,14 @@
     border: solid #FF5F5F;
   }
 
-  .info > .title_1{
+  .info_list > .info > .title_1{
     color: #7a1af8;
     font-weight: bold;
-  }.info > .title_2{
+  }
+  .info_list > .info > .title_2{
     font-weight: bold;
   }
-  .info > .title_3,
-  .info > .title_4{
+  .info_list > .info > .title_3,
+  .info_list > .info > .title_4{
     color: #7a7a7a;
   }
