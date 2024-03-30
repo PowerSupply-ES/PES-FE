@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledQuestion = styled.div`
 
+    
     .code_question_container {
         width: 95%;
         display: flex; 
@@ -37,7 +38,7 @@ export const StyledQuestion = styled.div`
         height: 70px;
         display: flex;
         align-items: center;
-        margin: 40px auto 0;
+        margin: 20px auto 0;
     }
     .question_id {
         width: 80px;
@@ -51,7 +52,7 @@ export const StyledQuestion = styled.div`
         font-size: 20px;
         font-weight: bold;
         margin-right: 10px;
-        border-radius : 5px;
+        border-radius : 50px;
         background-color: #ffffff;
         box-shadow: 1px 3px #CCC9C9;
     }
@@ -111,15 +112,18 @@ export const StyledQuestion = styled.div`
         box-shadow: 1px 3px #CCC9C9;
     }
     .button.answer {
-        background-color: #9747FF;
+        background-color: #ac6dfd;
         margin: 60px auto;
+        &:hover{
+            background-color: #9747FF
+        }
     }
     .btn_container{
         display: flex;
         justify-content: center;
 
         width: 80%;
-        margin: auto;
+        margin: 28px auto;
 
     }
 
@@ -139,7 +143,7 @@ export const StyledQuestion = styled.div`
         box-shadow: 1px 3px #CCC9C9;
 
 
-        background-color: #3B3B3B;
+        background-color: #3B3B3B; opacity:80%;
         font-size:16px;
     }
     .button_problem:hover{
@@ -212,7 +216,8 @@ export const StyledQuestion = styled.div`
         padding: 8px 24px;
         border-radius: 50px;
         text-align: center;
-        background-color: #9747FF; opacity:60%;
+        // background-color: #9747FF; opacity:60%;
+        background-color: #3B3B3B;
         color: #ffffff;
         font-size: 18px;
         font-weight: bold;
@@ -241,6 +246,8 @@ export const StyledQuestion = styled.div`
     .feedback_content.input {
         height: 270px;
         padding: 12px;
+        font-size:18px;
+        font-weight:bold;
     }
     .feedback_content.display {
         height: 250px;
@@ -324,16 +331,17 @@ export const StyledQuestion = styled.div`
         margin: 120px auto 10px;
         padding: 12px 0;
 
-        background-color: #04ca00; opacity:57%;
+        // background-color: #04ca00; opacity:57%;
+        background-color: #0025cae0; opacity:57%;
         color: #ffffff;
         border-radius: 15px;
         font-size: 20px;
         font-weight: bold;
         box-shadow: 1px 3px #CCC9C9;
         cursor: pointer;
-    }
-    .result.success:hover{
-        background-color: #04ca00;opacity:100%;
+        &:hover{
+            background-color: #0025cae0; opacity:70%;
+        }
     }
     .result.fail {
         width: 70%;

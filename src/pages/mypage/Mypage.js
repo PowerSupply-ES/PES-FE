@@ -148,17 +148,6 @@ const MyPage = () => {
 
                 <div className='myFeedback'>
                  <MyFeed myFeedback={myFeedback}></MyFeed>
-
-
-                  {/* 
-                  <div><p>{myFeedback.answerId}1번</p></div>
-                  <div><p>{myFeedback.memberGen}사칙연산배우쟈</p></div>
-                  <div><p>{myFeedback.mameberName}</p></div>
-                  <div><p>{myFeedback.commentPassFail}</p></div>
-                  <div><p>{myFeedback.commentContent}</p></div> 
-                  */}
-                  {/* <div>준비중이에요!</div> */}
-
                 </div>
               </div>
 
@@ -170,7 +159,6 @@ const MyPage = () => {
       </div>
     );
   };
-
 
 
   // 내가 푼 문제 컴포넌트
@@ -185,7 +173,7 @@ const MyPage = () => {
     <div className="problemList">
       {myProb.length === 0 ? (
         <div className="noProblems">
-          <div>아직 푼 문제가 없어요!</div>
+          아직 푼 문제가 없어요!
         </div>
       ) : (
         myProb.map((it) => (
@@ -234,7 +222,7 @@ const MyPage = () => {
     <div className ='FeedList' >
       {myFeedback.length === 0 ? (
         <div className="noFeed">
-          <div>아직 받은 피드백이 없어요!</div>
+          아직 받은 피드백이 없어요!
         </div>
       ) : (
       myFeedback.map((it) => (
@@ -245,10 +233,10 @@ const MyPage = () => {
             {it.memberName}
           </p>
 
-          <p className='commentContent' onClick={() => gotoFeed(it.answerId)}>
+          <p className='commentContent' 
+            onClick={() => gotoFeed(it.answerId)}>
             {it.commentContent}
           </p>
-
 
           <div className={`${
             it.commentPassFail === 1 
