@@ -134,7 +134,7 @@ export const StyledQuestion = styled.div`
         padding: 8px 20px;
         color: white;
         font-weight: bold;
-        border-radius: 5px;
+        border-radius: 50px;
         border: none;
         display: flex;
         justify-content: center;
@@ -155,7 +155,7 @@ export const StyledQuestion = styled.div`
         padding: 8px 20px;
         color: white;
         font-weight: bold;
-        border-radius: 5px;
+        border-radius: 50px;
         border: none;
         display: flex;
         justify-content: center;

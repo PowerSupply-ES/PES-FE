@@ -7,12 +7,19 @@ export const StyledProblem = styled.div`
         display: flex;
         align-items: center;
         margin-top: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 16px;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         justify-content: space-between;
         
+    }
+    .button_group{
+        width: 80%;
+        margin: 0 auto 32px;
+        justify-content: right;
+
+
     }
     .problem_group {
         display: flex;
@@ -21,8 +28,9 @@ export const StyledProblem = styled.div`
     .problem_id {
         width: 80px;
         height: fit-content;
-        padding: 8px 0;
         font-size: 22px;
+
+        padding: 8px 0;
         font-weight: bold;
         // background-color: #ffffff;
         background-color:#3B3B3B;
@@ -47,7 +55,7 @@ export const StyledProblem = styled.div`
     }
     .header_answer_state {
         width: fit-content;
-        padding: 5px 16px;
+        padding: 8px 16px;
         // color: ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" : "#6A6B6F"};
         // background-color: #ffffff;
         // border: solid 3px ${props => props.state === "success" ? "#5094F9" 

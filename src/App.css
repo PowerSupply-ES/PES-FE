@@ -137,16 +137,18 @@ button:hover {
 
 }
 
+
+/* -----메인화면----- */
 .main_btn{
   position: absolute;
-  top: 72%;
-  left: 45%;
+  top: 60%;
+  left: 46%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
   transform: translate(-50%, -50%);
   /* translate(-50%, -50%)으로 
-  left와 top의 값을 조정하여 정확한 중앙 위치로 조정합니다. */
+  left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
 }
 .main_btn > .btn1,
 .main_btn > .btn2,
@@ -178,7 +180,7 @@ button:hover {
   }
 }
 
-.content{
+.mainPage > .content{
   background-color: #000000;
 }
 
