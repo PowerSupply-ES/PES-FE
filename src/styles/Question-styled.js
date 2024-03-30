@@ -241,6 +241,8 @@ export const StyledQuestion = styled.div`
     .feedback_content.input {
         height: 270px;
         padding: 12px;
+        font-size:18px;
+        font-weight:bold;
     }
     .feedback_content.display {
         height: 250px;

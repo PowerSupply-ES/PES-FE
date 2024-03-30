@@ -358,13 +358,19 @@ const QuestionPage = () => {
                             <div className="question_id">질문 1</div>
                             <div className="header_title">{qnA.questionContentFst}</div>
                         </div>
-                        <div className="answer_input display">{qnA.answerFst}</div>
+
+                        {/* 줄바꿈 반영하기_ by성임 */}
+                        <div className="answer_input display">
+                            {renderNewlines(qnA.answerFst)}
+                        </div>
                         
                         <div className="question_header"> 
                             <div className="question_id">질문 2</div>
                             <div className="header_title">{qnA.questionContentSec}</div>
                         </div>
-                        <div className="answer_input display">{qnA.answerSec}</div>
+                        <div className="answer_input display">
+                            {renderNewlines(qnA.answerSec)}
+                        </div>
                     </>
                     }
                     </div>
@@ -405,7 +411,11 @@ const QuestionPage = () => {
                                 <div className="feedback_writer">{feedback.writerGen}기</div>
                                 <div className="feedback_writer">{feedback.writerName}</div>
                             </div>
-                            <div className="feedback_content display">{feedback.commentContent}</div>
+
+                            {/* 줄바꿈 반영하기_ by성임 */}
+                            <div className="feedback_content display">
+                                {renderNewlines(feedback.commentContent)}
+                            </div>
                         </div>
                         ))
                     )}
@@ -416,7 +426,9 @@ const QuestionPage = () => {
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
                             </div>
-                            <textarea className="feedback_content input" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
+                            <textarea className="feedback_content input" 
+                                placeholder = "피드백을 입력해주세요."
+                                onChange={FstHandler}/>
                             {/* PASS FAIL 선택 */}
                             <div className="feedback_select_section">
                                 <div className="button_container">
