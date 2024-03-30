@@ -431,6 +431,11 @@ button:hover {
 .FeedList :hover {
   background-color: rgba(243, 242, 242, 0.737);
 }
+/* noproblems,noFeed 상태일때는 적용x */
+.problemList:hover > .noProblems,
+.FeedList:hover > .noFeed{
+  background-color: transparent;
+}
 
 /* 성공여부에 따라 버튼색 변화 */
 
