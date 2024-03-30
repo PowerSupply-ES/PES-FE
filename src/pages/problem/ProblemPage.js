@@ -113,15 +113,42 @@ const ProblemPage = () => {
         }
     }
 
+    // sample input/output 가독성을 위한 색상 구분
+    function renderStyledText(text, isFirstLine) {
+        return (
+            <span style={{ color: isFirstLine ? '#d783ff' : '#a1a1ff' }}>
+                {text}
+            </span>
+            // rgb(124 124 124)
+        );
+    }
+    function renderStyledNewlines(text) {
+        const lines = text.split('\n\n'); // 각 줄을 분할
+        return lines.map((line, index) => {
+            let color = '#d783ff'; // 기본 색상
+            if (index === 1) {
+                color = '#a1a1ff'; // 두 번째 줄 색상
+            } else if (index === 2) {
+                color = 'rgb(124, 124, 124)'; // 세 번째 줄 색상
+            }
+            return (
+                <span key={index} style={{ color: color }}>
+                    {line}
+                    <br />
+                </span>
+            );
+        });
+    }
+
     function renderNewlines(text) {
         return text.split('\n').map((line, index) => (
             <React.Fragment key={index}>
                 {line}
+                {/* {renderStyledText(line, index === 0)} */}
                 <br />
             </React.Fragment>
         ));
     }
-    
 
     function renderProbUI() {
         return (
@@ -138,31 +165,39 @@ const ProblemPage = () => {
                     <div className="content_container">
 
                         {/* 상단문제 */}
-                        <div className="top">
+                        <div className="top" style={{ whiteSpace: 'pre' }}>
                             <p className="underline">문제</p>
-                            
-                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                            <div className="prob_text" >
+                                {problem.problemContent && renderNewlines(problem.problemContent)}
+                            </div>
                         </div>
                     
 
                         {/* 하단 sample input */}
                         <div className="bottom">
-                            <div className="sample_inputs">
+                            <div className="sample_inputs" style={{ whiteSpace: 'pre' }}>
                                 <p className="underline">Sample Inputs</p>
-                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
-                                    <React.Fragment key={index}>
-                                        {renderNewlines(input)}
-                                    </React.Fragment>
-                                ))}
+                                <div className="input_text">
+                                    {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                        <React.Fragment key={index}>
+                                            {renderStyledNewlines(input)}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
                             </div>
 
                             <div className="sample_outputs" style={{ whiteSpace: 'pre' }}>
-                            <p className="underline">Sample Outputs</p>
-                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
-                                <React.Fragment key={index}>
-                                    {renderNewlines(output)}
-                                </React.Fragment>
-                            ))}
+                                <p className="underline">Sample Outputs</p>
+                                <div className="output_text">
+
+                                    {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                        <React.Fragment key={index}>
+                                            {renderStyledNewlines(output)}
+                                        </React.Fragment>
+
+
+                                    ))}
+                                </div>
                             </div>
                         </div> 
                     </div>

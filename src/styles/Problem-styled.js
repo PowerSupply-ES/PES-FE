@@ -28,7 +28,7 @@ export const StyledProblem = styled.div`
     .problem_id {
         width: 80px;
         height: fit-content;
-        font-size: 22px;
+        font-size: 19px;
 
         padding: 8px 0;
         font-weight: bold;
@@ -72,7 +72,7 @@ export const StyledProblem = styled.div`
             : props.state === "fail" ? "rgb(246, 73, 73, 0.9)" 
             : "#3B3B3B; opacity:70%"};
 
-        font-size: 22px;
+        font-size: 19px;
         font-weight: bold;
         margin-right: 10px;
         border-radius : 50px;
@@ -91,7 +91,7 @@ export const StyledProblem = styled.div`
     .problem_section{
         width:80%;
         height:100vh;
-        margin: 0 auto;
+        margin: 60px auto 0;
         display: flex;
         justify-content: space-between;
         margin-bottom:20px;
@@ -101,23 +101,6 @@ export const StyledProblem = styled.div`
         z-index: 998;
         position: relative;
     }
-
-    // .content_container > .top,
-    // .content_container > .bottom{
-    //     width: 100%;
-
-    //     display: flex;
-    //     flex-direction: column;
-    // }
-    // .content_container > .top > h2,
-    // .content_container > .bottom > h2
-    // {
-    //     width: 100%;
-    //     justify-content: center;
-        
-    //     font-size : 16px;
-    //     margin: 15px auto;
-    // }
 
     .code_section{
         flex: 5;
@@ -155,9 +138,6 @@ export const StyledProblem = styled.div`
         width: 100%;
 
         min-height: 240px;
-
-        
-
     }
 
     // 스크롤바 디자인
@@ -172,15 +152,12 @@ export const StyledProblem = styled.div`
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
 
-
     .content_container > .top{
 
         text-align: left;
         margin: 0 auto 4px;
-        // padding-bottom:20px;
         border-bottom: solid 1px;
         height: 45%;
-
     }
     .content_container > .bottom{
         height: 55%;
@@ -202,21 +179,34 @@ export const StyledProblem = styled.div`
         text-underline-offset : 6px;
         text-decoration-color: #5094F9; opacity:70%;
 
+        color:#000000;
+     
         font-size: 19px;
-        // color:#6D63E4; opacity:80%;
-        font-weight:bold;
+        // font-weight: bold;
         margin-bottom: 12px;
     }
+    .top > .prob_text{
+        font-weight:bold;
+    }
+    .sample_inputs > .input_text{
+        font-weight:bold;
+    }
+    .sample_outputs > .output_text{
+        font-weight:bold;
+    }
+
+
+
     .content_container > .bottom > .sample_outputs {
         width: 90%;
         text-align: left;
         margin: auto;
-        // white-space: pre;
-
     }
     .sample_outputs > .underline{
         margin-top:40px;
     }
+
+
     .code_input {
         width: 100%;
         height: 100%;
