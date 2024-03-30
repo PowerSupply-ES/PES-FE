@@ -363,6 +363,11 @@ button:hover {
   display: flex;
   align-items: center;
 }
+.feeds > :last-child{
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
 /* .problems > *:not(:first-child){
   margin-right: 40px;
 } */
