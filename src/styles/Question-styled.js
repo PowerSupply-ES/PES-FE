@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledQuestion = styled.div`
 
+    
     .code_question_container {
         width: 95%;
         display: flex; 
@@ -326,16 +327,17 @@ export const StyledQuestion = styled.div`
         margin: 120px auto 10px;
         padding: 12px 0;
 
-        background-color: #04ca00; opacity:57%;
+        // background-color: #04ca00; opacity:57%;
+        background-color: #0025cae0; opacity:57%;
         color: #ffffff;
         border-radius: 15px;
         font-size: 20px;
         font-weight: bold;
         box-shadow: 1px 3px #CCC9C9;
         cursor: pointer;
-    }
-    .result.success:hover{
-        background-color: #04ca00;opacity:100%;
+        &:hover{
+            background-color: #0025cae0; opacity:70%;
+        }
     }
     .result.fail {
         width: 70%;

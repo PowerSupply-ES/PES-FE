@@ -470,7 +470,7 @@ const QuestionPage = () => {
     }
 
     return(
-        <div>
+        <div className={state === "success" ? "successPage" : state === "fail" ? "failPage" : "nonePage"}>                  
             <Header/>
             <MemberStatus>
                 {(memberStatus) => {
