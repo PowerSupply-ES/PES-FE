@@ -125,38 +125,16 @@ button:hover {
 
 }
 
-.content0{
-  width: 100%;
-  height: 80vh;
-  margin: 0px auto;
-  background-color: #000000; opacity:81%;
-  color: #373737;
-  font-size: 28px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.content0 > .ps{
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  width: fit-content;
-  text-align: start;
-  margin: 0 auto;
-}
-.ps > .p1{
-  color: #CACACA; opacity: 60%;
-  font-size: 25px;
-}
-.ps > .p2{
-  color: #ffffff;
-  font-size: 36px;
-}
 .main_btn{
+  position: absolute;
+  top: 72%;
+  left: 45%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  transform: translate(-50%, -50%);
+  /* translate(-50%, -50%)으로 
+  left와 top의 값을 조정하여 정확한 중앙 위치로 조정합니다. */
 }
 .main_btn > .btn1,
 .main_btn > .btn2,
@@ -166,64 +144,54 @@ button:hover {
   color: #ffffff;
   width: 132px;
   height: fit-content;
-  padding: 5px 0px;
+  padding: 10px 8px;
+  font-weight: bold;
 }
 .main_btn > .btn1{
   background-color: #000000; opacity: 90%;
   border: solid #ffffff 2px;
-  margin-right: 50px;
+  margin-right: 40px;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.201);
+  }
 }
 .main_btn > .btn2,
 .main_btn > .btn3{
-  background-color: #5A2CDA;
-  border: solid #5A2CDA 2px;
-  /* padding: 0px 15px; */
+  background-color: #724fd2;
+  border: solid #724fd2 2px;
+  &:hover{
+    background-color: #8b71d3;
+    border: solid #8b71d3 2px;
+    /* #e94fac */
+  }
 }
-.main_btn > .btn1:hover{
-  background-color: rgba(255, 255, 255, 0.201);
-}
-.main_btn > .btn2:hover{
-  background-color: #a289e5;
-  border: solid #a289e5 2px;
+
+.content{
+  background-color: #000000;
 }
 
 .content1{
-  width: 100%;
-  height: 75vh;
-  margin: 0px auto;
-  /* padding-top: 120px; */
-  background-color: #1f1f1f;
-  
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
-  
-}
-
-
-.content1 > p{
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 40px;
-  margin-bottom: 80px;
+  position : relative;
 }
 .content1 > img{
-  width: 100%;
-  height: 85vh;
-  filter: brightness(0.4); 
-  /* margin-right: 40px; */
+  /* width: 80%; */
+  /* height: 85vh; */
+  max-width:100%; 
+  height:auto;
 }
-.content2{
+
+.content2 > img,
+.content3 > img,
+.content4 > img
+{
   width: 80%;
-  height: 360px;
-  margin: 40px auto;
-  align-items: flex-end;
-  background-color: #1f1f1f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  /* height: 85vh; */
+  /* max-width:100%;  */
+  height:auto;
 }
+
+
+
 
 /* -----마이페이지----- */
 .mypage_content{
@@ -763,6 +731,9 @@ button:hover {
   margin-top: 300px;
   display: flex;
   padding: 20px 0;
+}
+.mainPage .footer {
+  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
 }
 .footer_left{
   width: 60%;
