@@ -22,11 +22,13 @@ export const StyledProblem = styled.div`
         width: 80px;
         height: fit-content;
         padding: 8px 0;
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
-        background-color: #ffffff;
-        color : #325CC7;
-        border-radius : 5px;
+        // background-color: #ffffff;
+        background-color:#3B3B3B;
+        color : #ffffff;
+        border:solid 3px #3B3B3B; opacity:80%;
+        border-radius : 50px;
         text-align: center;
         margin-right: 20px;
         box-shadow: 1px 3px #CCC9C9;
@@ -35,7 +37,7 @@ export const StyledProblem = styled.div`
         font-size: 20px;
         font-weight: bold;
         text-align: left;
-        margin-right: 20px;
+        margin-right: 8px;
     }
     .header_score {
         font-size: 20px;
@@ -44,17 +46,30 @@ export const StyledProblem = styled.div`
         margin-left: 20px;
     }
     .header_answer_state {
-        width: 70px;
-        padding: 5px 0;
-        color: ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" : "#6A6B6F"};
-        font-size: 20px;
+        width: fit-content;
+        padding: 5px 16px;
+        // color: ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" : "#6A6B6F"};
+        // background-color: #ffffff;
+        // border: solid 3px ${props => props.state === "success" ? "#5094F9" 
+            : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" 
+            : "#DEDEDE"};
+        
+        color: ${props => props.state === "success" ? "#0025cae0; opacity:70%;" 
+            : props.state === "fail" ? "rgb(255, 53, 53, 0.9)" 
+            : "#3B3B3B; opacity:70%"};
+        // background-color: ${props => props.state === "success" ? "#0025cae0; opacity:70%;"
+        : props.state === "fail" ? "rgb(255, 53, 53, 0.9)" 
+        : "#3B3B3B; opacity:70%"};
+        border: solid 3px ${props => props.state === "success" ? "#0025cae0; opacity:70%;"
+            : props.state === "fail" ? "rgb(246, 73, 73, 0.9)" 
+            : "#3B3B3B; opacity:70%"};
+
+        font-size: 22px;
         font-weight: bold;
         margin-right: 10px;
-        border-radius : 5px;
-        background-color: #ffffff;
-        box-shadow: 1px 3px #CCC9C9;
-        border: solid 3px ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" : "#DEDEDE"};
+        border-radius : 50px;
         box-sizing: border-box;
+        box-shadow: 1px 2px #CCC9C9;
     }
     .description {
         width: 1376px;
