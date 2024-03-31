@@ -1,17 +1,8 @@
 .App {
     text-align: center;
     font-family: 'Pretendard-Regular';
-    /* background-color: #f9fafb; */
-    /* background-color: #1c1c1c; */
     background-color: #E9E9EB;
   }
-  @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-  
   /* -----공통요소----- */
   *{
     list-style-type: none;
@@ -23,6 +14,8 @@
     cursor: pointer;
   }
 
+  /* -----info 페이지----- */
+
   .info_body{
     width: 100%;
     height: 100vh;
@@ -32,8 +25,8 @@
     width: 80%;
     margin: auto;
     box-shadow: 0px 2px #d8d4d4;
-
   }
+  
   .header{
     display: flex;
     font-size: 24px;
@@ -108,23 +101,93 @@
     font-weight: bold;
     padding: 2px 8px;
   }
+  /* 중요버튼 */
   .title_0 > .imp{
     background-color: #000000;
     border: solid #000000;
   }
+  /* new버튼 */
   .title_0 > .new{
     background-color: #FF5F5F;
     border: solid #FF5F5F;
   }
 
   .info_list > .info > .title_1{
-    color: #7a1af8;
+    /* color: #7450e4b8; */
+    color: #939393;
     font-weight: bold;
   }
   .info_list > .info > .title_2{
     font-weight: bold;
+    cursor: pointer;
   }
   .info_list > .info > .title_3,
   .info_list > .info > .title_4{
     color: #7a7a7a;
+  }
+
+
+  /* -----infoDetail 페이지----- */
+  .content_Detail, .content_register{
+    width: 80%;
+    margin: auto;
+  }
+  .btn_back{
+    width: 100%;
+    text-align: right;
+  }
+  .btn_back > *{
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: #686666;
+    border: solid 2px #686666;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px #CCC9C9;
+    font-size: 16px;
+
+  }
+
+  .text_container{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
+    height: 50vh;
+    margin-top: 20px;
+    color: #2F2F2F;
+    font-weight: bold;
+  }
+
+  .text_container > .text{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 12px;
+  }
+
+  .btn_container{
+    margin-top: 40px;
+    
+  }
+  .btn_delete,.btn_modify{
+    color: #ffffff;
+    font-weight: bold;
+    border: solid 2px ;
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 8px 24px;
+    box-shadow: 1px 2px #CCC9C9;
+
+  }
+  .btn_modify{
+    background-color: #8C8C8C;
+    border-color: #8C8C8C;
+    margin-right: 16px;
+  }
+  .btn_delete{
+    background-color: #FF5F5F; opacity: 80%;
+    border-color: #FF5F5F;
+
   }

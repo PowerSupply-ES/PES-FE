@@ -198,7 +198,7 @@ export const StyledProblem = styled.div`
     // input요소들 중 순서에 따라 색깔 부여
     .input_text > *:nth-child(1),
     .output_text > *:nth-child(1){
-        color: #d783ff;
+        color: rgb(124, 124, 124);
     }
     .input_text > *:nth-child(2n),
     .output_text > *:nth-child(2n){
@@ -206,7 +206,7 @@ export const StyledProblem = styled.div`
     }
     .input_text > *:nth-child(3n),
     .output_text > *:nth-child(3n){
-        color: rgb(124, 124, 124);
+        color: #d783ff;
     }
 
     .content_container > .bottom > .sample_outputs {
