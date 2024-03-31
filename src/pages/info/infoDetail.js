@@ -28,8 +28,8 @@ const InfoDetail = () => {
                 <div className='text_container'>
                     {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
                     <p className='text'>
-                    {/* 이번 업데이트에서는 이거랑 저거랑 수정했고
-                    이런저런 기능이 추가됐습니다 */}
+                    이번 업데이트에서는 이거랑 저거랑 수정했고
+                    이런저런 기능이 추가됐습니다
                     </p>
                 </div>
                 

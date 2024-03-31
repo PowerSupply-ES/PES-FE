@@ -21,7 +21,7 @@ const Info = () => {
                 </div>
                 {/* 관리자만 띄우게 수정하기 */}
                 <div className='add_info'
-                    onClick={() => navigate('/infoDetail')}>
+                    onClick={() => navigate('/putInfo')}>
                     <PiNotePencilFill size={25}/>
                     <p>등록하기</p>
                 </div>
@@ -38,11 +38,14 @@ const Info = () => {
                 <div className='info_list'>
                     <div className='info'>
                         <div className='title_0'>
-                            {/* 버튼 변경하기 */}
+                            {/* ---버튼 변경하기---*/}
                             <div className='imp'>중요</div>
                         </div>
                         <div className='title_1'>번호</div>
-                        <div className='title_2'>제목</div>
+                        {/* ---infoDetail 연결제대로하기!--- */}
+                        <div className='title_2' 
+                        onClick={() => navigate('/infoDetail')}
+                        >제목</div>
                         <div className='title_3'>작성 날짜</div>
                         <div className='title_4'>조회 수</div>
                     </div>

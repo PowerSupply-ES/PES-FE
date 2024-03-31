@@ -10,6 +10,8 @@ import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
 import Info from "pages/info/Info"
 import InfoDetail from "pages/info/infoDetail"
+import PutInfo from "pages/info/putInfo"
+
 
 
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/menual" element={<Menual/>}></Route>
         <Route path="/info" element={<Info/>}></Route>
         <Route path="/infoDetail" element={<InfoDetail/>}></Route>
+        <Route path="/putInfo" element={<PutInfo/>}></Route>
+
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>

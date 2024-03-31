@@ -119,6 +119,7 @@
   }
   .info_list > .info > .title_2{
     font-weight: bold;
+    cursor: pointer;
   }
   .info_list > .info > .title_3,
   .info_list > .info > .title_4{
@@ -127,7 +128,7 @@
 
 
   /* -----infoDetail 페이지----- */
-  .content_Detail{
+  .content_Detail, .content_register{
     width: 80%;
     margin: auto;
   }
