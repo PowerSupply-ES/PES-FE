@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledQuestion = styled.div`
-
     
     .code_question_container {
         width: 95%;

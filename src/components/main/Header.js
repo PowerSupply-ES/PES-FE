@@ -159,7 +159,6 @@ function Header1(){
               </div>
               <div className='navbar_bottom'>
                 <a className='btn_mypage' href="/mypage">마이페이지</a>
-                <p>|</p>
                 <a onClick={handleLogoutClick} className='btn_logout'>로그아웃</a>    
               </div>
            </div>
