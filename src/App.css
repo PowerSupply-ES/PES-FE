@@ -186,15 +186,13 @@ button:hover {
   background-color: #000000;
 }
 
-.content1{
+/* .content1{
   position : relative;
 }
 .content1 > img{
-  /* width: 80%; */
-  /* height: 85vh; */
   max-width:100%; 
   height:auto;
-}
+} */
 
 
 .content0 > img,
@@ -206,9 +204,20 @@ button:hover {
   /* height: 85vh; */
   /* max-width:100%;  */
   height:auto;
+
 }
 
 
+
+
+/* .content2, .content3, .content4 {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.content2.visible img, .content3.visible img, .content4.visible img {
+  opacity: 1;
+} */
 
 /* animation효과 */
 .content0 {
@@ -233,7 +242,6 @@ button:hover {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  /* transition: right 0.3-s ease-in-out; */
   z-index: 2;
 }
 

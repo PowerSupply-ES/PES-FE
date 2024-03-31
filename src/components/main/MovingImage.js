@@ -4,14 +4,17 @@ import img0 from '../../assets/images/backImg.png';
 import img0_0 from '../../assets/images/backImg_right.png';
 
 const MovingImage = () => {
+
     // 이미지 움직임(progress증가시키면서 움직이기)
     const [animationProgress, setAnimationProgress] = useState(0);
     // 애니메이션 완료 여부
     const [animationFinished, setAnimationFinished] = useState(false);
 
+
     // 페이지 로드될 때 애니메이션 효과를 주기 위한 useEffect 사용
     React.useEffect(() => {
         if (!animationFinished) {
+            
             // 애니메이션 효과를 위해 setInterval 사용
             // setInterval : 일정 시간 간격으로 animationProgress를 업데이트
             const interval = setInterval(() => {
