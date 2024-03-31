@@ -234,6 +234,21 @@ button:hover {
   border-radius: 20px;
   margin: 0 0 6px 8px;
 }
+.feedNum,.probNum{
+  text-align: right;
+  font-size: 20px;
+  margin: 0 20px 8px 0;
+  color: #897d7d;
+  font-weight: bold;
+}
+.feed_top,.prob_top{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 
 .content_mypage{
   padding-top: 80px;

@@ -133,7 +133,11 @@ const MyPage = () => {
             <div className='right'>
               {/* 내가 푼 문제 */}
               <div className='top'>
-                <div className='mypage_btn'>내가 푼 문제</div>
+                <div className='prob_top'>
+                  <div className='mypage_btn'>내가 푼 문제</div>
+                  <div className='probNum'>{myProb.length}개</div>
+                  
+                </div>
                 
                 <div className='myProblem'>
                   <MyProblem myProb={myProb}></MyProblem>
@@ -144,7 +148,11 @@ const MyPage = () => {
               {/* 내 피드백 */}
               {/* 신입생,재학생에 따라 feedback 띄워주기 */}
               <div className='bottom'>
-                <div className='mypage_btn'>my feedback</div>
+                <div className='feed_top'>
+                  <div className='mypage_btn'>my feedback</div>
+                  <div className='feedNum'>{myFeedback.length}개</div>
+                </div>
+                
 
                 <div className='myFeedback'>
                  <MyFeed myFeedback={myFeedback}></MyFeed>
