@@ -195,6 +195,19 @@ export const StyledProblem = styled.div`
         font-weight:bold;
     }
 
+    .input_text > *:first-child,
+    .output_text > *:first-child{
+        color: #d783ff;
+    }
+    .input_text > *:second-child,
+    .output_text > *:second-child{
+        color: #a1a1ff;
+    }
+    .input_text > *:last-child,
+    .output_text > *:last-child{
+        color: rgb(124, 124, 124);
+    }
+
 
 
     .content_container > .bottom > .sample_outputs {

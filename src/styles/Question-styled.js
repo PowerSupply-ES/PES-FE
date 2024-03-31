@@ -142,7 +142,7 @@ export const StyledQuestion = styled.div`
         box-shadow: 1px 3px #CCC9C9;
 
 
-        background-color: #3B3B3B; opacity:80%;
+        background-color: #3B3B3B;
         font-size:16px;
     }
     .button_problem:hover{
@@ -383,9 +383,12 @@ export const StyledQuestion = styled.div`
         min-width: 200px;
         z-index: 999;
         color: black;
+
         // 글자 튀어나옴 방지_ by성임
         word-break: break-all
+        
     }
+    
     .dropdown_content > .content{
         text-align: left;
     }
