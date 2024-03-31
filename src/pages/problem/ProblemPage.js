@@ -113,15 +113,6 @@ const ProblemPage = () => {
         }
     }
 
-    // sample input/output 가독성을 위한 색상 구분
-    // function renderStyledText(text, isFirstLine) {
-    //     return (
-    //         <span style={{ color: isFirstLine ? '#d783ff' : '#a1a1ff' }}>
-    //             {text}
-    //         </span>
-    //         // rgb(124 124 124)
-    //     );
-    // }
     function renderStyledNewlines(text) {
         const lines = text.split('\n\n'); // 각 줄을 분할
         return lines.map((line, index) => {
@@ -189,8 +180,6 @@ const ProblemPage = () => {
                                         <React.Fragment key={index}>
                                             {renderStyledNewlines(output)}
                                         </React.Fragment>
-
-
                                     ))}
                                 </div>
                             </div>
