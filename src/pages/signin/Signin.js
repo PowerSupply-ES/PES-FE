@@ -32,7 +32,7 @@ const Signin = () => {
     .then((responseData) => {
       const resultMessage = responseData.message;
       alert(resultMessage);
-      window.location.href = '/list';
+      window.location.href = '/';
 
       sessionStorage.setItem('status', true);
       sessionStorage.setItem('memberId', formData.memberId);

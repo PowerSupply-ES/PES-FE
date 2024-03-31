@@ -195,20 +195,19 @@ export const StyledProblem = styled.div`
         font-weight:bold;
     }
 
-    .input_text > *:first-child,
-    .output_text > *:first-child{
+    // input요소들 중 순서에 따라 색깔 부여
+    .input_text > *:nth-child(1),
+    .output_text > *:nth-child(1){
         color: #d783ff;
     }
-    .input_text > *:second-child,
-    .output_text > *:second-child{
+    .input_text > *:nth-child(2n),
+    .output_text > *:nth-child(2n){
         color: #a1a1ff;
     }
-    .input_text > *:last-child,
-    .output_text > *:last-child{
+    .input_text > *:nth-child(3n),
+    .output_text > *:nth-child(3n){
         color: rgb(124, 124, 124);
     }
-
-
 
     .content_container > .bottom > .sample_outputs {
         width: 90%;
