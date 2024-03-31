@@ -122,23 +122,18 @@ const ProblemPage = () => {
     //         // rgb(124 124 124)
     //     );
     // }
-    // function renderStyledNewlines(text) {
-    //     const lines = text.split('\n\n'); // 각 줄을 분할
-    //     return lines.map((line, index) => {
-    //         let color = '#d783ff'; // 기본 색상
-    //         if (index === 1) {
-    //             color = '#a1a1ff'; // 두 번째 줄 색상
-    //         } else if (index === 2) {
-    //             color = 'rgb(124, 124, 124)'; // 세 번째 줄 색상
-    //         }
-    //         return (
-    //             <span key={index} style={{ color: color }}>
-    //                 {line}
-    //                 <br />
-    //             </span>
-    //         );
-    //     });
-    // }
+    function renderStyledNewlines(text) {
+        const lines = text.split('\n\n'); // 각 줄을 분할
+        return lines.map((line, index) => {
+        
+            return (
+                <span key={index}>
+                    {line}
+                    <br />
+                </span>
+            );
+        });
+    }
 
     function renderNewlines(text) {
         return text.split('\n').map((line, index) => (
@@ -180,7 +175,7 @@ const ProblemPage = () => {
                                 <div className="input_text">
                                     {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
                                         <React.Fragment key={index}>
-                                            {renderNewlines(input)}
+                                            {renderStyledNewlines(input)}
                                         </React.Fragment>
                                     ))}
                                 </div>
@@ -192,7 +187,7 @@ const ProblemPage = () => {
 
                                     {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                                         <React.Fragment key={index}>
-                                            {renderNewlines(output)}
+                                            {renderStyledNewlines(output)}
                                         </React.Fragment>
 
 
