@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import ScrollToTop from 'components/main/ScrollToTop';
+import "./styles/Font.css";
 
 // 호환성 문제로 주석처리
 // const root = ReactDOM.createRoot(document.getElementById('root'));

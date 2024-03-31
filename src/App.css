@@ -30,6 +30,7 @@
   text-decoration: none;
   margin: 0px;
   padding: 0px;
+  font-family: 'Pretendard-Regular';
 }
 button:hover {
   cursor: pointer;
