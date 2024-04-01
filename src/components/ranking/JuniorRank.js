@@ -45,11 +45,13 @@ const JuniorRank = () => {
                 <option value="35">35기</option>
             </select>
             <RankingItem rank="순위" memberName="이름" score="점수" style="margin-bottom: 10px;"/>
+            <div className="ranking-list">
             {
                 newRank.map((rank, index) => (
                 <RankingItem key={index} rank={index + 1} memberName={rank.memberName} score={`${rank.score}점`} />
                 ))
             }        
+            </div>
         </StyledListPage>
     );
 }
