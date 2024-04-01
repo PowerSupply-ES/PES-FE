@@ -154,11 +154,12 @@
     background-color: #ffffff;
     border: solid 2px #8B8B8B;
     border-radius: 20px;
-    height: 50vh;
     margin-top: 20px;
     color: #2F2F2F;
     font-weight: bold;
+    height: 50vh;
   }
+  
 
   .text_container > .text{
     width: 100%;
@@ -191,3 +192,31 @@
     border-color: #FF5F5F;
 
   }
+
+
+  /* --공지사항 등록-- */
+  .title_container{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: #2F2F2F;
+    font-weight: bold;
+
+    height: 40px;
+    padding: 4px 8px;
+  }
+  .input_container{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: #2F2F2F;
+    font-weight: bold;
+    height: 50vh;
+
+
+  }
+  

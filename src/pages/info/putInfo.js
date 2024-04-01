@@ -16,7 +16,7 @@ const PutInfo = () => {
                 {/* 제목 */}
                 <div className='header'>
                     <PiNotePencilFill size={30}/> 
-                    <p>공지사항등록</p>
+                    <p>공지사항 등록</p>
                 </div>
 
                 {/* 버튼 */}
@@ -28,12 +28,19 @@ const PutInfo = () => {
                 
 
                 {/* 제목 */}
+                <input className='title_container'
+                    placeholder='제목을 입력하세요'>
 
 
+                </input>
 
 
                 {/* 본문 */}
-
+                <input className='input_container'
+                    placeholder='본문을 입력하세요'>
+                    {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
+                   
+                </input>
 
 
 
