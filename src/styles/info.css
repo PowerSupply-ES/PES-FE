@@ -1,0 +1,193 @@
+.App {
+    text-align: center;
+    font-family: 'Pretendard-Regular';
+    background-color: #E9E9EB;
+  }
+  /* -----공통요소----- */
+  *{
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+
+  /* -----info 페이지----- */
+
+  .info_body{
+    width: 100%;
+    height: 100vh;
+    background-color: #F9F9FF;
+  }
+  .content_info{
+    width: 80%;
+    margin: auto;
+    box-shadow: 0px 2px #d8d4d4;
+  }
+  
+  .header{
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 40px 0;
+    width: 100%;
+    text-align: left;
+    color: #393939;
+  }
+  .header > p{
+    margin-left: 14px;
+    }
+
+  .add_info{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    /* text-align: right; */
+    cursor: pointer;
+  }
+  .add_info > p{
+    margin-left: 10px;
+    color: #393939;
+
+    }
+
+
+  .info_list{
+    display: flex;
+    flex-direction: column;
+  }
+  .info_title{
+    background-color: #F0F0F0;
+    border-top: solid #B4B4B4 2px;
+    font-weight: bold;
+    font-size: 19px;
+
+  }
+  .info_list > .info{
+    background-color: #FCFCFC;
+    font-size: 18px;
+    align-items: center;
+  }
+  .info_title, 
+  .info_list > .info{
+    display: flex;
+    color: #282828;
+    height: fit-content;
+    padding: 12px 0px;
+    border-bottom: solid #B4B4B4 2px;
+  }
+
+  .info_title > *:not(:last-child),
+  .info_list > .info > *:not(:last-child){
+    margin-right: 20px;
+  }
+
+  .title_0, .title_1, .title_4{flex:1}
+  .title_2{flex:3}
+  .title_3{flex:2}
+
+  .title_0 > div{
+    margin: auto;
+    width: fit-content;
+    border-radius: 50px;
+    color: #FCFCFC;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 8px;
+  }
+  /* 중요버튼 */
+  .title_0 > .imp{
+    background-color: #000000;
+    border: solid #000000;
+  }
+  /* new버튼 */
+  .title_0 > .new{
+    background-color: #FF5F5F;
+    border: solid #FF5F5F;
+  }
+
+  .info_list > .info > .title_1{
+    /* color: #7450e4b8; */
+    color: #939393;
+    font-weight: bold;
+  }
+  .info_list > .info > .title_2{
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .info_list > .info > .title_3,
+  .info_list > .info > .title_4{
+    color: #7a7a7a;
+  }
+
+
+  /* -----infoDetail 페이지----- */
+  .content_Detail, .content_register{
+    width: 80%;
+    margin: auto;
+  }
+  .btn_back{
+    width: 100%;
+    text-align: right;
+  }
+  .btn_back > *{
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: #686666;
+    border: solid 2px #686666;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px #CCC9C9;
+    font-size: 16px;
+
+  }
+
+  .text_container{
+    width: 100%;
+    background-color: #ffffff;
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
+    height: 50vh;
+    margin-top: 20px;
+    color: #2F2F2F;
+    font-weight: bold;
+  }
+
+  .text_container > .text{
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 12px;
+  }
+
+  .btn_container{
+    margin-top: 40px;
+    
+  }
+  .btn_delete,.btn_modify{
+    color: #ffffff;
+    font-weight: bold;
+    border: solid 2px ;
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 8px 24px;
+    box-shadow: 1px 2px #CCC9C9;
+
+  }
+  .btn_modify{
+    background-color: #8C8C8C;
+    border-color: #8C8C8C;
+    margin-right: 16px;
+  }
+  .btn_delete{
+    background-color: #FF5F5F; opacity: 80%;
+    border-color: #FF5F5F;
+
+  }

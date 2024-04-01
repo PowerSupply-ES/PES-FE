@@ -41,7 +41,7 @@ const ProblemPage = () => {
             const { data: response, status} = await postCode(text.current, problemId);
 
             if (!response) {
-                alert("인증된 사용자가 아닙니다.");
+                alert("오류!");
                 // navigate("/signin");
             }
             else if (status === 201) {
@@ -53,6 +53,9 @@ const ProblemPage = () => {
             else if (status === 202) {
                 await setDetail(response.detail);
                 await alert("문제를 틀렸습니다! 다시 풀어보세요.");
+            }
+            else if (status === 500){
+                alert("server가 응답하지 않네요! 관리자에게 상황을 공유해주세요! : ", response.message);
             }
         }
     }
@@ -110,15 +113,28 @@ const ProblemPage = () => {
         }
     }
 
+    function renderStyledNewlines(text) {
+        const lines = text.split('\n\n'); // 각 줄을 분할
+        return lines.map((line, index) => {
+        
+            return (
+                <span key={index}>
+                    {line}
+                    <br />
+                </span>
+            );
+        });
+    }
+
     function renderNewlines(text) {
         return text.split('\n').map((line, index) => (
             <React.Fragment key={index}>
                 {line}
+                {/* {renderStyledText(line, index === 0)} */}
                 <br />
             </React.Fragment>
         ));
     }
-    
 
     function renderProbUI() {
         return (
@@ -135,31 +151,37 @@ const ProblemPage = () => {
                     <div className="content_container">
 
                         {/* 상단문제 */}
-                        <div className="top">
+                        <div className="top" style={{ whiteSpace: 'pre' }}>
                             <p className="underline">문제</p>
-                            
-                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                            <div className="prob_text" >
+                                {problem.problemContent && renderNewlines(problem.problemContent)}
+                            </div>
                         </div>
                     
 
                         {/* 하단 sample input */}
                         <div className="bottom">
-                            <div className="sample_inputs">
+                            <div className="sample_inputs" style={{ whiteSpace: 'pre' }}>
                                 <p className="underline">Sample Inputs</p>
-                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
-                                    <React.Fragment key={index}>
-                                        {renderNewlines(input)}
-                                    </React.Fragment>
-                                ))}
+                                <div className="input_text">
+                                    {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                        <React.Fragment key={index}>
+                                            {renderStyledNewlines(input)}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
                             </div>
 
                             <div className="sample_outputs" style={{ whiteSpace: 'pre' }}>
-                            <p className="underline">Sample Outputs</p>
-                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
-                                <React.Fragment key={index}>
-                                    {renderNewlines(output)}
-                                </React.Fragment>
-                            ))}
+                                <p className="underline">Sample Outputs</p>
+                                <div className="output_text">
+
+                                    {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                        <React.Fragment key={index}>
+                                            {renderStyledNewlines(output)}
+                                        </React.Fragment>
+                                    ))}
+                                </div>
                             </div>
                         </div> 
                     </div>

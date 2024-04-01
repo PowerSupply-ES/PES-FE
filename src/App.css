@@ -5,11 +5,23 @@
   /* background-color: #1c1c1c; */
   background-color: #E9E9EB;
 }
+
 @font-face {
   font-family: 'Pretendard-Regular';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
+}
+
+/* question페이지에서 fail/pass에 따른 배경화면 변화 */
+.failPage{
+  background-color: #f8e7e7;
+}
+.successPage{
+  background-color: #ebebfc;
+}
+.nonePage{
+  background-color: #E9E9EB;
 }
 
 /* -----공통요소----- */
@@ -18,10 +30,12 @@
   text-decoration: none;
   margin: 0px;
   padding: 0px;
+  font-family: 'Pretendard-Regular';
 }
 button:hover {
   cursor: pointer;
 }
+
 
 
 
@@ -108,7 +122,7 @@ button:hover {
   cursor: pointer;
 }
 
-.menu1, .menu2{
+.menu1, .menu2, .menu3{
   height: fit-content;
   font-size: 26px;
   margin-left: 56px;
@@ -125,105 +139,116 @@ button:hover {
 
 }
 
-.content0{
-  width: 100%;
-  height: 80vh;
-  margin: 0px auto;
-  background-color: #000000; opacity:81%;
-  color: #373737;
-  font-size: 28px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.content0 > .ps{
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  width: fit-content;
-  text-align: start;
-  margin: 0 auto;
-}
-.ps > .p1{
-  color: #CACACA; opacity: 60%;
-  font-size: 25px;
-}
-.ps > .p2{
-  color: #ffffff;
-  font-size: 36px;
-}
+
+/* -----메인화면----- */
 .main_btn{
+  position: absolute;
+  top: 60%;
+  left: 46%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  transform: translate(-50%, -50%);
+  /* translate(-50%, -50%)으로 
+  left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
+  z-index: 3;
 }
 .main_btn > .btn1,
 .main_btn > .btn2,
 .main_btn > .btn3{
   border-radius: 18px;
-  font-size: 22px;
+  font-size: 20px;
   color: #ffffff;
   width: 132px;
   height: fit-content;
-  padding: 5px 0px;
+  padding: 10px 8px;
+  font-weight: bold;
 }
 .main_btn > .btn1{
   background-color: #000000; opacity: 90%;
   border: solid #ffffff 2px;
-  margin-right: 50px;
+  margin-right: 40px;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.201);
+  }
 }
 .main_btn > .btn2,
 .main_btn > .btn3{
-  background-color: #5A2CDA;
-  border: solid #5A2CDA 2px;
-  /* padding: 0px 15px; */
-}
-.main_btn > .btn1:hover{
-  background-color: rgba(255, 255, 255, 0.201);
-}
-.main_btn > .btn2:hover{
-  background-color: #a289e5;
-  border: solid #a289e5 2px;
+  background-color: #724fd2;
+  border: solid #724fd2 2px;
+  &:hover{
+    background-color: #8b71d3;
+    border: solid #8b71d3 2px;
+    /* #e94fac */
+  }
 }
 
-.content1{
-  width: 100%;
-  height: 75vh;
-  margin: 0px auto;
-  /* padding-top: 120px; */
-  background-color: #1f1f1f;
-  
-  /* display: flex;
-  align-items: center;
-  justify-content: center;  */
-  
+.mainPage > .content{
+  background-color: #000000;
 }
 
-
-.content1 > p{
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 40px;
-  margin-bottom: 80px;
+/* .content1{
+  position : relative;
 }
 .content1 > img{
-  width: 100%;
-  height: 85vh;
-  filter: brightness(0.4); 
-  /* margin-right: 40px; */
-}
-.content2{
+  max-width:100%; 
+  height:auto;
+} */
+
+
+.content0 > img,
+.content2 > img,
+.content3 > img,
+.content4 > img
+{
   width: 80%;
-  height: 360px;
-  margin: 40px auto;
-  align-items: flex-end;
-  background-color: #1f1f1f;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  /* height: 85vh; */
+  /* max-width:100%;  */
+  height:auto;
+
 }
+
+
+
+
+/* .content2, .content3, .content4 {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.content2.visible img, .content3.visible img, .content4.visible img {
+  opacity: 1;
+} */
+
+/* animation효과 */
+.content0 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* 내용이 부모요소 벗어나면 숨김 */
+  overflow: hidden; 
+}
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.moving-img {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+
+
+
 
 /* -----마이페이지----- */
 .mypage_content{
@@ -251,6 +276,21 @@ button:hover {
   border-radius: 20px;
   margin: 0 0 6px 8px;
 }
+.feedNum,.probNum{
+  text-align: right;
+  font-size: 20px;
+  margin: 0 20px 8px 0;
+  color: #897d7d;
+  font-weight: bold;
+}
+.feed_top,.prob_top{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 
 .content_mypage{
   padding-top: 80px;
@@ -272,6 +312,9 @@ button:hover {
 
 .noFeed, .noProblems{
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-weight: bold;
   color: hsl(0, 0%, 78%);
 }
@@ -297,6 +340,7 @@ button:hover {
   height: 240px;
   width: 800px;
   justify-content: center;
+  
 }
 .myFeedback{
   color: #C3C2C2;
@@ -350,10 +394,17 @@ button:hover {
 }
 .problemList, .FeedList{
   width: 100%;
+  height: 100%;
   padding: 20px 0;
+  margin: 20px 0;
 }
 .problems > *,
 .feeds > *{
+  display: flex;
+  align-items: center;
+}
+.feeds > :last-child{
+  margin: auto;
   display: flex;
   align-items: center;
 }
@@ -419,6 +470,11 @@ button:hover {
 .problemList :hover,
 .FeedList :hover {
   background-color: rgba(243, 242, 242, 0.737);
+}
+/* noproblems,noFeed 상태일때는 적용x */
+.problemList:hover > .noProblems,
+.FeedList:hover > .noFeed{
+  background-color: transparent;
 }
 
 /* 성공여부에 따라 버튼색 변화 */
@@ -504,15 +560,15 @@ button:hover {
   position: absolute;
   top: 60px;
   right: 30px;
-  width: 200px; 
+  width: 240px; 
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 0;
   background-color: #fefdfd;
   border: solid 2px rgb(200, 200, 200);
-  border-radius: 8px;
-  padding: 16px 12px;
+  border-radius: 4px;
+  padding-top: 16px;
   z-index: 999;
 }
 
@@ -528,11 +584,14 @@ button:hover {
 }
 .dropdown-content > .navbar_bottom{
   margin-top: 20px;
+  width: 100%;
+  
   font-size: 14px;
-  color: #000000; opacity:55%;
+  color: #000000; opacity:75%;
+  border-top: solid 3px #d7d6d6;
 }
 .navbarInfo{
-  width: 40%;
+  width: 30%;
   text-align: left;
 }
 .navbarInfo > *{
@@ -558,9 +617,14 @@ button:hover {
 }
 .navbar_bottom{
   display: flex;
+  justify-content: center;
 }
-.navbar_bottom > p{
-  margin: 0 8px;
+.navbar_bottom > *{
+  width: 100%;
+  padding: 10px 8px;
+}
+.navbar_bottom > .btn_mypage{
+  border-right: solid 3px #d7d6d6;
 }
 
 .btn_mypage, .btn_logout{
@@ -571,6 +635,7 @@ button:hover {
 .btn_logout:hover{
   color: #000000;
   font-weight: bold;
+  background-color: #ebebeb;
 }
 
 /* -----풀이----- */
@@ -747,6 +812,9 @@ button:hover {
   margin-top: 300px;
   display: flex;
   padding: 20px 0;
+}
+.mainPage .footer {
+  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
 }
 .footer_left{
   width: 60%;

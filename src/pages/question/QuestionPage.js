@@ -283,11 +283,14 @@ const QuestionPage = () => {
                                 {state === "success" ? "성공" : state === "fail" ? "실패" : "미완료"}
                             </div>
                         </div>
-                        <div className="button_group">
+
+                    </div>
+                    <div className="button_group">
                             <button className="button_problem" onClick={toggleDropdown}>문제보기
                                  {isDropdownOpen && (
                                     <div className='dropdown_content'>
-                                        <div className="content">
+                                        {/* 띄워쓰기 표현_ by성임*/}
+                                        <div className="content" style={{ whiteSpace: 'pre'}}>
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -300,7 +303,7 @@ const QuestionPage = () => {
                                             ))}
                                         </div>
                         
-                                        <div className="sample_outputs">
+                                        <div className="sample_outputs" style={{ whiteSpace: 'pre'}}>
                                             <h3>Sample Outputs:</h3>
                                             {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
                                                 <React.Fragment key={index}>
@@ -315,7 +318,6 @@ const QuestionPage = () => {
                                 <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
                             )}
                         </div>
-                    </div>
                 </StyledProblem>
                 <div className="code_question_container">
                     <div className="code_container">
@@ -357,13 +359,19 @@ const QuestionPage = () => {
                             <div className="question_id">질문 1</div>
                             <div className="header_title">{qnA.questionContentFst}</div>
                         </div>
-                        <div className="answer_input display">{qnA.answerFst}</div>
+
+                        {/* 줄바꿈 반영하기_ by성임 */}
+                        <div className="answer_input display">
+                            {renderNewlines(qnA.answerFst)}
+                        </div>
                         
                         <div className="question_header"> 
                             <div className="question_id">질문 2</div>
                             <div className="header_title">{qnA.questionContentSec}</div>
                         </div>
-                        <div className="answer_input display">{qnA.answerSec}</div>
+                        <div className="answer_input display">
+                            {renderNewlines(qnA.answerSec)}
+                        </div>
                     </>
                     }
                     </div>
@@ -404,7 +412,11 @@ const QuestionPage = () => {
                                 <div className="feedback_writer">{feedback.writerGen}기</div>
                                 <div className="feedback_writer">{feedback.writerName}</div>
                             </div>
-                            <div className="feedback_content display">{feedback.commentContent}</div>
+
+                            {/* 줄바꿈 반영하기_ by성임 */}
+                            <div className="feedback_content display">
+                                {renderNewlines(feedback.commentContent)}
+                            </div>
                         </div>
                         ))
                     )}
@@ -415,7 +427,9 @@ const QuestionPage = () => {
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
                             </div>
-                            <textarea className="feedback_content input" placeholder = "피드백을 입력해주세요." onChange={FstHandler}/>
+                            <textarea className="feedback_content input" 
+                                placeholder = "피드백을 입력해주세요."
+                                onChange={FstHandler}/>
                             {/* PASS FAIL 선택 */}
                             <div className="feedback_select_section">
                                 <div className="button_container">
@@ -457,7 +471,7 @@ const QuestionPage = () => {
     }
 
     return(
-        <div>
+        <div className={state === "success" ? "successPage" : state === "fail" ? "failPage" : "nonePage"}>                  
             <Header/>
             <MemberStatus>
                 {(memberStatus) => {
