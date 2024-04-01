@@ -270,7 +270,23 @@ export const StyledQuestion = styled.div`
         text-align: left;
         padding: 10px;
         box-sizing: border-box;
+        /* 내용 초과시 스크롤바 */
+        overflow-y: auto;
     }
+
+
+    .feedback_content.display::-webkit-scrollbar {
+        width: 10px;  
+    }
+    .feedback_content.display::-webkit-scrollbar-thumb {
+        background: #c0c0c0; /* 스크롤바 색상 */
+        border-radius: 10px; /* 스크롤바 둥근 테두리 */
+    }
+    .feedback_content.display::-webkit-scrollbar-track {
+        background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+    }
+
+    // 수정하기
     .feedback_content::-webkit-scrollbar {
     width: 10px;  
     }
@@ -281,6 +297,8 @@ export const StyledQuestion = styled.div`
     .feedback_content::-webkit-scrollbar-track {
     background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
     }
+
+
     .feedback_select_section {
         display: flex;
         flex-direction: column;
