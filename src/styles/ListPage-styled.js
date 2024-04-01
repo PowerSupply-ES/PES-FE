@@ -52,4 +52,13 @@ export const StyledListPage = styled.div`
         display: flex;
         width: 50%;
     }
+
+    .ranking-list {
+        max-height: 400px;
+        overflow-y: auto;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
 `;
