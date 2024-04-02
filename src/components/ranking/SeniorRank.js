@@ -15,7 +15,7 @@ const SeniorRank = () => {
             };
         
             const response = await axios.get(
-                `/api/senior`,
+                `/api/rank/senior`,
                 config
             );
 

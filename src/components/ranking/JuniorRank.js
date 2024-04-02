@@ -19,7 +19,7 @@ const JuniorRank = () => {
             };
         
             const response = await axios.get(
-                `/api/rank`,
+                `/api/rank/junior`,
                 config
             );
 
