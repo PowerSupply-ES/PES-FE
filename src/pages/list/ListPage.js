@@ -5,7 +5,7 @@ import ProblemItem from "components/list/ListItem";
 import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 import JuniorRank from "components/ranking/JuniorRank";
-// import SeniorRank from "components/ranking/SeniorRank";
+import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/ListPage-styled";
 
 const ListPage = () => {
@@ -92,7 +92,7 @@ const ListPage = () => {
                             재학생</button>
                     </div>
                     {selectedOption === 'junior' && <JuniorRank />}
-                    {/*{selectedOption === 'senior' && <SeniorRank />}*/}
+                    {selectedOption === 'senior' && <SeniorRank />}
                 </div>
             </StyledListPage>
             <Footer></Footer>
