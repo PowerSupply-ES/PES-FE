@@ -7,14 +7,14 @@ import { HiSpeakerphone } from "react-icons/hi";
 import { PiNotePencilFill } from "react-icons/pi";
 
 
-const Info = () => {
+const Notice = () => {
     const navigate = useNavigate();
 
     // 공지사항 리스트
-    const [infoList, setInfoList] = useState([]);
+    const [noticeList, setNoticeList] = useState([]);
 
     // 리스트 가져오기
-    const GetInfoList = ()=> {
+    const GetNoticeList = ()=> {
         const uri = "api/notice"
         
         fetch(`${uri}`,{
@@ -31,7 +31,7 @@ const Info = () => {
             return response.json();
         })
         .then(data => {
-            setInfoList(data);
+            setNoticeList(data);
         })
         .catch(error => {
             console.error('데이터 가져오기 실패:', error);
@@ -39,7 +39,7 @@ const Info = () => {
     }
 
     useEffect(()=>{
-        GetInfoList();
+        GetNoticeList();
     }, [])
 
     return (
@@ -53,6 +53,7 @@ const Info = () => {
                 </div>
                 {/* 관리자만 띄우게 수정하기 */}
                 <div className='add_info'
+                    // 등록하기 uri수정하기
                     onClick={() => navigate('/putInfo')}>
                     <PiNotePencilFill size={25}/>
                     <p>등록하기</p>
@@ -68,7 +69,7 @@ const Info = () => {
                 
 
                 {/* -----공지사항리스트----- */}
-                <MyInfo infoList={infoList}></MyInfo>
+                <MyNotice infoList={infoList}></MyNotice>
             </div>
 
             <Footer></Footer>
@@ -77,9 +78,9 @@ const Info = () => {
     )
 
     // 공지사항 컴포넌트
-    function MyInfo({infoList}){
+    function MyNotice({infoList}){
 
-        const gotoInfo = (noticeId) => {
+        const gotoNotice = (noticeId) => {
             console.log('noticeId: ',noticeId);
             window.location=`/api/notice/${noticeId}`
         }
@@ -103,7 +104,7 @@ const Info = () => {
 
                     {/* ---infoDetail 연결제대로하기!--- */}
                     {/* 제목 */}
-                    <div className='title_2' onClick={() => gotoInfo(it.noticeId)}>
+                    <div className='title_2' onClick={() => gotoNotice(it.noticeId)}>
                         {it.title}
                     </div>
 
@@ -123,4 +124,4 @@ const Info = () => {
         )
     }
 }
-export default Info
+export default Notice
