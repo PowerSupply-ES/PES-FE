@@ -1,22 +1,21 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useCallback} from "react";
 import axios from "axios";
 import { StyledListPage } from "styles/ListPage-styled";
 import RankingItem from "./RankingItem";
 
-const SeniorRank = (props) => {
+const SeniorRank = () => {
 
     const [newRank, setNewRank] = useState([]);
 
-    /*
-    // 신입생 랭킹 불러오기 (get)
-    const getNewRank = useCallback(async () => {
+    // 재학생 랭킹 불러오기 (get)
+    const getSeniorRank = useCallback(async () => {
         try {
             const config = {
                 withCredentials: true,
             };
         
             const response = await axios.get(
-                `/api/rank`,
+                `/api/rank/senior`,
                 config
             );
 
@@ -26,21 +25,23 @@ const SeniorRank = (props) => {
             } catch (error) {
             console.log(error);
         }
-    }, [memberGen]); 
+    }, []); 
 
     useEffect(() => {
-        getNewRank();
-    }, [getNewRank]);
-    */
+        getSeniorRank();
+    }, [getSeniorRank]);
+    
 
     return (
         <StyledListPage>
             <RankingItem rank="순위" memberName="이름" score="답변수" style="margin-bottom: 10px;"/>
+            <div className="ranking-list">
             {
                 newRank.map((rank, index) => (
-                <RankingItem key={index} rank={index + 1} memberName={rank.memberName} score={`${rank.score}개`} />
+                <RankingItem key={index} rank={rank.rank} memberName={rank.memberName} score={`${rank.score}개`} />
                 ))
-            }        
+            }           
+            </div>
         </StyledListPage>
     );
 }

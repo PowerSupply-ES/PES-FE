@@ -19,7 +19,7 @@ const JuniorRank = () => {
             };
         
             const response = await axios.get(
-                `/api/rank`,
+                `/api/rank/junior`,
                 config
             );
 
@@ -48,7 +48,7 @@ const JuniorRank = () => {
             <div className="ranking-list">
             {
                 newRank.map((rank, index) => (
-                <RankingItem key={index} rank={index + 1} memberName={rank.memberName} score={`${rank.score}점`} />
+                <RankingItem key={index} rank={rank.rank} memberName={rank.memberName} score={`${rank.score}점`} />
                 ))
             }        
             </div>
