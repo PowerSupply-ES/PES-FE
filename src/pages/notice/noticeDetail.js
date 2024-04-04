@@ -7,7 +7,7 @@ import { HiSpeakerphone } from "react-icons/hi";
 
 const NoticeDetail = () => {
 
-    const [infoDetail,setDetail] =useState();
+    const [infoDetail, setDetail] =useState();
 
     const getNoticeDetail = () => {
         const uri = '/api/notice/';

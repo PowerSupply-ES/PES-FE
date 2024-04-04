@@ -10,8 +10,7 @@ import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice"
 import PutNotice from "pages/notice/putNotice"
-
-
+import NoticeDetail from "pages/notice/noticeDetail"
 
 
 function App() {
@@ -26,11 +25,11 @@ function App() {
         <Route path="/notice" element={<Notice/>}></Route>
         <Route path="/putNotice" element={<PutNotice/>}></Route>
 
-
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>
         <Route path="/problem/:id" element={<ProblemPage/>}></Route>
         <Route path="/question/:id" element={<QuestionPage/>}></Route>
+        <Route path="/notice/:id" element={<NoticeDetail/>}></Route>
 
       </Routes>
     </div>

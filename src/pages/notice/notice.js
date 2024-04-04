@@ -69,7 +69,7 @@ const Notice = () => {
                 
 
                 {/* -----공지사항리스트----- */}
-                <MyNotice infoList={infoList}></MyNotice>
+                <MyNotice noticeList={noticeList}></MyNotice>
             </div>
 
             <Footer></Footer>
@@ -78,17 +78,17 @@ const Notice = () => {
     )
 
     // 공지사항 컴포넌트
-    function MyNotice({infoList}){
+    function MyNotice({noticeList}){
 
         const gotoNotice = (noticeId) => {
             console.log('noticeId: ',noticeId);
-            window.location=`/api/notice/${noticeId}`
+            window.location=`notice/${noticeId}`
         }
 
         return (
             <div className='info_list'>
                 
-            {infoList.map((it) =>(
+            {noticeList.map((it) =>(
                 <div className='info' key={it.noticeId}>
 
                     <div className='title_0'>
