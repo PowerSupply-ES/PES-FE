@@ -10,9 +10,9 @@ const InfoDetail = () => {
     const [infoDetail,setDetail] =useState();
 
     const getInfoDetail = () => {
-        const uri = '/api/notice/{noticeId}';
+        const uri = '/api/notice/';
 
-        fetch(`${uri}`,{
+        fetch(`${uri}${noticeId}`,{
             method: 'GET',
         })
         .then(response => {
