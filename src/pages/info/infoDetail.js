@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
 import '../../styles/info.css';
@@ -6,6 +6,34 @@ import { HiSpeakerphone } from "react-icons/hi";
 
 
 const InfoDetail = () => {
+
+    const [infoDetail,setDetail] =useState();
+
+    const getInfoDetail = () => {
+        const uri = '/api/notice/{noticeId}';
+
+        fetch(`${uri}`,{
+            method: 'GET',
+        })
+        .then(response => {
+            if (!response.ok) {
+              console.log('서버응답:', response);
+              throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            setDetail(data);
+  
+          })
+          .catch(error => {
+            console.error('데이터 가져오기 실패:', error);
+        });
+    }
+    useEffect(()=>{
+        getInfoDetail();
+    })
+
     return (
         <div className='info_body'>
             <Header></Header>
@@ -14,7 +42,7 @@ const InfoDetail = () => {
                 {/* 제목 */}
                 <div className='header'>
                     <HiSpeakerphone size={30}/> 
-                    <p>v1.5 업데이트 내용</p>
+                    <p>{infoDetail.title}</p>
                 </div>
                 
                 {/* 버튼 */}
@@ -28,8 +56,7 @@ const InfoDetail = () => {
                 <div className='text_container'>
                     {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
                     <p className='text'>
-                    이번 업데이트에서는 이거랑 저거랑 수정했고
-                    이런저런 기능이 추가됐습니다
+                        {infoDetail.content}
                     </p>
                 </div>
                 
