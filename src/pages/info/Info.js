@@ -78,6 +78,10 @@ const Info = () => {
 
     // 공지사항 컴포넌트
     function MyInfo({infoList}){
+        gotoInfo((noticeId)=>{
+            console.log('noticeId: ',noticeId);
+            window.location=`/api/notice/${noticeId}`
+        })
         return(
             <div className='info_list'>
                 
@@ -94,12 +98,10 @@ const Info = () => {
                     <div className='title_1'>
                         {it.noticeId}
                     </div>
+
                     {/* ---infoDetail 연결제대로하기!--- */}
-
-
                     {/* 제목 */}
-                    <div className='title_2' 
-                    onClick={() => navigate('/infoDetail')}>
+                    <div className='title_2' onClick={() => gotoInfo(it.noticeId)}>
                         {it.title}
                     </div>
 
@@ -118,11 +120,5 @@ const Info = () => {
 
         )
     }
-
-
-
-
-
-
 }
 export default Info
