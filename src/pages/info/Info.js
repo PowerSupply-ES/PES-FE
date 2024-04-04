@@ -78,11 +78,13 @@ const Info = () => {
 
     // 공지사항 컴포넌트
     function MyInfo({infoList}){
-        gotoInfo((noticeId)=>{
+
+        const gotoInfo = (noticeId) => {
             console.log('noticeId: ',noticeId);
             window.location=`/api/notice/${noticeId}`
-        })
-        return(
+        }
+
+        return (
             <div className='info_list'>
                 
             {infoList.map((it) =>(

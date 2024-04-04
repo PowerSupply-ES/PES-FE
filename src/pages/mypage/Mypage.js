@@ -177,7 +177,6 @@ const MyPage = () => {
       window.location=`question/${problemId}`;
       // question/answerid
     }
-    
     return (
     <div className="problemList">
       {myProb.length === 0 ? (
