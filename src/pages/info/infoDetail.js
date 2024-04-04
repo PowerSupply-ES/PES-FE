@@ -6,6 +6,19 @@ import { HiSpeakerphone } from "react-icons/hi";
 
 
 const InfoDetail = () => {
+
+
+
+
+
+
+
+
+
+
+
+
+    
     return (
         <div className='info_body'>
             <Header></Header>
