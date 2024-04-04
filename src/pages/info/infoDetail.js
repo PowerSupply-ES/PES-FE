@@ -32,7 +32,7 @@ const InfoDetail = () => {
     }
     useEffect(()=>{
         getInfoDetail();
-    })
+    }, [])
 
     return (
         <div className='info_body'>
