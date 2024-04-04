@@ -40,7 +40,7 @@ const Info = () => {
 
     useEffect(()=>{
         GetInfoList();
-    })
+    }, [])
 
     return (
         <div className='info_body'>

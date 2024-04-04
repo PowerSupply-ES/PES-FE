@@ -30,7 +30,9 @@ const CodeEditor = ({ code, onChange, readOnly }) => {
                 enableSnippets: true,
                 showLineNumbers: true,
                 tabSize: 4,
+                cursorWidth: 2, // 커서의 너비 설정
             }}
+            //showCursor={true}
             style={{ width: '90%', height: '100%' }} // 필요에 따라 크기 조정
             editorProps={{ $blockScrolling: true }}
             
