@@ -8,10 +8,9 @@ import Main from "pages/main/Main";
 import Mypage from "pages/mypage/Mypage";
 import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
-import Info from "pages/info/Info"
-import PutInfo from "pages/info/putInfo"
-
-
+import Notice from "pages/notice/notice"
+import PutNotice from "pages/notice/putNotice"
+import NoticeDetail from "pages/notice/noticeDetail"
 
 
 function App() {
@@ -23,14 +22,14 @@ function App() {
         <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/mypage" element={<Mypage/>}></Route>
         <Route path="/menual" element={<Menual/>}></Route>
-        <Route path="/info" element={<Info/>}></Route>
-        <Route path="/putInfo" element={<PutInfo/>}></Route>
-
+        <Route path="/notice" element={<Notice/>}></Route>
+        <Route path="/putNotice" element={<PutNotice/>}></Route>
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>
         <Route path="/problem/:id" element={<ProblemPage/>}></Route>
         <Route path="/question/:id" element={<QuestionPage/>}></Route>
+        <Route path="/notice/:id" element={<NoticeDetail/>}></Route>
 
       </Routes>
     </div>

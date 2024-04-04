@@ -79,6 +79,7 @@ function Solution() {
         console.error('데이터 가져오기 실패:', error);
       });
   }, [problemId]);
+  //problemId값 바뀔때마다 실행
 
   useEffect(() => {
     sendGetSolve();

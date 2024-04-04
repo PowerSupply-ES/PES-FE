@@ -6,7 +6,7 @@ import '../../styles/info.css';
 import { PiNotePencilFill } from "react-icons/pi";
 
 
-const PutInfo = () => {
+const PutNotice = () => {
 
     return (
         <div className='info_body'>
@@ -53,4 +53,4 @@ const PutInfo = () => {
     )
 
 }
-export default PutInfo
+export default PutNotice

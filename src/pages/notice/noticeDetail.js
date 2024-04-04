@@ -5,11 +5,11 @@ import '../../styles/info.css';
 import { HiSpeakerphone } from "react-icons/hi";
 
 
-const InfoDetail = () => {
+const NoticeDetail = () => {
 
-    const [infoDetail,setDetail] =useState();
+    const [infoDetail, setDetail] =useState();
 
-    const getInfoDetail = () => {
+    const getNoticeDetail = () => {
         const uri = '/api/notice/';
 
         fetch(`${uri}${noticeId}`,{
@@ -31,7 +31,7 @@ const InfoDetail = () => {
         });
     }
     useEffect(()=>{
-        getInfoDetail();
+        getNoticeDetail();
     }, [])
 
     return (
@@ -75,4 +75,4 @@ const InfoDetail = () => {
     )
 
 }
-export default InfoDetail
+export default NoticeDetail
