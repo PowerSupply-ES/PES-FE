@@ -9,7 +9,7 @@ import Mypage from "pages/mypage/Mypage";
 import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice"
-import PutNotice from "pages/notice/putNotice"
+import PostNotice from "pages/notice/postNotice"
 import NoticeDetail from "pages/notice/noticeDetail"
 
 
@@ -23,7 +23,7 @@ function App() {
         <Route path="/mypage" element={<Mypage/>}></Route>
         <Route path="/menual" element={<Menual/>}></Route>
         <Route path="/notice" element={<Notice/>}></Route>
-        <Route path="/putNotice" element={<PutNotice/>}></Route>
+        <Route path="/postNotice" element={<PostNotice/>}></Route>
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>

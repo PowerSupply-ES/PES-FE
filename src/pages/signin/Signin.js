@@ -42,18 +42,19 @@ const Signin = () => {
       alert(errorMessage);
     });
   }
-  // useEffect(() => {
-  //   postSignin();
-  // }, []);
 
+  //입력필드 값 변경될때마다 호출
   const handleInputChange = (e) => {
     setFormData({
+      // formData복사, 변경된 필드만 업데이트
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
+  // 로그인 폼이 제출될 때 호출
   const handleSubmit = (e) => {
+    // 기본 제출 동작 막기
     e.preventDefault();
     postSignin();
   };

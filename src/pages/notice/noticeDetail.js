@@ -6,8 +6,8 @@ import { HiSpeakerphone } from "react-icons/hi";
 
 
 const NoticeDetail = ({ noticeId }) => {
-
-    const [noticeDetail, setDetail] =useState();
+    const memberStatus = sessionStorage.getItem('memberStatus');
+    const [noticeDetail, setDetail] =useState([]);
 
     const getNoticeDetail = () => {
         const uri = 'api/notice/';
@@ -34,6 +34,10 @@ const NoticeDetail = ({ noticeId }) => {
         getNoticeDetail();
     }, [])
 
+    const goBack = () =>{
+        window.history.back();
+    }
+
     return (
         <div className='info_body'>
             <Header></Header>
@@ -46,8 +50,8 @@ const NoticeDetail = ({ noticeId }) => {
                 </div>
                 
                 {/* 버튼 */}
-                <div className='btn_back'>
-                    <button>
+                <div className='btn_back' onClick={() => goBack()}>
+                    <button onClick={()=>goBack()}>
                         뒤로가기
                     </button>
                 </div>
@@ -61,11 +65,10 @@ const NoticeDetail = ({ noticeId }) => {
                 </div>
                 
                 {/* 관리자용버튼_state에 따라 보여지기 */}
-                <div className='btn_container'>
-                    <button className='btn_modify'>수정하기</button>
+                <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
+                    <button className='btn_submit'>수정하기</button>
                     <button className='btn_delete'>삭제하기</button>
                 </div>
-                
                 
             </div>
 
