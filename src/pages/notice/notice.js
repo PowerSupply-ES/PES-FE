@@ -9,6 +9,7 @@ import { PiNotePencilFill } from "react-icons/pi";
 
 const Notice = () => {
     const navigate = useNavigate();
+    const memberStatus = sessionStorage.getItem('memberStatus');
 
     // 공지사항 리스트
     const [noticeList, setNoticeList] = useState([]);
@@ -51,13 +52,16 @@ const Notice = () => {
                     <HiSpeakerphone size={30}/> 
                     <p>공지사항</p>
                 </div>
-                {/* 관리자만 띄우게 수정하기 */}
-                <div className='add_info'
+
+
+                {/* 관리자에만 띄우게-*/}
+                <div className={memberStatus==='재학생' ? 'add_info' : 'no_button'}
                     // 등록하기 uri수정하기
-                    onClick={() => navigate('/putInfo')}>
+                    onClick={() => navigate('/postNotice')}>
                     <PiNotePencilFill size={25}/>
                     <p>등록하기</p>
                 </div>
+
 
                 <div className='info_title'>
                     <div className='title_0'> </div>

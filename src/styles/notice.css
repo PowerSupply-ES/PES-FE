@@ -54,8 +54,10 @@
   .add_info > p{
     margin-left: 10px;
     color: #393939;
-
-    }
+  }
+  .no_button{
+    display: none;
+  }
 
 
   .info_list{

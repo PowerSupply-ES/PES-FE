@@ -6,7 +6,7 @@ import '../../styles/notice.css';
 import { PiNotePencilFill } from "react-icons/pi";
 
 
-const PutNotice = () => {
+const PostNotice = () => {
 
     return (
         <div className='info_body'>
@@ -53,4 +53,4 @@ const PutNotice = () => {
     )
 
 }
-export default PutNotice
+export default PostNotice
