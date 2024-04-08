@@ -1,11 +1,13 @@
 .App {
   text-align: center;
-  font-family: 'Pretendard-Regular';
+  /* font-family: 'Pretendard-Regular'; */
   /* background-color: #f9fafb; */
   /* background-color: #1c1c1c; */
   background-color: #E9E9EB;
 }
-
+:root{
+  --Font1:'Pretendard-Regular';
+}
 @font-face {
   font-family: 'Pretendard-Regular';
   src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -30,14 +32,11 @@
   text-decoration: none;
   margin: 0px;
   padding: 0px;
-  font-family: 'Pretendard-Regular';
+  /* font-family: 'Pretendard-Regular'; */
 }
 button:hover {
   cursor: pointer;
 }
-
-
-
 
 /* -----네비게이션바----- */
 .logout, .userId, .userLevel{
@@ -47,6 +46,8 @@ button:hover {
   color: white;
   border: solid white;
   border-radius: 10px;
+  font-family: var(--Font1);
+
 }
 .logout{
   width: fit-content;
@@ -104,11 +105,13 @@ button:hover {
   width: 90%;
   margin: 0px auto;
   align-items: flex-end;
+
 }
 .navbar > *{
   display: flex;
   justify-content: center;
   /* text-align: center; */
+  
 }
 
 .navbar > .logo{
@@ -152,6 +155,7 @@ button:hover {
   /* translate(-50%, -50%)으로 
   left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
   z-index: 3;
+  
 }
 .main_btn > .btn1,
 .main_btn > .btn2,
@@ -570,6 +574,8 @@ button:hover {
   border-radius: 4px;
   padding-top: 16px;
   z-index: 999;
+  font-family: var(--Font1);
+
 }
 
 .dropdown-content > .memberName{

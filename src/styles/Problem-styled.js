@@ -12,14 +12,11 @@ export const StyledProblem = styled.div`
         left: 50%;
         transform: translateX(-50%);
         justify-content: space-between;
-        
     }
     .button_group{
         width: 80%;
         margin: 0 auto 32px;
         justify-content: right;
-
-
     }
     .problem_group {
         display: flex;
@@ -120,12 +117,10 @@ export const StyledProblem = styled.div`
         display: flex;
         flex-direction: column;
         margin-right: 60px;
-
         // background-color: #ffffff;
         // border-radius : 20px;
         // box-shadow: 1px 3px #CCC9C9;
         //   overflow-y: auto;
-
 
     }
     .content_container > .top,
@@ -250,7 +245,6 @@ export const StyledProblem = styled.div`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
-
     }
     .submit_button.disabled {
         background-color: #dedede;
