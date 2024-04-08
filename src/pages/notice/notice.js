@@ -55,7 +55,7 @@ const Notice = () => {
 
 
                 {/* 관리자에만 띄우게-*/}
-                <div className={memberStatus==='재학생' ? 'add_info' : 'no_button'}
+                <div className={memberStatus==='관리자' ? 'add_info' : 'no_button'}
                     // 등록하기 uri수정하기
                     onClick={() => navigate('/postNotice')}>
                     <PiNotePencilFill size={25}/>
