@@ -18,7 +18,7 @@
 
   .info_body{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: #F9F9FF;
   }
   .content_info{
@@ -31,8 +31,8 @@
     display: flex;
     font-size: 24px;
     font-weight: bold;
-    margin: 40px 0;
-    width: 100%;
+    margin: 40px auto;
+    width: 90%;
     text-align: left;
     color: #393939;
   }
@@ -135,8 +135,9 @@
     margin: auto;
   }
   .btn_back{
-    width: 100%;
+    width: 90%;
     text-align: right;
+    margin: auto;
   }
   .btn_back > *{
     width: fit-content;
@@ -152,14 +153,14 @@
   }
 
   .text_container{
-    width: 100%;
+    width: 90%;
     background-color: #ffffff;
     border: solid 2px #8B8B8B;
     border-radius: 20px;
-    margin-top: 20px;
     color: #2F2F2F;
     font-weight: bold;
-    height: 50vh;
+    height: 55vh;
+    margin: 20px auto 0;
   }
   
 
@@ -174,7 +175,7 @@
     margin-top: 40px;
     
   }
-  .btn_delete,.btn_modify{
+  .btn_delete,.btn_submit{
     color: #ffffff;
     font-weight: bold;
     border: solid 2px ;
@@ -184,7 +185,7 @@
     box-shadow: 1px 2px #CCC9C9;
 
   }
-  .btn_modify{
+  .btn_submit{
     background-color: #8C8C8C;
     border-color: #8C8C8C;
     margin-right: 16px;
@@ -198,27 +199,29 @@
 
   /* --공지사항 등록-- */
   .title_container{
-    width: 100%;
+    width: 90%;
     background-color: #ffffff;
     border: solid 2px #8B8B8B;
     border-radius: 20px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #2F2F2F;
     font-weight: bold;
-
+    font-size: 18px;
     height: 40px;
-    padding: 4px 8px;
+    padding: 4px 12px;
   }
   .input_container{
-    width: 100%;
+    width: 90%;
+    height: 55vh;
+
     background-color: #ffffff;
     border: solid 2px #8B8B8B;
     border-radius: 20px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #2F2F2F;
     font-weight: bold;
-    height: 50vh;
+    font-size: 18px;
 
-
+    padding: 20px 12px;
   }
   

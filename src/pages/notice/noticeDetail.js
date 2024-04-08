@@ -66,7 +66,7 @@ const NoticeDetail = ({ noticeId }) => {
                 
                 {/* 관리자용버튼_state에 따라 보여지기 */}
                 <div className={memberStatus==='재학생' ? 'btn_container':'no_button'}>
-                    <button className='btn_modify'>수정하기</button>
+                    <button className='btn_submit'>수정하기</button>
                     <button className='btn_delete'>삭제하기</button>
                 </div>
                 

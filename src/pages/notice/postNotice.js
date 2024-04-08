@@ -25,23 +25,20 @@ const PostNotice = () => {
                         뒤로가기
                     </button>
                 </div>
-                
 
                 {/* 제목 */}
                 <input className='title_container'
                     placeholder='제목을 입력하세요'>
-
-
                 </input>
-
 
                 {/* 본문 */}
-                <input className='input_container'
+                <textarea className='input_container'
                     placeholder='본문을 입력하세요'>
                     {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
-                   
-                </input>
-
+                </textarea>
+                <div className='btn_container'>
+                    <button className='btn_submit'>등록하기</button>
+                </div>
 
 
 
