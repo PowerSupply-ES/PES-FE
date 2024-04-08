@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
-import '../../styles/info.css';
+import '../../styles/notice.css';
 import { PiNotePencilFill } from "react-icons/pi";
 
 

@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from 'react';
 // import Header from 'components/main/Header';
 // import Footer from "components/footer/Footer";
-// import '../../styles/info.css';
+// import '../../styles/notice.css';
 // import { HiSpeakerphone } from "react-icons/hi";
 
 
