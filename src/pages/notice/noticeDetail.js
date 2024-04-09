@@ -10,7 +10,7 @@ const NoticeDetail = ({ noticeId }) => {
     const [noticeDetail, setDetail] =useState([]);
 
     const getNoticeDetail = () => {
-        const uri = 'api/notice/';
+        const uri = '/api/notice/';
 
         fetch(`${uri}${noticeId}`,{
             method: 'GET',
@@ -32,7 +32,7 @@ const NoticeDetail = ({ noticeId }) => {
     }
     useEffect(()=>{
         getNoticeDetail();
-    }, [])
+    }, [noticeId])
 
     const goBack = () =>{
         window.history.back();
