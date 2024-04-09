@@ -44,6 +44,12 @@ const NoticeDetail = () => {
         window.history.back();
     }
 
+    // Time에서 "T"를 제거하여 표시
+    const transferTime = (time) => {
+        if (!time) return ""; // 시간이 없는 경우 처리
+        
+        return time.replace("T", "");
+    }
     return (
         <div className='info_body'>
             <Header></Header>
@@ -61,8 +67,8 @@ const NoticeDetail = () => {
                         {/* 작성자정보 */}
                         <li><p>작성자</p>{noticeDetail.writerGen}기 {noticeDetail.writer}</li>
                         {/* 시간 정보 */}
-                        <li><p>생성시간</p>{noticeDetail.createdTime}</li>
-                        <li><p>수정시간</p>{noticeDetail.updatedTime}</li>
+                        <li><p>생성시간</p>{transferTime(noticeDetail.createdTime)}</li>
+                        <li><p>수정시간</p>{transferTime(noticeDetail.updatedTime)}</li>
                         {/* 조회수정보 */}
                         <li><p>조회수</p>{noticeDetail.noticeHit}회</li>
                     </ul>
