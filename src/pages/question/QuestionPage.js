@@ -11,8 +11,8 @@ import { StyledProblem } from "styles/Problem-styled";
 import { useNavigate } from "react-router-dom";
 
 const QuestionPage = () => {
-    var url = new URL(window.location.href);
-    var answerId = url
+    let url = new URL(window.location.href);
+    let answerId = url
         .pathname
         .split('/')[2];
 

@@ -88,6 +88,10 @@ const Notice = () => {
             console.log('noticeId: ',noticeId);
             window.location=`notice/${noticeId}`
         }
+        const transferTime = (time) => {
+            if (!time) return ""; // 시간이 없는 경우 처리
+            return time.replace("T", "");
+        }
 
         return (
             <div className='info_list'>
@@ -114,7 +118,7 @@ const Notice = () => {
 
                     {/* 작성날짜 */}
                     <div className='title_3'>
-                        {it.createdTime}
+                        {transferTime(it.createdTime)}
                     </div>
 
                     {/* 조회수 */}

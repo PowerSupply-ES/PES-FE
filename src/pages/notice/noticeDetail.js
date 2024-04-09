@@ -9,8 +9,8 @@ const NoticeDetail = () => {
     const memberStatus = sessionStorage.getItem('memberStatus');
     const [noticeDetail, setDetail] =useState([]);
     
-    var url = new URL(window.location.href);
-    var noticeId = url
+    let url = new URL(window.location.href);
+    let noticeId = url
     .pathname
     .split('/')[2];
 
@@ -44,6 +44,12 @@ const NoticeDetail = () => {
         window.history.back();
     }
 
+    // Time에서 "T"를 제거하여 표시
+    const transferTime = (time) => {
+        if (!time) return ""; // 시간이 없는 경우 처리
+        
+        return time.replace("T", "");
+    }
     return (
         <div className='info_body'>
             <Header></Header>
@@ -54,9 +60,23 @@ const NoticeDetail = () => {
                     <HiSpeakerphone size={30}/> 
                     <p>{noticeDetail.title}</p>
                 </div>
-                
+
+                {/* 공지사항 정보 */}
+                <div className='noticeInfo-container'>
+                    <ul className ='noticeInfo'>
+                        {/* 작성자정보 */}
+                        <li><p>작성자</p>{noticeDetail.writerGen}기 {noticeDetail.writer}</li>
+                        {/* 시간 정보 */}
+                        <li><p>생성시간</p>{transferTime(noticeDetail.createdTime)}</li>
+                        <li><p>수정시간</p>{transferTime(noticeDetail.updatedTime)}</li>
+                        {/* 조회수정보 */}
+                        <li><p>조회수</p>{noticeDetail.noticeHit}회</li>
+                    </ul>
+
+                </div>
+
                 {/* 버튼 */}
-                <div className='btn_back' onClick={() => goBack()}>
+                <div className='btn_back'>
                     <button onClick={()=>goBack()}>
                         뒤로가기
                     </button>
@@ -65,9 +85,7 @@ const NoticeDetail = () => {
                 {/* 본문 */}
                 <div className='text_container'>
                     {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
-                    <p className='text'>
-                        {noticeDetail.content}
-                    </p>
+                    <p className='text'>{noticeDetail.content}</p>
                 </div>
                 
                 {/* 관리자용버튼_state에 따라 보여지기 */}
