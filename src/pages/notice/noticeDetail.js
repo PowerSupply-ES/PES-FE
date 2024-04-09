@@ -9,8 +9,8 @@ const NoticeDetail = () => {
     const memberStatus = sessionStorage.getItem('memberStatus');
     const [noticeDetail, setDetail] =useState([]);
     
-    var url = new URL(window.location.href);
-    var noticeId = url
+    let url = new URL(window.location.href);
+    let noticeId = url
     .pathname
     .split('/')[2];
 

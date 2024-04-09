@@ -10,8 +10,8 @@ import CodeEditor from "components/problem/CodeEditor";
 const ProblemPage = () => {
     const navigate = useNavigate();
 
-    var url = new URL(window.location.href);
-    var problemId = url
+    let url = new URL(window.location.href);
+    let problemId = url
         .pathname
         .split('/')[2];
 
