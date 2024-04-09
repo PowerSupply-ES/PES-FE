@@ -54,7 +54,21 @@ const NoticeDetail = () => {
                     <HiSpeakerphone size={30}/> 
                     <p>{noticeDetail.title}</p>
                 </div>
-                
+
+                {/* 공지사항 정보 */}
+                <div className='noticeInfo-container'>
+                    <ul className ='noticeInfo'>
+                        {/* 작성자정보 */}
+                        <li><p>작성자</p>{noticeDetail.writerGen}기 {noticeDetail.writer}</li>
+                        {/* 시간 정보 */}
+                        <li><p>생성시간</p>{noticeDetail.createdTime}</li>
+                        <li><p>수정시간</p>{noticeDetail.updatedTime}</li>
+                        {/* 조회수정보 */}
+                        <li><p>조회수</p>{noticeDetail.noticeHit}회</li>
+                    </ul>
+
+                </div>
+
                 {/* 버튼 */}
                 <div className='btn_back'>
                     <button onClick={()=>goBack()}>
@@ -65,9 +79,7 @@ const NoticeDetail = () => {
                 {/* 본문 */}
                 <div className='text_container'>
                     {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
-                    <p className='text'>
-                        {noticeDetail.content}
-                    </p>
+                    <p className='text'>{noticeDetail.content}</p>
                 </div>
                 
                 {/* 관리자용버튼_state에 따라 보여지기 */}

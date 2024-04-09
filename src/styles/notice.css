@@ -134,6 +134,30 @@
     width: 80%;
     margin: auto;
   }
+  .noticeInfo{
+    width: fit-content;
+    text-align: left;
+
+  }
+  .noticeInfo > li{
+    display: flex;
+  }
+  .noticeInfo li p{
+    font-weight: bold;
+    margin-right: 20px;
+    width: 60px;
+    text-align: center;
+  }
+  .noticeInfo-container{
+    width: 90%;
+    margin: auto;
+    display:flex;
+    justify-content: left;
+  }
+
+
+
+
   .btn_back{
     width: 90%;
     text-align: right;
