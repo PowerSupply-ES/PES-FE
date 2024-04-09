@@ -56,7 +56,7 @@ const NoticeDetail = () => {
                 </div>
                 
                 {/* 버튼 */}
-                <div className='btn_back' onClick={() => goBack()}>
+                <div className='btn_back'>
                     <button onClick={()=>goBack()}>
                         뒤로가기
                     </button>

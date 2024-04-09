@@ -139,7 +139,7 @@
     text-align: right;
     margin: auto;
   }
-  .btn_back > *{
+  .btn_back button{
     width: fit-content;
     padding: 8px 20px;
     background-color: #686666;
