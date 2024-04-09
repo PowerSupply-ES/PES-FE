@@ -5,12 +5,18 @@ import '../../styles/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
 
 
-const NoticeDetail = ({ noticeId }) => {
+const NoticeDetail = () => {
     const memberStatus = sessionStorage.getItem('memberStatus');
     const [noticeDetail, setDetail] =useState([]);
+    
+    var url = new URL(window.location.href);
+    var noticeId = url
+    .pathname
+    .split('/')[2];
 
     const getNoticeDetail = () => {
         const uri = '/api/notice/';
+        
 
         fetch(`${uri}${noticeId}`,{
             method: 'GET',
