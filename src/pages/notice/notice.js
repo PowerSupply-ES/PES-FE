@@ -16,7 +16,7 @@ const Notice = () => {
 
     // 리스트 가져오기
     const GetNoticeList = ()=> {
-        const uri = "api/notice"
+        const uri = 'api/notice'
         
         fetch(`${uri}`,{
             method :'GET'
