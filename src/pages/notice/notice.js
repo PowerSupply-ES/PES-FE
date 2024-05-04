@@ -90,7 +90,7 @@ const Notice = () => {
         }
         const transferTime = (time) => {
             if (!time) return ""; // 시간이 없는 경우 처리
-            return time.replace("T", "");
+            return time.replace("T", " ");
         }
 
         return (
