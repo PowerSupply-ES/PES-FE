@@ -65,7 +65,7 @@ const NoticeDetail = () => {
                 if (response.status === 403) {
                     throw new Error('권한이 없습니다');
                 } else if(response.status === 200){
-                    return { message: '공지사항이 성공적으로 삭제되었습니다!' };
+                    throw new Error('공지사항이 성공적으로 삭제되었습니다!');
                 }else{
                     throw new Error(`${response.status} ${response.statusText}`);
                 }
