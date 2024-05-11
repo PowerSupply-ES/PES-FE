@@ -30,9 +30,12 @@ const PostNotice = () => {
 
                 if (response.status === 403) {
                     throw new Error('권한이 없습니다');
-                } else {
+                } else if(response.status === 201){
+                    throw new Error('공지사항이 성공적으로 등록되었습니다!');
+                }else{
                     throw new Error(`${response.status} ${response.statusText}`);
                 }
+                
             }
             return response.json();
         })
@@ -41,7 +44,7 @@ const PostNotice = () => {
                 console.log("서버의 응답이 비어있습니다.");
                 return;
             }
-            
+
             const resultMessage = responseData.message;
             alert(resultMessage);
             window.location.href = '/notice';
