@@ -65,21 +65,18 @@ const NoticeDetail = () => {
             }
             else if(response.status === 200){
                 alert('공지사항이 성공적으로 삭제되었습니다!');
+                window.location.href = '/notice';
             }
             else if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);  
             }
-            return response.json();
+            // return response.json();
         })
-        .then((responseData) => {
-            // if (!responseData) {
-            //     console.log("서버의 응답이 비어있습니다.");
-            //     return;
-            // }
-            const resultMessage = responseData.message;
-            alert(resultMessage);
-            window.location.href = '/notice';
-        })
+        // .then((responseData) => {
+        //     const resultMessage = responseData.message;
+        //     alert(resultMessage);
+        //     window.location.href = '/notice';
+        // })
         .catch((error) => {
             const errorMessage = error.message;
             alert(errorMessage);
