@@ -55,24 +55,19 @@ const NoticeDetail = () => {
     const DeleteNotice = () => {
         fetch(`${uri}${noticeId}`,{
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            // headers: {
+            //     'Content-Type': 'application/json',
+            // },
         })
         .then((response)=>{
-            if (!response) {
-                console.log("서버의 응답이 비어있습니다.");
-                return;
+            if(response.status === 403){
+                alert('권한이 없습니다');
             }
-            if (!response.ok) {
-                console.log('서버응답:', response);
-                if (response.status === 403) {
-                    throw new Error('권한이 없습니다');
-                } else if(response.status === 200){
-                    throw new Error('공지사항이 성공적으로 삭제되었습니다!');
-                }else{
-                    throw new Error(`${response.status} ${response.statusText}`);
-                }
+            else if(response.status === 200){
+                alert('공지사항이 성공적으로 삭제되었습니다!');
+            }
+            else if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);  
             }
             return response.json();
         })
