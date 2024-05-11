@@ -25,13 +25,13 @@ const PostNotice = () => {
         })
         .then((response)=>{
             if (!response.ok) {
-                console.log('서버응답:', response);
-                console.log(notice);
+                // console.log('서버응답:', response);
+                // console.log(notice);
 
                 if (response.status === 403) {
                     throw new Error('권한이 없습니다');
                 } else if(response.status === 201){
-                    throw new Error('공지사항이 성공적으로 등록되었습니다!');
+                    return { message: '공지사항이 성공적으로 등록되었습니다!' };
                 }else{
                     throw new Error(`${response.status} ${response.statusText}`);
                 }
