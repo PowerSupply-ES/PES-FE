@@ -4,9 +4,6 @@ import '../../styles/notice.css';
 
 
 function FetchNotice(){
-    
-
-
 
     return(
         <div className='info_body'>
