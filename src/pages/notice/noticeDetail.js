@@ -14,10 +14,10 @@ const NoticeDetail = () => {
     .pathname
     .split('/')[2];
 
-    const getNoticeDetail = () => {
-        const uri = '/api/notice/';
-        
+    const uri = '/api/notice/';
 
+    const getNoticeDetail = () => {
+        
         fetch(`${uri}${noticeId}`,{
             method: 'GET',
         })
@@ -28,11 +28,10 @@ const NoticeDetail = () => {
             }
             return response.json();
           })
-          .then(data => {
+        .then(data => {
             setDetail(data);
-  
-          })
-          .catch(error => {
+        })
+        .catch(error => {
             console.error('데이터 가져오기 실패:', error);
         });
     }
@@ -40,16 +39,56 @@ const NoticeDetail = () => {
         getNoticeDetail();
     }, [noticeId])
 
-    const goBack = () =>{
-        window.history.back();
-    }
-
-    // Time에서 "T"를 제거하여 표시
+    // Time에서 "T"를 제거하여 표시 함수
     const transferTime = (time) => {
         if (!time) return ""; // 시간이 없는 경우 처리
         
         return time.replace("T", "");
     }
+
+    // 뒤로가기 함수
+    const goBack = () =>{
+        window.history.back();
+    }
+
+    // 공지사항 제거 함수
+    const DeleteNotice = () => {
+
+        fetch(`${uri}${noticeId}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response)=>{
+            if (!response.ok) {
+                console.log('서버응답:', response);
+                if (response.status === 403) {
+                    throw new Error('권한이 없습니다');
+                } else if(response.status === 200){
+                    throw new Error('공지사항이 성공적으로 삭제되었습니다!');
+                }else{
+                    throw new Error(`${response.status} ${response.statusText}`);
+                }
+            }
+            return response.json();
+        })
+        .then((responseData) => {
+            if (!responseData) {
+                console.log("서버의 응답이 비어있습니다.");
+                return;
+            }
+            const resultMessage = responseData.message;
+            alert(resultMessage);
+            window.location.href = '/notice';
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+    }
+
+
     return (
         <div className='info_body'>
             <Header></Header>
@@ -91,7 +130,7 @@ const NoticeDetail = () => {
                 {/* 관리자용버튼_state에 따라 보여지기 */}
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
                     <button className='btn_submit'>수정하기</button>
-                    <button className='btn_delete'>삭제하기</button>
+                    <button className='btn_delete' onClick={()=>{DeleteNotice()}}>삭제하기</button>
                 </div>
                 
             </div>

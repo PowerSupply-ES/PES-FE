@@ -25,7 +25,7 @@ const PostNotice = () => {
         })
         .then((response)=>{
             if (!response.ok) {
-                // console.log('서버응답:', response);
+                console.log('서버응답:', response);
                 console.log(notice);
 
                 if (response.status === 403) {
@@ -49,7 +49,7 @@ const PostNotice = () => {
             alert(resultMessage);
             window.location.href = '/notice';
         })
-          .catch((error) => {
+        .catch((error) => {
             const errorMessage = error.message;
             alert(errorMessage);
         });
