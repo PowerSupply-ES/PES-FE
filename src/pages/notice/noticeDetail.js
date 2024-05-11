@@ -53,7 +53,6 @@ const NoticeDetail = () => {
 
     // 공지사항 제거 함수
     const DeleteNotice = () => {
-
         fetch(`${uri}${noticeId}`,{
             method: 'DELETE',
             headers: {
@@ -130,7 +129,7 @@ const NoticeDetail = () => {
                 {/* 관리자용버튼_state에 따라 보여지기 */}
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
                     <button className='btn_submit'>수정하기</button>
-                    <button className='btn_delete' onClick={()=>{DeleteNotice()}}>삭제하기</button>
+                    <button className='btn_delete' onClick={()=>DeleteNotice()}>삭제하기</button>
                 </div>
                 
             </div>
