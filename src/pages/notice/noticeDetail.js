@@ -60,6 +60,10 @@ const NoticeDetail = () => {
             },
         })
         .then((response)=>{
+            if (!response) {
+                console.log("서버의 응답이 비어있습니다.");
+                return;
+            }
             if (!response.ok) {
                 console.log('서버응답:', response);
                 if (response.status === 403) {
@@ -73,10 +77,10 @@ const NoticeDetail = () => {
             return response.json();
         })
         .then((responseData) => {
-            if (!responseData) {
-                console.log("서버의 응답이 비어있습니다.");
-                return;
-            }
+            // if (!responseData) {
+            //     console.log("서버의 응답이 비어있습니다.");
+            //     return;
+            // }
             const resultMessage = responseData.message;
             alert(resultMessage);
             window.location.href = '/notice';
