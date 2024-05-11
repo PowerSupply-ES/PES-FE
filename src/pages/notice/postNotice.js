@@ -18,9 +18,9 @@ const PostNotice = () => {
 
         fetch(uri, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            // headers: {
+            //     'Content-Type': 'application/json',
+            // },
             body: JSON.stringify(notice),
         })
         .then((response)=>{

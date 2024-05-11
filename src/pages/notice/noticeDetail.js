@@ -55,9 +55,6 @@ const NoticeDetail = () => {
     const DeleteNotice = () => {
         fetch(`${uri}${noticeId}`,{
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
         })
         .then((response)=>{
             if (!response.ok) {
