@@ -44,8 +44,7 @@
     margin: 40px auto;
     width: 90%;
     text-align: left;
-    border: solid 2px #8B8B8B;
-    border-radius: 20px;
+    
     color: #393939;
     overflow: hidden;
   }
@@ -282,4 +281,9 @@
     width: 100%;
     height: 100%;
     padding: 8px;
+  }
+
+  .textarea_header{
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
   }
