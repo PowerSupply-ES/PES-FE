@@ -24,7 +24,7 @@ const NoticeDetail = () => {
         })
         .then(response => {
             if (!response.ok) {
-              console.log('서버응답:', response);
+            //   console.log('서버응답:', response);
               throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
             }
             return response.json();
@@ -110,7 +110,7 @@ const NoticeDetail = () => {
     // 공지사항 수정 상태 관리
     const toggleEditing = () => {
         setIsEditing(prevState => !prevState);
-        console.log('isEditing = ',isEditing);
+        // console.log('isEditing = ',isEditing);
     }
 
 

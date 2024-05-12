@@ -44,6 +44,8 @@
     margin: 40px auto;
     width: 90%;
     text-align: left;
+    border: solid 2px #8B8B8B;
+    border-radius: 20px;
     color: #393939;
     overflow: hidden;
   }
@@ -208,7 +210,6 @@
     height: 55vh;
     margin: 20px auto 0;
     overflow: hidden;
-
   }
   
 
@@ -280,4 +281,5 @@
   .textarea_content,.textarea_header{
     width: 100%;
     height: 100%;
+    padding: 8px;
   }
