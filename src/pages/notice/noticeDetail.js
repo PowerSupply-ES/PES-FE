@@ -79,6 +79,10 @@ const NoticeDetail = () => {
     const modifyNotice = () => {
         fetch(`${uri}${noticeId}`,{
             method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(noticeDetail),
         })
         .then((response)=>{
             if(response.status === 403){
