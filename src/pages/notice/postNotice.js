@@ -29,17 +29,12 @@ const PostNotice = () => {
             }
             else if(response.status === 201){
                 alert('공지사항이 성공적으로 등록되었습니다!');
+                window.location.href = '/notice';
             }
             else if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);  
             }
-            // return response.json();
         })
-        // .then((responseData) => {
-        //     const resultMessage = responseData.message;
-        //     alert(resultMessage);
-        //     window.location.href = '/notice';
-        // })
         .catch((error) => {
             const errorMessage = error.message;
             alert(errorMessage);

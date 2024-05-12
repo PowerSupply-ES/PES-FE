@@ -55,9 +55,6 @@ const NoticeDetail = () => {
     const DeleteNotice = () => {
         fetch(`${uri}${noticeId}`,{
             method: 'DELETE',
-            // headers: {
-            //     'Content-Type': 'application/json',
-            // },
         })
         .then((response)=>{
             if(response.status === 403){
@@ -70,13 +67,7 @@ const NoticeDetail = () => {
             else if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);  
             }
-            // return response.json();
         })
-        // .then((responseData) => {
-        //     const resultMessage = responseData.message;
-        //     alert(resultMessage);
-        //     window.location.href = '/notice';
-        // })
         .catch((error) => {
             const errorMessage = error.message;
             alert(errorMessage);
