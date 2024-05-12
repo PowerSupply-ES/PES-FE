@@ -44,7 +44,7 @@ const NoticeDetail = () => {
     const transferTime = (time) => {
         if (!time) return ""; // 시간이 없는 경우 처리
         
-        return time.replace("T", "");
+        return time.replace("T", " ");
     }
 
     // 뒤로가기 함수
@@ -92,7 +92,7 @@ const NoticeDetail = () => {
                 alert('해당 공지사항이 존재하지 않습니다');
             }
             else if(response.status === 200){
-                alert('공지사항이 성공적으로 삭제되었습니다!');
+                alert('공지사항이 성공적으로 수정되었습니다!');
                 window.location.href = '/notice';
             }
             else if (!response.ok) {
@@ -122,7 +122,20 @@ const NoticeDetail = () => {
                 {/* 제목 */}
                 <div className='header'>
                     <HiSpeakerphone size={30}/> 
-                    <p>{noticeDetail.title}</p>
+
+                    {/* 수정 가능 상태에 따라 보여지는 내용 조절 */}
+                    {isEditing 
+                    ? (
+                        <textarea 
+                            // className='header' 
+                            value={noticeDetail.title} 
+                            onChange={(e) => setDetail(prevState => ({ ...prevState, title: e.target.value }))}
+                        />
+                    ) 
+                    : (
+                        <p>{noticeDetail.title}</p>
+                    )}
+
                 </div>
 
                 {/* 공지사항 정보 */}
@@ -152,9 +165,9 @@ const NoticeDetail = () => {
                     {isEditing 
                     ? (
                         <textarea 
-                            className='text' 
+                            // className='text_container' 
                             value={noticeDetail.content} 
-                            onChange={(e) => setDetail(prevState => ({ ...prevState, content: e.target.value }))} 
+                            onChange={(e) => setDetail(prevState => ({ ...prevState, content: e.target.value }))}
                         />
                     ) 
                     : (
