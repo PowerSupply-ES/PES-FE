@@ -110,6 +110,7 @@ const NoticeDetail = () => {
     // 공지사항 수정 상태 관리
     const toggleEditing = () => {
         setIsEditing(prevState => !prevState);
+        console.log('isEditing = ',isEditing);
     }
 
 
@@ -163,8 +164,8 @@ const NoticeDetail = () => {
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
                     {/* 수정 중 상태에 따라 버튼 대체 */}
                     {isEditing 
-                    ? <button className='btn_submit' onClick={toggleEditing}>수정하기</button>
-                    : <button className='btn_modify' onClick={modifyNotice}>저장하기</button>
+                    ? (<button className='btn_submit' onClick={toggleEditing}>수정하기</button>)
+                    : (<button className='btn_modify' onClick={modifyNotice}>저장하기</button>)
                     }
                     
                     <button className='btn_delete' onClick={()=>DeleteNotice()}>삭제하기</button>
