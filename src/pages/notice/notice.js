@@ -42,6 +42,7 @@ const Notice = () => {
     useEffect(()=>{
         GetNoticeList();
     }, [])
+    
 
     return (
         <div className='info_body'>
@@ -84,13 +85,27 @@ const Notice = () => {
     // 공지사항 컴포넌트
     function MyNotice({noticeList}){
 
+        // 해당 공지사항 detail으로 이동
         const gotoNotice = (noticeId) => {
             console.log('noticeId: ',noticeId);
             window.location=`notice/${noticeId}`
         }
+
+        // 공지사항 등록 일시에서 T를 공백으로 대체
         const transferTime = (time) => {
-            if (!time) return ""; // 시간이 없는 경우 처리
+            if (!time) return "";  //시간이 없는 경우 처리
             return time.replace("T", " ");
+        }
+
+        const isNewNotice = (createdTime) =>{ 
+            const currentTime = new Date();  //현재시간
+            const createdTime = new Date(createdTime);  //공지사항 생성시간
+
+            const difference = currentTime - createdTime //시간 차
+
+            // 생성시간이 하루 이내인지 확인
+            const oneDay = 24 * 60 * 60 * 1000  //하루의 밀리초
+            return Math.floor(difference/oneDay) <= 1;
         }
 
         return (
@@ -100,9 +115,8 @@ const Notice = () => {
                 <div className='info' key={it.noticeId}>
 
                     <div className='title_0'>
-                        {/* ---버튼 둘 중 하나로 변경하기---*/}
-                        {/* <div className='imp'>중요</div>
-                        <div className='new'>new</div> */}
+                        {/* ---중요, new 버튼 둘 중 하나 선택---*/}
+                        <div className={it.isImportant ? 'imp' : isNewNotice(it.createdTime) ? 'new' :'' }>중요</div>
                     </div>
 
                     {/* 공지사항id */}
