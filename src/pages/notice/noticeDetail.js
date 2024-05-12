@@ -149,13 +149,15 @@ const NoticeDetail = () => {
                 {/* 본문 */}
                 <div className='text_container'>
                     {/* 수정 가능 상태에 따라 보여지는 내용 조절 */}
-                    {isEditing ? (
+                    {isEditing 
+                    ? (
                         <textarea 
                             className='text' 
                             value={noticeDetail.content} 
                             onChange={(e) => setDetail(prevState => ({ ...prevState, content: e.target.value }))} 
                         />
-                    ) : (
+                    ) 
+                    : (
                         <p className='text'>{noticeDetail.content}</p> //줄바꿈인식, 내용초과시 break, scroll기능넣기
                     )}
                 </div>
@@ -164,8 +166,8 @@ const NoticeDetail = () => {
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
                     {/* 수정 중 상태에 따라 버튼 대체 */}
                     {isEditing 
-                    ? (<button className='btn_modify' onClick={() => modifyNotice}>저장하기</button>)
-                    :(<button className='btn_submit' onClick={() => toggleEditing}>수정하기</button>) 
+                    ? (<button className='btn_modify' onClick={modifyNotice}>저장하기</button>)
+                    :(<button className='btn_submit' onClick={toggleEditing}>수정하기</button>) 
                     }
                     
                     <button className='btn_delete' onClick={()=>DeleteNotice()}>삭제하기</button>
