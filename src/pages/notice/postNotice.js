@@ -33,18 +33,13 @@ const PostNotice = () => {
             else if (!response.ok) {
                 throw new Error(`${response.status} ${response.statusText}`);  
             }
-            return response.json();
+            // return response.json();
         })
-        .then((responseData) => {
-            // if (!responseData) {
-            //     console.log("서버의 응답이 비어있습니다.");
-            //     return;
-            // }
-
-            const resultMessage = responseData.message;
-            alert(resultMessage);
-            window.location.href = '/notice';
-        })
+        // .then((responseData) => {
+        //     const resultMessage = responseData.message;
+        //     alert(resultMessage);
+        //     window.location.href = '/notice';
+        // })
         .catch((error) => {
             const errorMessage = error.message;
             alert(errorMessage);
