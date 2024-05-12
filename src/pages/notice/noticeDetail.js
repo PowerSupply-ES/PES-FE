@@ -7,7 +7,8 @@ import { HiSpeakerphone } from "react-icons/hi";
 
 const NoticeDetail = () => {
     const memberStatus = sessionStorage.getItem('memberStatus');
-    const [noticeDetail, setDetail] =useState([]);
+    const [noticeDetail, setDetail] =useState([]); //공지사항 세부정보
+    const [isEditing, setIsEditing] = useState(false); //수정상태
     
     let url = new URL(window.location.href);
     let noticeId = url
@@ -74,6 +75,39 @@ const NoticeDetail = () => {
         });
     }
 
+    // 공지사항 수정 함수
+    const modifyNotice = () => {
+        fetch(`${uri}${noticeId}`,{
+            method: 'PATCH',
+        })
+        .then((response)=>{
+            if(response.status === 403){
+                alert('권한이 없습니다');
+            }
+            else if(response.status === 404){
+                alert('해당 공지사항이 존재하지 않습니다');
+            }
+            else if(response.status === 200){
+                alert('공지사항이 성공적으로 삭제되었습니다!');
+                window.location.href = '/notice';
+            }
+            else if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);  
+            }
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+        });
+
+    }
+
+
+    // 공지사항 수정 상태 관리
+    const toggleEditing = () => {
+        setIsEditing(prevState => !prevState);
+    }
+
 
     return (
         <div className='info_body'>
@@ -109,13 +143,26 @@ const NoticeDetail = () => {
 
                 {/* 본문 */}
                 <div className='text_container'>
-                    {/* 줄바꿈인식, 내용초과시 break, scroll기능넣기 */}
-                    <p className='text'>{noticeDetail.content}</p>
+                    {/* 수정 가능 상태에 따라 보여지는 내용 조절 */}
+                    {isEditing ? (
+                        <textarea 
+                            className='text' 
+                            value={noticeDetail.content} 
+                            onChange={(e) => setDetail(prevState => ({ ...prevState, content: e.target.value }))} 
+                        />
+                    ) : (
+                        <p className='text'>{noticeDetail.content}</p> //줄바꿈인식, 내용초과시 break, scroll기능넣기
+                    )}
                 </div>
                 
                 {/* 관리자용버튼_state에 따라 보여지기 */}
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
-                    <button className='btn_submit'>수정하기</button>
+                    {/* 수정 중 상태에 따라 버튼 대체 */}
+                    {isEditing 
+                    ? <button className='btn_submit' onClick={toggleEditing}>수정하기</button>
+                    : <button className='btn_modify' onClick={modifyNotice}>저장하기</button>
+                    }
+                    
                     <button className='btn_delete' onClick={()=>DeleteNotice()}>삭제하기</button>
                 </div>
                 
