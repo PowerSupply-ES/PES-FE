@@ -127,7 +127,7 @@ const NoticeDetail = () => {
                     {isEditing 
                     ? (
                         <textarea 
-                            className='header' 
+                            className='textarea_header' 
                             value={noticeDetail.title} 
                             onChange={(e) => setDetail(prevState => ({ ...prevState, title: e.target.value }))}
                         />
@@ -165,7 +165,7 @@ const NoticeDetail = () => {
                     {isEditing 
                     ? (
                         <textarea 
-                            className='text_container' 
+                            className='textarea_content' 
                             value={noticeDetail.content} 
                             onChange={(e) => setDetail(prevState => ({ ...prevState, content: e.target.value }))}
                         />
