@@ -116,7 +116,10 @@ const Notice = () => {
 
                     <div className='title_0'>
                         {/* ---중요, new 버튼 둘 중 하나 선택---*/}
-                        <div className={it.isImportant ? 'imp' : isNewNotice(it.createdTime) ? 'new' :'' }>중요</div>
+                        {it.isImportant ? <div className='imp'>중요</div>
+                        : isNewNotice(it.createdTime) ? <div className='new'>new</div>
+                        : ''
+                        }
                     </div>
 
                     {/* 공지사항id */}

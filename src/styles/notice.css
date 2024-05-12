@@ -220,7 +220,7 @@
     margin-top: 40px;
     
   }
-  .btn_delete,.btn_submit{
+  .btn_delete,.btn_submit, .btn_modify{
     color: #ffffff;
     font-weight: bold;
     border: solid 2px ;
@@ -230,7 +230,7 @@
     box-shadow: 1px 2px #CCC9C9;
 
   }
-  .btn_submit{
+  .btn_submit,.btn_modify{
     background-color: #8C8C8C;
     border-color: #8C8C8C;
     margin-right: 16px;
