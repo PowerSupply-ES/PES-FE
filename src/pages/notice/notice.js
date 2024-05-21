@@ -111,7 +111,7 @@ const Notice = () => {
         return (
             <div className='info_list'>
                 
-            {noticeList.map((it) =>(
+            {noticeList.map((it, index) =>(
                 <div className='info' key={it.noticeId}>
 
                     <div className='title_0'>
@@ -130,7 +130,8 @@ const Notice = () => {
                     {/* ---infoDetail 연결제대로하기!--- */}
                     {/* 제목 */}
                     <div className='title_2' onClick={() => gotoNotice(it.noticeId)}>
-                        {it.title}
+                        {/* {it.title} */}
+                        {index}
                     </div>
 
                     {/* 작성날짜 */}
