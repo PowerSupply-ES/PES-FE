@@ -93,6 +93,7 @@ button:hover {
   margin: 20px 60px 0px auto;
 }
 
+
 .container {
   display: flex;
   flex-direction: column; /* 수직으로 배치 */
@@ -132,14 +133,32 @@ button:hover {
   margin-bottom: 20px;
   font-weight: bold;
   color: #686868;
-
-  /* background-color: yellow; */
 }
 .menu1:hover{
   /* background-color: #d5e6ff; */
   border-radius: 5px;
   color: #000000;
 
+}
+.menu3{
+  padding: 20px 0;
+  padding-bottom: 0;
+}
+
+.noticeAlertBtn{
+  background-color: rgb(255, 89, 89);
+  border: solid rgb(255, 89, 89);
+  width: 23px;
+  height: 23px;
+  padding: 8px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
 }
 
 
