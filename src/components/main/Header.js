@@ -85,8 +85,13 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        sessionStorage.setItem('memberName', data.memberName);
-        sessionStorage.setItem('memberStatus', data.memberStatus);
+        // sessionStorage.setItem('memberName', data.memberName);
+        // sessionStorage.setItem('memberStatus', data.memberStatus);
+        sessionStorage.setItem(
+          {'memberName': data.memberName, 
+          'memberStatus': data.memberStatus,
+          'hasNewNotices': data.hasNewNotices,
+        });
 
 
       })
@@ -173,7 +178,13 @@ function Header1(){
        <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
        <div>
         <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
-        <button className='noticeAlertBtn'>1</button>
+         {/* 새로운 공지사항 있을때 아이콘 표시 */}
+         {memberData.hasNewNotices ? 
+          (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
+          : (<></>)
+          }
+        
+
        </div>
        
      </div>
