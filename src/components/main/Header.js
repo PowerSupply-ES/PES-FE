@@ -53,7 +53,8 @@ function Header1(){
   memberName: '',
   memberScore: '',
   memberStatus: '',
-  memberGen:''
+  memberGen:'',
+  hasNewNotices: false,
   });
   
 
