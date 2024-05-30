@@ -1,8 +1,6 @@
-name: Deploy # Workflow 이름
+name: Continuos Deployment # Workflow 이름
 on: # Event 감지
   push:
-    branches: [ "develop", "main" ]
-  pull_request:
     branches: [ "develop", "main" ]
 jobs:
   build:
