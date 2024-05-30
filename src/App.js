@@ -11,6 +11,7 @@ import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice"
 import PostNotice from "pages/notice/postNotice"
 import NoticeDetail from "pages/notice/noticeDetail"
+import ManageUser from "pages/manage/ManageUser";
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
         <Route path="/menual" element={<Menual/>}></Route>
         <Route path="/notice" element={<Notice/>}></Route>
         <Route path="/postNotice" element={<PostNotice/>}></Route>
+        <Route path="/manageUser" element={<ManageUser/>}></Route>
+
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>
