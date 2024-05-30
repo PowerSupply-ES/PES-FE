@@ -1,8 +1,9 @@
 name: Deploy # Workflow 이름
 on: # Event 감지
   push:
-    branches:
-      - develop # 해당 브랜치의 푸쉬가 일어날 때 CI/CD를 진행하겠다는 뜻
+    branches: [ "develop", "main" ]
+  pull_request:
+    branches: [ "develop", "main" ]
 jobs:
   build:
     runs-on: ubuntu-22.04
