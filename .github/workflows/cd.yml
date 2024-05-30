@@ -2,7 +2,7 @@ name: Continuous Deployment # Workflow 이름
 
 on: # Event 감지
   push: # 해당 브랜치의 푸쉬가 일어날 때 CI/CD를 진행하겠다는 뜻
-    branches: [ "main" ]
+    branches: [ "develop", "main" ]
 jobs:
   develop-deploy:
     runs-on: ubuntu-22.04
