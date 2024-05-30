@@ -1,0 +1,21 @@
+name: Check Build Possibility
+
+on: 
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-22.04
+    env: 
+      DISABLE_ESLINT_PLUGIN: true
+    steps: 
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps --frozen-lockfile
+      - name: Try build
+        run: npm run build

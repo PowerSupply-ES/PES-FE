@@ -1,6 +1,19 @@
 #!/bin/bash
-REPOSITORY=/home/ubuntu/PES-FE # 배포된 프로젝트 경로.
 
-cd $REPOSITORY # 이 경로로 이동해서 밑에 명령어들을 차례로 실행.
+# 배포된 프로젝트 경로
+REPOSITORY=/home/ubuntu/PES-FE
 
-sudo npm install --legacy-peer-deps # 의존성 파일 설치.
+# 프로젝트 경로로 이동
+cd $REPOSITORY
+
+# 의존성 설치
+sudo npm install --legacy-peer-deps
+
+# 빌드
+sudo npm run build
+
+# Nginx 설정
+sudo cp -r build/* /var/www/html/
+sudo systemctl restart nginx
+
+echo "> 배포 완료"
