@@ -1,4 +1,4 @@
-import { StyledRankingItem } from "styles/RankingItem-styled";
+import { StyledRankingItem } from "styles/styledComponent/RankingItem-styled";
 
 const RankingItem = (props) => {
     return (

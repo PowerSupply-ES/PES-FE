@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { StyledListItem } from "styles/ListItem-styled";
+import { StyledListItem } from "styles/styledComponent/ListItem-styled";
 
 const ProblemItem = (props) => {
     const navigate = useNavigate();

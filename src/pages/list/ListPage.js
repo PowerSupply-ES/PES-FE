@@ -6,7 +6,7 @@ import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 import JuniorRank from "components/ranking/JuniorRank";
 import SeniorRank from "components/ranking/SeniorRank";
-import { StyledListPage } from "styles/ListPage-styled";
+import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 
 const ListPage = () => {
 

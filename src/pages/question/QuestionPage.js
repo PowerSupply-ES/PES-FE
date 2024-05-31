@@ -6,8 +6,8 @@ import MemberStatus from "components/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
 
 
-import { StyledQuestion } from 'styles/Question-styled';
-import { StyledProblem } from "styles/Problem-styled";
+import { StyledQuestion } from 'styles/styledComponent/Question-styled';
+import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import { useNavigate } from "react-router-dom";
 
 const QuestionPage = () => {
