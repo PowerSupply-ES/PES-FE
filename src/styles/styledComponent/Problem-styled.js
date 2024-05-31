@@ -55,16 +55,17 @@ export const StyledProblem = styled.div`
         padding: 8px 16px;
         // color: ${props => props.state === "success" ? "#5094F9" : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" : "#6A6B6F"};
         // background-color: #ffffff;
-        // border: solid 3px ${props => props.state === "success" ? "#5094F9" 
+
+        /* border: solid 3px ${props => props.state === "success" ? "#5094F9" 
             : props.state === "fail" ? "rgba(235, 52, 52, 0.8)" 
             : "#DEDEDE"};
+        background-color: ${props => props.state === "success" ? "#0025cae0; opacity:70%;"
+        : props.state === "fail" ? "rgb(255, 53, 53, 0.9)" 
+        : "#3B3B3B; opacity:70%"}; */
         
         color: ${props => props.state === "success" ? "#0025cae0; opacity:70%;" 
             : props.state === "fail" ? "rgb(255, 53, 53, 0.9)" 
             : "#3B3B3B; opacity:70%"};
-        // background-color: ${props => props.state === "success" ? "#0025cae0; opacity:70%;"
-        : props.state === "fail" ? "rgb(255, 53, 53, 0.9)" 
-        : "#3B3B3B; opacity:70%"};
         border: solid 3px ${props => props.state === "success" ? "#0025cae0; opacity:70%;"
             : props.state === "fail" ? "rgb(246, 73, 73, 0.9)" 
             : "#3B3B3B; opacity:70%"};

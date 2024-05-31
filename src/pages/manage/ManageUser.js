@@ -20,6 +20,7 @@ function ManageUser(){
                     <div className="list_container">
 
                         {/* 제목 */}
+                        {/* 이것도UserList컴포넌트로 제작가능할듯 */}
                         <div className="title_wrapper">
                             <div className="title_state">상태</div>
                             <div className="title_name">이름</div>

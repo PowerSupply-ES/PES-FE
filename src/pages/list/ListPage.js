@@ -9,7 +9,7 @@ import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 
 const ListPage = () => {
-
+    const memberStatus = sessionStorage.getItem('memberStatus');
     const [list, setList] = useState([]);
     const [selectedOption, setSelectedOption] = useState('junior');
 
@@ -45,7 +45,7 @@ const ListPage = () => {
 
     useEffect(() => {
         getList();
-    }, []);
+    }, [memberStatus]);
 
     // junior, senior 선택
     const handleOption = (option) => {
@@ -71,6 +71,7 @@ const ListPage = () => {
                         ))
                     }
                 </div>
+
                 {/* 랭킹 섹션 */}
                 <div className="ranking_container">
                     <div className="container_header">🏆 랭킹</div>

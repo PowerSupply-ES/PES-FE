@@ -86,8 +86,6 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        // sessionStorage.setItem('memberName', data.memberName);
-        // sessionStorage.setItem('memberStatus', data.memberStatus);
         sessionStorage.setItem(
           {'memberName': data.memberName, 
           'memberStatus': data.memberStatus,

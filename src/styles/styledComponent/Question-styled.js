@@ -15,16 +15,6 @@ export const StyledQuestion = styled.div`
         width: 40%;
         height: 564px;
         font-size: 20px;
-
-        // box-sizing: border-box;
-        // padding: 20px;
-        // display: flex;
-        // border-radius: 20px;
-        // background-color: #3E3E3E;
-        // white-space: pre-line; 
-        // color: white;
-        // overflow-wrap: break-word;
-        // text-align: left;
     }
     .question_container{
         width: 40%;

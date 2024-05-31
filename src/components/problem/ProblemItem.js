@@ -2,6 +2,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
+const ProblemItem = (props) => {
+    const navigate = useNavigate();
+
+    return (
+        <Container state={props.state}>
+            <ProblemId state={props.state} onClick={() => { navigate(`/question/${props.pid}`); }}>{props.pid}</ProblemId>
+            <ProblemTitle onClick={() => { navigate(`/question/${props.pid}`); }}>{props.ptitle}</ProblemTitle>
+            <Grade>점수 {props.grade}</Grade>
+            <Button state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>
+                {props.state === "retry" ? "RE TRY" : "풀이보기"}
+            </Button>
+        </Container>
+    );
+}
+
 const Container = styled.div`
     width: 1374px;
     height: 60px;
@@ -54,20 +69,4 @@ const Button = styled.button`
         background-color: ${props => props.color ? `${props.color}80` : "rgba(255, 255, 255, 0.8)"};
     } */
 `
-
-const ProblemItem = (props) => {
-    const navigate = useNavigate();
-
-    return (
-        <Container state={props.state}>
-            <ProblemId state={props.state} onClick={() => { navigate(`/question/${props.pid}`); }}>{props.pid}</ProblemId>
-            <ProblemTitle onClick={() => { navigate(`/question/${props.pid}`); }}>{props.ptitle}</ProblemTitle>
-            <Grade>점수 {props.grade}</Grade>
-            <Button state={props.state} onClick={() => navigate(`/solution/${props.pid}`)}>
-                {props.state === "retry" ? "RE TRY" : "풀이보기"}
-            </Button>
-        </Container>
-    );
-}
-
 export default ProblemItem;
