@@ -12,6 +12,7 @@ import Notice from "pages/notice/notice"
 import PostNotice from "pages/notice/postNotice"
 import NoticeDetail from "pages/notice/noticeDetail"
 import ManageUser from "pages/manage/ManageUser";
+import UserDetail from "pages/manage/UserDetail";
 
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
         <Route path="/problem/:id" element={<ProblemPage/>}></Route>
         <Route path="/question/:id" element={<QuestionPage/>}></Route>
         <Route path="/notice/:id" element={<NoticeDetail/>}></Route>
+        <Route path="/manageUser/:id" element={<UserDetail/>}></Route>
+
 
       </Routes>
     </div>
