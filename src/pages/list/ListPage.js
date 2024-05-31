@@ -10,7 +10,6 @@ import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 
 const ListPage = () => {
     const memberStatus = sessionStorage.getItem('memberStatus');
-    console.log("memberStatus = ",memberStatus);
     
     const [list, setList] = useState([]);
     const [selectedOption, setSelectedOption] = useState('junior');
@@ -40,6 +39,8 @@ const ListPage = () => {
             );
             // console.log(response);
             setList(response);
+            console.log("memberStatus = ",memberStatus);
+
         } catch (error) {
             console.log(error);
         }
