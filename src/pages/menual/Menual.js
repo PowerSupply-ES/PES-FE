@@ -5,7 +5,7 @@ import AdPart from "components/list/AdPart";
 import { useNavigate } from 'react-router-dom';
 
 import { FaCircleUser } from "react-icons/fa6";
-import '../../styles/menual.css';
+import '../../styles/css/menual.css';
 
 import img_probList from '../../assets/images/probList.png';
 import img_solving from '../../assets/images/solving.png';
