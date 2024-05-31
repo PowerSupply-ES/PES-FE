@@ -25,7 +25,7 @@ const ProblemItem = (props) => {
     //그 외에는 props.state 값 그대로 사용
     const state =
         (memberStatus === "재학생" || "관리자")
-        ? "solved" 
+        ? "success" 
         : props.state;
 
     return (
