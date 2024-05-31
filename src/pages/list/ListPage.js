@@ -71,7 +71,7 @@ const ListPage = () => {
                             grade={problem.problemScore}
                             answerId={problem.answerId}
                             state={(memberStatus==="재학생" || memberStatus==="관리자") 
-                                ? "success"
+                                ? "solved"
                                 : problem.answerState}/>
                         ))
                     }
