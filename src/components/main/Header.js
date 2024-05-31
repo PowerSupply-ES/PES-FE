@@ -11,7 +11,6 @@ import { FaCircleUser } from "react-icons/fa6";
 function Header() {
 
   const status = sessionStorage.getItem('status');
-  // const memberEmail = localStorage.getItem('memberEmail');
 
   return (
     <div>
