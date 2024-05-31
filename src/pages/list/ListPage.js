@@ -70,9 +70,11 @@ const ListPage = () => {
                             ptitle={problem.problemTitle}
                             grade={problem.problemScore}
                             answerId={problem.answerId}
-                            state={(memberStatus==="재학생" || memberStatus==="관리자") 
-                                ? "solved"
-                                : problem.answerState}/>
+                            state={problem.answerState}
+                            // (memberStatus==="재학생" || memberStatus==="관리자") 
+                            //     ? "solved"
+                            //     : problem.answerState
+                                />
                         ))
                     }
                 </div>
