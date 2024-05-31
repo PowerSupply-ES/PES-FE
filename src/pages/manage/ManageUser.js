@@ -1,6 +1,7 @@
-import Footer from "components/footer/Footer";
 import Header from "components/main/Header";
-import '../../styles/manage.css';
+import '../../styles/css/manage.css';
+import UserList from "components/manage/UserList";
+import SideTab from "./SideTab";
 
 function ManageUser(){
     return(
@@ -11,39 +12,25 @@ function ManageUser(){
             <div className="manageuser_container">
 
                 {/* 좌측 메뉴탭 */}
-                {/* 컴포넌트로 */}
-                <div className="tab_wrapper">
-                    <div className="tab_btn_wrapper">
-                        <button>회원 관리</button>
-                        <button>문제 관리</button>
-                        <button>피드백 관리</button>
-                    </div>
-                    <button>로그아웃</button>
-                </div>
+                <SideTab></SideTab>
 
 
                 {/* 우측 유저 목록 */}
                 <div className="userlist_wrapper">
+                    <div className="list_container">
 
-                    {/* 제목 */}
-                    <div className="title_wrapper">
-                        <div>상태</div>
-                        <div>이름</div>
-                        <div>학번</div>
-                        <div>학과</div>
-                    </div>
+                        {/* 제목 */}
+                        <div className="title_wrapper">
+                            <div className="title_state">상태</div>
+                            <div className="title_name">이름</div>
+                            <div className="title_stunum">학번</div>
+                            <div className="title_studep">학과</div>
+                            <div className="title_none"> </div>
+                        </div>
 
-                    {/* 회원목록 */}
-                    {/* 컴포넌트로 */}
-                    <div className="list_wrapper">
+                        {/* 회원목록 */}
+                        <UserList></UserList>
 
-                        <div>재학생</div>
-                        <div>최성임</div>
-                        <div>21910867</div>
-                        <div>생명과학과</div>
-
-                        <button>등업</button>
-                        <button>정보</button>
                     </div>
                 </div>
 
