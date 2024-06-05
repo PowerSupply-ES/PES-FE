@@ -422,7 +422,7 @@ const QuestionPage = () => {
                     )}
 
                     {/* 재학생_ feedback 선택 */}
-                    {(memberStatus === "재학생") && (feedbackArray.length <= 1) && (state === "comment") && (
+                    {(memberStatus === "재학생" || memberStatus === "관리자") && (feedbackArray.length <= 1) && (state === "comment") && (
                         <div className="feed_section">
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>
