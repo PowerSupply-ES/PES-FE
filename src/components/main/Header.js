@@ -11,7 +11,6 @@ import { FaCircleUser } from "react-icons/fa6";
 function Header() {
 
   const status = sessionStorage.getItem('status');
-  // const memberEmail = localStorage.getItem('memberEmail');
 
   return (
     <div>
@@ -86,13 +85,14 @@ function Header1(){
       })
       .then(data => {
         setMemberData(data);
-        // sessionStorage.setItem('memberName', data.memberName);
-        // sessionStorage.setItem('memberStatus', data.memberStatus);
-        sessionStorage.setItem(
-          {'memberName': data.memberName, 
-          'memberStatus': data.memberStatus,
-          'hasNewNotices': data.hasNewNotices,
-        });
+        sessionStorage.setItem('memberName', data.memberName);
+        sessionStorage.setItem('memberStatus', data.memberStatus);
+        sessionStorage.setItem('hasNewNotices', data.hasNewNotices);
+        // sessionStorage.setItem(
+        //   {'memberName': data.memberName, 
+        //   'memberStatus': data.memberStatus,
+        //   'hasNewNotices': data.hasNewNotices,
+        // });
 
 
       })
@@ -180,10 +180,10 @@ function Header1(){
        <div>
         <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
          {/* 새로운 공지사항 있을때 아이콘 표시 */}
-         {memberData.hasNewNotices ? 
+         {/* {memberData.hasNewNotices ? 
           (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
           : (<></>)
-          }
+          } */}
         
 
        </div>

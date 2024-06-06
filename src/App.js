@@ -11,6 +11,8 @@ import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice"
 import PostNotice from "pages/notice/postNotice"
 import NoticeDetail from "pages/notice/noticeDetail"
+import ManageUser from "pages/manage/ManageUser";
+import UserDetail from "pages/manage/UserDetail";
 
 
 function App() {
@@ -24,12 +26,16 @@ function App() {
         <Route path="/menual" element={<Menual/>}></Route>
         <Route path="/notice" element={<Notice/>}></Route>
         <Route path="/postNotice" element={<PostNotice/>}></Route>
+        <Route path="/manageUser" element={<ManageUser/>}></Route>
+
 
         <Route path="/solution/:id" element={<Solution/>}></Route>
         <Route path="/list" element={<ListPage/>}></Route>
         <Route path="/problem/:id" element={<ProblemPage/>}></Route>
         <Route path="/question/:id" element={<QuestionPage/>}></Route>
         <Route path="/notice/:id" element={<NoticeDetail/>}></Route>
+        <Route path="/manageUser/:id" element={<UserDetail/>}></Route>
+
 
       </Routes>
     </div>

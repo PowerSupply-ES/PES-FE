@@ -1,13 +1,29 @@
-name: Continuous Deployment # Workflow 이름
-
+name: Continuos Deployment # Workflow 이름
 on: # Event 감지
-  push: # 해당 브랜치의 푸쉬가 일어날 때 CI/CD를 진행하겠다는 뜻
-    branches: [ "main" ]
+  push:
+    branches: [ "develop", "main" ]
 jobs:
-  develop-deploy:
+  build:
     runs-on: ubuntu-22.04
-
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "12.x"
+
+      - name: Check Node v # Node v 확인
+        run: node -v
+
+      - name: Install Dependencies # 의존 파일 설치
+        run: npm install --legacy-peer-deps --frozen-lockfile
+
+      - name: Build # React Build
+        run: npm run build
+        env:
+          CI: ""
+
       - name: zip create
         # zip 파일을 만듭니다(파일명은 자유, 대신 아래 workflow에 적을 파일명과 동일하게 맞춰주세요).
         # 여기서는 build-app.zip

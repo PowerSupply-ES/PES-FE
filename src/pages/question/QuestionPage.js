@@ -6,8 +6,8 @@ import MemberStatus from "components/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
 
 
-import { StyledQuestion } from 'styles/Question-styled';
-import { StyledProblem } from "styles/Problem-styled";
+import { StyledQuestion } from 'styles/styledComponent/Question-styled';
+import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import { useNavigate } from "react-router-dom";
 
 const QuestionPage = () => {
@@ -422,7 +422,7 @@ const QuestionPage = () => {
                     )}
 
                     {/* 재학생_ feedback 선택 */}
-                    {(memberStatus === "재학생") && (feedbackArray.length <= 1) && (state === "comment") && (
+                    {(memberStatus === "재학생" || memberStatus === "관리자") && (feedbackArray.length <= 1) && (state === "comment") && (
                         <div className="feed_section">
                             <div className="question_header">
                                 <div className="feedback_index">Feedback</div>

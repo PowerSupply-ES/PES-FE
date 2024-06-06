@@ -6,10 +6,11 @@ import Header from "components/main/Header";
 import Footer from "components/footer/Footer";
 import JuniorRank from "components/ranking/JuniorRank";
 import SeniorRank from "components/ranking/SeniorRank";
-import { StyledListPage } from "styles/ListPage-styled";
+import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 
 const ListPage = () => {
-
+    const memberStatus = sessionStorage.getItem('memberStatus');
+    
     const [list, setList] = useState([]);
     const [selectedOption, setSelectedOption] = useState('junior');
 
@@ -38,6 +39,8 @@ const ListPage = () => {
             );
             // console.log(response);
             setList(response);
+            console.log("memberStatus = ",memberStatus);
+
         } catch (error) {
             console.log(error);
         }
@@ -45,7 +48,7 @@ const ListPage = () => {
 
     useEffect(() => {
         getList();
-    }, []);
+    }, [memberStatus]);
 
     // junior, senior 선택
     const handleOption = (option) => {
@@ -67,10 +70,15 @@ const ListPage = () => {
                             ptitle={problem.problemTitle}
                             grade={problem.problemScore}
                             answerId={problem.answerId}
-                            state={problem.answerState}/>
+                            state={problem.answerState}
+                            // (memberStatus==="재학생" || memberStatus==="관리자") 
+                            //     ? "solved"
+                            //     : problem.answerState
+                                />
                         ))
                     }
                 </div>
+
                 {/* 랭킹 섹션 */}
                 <div className="ranking_container">
                     <div className="container_header">🏆 랭킹</div>

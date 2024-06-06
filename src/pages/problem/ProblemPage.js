@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import Header from "components/main/Header";
-import { StyledProblem } from 'styles/Problem-styled';
+import { StyledProblem } from 'styles/styledComponent/Problem-styled';
 import Footer from "components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 import CodeEditor from "components/problem/CodeEditor";

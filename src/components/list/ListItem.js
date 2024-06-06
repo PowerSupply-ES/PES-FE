@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { StyledListItem } from "styles/ListItem-styled";
+import { StyledListItem } from "styles/styledComponent/ListItem-styled";
 
 const ProblemItem = (props) => {
     const navigate = useNavigate();
@@ -20,11 +20,12 @@ const ProblemItem = (props) => {
         }
     }
 
-    //추가
+    //추가 by성임
     // status가 "재학생"일 때는 props.state 값을 "pass"로 설정, 
     //그 외에는 props.state 값 그대로 사용
     const state =
-        memberStatus === "재학생" ? "success" 
+        (memberStatus === "재학생" || "관리자")
+        ? "success" 
         : props.state;
 
     return (
