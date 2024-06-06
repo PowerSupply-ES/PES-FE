@@ -60,12 +60,11 @@ button:hover {
   /* border-color: #5a2cda;; */
   border:solid 3px #7d7d7d;
   border-radius: 80px;
-}
-.logout:hover{
-  background-color: #414141;
-  border-color: #414141;
-  color: #ffffff;
-
+  &:hover{
+    background-color: #414141;
+    border-color: #414141;
+    color: #ffffff;
+  }
 }
 .container > .btns > .userId{
   width: fit-content;
@@ -75,12 +74,11 @@ button:hover {
   background-color: #5a2cdad2;
   /* background-color: #555555; */
   border-radius: 80px;
+  &:hover{
+    background-color: #787777da;
+  }
 }
 
-.btns > .userId:hover{
-  /* background-color: #9171e9; */
-  background-color: #787777da;
-}
 .userLevel{
   width: fit-content;
   background-color: #000000;
@@ -93,7 +91,6 @@ button:hover {
   margin: 20px 60px 0px auto;
 }
 
-
 .container {
   display: flex;
   flex-direction: column; /* 수직으로 배치 */
@@ -103,26 +100,20 @@ button:hover {
 }
 .navbar{
   display: flex;
-  /* background-color: red; */
   width: 90%;
   margin: 0px auto;
   align-items: flex-end;
-
 }
 .navbar > *{
   display: flex;
   justify-content: center;
-  /* text-align: center; */
-  
 }
 
 .navbar > .logo{
   width: 140px;
   height: 100px;
-  /* background-color: aquamarine; */
   font-size: 40px;
   font-weight: bold;
-  /* color: #373737; */
   color: #1c1c1dc3;
   cursor: pointer;
 }
@@ -203,21 +194,12 @@ button:hover {
   &:hover{
     background-color: #8b71d3;
     border: solid #8b71d3 2px;
-    /* #e94fac */
   }
 }
 
 .mainPage > .content{
   background-color: #000000;
 }
-
-/* .content1{
-  position : relative;
-}
-.content1 > img{
-  max-width:100%; 
-  height:auto;
-} */
 
 
 .content0 > img,
@@ -226,30 +208,15 @@ button:hover {
 .content4 > img
 {
   width: 80%;
-  /* height: 85vh; */
-  /* max-width:100%;  */
   height:auto;
-
 }
 
-
-
-
-/* .content2, .content3, .content4 {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.content2.visible img, .content3.visible img, .content4.visible img {
-  opacity: 1;
-} */
 
 /* animation효과 */
 .content0 {
   position: relative;
   width: 100%;
   height: 100vh;
-  /* 내용이 부모요소 벗어나면 숨김 */
   overflow: hidden; 
 }
 
@@ -269,8 +236,6 @@ button:hover {
   transform: translateY(-50%);
   z-index: 2;
 }
-
-
 
 
 
@@ -315,10 +280,8 @@ button:hover {
 
 
 
-
 .content_mypage{
   padding-top: 80px;
-  /* background-color: #ECEAFF; */
   background-color: #f2f1fe;
 
   height: 100vh;
@@ -355,7 +318,6 @@ button:hover {
 .memberInfo{
   height: 50%;
   width: 400px;
-  /* margin-bottom: 140px; */
   margin: 36px auto;
   justify-content: center;
   padding: 20px;
@@ -432,9 +394,6 @@ button:hover {
   display: flex;
   align-items: center;
 }
-/* .problems > *:not(:first-child){
-  margin-right: 40px;
-} */
 .problems > .problemId
 {
   display: flex;
@@ -501,8 +460,8 @@ button:hover {
   background-color: transparent;
 }
 
-/* 성공여부에 따라 버튼색 변화 */
 
+/* 성공여부에 따라 버튼색 변화 */
 .btn_fail, .btn_success, .btn_state{
   display: flex;
   justify-content: center;
@@ -668,7 +627,6 @@ button:hover {
 /* 풀이타이틀 */
 .solution_container{
   width: 1142px;
-  /* height: 493px; */
   height: fit-content;
   margin: 60px auto;
 
@@ -710,16 +668,11 @@ button:hover {
   font-weight: bold;
   font-size: 20px;
   color: #04CA00;
-  /* float: right; */
 }
-/* .prob_score > p{
-  color:#060606bb;
-} */
 .solution_score{
   font-size: 20px;
 }
 
-/* btn_process */
 .btn_process{
   height: fit-content;
     background-color: #FFFFFF;
@@ -732,7 +685,6 @@ button:hover {
     text-align: center;
     padding: 3px;
 }
-
 
 
 /* 풀이버튼 */
@@ -785,7 +737,6 @@ button:hover {
   font-size: var(--font-medium);
 }
 .left > .userGen{
-  /* color: #04CA00; */
   width: 44px;
   font-size: 20px;
   display: flex;
@@ -815,7 +766,6 @@ button:hover {
   padding: 6px 28px;
   color: white;
   border: solid #565656;
-  /* #5094F9 */
   border-radius: 5px;
   background-color: #565656;
   font-size: 16px;
@@ -887,10 +837,6 @@ button:hover {
 .sns > *:first-child{
   margin-right: 12px;
 }
-/* .footer_right > .sns a {
-  text-decoration: none;
-  color: inherit;
-} */
 .footer :not(.logo, .info1, .info2, .footer_logout){
   color: #ffffffec;
   ;
@@ -909,53 +855,11 @@ button:hover {
   cursor: pointer;
 }
 
-/* 슬라이드 */
 
+/* 슬라이드 */
 .img_slid{
   display:block;
 	height:100%;
   margin-right: auto;
   width: 100%;
-}
-
-
-
-
-
-
-
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
