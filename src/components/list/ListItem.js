@@ -5,10 +5,6 @@ const ProblemItem = (props) => {
     const navigate = useNavigate();
     const memberStatus = sessionStorage.getItem('memberStatus');
 
-    // console.log('memberStatus = ',memberStatus);
-    // console.log('props = ',props);
-    // console.log('props.state = ',props.state);
-
 
     function goTo(answerId) {
         if (answerId) {

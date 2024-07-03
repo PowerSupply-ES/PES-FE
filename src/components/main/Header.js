@@ -2,8 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 // import Logout from 'components/logout/Logout';
 
-import { FaUserCircle } from "react-icons/fa";
-import { FaRobot } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
 

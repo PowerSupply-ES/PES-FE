@@ -1,8 +1,5 @@
 .App {
   text-align: center;
-  /* font-family: 'Pretendard-Regular'; */
-  /* background-color: #f9fafb; */
-  /* background-color: #1c1c1c; */
   background-color: #E9E9EB;
 }
 :root{
@@ -32,7 +29,6 @@
   text-decoration: none;
   margin: 0px;
   padding: 0px;
-  /* font-family: 'Pretendard-Regular'; */
 }
 button:hover {
   cursor: pointer;
@@ -47,17 +43,14 @@ button:hover {
   border: solid white;
   border-radius: 10px;
   font-family: var(--Font1);
-
 }
 .logout{
   width: fit-content;
-  /* background-color: #5a2cda; opacity: 70%; */
   background-color: #ffffff;
   margin: 15px 50px 0px auto;
   color: #555555;
   font-weight: bold;
   font-size: 17px;
-  /* border-color: #5a2cda;; */
   border:solid 3px #7d7d7d;
   border-radius: 80px;
   &:hover{
@@ -72,7 +65,6 @@ button:hover {
   font-size: 17px;
   font-weight: bold;
   background-color: #5a2cdad2;
-  /* background-color: #555555; */
   border-radius: 80px;
   &:hover{
     background-color: #787777da;
@@ -103,19 +95,18 @@ button:hover {
   width: 90%;
   margin: 0px auto;
   align-items: flex-end;
-}
-.navbar > *{
-  display: flex;
-  justify-content: center;
-}
-
-.navbar > .logo{
-  width: 140px;
-  height: 100px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #1c1c1dc3;
-  cursor: pointer;
+  *{
+    display: flex;
+    justify-content: center;
+  }
+  .logo{
+    width: 140px;
+    height: 100px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #1c1c1dc3;
+    cursor: pointer;
+  }
 }
 
 .menu1, .menu2, .menu3{
@@ -127,7 +118,6 @@ button:hover {
   color: #686868;
 }
 .menu1:hover{
-  /* background-color: #d5e6ff; */
   border-radius: 5px;
   color: #000000;
 
@@ -245,16 +235,17 @@ button:hover {
   width: 90%;
   justify-content: center;
   margin: 0 auto;
+  .left{
+    margin:  60px 60px 0 0;
+    display: flex;
+    align-items: baseline;
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
+  }
 }
-.mypage_content > .left{
-  margin:  60px 60px 0 0;
-  display: flex;
-  align-items: baseline;
-}
-.mypage_content > .right{
-  display: flex;
-  flex-direction: column;
-}
+
 .mypage_btn{
   width: fit-content;
   height: fit-content;
@@ -279,7 +270,6 @@ button:hover {
 }
 
 
-
 .content_mypage{
   padding-top: 80px;
   background-color: #f2f1fe;
@@ -287,15 +277,14 @@ button:hover {
   height: 100vh;
   padding-bottom: 300px;
   margin-bottom: -300px;
+  h2{
+    width: 100%;
+    text-align: left;
+    margin-left: 40px;
+    color: #000000; opacity: 60%;
+    font-size: 26px;
+  }
 }
-.content_mypage > h2{
-  width: 100%;
-  text-align: left;
-  margin-left: 40px;
-  color: #000000; opacity: 60%;
-  font-size: 26px;
-}
-
 
 .noFeed, .noProblems{
   height: 100%;
@@ -338,17 +327,19 @@ button:hover {
   align-items: start;
   /* 내용 초과시 스크롤바 */
   overflow-y: auto;
-}
-/* 스크롤바 */
-.myProblem::-webkit-scrollbar {
-  width: 10px;  
-}
-.myProblem::-webkit-scrollbar-thumb {
-  background: #c0c0c0; /* 스크롤바 색상 */
-  border-radius: 10px; /* 스크롤바 둥근 테두리 */
-}
-.myProblem::-webkit-scrollbar-track {
-  background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+
+
+  /* 스크롤바 */
+  &::-webkit-scrollbar {
+    width: 10px;  
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+  }
+  &::-webkit-scrollbar-track {
+    background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+  }
 }
 
 
@@ -359,24 +350,29 @@ button:hover {
   align-items: start;
   /* 내용 초과시 스크롤바 */
   overflow-y: auto;
+
+  /* 스크롤바 */
+  &::-webkit-scrollbar {
+    width: 10px;  
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+  }
+  &::-webkit-scrollbar-track {
+    background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
+  }
 }
-/* 스크롤바 */
-.myFeedback::-webkit-scrollbar {
-  width: 10px;  
-}
-.myFeedback::-webkit-scrollbar-thumb {
-  background: #c0c0c0; /* 스크롤바 색상 */
-  border-radius: 10px; /* 스크롤바 둥근 테두리 */
-}
-.myFeedback::-webkit-scrollbar-track {
-  background: #e7e6f696;  /*스크롤바 뒷 배경 색상*/
-}
+
 
 .problems, .feeds{
   width: 100%;
   display: flex;
   padding: 4px 0;
-  
+  *{
+    display: flex;
+    align-items: center;
+  }
 }
 .problemList, .FeedList{
   width: 100%;
@@ -384,11 +380,7 @@ button:hover {
   padding: 20px 0;
   margin: 20px 0;
 }
-.problems > *,
-.feeds > *{
-  display: flex;
-  align-items: center;
-}
+
 .feeds > :last-child{
   margin: auto;
   display: flex;
@@ -454,6 +446,7 @@ button:hover {
 .FeedList :hover {
   background-color: rgba(243, 242, 242, 0.737);
 }
+
 /* noproblems,noFeed 상태일때는 적용x */
 .problemList:hover > .noProblems,
 .FeedList:hover > .noFeed{
@@ -554,39 +547,38 @@ button:hover {
   padding-top: 16px;
   z-index: 999;
   font-family: var(--Font1);
-
+  .memberName{
+    color: rgb(37, 37, 37);
+    font-size: 17px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  :first-child{
+    margin: 15px auto;
+  }
+  .navbar_bottom{
+    margin-top: 20px;
+    width: 100%;
+    
+    font-size: 14px;
+    color: #000000; opacity:75%;
+    border-top: solid 3px #d7d6d6;
+  }
 }
 
-.dropdown-content > .memberName{
-  color: rgb(37, 37, 37);
-  font-size: 17px;
-  margin-bottom: 16px;
-  font-size: 20px;
-  font-weight: bold;
-}
-.dropdown-content > :first-child{
-  margin: 15px auto;
-}
-.dropdown-content > .navbar_bottom{
-  margin-top: 20px;
-  width: 100%;
-  
-  font-size: 14px;
-  color: #000000; opacity:75%;
-  border-top: solid 3px #d7d6d6;
-}
 .navbarInfo{
   width: 30%;
   text-align: left;
-}
-.navbarInfo > *{
-  font-size: 15px;
-  color: #808080;
-}
-.navbarInfo > .memberScore{
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  *{
+    font-size: 15px;
+    color: #808080;
+  }
+  .memberScore{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
 }
 .memberScore > p{
   color: #04CA00;
@@ -603,13 +595,13 @@ button:hover {
 .navbar_bottom{
   display: flex;
   justify-content: center;
-}
-.navbar_bottom > *{
-  width: 100%;
-  padding: 10px 8px;
-}
-.navbar_bottom > .btn_mypage{
-  border-right: solid 3px #d7d6d6;
+  *{
+    width: 100%;
+    padding: 10px 8px;
+  }
+  .btn_mypage{
+    border-right: solid 3px #d7d6d6;
+  }
 }
 
 .btn_mypage, .btn_logout{
@@ -729,29 +721,28 @@ button:hover {
   margin: auto;
   margin-bottom: 8px;
   justify-content: space-between;
+  .right{
+    /* 수정 */
+    display: flex;
+    font-size: var(--font-medium);
+  }
 }
 
-.solving > .right{
-  /* 수정 */
-  display: flex;
-  font-size: var(--font-medium);
-}
 .left > .userGen{
   width: 44px;
   font-size: 20px;
   display: flex;
   color: #04CA00;
   font-weight: bold;
-
+}
+.left > .userName{
+    width: 100px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
 }
 .right > .process_num{
   color: black;
-  font-size: 20px;
-  font-weight: bold;
-}
-.left > .userName{
-  width: 100px;
-  text-align: left;
   font-size: 20px;
   font-weight: bold;
 }
@@ -779,7 +770,6 @@ button:hover {
 }
 
 
-
 /* footer */
 .footer{
   height: 240px;
@@ -788,36 +778,37 @@ button:hover {
   margin-top: 300px;
   display: flex;
   padding: 20px 0;
+  :not(.logo, .info1, .info2, .footer_logout){
+    color: #ffffffec;
+  }
 }
 .mainPage .footer {
   margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
 }
 .footer_left{
   width: 60%;
-}
-.footer_left > .info{
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-left: 40px;
-}
-.footer_left > .logo{
-  width: 140px;
-  height: 100px;
-  font-size: 40px;
-  font-weight: bold;
-  margin-top: 28px;
-  color: #ffffffec;
-}
-.footer_left > .info > *{
-  display: flex;
-  align-items: center;
-}
-.info > * > p{
-  margin-left: 12px;
-}
-.info > *{
-  margin-bottom: 8px;
+  .info{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 40px;
+    *{
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        p{
+           margin-left: 12px;
+        }
+    }
+  }
+  .logo{
+    width: 140px;
+    height: 100px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 28px;
+    color: #ffffffec;
+  }
 }
 .footer_right{
   height: 80%;
@@ -826,21 +817,18 @@ button:hover {
   flex-direction: column;
   justify-content: end;
   margin-top: 12px;
+  .sns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    cursor: pointer;
+    *:first-child{
+        margin-right: 12px;
+    }
+  }
 }
-.footer_right > .sns {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 12px;
-  cursor: pointer;
-}
-.sns > *:first-child{
-  margin-right: 12px;
-}
-.footer :not(.logo, .info1, .info2, .footer_logout){
-  color: #ffffffec;
-  ;
-}
+
 .info1, .info2{
   color: #C8C4C4; opacity: 57%;
 }

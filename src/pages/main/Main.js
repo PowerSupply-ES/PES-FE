@@ -4,7 +4,7 @@ import Footer from "components/footer/Footer";
 import MovingImage from "components/main/MovingImage";
 import ScrollImage from "components/main/ScrollImage";
 
-import '../../App.css';
+import '../../styles/css/App.css';
 
 function Main() {
 

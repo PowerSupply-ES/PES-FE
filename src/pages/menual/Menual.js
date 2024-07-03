@@ -4,8 +4,7 @@ import Footer from "components/footer/Footer";
 import AdPart from "components/list/AdPart";
 import { useNavigate } from 'react-router-dom';
 
-import { FaCircleUser } from "react-icons/fa6";
-import '../../styles/css/menual.css';
+import '../../styles/css/App.css';
 
 import img_probList from '../../assets/images/probList.png';
 import img_solving from '../../assets/images/solving.png';

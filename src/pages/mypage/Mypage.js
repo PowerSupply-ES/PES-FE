@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import Header from 'components/main/Header';
 import Footer from "components/footer/Footer";
 import { FaCircleUser } from "react-icons/fa6";
-import '../../App.css';
+import '../../styles/css/App.css';
+
 
 const MyPage = () => {
     //정보리스트
@@ -14,9 +15,6 @@ const MyPage = () => {
   
     //내피드백리스트
     const [myFeedback, setMyFeedback] = useState([]);
-
-
-    // const serverUrl = serverConfig.serverUrl;
   
     // 내 정보
     const sendGetInfo = () => {
