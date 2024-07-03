@@ -85,6 +85,10 @@
                         background-color: #434349; opacity: 80%;
                         border-color: #434349;
                     }
+                    .delete_btn{
+                        background-color: #ff4a4a; opacity: 80%;
+                        border-color: #ff4a4a;
+                    }
                 }
                 .title_wrapper, .list_wrapper{
                     display: inherit;
@@ -121,15 +125,15 @@
 
     // ----- 회원 detail page
 
-    .userdetail_container{
-        display: flex;
-        height: calc(100vh - 160px);  /* 컴포넌트 높이 뺀 값 */
+    // .userdetail_container{
+    //     display: flex;
+    //     height: calc(100vh - 160px);  /* 컴포넌트 높이 뺀 값 */
 
         
 
 
         
-    }
+    // }
 
 
 

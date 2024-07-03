@@ -21,6 +21,7 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
             <li className="title_none">
                 <button className="levelup_btn">등업</button>
                 <button className="info_btn" onClick={()=>gotoDetail}>정보</button>
+                <button className="delete_btn">삭제</button>
             </li>      
             </ul>
         </>
