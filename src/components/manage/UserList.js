@@ -13,16 +13,15 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
     return(
         <>
             <ul className="list_wrapper">
-
-            <li className="title_state">{memberStatus}</li>
-            <li className="title_name">{memberName}</li>
-            <li className="title_stunum">{memberId}</li>   {/* 회원id */}
-            <li className="title_studep">{memberMajor}</li>
-            <li className="title_none">
-                <button className="levelup_btn">등업</button>
-                <button className="info_btn" onClick={()=>gotoDetail}>정보</button>
-                <button className="delete_btn">삭제</button>
-            </li>      
+                <li className="title_state">{memberStatus}</li>
+                <li className="title_name">{memberName}</li>
+                <li className="title_stunum">{memberId}</li>   {/* 회원id */}
+                <li className="title_studep">{memberMajor}</li>
+                <li className="title_none">
+                    <button className="levelup_btn">등업</button>
+                    <button className="info_btn" onClick={()=>gotoDetail}>정보</button>
+                    <button className="del_btn">삭제</button>
+                </li>      
             </ul>
         </>
     )
