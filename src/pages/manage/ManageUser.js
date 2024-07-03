@@ -1,6 +1,7 @@
 import Header from "components/main/Header";
 import '../../styles/css/manage.css';
-import UserList from "components/manage/UserList";
+import GetUserList from "components/manage/GetUserList";
+
 import SideTab from "./SideTab";
 
 function ManageUser(){
@@ -30,7 +31,7 @@ function ManageUser(){
                         </div>
 
                         {/* 회원목록 */}
-                        <UserList></UserList>
+                        <GetUserList></GetUserList>
 
                     </div>
                 </div>
