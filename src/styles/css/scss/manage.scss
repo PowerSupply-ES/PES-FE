@@ -94,7 +94,7 @@
                         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
                     }
                     .levelup_btn{
-                        background-color: #FFD66B; opacity: 89%;
+                        background-color: #FFD66B; opacity: 80%;
                         border-color: #FFD66B;
                         
                         &:hover{
@@ -116,13 +116,18 @@
                     // }
 
                     .title_state_new{
-                        color: #FF8412;
+                        color: #ffb862;
+                        font-weight: 600;
                     }
                     .title_state_old{
-                        color: #3253FF;
+                        color: #3253ffc4;
+                        font-weight: 600;
                     }
                     .title_state_manage{
-                        color: red;
+                        color: white;
+                        background-color: #434349;
+                        padding-top: 4px;
+                        font-size: 15px;
                     }
                     .title_name{
                         font-weight: bold;
@@ -134,14 +139,8 @@
                     display: inherit;
                     height: 40px;
                     align-items: center;
-
-                    .title_state_new{
-                        flex: 1;
-                    }
-                    .title_state_old{
-                        flex: 1;
-                    }
-                    .title_state_manage{
+                    
+                    .title_state, .title_state_new, .title_state_old, .title_state_manage{
                         flex: 1;
                     }
                     .title_name{
