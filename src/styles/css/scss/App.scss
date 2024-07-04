@@ -13,6 +13,17 @@
 }
 
 
+/* -----공통요소----- */
+*{
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+}
+button:hover {
+  cursor: pointer;
+}
+
 
 
 /* question페이지에서 fail/pass에 따른 배경화면 변화 */
@@ -25,17 +36,3 @@
 .nonePage{
   background-color: #E9E9EB;
 }
-
-
-
-/* -----공통요소----- */
-*{
-  list-style-type: none;
-  text-decoration: none;
-  margin: 0px;
-  padding: 0px;
-}
-button:hover {
-  cursor: pointer;
-}
-

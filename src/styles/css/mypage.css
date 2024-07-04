@@ -51,6 +51,7 @@
   height: 100vh;
   padding-bottom: 300px;
   margin-bottom: -300px;
+  height: calc(100vh - 300px); /* header, footer 높이 뺀 값 */
 }
 .content_mypage h2 {
   width: 100%;

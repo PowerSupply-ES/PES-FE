@@ -1,7 +1,10 @@
 @charset "UTF-8";
+.content_container {
+  height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
+}
 .content_container .manageuser_container {
   display: flex;
-  height: calc(100vh - 160px); /* 컴포넌트 높이 뺀 값 */
+  height: calc(100vh + 100px);
 }
 .content_container .manageuser_container .tab_wrapper {
   flex: 1;
@@ -21,6 +24,7 @@
   background-color: inherit;
   color: inherit;
   font-size: 16px;
+  font-weight: 600;
 }
 .content_container .manageuser_container .tab_wrapper .tab_btn_wrapper button:hover {
   background-color: #6c6c6c;

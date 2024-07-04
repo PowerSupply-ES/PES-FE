@@ -1,11 +1,13 @@
 .content_container{
-    
+    height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
+
+
     // 믹스인 사용해서 중복 줄여보기
 
     // ----- 회원리스트 page
     .manageuser_container{
         display: flex;
-        height: calc(100vh - 160px);  /* 컴포넌트 높이 뺀 값 */
+        height: calc(100vh + 100px);  
 
 
         .tab_wrapper{
@@ -27,6 +29,8 @@
                     background-color: inherit;
                     color: inherit;
                     font-size: 16px;
+                    font-weight: 600;
+
                     &:hover{
                         background-color: #6c6c6c;
                     }
@@ -74,6 +78,8 @@
                 display: flex;
                 flex-direction: column;
 
+
+                // --------- ManagerUser
                 .title_wrapper{
                     background-color: #F8F8F8;
                     border-top: solid #ACACAC 1px;
@@ -138,7 +144,6 @@
                     }
                 }
 
-
                 .title_wrapper, .list_wrapper{
                     display: inherit;
                     height: 40px;
@@ -160,6 +165,9 @@
                         flex: 3;
                     }
                 }
+
+
+                // --------- UserDetail
  
             }
         }
