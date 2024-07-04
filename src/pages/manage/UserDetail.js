@@ -26,21 +26,24 @@ function UserDetail(){
                     <div className='mypage_content'>
 
                         <div className='left'>
-                        {/* 사용자 정보 */}
-                        <div className="memberInfo">
-                            <div className='info_name'>
-                            <FaCircleUser size={40} style={{color:'grey'}}></FaCircleUser>
-                            <p>memberName</p>
-                            {/* <p>님</p> */}
+                            {/* 사용자 정보 */}
+                            <div className="memberInfo">
+                                <div className='info_name'>
+                                <FaCircleUser size={40} style={{color:'grey'}}></FaCircleUser>
+                                <p>memberName</p>
+                                {/* <p>님</p> */}
+                                </div>
+                                <div className='text'><div>학 번</div><p>학 번</p></div>
+                                <div className='text'><div>이메일</div><p>이메일</p></div>
+                                <div className='text'><div>기 수</div><p>기 수</p></div>
+                                <div className='text'><div>상 태</div><p>상 태</p></div>
+                                <div className='text'><div>학 과</div><p>학 과</p></div>
+                                <div className='text'><div>번 호</div><p>번 호</p></div>
                             </div>
-                            <div className='text'><div>학 번</div><p>학 번</p></div>
-                            <div className='text'><div>이메일</div><p>이메일</p></div>
-                            <div className='text'><div>기 수</div><p>기 수</p></div>
-                            <div className='text'><div>상 태</div><p>상 태</p></div>
-                            <div className='text'><div>학 과</div><p>학 과</p></div>
-                            <div className='text'><div>번 호</div><p>번 호</p></div>
+                            <button className='btn_deletemem'>회원 삭제</button>
+
                         </div>
-                        </div>
+
 
                         <div className='right'>
                             {/* 내가 푼 문제 */}

@@ -7,9 +7,32 @@
     margin: 0 auto;
     
     .left{
-      margin:  60px 60px 0 0;
+      margin: 48px 60px 0 0;
       display: flex;
+      flex-direction: column;
       align-items: baseline;
+      align-items: center;
+
+      button{
+        height: 32px;
+        width: 180px;
+        border: solid 1px;
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        // margin-left: 8px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+
+      .btn_deletemem{
+        background-color: #ff2d2d; opacity: 80%;
+          border-color: #ff2d2d;
+          
+          &:hover{
+              background-color: #ff2d2d; opacity: 95%;
+          }
+      }
     }
     .right{
       display: flex;
@@ -68,7 +91,7 @@
     font-weight: bold;
     color: hsl(0, 0%, 78%);
   }
-  .memberInfo,.myProblem, .myFeedback{
+  .memberInfo, .myProblem, .myFeedback{
     padding: 10px;
     background-color: #ffffff;
     display: flex;
@@ -78,10 +101,11 @@
     border: solid #C3C2C2 2px;
     border-radius: 10px;
   }
+
   .memberInfo{
     height: 50%;
     width: 400px;
-    margin: 36px auto;
+    margin: 36px auto 20px;
     justify-content: center;
     padding: 20px;
     .text{

@@ -7,9 +7,30 @@
   margin: 0 auto;
 }
 .mypage_content .left {
-  margin: 60px 60px 0 0;
+  margin: 48px 60px 0 0;
   display: flex;
+  flex-direction: column;
   align-items: baseline;
+  align-items: center;
+}
+.mypage_content .left button {
+  height: 32px;
+  width: 180px;
+  border: solid 1px;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mypage_content .left .btn_deletemem {
+  background-color: #ff2d2d;
+  opacity: 80%;
+  border-color: #ff2d2d;
+}
+.mypage_content .left .btn_deletemem:hover {
+  background-color: #ff2d2d;
+  opacity: 95%;
 }
 .mypage_content .right {
   display: flex;
@@ -85,7 +106,7 @@
 .memberInfo {
   height: 50%;
   width: 400px;
-  margin: 36px auto;
+  margin: 36px auto 20px;
   justify-content: center;
   padding: 20px;
 }
