@@ -1,16 +1,15 @@
 import React from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
 import MovingImage from "components/main/MovingImage";
 import ScrollImage from "components/main/ScrollImage";
 
 import '../../styles/css/App.css';
+import '../../styles/css/mainAnimation.css';
+
 
 function Main() {
 
   return (
     <div className='mainPage'>
-      <Header></Header>
     
       <div className='content'>
         {/* 상단 이미지 애니메이션*/}
@@ -20,8 +19,6 @@ function Main() {
         <ScrollImage/>
 
       </div>
-
-      <Footer></Footer>
     </div>
   );
 }

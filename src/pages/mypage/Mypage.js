@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
 import { FaCircleUser } from "react-icons/fa6";
 import '../../styles/css/App.css';
+import '../../styles/css/mypage.css';
 
 
 const MyPage = () => {
@@ -105,7 +104,6 @@ const MyPage = () => {
   
     return (
       <div>
-        <Header></Header>
 
         <div className='content_mypage'>
 
@@ -161,7 +159,6 @@ const MyPage = () => {
 
           </div>
         </div>
-        <Footer></Footer>
       </div>
     );
   };

@@ -15,7 +15,6 @@ function GetUserList(){
             const res = await axios.get(uri);
             const memList = res.data;
             setMemDate([...memList]);
-            console.log("memList = ",memList);
         }catch(error){
             console.error(error);
         }

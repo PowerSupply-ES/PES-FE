@@ -1,5 +1,4 @@
 // 회원상세페이지
-import Header from "components/main/Header";
 import '../../styles/css/manage.css';
 import SideTab from "components/manage/SideTab";
 
@@ -8,7 +7,6 @@ function UserDetail(){
 
     return(
         <div className="content_container">
-            <Header></Header>
 
             {/* 본문 */}
             <div className="manageuser_container">

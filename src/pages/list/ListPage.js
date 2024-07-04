@@ -2,8 +2,6 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
-import Header from "components/main/Header";
-import Footer from "components/footer/Footer";
 import JuniorRank from "components/ranking/JuniorRank";
 import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
@@ -57,7 +55,6 @@ const ListPage = () => {
 
     return (
         <div>
-            <Header/>
             <AdPart/>
             <StyledListPage style={{width: "100%", display: "flex", justifyContent: "center"}}>
                 {/* 문제 섹션 */}
@@ -103,7 +100,6 @@ const ListPage = () => {
                     {selectedOption === 'senior' && <SeniorRank />}
                 </div>
             </StyledListPage>
-            <Footer></Footer>
         </div>
     );
 };

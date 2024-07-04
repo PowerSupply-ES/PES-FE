@@ -6,7 +6,6 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
     
     // 페이지 이동
     const gotoDetail = () =>{
-        console.log("click!!");
         sessionStorage.setItem('memberId', memberId);
         navigate(`/manageUser/${memberId}`);
     }
@@ -16,9 +15,9 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
             <ul className="list_wrapper">
                 {/* memberStatus에 따라 색상부여 */}
                 <li className=
-                    {memberStatus=="신입생" ? "title_state_new" 
-                    : memberStatus=="재학생" ? "title_state_old"
-                    : memberStatus=="관리자" ? "title_state_manage"
+                    {memberStatus === "신입생" ? "title_state_new" 
+                    : memberStatus === "재학생" ? "title_state_old"
+                    : memberStatus === "관리자" ? "title_state_manage"
                     : ""
                 }
                 >{memberStatus}</li>
