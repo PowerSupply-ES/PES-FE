@@ -1,3 +1,4 @@
+// 회원상세페이지
 import Header from "components/main/Header";
 import '../../styles/css/manage.css';
 import SideTab from "components/manage/SideTab";
@@ -14,7 +15,7 @@ function UserDetail(){
                 {/* 좌측 메뉴탭 */}
                 <SideTab></SideTab>
 
-                {/* 우측 유저 목록 */}
+                {/* 우측 유저 정보 */}
                 <div className="userlist_wrapper">
                     <div className="list_container">
 

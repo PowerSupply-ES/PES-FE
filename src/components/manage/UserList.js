@@ -6,6 +6,7 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
     
     // 페이지 이동
     const gotoDetail = () =>{
+        console.log("click!!");
         sessionStorage.setItem('memberId', memberId);
         navigate(`/manageUser/${memberId}`);
     }
@@ -26,7 +27,7 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
                 <li className="title_studep">{memberMajor}</li>
                 <li className="title_none">
                     <button className="levelup_btn">등업</button>
-                    <button className="info_btn" onClick={()=>gotoDetail}>정보</button>
+                    <button className="info_btn" onClick={gotoDetail}>정보</button>
                     {/* <button className="del_btn">삭제</button> */}
                 </li>      
             </ul>
