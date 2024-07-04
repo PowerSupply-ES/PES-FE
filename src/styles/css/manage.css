@@ -87,21 +87,39 @@
   opacity: 89%;
   border-color: #FFD66B;
 }
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn:hover {
+  background-color: #FFD66B;
+  opacity: 95%;
+}
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn {
   background-color: #434349;
   opacity: 80%;
   border-color: #434349;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn:hover {
+  background-color: #434349;
+  opacity: 95%;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
   display: inherit;
   height: 40px;
   align-items: center;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_new, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new {
   flex: 1;
+  color: #FF8412;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_old, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old {
+  flex: 1;
+  color: #3253FF;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_manage, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
+  flex: 1;
+  color: red;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
   flex: 1;
+  font-weight: bold;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_stunum, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum {
   flex: 2;

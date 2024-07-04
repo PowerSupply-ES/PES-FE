@@ -13,7 +13,14 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
     return(
         <>
             <ul className="list_wrapper">
-                <li className="title_state">{memberStatus}</li>
+                {/* memberStatus에 따라 색상부여 */}
+                <li className=
+                    {memberStatus=="신입생" ? "title_state_new" 
+                    : memberStatus=="재학생" ? "title_state_old"
+                    : memberStatus=="관리자" ? "title_state_manage"
+                    : ""
+                }
+                >{memberStatus}</li>
                 <li className="title_name">{memberName}</li>
                 <li className="title_stunum">{memberId}</li>   {/* 회원id */}
                 <li className="title_studep">{memberMajor}</li>

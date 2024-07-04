@@ -96,10 +96,18 @@
                     .levelup_btn{
                         background-color: #FFD66B; opacity: 89%;
                         border-color: #FFD66B;
+                        
+                        &:hover{
+                            background-color: #FFD66B; opacity: 95%;
+                        }
                     }
                     .info_btn{
                         background-color: #434349; opacity: 80%;
                         border-color: #434349;
+
+                        &:hover{
+                            background-color: #434349; opacity: 95%;
+                        }
                     }
                     // .del_btn{
                     //     background-color: #f96464; opacity: 80%;
@@ -112,12 +120,21 @@
                     height: 40px;
                     align-items: center;
 
-                    .title_state{
+                    .title_state_new{
                         flex: 1;
+                        color: #FF8412;
+                    }
+                    .title_state_old{
+                        flex: 1;
+                        color: #3253FF;
+                    }
+                    .title_state_manage{
+                        flex: 1;
+                        color: red;
                     }
                     .title_name{
                         flex: 1;
-
+                        font-weight: bold;
                     }
                     .title_stunum{
                         flex: 2;
