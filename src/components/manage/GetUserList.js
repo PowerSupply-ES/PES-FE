@@ -19,6 +19,7 @@ function GetUserList(){
             console.error(error);
         }
     }
+    //예외처리하기
 
     useEffect(()=>{
         getUserList();

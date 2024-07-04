@@ -15,7 +15,7 @@
 }
 .mypage_content .left button {
   height: 32px;
-  width: 180px;
+  width: 160px;
   border: solid 1px;
   border-radius: 10px;
   color: white;
@@ -27,9 +27,20 @@
   background-color: #ff2d2d;
   opacity: 80%;
   border-color: #ff2d2d;
+  margin-left: 8px;
 }
 .mypage_content .left .btn_deletemem:hover {
   background-color: #ff2d2d;
+  opacity: 95%;
+}
+.mypage_content .left .btn_editmem {
+  background-color: rgba(53, 56, 61, 0.7921568627);
+  opacity: 80%;
+  border-color: rgba(53, 56, 61, 0.7921568627);
+  margin-left: 8px;
+}
+.mypage_content .left .btn_editmem:hover {
+  background-color: rgba(53, 56, 61, 0.7921568627);
   opacity: 95%;
 }
 .mypage_content .right {

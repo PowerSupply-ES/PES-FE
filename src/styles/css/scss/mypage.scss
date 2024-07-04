@@ -15,7 +15,7 @@
 
       button{
         height: 32px;
-        width: 180px;
+        width: 160px;
         border: solid 1px;
         border-radius: 10px;
         color: white;
@@ -27,11 +27,21 @@
 
       .btn_deletemem{
         background-color: #ff2d2d; opacity: 80%;
-          border-color: #ff2d2d;
-          
-          &:hover{
-              background-color: #ff2d2d; opacity: 95%;
-          }
+        border-color: #ff2d2d;
+        margin-left: 8px;
+        
+        &:hover{
+            background-color: #ff2d2d; opacity: 95%;
+        }
+      }
+      .btn_editmem{
+        background-color: #35383dca; opacity: 80%;
+        border-color: #35383dca;
+        margin-left: 8px;
+        
+        &:hover{
+            background-color: #35383dca; opacity: 95%;
+        }
       }
     }
     .right{

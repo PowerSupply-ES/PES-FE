@@ -15,9 +15,9 @@ const MyPage = () => {
     //내피드백리스트
     const [myFeedback, setMyFeedback] = useState([]);
   
-    // 내 정보
+    // 내 정보 GET 요청
     const sendGetInfo = () => {
-      const uri = 'api/mypage/information';
+      const uri = '/api/mypage/information';
   
       fetch(`${uri}`, {
         method: 'GET',
@@ -38,7 +38,7 @@ const MyPage = () => {
         });
     };
   
-    // 내가 푼 문제
+    // 내가 푼 문제 GET요청
     const sendGetProb = () => {
       const uri = 'api/mypage/mysolve';
   
@@ -62,7 +62,7 @@ const MyPage = () => {
     };
 
 
-    // 내 feedback
+    // 내 feedback GET요청
     const sendGetFeedback = () => {
       const uri = 'api/mypage/myfeedback';
   
