@@ -41,6 +41,19 @@
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  background-color: #E9E9EB;
+  padding-bottom: 40px;
+  overflow-y: auto;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-thumb {
+  background: #c0c0c0; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-track {
+  background: rgba(231, 230, 246, 0.5882352941); /*스크롤바 뒷 배경 색상*/
 }
 .content_container .manageuser_container .userlist_wrapper .list_container {
   width: 72%;
@@ -67,6 +80,7 @@
   font-size: 14px;
   font-weight: 600;
   margin-left: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn {
   background-color: #FFD66B;
@@ -97,8 +111,4 @@
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
   flex: 3;
-}
-.content_container .userdetail_container {
-  display: flex;
-  height: calc(100vh - 160px); /* 컴포넌트 높이 뺀 값 */
 }
