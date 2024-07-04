@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import serverConfig from '../../config';
+import '../../styles/css/solution.css';
+
 
 
 function Solution() {

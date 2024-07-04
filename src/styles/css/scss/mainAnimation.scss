@@ -38,12 +38,13 @@
     }
 }
   
-
-.mainPage > .content{
+.mainPage{
+  margin-bottom: -300px;
+  .content{
     background-color: #000000;
 }
+}
 
-  
   .content0 > img,
   .content2 > img,
   .content3 > img,

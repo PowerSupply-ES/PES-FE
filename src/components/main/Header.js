@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-// import Logout from 'components/logout/Logout';
 import '../../styles/css/topDropdown.css'; 
 import '../../styles/css/navbar.css'; 
-
+import '../../styles/css/footer.css'; 
+// import Logout from 'components/logout/Logout';
 
 
 import { Outlet, useNavigate } from 'react-router-dom';

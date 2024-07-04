@@ -1,0 +1,175 @@
+@charset "UTF-8";
+/* ----------풀이 ----------*/
+/* 풀이 버튼 */
+.right > .btn_fail,
+.right > .btn_success {
+  width: 80px;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 18px;
+  padding: 7px 12px;
+  margin-left: 20px;
+}
+
+/* 풀이타이틀 */
+.solution_container {
+  width: 1142px;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.solution_bar, .solution, .solutionBtn, .solving, .left, .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-medium);
+}
+
+.solution_bar {
+  justify-content: space-between;
+}
+
+.solution {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.solution_num {
+  margin-right: 16px;
+  color: #FF8412;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.solution_title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 60px;
+}
+
+.prob_score {
+  display: flex;
+  font-weight: bold;
+  font-size: 20px;
+  color: #04CA00;
+}
+
+.solution_score {
+  font-size: 20px;
+}
+
+.btn_process {
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #FFFFFF;
+  color: #6A6B6F;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid #DEDEDE;
+  margin-right: 20px;
+  text-align: center;
+  padding: 3px;
+}
+
+/* 풀이버튼 */
+.btn_baekjoon, .btn_challenge {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  border: 2px solid;
+  background: #FFF;
+  padding: 10px 24px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn_baekjoon {
+  border-color: #325CC7;
+  color: #325CC7;
+  margin-right: 12px;
+}
+
+.btn_challenge {
+  border-color: #DEDEDE;
+  color: #6A6B6F;
+}
+
+/* 성공인원수 */
+.pass_num {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: auto;
+  margin: 40px 0px 40px auto;
+}
+
+/* 풀이목록 */
+.solving_list {
+  margin-top: var(--margin-middle);
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.solving {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+.solving .right {
+  /* 수정 */
+  display: flex;
+  font-size: var(--font-medium);
+}
+
+.left > .userGen {
+  width: 44px;
+  font-size: 20px;
+  display: flex;
+  color: #04CA00;
+  font-weight: bold;
+}
+
+.left > .userName {
+  width: 100px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.right > .process_num {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.process_num, .userGen {
+  margin-right: 20px;
+}
+
+.btn_goto_challenge {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 6px 28px;
+  color: white;
+  border: solid #565656;
+  border-radius: 5px;
+  background-color: #565656;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 1px 3px #CCC9C9;
+  margin-left: 12px;
+}
+.btn_goto_challenge:hover {
+  background-color: #262626;
+  border-color: #262626;
+}

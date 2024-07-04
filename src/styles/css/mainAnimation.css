@@ -40,7 +40,10 @@
   border: solid #8b71d3 2px;
 }
 
-.mainPage > .content {
+.mainPage {
+  margin-bottom: -300px;
+}
+.mainPage .content {
   background-color: #000000;
 }
 
