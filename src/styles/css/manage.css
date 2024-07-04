@@ -25,14 +25,14 @@
 .content_container .manageuser_container .tab_wrapper .tab_btn_wrapper button:hover {
   background-color: #6c6c6c;
 }
-.content_container .manageuser_container .tab_wrapper .btn_logout {
+.content_container .manageuser_container .tab_wrapper .btn_mng_logout {
   background-color: inherit;
   color: inherit;
   display: flex;
   justify-content: right;
   padding: 0 20px 20px 0;
 }
-.content_container .manageuser_container .tab_wrapper .btn_logout:hover {
+.content_container .manageuser_container .tab_wrapper .btn_mng_logout:hover {
   background-color: #484848;
 }
 .content_container .manageuser_container .userlist_wrapper {
