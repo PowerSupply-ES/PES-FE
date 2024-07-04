@@ -114,7 +114,22 @@
                     //     border-color: #ff4a4a;
                     //     margin-left: 40px;
                     // }
+
+                    .title_state_new{
+                        color: #FF8412;
+                    }
+                    .title_state_old{
+                        color: #3253FF;
+                    }
+                    .title_state_manage{
+                        color: red;
+                    }
+                    .title_name{
+                        font-weight: bold;
+                    }
                 }
+
+
                 .title_wrapper, .list_wrapper{
                     display: inherit;
                     height: 40px;
@@ -122,23 +137,18 @@
 
                     .title_state_new{
                         flex: 1;
-                        color: #FF8412;
                     }
                     .title_state_old{
                         flex: 1;
-                        color: #3253FF;
                     }
                     .title_state_manage{
                         flex: 1;
-                        color: red;
                     }
                     .title_name{
                         flex: 1;
-                        font-weight: bold;
                     }
                     .title_stunum{
                         flex: 2;
-
                     }
                     .title_studep{
                         flex: 2;
@@ -156,7 +166,7 @@
 
 
 
-
+    
     // ----- 회원 detail page
 
     // .userdetail_container{
