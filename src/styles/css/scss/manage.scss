@@ -126,11 +126,15 @@
                     .title_state_manage{
                         color: white;
                         background-color: #434349;
-                        padding-top: 4px;
+                        padding: 4px 0px;
                         font-size: 15px;
                     }
                     .title_name{
                         font-weight: bold;
+                        color: #000000bf;
+                    }
+                    .title_stunum, .title_studep{
+                        color: #000000bf;
                     }
                 }
 

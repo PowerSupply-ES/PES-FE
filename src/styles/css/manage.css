@@ -111,11 +111,15 @@
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
   color: white;
   background-color: #434349;
-  padding-top: 4px;
+  padding: 4px 0px;
   font-size: 15px;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
   font-weight: bold;
+  color: rgba(0, 0, 0, 0.7490196078);
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+  color: rgba(0, 0, 0, 0.7490196078);
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
   display: inherit;
