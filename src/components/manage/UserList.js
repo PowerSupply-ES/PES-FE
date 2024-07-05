@@ -5,7 +5,7 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
     const navigate = useNavigate();
     
     // 페이지 이동
-    const gotoDetail = (memberId) =>{
+    const gotoDetail = ( memberId ) =>{
         sessionStorage.setItem('memberId', memberId);
         navigate(`/manageUser/${memberId}`);
     }

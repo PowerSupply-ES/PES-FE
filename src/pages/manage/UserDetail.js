@@ -25,6 +25,7 @@ function UserDetail(){
             const res = await axios.get(uri);
             const memDetail = res.data;
             setMemberData([...memDetail]);
+            console.log("memDetail = ",memDetail);
         }catch(error){
             console.error(error);
         }

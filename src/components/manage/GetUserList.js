@@ -5,7 +5,7 @@ import UserList from './UserList';
 
 function GetUserList(){
     
-    const [memDate, setMemDate] = useState([]);
+    const [memberData, setMemDate] = useState([]);
 
     // 회원목록 api호출
     const getUserList= async() =>{
@@ -28,7 +28,7 @@ function GetUserList(){
     
     return(
         <>
-        {memDate.map((mem) =>{
+        {memberData.map((mem) =>{
             return(
                 <UserList 
                     memberStatus={mem.memberStatus} 
