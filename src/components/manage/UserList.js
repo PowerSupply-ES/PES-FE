@@ -26,7 +26,7 @@ function UserList({memberStatus, memberName, memberId, memberMajor}){
                 <li className="title_studep">{memberMajor}</li>
                 <li className="title_none">
                     <button className="levelup_btn">등업</button>
-                    <button className="info_btn" onClick={gotoDetail(memberId)}>정보</button>
+                    <button className="info_btn" onClick={()=> gotoDetail(memberId)}>정보</button>
                     {/* <button className="del_btn">삭제</button> */}
                 </li>      
             </ul>
