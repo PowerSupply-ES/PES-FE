@@ -10,12 +10,16 @@ import { FaCircleUser } from "react-icons/fa6";
 
 
 function UserDetail(){
+    let url = new URL(window.location.href);
+    let memberId = url
+        .pathname
+        .split('/')[2];
 
     const [memberData, setMemberData] = useState([]);
 
     // 내 정보 GET 요청
     const sendGetInfo = async() => {
-        const uri = `/api/admin/member/${memberData.memberId}`;
+        const uri = `/api/admin/member/${memberId}`;
     
         try{
             const res = await axios.get(uri);
@@ -27,7 +31,7 @@ function UserDetail(){
         //예외처리하기
         
 
-        
+
         // fetch(`${uri}`, {
         //   method: 'GET',
         // })
