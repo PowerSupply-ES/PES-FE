@@ -15,7 +15,7 @@ function UserDetail(){
         .pathname
         .split('/')[2];
 
-    const [memberData, setMemberData] = useState();
+    const [memberData, setMemberData] = useState([]);
 
     // 내 정보 GET 요청
     const sendGetInfo = async() => {
@@ -31,26 +31,6 @@ function UserDetail(){
             console.error(error);
         }
         //예외처리하기
-        
-
-
-        // fetch(`${uri}`, {
-        //   method: 'GET',
-        // })
-        //   .then(response => {
-        //     if (!response.ok) {
-        //       console.log('서버응답:', response);
-        //       throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
-        //     }
-        //     return response.json();
-        //   })
-        //   .then(data => {
-        //     setMemberData(data);
-  
-        //   })
-        //   .catch(error => {
-        //     console.error('데이터 가져오기 실패:', error);
-        //   });
     };
 
     useEffect(()=>{
