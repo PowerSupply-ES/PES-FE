@@ -15,7 +15,7 @@ function UserDetail(){
         .pathname
         .split('/')[2];
 
-    const [memberData, setMemberData] = useState([]);
+    const [memberData, setMemberData] = useState();
 
     // 내 정보 GET 요청
     const sendGetInfo = async() => {
@@ -25,6 +25,7 @@ function UserDetail(){
             const res = await axios.get(uri);
             const memDetail = res.data;
             setMemberData([...memDetail]);
+            console.log("memberId = ",memberId);
             console.log("memDetail = ",memDetail);
         }catch(error){
             console.error(error);
