@@ -15,7 +15,7 @@ function UserDetail(){
         .pathname
         .split('/')[2];
 
-    const [memberData, setMemberData] = useState([]);
+    const [memberData, setMemberData] = useState();
 
     // 내 정보 GET 요청
     const sendGetInfo = async() => {
