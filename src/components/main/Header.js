@@ -98,7 +98,7 @@ function Header1(){
         //   'memberStatus': data.memberStatus,
         //   'hasNewNotices': data.hasNewNotices,
         // });
-
+        console.log("hasNewNotices = ", hasNewNotices);
 
       })
       .catch(error => {
@@ -186,10 +186,10 @@ function Header1(){
       <div>
         <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
          {/* 새로운 공지사항 있을때 아이콘 표시 */}
-         {/* {memberData.hasNewNotices ? 
+         {memberData.hasNewNotices ? 
           (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
           : (<></>)
-          } */}
+          }
         
 
       </div>

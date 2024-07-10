@@ -7,7 +7,7 @@ import '../../styles/css/mypage.css';
 
 const MyPage = () => {
     //정보리스트
-    const [memberData, setMemberData] = useState();
+    const [memberData, setMemberData] = useState([]);
 
     //내문제리스트
     const [myProb, setMyProb] = useState([]);
@@ -107,6 +107,12 @@ const MyPage = () => {
 
         <div className='content_mypage'>
 
+        {/* {!memberData ? (
+            <div>Loading...</div>
+        ) : ( */}
+
+
+
           {/* <h2>My 페이지</h2> */}
           <div className='mypage_content'>
             <div className='left'>
@@ -158,6 +164,7 @@ const MyPage = () => {
             </div>
 
           </div>
+        
         </div>
       </div>
     );
