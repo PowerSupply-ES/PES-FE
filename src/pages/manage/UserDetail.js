@@ -15,7 +15,7 @@ function UserDetail(){
         .pathname
         .split('/')[2];
 
-    const [memberData, setMemberData] = useState([]);
+    const [memberData, setMemberData] = useState();
 
     // 내 정보 GET 요청
     const sendGetInfo = async() => {
@@ -68,7 +68,7 @@ function UserDetail(){
                                         <div className='text'><div>기 수</div><p>{memberData.memberGen}</p></div>
                                         <div className='text'><div>상 태</div><p>{memberData.memberStatus}</p></div>
                                         <div className='text'><div>학 과</div><p>{memberData.memberMajor}</p></div>
-                                        <div className='text'><div>번 호</div><p>{memberData.memberPhone}</p></div>
+                                        <div className='text'><div>전화 번호</div><p>{memberData.memberPhone}</p></div>
                                     </div>
                                     <div cclassName='manage_btn_container'>
                                         <button className='btn_editmem'>회원 수정</button>
