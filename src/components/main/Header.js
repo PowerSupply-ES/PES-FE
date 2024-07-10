@@ -98,7 +98,7 @@ function Header1(){
         //   'memberStatus': data.memberStatus,
         //   'hasNewNotices': data.hasNewNotices,
         // });
-        console.log("hasNewNotices = ", hasNewNotices);
+        console.log("hasNewNotices = ", data.hasNewNotices);
 
       })
       .catch(error => {
