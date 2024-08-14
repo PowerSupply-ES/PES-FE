@@ -7,6 +7,7 @@ import 'styles/css/footer.css';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
 import Footer from 'components/footer/Footer';
+import MenuBar from './MenuBar';
 
 function Header() {
 
@@ -35,9 +36,10 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/')}>PES</p>
-           <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+           <MenuBar/>
+           {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
-           <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
+           <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
 
          </div>
 
@@ -178,18 +180,19 @@ function Header1(){
      
     <div className='navbar'>
       <a className='logo' onClick={()=>navigate('/')}>PES</a>
+      <MenuBar/>
+      {/* 
       <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
       <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
       <div>
         <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
-         {/* 새로운 공지사항 있을때 아이콘 표시 */}
+         TODO : 새로운 공지사항 있을때 아이콘 표시
          {memberData.hasNewNotices ? 
           (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
           : (<></>)
           }
-        
-
-      </div>
+      </div> 
+      */}
        
     </div>
   </div>
