@@ -8,6 +8,7 @@ const MenuBar = () => {
   const navigate = useNavigate();
 
   const handleMenu = (key) => {
+
     if(key==='1'){
       navigate('/list')
     }else if(key==='2'){

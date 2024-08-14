@@ -40,7 +40,6 @@ function Header0(){
            {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
            <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
-
          </div>
 
        </div>
@@ -150,36 +149,35 @@ function Header1(){
    //토글버튼
   <div className='container'>
 
-     <div className='btns'>
-       {/* <div className='userLevel'>level</div> */}
-       <button className='userId' onClick={toggleDropdown}>
-          {memberData.memberName}님
-         {isDropdownOpen &&(
-           <div className='dropdown-content'>
-              {/* <div className='userImage'></div> */}
-              {/* <FaUserCircle size={92}></FaUserCircle> */}
-              {/* <FaRobot size={72}></FaRobot> */}
-              <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
+    <div className='btns'>
+      {/* <div className='userLevel'>level</div> */}
+      <button className='userId' onClick={toggleDropdown}>
+        {memberData.memberName}님
+        {isDropdownOpen &&(
+          <div className='dropdown-content'>
+            {/* <div className='userImage'></div> */}
+            {/* <FaUserCircle size={92}></FaUserCircle> */}
+            {/* <FaRobot size={72}></FaRobot> */}
+            <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
 
-              <div className='memberName'>{memberData.memberName}님</div>
+            <div className='memberName'>{memberData.memberName}님</div>
               
-              <div className='navbarInfo'>
-                <div className='memberStatus'>{memberData.memberStatus}</div>
-                <div className='memberGen'>{memberData.memberGen}기</div>
-                <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
-              </div>
-              <div className='navbar_bottom'>
-                <a className='btn_mypage' href="/mypage">마이페이지</a>
-                <a onClick={handleLogoutClick} className='btn_top_logout'>로그아웃</a>    
-              </div>
-           </div>
-         )}
-       </button>
-       
+            <div className='navbarInfo'>
+              <div className='memberStatus'>{memberData.memberStatus}</div>
+              <div className='memberGen'>{memberData.memberGen}기</div>
+              <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
+            </div>
+            <div className='navbar_bottom'>
+               <a className='btn_mypage' href="/mypage">마이페이지</a>
+              <a onClick={handleLogoutClick} className='btn_top_logout'>로그아웃</a>    
+            </div>
+         </div>
+       )}
+      </button> 
     </div>
      
     <div className='navbar'>
-      <a className='logo' onClick={()=>navigate('/')}>PES</a>
+      <p className='logo' onClick={()=>navigate('/')}>PES</p>
       <MenuBar/>
       {/* 
       <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
