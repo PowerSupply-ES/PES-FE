@@ -52,7 +52,7 @@
     flex-direction: column; /* 수직으로 배치 */
     align-items: center;
     background-color: #ffffff;
-    height: 160px;
+    height: 132px;
   }
   .navbar{
     display: flex;
@@ -61,12 +61,12 @@
     align-items: center;
     *{
       display: flex;
-      justify-content: center;
+      // justify-content: center;
     }
     .logo{
-      width: 140px;
+      width: 120px;
       height: 80px;
-      margin-right: 28px;
+      margin-right: 20px;
       font-size: 40px;
       font-weight: bold;
       color: #1c1c1dc3;

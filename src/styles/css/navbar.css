@@ -60,7 +60,7 @@
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
   background-color: #ffffff;
-  height: 160px;
+  height: 132px;
 }
 
 .navbar {
@@ -71,12 +71,11 @@
 }
 .navbar * {
   display: flex;
-  justify-content: center;
 }
 .navbar .logo {
-  width: 140px;
+  width: 120px;
   height: 80px;
-  margin-right: 28px;
+  margin-right: 20px;
   font-size: 40px;
   font-weight: bold;
   color: rgba(28, 28, 29, 0.7647058824);

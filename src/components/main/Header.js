@@ -36,10 +36,11 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/')}>PES</p>
-           <MenuBar/>
+
            {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
            <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
+           <MenuBar/>
          </div>
 
        </div>
@@ -178,19 +179,21 @@ function Header1(){
      
     <div className='navbar'>
       <p className='logo' onClick={()=>navigate('/')}>PES</p>
-      <MenuBar/>
-      {/* 
-      <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+
+      
+      {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
       <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
-      <div>
-        <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
-         TODO : 새로운 공지사항 있을때 아이콘 표시
-         {memberData.hasNewNotices ? 
-          (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
-          : (<></>)
-          }
-      </div> 
-      */}
+      <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
+      <MenuBar/>
+
+
+      {/* TODO : 새로운 공지사항 있을때 아이콘 표시 */}
+      {/* {memberData.hasNewNotices ? 
+      (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
+      : (<></>)
+      } */}
+     
+     
        
     </div>
   </div>
