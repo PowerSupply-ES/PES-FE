@@ -107,12 +107,6 @@ const MyPage = () => {
 
         <div className='content_mypage'>
 
-        {/* {!memberData ? (
-            <div>Loading...</div>
-        ) : ( */}
-
-
-
           {/* <h2>My 페이지</h2> */}
           <div className='mypage_content'>
             <div className='left'>
@@ -164,7 +158,6 @@ const MyPage = () => {
             </div>
 
           </div>
-        
         </div>
       </div>
     );

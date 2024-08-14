@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import '../../styles/css/topDropdown.css'; 
 import '../../styles/css/navbar.css'; 
 import '../../styles/css/footer.css'; 
-// import Logout from 'components/logout/Logout';
-
 
 import { Outlet, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
