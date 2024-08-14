@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import '../../styles/css/manage.css';
+import 'styles/css/manage.css';
 
 function UserList({memberStatus, memberName, memberId, memberMajor}){
     const navigate = useNavigate();

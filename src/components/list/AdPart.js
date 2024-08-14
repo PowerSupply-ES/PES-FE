@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useRef, useEffect} from "react";
 
-import '../../styles/css/App.css';
+import 'styles/css/App.css';
 
 
 const AdContainer = styled.div`

@@ -1,6 +1,6 @@
 import React from 'react';
 import AceEditor from 'react-ace';
-import '../../styles/css/App.css';
+import 'styles/css/App.css';
 
 import 'ace-builds/src-noconflict/mode-c_cpp'; // C/C++ 언어 모드 import
 import 'ace-builds/src-noconflict/theme-monokai'; // 다크 모드 테마 import

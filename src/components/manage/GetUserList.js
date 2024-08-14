@@ -1,4 +1,4 @@
-import '../../styles/css/manage.css';
+import 'styles/css/manage.css';
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import UserList from './UserList';

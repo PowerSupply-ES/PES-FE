@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../../styles/css/topDropdown.css'; 
-import '../../styles/css/navbar.css'; 
-import '../../styles/css/footer.css'; 
+import 'styles/css/topDropdown.css'; 
+import 'styles/css/navbar.css'; 
+import 'styles/css/footer.css'; 
 
 import { Outlet, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";

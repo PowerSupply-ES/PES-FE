@@ -1,4 +1,4 @@
-import '../../styles/css/manage.css';
+import 'styles/css/manage.css';
 
 function SideTab(){
     return(

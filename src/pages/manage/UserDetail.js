@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 
-import '../../styles/css/manage.css';
-import '../../styles/css/mypage.css';
+import 'styles/css/manage.css';
+import 'styles/css/mypage.css';
 import SideTab from "components/manage/SideTab";
 import { FaCircleUser } from "react-icons/fa6";
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../../styles/css/notice.css';
+import 'styles/css/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
 
 

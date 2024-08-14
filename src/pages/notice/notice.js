@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/css/notice.css';
+import 'styles/css/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
 import { PiNotePencilFill } from "react-icons/pi";
 

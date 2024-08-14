@@ -1,16 +1,16 @@
 import React from 'react';
 import AdPart from "components/list/AdPart";
 import { useNavigate } from 'react-router-dom';
-import '../../styles/css/menual.css';
+import 'styles/css/menual.css';
 
 
-import img_probList from '../../assets/images/probList.png';
-import img_solving from '../../assets/images/solving.png';
-import img_pass from '../../assets/images/pass.png';
-import img_pass_feed from '../../assets/images/pass_feedback.png';
-import img_fail from '../../assets/images/fail.png';
-import img_fail_feed from '../../assets/images/fail_feedback.png';
-import img_solvingList from '../../assets/images/solvingList.png';
+import img_probList from 'assets/images/probList.png';
+import img_solving from 'assets/images/solving.png';
+import img_pass from 'assets/images/pass.png';
+import img_pass_feed from 'assets/images/pass_feedback.png';
+import img_fail from 'assets/images/fail.png';
+import img_fail_feed from 'assets/images/fail_feedback.png';
+import img_solvingList from 'assets/images/solvingList.png';
 
 
 const Menual = () => {

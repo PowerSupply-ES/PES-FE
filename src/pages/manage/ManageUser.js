@@ -1,6 +1,6 @@
-import '../../styles/css/manage.css';
+import 'styles/css/manage.css';
 import GetUserList from "components/manage/GetUserList";
-import SideTab from "../../components/manage/SideTab";
+import SideTab from "components/manage/SideTab";
 
 function ManageUser(){
     
