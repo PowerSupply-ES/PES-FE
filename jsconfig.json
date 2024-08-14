@@ -6,7 +6,7 @@
             "pages/*": ["pages/*"],
             "assets/*": ["assets/*"],
             "apis/*": ["apis/*"],
-            "styles/*": ["styles/*"],
+            "styles/*": ["styles/*"]
         }
     }
 }
