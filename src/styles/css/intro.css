@@ -2,7 +2,7 @@
 /* 로그인, 회원가입 공통body */
 .intro {
   background-color: #CCD1FF;
-  margin: 0;
+  margin-bottom: -300px;
   padding: 0;
   display: flex;
   justify-content: center;

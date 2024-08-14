@@ -8,7 +8,6 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
 import Footer from 'components/footer/Footer';
 
-
 function Header() {
 
   const status = sessionStorage.getItem('status');
