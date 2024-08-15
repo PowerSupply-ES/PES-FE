@@ -7,7 +7,8 @@ export const StyledListItem = styled.div`
         height: fit-content;
         align-items: center;
         margin: auto;
-        padding: 8px 0px;
+        padding: 8px 16px 8px 0px;
+        border-radius: 8px;
 
         background-color: ${props => props.state === "locked" ? "#DEDEDE"
             : props.state === "comment" ? "rgba(243, 242, 242, 0.737)"

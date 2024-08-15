@@ -5,7 +5,8 @@ import Box from "@mui/joy/Box";
 import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab, { tabClasses } from "@mui/joy/Tab";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function MenuBar() {
   const location = useLocation();
@@ -18,7 +19,7 @@ export default function MenuBar() {
     return null; // 홈이나 기타 경로인 경우 탭이 선택되지 않도록
   };
 
-  const [index, setIndex] = React.useState(getInitialIndex());
+  const [index, setIndex] = useState(getInitialIndex());
 
   // 탭 이동
   const toggleTab = (value) => {
@@ -30,7 +31,7 @@ export default function MenuBar() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 경로가 '/'일 때 아무 탭도 선택되지 않도록 설정
     if (location.pathname === '/' && index !== null) {
       setIndex(null);

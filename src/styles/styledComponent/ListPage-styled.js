@@ -30,18 +30,14 @@ export const StyledListPage = styled.div`
     }
 
     .student_button {
+        width: 48%;
         height: fit-content;
         padding: 7px 30px;
         box-shadow: rgb(204, 201, 201) 1px 1px;
-        color: white;
         border-radius: 8px;
         font-size: 17px;
         font-weight: bold;
         text-align: center;
-        border: none;
-        transition: background-color 0.3s ease 0s;
-        pointer-events: auto;
-        width: 48%;
     }
 
     .select_box {
@@ -59,6 +55,12 @@ export const StyledListPage = styled.div`
         background-color: #f9f9f9;
         border-radius: 10px;
         padding: 10px;
+    }
+    .problem_wrapper{
+        height: fit-content;
+        background-color: white;
+        padding: 12px;
+        border-radius: 8px;
     }
 
 `;

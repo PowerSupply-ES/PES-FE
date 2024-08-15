@@ -19,7 +19,6 @@ function Header() {
         {status ? <Header1 /> : <Header0 />}
         <Outlet/>
         <Footer></Footer>
-
     </div>
   );
 }
@@ -36,7 +35,6 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/')}>PES</p>
-
            {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
            <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
@@ -92,11 +90,6 @@ function Header1(){
         sessionStorage.setItem('memberName', data.memberName);
         sessionStorage.setItem('memberStatus', data.memberStatus);
         sessionStorage.setItem('hasNewNotices', data.hasNewNotices);
-        // sessionStorage.setItem(
-        //   {'memberName': data.memberName, 
-        //   'memberStatus': data.memberStatus,
-        //   'hasNewNotices': data.hasNewNotices,
-        // });
         console.log("hasNewNotices = ", data.hasNewNotices);
 
       })
@@ -156,9 +149,6 @@ function Header1(){
         {memberData.memberName}님
         {isDropdownOpen &&(
           <div className='dropdown-content'>
-            {/* <div className='userImage'></div> */}
-            {/* <FaUserCircle size={92}></FaUserCircle> */}
-            {/* <FaRobot size={72}></FaRobot> */}
             <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
 
             <div className='memberName'>{memberData.memberName}님</div>
@@ -170,7 +160,7 @@ function Header1(){
             </div>
             <div className='navbar_bottom'>
                <a className='btn_mypage' href="/mypage">마이페이지</a>
-              <a onClick={handleLogoutClick} className='btn_top_logout'>로그아웃</a>    
+               <a onClick={handleLogoutClick} className='btn_top_logout'>로그아웃</a>    
             </div>
          </div>
        )}
@@ -179,22 +169,16 @@ function Header1(){
      
     <div className='navbar'>
       <p className='logo' onClick={()=>navigate('/')}>PES</p>
-
-      
       {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
       <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
       <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
       <MenuBar/>
-
 
       {/* TODO : 새로운 공지사항 있을때 아이콘 표시 */}
       {/* {memberData.hasNewNotices ? 
       (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
       : (<></>)
       } */}
-     
-     
-       
     </div>
   </div>
  )
