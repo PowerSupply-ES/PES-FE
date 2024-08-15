@@ -5,26 +5,41 @@ import Box from "@mui/joy/Box";
 import Tabs from "@mui/joy/Tabs";
 import TabList from "@mui/joy/TabList";
 import Tab, { tabClasses } from "@mui/joy/Tab";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function MenuBar() {
-  const [index, setIndex] = React.useState(0);
-
-  // MUI 테마 설정
-  const theme = createTheme();
+  const location = useLocation();
   const navigate = useNavigate();
 
+  // 현재 경로에 따라 초기 탭 인덱스 설정
+  const getInitialIndex = () => {
+    if (location.pathname === '/list') return 0;
+    if (location.pathname === '/notice') return 1;
+    return null; // 홈이나 기타 경로인 경우 탭이 선택되지 않도록
+  };
 
-  // 탭이동
+  const [index, setIndex] = React.useState(getInitialIndex());
+
+  // 탭 이동
   const toggleTab = (value) => {
     setIndex(value);
-    if(index===0){
-      navigate('/notice');
-    }else if(index===1){
+    if (value === 0) {
       navigate('/list');
+    } else if (value === 1) {
+      navigate('/notice');
     }
-  }
+  };
 
+  React.useEffect(() => {
+    // 경로가 '/'일 때 아무 탭도 선택되지 않도록 설정
+    if (location.pathname === '/' && index !== null) {
+      setIndex(null);
+    } else if (location.pathname === '/list' && index !== 0) {
+      setIndex(0);
+    } else if (location.pathname === '/notice' && index !== 1) {
+      setIndex(1);
+    }
+  }, [location.pathname, index]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -36,14 +51,16 @@ export default function MenuBar() {
           onChange={(event, value) => toggleTab(value)}
         >
           <StyledTabList>
-            <Tab indicatorInset>문제 </Tab>
-            <Tab indicatorInset>공지사항 </Tab>
+            <Tab indicatorInset>문제</Tab>
+            <Tab indicatorInset>공지사항</Tab>
           </StyledTabList>
         </Tabs>
       </StyledBox>
     </ThemeProvider>
   );
 }
+
+const theme = createTheme();
 
 const StyledBox = styled(Box)`
   flex-grow: 1;
