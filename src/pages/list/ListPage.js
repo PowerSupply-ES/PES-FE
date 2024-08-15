@@ -102,6 +102,7 @@ const ListPage = () => {
                         }}> 재학생</Button>
                         
                     </div>
+                    
                     {selectedOption === 'junior' && <JuniorRank />}
                     {selectedOption === 'senior' && <SeniorRank />}
                 </div>

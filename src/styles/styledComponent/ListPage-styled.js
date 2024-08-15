@@ -52,15 +52,17 @@ export const StyledListPage = styled.div`
     .ranking-list {
         max-height: 400px;
         overflow-y: auto;
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-radius: 10px;
         padding: 10px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+
     }
     .problem_wrapper{
         height: fit-content;
         background-color: white;
         padding: 12px;
         border-radius: 8px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
     }
-
 `;
