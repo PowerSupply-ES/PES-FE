@@ -11,7 +11,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from "assets/images/sign_logo.png"
-
+import postSignIn from 'hooks/sign/postSignIn';
+import { useNavigate } from 'react-router-dom';
 
 // 하단 copyright
 const Copyright = (props) => {
@@ -31,48 +32,30 @@ const defaultTheme = createTheme();
 
 
 function LoginTemp() {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     memberId: '',
     memberPw: ''
   });
     
-  const uri = 'api/signin';
+  // 로그인 폼이 제출될 때 호출
+  const handleSubmit = async(e) => {
+    // 기본 제출 동작 막기
+    e.preventDefault();
 
-  // 로그인 요청 api
-  const postSignin = () => {
-    fetch(uri, {
-      method: 'POST',
+    try{
+        const responseData = await postSignIn(formData);
+        const resultMessage = responseData.message;
+        alert(resultMessage);
+        navigate('/');
 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-    .then((response) => {
-      if (!response.ok) {
-        // console.log('서버응답:', response);
-        if (response.status === 401) {
-          throw new Error('일치하는 정보가 없습니다');
-        } else {
-          throw new Error(`${response.status} ${response.statusText}`);
-        }
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-      const resultMessage = responseData.message;
-      alert(resultMessage);
-      window.location.href = '/';
+        sessionStorage.setItem('status', true);
+        sessionStorage.setItem('memberId', formData.memberId);
+    }catch(error){
+        alert(error.message);
+    }
+  };
 
-      sessionStorage.setItem('status', true);
-      sessionStorage.setItem('memberId', formData.memberId);
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      alert(errorMessage);
-    });
-  }
 
   //입력필드 값 변경될때마다 호출
   const handleInputChange = (e) => {
@@ -82,14 +65,6 @@ function LoginTemp() {
       [e.target.name]: e.target.value
     });
   };
-
-  // 로그인 폼이 제출될 때 호출
-  const handleSubmit = (e) => {
-    // 기본 제출 동작 막기
-    e.preventDefault();
-    postSignin();
-  };
-  
 
   return (
     <ThemeProvider theme={defaultTheme}>
