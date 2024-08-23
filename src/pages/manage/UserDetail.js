@@ -41,7 +41,7 @@ function UserDetail(){
                                         <div className='text'><div>학 과</div><p>{memberData.memberMajor}</p></div>
                                         <div className='text'><div>전화 번호</div><p>{memberData.memberPhone}</p></div>
                                     </div>
-                                    <div cclassName='manage_btn_container'>
+                                    <div className='manage_btn_container'>
                                         <button className='btn_editmem'>회원 수정</button>
                                         <button className='btn_deletemem'>회원 삭제</button>
                                     </div>

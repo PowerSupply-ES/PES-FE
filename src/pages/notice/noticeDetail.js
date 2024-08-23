@@ -1,116 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import 'styles/css/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
-
+import { transferTime, goBack } from "components/common/Common"
+import delNotice from 'apis/notice/delNotice';
+import fetchNotice from 'apis/notice/fetchNotice';
+import useNoticeDetail from 'hooks/notice/useNoticeDetail';
 
 const NoticeDetail = () => {
-    const memberStatus = sessionStorage.getItem('memberStatus');
-    const [noticeDetail, setDetail] =useState([]); //공지사항 세부정보
-    const [isEditing, setIsEditing] = useState(false); //수정상태
-    
-    let url = new URL(window.location.href);
-    let noticeId = url
-    .pathname
-    .split('/')[2];
 
-    const uri = '/api/notice/';
-
-    const getNoticeDetail = () => {
-        
-        fetch(`${uri}${noticeId}`,{
-            method: 'GET',
-        })
-        .then(response => {
-            if (!response.ok) {
-            //   console.log('서버응답:', response);
-              throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
-            }
-            return response.json();
-          })
-        .then(data => {
-            setDetail(data);
-        })
-        .catch(error => {
-            console.error('데이터 가져오기 실패:', error);
-        });
-    }
-    useEffect(()=>{
-        getNoticeDetail();
-    }, [noticeId])
-
-    // Time에서 "T"를 제거하여 표시 함수
-    const transferTime = (time) => {
-        if (!time) return ""; // 시간이 없는 경우 처리
-        
-        return time.replace("T", " ");
-    }
-
-    // 뒤로가기 함수
-    const goBack = () =>{
-        window.history.back();
-    }
-
-    // 공지사항 제거 함수
-    const DeleteNotice = () => {
-        fetch(`${uri}${noticeId}`,{
-            method: 'DELETE',
-        })
-        .then((response)=>{
-            if(response.status === 403){
-                alert('권한이 없습니다');
-            }
-            else if(response.status === 200){
-                alert('공지사항이 성공적으로 삭제되었습니다!');
-                window.location.href = '/notice';
-            }
-            else if (!response.ok) {
-                throw new Error(`${response.status} ${response.statusText}`);  
-            }
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
-    }
-
-    // 공지사항 수정 함수
-    const modifyNotice = () => {
-        fetch(`${uri}${noticeId}`,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(noticeDetail),
-        })
-        .then((response)=>{
-            if(response.status === 403){
-                alert('권한이 없습니다');
-            }
-            else if(response.status === 404){
-                alert('해당 공지사항이 존재하지 않습니다');
-            }
-            else if(response.status === 200){
-                alert('공지사항이 성공적으로 수정되었습니다!');
-                window.location.href = '/notice';
-            }
-            else if (!response.ok) {
-                throw new Error(`${response.status} ${response.statusText}`);  
-            }
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
-
-    }
-
-
-    // 공지사항 수정 상태 관리
-    const toggleEditing = () => {
-        setIsEditing(prevState => !prevState);
-        // console.log('isEditing = ',isEditing);
-    }
-
+    const {memberStatus, noticeDetail, isEditing, toggleEditing, setDetail, uri, noticeId} = useNoticeDetail();
 
     return (
         <div className='info_body'>
@@ -146,7 +43,6 @@ const NoticeDetail = () => {
                         {/* 조회수정보 */}
                         <li><p>조회수</p>{noticeDetail.noticeHit}회</li>
                     </ul>
-
                 </div>
 
                 {/* 버튼 */}
@@ -176,11 +72,11 @@ const NoticeDetail = () => {
                 <div className={memberStatus==='관리자' ? 'btn_container':'no_button'}>
                     {/* 수정 중 상태에 따라 버튼 대체 */}
                     {isEditing 
-                    ? (<button className='btn_modify' onClick={modifyNotice}>저장하기</button>)
+                    ? (<button className='btn_modify' onClick={fetchNotice(uri, noticeId, noticeDetail)}>저장하기</button>)
                     :(<button className='btn_submit' onClick={toggleEditing}>수정하기</button>) 
                     }
                     
-                    <button className='btn_delete' onClick={()=>DeleteNotice()}>삭제하기</button>
+                    <button className='btn_delete' onClick={()=>delNotice(uri, noticeId)}>삭제하기</button>
                 </div>
                 
             </div>

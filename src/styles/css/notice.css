@@ -7,8 +7,9 @@
 /* -----info 페이지----- */
 .info_body {
   width: 100%;
-  height: 100vh;
-  padding: 40px 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 40px 0 80px;
   margin-bottom: -300px;
   background-color: #F9F9FF;
 }

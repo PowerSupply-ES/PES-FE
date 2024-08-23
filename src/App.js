@@ -9,7 +9,7 @@ import Mypage from "pages/mypage/Mypage";
 import Solution from "pages/solution/Solution";
 import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice"
-import PostNotice from "pages/notice/postNotice"
+import NoticePost from "pages/notice/noticePost";
 import NoticeDetail from "pages/notice/noticeDetail"
 import ManageUser from "pages/manage/ManageUser";
 import UserDetail from "pages/manage/UserDetail";
@@ -27,7 +27,7 @@ function App() {
           <Route path='/mypage' element={<Mypage/>} />
           <Route path='/menual' element={<Menual/>} />
           <Route path='/notice' element={<Notice/>} />
-          <Route path='/postNotice' element={<PostNotice/>} />
+          <Route path='/noticePost' element={<NoticePost/>} />
           <Route path='/manageUser' element={<ManageUser/>} />
 
 

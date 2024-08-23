@@ -1,70 +1,11 @@
-import React, {useState } from 'react';
 import 'styles/css/notice.css';
 import { PiNotePencilFill } from "react-icons/pi";
+import { goBack } from "components/common/Common"
+import useNoticePost from 'hooks/notice/useNoticePost';
 
-
-const PostNotice = () => {
+const NoticePost = () => {
     
-    const [notice, setNotice]= useState({
-        title :'',
-        content:'',
-        isImportant :false, //초기값 false로 설정
-    });
-
-    const submitNotice = () =>{
-        const uri = 'api/notice';
-
-        fetch(uri, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(notice),
-        })
-        .then((response)=>{
-            if(response.status === 403){
-                alert('권한이 없습니다');
-            }
-            else if(response.status === 201){
-                alert('공지사항이 성공적으로 등록되었습니다!');
-                window.location.href = '/notice';
-            }
-            else if (!response.ok) {
-                throw new Error(`${response.status} ${response.statusText}`);  
-            }
-        })
-        .catch((error) => {
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
-    }
-
-
-    //입력필드 값 변경될때마다 호출
-    const handleInputChange = (e) => {
-        const { name, value, type } = e.target;
-
-        // 입력 요소의 타입이 체크박스이고 checked 속성이 있다면 해당 값에 따라 isImportant 값을 변경
-        const newValue=type==='checkbox'
-            ? !notice.isImportant
-            : value
-
-        setNotice({
-            // notice복사, 변경된 필드만 업데이트
-            ...notice,
-            [name]:newValue
-        });
-    };
-
-    // 폼이 제출될 때 호출
-    const handleSubmit = () => {
-        submitNotice();
-    };
-
-    const goBack = () =>{
-        window.history.back();
-    }
-    
+    const { notice, handleInputChange, handleSubmit } = useNoticePost();
 
     return (
         // 관리자만 접근할 수 있도록 수정하기
@@ -129,4 +70,4 @@ const PostNotice = () => {
     )
 
 }
-export default PostNotice
+export default NoticePost
