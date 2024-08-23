@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 function MemberStatus({ children }) {
   const [memberStatus, setMemberStatus] = useState(null);
 
-  const uri = '../api/exp';
+  const uri = 'api/exp';
   const memberEmail = sessionStorage.getItem('memberEmail');
 
   useEffect(() => {

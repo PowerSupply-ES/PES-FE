@@ -1,5 +1,5 @@
 import 'styles/css/manage.css';
-import GetUserList from "components/manage/GetUserList";
+import GetUserList from 'apis/manage/GetUserList';
 import SideTab from "components/manage/SideTab";
 
 function ManageUser(){
@@ -9,7 +9,7 @@ function ManageUser(){
 
             {/* 본문 */}
             <div className="manageuser_container">
-
+                
                 {/* 좌측 메뉴탭 */}
                 <SideTab></SideTab>
 
@@ -29,15 +29,11 @@ function ManageUser(){
 
                         {/* 회원목록 */}
                         <GetUserList></GetUserList>
-
                     </div>
                 </div>
-
-
             </div>
         </div>
     )
-
 }
 
 export default ManageUser;

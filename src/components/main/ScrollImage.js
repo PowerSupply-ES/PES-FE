@@ -5,8 +5,7 @@ import ScrollImagesHook from "hooks/home/ScrollImagesHook";
 
 // 스크롤에 따른 홈화면 애니메이션 효과
 const ScrollImage = () => {
-
-  const { opacity2, opacity3, opacity4 } = ScrollImagesHook();  
+  const { opacity2, opacity3, opacity4 } = ScrollImagesHook();
 
   return (
     <div className="scroll_container">

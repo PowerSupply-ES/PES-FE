@@ -1,7 +1,7 @@
 import 'styles/css/manage.css';
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import UserList from './UserList';
+import UserList from 'components/manage/UserList';
 
 function GetUserList(){
     
@@ -9,7 +9,7 @@ function GetUserList(){
 
     // 회원목록 api호출
     const getUserList= async() =>{
-        const uri = `../api/admin/memberlist`
+        const uri = `api/admin/memberlist`
 
         try{
             const res = await axios.get(uri);
@@ -19,7 +19,7 @@ function GetUserList(){
             console.error(error);
         }
     }
-    //예외처리하기
+    // TODO : 예외처리하기
 
     useEffect(()=>{
         getUserList();

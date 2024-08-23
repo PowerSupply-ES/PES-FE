@@ -3,7 +3,6 @@ import img0 from "assets/images/backImg.png";
 import img0_0 from "assets/images/backImg_right.png";
 import MovingImagesHook from "hooks/home/MovingImagesHook";
 
-
 // 홈화면 첫번째 슬라이딩 이미지 애니메이션
 const MovingImage = () => {
 
