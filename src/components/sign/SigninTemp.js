@@ -81,6 +81,7 @@ function SigninTemp() {
               autoComplete="email"
               autoFocus
               required
+              placeholder='학번을 입력해주세요'
             />
             <TextField
               margin="normal"
@@ -93,6 +94,7 @@ function SigninTemp() {
               id="memberPw"
               autoComplete="current-password"
               required
+              placeholder='비밀번호를 입력해주세요'
             />
             <Button
               type="submit"
