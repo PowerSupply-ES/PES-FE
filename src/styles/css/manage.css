@@ -1,7 +1,10 @@
 @charset "UTF-8";
+.content_container {
+  height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
+}
 .content_container .manageuser_container {
   display: flex;
-  height: calc(100vh - 160px); /* 컴포넌트 높이 뺀 값 */
+  height: calc(100vh + 100px);
 }
 .content_container .manageuser_container .tab_wrapper {
   flex: 1;
@@ -21,18 +24,19 @@
   background-color: inherit;
   color: inherit;
   font-size: 16px;
+  font-weight: 600;
 }
 .content_container .manageuser_container .tab_wrapper .tab_btn_wrapper button:hover {
   background-color: #6c6c6c;
 }
-.content_container .manageuser_container .tab_wrapper .btn_logout {
+.content_container .manageuser_container .tab_wrapper .btn_mng_logout {
   background-color: inherit;
   color: inherit;
   display: flex;
   justify-content: right;
   padding: 0 20px 20px 0;
 }
-.content_container .manageuser_container .tab_wrapper .btn_logout:hover {
+.content_container .manageuser_container .tab_wrapper .btn_mng_logout:hover {
   background-color: #484848;
 }
 .content_container .manageuser_container .userlist_wrapper {
@@ -41,6 +45,19 @@
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  background-color: #E9E9EB;
+  padding-bottom: 40px;
+  overflow-y: auto;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-thumb {
+  background: #c0c0c0; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-track {
+  background: rgba(231, 230, 246, 0.5882352941); /*스크롤바 뒷 배경 색상*/
 }
 .content_container .manageuser_container .userlist_wrapper .list_container {
   width: 72%;
@@ -67,23 +84,53 @@
   font-size: 14px;
   font-weight: 600;
   margin-left: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn {
   background-color: #FFD66B;
-  opacity: 89%;
+  opacity: 80%;
   border-color: #FFD66B;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn:hover {
+  background-color: #FFD66B;
+  opacity: 95%;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn {
   background-color: #434349;
   opacity: 80%;
   border-color: #434349;
 }
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn:hover {
+  background-color: #434349;
+  opacity: 95%;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new {
+  color: #ffb862;
+  font-weight: 600;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old {
+  color: rgba(50, 83, 255, 0.768627451);
+  font-weight: 600;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
+  color: white;
+  background-color: #434349;
+  padding: 4px 0px;
+  font-size: 15px;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7490196078);
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+  color: rgba(0, 0, 0, 0.7490196078);
+}
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
   display: inherit;
   height: 40px;
   align-items: center;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_new, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_old, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_manage, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
   flex: 1;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
@@ -97,8 +144,4 @@
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
   flex: 3;
-}
-.content_container .userdetail_container {
-  display: flex;
-  height: calc(100vh - 160px); /* 컴포넌트 높이 뺀 값 */
 }

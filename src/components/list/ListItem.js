@@ -1,13 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { StyledListItem } from "styles/styledComponent/ListItem-styled";
+import Button from '@mui/joy/Button';
 
 const ProblemItem = (props) => {
     const navigate = useNavigate();
     const memberStatus = sessionStorage.getItem('memberStatus');
-
-    // console.log('memberStatus = ',memberStatus);
-    // console.log('props = ',props);
-    // console.log('props.state = ',props.state);
 
 
     function goTo(answerId) {
@@ -38,6 +35,18 @@ const ProblemItem = (props) => {
                     onClick={() => navigate(`/solution/${props.pid}`)}>
                     풀이보기
                 </button>
+
+                {/* TODO : 비로그인 시 풀이보기 선택안되도록 */}
+                {/* TODO : 상태에 따른 버튼UI 적용하기 */}
+                {/* <Button
+                    // className="button"
+                    color="primary"
+                    onClick={() => navigate(`/solution/${props.pid}`)}
+                    size="lg"
+                    variant="outlined"
+                    state={state}
+                >풀이보기</Button> */}
+
             </div>
         </StyledListItem>
 

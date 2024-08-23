@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import Header from "components/main/Header";
-import Footer from "components/footer/Footer";
 import MemberStatus from "components/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
 
@@ -472,7 +470,6 @@ const QuestionPage = () => {
 
     return(
         <div className={state === "success" ? "successPage" : state === "fail" ? "failPage" : "nonePage"}>                  
-            <Header/>
             <MemberStatus>
                 {(memberStatus) => {
                     if (!memberStatus) {
@@ -487,7 +484,6 @@ const QuestionPage = () => {
                     );
                 }}
             </MemberStatus>
-            <Footer/>
         </div>
     );
 }

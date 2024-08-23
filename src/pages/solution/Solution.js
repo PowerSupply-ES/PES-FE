@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
 import serverConfig from '../../config';
+import 'styles/css/solution.css';
+
 
 
 function Solution() {
@@ -87,8 +87,6 @@ function Solution() {
 
   return (
     <>
-      <Header></Header>
-
       <div className="solution_container">
         <div className="solution_bar">
           <div className="solution">
@@ -108,7 +106,6 @@ function Solution() {
         <SolvingList solveData={solveData}></SolvingList>
 
       </div>
-      <Footer></Footer>
     </>
   );
 }

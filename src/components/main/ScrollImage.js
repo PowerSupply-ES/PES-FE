@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import '../../App.css';
+// import 'styles/css/App.css';
 
-import img2 from '../../assets/images/main_2.png';
-import img3 from '../../assets/images/main_3.png';
-import img4 from '../../assets/images/main_4.png';
+
+import img2 from 'assets/images/main_2.png';
+import img3 from 'assets/images/main_3.png';
+import img4 from 'assets/images/main_4.png';
 
 const ScrollImage = () => {
     const [opacity2, setOpacity2] = useState(0);

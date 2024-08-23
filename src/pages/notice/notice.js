@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
-import '../../styles/css/notice.css';
+import 'styles/css/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
 import { PiNotePencilFill } from "react-icons/pi";
 
@@ -46,7 +44,6 @@ const Notice = () => {
 
     return (
         <div className='info_body'>
-            <Header></Header>
 
             <div className='content_info'> 
                 <div className='header'>
@@ -76,8 +73,6 @@ const Notice = () => {
                 {/* -----공지사항리스트----- */}
                 <MyNotice noticeList={noticeList}></MyNotice>
             </div>
-
-            <Footer></Footer>
 
         </div>
     )

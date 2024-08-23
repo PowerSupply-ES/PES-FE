@@ -1,5 +1,4 @@
 import React from 'react';
-import { AiFillPhone} from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";

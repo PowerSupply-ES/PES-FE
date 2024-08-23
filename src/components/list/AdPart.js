@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useRef, useEffect} from "react";
 
-import '../../App.css';
+import 'styles/css/App.css';
 
 
 const AdContainer = styled.div`
@@ -10,7 +10,7 @@ const AdContainer = styled.div`
     background-color: #272727;
     justify-content:center;
     width:100%;
-    height: 90px;
+    height: fit-content;
     padding:20px 0;
     margin: auto;
     margin-bottom: 48px;

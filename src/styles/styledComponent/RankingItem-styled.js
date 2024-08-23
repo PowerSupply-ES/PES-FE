@@ -8,6 +8,7 @@ export const StyledRankingItem = styled.div`
     display: flex;
     background-color: white;
     width: 100%;
+    border-radius: 8px;
 
     .ranking_id {
         width: 20%;

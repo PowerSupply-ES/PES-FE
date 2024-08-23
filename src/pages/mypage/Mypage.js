@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
 import { FaCircleUser } from "react-icons/fa6";
-import '../../App.css';
+import 'styles/css/App.css';
+import 'styles/css/mypage.css';
+
 
 const MyPage = () => {
     //정보리스트
@@ -14,13 +14,10 @@ const MyPage = () => {
   
     //내피드백리스트
     const [myFeedback, setMyFeedback] = useState([]);
-
-
-    // const serverUrl = serverConfig.serverUrl;
   
-    // 내 정보
+    // 내 정보 GET 요청
     const sendGetInfo = () => {
-      const uri = 'api/mypage/information';
+      const uri = '/api/mypage/information';
   
       fetch(`${uri}`, {
         method: 'GET',
@@ -41,7 +38,7 @@ const MyPage = () => {
         });
     };
   
-    // 내가 푼 문제
+    // 내가 푼 문제 GET요청
     const sendGetProb = () => {
       const uri = 'api/mypage/mysolve';
   
@@ -65,7 +62,7 @@ const MyPage = () => {
     };
 
 
-    // 내 feedback
+    // 내 feedback GET요청
     const sendGetFeedback = () => {
       const uri = 'api/mypage/myfeedback';
   
@@ -107,7 +104,6 @@ const MyPage = () => {
   
     return (
       <div>
-        <Header></Header>
 
         <div className='content_mypage'>
 
@@ -126,7 +122,7 @@ const MyPage = () => {
                 <div className='text'><div>기 수</div><p>{memberData.memberGen}</p></div>
                 <div className='text'><div>상 태</div><p>{memberData.memberStatus}</p></div>
                 <div className='text'><div>학 과</div><p>{memberData.memberMajor}</p></div>
-                <div className='text'><div>번 호</div><p>{memberData.memberPhone}</p></div>
+                <div className='text'><div>전화 번호</div><p>{memberData.memberPhone}</p></div>
               </div>
             </div>
 
@@ -163,7 +159,6 @@ const MyPage = () => {
 
           </div>
         </div>
-        <Footer></Footer>
       </div>
     );
   };

@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* -----네비게이션바----- */
+.logout, .userId, .userLevel {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px 30px;
+  color: white;
+  border: solid white;
+  border-radius: 10px;
+  font-family: var(--Font1);
+}
+
+.logout {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #ffffff;
+  margin: 15px 50px 0px auto;
+  color: #555555;
+  font-weight: bold;
+  font-size: 17px;
+  border: solid 3px #7d7d7d;
+  border-radius: 80px;
+}
+.logout:hover {
+  background-color: #414141;
+  border-color: #414141;
+  color: #ffffff;
+}
+
+.container > .btns > .userId {
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: rgba(90, 44, 218, 0.8235294118);
+  border-radius: 80px;
+}
+.container > .btns > .userId:hover {
+  background-color: rgba(120, 119, 119, 0.8549019608);
+}
+
+.userLevel {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+.btns {
+  display: flex;
+  margin: 20px 60px 0px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* 수직으로 배치 */
+  align-items: center;
+  background-color: #ffffff;
+  height: 132px;
+}
+
+.navbar {
+  display: flex;
+  width: 90%;
+  margin: 0px auto;
+  align-items: center;
+}
+.navbar * {
+  display: flex;
+}
+.navbar .logo {
+  width: 120px;
+  height: 80px;
+  margin-right: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(28, 28, 29, 0.7647058824);
+  cursor: pointer;
+}
+
+.menu1, .menu2, .menu3 {
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 26px;
+  margin-left: 56px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #686868;
+}
+
+.menu1:hover {
+  border-radius: 5px;
+  color: #000000;
+}
+
+.menu3 {
+  padding: 20px 0;
+  padding-bottom: 0;
+}
+
+.noticeAlertBtn {
+  background-color: rgb(255, 89, 89);
+  border: solid rgb(255, 89, 89);
+  width: 23px;
+  height: 23px;
+  padding: 8px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}

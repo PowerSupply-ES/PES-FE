@@ -1,7 +1,13 @@
 /* 로그인, 회원가입 공통body */
+.sign-wrapper{
+    height: 100vh;
+    margin-bottom: -300px;
+    background-color: #ffffff98;
+    padding-top: 40px;
+}
 .intro {
     background-color: #CCD1FF;
-    margin: 0;
+    margin-bottom: -300px;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -16,9 +22,9 @@
         width: 38vh;
         height: 60vh;
         * {
-            color: #FFFFFF;
-            word-break: keep-all;
-            font-weight: bold;
+          color: #FFFFFF;
+          word-break: keep-all;
+          font-weight: bold;
         }
 
         :first-child {

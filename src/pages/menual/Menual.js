@@ -1,19 +1,16 @@
 import React from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
 import AdPart from "components/list/AdPart";
 import { useNavigate } from 'react-router-dom';
+import 'styles/css/menual.css';
 
-import { FaCircleUser } from "react-icons/fa6";
-import '../../styles/css/menual.css';
 
-import img_probList from '../../assets/images/probList.png';
-import img_solving from '../../assets/images/solving.png';
-import img_pass from '../../assets/images/pass.png';
-import img_pass_feed from '../../assets/images/pass_feedback.png';
-import img_fail from '../../assets/images/fail.png';
-import img_fail_feed from '../../assets/images/fail_feedback.png';
-import img_solvingList from '../../assets/images/solvingList.png';
+import img_probList from 'assets/images/probList.png';
+import img_solving from 'assets/images/solving.png';
+import img_pass from 'assets/images/pass.png';
+import img_pass_feed from 'assets/images/pass_feedback.png';
+import img_fail from 'assets/images/fail.png';
+import img_fail_feed from 'assets/images/fail_feedback.png';
+import img_solvingList from 'assets/images/solvingList.png';
 
 
 const Menual = () => {
@@ -21,7 +18,6 @@ const Menual = () => {
 
     return (
       <div>
-        <Header></Header>
         <AdPart/>
                 
         {/* intro */}
@@ -133,38 +129,9 @@ const Menual = () => {
 
 
         {/* feedback_재학생 */}
-
-
-        <Footer></Footer>
       </div>
     );
   };
-
-
-
-  // 내가 푼 문제 컴포넌트
-  // function MyProblem({myProb}){
-
-  //   const gotoProb = ( problemId ) =>{
-  //     console.log('problemId: ',problemId);
-  //     window.location=`question/${problemId}`;
-  //     // question/answerid
-  //   }
-  //   return (
-  //   <div className ='problemList' >
-  //     {myProb.map((it) => (
-
-  //       <div className='problems' key={it.answerId}>
-  //         <p className='problemId'>{it.problemId}</p>
-  //         <p className='problemTitle' onClick={() => gotoProb(it.answerId)}>{it.problemTitle}</p>
-  //         <div className={`${it.answerState === 'success' ? 'btn_success' : it.answerState === 'fail' ? 'btn_fail' : 'btn_state'}`}>
-  //           {it.answerState}</div>
-  //       </div>
-
-  //     ))}
-  //   </div>
-//   );
-// }
 
   
 export default Menual;

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
-import '../../styles/css/notice.css';
+import 'styles/css/notice.css';
 import { HiSpeakerphone } from "react-icons/hi";
 
 
@@ -116,7 +114,6 @@ const NoticeDetail = () => {
 
     return (
         <div className='info_body'>
-            <Header></Header>
 
             <div className='content_Detail'> 
                 {/* 제목 */}
@@ -187,8 +184,6 @@ const NoticeDetail = () => {
                 </div>
                 
             </div>
-
-            <Footer></Footer>
 
         </div>
     )

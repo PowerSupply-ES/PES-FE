@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from 'components/main/ScrollToTop';
-import "./styles/css/Font.css";
+import "styles/css/Font.css";
 
 // 호환성 문제로 주석처리
 // const root = ReactDOM.createRoot(document.getElementById('root'));

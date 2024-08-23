@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-// import Logout from 'components/logout/Logout';
+import 'styles/css/topDropdown.css'; 
+import 'styles/css/navbar.css'; 
+import 'styles/css/footer.css'; 
 
-import { FaUserCircle } from "react-icons/fa";
-import { FaRobot } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { FaCircleUser } from "react-icons/fa6";
-
+import Footer from 'components/footer/Footer';
+import MenuBar from './MenuBar';
 
 function Header() {
 
@@ -16,7 +17,8 @@ function Header() {
     <div>
         {/* 로그인이 완료되었는지에 따라 다른 Header를 렌더링 */}
         {status ? <Header1 /> : <Header0 />}
-
+        <Outlet/>
+        <Footer></Footer>
     </div>
   );
 }
@@ -33,10 +35,10 @@ function Header0(){
 
          <div className='navbar'>
            <p className='logo' onClick={()=>navigate('/')}>PES</p>
-           <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+           {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
            <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
-           <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
-
+           <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
+           <MenuBar/>
          </div>
 
        </div>
@@ -88,12 +90,7 @@ function Header1(){
         sessionStorage.setItem('memberName', data.memberName);
         sessionStorage.setItem('memberStatus', data.memberStatus);
         sessionStorage.setItem('hasNewNotices', data.hasNewNotices);
-        // sessionStorage.setItem(
-        //   {'memberName': data.memberName, 
-        //   'memberStatus': data.memberStatus,
-        //   'hasNewNotices': data.hasNewNotices,
-        // });
-
+        console.log("hasNewNotices = ", data.hasNewNotices);
 
       })
       .catch(error => {
@@ -144,52 +141,46 @@ function Header1(){
 
  return(
    //토글버튼
-   <div className='container'>
-     <div className='btns'>
-       {/* <div className='userLevel'>level</div> */}
-       <button className='userId' onClick={toggleDropdown}>
-          {memberData.memberName}님
-         {isDropdownOpen &&(
-           <div className='dropdown-content'>
-              {/* <div className='userImage'></div> */}
-              {/* <FaUserCircle size={92}></FaUserCircle> */}
-              {/* <FaRobot size={72}></FaRobot> */}
-              <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
+  <div className='container'>
 
-              <div className='memberName'>{memberData.memberName}님</div>
+    <div className='btns'>
+      {/* <div className='userLevel'>level</div> */}
+      <button className='userId' onClick={toggleDropdown}>
+        {memberData.memberName}님
+        {isDropdownOpen &&(
+          <div className='dropdown-content'>
+            <FaCircleUser size={60} style={{color:'lightgray'}}></FaCircleUser>
+
+            <div className='memberName'>{memberData.memberName}님</div>
               
-              <div className='navbarInfo'>
-                <div className='memberStatus'>{memberData.memberStatus}</div>
-                <div className='memberGen'>{memberData.memberGen}기</div>
-                <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
-              </div>
-              <div className='navbar_bottom'>
-                <a className='btn_mypage' href="/mypage">마이페이지</a>
-                <a onClick={handleLogoutClick} className='btn_logout'>로그아웃</a>    
-              </div>
-           </div>
-         )}
-       </button>
-       
-     </div>
+            <div className='navbarInfo'>
+              <div className='memberStatus'>{memberData.memberStatus}</div>
+              <div className='memberGen'>{memberData.memberGen}기</div>
+              <div className='memberScore'>현재<p>{memberData.memberScore}</p>점</div>
+            </div>
+            <div className='navbar_bottom'>
+               <a className='btn_mypage' href="/mypage">마이페이지</a>
+               <a onClick={handleLogoutClick} className='btn_top_logout'>로그아웃</a>    
+            </div>
+         </div>
+       )}
+      </button> 
+    </div>
      
-     <div className='navbar'>
-       <a className='logo' onClick={()=>navigate('/')}>PES</a>
-       <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
-       <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
-       <div>
-        <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a>
-         {/* 새로운 공지사항 있을때 아이콘 표시 */}
-         {/* {memberData.hasNewNotices ? 
-          (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
-          : (<></>)
-          } */}
-        
+    <div className='navbar'>
+      <p className='logo' onClick={()=>navigate('/')}>PES</p>
+      {/* <a className='menu1' onClick={()=>navigate('/list')}>문제</a>
+      <a className='menu2' onClick={()=>navigate('/menual')}>소개</a>
+      <a className='menu3' onClick={()=>navigate('/notice')}>공지사항</a> */}
+      <MenuBar/>
 
-       </div>
-       
-     </div>
-   </div>
+      {/* TODO : 새로운 공지사항 있을때 아이콘 표시 */}
+      {/* {memberData.hasNewNotices ? 
+      (<button className='noticeAlertBtn' onClick={()=>navigate('/notice')}>N</button>) 
+      : (<></>)
+      } */}
+    </div>
+  </div>
  )
 }
 

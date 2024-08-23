@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* -----메인화면----- */
+.main_btn {
+  position: absolute;
+  top: 60%;
+  left: 46%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  transform: translate(-50%, -50%);
+  /* translate(-50%, -50%)으로 
+  left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
+  z-index: 3;
+}
+.main_btn .btn1, .main_btn .btn2, .main_btn .btn3 {
+  border-radius: 18px;
+  font-size: 20px;
+  color: #ffffff;
+  width: 132px;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 10px 8px;
+  font-weight: bold;
+}
+.main_btn .btn1 {
+  background-color: #000000;
+  opacity: 90%;
+  border: solid #ffffff 2px;
+  margin-right: 40px;
+}
+.main_btn .btn1:hover {
+  background-color: rgba(255, 255, 255, 0.201);
+}
+.main_btn .btn2, .main_btn .btn3 {
+  background-color: #724fd2;
+  border: solid #724fd2 2px;
+}
+.main_btn .btn2:hover, .main_btn .btn3:hover {
+  background-color: #8b71d3;
+  border: solid #8b71d3 2px;
+}
+
+.mainPage {
+  margin-bottom: -300px;
+}
+.mainPage .content {
+  background-color: #000000;
+}
+
+.content0 > img,
+.content2 > img,
+.content3 > img,
+.content4 > img {
+  width: 80%;
+  height: auto;
+}
+
+/* animation효과 */
+.content0 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.moving-img {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+}

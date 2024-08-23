@@ -1,7 +1,5 @@
 import React, {useState } from 'react';
-import Header from 'components/main/Header';
-import Footer from "components/footer/Footer";
-import '../../styles/css/notice.css';
+import 'styles/css/notice.css';
 import { PiNotePencilFill } from "react-icons/pi";
 
 
@@ -71,7 +69,6 @@ const PostNotice = () => {
     return (
         // 관리자만 접근할 수 있도록 수정하기
         <div className='info_body'>
-            <Header></Header>
 
             <div className='content_register'> 
                 {/* 제목 */}
@@ -127,8 +124,6 @@ const PostNotice = () => {
                     </button>
                 </div>
             </div>
-
-            <Footer></Footer>
 
         </div>
     )

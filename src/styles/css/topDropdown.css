@@ -1,0 +1,76 @@
+.dropdown-content {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0;
+  background-color: #fefdfd;
+  border: solid 2px rgb(200, 200, 200);
+  border-radius: 4px;
+  padding-top: 16px;
+  z-index: 999;
+  font-family: var(--Font1);
+}
+.dropdown-content .memberName {
+  color: rgb(37, 37, 37);
+  font-size: 17px;
+  margin: 16px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.dropdown-content .navbar_bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 14px;
+  color: #000000;
+  opacity: 75%;
+  border-top: solid 3px #d7d6d6;
+}
+.dropdown-content .navbar_bottom * {
+  width: 100%;
+  padding: 10px 8px;
+}
+.dropdown-content .navbar_bottom .btn_mypage {
+  border-right: solid 3px #d7d6d6;
+}
+
+.navbarInfo {
+  width: 30%;
+  text-align: left;
+}
+.navbarInfo * {
+  font-size: 15px;
+  color: #808080;
+}
+.navbarInfo .memberScore {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.navbarInfo .memberScore p {
+  color: #04CA00;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.userImage {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(212, 212, 212);
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.btn_mypage, .btn_top_logout {
+  font-size: 13px;
+}
+.btn_mypage :hover, .btn_top_logout :hover {
+  color: #000000;
+  font-weight: bold;
+  background-color: #ebebeb;
+}
