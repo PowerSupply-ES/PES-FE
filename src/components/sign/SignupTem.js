@@ -103,6 +103,7 @@ function SignupTem() {
                   required
                   onChange={handleInputChange}
                   placeholder='이름을 입력해주세요'
+                  autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
@@ -177,7 +178,6 @@ function SignupTem() {
                   autoComplete="memberGen"
                   fullWidth
                   required
-                  autoFocus
                   onChange={handleInputChange}
                   placeholder='24년 기준 35기'
                 />
