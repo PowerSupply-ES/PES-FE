@@ -1,57 +1,14 @@
-import {useState, useEffect} from "react";
-import axios from "axios";
 import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
 import JuniorRank from "components/ranking/JuniorRank";
 import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled"
 import Button from '@mui/joy/Button';
+import useListHook from "hooks/list/useListHook";
 
 
 const ListPage = () => {
-    const memberStatus = sessionStorage.getItem('memberStatus');
-    
-    const [list, setList] = useState([]);
-    const [selectedOption, setSelectedOption] = useState('junior');
-    const [juniorButtonVariant, setJuniorButtonVariant] = useState('solid');
-    const [seniorButtonVariant, setSeniorButtonVariant] = useState('soft');
-
-
-    // 문제 목록 불러오기 (get)
-    async function getList() {
-        try {
-            const config = {
-                withCredentials: true,
-            };
-    
-            const { data: response } = await axios.get(
-                `/api/problemlist`,
-                config
-            );
-            setList(response);
-            console.log("memberStatus = ",memberStatus);
-
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        getList();
-    }, [memberStatus]);
-
-    // junior, senior 선택
-    const handleOption = (option) => {
-        setSelectedOption(option);
-
-        if (option === 'junior') {
-            setJuniorButtonVariant('solid');
-            setSeniorButtonVariant('soft');
-        } else if (option === 'senior') {
-            setJuniorButtonVariant('soft');
-            setSeniorButtonVariant('solid');
-        }
-    }
+    const { list, selectedOption, juniorButtonVariant, seniorButtonVariant, handleOption } = useListHook();
 
     return (
         <div>
