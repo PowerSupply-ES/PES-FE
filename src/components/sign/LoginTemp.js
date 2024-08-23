@@ -13,23 +13,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from "assets/images/sign_logo.png"
 import postSignIn from 'hooks/sign/postSignIn';
 import { useNavigate } from 'react-router-dom';
-
-// 하단 copyright
-const Copyright = (props) => {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Goto HOME © '}
-      <Link color="inherit" href="https://pes23.com/">
-        pes23.com
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Copyright from './Copyright';
 
 const defaultTheme = createTheme();
-
 
 function LoginTemp() {
   const navigate = useNavigate();
@@ -120,7 +106,7 @@ function LoginTemp() {
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"아이디가 없으신가요? 회원가입"}
                 </Link>
               </Grid>
