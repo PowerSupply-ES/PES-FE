@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import postSignin from "apis/sign/postSignin";
+import postLogin from "apis/sign/postLogin";
 
 // 로그인 관련 HOOK
 const SignInHook = () => {
@@ -17,7 +17,7 @@ const SignInHook = () => {
       e.preventDefault();
   
       try {
-        const responseData = await postSignin(formData);
+        const responseData = await postLogin(formData);
         const resultMessage = responseData.message;
         alert(resultMessage);
         navigate("/");

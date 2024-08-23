@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const postSignin = async(formData) => {
+const postLogin = async(formData) => {
     const uri = 'api/signin';
 
     // 로그인 요청 api
@@ -23,4 +23,4 @@ const postSignin = async(formData) => {
 
 }
 
-export default postSignin;
+export default postLogin;
