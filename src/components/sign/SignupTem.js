@@ -7,7 +7,6 @@ import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -15,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from "assets/images/sign_logo.png"
 import postSignup from 'hooks/sign/postSignup';
 import Copyright from './Copyright';
+import InputMask from 'react-input-mask';
 
 const defaultTheme = createTheme();
 
@@ -84,7 +84,7 @@ function SignupTem() {
           }}
         >
           <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo}/>
-          
+
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
@@ -92,7 +92,6 @@ function SignupTem() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
 
-              
               <Grid item xs={12}>
                 <TextField
                   value={formData.memberName}
@@ -103,6 +102,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
+                  placeholder='이름을 입력해주세요'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -116,6 +116,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
+                  placeholder='이메일을 입력해주세요(@형식)'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -128,6 +129,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
+                  placeholder='학번을 입력해주세요'
                 />
               </Grid>
               <Grid item xs={12}>
@@ -141,22 +143,31 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
+                  placeholder='비밀번호를 입력해주세요'
                 />
               </Grid>
 
 
               <Grid item xs={12}>
-                <TextField
+                {/* 전화번호 형식 지정 */}
+                <InputMask
+                  mask="010-9999-9999"
                   value={formData.memberPhone}
-                  id="memberPhone"
-                  label="전화번호"
-                  name="memberPhone"
-                  autoComplete="memberPhone"
-                  fullWidth
-                  required
                   onChange={handleInputChange}
-                />
+                >
+                  {(inputProps) => (
+                    <TextField
+                      {...inputProps}
+                      label="전화번호"
+                      name="memberPhone"
+                      autoComplete="tel"
+                      fullWidth
+                      required
+                    />
+                  )}
+                </InputMask>
               </Grid>
+              
               <Grid item xs={12} sm={6}>
                 <TextField
                   value={formData.memberGen}
@@ -168,6 +179,7 @@ function SignupTem() {
                   required
                   autoFocus
                   onChange={handleInputChange}
+                  placeholder='24년 기준 35기'
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -180,6 +192,7 @@ function SignupTem() {
                   required
                   fullWidth
                   onChange={handleInputChange}
+                  placeholder='ex)ㅇㅇ학과'
                 />
               </Grid>
 
