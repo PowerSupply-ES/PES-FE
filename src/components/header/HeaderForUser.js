@@ -1,4 +1,4 @@
-import MenuBar from "components/main/MenuBar";
+import MenuBar from "components/header/MenuBar";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaCircleUser } from "react-icons/fa6";
