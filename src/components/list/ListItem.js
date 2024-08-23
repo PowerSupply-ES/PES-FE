@@ -6,8 +6,7 @@ const ProblemItem = (props) => {
     const navigate = useNavigate();
     const memberStatus = sessionStorage.getItem('memberStatus');
 
-
-    function goTo(answerId) {
+    const goToProb = (answerId) => {
         if (answerId) {
             sessionStorage.setItem('problemId', props.pid);
             navigate(`/question/${props.answerId}`);
@@ -28,8 +27,8 @@ const ProblemItem = (props) => {
     return (
         <StyledListItem state={state}>
             <div className="container" state={state}>
-                <div className="problem_id" state={state} onClick={() => { goTo(props.answerId); }}>{props.pid}</div>
-                <div className="problem_title" onClick={() => { goTo(props.answerId); }}>{props.ptitle}</div>
+                <div className="problem_id" state={state} onClick={() => { goToProb(props.answerId); }}>{props.pid}</div>
+                <div className="problem_title" onClick={() => { goToProb(props.answerId); }}>{props.ptitle}</div>
                 <div className="grade">점수 {props.grade}</div>
                 <button className="button" state={state} 
                     onClick={() => navigate(`/solution/${props.pid}`)}>

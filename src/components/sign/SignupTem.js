@@ -1,35 +1,34 @@
-import * as React from 'react';
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-import logo from "assets/images/sign_logo.png"
-import postSignup from 'hooks/sign/postSignup';
-import Copyright from './Copyright';
-import InputMask from 'react-input-mask';
+import * as React from "react";
+import { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import logo from "assets/images/sign_logo.png";
+import postSignup from "apis/sign/postSignup";
+import Copyright from "./Copyright";
+import InputMask from "react-input-mask";
 
 const defaultTheme = createTheme();
 
 function SignupTem() {
-   const navigate = useNavigate();
-   const [formData, setFormData] = useState({
-    memberId:'',
-    memberEmail: '',
-    memberPw: '',
-    memberName: '',
-    memberGen: '',
-    memberMajor: '',
-    memberPhone: ''
-   });
- 
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    memberId: "",
+    memberEmail: "",
+    memberPw: "",
+    memberName: "",
+    memberGen: "",
+    memberMajor: "",
+    memberPhone: "",
+  });
 
   // 이메일 형식 검사
   const isEmailValid = (email) => {
@@ -37,39 +36,38 @@ function SignupTem() {
     // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
     // 이메일이 .net 또는 .com 으로 끝나는지 확인
-    const validEndings = ['.net', '.com'];
-    const hasValidEnding = validEndings.some(ending => email.endsWith(ending));
+    const validEndings = [".net", ".com"];
+    const hasValidEnding = validEndings.some((ending) =>
+      email.endsWith(ending)
+    );
 
     // return emailRegex.test(email) && hasValidEnding;
     return hasValidEnding;
   };
 
-
   // 회원가입 폼이 제출될 때 호출
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     // 기본 제출 동작 막기
     e.preventDefault();
 
-    try{
-        const responseData = await postSignup(formData, isEmailValid);
-        const resultMessage = responseData.message;
-        alert(resultMessage);
-        navigate('/signin');
-    }catch(error){
-        alert(error.message);
+    try {
+      const responseData = await postSignup(formData, isEmailValid);
+      const resultMessage = responseData.message;
+      alert(resultMessage);
+      navigate("/signin");
+    } catch (error) {
+      alert(error.message);
     }
   };
-
 
   //입력필드 값 변경될때마다 호출
   const handleInputChange = (e) => {
     setFormData({
       // formData복사, 변경된 필드만 업데이트
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -78,20 +76,24 @@ function SignupTem() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo}/>
+          <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo} />
 
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
 
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
-
               <Grid item xs={12}>
                 <TextField
                   value={formData.memberName}
@@ -102,7 +104,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
-                  placeholder='이름을 입력해주세요'
+                  placeholder="이름을 입력해주세요"
                   autoFocus
                 />
               </Grid>
@@ -117,7 +119,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
-                  placeholder='이메일을 입력해주세요(@형식)'
+                  placeholder="이메일을 입력해주세요(@형식)"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -130,7 +132,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
-                  placeholder='학번을 입력해주세요'
+                  placeholder="학번을 입력해주세요"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -144,10 +146,9 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
-                  placeholder='비밀번호를 입력해주세요'
+                  placeholder="비밀번호를 입력해주세요"
                 />
               </Grid>
-
 
               <Grid item xs={12}>
                 {/* 전화번호 형식 지정 */}
@@ -168,7 +169,7 @@ function SignupTem() {
                   )}
                 </InputMask>
               </Grid>
-              
+
               <Grid item xs={12} sm={6}>
                 <TextField
                   value={formData.memberGen}
@@ -179,7 +180,7 @@ function SignupTem() {
                   fullWidth
                   required
                   onChange={handleInputChange}
-                  placeholder='24년 기준 35기'
+                  placeholder="24년 기준 35기"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -192,12 +193,10 @@ function SignupTem() {
                   required
                   fullWidth
                   onChange={handleInputChange}
-                  placeholder='ex)ㅇㅇ학과'
+                  placeholder="ex)ㅇㅇ학과"
                 />
               </Grid>
-
             </Grid>
-
 
             <Button
               type="submit"
@@ -207,7 +206,6 @@ function SignupTem() {
             >
               Sign Up
             </Button>
-
 
             <Grid container justifyContent="flex-end">
               <Grid item>

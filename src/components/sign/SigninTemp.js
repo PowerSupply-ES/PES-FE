@@ -1,55 +1,54 @@
-import * as React from 'react';
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import logo from "assets/images/sign_logo.png"
-import postSignIn from 'hooks/sign/postSignIn';
-import { useNavigate } from 'react-router-dom';
-import Copyright from './Copyright';
+import * as React from "react";
+import { useState } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import logo from "assets/images/sign_logo.png";
+import postSignIn from "apis/sign/postSignIn";
+import { useNavigate } from "react-router-dom";
+import Copyright from "./Copyright";
 
 const defaultTheme = createTheme();
 
 function SigninTemp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    memberId: '',
-    memberPw: ''
+    memberId: "",
+    memberPw: "",
   });
-    
+
   // 로그인 폼이 제출될 때 호출
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     // 기본 제출 동작 막기
     e.preventDefault();
 
-    try{
-        const responseData = await postSignIn(formData);
-        const resultMessage = responseData.message;
-        alert(resultMessage);
-        navigate('/');
-        window.location.reload(); // 페이지 새로 고침
+    try {
+      const responseData = await postSignIn(formData);
+      const resultMessage = responseData.message;
+      alert(resultMessage);
+      navigate("/");
+      window.location.reload(); // 페이지 새로 고침
 
-        sessionStorage.setItem('status', true);
-        sessionStorage.setItem('memberId', formData.memberId);
-    }catch(error){
-        alert(error.message);
+      sessionStorage.setItem("status", true);
+      sessionStorage.setItem("memberId", formData.memberId);
+    } catch (error) {
+      alert(error.message);
     }
   };
-
 
   //입력필드 값 변경될때마다 호출
   const handleInputChange = (e) => {
     setFormData({
       // formData복사, 변경된 필드만 업데이트
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -60,12 +59,12 @@ function SigninTemp() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo}/>
+          <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo} />
 
           <Typography component="h1" variant="h5">
             Login
@@ -82,7 +81,7 @@ function SigninTemp() {
               autoComplete="memberId"
               autoFocus
               required
-              placeholder='학번을 입력해주세요'
+              placeholder="학번을 입력해주세요"
             />
             <TextField
               margin="normal"
@@ -95,7 +94,7 @@ function SigninTemp() {
               id="memberPw"
               autoComplete="password"
               required
-              placeholder='비밀번호를 입력해주세요'
+              placeholder="비밀번호를 입력해주세요"
             />
             <Button
               type="submit"
@@ -106,8 +105,7 @@ function SigninTemp() {
               Login
             </Button>
             <Grid container>
-              <Grid item xs>
-              </Grid>
+              <Grid item xs></Grid>
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"아이디가 없으신가요? 회원가입"}

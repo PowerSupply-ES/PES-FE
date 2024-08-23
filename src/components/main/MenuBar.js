@@ -8,7 +8,7 @@ import Tab, { tabClasses } from "@mui/joy/Tab";
 import { useNavigate, useLocation} from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function MenuBar() {
+function MenuBar() {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -60,6 +60,7 @@ export default function MenuBar() {
     </ThemeProvider>
   );
 }
+export default MenuBar;
 
 const theme = createTheme();
 

@@ -1,20 +1,6 @@
 import styled from "styled-components";
 import {useRef, useEffect} from "react";
-
 import 'styles/css/App.css';
-
-
-const AdContainer = styled.div`
-    display:flex;
-    align-items: center;
-    background-color: #272727;
-    justify-content:center;
-    width:100%;
-    height: fit-content;
-    padding:20px 0;
-    margin: auto;
-    margin-bottom: 48px;
-`
 
 const AdPart = () => {
     //카카오 에드핏 광고
@@ -51,3 +37,15 @@ const AdPart = () => {
 };
 
 export default AdPart;
+
+const AdContainer = styled.div`
+    display:flex;
+    align-items: center;
+    background-color: #272727;
+    justify-content:center;
+    width:100%;
+    height: fit-content;
+    padding:20px 0;
+    margin: auto;
+    margin-bottom: 48px;
+`
