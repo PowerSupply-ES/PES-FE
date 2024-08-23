@@ -1,5 +1,5 @@
+// MUI이용 로그인 form
 import * as React from "react";
-import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,46 +11,14 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logo from "assets/images/sign_logo.png";
-import postSignIn from "apis/sign/postSignIn";
-import { useNavigate } from "react-router-dom";
 import Copyright from "./Copyright";
+import SignInHook from "hooks/sign/SignInHook";
 
 const defaultTheme = createTheme();
 
-function SigninTemp() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    memberId: "",
-    memberPw: "",
-  });
 
-  // 로그인 폼이 제출될 때 호출
-  const handleSubmit = async (e) => {
-    // 기본 제출 동작 막기
-    e.preventDefault();
-
-    try {
-      const responseData = await postSignIn(formData);
-      const resultMessage = responseData.message;
-      alert(resultMessage);
-      navigate("/");
-      window.location.reload(); // 페이지 새로 고침
-
-      sessionStorage.setItem("status", true);
-      sessionStorage.setItem("memberId", formData.memberId);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  //입력필드 값 변경될때마다 호출
-  const handleInputChange = (e) => {
-    setFormData({
-      // formData복사, 변경된 필드만 업데이트
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+function SignInTemp() {
+  const {formData, handleSubmit, handleInputChange} = SignInHook();
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -120,4 +88,4 @@ function SigninTemp() {
   );
 }
 
-export default SigninTemp;
+export default SignInTemp;
