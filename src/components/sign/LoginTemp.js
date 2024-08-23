@@ -17,7 +17,7 @@ import SignInHook from "hooks/sign/SignInHook";
 const defaultTheme = createTheme();
 
 
-function SignInTemp() {
+function LoginTemp() {
   const {formData, handleSubmit, handleInputChange} = SignInHook();
 
   return (
@@ -88,4 +88,4 @@ function SignInTemp() {
   );
 }
 
-export default SignInTemp;
+export default LoginTemp;

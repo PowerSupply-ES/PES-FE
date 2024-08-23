@@ -1,10 +1,10 @@
 import 'styles/css/intro.css';
-import SignInTemp from 'components/sign/SignInTemp';
+import LoginTemp from 'components/sign/LoginTemp';
 
 const Signin = () => {
   return (
     <div className='sign-wrapper'>
-      <SignInTemp/>
+      <LoginTemp/>
     </div>
   );
 };
