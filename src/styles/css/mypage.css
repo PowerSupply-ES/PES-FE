@@ -80,10 +80,9 @@
 .content_mypage {
   padding-top: 80px;
   background-color: #f2f1fe;
-  height: 100vh;
+  height: calc(100vh + 80px);
   padding-bottom: 300px;
   margin-bottom: -300px;
-  height: calc(100vh - 300px); /* header, footer 높이 뺀 값 */
 }
 .content_mypage h2 {
   width: 100%;
