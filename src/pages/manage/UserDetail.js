@@ -1,40 +1,12 @@
 // 회원상세페이지
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import axios from 'axios';
-
 import 'styles/css/manage.css';
 import 'styles/css/mypage.css';
 import SideTab from "components/manage/SideTab";
 import { FaCircleUser } from "react-icons/fa6";
-
+import UserDetailHook from 'hooks/manage/UserDetailHook';
 
 function UserDetail(){
-    let url = new URL(window.location.href);
-    let memberId = url
-        .pathname
-        .split('/')[2];
-
-    const [memberData, setMemberData] = useState();
-
-    // 내 정보 GET 요청
-    const sendGetInfo = async() => {
-        const uri = `/api/admin/member/${memberId}`;
-    
-        try{
-            const res = await axios.get(uri);
-            const memDetail = res.data;
-            setMemberData(memDetail);
-        }catch(error){
-            console.error(error);
-        }
-        //예외처리하기
-    };
-
-    useEffect(()=>{
-        sendGetInfo();
-    },[])
-
+    const {memberData} = UserDetailHook();
 
     return(
         <div className="content_container">
@@ -47,9 +19,6 @@ function UserDetail(){
                 {/* 우측 유저 정보 */}
                 <div className="userlist_wrapper">
                     {/* <div className="list_container"> */}
-
-
-                    
 
                         {!memberData ? (
                             <div>Loading...</div>
@@ -89,16 +58,14 @@ function UserDetail(){
                                         {/* <MyProblem myProb={myProb}></MyProblem> */}
                                         </div>
                                     </div>
-                                    
 
                                     {/* 내 피드백 */}
-                                    {/* 신입생,재학생에 따라 feedback 띄워주기 */}
+                                    {/* TODO : 신입생,재학생에 따라 feedback 띄워주기 */}
                                     <div className='bottom'>
                                         <div className='feed_top'>
                                             <div className='mypage_btn'>feedback</div>
                                             <div className='feedNum'>몇 개</div>
                                         </div>
-                                        
 
                                         <div className='myFeedback'>
                                         {/* <MyFeed myFeedback={myFeedback}></MyFeed> */}
@@ -106,17 +73,11 @@ function UserDetail(){
                                     </div>          
                             </div>
                             </div>
-
                         )}
-
                          {/* </div> */}
                     </div>
                 </div>
-                
-
             </div>
-
-
     )
 }
 
