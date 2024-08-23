@@ -3,7 +3,7 @@ import axios from "axios";
 import AdPart from "components/list/AdPart";
 import ProblemItem from "components/list/ListItem";
 import JuniorRank from "components/ranking/JuniorRank";
-import SeniorRank from "layouts/footer/ranking/SeniorRank";
+import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled"
 import Button from '@mui/joy/Button';
 
