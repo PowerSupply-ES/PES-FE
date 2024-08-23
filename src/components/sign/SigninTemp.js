@@ -17,7 +17,7 @@ import Copyright from './Copyright';
 
 const defaultTheme = createTheme();
 
-function LoginTemp() {
+function SigninTemp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     memberId: '',
@@ -119,4 +119,4 @@ function LoginTemp() {
   );
 }
 
-export default LoginTemp;
+export default SigninTemp;

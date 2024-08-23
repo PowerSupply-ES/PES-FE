@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import logo from "assets/images/sign_logo.png"
 import postSignup from 'hooks/sign/postSignup';
 import Copyright from './Copyright';
 
@@ -82,9 +83,8 @@ function SignupTem() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Avatar sx={{ m: 1, width: 56, height: 56 }} src={logo}/>
+          
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
