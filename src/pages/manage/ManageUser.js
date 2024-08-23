@@ -1,6 +1,6 @@
 import 'styles/css/manage.css';
-import GetUserList from 'apis/manage/GetUserList';
 import SideTab from "components/manage/SideTab";
+import UserList from 'components/manage/UserList';
 
 function ManageUser(){
     
@@ -28,7 +28,7 @@ function ManageUser(){
                         </div>
 
                         {/* 회원목록 */}
-                        <GetUserList></GetUserList>
+                        <UserList/>
                     </div>
                 </div>
             </div>

@@ -1,37 +1,12 @@
-import {useState, useEffect, useCallback} from "react";
-import axios from "axios";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 import RankingItem from "./RankingItem";
+import GetSeniorsRank from "apis/ranking/GetSeniorsRank";
 
 const SeniorRank = () => {
 
-    const [newRank, setNewRank] = useState([]);
-
-    // 재학생 랭킹 불러오기 (get)
-    const getSeniorRank = useCallback(async () => {
-        try {
-            const config = {
-                withCredentials: true,
-            };
-        
-            const response = await axios.get(
-                `/api/rank/senior`,
-                config
-            );
-
-            if (response.status !== 204)
-                setNewRank(response.data);
-        
-            } catch (error) {
-            console.log(error);
-        }
-    }, []); 
-
-    useEffect(() => {
-        getSeniorRank();
-    }, [getSeniorRank]);
+    // 재학생 순위 get Api 호출
+    const {newRank} = GetSeniorsRank();
     
-
     return (
         <StyledListPage>
             <RankingItem rank="순위" memberName="이름" score="답변수" style="margin-bottom: 10px;"/>

@@ -1,39 +1,13 @@
-import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 import RankingItem from "./RankingItem";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
+import JuniorHook from "hooks/rank/JuniorHook";
 
 const JuniorRank = () => {
-  const [memberGen, setMemberGen] = useState(35); // memberGen 35기로 기본 설정
-  const [newRank, setNewRank] = useState([]);
-
-  // 신입생 랭킹 불러오기 (get)
-  const getNewRank = useCallback(async () => {
-    try {
-      const config = {
-        withCredentials: true,
-        params: {
-          memberGen,
-        },
-      };
-
-      const response = await axios.get(`/api/rank/junior`, config);
-
-      if (response.status !== 204) setNewRank(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [memberGen]);
-
-  useEffect(() => {
-    getNewRank();
-  }, [getNewRank]);
-
-  const handleSelectChange = (value) => {
-    setMemberGen(parseInt(value, 10));
-  };
+  
+  // 신입생 순위 get Api 호출
+  const {newRank, handleSelectChange, memberGen} = JuniorHook();
 
   return (
     <StyledListPage>

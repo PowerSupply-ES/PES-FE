@@ -1,6 +1,7 @@
 // 상단바 user 정보 API 요청
 const getUserInfo = ({navigate, setMemberData}) => {
-    const uri = "../api/exp";
+    
+    const uri = "api/exp";
     const memberEmail = sessionStorage.getItem("memberEmail");
 
     fetch(`${uri}?memberEmail=${memberEmail}`, {
@@ -9,7 +10,6 @@ const getUserInfo = ({navigate, setMemberData}) => {
         .then((response) => {
           if (response.status === 403) {
             alert("로그인이 만료됐습니다!");
-            // logoutUser();
             sessionStorage.clear();
             localStorage.clear();
             navigate("/signin");

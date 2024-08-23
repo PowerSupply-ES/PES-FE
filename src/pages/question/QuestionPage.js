@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import MemberStatus from "components/question/MemberStatus";
+import MemberStatus from "hooks/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
-
 
 import { StyledQuestion } from 'styles/styledComponent/Question-styled';
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
@@ -15,7 +14,6 @@ const QuestionPage = () => {
         .split('/')[2];
 
     const problemId = sessionStorage.getItem('problemId');
-    // console.log("problemId = ",problemId);
 
     const navigate = useNavigate();
 

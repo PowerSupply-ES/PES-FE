@@ -1,7 +1,7 @@
 
 //로그아웃 api호출 함수
 const postLogout = (navigate) => {
-    const uri = "../api/logout";
+    const uri = "api/logout";
 
     fetch(uri, {
       method: "POST",
