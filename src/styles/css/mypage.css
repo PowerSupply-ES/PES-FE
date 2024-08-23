@@ -8,6 +8,8 @@
 }
 .mypage_content .left {
   margin: 48px 60px 0 0;
+  height: -moz-fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: baseline;
