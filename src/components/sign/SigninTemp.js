@@ -34,6 +34,7 @@ function SigninTemp() {
         const resultMessage = responseData.message;
         alert(resultMessage);
         navigate('/');
+        window.location.reload(); // 페이지 새로 고침
 
         sessionStorage.setItem('status', true);
         sessionStorage.setItem('memberId', formData.memberId);

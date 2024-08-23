@@ -13,7 +13,7 @@ import PostNotice from "pages/notice/postNotice"
 import NoticeDetail from "pages/notice/noticeDetail"
 import ManageUser from "pages/manage/ManageUser";
 import UserDetail from "pages/manage/UserDetail";
-import Header from "components/main/Header";
+import Header from "layouts/header/Header";
 
 
 function App() {

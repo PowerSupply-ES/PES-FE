@@ -2,7 +2,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
-import Logout from 'utils/common/Logout';
+import postLogout from "hooks/common/postLogout";
 
 function Bottom(){ 
     const status = sessionStorage.getItem('status');
@@ -32,7 +32,7 @@ function Bottom(){
           
               {/* 로그아웃 상태시 안보이게 */}
               {status ? (
-                <div onClick={Logout} className='footer_logout'>로그아웃</div>
+                <div onClick={postLogout} className='footer_logout'>로그아웃</div>
               ) : (
                 <>
                 </>
