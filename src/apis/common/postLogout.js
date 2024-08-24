@@ -1,35 +1,36 @@
+import axios from "axios";
 
 //로그아웃 api호출 함수
-const postLogout = (navigate) => {
-    const uri = "api/logout";
+const postLogout = async (navigate) => {
+  const uri = "/api/logout";
 
-    fetch(uri, {
-      method: "POST",
+  try{
+    const response = await axios.post(uri, {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          console.error("로그아웃 실패:", response.status, response.statusText);
-          throw new Error(
-            `로그아웃 실패: ${response.status} ${response.statusText}`
-          );
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // 로컬 스토리지 클리어
-        sessionStorage.clear();
-        localStorage.clear();
-        alert(data.message);
+    });
 
-        navigate('/');
-        window.location.reload(); // 페이지 새로 고침
-      })
-      .catch((error) => {
-        console.error("로그아웃 실패:", error);
-      });
+    // 로컬 스토리지 클리어
+    sessionStorage.clear();
+    localStorage.clear();
+    alert(response.data.message);
+
+    navigate('/');
+    window.location.reload(); // 페이지 새로 고침
+
+  }catch (error) {
+    if (error.response) {
+      // 서버가 응답을 반환했지만 오류 상태 코드
+      console.error("로그아웃 실패:", error.response.status, error.response.statusText);
+    } else if (error.request) {
+      // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
+      console.error("로그아웃 실패: 요청이 실패했습니다.");
+    } else {
+      // 요청 설정 중 오류 발생
+      console.error("로그아웃 실패:", error.message);
+    }
+  }
 };
 
 export default postLogout;
