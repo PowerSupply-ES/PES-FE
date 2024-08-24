@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 회원목록 api호출
-const getUserList = async(setMemDate) => {
+const getUsersList = async(setMemDate) => {
     const uri = `api/admin/memberlist`
 
     try{
@@ -13,4 +13,4 @@ const getUserList = async(setMemDate) => {
     }
     // TODO : 예외처리하기
 }
-export default getUserList;
+export default getUsersList;
