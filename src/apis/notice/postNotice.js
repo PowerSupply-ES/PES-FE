@@ -1,30 +1,36 @@
+import axios from 'axios';
+
 // 공지사항 post API 호출
-const postNotice = (notice) => {
+const postNotice = async (notice) => {
     const uri = 'api/notice';
 
-    fetch(uri, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(notice),
-    })
-    .then((response)=>{
-        if(response.status === 403){
-            alert('권한이 없습니다');
-        }
-        else if(response.status === 201){
+    try {
+        const response = await axios.post(uri, notice, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.status === 201) {
             alert('공지사항이 성공적으로 등록되었습니다!');
             window.location.href = '/notice';
         }
-        else if (!response.ok) {
-            throw new Error(`${response.status} ${response.statusText}`);  
+    } catch (error) {
+        if (error.response) {
+            // 서버가 응답을 반환한 경우
+            if (error.response.status === 403) {
+                alert('권한이 없습니다');
+            } else {
+                alert(`서버 응답 오류: ${error.response.status} ${error.response.statusText}`);
+            }
+        } else if (error.request) {
+            // 요청이 이루어졌으나 응답이 없는 경우
+            alert('서버 응답이 없습니다.');
+        } else {
+            // 설정 중 오류 발생
+            alert(`요청 실패: ${error.message}`);
         }
-    })
-    .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
-    });
-}
+    }
+};
 
-export default postNotice
+export default postNotice;
