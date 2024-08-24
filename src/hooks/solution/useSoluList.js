@@ -10,7 +10,7 @@ const useSoluList = (problemId) => {
     const sendGetSolve = useCallback(async() => {
       try{
         const res = await getSoluList(problemId);
-        setSolveData(res.data);
+        setSolveData(res);
       }catch(error){
         console.error('데이터 가져오기 실패:', error);
       }

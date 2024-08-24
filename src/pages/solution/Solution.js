@@ -15,6 +15,11 @@ function Solution() {
   // 풀이 get API HOOk
   const solveData = useSoluList(problemId);
 
+  // 조건부 렌더링
+  if (!problemData || !solveData.length) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="solution_container">
       <div className="solution_bar">
