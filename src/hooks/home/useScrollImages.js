@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const ScrollImagesHook = () => {
+const useScrollImages = () => {
   const [opacity2, setOpacity2] = useState(0);
   const [opacity3, setOpacity3] = useState(0);
   const [opacity4, setOpacity4] = useState(0);
@@ -28,4 +28,4 @@ const ScrollImagesHook = () => {
   return { opacity2, opacity3, opacity4 };
 };
 
-export default ScrollImagesHook;
+export default useScrollImages;

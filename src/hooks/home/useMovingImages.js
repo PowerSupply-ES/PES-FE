@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const MovingImagesHook = () => {
+const useMovingImages = () => {
     // 이미지 움직임(progress증가시키면서 움직이기)
     const [animationProgress, setAnimationProgress] = useState(0);
     // 애니메이션 완료 여부
@@ -37,4 +37,4 @@ const MovingImagesHook = () => {
     return { animationFinished };
 }
 
-export default MovingImagesHook;
+export default useMovingImages;

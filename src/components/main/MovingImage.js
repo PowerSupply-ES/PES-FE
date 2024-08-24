@@ -1,12 +1,12 @@
 import React from "react";
 import img0 from "assets/images/backImg.png";
 import img0_0 from "assets/images/backImg_right.png";
-import MovingImagesHook from "hooks/home/MovingImagesHook";
+import useMovingImages from "hooks/home/useMovingImages";
 
 // 홈화면 첫번째 슬라이딩 이미지 애니메이션
 const MovingImage = () => {
 
-  const { animationFinished } = MovingImagesHook(); // 슬라이딩 HOOK
+  const { animationFinished } = useMovingImages(); // 슬라이딩 HOOK
   const status = sessionStorage.getItem("status");
 
   return (

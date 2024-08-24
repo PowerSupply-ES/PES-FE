@@ -5,6 +5,7 @@ import useSoluList from 'hooks/solution/useSoluList';
 
 function Solution() {
 
+  // TODO : split한 problemId와 solveData.problemId 구분하기 
   let url = new URL(window.location.href);
   let problemId = url.pathname.split('/')[2];
 

@@ -5,10 +5,10 @@ import 'styles/css/manage.css';
 import 'styles/css/mypage.css';
 import SideTab from "components/manage/SideTab";
 import { FaCircleUser } from "react-icons/fa6";
-import UserDetailHook from 'hooks/manage/UserDetailHook';
+import useUserDetail from 'hooks/manage/useUserDetail';
 
 function UserDetail(){
-    const {memberData} = UserDetailHook();
+    const {memberData} = useUserDetail();
 
     return(
         <div className="content_container">

@@ -1,7 +1,7 @@
 import getUserDetail from 'apis/manage/getUserDetail';
 import { useState, useEffect } from 'react';
 
-const UserDetailHook = () => {
+const useUserDetail = () => {
     const [memberData, setMemberData] = useState();
 
     useEffect(()=>{
@@ -12,4 +12,4 @@ const UserDetailHook = () => {
 
     return { memberData}
 }
-export default UserDetailHook;
+export default useUserDetail;
