@@ -1,8 +1,12 @@
 import 'styles/css/manage.css';
 import SideTab from "components/manage/SideTab";
 import UserList from 'components/manage/UserList';
+import useUserList from 'hooks/manage/useUserList';
 
 function ManageUser(){
+
+    // 사용자 리스트 get HOOK
+    const memberData = useUserList();
     
     return(
         <div className="content_container">
@@ -28,7 +32,7 @@ function ManageUser(){
                         </div>
 
                         {/* 회원목록 */}
-                        <UserList/>
+                        <UserList memberData={memberData}/>
                     </div>
                 </div>
             </div>

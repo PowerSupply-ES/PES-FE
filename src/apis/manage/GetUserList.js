@@ -2,7 +2,6 @@ import axios from 'axios';
 
 // 회원목록 api호출
 const getUserList = async(setMemDate) => {
-    
     const uri = `api/admin/memberlist`
 
     try{
