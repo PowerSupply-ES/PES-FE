@@ -6,9 +6,9 @@
 
 /* -----info 페이지----- */
 .info_body {
-  width: 100%;
-  height: -moz-fit-content;
-  height: fit-content;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: auto; /* 내용물이 넘칠 경우 스크롤이 가능하도록 설정 */
   padding: 40px 0 80px;
   margin-bottom: -300px;
   background-color: #F9F9FF;

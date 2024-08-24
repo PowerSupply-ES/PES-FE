@@ -99,7 +99,7 @@ const QuestionPage = () => {
 
 
 
-    
+
 
     // 댓글 제출 결과 alert 함수
     const getAlert = (response) => {
@@ -128,40 +128,41 @@ const QuestionPage = () => {
 
                     </div>
                     <div className="button_group">
-                            <button className="button_problem" onClick={toggleDropdown}>문제보기
-                                 {isDropdownOpen && (
-                                    <div className='dropdown_content'>
-                                        {/* 띄워쓰기 표현_ by성임*/}
-                                        <div className="content" style={{ whiteSpace: 'pre'}}>
-                                            {/* renderStyledNewlines: '\n' 기준으로 줄바꿈 함수 */}
-                                            {problem.problemContent && renderNewlines(problem.problemContent)}
-                                        </div>
-
-                                        <div className="sample_inputs">
-                                            <h3>Sample Inputs:</h3>
-                                                {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
-                                                <React.Fragment key={index}>
-                                                    {renderNewlines(input)}
-                                                </React.Fragment>
-                                            ))}
-                                        </div>
-                        
-                                        <div className="sample_outputs" style={{ whiteSpace: 'pre'}}>
-                                            <h3>Sample Outputs:</h3>
-                                            {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
-                                                <React.Fragment key={index}>
-                                                    {renderNewlines(output)}
-                                                </React.Fragment>
-                                            ))}
-                                        </div>
+                        <button className="button_problem" onClick={toggleDropdown}>문제보기
+                                {isDropdownOpen && (
+                                <div className='dropdown_content'>
+                                    {/* 띄워쓰기 표현_ by성임*/}
+                                    <div className="content" style={{ whiteSpace: 'pre'}}>
+                                        {/* renderStyledNewlines: '\n' 기준으로 줄바꿈 함수 */}
+                                        {problem.problemContent && renderNewlines(problem.problemContent)}
                                     </div>
-                                 )}
-                                </button>
-                            {(state === "success" || state === "fail") && (
-                                <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
-                            )}
-                        </div>
+
+                                    <div className="sample_inputs">
+                                        <h3>Sample Inputs:</h3>
+                                            {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
+                                            <React.Fragment key={index}>
+                                                {renderNewlines(input)}
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                    
+                                    <div className="sample_outputs" style={{ whiteSpace: 'pre'}}>
+                                        <h3>Sample Outputs:</h3>
+                                        {problem.sampleOutputs && problem.sampleOutputs.map((output, index) => (
+                                            <React.Fragment key={index}>
+                                                {renderNewlines(output)}
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                                </div>
+                                )}
+                            </button>
+                        {(state === "success" || state === "fail") && (
+                            <button className="button_solution" onClick={() => navigate(`/solution/${problemId}`)}>다른 풀이 보기</button> 
+                        )}
+                    </div>
                 </StyledProblem>
+
                 <div className="code_question_container">
                     <div className="code_container">
                         {/* 에디터로 수정_by성임 */}
