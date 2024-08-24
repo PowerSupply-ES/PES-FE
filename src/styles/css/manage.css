@@ -45,7 +45,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
-  background-color: #E9E9EB;
+  background-color: #e9e9eb;
   padding-bottom: 40px;
   overflow-y: auto;
 }
@@ -68,9 +68,9 @@
   flex-direction: column;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper {
-  background-color: #F8F8F8;
-  border-top: solid #ACACAC 1px;
-  border-bottom: solid #ACACAC 1px;
+  background-color: #f8f8f8;
+  border-top: solid #acacac 1px;
+  border-bottom: solid #acacac 1px;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
   background-color: #ffffff;
@@ -87,12 +87,12 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn {
-  background-color: #FFD66B;
+  background-color: #ffd66b;
   opacity: 80%;
-  border-color: #FFD66B;
+  border-color: #ffd66b;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .levelup_btn:hover {
-  background-color: #FFD66B;
+  background-color: #ffd66b;
   opacity: 95%;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn {
@@ -122,26 +122,39 @@
   font-weight: bold;
   color: rgba(0, 0, 0, 0.7490196078);
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
   color: rgba(0, 0, 0, 0.7490196078);
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
   display: inherit;
   height: 40px;
   align-items: center;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_new, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_old, .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_manage, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_new,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_old,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_manage,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
   flex: 1;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
   flex: 1;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_stunum, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_stunum,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum {
   flex: 2;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_studep, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_studep,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
   flex: 2;
 }
-.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none, .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
   flex: 3;
 }

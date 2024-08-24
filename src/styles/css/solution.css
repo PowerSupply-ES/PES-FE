@@ -15,7 +15,12 @@
   margin-left: auto;
   margin: 40px 0px 40px auto;
 }
-.solution_container .solution_bar, .solution_container .solution, .solution_container .solutionBtn, .solution_container .solving, .solution_container .left, .solution_container .right {
+.solution_container .solution_bar,
+.solution_container .solution,
+.solution_container .solutionBtn,
+.solution_container .solving,
+.solution_container .left,
+.solution_container .right {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +37,7 @@
 }
 .solution_container .solution_bar .solution .left .solution_num {
   margin-right: 16px;
-  color: #FF8412;
+  color: #ff8412;
   font-weight: bold;
   font-size: 22px;
 }
@@ -45,7 +50,7 @@
   display: flex;
   font-weight: bold;
   font-size: 20px;
-  color: #04CA00;
+  color: #04ca00;
 }
 
 /* 풀이목록 */
@@ -64,7 +69,7 @@
   width: 44px;
   font-size: 20px;
   display: flex;
-  color: #04CA00;
+  color: #04ca00;
   font-weight: bold;
   margin-right: 20px;
 }
@@ -79,7 +84,8 @@
   font-size: var(--font-medium);
   /* 풀이 버튼 */
 }
-.solving_list .solving .right .btn_fail, .solving_list .solving .right .btn_success {
+.solving_list .solving .right .btn_fail,
+.solving_list .solving .right .btn_success {
   width: 80px;
   height: -moz-fit-content;
   height: fit-content;
@@ -105,7 +111,7 @@
   background-color: #565656;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 1px 3px #CCC9C9;
+  box-shadow: 1px 3px #ccc9c9;
   margin-left: 12px;
 }
 .solving_list .solving .right .btn_goto_challenge:hover {
@@ -114,39 +120,40 @@
 }
 
 /* 풀이버튼 */
-.btn_baekjoon, .btn_challenge {
+.btn_baekjoon,
+.btn_challenge {
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
   border-radius: 5px;
   border: 2px solid;
-  background: #FFF;
+  background: #fff;
   padding: 10px 24px;
   font-weight: bold;
   font-size: 18px;
 }
 
 .btn_baekjoon {
-  border-color: #325CC7;
-  color: #325CC7;
+  border-color: #325cc7;
+  color: #325cc7;
   margin-right: 12px;
 }
 
 .btn_challenge {
-  border-color: #DEDEDE;
-  color: #6A6B6F;
+  border-color: #dedede;
+  color: #6a6b6f;
 }
 
 .btn_process {
   height: -moz-fit-content;
   height: fit-content;
-  background-color: #FFFFFF;
-  color: #6A6B6F;
+  background-color: #ffffff;
+  color: #6a6b6f;
   font-weight: bold;
   font-size: 20px;
   border-radius: 5px;
-  border: 2px solid #DEDEDE;
+  border: 2px solid #dedede;
   margin-right: 20px;
   text-align: center;
   padding: 3px;

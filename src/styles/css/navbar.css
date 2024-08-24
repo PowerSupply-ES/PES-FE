@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* -----네비게이션바----- */
-.logout, .userId, .userLevel {
+.logout,
+.userId,
+.userLevel {
   height: -moz-fit-content;
   height: fit-content;
   width: -moz-fit-content;
@@ -82,7 +84,9 @@
   cursor: pointer;
 }
 
-.menu1, .menu2, .menu3 {
+.menu1,
+.menu2,
+.menu3 {
   height: -moz-fit-content;
   height: fit-content;
   font-size: 26px;

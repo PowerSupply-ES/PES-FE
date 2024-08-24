@@ -145,11 +145,15 @@ img {
      object-fit: cover;
 }
 
-.prob_info, .solve_info, .ques_info {
+.prob_info,
+.solve_info,
+.ques_info {
   font-size: 20px;
   text-align: left;
 }
-.prob_info h2, .solve_info h2, .ques_info h2 {
+.prob_info h2,
+.solve_info h2,
+.ques_info h2 {
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 16px;
@@ -183,8 +187,8 @@ img {
 }
 
 .menual_ques_fail .case_container .ques_case {
-  border: solid #F47575 3px;
-  color: #F47575;
+  border: solid #f47575 3px;
+  color: #f47575;
   opacity: 80%;
 }
 .menual_ques_fail p {
@@ -203,7 +207,7 @@ img {
   padding: 6px 18px;
   background-color: #ffffff;
   font-weight: bold;
-  box-shadow: 1px 3px #CCC9C9;
+  box-shadow: 1px 3px #ccc9c9;
   margin-top: 40px;
   font-size: 20px;
   margin-bottom: 20px;
@@ -232,7 +236,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #E9E9EB;
+  background-color: #e9e9eb;
   font-weight: bold;
   color: #3e3e3e;
 }
@@ -251,7 +255,7 @@ img {
   border: solid #3e3e3e 2px;
   border-radius: 40px;
   padding: 8px 24px;
-  color: #E9E9EB;
+  color: #e9e9eb;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }

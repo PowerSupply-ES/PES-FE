@@ -8,7 +8,7 @@
 }
 
 .intro {
-  background-color: #CCD1FF;
+  background-color: #ccd1ff;
   margin-bottom: -300px;
   padding: 0;
   display: flex;
@@ -26,7 +26,7 @@
   height: 60vh;
 }
 .intro .introduce * {
-  color: #FFFFFF;
+  color: #ffffff;
   word-break: keep-all;
   font-weight: bold;
 }
@@ -44,7 +44,7 @@
 
 h2 {
   /* display: flex;
-  justify-content: center; */
+    justify-content: center; */
   color: #424242;
   font-size: 32px;
 }
@@ -57,9 +57,9 @@ h2 {
 .login-container {
   width: 380px;
   height: 76%;
-  border: solid 2px #C3C2C2;
+  border: solid 2px #c3c2c2;
   border-radius: 10px;
-  background-color: #F6F8FA;
+  background-color: #f6f8fa;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -76,7 +76,7 @@ h2 {
 .login-container a {
   margin: 24px 15px 25px auto;
   font-size: 13px;
-  color: #6B6B6B;
+  color: #6b6b6b;
 }
 
 .signup-container {
@@ -85,9 +85,9 @@ h2 {
   height: 90%;
   height: -moz-fit-content;
   height: fit-content;
-  border: solid 2px #C3C2C2;
+  border: solid 2px #c3c2c2;
   border-radius: 10px;
-  background-color: #F6F8FA;
+  background-color: #f6f8fa;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -104,7 +104,7 @@ h2 {
 .signup-container a {
   margin: 24px 15px 25px auto;
   font-size: 13px;
-  color: #6B6B6B;
+  color: #6b6b6b;
 }
 
 .login-input {
@@ -120,16 +120,17 @@ h2 {
   width: 70%;
   display: block;
   margin: 3px;
-  color: #3D3D3D;
+  color: #3d3d3d;
   font-weight: bold;
   font-size: 14px;
 }
-.login-input input[type=text], .login-input input[type=password] {
+.login-input input[type=text],
+.login-input input[type=password] {
   width: 68%;
   padding: 10px;
   border: 1px solid #5094f9;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin-top: 4px;
 }
 
@@ -145,20 +146,25 @@ h2 {
   width: 25%;
   display: block;
   margin: 3px;
-  color: #3D3D3D;
+  color: #3d3d3d;
   font-weight: bold;
   font-size: 14px;
 }
-.signup-input input[type=text], .signup-input input[type=password], .signup-input input[type=email], .signup-input input[type=tel], .signup-input input[type=number] {
+.signup-input input[type=text],
+.signup-input input[type=password],
+.signup-input input[type=email],
+.signup-input input[type=tel],
+.signup-input input[type=number] {
   width: 60%;
   padding: 10px;
   border: 1px solid #5094f9;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 /* 로그인,회원가입 버튼 */
-.btn_signin, .btn_signup {
+.btn_signin,
+.btn_signup {
   display: flex;
   justify-content: center;
   width: 75%;
@@ -171,7 +177,8 @@ h2 {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-size: 14px;
 }
-.btn_signin:hover, .btn_signup:hover {
+.btn_signin:hover,
+.btn_signup:hover {
   background-color: rgba(90, 44, 218, 0.7764705882);
 }
 

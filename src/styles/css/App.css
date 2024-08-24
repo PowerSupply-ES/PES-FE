@@ -1,11 +1,11 @@
 @charset "UTF-8";
 .App {
   text-align: center;
-  background-color: #E9E9EB;
+  background-color: #e9e9eb;
 }
 
 :root {
-  --Font1:"Pretendard-Regular";
+  --Font1: "Pretendard-Regular";
 }
 
 @font-face {
@@ -36,5 +36,5 @@ button:hover {
 }
 
 .nonePage {
-  background-color: #E9E9EB;
+  background-color: #e9e9eb;
 }

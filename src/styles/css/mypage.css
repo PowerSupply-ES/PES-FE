@@ -57,15 +57,16 @@
   height: fit-content;
   padding: 2px 6px;
   color: #ffffff;
-  background-color: #9747FF;
+  background-color: #9747ff;
   opacity: 60%;
-  border: solid #9747FF;
+  border: solid #9747ff;
   opacity: 60%;
   border-radius: 20px;
   margin: 0 0 6px 8px;
 }
 
-.feedNum, .probNum {
+.feedNum,
+.probNum {
   text-align: right;
   font-size: 20px;
   margin: 0 20px 8px 0;
@@ -73,7 +74,8 @@
   font-weight: bold;
 }
 
-.feed_top, .prob_top {
+.feed_top,
+.prob_top {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -95,7 +97,8 @@
   font-size: 26px;
 }
 
-.noFeed, .noProblems {
+.noFeed,
+.noProblems {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -104,14 +107,16 @@
   color: hsl(0, 0%, 78%);
 }
 
-.memberInfo, .myProblem, .myFeedback {
+.memberInfo,
+.myProblem,
+.myFeedback {
   padding: 10px;
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 18px;
-  border: solid #C3C2C2 2px;
+  border: solid #c3c2c2 2px;
   border-radius: 10px;
 }
 
@@ -153,14 +158,15 @@
   justify-content: left;
 }
 
-.myProblem, .myFeedback {
+.myProblem,
+.myFeedback {
   height: 240px;
   width: 800px;
   justify-content: center;
 }
 
 .myFeedback {
-  color: #C3C2C2;
+  color: #c3c2c2;
 }
 
 .myProblem {
@@ -201,17 +207,20 @@
   background: rgba(231, 230, 246, 0.5882352941); /*스크롤바 뒷 배경 색상*/
 }
 
-.problems, .feeds {
+.problems,
+.feeds {
   width: 100%;
   display: flex;
   padding: 4px 0;
 }
-.problems *, .feeds * {
+.problems *,
+.feeds * {
   display: flex;
   align-items: center;
 }
 
-.problemList, .FeedList {
+.problemList,
+.FeedList {
   width: 100%;
   height: 100%;
   padding: 20px 0;
@@ -228,7 +237,7 @@
   align-items: center;
   justify-content: center;
   width: 8%;
-  color: #04CA00;
+  color: #04ca00;
   font-weight: bold;
 }
 
@@ -237,10 +246,11 @@
   align-items: center;
   justify-content: center;
   width: 10%;
-  color: #04CA00;
+  color: #04ca00;
   font-weight: bold;
 }
-.problems .finalScore, .problems .problemScore {
+.problems .finalScore,
+.problems .problemScore {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,7 +261,9 @@
 .problems .problemScore {
   margin-right: 10px;
 }
-.problems .problemTitle, .problems .mameberName, .problems .memberGen {
+.problems .problemTitle,
+.problems .mameberName,
+.problems .memberGen {
   justify-content: left;
   width: 60%;
   font-weight: bold;
@@ -290,7 +302,9 @@
 }
 
 /* 성공여부에 따라 버튼색 변화 */
-.btn_fail, .btn_success, .btn_state {
+.btn_fail,
+.btn_success,
+.btn_state {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,14 +315,14 @@
 }
 
 .btn_success {
-  border: solid 3px #5094F9;
-  color: #5094F9;
+  border: solid 3px #5094f9;
+  color: #5094f9;
 }
 
 .btn_fail {
-  border: solid 3px #EB3434;
+  border: solid 3px #eb3434;
   opacity: 80%;
-  color: #EB3434;
+  color: #eb3434;
   opacity: 80%;
 }
 
