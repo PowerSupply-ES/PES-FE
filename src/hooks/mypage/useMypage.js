@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import getMyInfo from "apis/mypage/getMyInfo";
 import getMyProb from "apis/mypage/getMyProb";
 import getMyFeed from "apis/mypage/getMyFeed";
+import { useNavigate } from "react-router-dom";
 
 const useMypage = () => {
+  const navigate = useNavigate();
+
   //정보리스트
   const [memberData, setMemberData] = useState([]);
   //내문제리스트
@@ -22,7 +25,7 @@ const useMypage = () => {
       console.log("로그인 안돼있음");
 
       alert("로그인 해주세요.");
-      window.location.href = "main";
+      navigate("main");
       return;
     }
     getMyProb(setMyProb); // 내가 푼 문제 GET요청

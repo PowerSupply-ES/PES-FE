@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 공지사항 수정 API 요청
-const fetchNotice = async (uri, noticeId, noticeDetail) => {
+const fetchNotice = async (uri, noticeId, noticeDetail, navigate) => {
   try {
     const response = await axios.patch(`${uri}${noticeId}`, noticeDetail, {
       headers: {
@@ -11,7 +11,7 @@ const fetchNotice = async (uri, noticeId, noticeDetail) => {
 
     if (response.status === 200) {
       alert("공지사항이 성공적으로 수정되었습니다!");
-      window.location.href = "/notice";
+      navigate("/notice");
     }
   } catch (error) {
     if (error.response) {

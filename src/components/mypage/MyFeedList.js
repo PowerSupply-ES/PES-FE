@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import MyFeed from "./MyFeed";
 import useMypage from "hooks/mypage/useMypage";
 
 // 내 피드백 list
 const MyFeedList = () => {
+  const navigate = useNavigate();
   const { myFeedback } = useMypage();
 
   return (
@@ -14,7 +16,7 @@ const MyFeedList = () => {
       </div>
 
       <div className="myFeedback">
-        <MyFeed myFeedback={myFeedback}></MyFeed>
+        <MyFeed myFeedback={myFeedback} navigate={navigate}></MyFeed>
       </div>
     </div>
   );

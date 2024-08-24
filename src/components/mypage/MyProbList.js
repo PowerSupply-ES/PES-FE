@@ -1,8 +1,10 @@
 import useMypage from "hooks/mypage/useMypage";
 import MyProb from "./MyProb";
+import { useNavigate } from "react-router-dom";
 
 // 내가 푼 문제 list
 const MyProbList = () => {
+  const navigate = useNavigate();
   const { myProb } = useMypage();
 
   return (
@@ -13,7 +15,7 @@ const MyProbList = () => {
       </div>
 
       <div className="myProblem">
-        <MyProb myProb={myProb}></MyProb>
+        <MyProb myProb={myProb} navigate={navigate}></MyProb>
       </div>
     </div>
   );

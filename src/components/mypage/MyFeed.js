@@ -1,9 +1,10 @@
 // 내 피드백 컴포넌트
-const MyFeed = ({ myFeedback }) => {
+const MyFeed = ({ myFeedback, navigate }) => {
   const gotoFeed = (problemId) => {
     console.log("problemId: ", problemId);
-    window.location = `question/${problemId}`;
+    navigate(`question/${problemId}`);
   };
+
   return (
     <div className="FeedList">
       {myFeedback.length === 0 ? (

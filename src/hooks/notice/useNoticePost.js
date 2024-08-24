@@ -1,8 +1,11 @@
 import { useState } from "react";
 import postNotice from "apis/notice/postNotice";
+import { useNavigate } from "react-router-dom";
 
 // 공지사항 등록 관련 HOOK
 const useNoticePost = () => {
+  const navigate = useNavigate();
+
   const [notice, setNotice] = useState({
     title: "",
     content: "",
@@ -25,7 +28,7 @@ const useNoticePost = () => {
 
   // 폼이 제출될 때 호출
   const handleSubmit = () => {
-    postNotice(notice);
+    postNotice(notice, navigate);
   };
 
   return { notice, handleInputChange, handleSubmit };

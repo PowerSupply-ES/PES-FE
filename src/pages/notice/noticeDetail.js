@@ -4,8 +4,11 @@ import { transferTime, goBack } from "components/common/Common";
 import delNotice from "apis/notice/delNotice";
 import fetchNotice from "apis/notice/fetchNotice";
 import useNoticeDetail from "hooks/notice/useNoticeDetail";
+import { useNavigate } from "react-router-dom";
 
 const NoticeDetail = () => {
+  const navigate = useNavigate();
+
   const {
     memberStatus,
     noticeDetail,
@@ -97,7 +100,7 @@ const NoticeDetail = () => {
           {isEditing ? (
             <button
               className="btn_modify"
-              onClick={fetchNotice(uri, noticeId, noticeDetail)}
+              onClick={fetchNotice(uri, noticeId, noticeDetail, navigate)}
             >
               저장하기
             </button>
@@ -109,7 +112,7 @@ const NoticeDetail = () => {
 
           <button
             className="btn_delete"
-            onClick={() => delNotice(uri, noticeId)}
+            onClick={() => delNotice(uri, noticeId, navigate)}
           >
             삭제하기
           </button>

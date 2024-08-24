@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 공지사항 post API 호출
-const postNotice = async (notice) => {
+const postNotice = async (notice, navigate) => {
   const uri = "api/notice";
 
   try {
@@ -13,7 +13,7 @@ const postNotice = async (notice) => {
 
     if (response.status === 201) {
       alert("공지사항이 성공적으로 등록되었습니다!");
-      window.location.href = "/notice";
+      navigate("/notice");
     }
   } catch (error) {
     if (error.response) {

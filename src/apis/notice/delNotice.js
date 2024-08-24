@@ -1,13 +1,13 @@
 import axios from "axios";
 
 // 공지사항 삭제 API 요청
-const delNotice = async (uri, noticeId) => {
+const delNotice = async (uri, noticeId, navigate) => {
   try {
     const response = await axios.delete(`${uri}${noticeId}`);
 
     if (response.status === 200) {
       alert("공지사항이 성공적으로 삭제되었습니다!");
-      window.location.href = "/notice";
+      navigate("/notice");
     }
   } catch (error) {
     if (error.response) {

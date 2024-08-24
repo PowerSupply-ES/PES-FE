@@ -1,8 +1,8 @@
 // 내가 푼 문제 컴포넌트
-const MyProb = ({ myProb }) => {
+const MyProb = ({ myProb, navigate }) => {
   const gotoProb = (problemId) => {
     console.log("problemId: ", problemId);
-    window.location = `question/${problemId}`;
+    navigate(`question/${problemId}`);
     // question/answerid
   };
 
