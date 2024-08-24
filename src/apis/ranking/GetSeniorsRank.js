@@ -1,35 +1,30 @@
-import {useState, useEffect, useCallback} from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 // 재학생 등수 GET
 const GetSeniorsRank = () => {
-    const [newRank, setNewRank] = useState([]);
+  const [newRank, setNewRank] = useState([]);
 
-    // GET api 호출
-    const getSeniorRank = useCallback(async () => {
-        try {
-            const config = {
-                withCredentials: true,
-            };
-        
-            const response = await axios.get(
-                `/api/rank/senior`,
-                config
-            );
+  // GET api 호출
+  const getSeniorRank = useCallback(async () => {
+    try {
+      const config = {
+        withCredentials: true,
+      };
 
-            if (response.status !== 204)
-                setNewRank(response.data);
-        
-            } catch (error) {
-            console.log(error);
-        }
-    }, []); 
+      const response = await axios.get(`/api/rank/senior`, config);
 
-    useEffect(() => {
-        getSeniorRank();
-    }, [getSeniorRank]);
-    
-    return {newRank};
-}
+      if (response.status !== 204) setNewRank(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    getSeniorRank();
+  }, [getSeniorRank]);
+
+  return { newRank };
+};
 
 export default GetSeniorsRank;

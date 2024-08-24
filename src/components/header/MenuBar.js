@@ -4,11 +4,15 @@ import { CssBaseline } from "@mui/material";
 import Tabs from "@mui/joy/Tabs";
 import Tab from "@mui/joy/Tab";
 import useMenu from "hooks/menu/useMenu";
-import {StyledBox, theme, StyledTabList } from "styles/styledComponent/Menu-styled";
+import {
+  StyledBox,
+  theme,
+  StyledTabList,
+} from "styles/styledComponent/Menu-styled";
 
 function MenuBar() {
   // 훅 사용
-  const {index, toggleTab} = useMenu();
+  const { index, toggleTab } = useMenu();
 
   return (
     <ThemeProvider theme={theme}>

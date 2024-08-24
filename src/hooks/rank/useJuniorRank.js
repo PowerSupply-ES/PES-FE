@@ -10,7 +10,6 @@ const useJuniorRank = () => {
     setMemberGen(parseInt(value, 10));
   };
 
-
   // get API 호출
   const fetchNewRank = useCallback(async () => {
     const data = await getJuniorRank(memberGen);
@@ -20,8 +19,8 @@ const useJuniorRank = () => {
   useEffect(() => {
     fetchNewRank();
   }, [fetchNewRank]);
-    
-  return {newRank, handleSelectChange, memberGen}
-}
+
+  return { newRank, handleSelectChange, memberGen };
+};
 
 export default useJuniorRank;

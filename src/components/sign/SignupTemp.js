@@ -17,9 +17,8 @@ import useSignup from "hooks/sign/useSignup";
 
 const defaultTheme = createTheme();
 
-
 function SignupTemp() {
-  const {formData, handleSubmit, handleInputChange} = useSignup();
+  const { formData, handleSubmit, handleInputChange } = useSignup();
 
   return (
     <ThemeProvider theme={defaultTheme}>

@@ -16,9 +16,8 @@ import useSignIn from "hooks/sign/useSignIn";
 
 const defaultTheme = createTheme();
 
-
 function LoginTemp() {
-  const {formData, handleSubmit, handleInputChange} = useSignIn();
+  const { formData, handleSubmit, handleInputChange } = useSignIn();
 
   return (
     <ThemeProvider theme={defaultTheme}>

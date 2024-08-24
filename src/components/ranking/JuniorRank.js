@@ -5,9 +5,8 @@ import Option from "@mui/joy/Option";
 import useJuniorRank from "hooks/rank/useJuniorRank";
 
 const JuniorRank = () => {
-  
   // 신입생 순위 get Api 호출
-  const {newRank, handleSelectChange, memberGen} = useJuniorRank();
+  const { newRank, handleSelectChange, memberGen } = useJuniorRank();
 
   return (
     <StyledListPage>
@@ -19,11 +18,7 @@ const JuniorRank = () => {
       >
         <Option value="35">35기</Option>
       </Select>
-      <RankingItem
-        rank="순위"
-        memberName="이름"
-        score="점수"
-      />
+      <RankingItem rank="순위" memberName="이름" score="점수" />
       <div className="ranking-list">
         {newRank.map((rank, index) => (
           <RankingItem

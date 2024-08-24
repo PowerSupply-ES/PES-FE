@@ -1,15 +1,14 @@
-import 'styles/css/solution.css';
-import SolvingList from 'components/solution/SolvingList';
-import useSoluProb from 'hooks/solution/useSoluProb';
-import useSoluList from 'hooks/solution/useSoluList';
+import "styles/css/solution.css";
+import SolvingList from "components/solution/SolvingList";
+import useSoluProb from "hooks/solution/useSoluProb";
+import useSoluList from "hooks/solution/useSoluList";
 
 function Solution() {
-
-  // TODO : split한 problemId와 solveData.problemId 구분하기 
+  // TODO : split한 problemId와 solveData.problemId 구분하기
   let url = new URL(window.location.href);
-  let problemId = url.pathname.split('/')[2];
+  let problemId = url.pathname.split("/")[2];
 
-  sessionStorage.setItem('problemId', problemId);
+  sessionStorage.setItem("problemId", problemId);
 
   // 문제 get API HOOk
   const problemData = useSoluProb(problemId);
@@ -25,13 +24,15 @@ function Solution() {
     <div className="solution_container">
       <div className="solution_bar">
         <div className="solution">
-          <div className='left'>
+          <div className="left">
             <div className="solution_num">{problemData.problemId}</div>
             <div className="solution_title">{problemData.problemTitle}</div>
           </div>
-          
-          <div className="prob_score">{problemData.problemScore}<p>점</p></div>
 
+          <div className="prob_score">
+            {problemData.problemScore}
+            <p>점</p>
+          </div>
         </div>
       </div>
 

@@ -1,17 +1,16 @@
-import 'styles/css/manage.css';
+import "styles/css/manage.css";
 import { useEffect, useState } from "react";
-import getUsersList from 'apis/manage/getUsersList';
+import getUsersList from "apis/manage/getUsersList";
 
 // user 목록 관리 HOOK
 const useUserList = () => {
-    
-    const [memberData, setMemDate] = useState([]);
+  const [memberData, setMemDate] = useState([]);
 
-    useEffect(()=>{
-        getUsersList(setMemDate); // list API 요청
-    },[])
+  useEffect(() => {
+    getUsersList(setMemDate); // list API 요청
+  }, []);
 
-    return memberData;
-}
+  return memberData;
+};
 
 export default useUserList;

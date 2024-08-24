@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 // import ReactDOM from 'react-dom/client';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import ReactDOM from "react-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import "styles/css/Font.css";
 
 // 호환성 문제로 주석처리
@@ -12,10 +12,8 @@ ReactDOM.render(
   <BrowserRouter>
     {/* 렌더링 2번일어나서 주석처리 */}
     {/* <React.StrictMode> */}
-      <App />
+    <App />
     {/* </React.StrictMode> */}
-
   </BrowserRouter>,
-    document.getElementById('root') //추가
+  document.getElementById("root") //추가
 );
-

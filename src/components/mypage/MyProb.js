@@ -1,19 +1,15 @@
 // 내가 푼 문제 컴포넌트
-const MyProb = ({myProb}) => {
+const MyProb = ({ myProb }) => {
+  const gotoProb = (problemId) => {
+    console.log("problemId: ", problemId);
+    window.location = `question/${problemId}`;
+    // question/answerid
+  };
 
-    const gotoProb = ( problemId ) =>{
-      console.log('problemId: ',problemId);
-      window.location=`question/${problemId}`;
-      // question/answerid
-    }
-
-    
-    return (
+  return (
     <div className="problemList">
       {myProb.length === 0 ? (
-        <div className="noProblems">
-          아직 푼 문제가 없어요!
-        </div>
+        <div className="noProblems">아직 푼 문제가 없어요!</div>
       ) : (
         myProb.map((it) => (
           <div className="problems" key={it.answerId}>
@@ -28,24 +24,24 @@ const MyProb = ({myProb}) => {
 
             <div
               className={`${
-                it.answerState === 'success'
-                  ? 'btn_success'
-                  : it.answerState === 'fail'
-                  ? 'btn_fail'
-                  : 'btn_state'
+                it.answerState === "success"
+                  ? "btn_success"
+                  : it.answerState === "fail"
+                  ? "btn_fail"
+                  : "btn_state"
               }`}
             >
-            {it.answerState==='question'
-              ?'질문대기'
-              :it.answerState==='comment'
-              ?'피드백대기'
-              :it.answerState}
+              {it.answerState === "question"
+                ? "질문대기"
+                : it.answerState === "comment"
+                ? "피드백대기"
+                : it.answerState}
             </div>
           </div>
         ))
       )}
     </div>
   );
-}
+};
 
 export default MyProb;
