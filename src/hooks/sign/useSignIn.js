@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import postLogin from "apis/sign/postLogin";
 
 // 로그인 관련 HOOK
-const SignInHook = () => {
+const useSignIn = () => {
 
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -41,4 +41,4 @@ const SignInHook = () => {
 
     return {formData, handleSubmit, handleInputChange};
 }
-export default SignInHook;
+export default useSignIn;

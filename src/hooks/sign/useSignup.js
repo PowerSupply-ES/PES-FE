@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import postSignup from "apis/sign/postSignup";
 
 // 회원가입 관련 HOOK
-const SignupHook = () => {
+const useSignup = () => {
   
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -58,4 +58,4 @@ const SignupHook = () => {
 
   return {formData, handleSubmit, handleInputChange};
 }
-export default SignupHook
+export default useSignup;

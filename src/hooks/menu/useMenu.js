@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 // 메뉴바 페이지 이동 HOOK
-const MenuHook = () => {
+const useMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,4 +39,4 @@ const MenuHook = () => {
   return { index, toggleTab };
 }
 
-export default MenuHook;
+export default useMenu;

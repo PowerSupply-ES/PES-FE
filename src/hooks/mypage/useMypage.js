@@ -3,7 +3,7 @@ import getMyInfo from 'apis/mypage/getMyInfo';
 import getMyProb from 'apis/mypage/getMyProb';
 import getMyFeed from 'apis/mypage/getMyFeed';
 
-const MypageHook = () => {
+const useMypage = () => {
 
     //정보리스트
     const [memberData, setMemberData] = useState([]);
@@ -31,4 +31,4 @@ const MypageHook = () => {
     return {memberData, myProb, myFeedback};
 }
 
-export default MypageHook
+export default useMypage;

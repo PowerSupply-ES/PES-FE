@@ -13,13 +13,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logo from "assets/images/sign_logo.png";
 import Copyright from "./Copyright";
 import InputMask from "react-input-mask";
-import SignupHook from "hooks/sign/SignupHook";
+import useSignup from "hooks/sign/useSignup";
 
 const defaultTheme = createTheme();
 
 
 function SignupTemp() {
-  const {formData, handleSubmit, handleInputChange} = SignupHook();
+  const {formData, handleSubmit, handleInputChange} = useSignup();
 
   return (
     <ThemeProvider theme={defaultTheme}>

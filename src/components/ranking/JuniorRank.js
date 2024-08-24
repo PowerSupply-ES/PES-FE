@@ -2,12 +2,12 @@ import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 import RankingItem from "./RankingItem";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
-import JuniorHook from "hooks/rank/JuniorHook";
+import useJuniorRank from "hooks/rank/useJuniorRank";
 
 const JuniorRank = () => {
   
   // 신입생 순위 get Api 호출
-  const {newRank, handleSelectChange, memberGen} = JuniorHook();
+  const {newRank, handleSelectChange, memberGen} = useJuniorRank();
 
   return (
     <StyledListPage>

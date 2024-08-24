@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MemberStatus from "hooks/question/MemberStatus";
+import useMemberStatus from "hooks/question/useMemberStatus";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import RenderAnswerUI from "components/question/RenderAnswerUI";
@@ -34,7 +34,7 @@ const QuestionPage = () => {
 
     return(
         <div className={state === "success" ? "successPage" : state === "fail" ? "failPage" : "nonePage"}>                  
-            <MemberStatus>
+            <useMemberStatus>
                 {(memberStatus) => {
                     if (!memberStatus) {
                         return <div className="loading">Loading...</div>;
@@ -68,7 +68,7 @@ const QuestionPage = () => {
                         </div>
                     );
                 }}
-            </MemberStatus>
+            </useMemberStatus>
         </div>
     );
 }

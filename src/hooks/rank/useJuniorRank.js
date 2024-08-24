@@ -2,7 +2,7 @@ import getJuniorRank from "apis/ranking/getJuniorRank";
 import { useState, useEffect, useCallback } from "react";
 
 // 신입생 등수 GET
-const JuniorRank = () => {
+const useJuniorRank = () => {
   const [memberGen, setMemberGen] = useState(35); // memberGen 35기로 기본 설정
   const [newRank, setNewRank] = useState([]);
 
@@ -24,4 +24,4 @@ const JuniorRank = () => {
   return {newRank, handleSelectChange, memberGen}
 }
 
-export default JuniorRank;
+export default useJuniorRank;

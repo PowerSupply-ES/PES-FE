@@ -1,9 +1,9 @@
 import MyFeed from './MyFeed'
-import MypageHook from 'hooks/mypage/MypageHook'
+import useMypage from 'hooks/mypage/useMypage'
 
 // 내 피드백 list
 const MyFeedList = () => {
-  const { myFeedback} = MypageHook();
+  const { myFeedback} = useMypage();
 
   return (
     // TODO : 신입생,재학생에 따라 feedback 띄워주기

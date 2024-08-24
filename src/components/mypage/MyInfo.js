@@ -1,8 +1,8 @@
 import { FaCircleUser } from "react-icons/fa6";
-import MypageHook from "hooks/mypage/MypageHook";
+import useMypage from "hooks/mypage/useMypage";
 
 const MyInfo = () => {
-  const {memberData} = MypageHook();
+  const {memberData} = useMypage();
 
   return (
     <div className='left'>

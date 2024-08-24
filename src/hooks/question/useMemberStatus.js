@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function MemberStatus({ children }) {
+function useMemberStatus({ children }) {
   const [memberStatus, setMemberStatus] = useState(null);
 
   const uri = 'api/exp';
@@ -33,4 +33,4 @@ function MemberStatus({ children }) {
   return children(memberStatus);
 }
 
-export default MemberStatus;
+export default useMemberStatus;

@@ -1,9 +1,9 @@
-import MypageHook from "hooks/mypage/MypageHook";
+import useMypage from "hooks/mypage/useMypage";
 import MyProb from "./MyProb";
 
 // 내가 푼 문제 list
 const MyProbList = () => {
-  const {myProb} = MypageHook();
+  const {myProb} = useMypage();
 
   return (
     <div className='top'>
