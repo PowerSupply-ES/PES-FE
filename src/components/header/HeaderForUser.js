@@ -62,9 +62,9 @@ function HeaderForUser() {
                 <a className="btn_mypage" href="/mypage">
                   마이페이지
                 </a>
-                <button onClick={handleLogoutClick} className="btn_top_logout">
+                <a onClick={handleLogoutClick} className="btn_top_logout">
                   로그아웃
-                </button>
+                </a>
               </div>
             </div>
           )}

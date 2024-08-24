@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import MemberStatus from "hooks/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
-
 import { StyledQuestion } from 'styles/styledComponent/Question-styled';
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import { useNavigate } from "react-router-dom";
@@ -35,24 +34,25 @@ const QuestionPage = () => {
     const [buttonColor2, setButtonColor2] = useState('rgba(244, 117, 117, 0.6)');
 
 
+    // pass버튼 클릭 핸들러
     const passButtonClick = () => {
-        // 다른 버튼 색상 초기화
-        setButtonColor2('rgba(244, 117, 117, 0.6)');
-        // 현재 버튼 색깔 변경
-        setButtonColor1('rgba(4, 202, 0, 1)');
-    }
-    const failButtonClick = () => {
-        // 다른 버튼 색상 초기화
-        setButtonColor1('rgba(4, 202, 0, 0.6)');
-        // 현재 버튼 색깔 변경
-        setButtonColor2('rgba(244, 117, 117, 1)');
+        setButtonColor2('rgba(244, 117, 117, 0.6)'); // 다른 버튼 색상 초기화
+        setButtonColor1('rgba(4, 202, 0, 1)'); // 현재 버튼 색깔 변경
     }
 
+    // fail버튼 클릭 핸들러
+    const failButtonClick = () => {
+        setButtonColor1('rgba(4, 202, 0, 0.6)'); // 다른 버튼 색상 초기화
+        setButtonColor2('rgba(244, 117, 117, 1)'); // 현재 버튼 색깔 변경
+    }
+
+
+    // 문제보기 dropdown
     const toggleDropdown = () => {
         if (!isDropdownOpen) {
             getProblem();
         }
-        setIsDropdownOpen((상태)=>!상태);
+        setIsDropdownOpen((state)=>!state);
     }
     
     useEffect(() => {
@@ -60,6 +60,8 @@ const QuestionPage = () => {
             getFeedback();
         }
     }, [state]);
+
+    
 
     // 문제 제목 불러오기 (get)
     const getTitle = useCallback(async () => {
