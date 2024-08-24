@@ -2,6 +2,7 @@ import React from 'react'
 import CodeEditor from "components/problem/CodeEditor"
 import { renderNewlines } from 'components/common/Common'
 
+
 // 작성했던 코드 출력 컴포넌트
 const ProbCode = ({FstHandler, SecHandler, code, qnA, setCode}) => {
 

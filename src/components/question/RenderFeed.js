@@ -3,8 +3,8 @@ import { renderNewlines } from "components/common/Common";
 import { StyledQuestion } from 'styles/styledComponent/Question-styled';
 
 
-// feedback 렌더링 함수
-const RenderFeed = (navigate, memberStatus, feedbacks, passCount, state, postFeedback, textFst, FstHandler) => {
+// feedback 렌더링 컴포넌트
+const RenderFeed = ({navigate, memberStatus, feedbacks, passCount, state, postFeedback, textFst, handleTextFstChange}) => {
 
     const [buttonColor1, setButtonColor1] = useState('rgba(4, 202, 0, 0.6)');
     const [buttonColor2, setButtonColor2] = useState('rgba(244, 117, 117, 0.6)');
@@ -44,11 +44,11 @@ const RenderFeed = (navigate, memberStatus, feedbacks, passCount, state, postFee
         }
     }
 
+    // 객체 값을 배열로 변환
     const feedbackArray = feedbacks
     ? Object.values(feedbacks)
     : [];
 
-    
     
     return (
         <StyledQuestion className="feedback_section_1">
@@ -87,7 +87,7 @@ const RenderFeed = (navigate, memberStatus, feedbacks, passCount, state, postFee
                         </div>
                         <textarea className="feedback_content input" 
                             placeholder = "피드백을 입력해주세요."
-                            onChange={FstHandler}/>
+                            onChange={handleTextFstChange}/>
                         {/* PASS FAIL 선택 */}
                         <div className="feedback_select_section">
                             <div className="button_container">
