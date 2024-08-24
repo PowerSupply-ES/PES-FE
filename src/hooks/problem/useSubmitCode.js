@@ -22,7 +22,6 @@ const useSubmitCode = (problemId) => {
 
             if (!response) {
                 alert("오류!");
-                // navigate("/signin");
             }
             else if (status === 201) {
                 console.log(response);

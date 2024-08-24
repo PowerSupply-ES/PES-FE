@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 const useProbTitle = async (problemId) => {
     const [title, setTitle] = useState([]);
 
+    // problemId가 변경되지 않는 한, 매번 동일한 함수로 재사용
     const fetchTitle = useCallback(async () => {
         try{
             const res = await getProbTitle(problemId);

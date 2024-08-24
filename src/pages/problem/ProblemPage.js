@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledProblem } from 'styles/styledComponent/Problem-styled';
 import CodeEditor from "components/problem/CodeEditor";
 import useProbPage from 'hooks/problem/useProbPage';
+import { renderNewlines, renderStyledNewlines } from 'components/common/Common';
 
 const ProblemPage = () => {
     let url = new URL(window.location.href);
@@ -19,31 +20,6 @@ const ProblemPage = () => {
         submitCode,
     } = useProbPage(problemId);
     
-
-    // '\n\n' 기준으로 줄바꿈하는 함수
-    const renderStyledNewlines = (text) => {
-        const lines = text.split('\n\n'); // 각 줄을 분할
-        return lines.map((line, index) => {
-        
-            return (
-                <span key={index}>
-                    {line}
-                    <br />
-                </span>
-            );
-        });
-    }
-
-    // '\n' 기준으로 줄바꿈하는 함수
-    const renderNewlines = (text) => {
-        return text.split('\n').map((line, index) => (
-            <React.Fragment key={index}>
-                {line}
-                {/* {renderStyledText(line, index === 0)} */}
-                <br />
-            </React.Fragment>
-        ));
-    }
 
     // 문제 UI 렌더링 함수
     const renderProbUI = () => {
@@ -64,7 +40,8 @@ const ProblemPage = () => {
                     <div className="top" style={{ whiteSpace: 'pre' }}>
                         <p className="underline">문제</p>
                         <div className="prob_text" >
-                            {problem.problemContent && renderNewlines(problem.problemContent)}
+                            {/* renderNewlines : '\n' 기준으로 줄바꿈 함수 */}
+                            {problem.problemContent && renderNewlines(problem.problemContent)} 
                         </div>
                     </div>
                 
@@ -76,6 +53,7 @@ const ProblemPage = () => {
                             <div className="input_text">
                                 {problem.sampleInputs && problem.sampleInputs.map((input, index) => (
                                     <React.Fragment key={index}>
+                                        {/* renderStyledNewlines : '\n\n' 기준으로 줄바꿈 함수 */}
                                         {renderStyledNewlines(input)}
                                     </React.Fragment>
                                 ))}

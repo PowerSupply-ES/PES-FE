@@ -1,38 +1,42 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import axios from "axios";
+import React, { useState, useRef } from "react";
 import MemberStatus from "hooks/question/MemberStatus";
 import CodeEditor from "components/problem/CodeEditor";
 import { StyledQuestion } from 'styles/styledComponent/Question-styled';
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import { useNavigate } from "react-router-dom";
+import useProbPage from "hooks/problem/useProbPage";
+import { renderNewlines } from "components/common/Common";
+import useQuestionHook from "hooks/question/useQuestionHook";
 
 const QuestionPage = () => {
+
+    const navigate = useNavigate();
+    const problemId = sessionStorage.getItem('problemId');
+
     let url = new URL(window.location.href);
     let answerId = url
         .pathname
         .split('/')[2];
 
-    const problemId = sessionStorage.getItem('problemId');
-
-    const navigate = useNavigate();
-
-    const [state, setState] = useState("");
-    const [title, setTitle] = useState([]);
-    const [code, setCode] = useState("");
-    const [qnA, setQnA] = useState([]);
-    const [feedbacks, setFeedbacks] = useState([]);
-    const [passCount, setPassCount] = useState(0);
-    const [problem, setProblem] = useState([]);
-
     const textFst = useRef("");
     const textSec = useRef("");
 
     const [selectedOption, setSelectedOption] = useState(null);
-    const[isDropdownOpen,setIsDropdownOpen] = useState(false);
-
+    const [isDropdownOpen,setIsDropdownOpen] = useState(false);
     const [buttonColor1, setButtonColor1] = useState('rgba(4, 202, 0, 0.6)');
     const [buttonColor2, setButtonColor2] = useState('rgba(244, 117, 117, 0.6)');
 
+
+    // problem 제목, 내용 HOOK 호출
+    const {title, problem} = useProbPage(problemId);
+    // question 관련 HOOK 호출
+    const { code, qnA, state, feedbacks, passCount, postAnswer, postFeedback, setCode } = useQuestionHook(answerId, getAlert);
+
+
+    // 문제보기 dropdown 상태관리 함수
+    const toggleDropdown = () => {
+        setIsDropdownOpen((state) => !state);
+    }
 
     // pass버튼 클릭 핸들러
     const passButtonClick = () => {
@@ -45,56 +49,23 @@ const QuestionPage = () => {
         setButtonColor1('rgba(4, 202, 0, 0.6)'); // 다른 버튼 색상 초기화
         setButtonColor2('rgba(244, 117, 117, 1)'); // 현재 버튼 색깔 변경
     }
-
-
-    // 문제보기 dropdown
-    const toggleDropdown = () => {
-        if (!isDropdownOpen) {
-            getProblem();
-        }
-        setIsDropdownOpen((state)=>!state);
-    }
     
-    useEffect(() => {
-        if (state === "comment" || state === "success" || state === "fail") {
-            getFeedback();
-        }
-    }, [state]);
-
-    
-
-    // 문제 제목 불러오기 (get)
-    const getTitle = useCallback(async () => {
-            try {
-                const {data: response} = await axios.get(
-                    `/api2/problemtitle/${problemId}`,
-                    {withCredentials: true}
-                );
-                setTitle(response);
-            } catch (error) {
-                console.log(error);
-            }
-    }, [problemId]);
-
-    useEffect(() => {
-        getTitle();
-    }, [getTitle]);
-
-    // pass, fail 선택
+    // pass, fail 선택 핸들러
     const handleOption = (option) => {
         setSelectedOption(option);
     }
     
-    function FstHandler(e) {
+    // 답변 입력 핸들러
+    const FstHandler = (e) => {
         textFst.current = e.target.value;
     }
-
-    function SecHandler(e) {
+    const SecHandler = (e) => {
         textSec.current = e.target.value;
     }
 
-    // 답변 제출
-    function submitAnswer() {
+
+    // 답변 제출 함수
+    const submitAnswer = () => {
         if (!textFst.current || !textSec.current) {
             alert("내용을 입력해주세요!");
         }
@@ -107,9 +78,8 @@ const QuestionPage = () => {
         }
     }
     
-
-    // 댓글 제출
-    function submitComment() {
+    // 댓글 제출 함수
+    const submitComment = () => {
         if (!textFst.current) {
             alert("내용을 입력해주세요!");
         }
@@ -125,8 +95,14 @@ const QuestionPage = () => {
         }
     }
 
-    // 댓글 제출 결과 alert
-    function getAlert(response) {
+
+
+
+
+    
+
+    // 댓글 제출 결과 alert 함수
+    const getAlert = (response) => {
         if (response === 400) {
             alert("이미 댓글을 달았습니다.");
         }
@@ -135,141 +111,9 @@ const QuestionPage = () => {
         }
     }
 
-    // 사용자가 작성한 코드 불러오기 (get)
-    const getCode = useCallback(async () => {
-        try {
-            const {data: response} = await axios.get(
-                `/api2/question/${answerId}`, 
-                {withCredentials: true}
-            );
-            setCode(response.code);
-            // console.log("response.code = ", response.code);
-
-        } catch (error) {
-            console.log(error);
-        }
-    }, [answerId]);
-
-    useEffect(() => {
-        getCode();
-
-    }, [getCode]);
-
-    // 질문, 답변 블러오기 (get)
-    const getQuestions = useCallback(async () => {
-        try {
-            const {data: response} = await axios.get(
-                `/api/answer/${answerId}`,
-                {withCredentials: true}
-            );
-            setQnA(response);
-            setState(response.answerState);
-        } catch (error) {
-            console.log(error);
-        }
-    }, [answerId]);
-
-    useEffect(() => {
-        getQuestions();
-    }, [getQuestions]);
-
-    // 질문 답변하기 (post)
-    async function postAnswer(answerFst, answerSec) {
-        try {
-            await axios.post(
-                `/api/answer/${answerId}`,
-                {
-                    answerFst: answerFst,
-                    answerSec: answerSec
-                }
-            )
-
-            alert("성공적으로 답변을 등록했습니다.");
-            window.location.reload(); 
-
-        } catch (error) {
-            if (error.response && error.response.status === 400) {
-                alert("이미 답변이 등록되어 있습니다.");
-            } 
-            else if (error.response && error.response.status === 403) {
-                alert("접근할 수 있는 사용자가 아닙니다.");
-                // navigate("/signin");
-            }
-            else {
-                console.log(error);
-            }
-        }
-    }
-
-    // 댓글 불러오기 (get)
-    const getFeedback = useCallback(async () => {
-        try {
-            const {data: response} = await axios.get(`/api/comment/${answerId}`, {withCredentials: true});
-            let passCount = 0;
-            setFeedbacks(response);
-            for (let i = 0; i < response.length; i++) {
-                if (response[i].commentPassFail === 1) {
-                    passCount++;
-                }
-            }
-            setPassCount(passCount);
-        } catch (error) {
-            console.log(error);
-        }
-    }, [answerId]);
-
-    // 댓글 달기 (post)
-    async function postFeedback(comment, selected) {
-        try {
-            const response = await axios.post(
-                `/api/comment/${answerId}`,
-                {
-                    comment: comment,
-                    commentPassFail: selected
-                }
-            )
-            getFeedback();
-            // 예외 처리 (400, 403 에러) 함수
-            getAlert(response.status); 
-            window.location.reload(); 
-        } catch (error) {
-            // 403에러 예외처리 추가 by.성임
-            if (error.response && error.response.status === 403) {
-                alert("권한이 없습니다!");
-            } 
-            else if(error.response && error.response.status === 400){
-                alert("이미 댓글을 달았어요!");
-            }
-            else {
-                console.log(error);
-            }
-        }
-    }
-
-    function renderNewlines(text) {
-        return text.split('\n').map((line, index) => (
-            <React.Fragment key={index}>
-                {line}
-                <br />
-            </React.Fragment>
-        ));
-    }
-
-    const getProblem = useCallback(async () => {
-            try {
-                const {data: response} = await axios.get(
-                    `/api2/problem/${problemId}`,
-                    {withCredentials: true}
-                );
-                setProblem(response);
-            } catch (error) {
-                console.log(error);
-            }
-    }, [problemId]);
     
-    function renderAnswerUI() {
-        // console.log("code = ",code);
-
+    // 답변 렌더링 함수
+    const renderAnswerUI = () => {
         return (
             <StyledQuestion className="problem_answer_section">
                 <StyledProblem className="problem_header_section" state={state}>
@@ -289,6 +133,7 @@ const QuestionPage = () => {
                                     <div className='dropdown_content'>
                                         {/* 띄워쓰기 표현_ by성임*/}
                                         <div className="content" style={{ whiteSpace: 'pre'}}>
+                                            {/* renderStyledNewlines: '\n' 기준으로 줄바꿈 함수 */}
                                             {problem.problemContent && renderNewlines(problem.problemContent)}
                                         </div>
 
@@ -384,7 +229,9 @@ const QuestionPage = () => {
         );
     }
 
-    function renderFeedbackUI(memberStatus) {
+
+    // feedback 렌더링 함수
+    const renderFeedbackUI = (memberStatus) => {
 
         const feedbackArray = feedbacks
             ? Object.values(feedbacks)
@@ -467,6 +314,10 @@ const QuestionPage = () => {
             </StyledQuestion>
         );
     }
+
+
+
+
 
     return(
         <div className={state === "success" ? "successPage" : state === "fail" ? "failPage" : "nonePage"}>                  

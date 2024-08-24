@@ -2,8 +2,7 @@ import useProbContent from "./useProbContent";
 import useProbTitle from "./useProbTitle";
 import useSubmitCode from "./useSubmitCode";
 
-
-// 문제 관련 HOOK 호출 - ProblemPage에 사용
+// 문제 관련 HOOK 관리 - ProblemPage에 사용
 const useProbPage = (problemId) => {
 
     const title = useProbTitle(problemId);  // 문제 제목 get HOOK
