@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useRef, useEffect } from "react";
-import "styles/css/App.css";
+import React, { useRef, useEffect } from "react";
 
-const AdPart = () => {
-  //카카오 에드핏 광고
-  const scriptElement = useRef(null);
+const AdPart:React.FC = () => {
+  // 카카오 에드핏 광고
+  // useRef훅이 div HTML 요소를 참조하기 때문에 HTMLDivElement를 타입으로 지정
+  const scriptElement = useRef<HTMLDivElement | null>(null);
 
   // script 태그를 동적으로 추가
   useEffect(() => {
@@ -12,7 +12,20 @@ const AdPart = () => {
     script.setAttribute("src", "https://t1.daumcdn.net/kas/static/ba.min.js");
     script.setAttribute("charset", "utf-8");
     script.setAttribute("async", "true");
-    scriptElement.current?.appendChild(script);
+
+    // ref의 현재 값 변수에 저장
+    const currentScriptElement = scriptElement.current;
+
+    if (currentScriptElement) {
+      currentScriptElement.appendChild(script);
+    }
+
+    // cleanup 함수 -  불필요한 script태그
+    return () => {
+      if (currentScriptElement) {
+        currentScriptElement.removeChild(script);
+      }
+    };
   }, []);
 
   return (
