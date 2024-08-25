@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
-import { Member } from "model/problem";
+import { Member } from "model/Store";
 import React from "react";
 
 // UserList 컴포넌트의 props 타입 정의

@@ -5,7 +5,7 @@ import SeniorRank from "components/ranking/SeniorRank";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 import Button from "@mui/material/Button";
 import useListHook from "hooks/list/useListHook";
-import { Problem } from "model/problem";
+import { Problem } from "model/Store";
 import React from "react";
 
 // Props 타입(현재는 props가 없으므로 빈 객체로 정의)

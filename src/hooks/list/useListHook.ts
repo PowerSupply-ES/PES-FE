@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import getList from "apis/list/getList";
-import { Problem } from "model/problem";
+import { Problem } from "model/Store";
 
 // HOOK 반환 타입 정의
 interface UseListHookReturn {

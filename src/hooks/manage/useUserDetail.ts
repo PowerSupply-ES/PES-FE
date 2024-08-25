@@ -1,6 +1,6 @@
 import getUserDetail from "apis/manage/getUserDetail";
 import { useState, useEffect } from "react";
-import { MemberDetail } from "model/problem";
+import { MemberDetail } from "model/Store";
 
 const useUserDetail = () => {
   const [memberData, setMemberData] = useState<MemberDetail | null>(null);
