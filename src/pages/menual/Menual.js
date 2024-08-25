@@ -56,7 +56,7 @@ const Menual = () => {
         {/* <div className='title'>문제 풀기</div> */}
 
         <div className="img_container">
-          <img src={img_probList} className="img1"></img>
+          <img src={img_probList} className="img1" alt=""></img>
         </div>
         <div className="prob_info">
           <h2>문제Step.</h2>문제와 질문테스트 통과 시<br></br>
@@ -71,7 +71,7 @@ const Menual = () => {
           우측에 코드를 입력하여 문제풀이해요
         </div>
         <div className="img_container">
-          <img src={img_solving} className="img2"></img>
+          <img src={img_solving} className="img2" alt=""></img>
         </div>
       </div>
 
@@ -88,12 +88,12 @@ const Menual = () => {
           <div className="ques_case">질문테스트 통과 시</div>
         </div>
         <div className="img_container">
-          <img src={img_pass} className="img3"></img>
+          <img src={img_pass} className="img3" alt=""></img>
           <p>
             1명 이상의 재학생에게 PASS를 받으면<br></br>
             통과!!
           </p>
-          <img src={img_pass_feed} className="img4"></img>
+          <img src={img_pass_feed} className="img4" alt=""></img>
         </div>
       </div>
       {/* fail */}
@@ -103,19 +103,19 @@ const Menual = () => {
         </div>
 
         <div className="img_container">
-          <img src={img_fail} className="img5"></img>
+          <img src={img_fail} className="img5" alt=""></img>
           <p>
             1명 이상의 재학생에게 PASS를 받지 못하면<br></br>
             실패..
           </p>
-          <img src={img_fail_feed} className="img6"></img>
+          <img src={img_fail_feed} className="img6" alt=""></img>
         </div>
       </div>
 
       {/* 풀이 보기 */}
       <div className="menual_solving">
         <div className="img_container">
-          <img src={img_solvingList} className="img7"></img>
+          <img src={img_solvingList} className="img7" alt=""></img>
         </div>
         <div className="solve_info">다른 학생들의 풀이도 볼 수 있어요</div>
       </div>
