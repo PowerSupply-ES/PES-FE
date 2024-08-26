@@ -1,6 +1,7 @@
 import { useState } from "react";
 import postNotice from "apis/notice/postNotice";
 import { useNavigate } from "react-router-dom";
+// TODO : hook들 모두 반환타입 지정하기
 // 공지사항 등록 관련 HOOK
 const useNoticePost = () => {
     const navigate = useNavigate();

@@ -3,10 +3,10 @@ import getNoticeDetail from "apis/notice/getNoticeDetail";
 // user 세부정보 호출 HOOK
 const useNoticeDetail = () => {
     const memberStatus = sessionStorage.getItem("memberStatus");
-    const [noticeDetail, setDetail] = useState([]); //공지사항 세부정보
+    const [noticeDetail, setDetail] = useState(null); //공지사항 세부정보
     const [isEditing, setIsEditing] = useState(false); //수정상태
     let url = new URL(window.location.href);
-    let noticeId = url.pathname.split("/")[2];
+    let noticeId = parseInt(url.pathname.split("/")[2]); // number 타입으로 넘기기위해 int로 변환
     const uri = "/api/notice/";
     useEffect(() => {
         getNoticeDetail(setDetail, noticeId, uri); // 공지사항 detail API요청

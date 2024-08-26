@@ -12,6 +12,7 @@ export const goBack = () => {
     window.history.back();
 };
 // --- '\n' 기준으로 줄바꿈하는 함수
+// React.ReactNode : JSX반환타입
 export const renderNewlines = (text) => {
     return text.split("\n").map((line, index) => (_jsxs(React.Fragment, { children: [line, _jsx("br", {})] }, index)));
 };

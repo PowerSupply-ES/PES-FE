@@ -5,8 +5,9 @@ import delNotice from "apis/notice/delNotice";
 import fetchNotice from "apis/notice/fetchNotice";
 import useNoticeDetail from "hooks/notice/useNoticeDetail";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
-const NoticeDetail = () => {
+const NoticeDetail: React.FC = () => {
   const navigate = useNavigate();
 
   const {
@@ -18,6 +19,11 @@ const NoticeDetail = () => {
     uri,
     noticeId,
   } = useNoticeDetail();
+
+   // noticeDetail이 null인 경우
+  if (!noticeDetail) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="info_body">
@@ -32,10 +38,15 @@ const NoticeDetail = () => {
               className="textarea_header"
               value={noticeDetail.title}
               onChange={(e) =>
-                setDetail((prevState) => ({
-                  ...prevState,
-                  title: e.target.value,
-                }))
+                setDetail((prevState) => {
+                  if(prevState){
+                    return{
+                      ...prevState,
+                      title: e.target.value,
+                    }
+                  }
+                  return prevState; // prevState가 null인 경우 예외 처리
+                })
               }
             />
           ) : (
@@ -81,14 +92,19 @@ const NoticeDetail = () => {
               className="textarea_content"
               value={noticeDetail.content}
               onChange={(e) =>
-                setDetail((prevState) => ({
-                  ...prevState,
-                  content: e.target.value,
-                }))
+                setDetail((prevState) => {
+                  if (prevState) {
+                    return {
+                      ...prevState,
+                      content: e.target.value,
+                    };
+                  }
+                  return prevState; // prevState가 null인 경우 예외처리
+                })
               }
             />
           ) : (
-            <p className="text">{noticeDetail.content}</p> //줄바꿈인식, 내용초과시 break, scroll기능넣기
+            <p className="text">{noticeDetail.content}</p> // 줄바꿈인식, 내용초과시 break, scroll기능넣기
           )}
         </div>
 
@@ -100,7 +116,7 @@ const NoticeDetail = () => {
           {isEditing ? (
             <button
               className="btn_modify"
-              onClick={fetchNotice(uri, noticeId, noticeDetail, navigate)}
+              onClick={() => fetchNotice(uri, noticeId, noticeDetail, navigate)}
             >
               저장하기
             </button>

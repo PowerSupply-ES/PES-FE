@@ -2,8 +2,9 @@ import "styles/css/notice.css";
 import { PiNotePencilFill } from "react-icons/pi";
 import { goBack } from "components/common/Common";
 import useNoticePost from "hooks/notice/useNoticePost";
+import React from "react";
 
-const NoticePost = () => {
+const NoticePost: React.FC = () => {
   const { notice, handleInputChange, handleSubmit } = useNoticePost();
 
   return (
@@ -27,7 +28,7 @@ const NoticePost = () => {
             type="checkbox"
             id="important"
             name="isImportant"
-            value={notice.isImportant}
+            checked={notice.isImportant}
             onChange={handleInputChange}
           />
           <label htmlFor="important">중요</label>

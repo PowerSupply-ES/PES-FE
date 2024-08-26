@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/notice.css";
 import { HiSpeakerphone } from "react-icons/hi";
 import { PiNotePencilFill } from "react-icons/pi";
 import getNoticeList from "apis/notice/getNoticeList";
 import NoticeList from "components/notice/NoticeList";
+import { NoticeListType } from "model/Store";
 
-const Notice = () => {
+const Notice: React.FC = () => {
   const navigate = useNavigate();
   const memberStatus = sessionStorage.getItem("memberStatus");
 
   // 공지사항 리스트
-  const [noticeList, setNoticeList] = useState([]);
+  const [noticeList, setNoticeList] = useState<NoticeListType[]>([]);
 
   useEffect(() => {
     getNoticeList(setNoticeList); // 리스트 가져오기

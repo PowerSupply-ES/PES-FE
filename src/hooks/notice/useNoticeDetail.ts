@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import getNoticeDetail from "apis/notice/getNoticeDetail";
+import { NoticeDetailType } from "model/Store";
+
 
 // user 세부정보 호출 HOOK
 const useNoticeDetail = () => {
-  const memberStatus = sessionStorage.getItem("memberStatus");
-  const [noticeDetail, setDetail] = useState([]); //공지사항 세부정보
-  const [isEditing, setIsEditing] = useState(false); //수정상태
+  const memberStatus: string | null = sessionStorage.getItem("memberStatus");
+  const [noticeDetail, setDetail] = useState<NoticeDetailType | null>(null); //공지사항 세부정보
+  const [isEditing, setIsEditing] = useState<boolean>(false); //수정상태
 
   let url = new URL(window.location.href);
-  let noticeId = url.pathname.split("/")[2];
+  let noticeId: number = parseInt(url.pathname.split("/")[2]); // number 타입으로 넘기기위해 int로 변환
 
   const uri = "/api/notice/";
 

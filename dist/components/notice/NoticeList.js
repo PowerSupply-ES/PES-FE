@@ -11,7 +11,7 @@ const NoticeList = ({ noticeList, navigate }) => {
     const isNewNotice = (createdTime) => {
         const currentTime = new Date(); //현재시간
         const noticeTime = new Date(createdTime); //공지사항 생성시간
-        const difference = currentTime - noticeTime; //시간 차
+        const difference = currentTime.getTime() - noticeTime.getTime(); //시간 차
         // 생성시간이 하루 이내인지 확인
         const oneDay = 24 * 60 * 60 * 1000; //하루의 밀리초
         return Math.floor(difference / oneDay) <= 1;

@@ -1,19 +1,20 @@
 import { transferTime } from "components/common/Common";
+import { NoticeListProps } from "model/Store";
+import React from "react";
 
 // 공지사항 컴포넌트
-const NoticeList = ({ noticeList, navigate }) => {
+const NoticeList: React.FC<NoticeListProps> = ({ noticeList, navigate }) => {
   // 해당 공지사항으로 이동 함수
-  const gotoNotice = (noticeId) => {
+  const gotoNotice = (noticeId: number) => {
     console.log("noticeId: ", noticeId);
     navigate(`notice/${noticeId}`);
   };
 
   // TODO : 함수 말고 API로 대체하기
-  const isNewNotice = (createdTime) => {
+  const isNewNotice = (createdTime: string): boolean => {
     const currentTime = new Date(); //현재시간
     const noticeTime = new Date(createdTime); //공지사항 생성시간
-
-    const difference = currentTime - noticeTime; //시간 차
+    const difference = currentTime.getTime() - noticeTime.getTime(); //시간 차
 
     // 생성시간이 하루 이내인지 확인
     const oneDay = 24 * 60 * 60 * 1000; //하루의 밀리초

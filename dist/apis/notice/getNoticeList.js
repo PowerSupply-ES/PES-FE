@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from "axios";
 // 공지사항 리스트 get API 요청
 const getNoticeList = (setNoticeList) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b;
     const uri = "api/notice";
     try {
         const response = yield axios.get(uri);
@@ -21,17 +22,16 @@ const getNoticeList = (setNoticeList) => __awaiter(void 0, void 0, void 0, funct
         setNoticeList(response.data);
     }
     catch (error) {
-        if (error.response) {
-            // 서버가 응답을 반환한 경우
-            console.error(`데이터 가져오기 실패: ${error.response.status} ${error.response.statusText}`);
+        if (axios.isAxiosError(error)) { //axios error인지 확인
+            // 서버가 응답을 반환했지만 상태 코드가 오류를 나타내는 경우
+            console.error("Axios 오류 발생:", (_a = error.response) === null || _a === void 0 ? void 0 : _a.status, (_b = error.response) === null || _b === void 0 ? void 0 : _b.statusText);
         }
-        else if (error.request) {
-            // 요청이 이루어졌으나 응답이 없는 경우
-            console.error("데이터 가져오기 실패: 요청이 실패했습니다.");
+        else if (error instanceof Error) { //js오류인지 확인
+            // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
+            console.error("일반 오류 발생:", error.message);
         }
         else {
-            // 설정 중 오류 발생
-            console.error(`데이터 가져오기 실패: ${error.message}`);
+            console.error("알 수 없는 오류 발생:", error);
         }
     }
 });

@@ -23,22 +23,28 @@ const postNotice = (notice, navigate) => __awaiter(void 0, void 0, void 0, funct
         }
     }
     catch (error) {
-        if (error.response) {
-            // 서버가 응답을 반환한 경우
-            if (error.response.status === 403) {
-                alert("권한이 없습니다");
+        // axios에서 발생한 오류인 경우
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                // 서버가 응답을 반환한 경우
+                if (error.response.status === 403) {
+                    alert("권한이 없습니다");
+                }
+                else {
+                    alert(`서버 응답 오류: ${error.response.status} ${error.response.statusText}`);
+                }
+            }
+            else if (error.request) {
+                // 요청이 이루어졌으나 응답이 없는 경우
+                alert("서버 응답이 없습니다.");
             }
             else {
-                alert(`서버 응답 오류: ${error.response.status} ${error.response.statusText}`);
+                // 설정 중 오류 발생
+                alert(`요청 실패: ${error.message}`);
             }
         }
-        else if (error.request) {
-            // 요청이 이루어졌으나 응답이 없는 경우
-            alert("서버 응답이 없습니다.");
-        }
-        else {
-            // 설정 중 오류 발생
-            alert(`요청 실패: ${error.message}`);
+        else { // axios와 무관한 오류인 경우
+            alert(`알 수 없는 오류 발생: ${error.message}`);
         }
     }
 });
