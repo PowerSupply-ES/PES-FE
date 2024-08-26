@@ -1,6 +1,10 @@
+import React from "react";
+import { MyFeedProps } from "model/Store";
+
+
 // 내 피드백 컴포넌트
-const MyFeed = ({ myFeedback, navigate }) => {
-  const gotoFeed = (problemId) => {
+const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {
+  const gotoFeed = (problemId: number) => {
     console.log("problemId: ", problemId);
     navigate(`question/${problemId}`);
   };

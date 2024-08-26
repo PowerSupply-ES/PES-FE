@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MemberDetail } from "model/Store";
 
-// 회원 데이터 상태관리 훅 setMemDate의 타입
+// 회원 데이터 상태관리 HOOK setMemDate 타입
 type SetMemDetail = React.Dispatch<React.SetStateAction<MemberDetail | null>>;
 
 const getUserDetail = async (setMemberData: SetMemDetail): Promise<void> => {

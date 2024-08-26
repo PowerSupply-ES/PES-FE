@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import MyFeed from "./MyFeed";
 import useMypage from "hooks/mypage/useMypage";
+import React from "react";
+
+// MyFeedList 타입 정의
+interface MyFeedListProps {};
 
 // 내 피드백 list
-const MyFeedList = () => {
+const MyFeedList:React.FC<MyFeedListProps> = () => {
   const navigate = useNavigate();
   const { myFeedback } = useMypage();
 

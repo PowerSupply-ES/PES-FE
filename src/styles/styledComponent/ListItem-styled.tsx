@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const StyledListItem = styled.div`
+// state를 받아들이는 스타일 컴포넌트 정의
+interface StyledListItemProps {
+  state: string;
+}
+
+export const StyledListItem = styled.div<StyledListItemProps>`
   .container {
     display: flex;
     flex-direction: row;

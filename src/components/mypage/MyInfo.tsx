@@ -1,8 +1,16 @@
 import { FaCircleUser } from "react-icons/fa6";
 import useMypage from "hooks/mypage/useMypage";
+import React from "react";
 
-const MyInfo = () => {
+// MyInfo 타입 정의
+interface MyInfoProps {}
+
+const MyInfo: React.FC<MyInfoProps> = () => {
   const { memberData } = useMypage();
+
+  if (!memberData) {
+    return <div>Loading...</div>; 
+  }
 
   return (
     <div className="left">

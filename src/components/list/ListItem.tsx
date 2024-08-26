@@ -1,14 +1,24 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledListItem } from "styles/styledComponent/ListItem-styled";
 import Button from "@mui/joy/Button";
 
-const ProblemItem = (props) => {
+// ProblemItem 컴포넌트 props 타입
+interface ProblemItemProps {
+  pid: number;
+  ptitle: string;
+  grade: number;
+  answerId: number | null;
+  state: string;
+}
+
+const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();
   const memberStatus = sessionStorage.getItem("memberStatus");
 
-  const goToProb = (answerId) => {
+  const goToProb = (answerId: number | null) => {
     if (answerId) {
-      sessionStorage.setItem("problemId", props.pid);
+      sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);
@@ -22,10 +32,9 @@ const ProblemItem = (props) => {
 
   return (
     <StyledListItem state={state}>
-      <div className="container" state={state}>
+      <div className="container">
         <div
           className="problem_id"
-          state={state}
           onClick={() => {
             goToProb(props.answerId);
           }}
@@ -43,7 +52,6 @@ const ProblemItem = (props) => {
         <div className="grade">점수 {props.grade}</div>
         <button
           className="button"
-          state={state}
           onClick={() => navigate(`/solution/${props.pid}`)}
         >
           풀이보기
