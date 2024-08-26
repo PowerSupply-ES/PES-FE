@@ -30,6 +30,16 @@ export interface MemberDetail extends Member {
 }
 
 
+// user 정보 관리
+export type UserInfo = {
+  memberName: string;
+  memberStatus: string;
+  memberGen: number;
+  memberScore: number;
+  hasNewNotices: boolean;
+};
+
+
 // myfeedback
 export interface MyFeedback {
   answerId: number;
@@ -42,4 +52,17 @@ export interface MyFeedback {
 export interface MyFeedProps {
   myFeedback: MyFeedback[];
   navigate: NavigateFunction
+}
+
+
+// 공지사항 list 타입
+export type NoticeList = {
+  noticeId: number;
+  title: string;
+  writerGen: number;
+  writer: string;
+  noticeHit: number;
+  isImportant: boolean;
+  isNewNotice: boolean;
+  createdTime: string; //LocalDateTime 타입
 }

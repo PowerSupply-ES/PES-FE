@@ -7,7 +7,10 @@ import HeaderForAny from "components/header/HeaderForAny";
 import HeaderForUser from "components/header/HeaderForUser";
 import Footer from "components/footer/Footer";
 
-function Header() {
+// Header props 타입 정의
+interface HeaderProps {};
+
+const Header: React.FC<HeaderProps> = () => {
   const status = sessionStorage.getItem("status");
 
   return (

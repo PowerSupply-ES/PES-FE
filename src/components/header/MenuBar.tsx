@@ -10,7 +10,7 @@ import {
   StyledTabList,
 } from "styles/styledComponent/Menu-styled";
 
-function MenuBar() {
+const MenuBar: React.FC = () => {
   // 훅 사용
   const { index, toggleTab } = useMenu();
 

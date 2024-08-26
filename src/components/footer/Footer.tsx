@@ -3,8 +3,9 @@ import { IoIosMail } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
 import postLogout from "apis/common/postLogout";
+import React from "react";
 
-function Footer() {
+const Footer: React.FC = () => {
   const status = sessionStorage.getItem("status");
 
   return (

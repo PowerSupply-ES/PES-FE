@@ -2,7 +2,7 @@ import React from "react";
 // ===== 공용 함수 지정 =====
 
 // --- Time에서 "T" 제거하여 표시하는 함수
-export const transferTime = (time) => {
+export const transferTime = (time: string | null | undefined) => {
   if (!time) return ""; // 시간이 없는 경우 처리
 
   return time.replace("T", " ");
@@ -14,7 +14,8 @@ export const goBack = () => {
 };
 
 // --- '\n' 기준으로 줄바꿈하는 함수
-export const renderNewlines = (text) => {
+// React.ReactNode : JSX반환타입
+export const renderNewlines = (text: string): React.ReactNode => {
   return text.split("\n").map((line, index) => (
     <React.Fragment key={index}>
       {line}
@@ -24,7 +25,7 @@ export const renderNewlines = (text) => {
 };
 
 // --- '\n\n' 기준으로 줄바꿈하는 함수
-export const renderStyledNewlines = (text) => {
+export const renderStyledNewlines = (text: string): React.ReactNode => {
   const lines = text.split("\n\n"); // 각 줄을 분할
   return lines.map((line, index) => {
     return (

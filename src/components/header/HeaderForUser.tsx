@@ -1,21 +1,22 @@
 import MenuBar from "components/header/MenuBar";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import postLogout from "apis/common/postLogout";
 import getUserInfo from "apis/navbar/getUserInfo";
+import { UserInfo } from "model/Store";
 
 // 로그인o 경우 넷바
-function HeaderForUser() {
+const HeaderForUser: React.FC = () => {
   const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // user 정보 관리
-  const [memberData, setMemberData] = useState({
+  const [memberData, setMemberData] = useState<UserInfo>({
     memberName: "",
-    memberScore: "",
+    memberScore: 0,
     memberStatus: "",
-    memberGen: "",
+    memberGen: 0,
     hasNewNotices: false,
   });
 
@@ -27,7 +28,7 @@ function HeaderForUser() {
   // 넷바 사용자 정보 요청
   useEffect(() => {
     getUserInfo({ navigate, setMemberData });
-  }, []);
+  }, [navigate]);
 
   // 로그아웃 호출 함수
   const handleLogoutClick = () => {
@@ -62,6 +63,7 @@ function HeaderForUser() {
                 <a className="btn_mypage" href="/mypage">
                   마이페이지
                 </a>
+                {/* TODO : button으로 수정 */}
                 <a onClick={handleLogoutClick} className="btn_top_logout">
                   로그아웃
                 </a>
