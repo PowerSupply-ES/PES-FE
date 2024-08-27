@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -6,8 +7,9 @@ import {
   Grade,
   Button,
 } from "styles/styledComponent/ProblemItem-styled";
+import { ProblemItemProps } from "model/Store";
 
-const ProblemItem = (props) => {
+const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();
 
   return (

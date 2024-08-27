@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { StyledProps } from "model/Store";
 
-export const Container = styled.div`
+export const Container = styled.div<StyledProps>`
   width: 1374px;
   height: 60px;
   display: flex;
@@ -15,7 +16,7 @@ export const Container = styled.div`
       props.state == "locked" ? "#DEDEDE" : "#DEDEDE80"};
   }
 `;
-export const ProblemId = styled.span`
+export const ProblemId = styled.span<StyledProps>`
   width: 100px;
   height: 34px;
   color: ${(props) =>
@@ -41,7 +42,7 @@ export const Grade = styled.span`
   text-align: center;
   margin-right: 20px;
 `;
-export const Button = styled.button`
+export const Button = styled.button<StyledProps>`
   width: 150px;
   height: 42px;
   color: ${(props) => (props.state == "locked" ? "#6A6B6F" : "white")};

@@ -1,5 +1,11 @@
 import { NavigateFunction } from "react-router-dom";
 
+// state를 받아들이는 스타일 컴포넌트
+export interface StyledProps {
+  state: string;
+}
+
+
 // problem
 export type Problem = {
   problemId: number;
@@ -22,12 +28,21 @@ export type ProblemTitle = Pick<Problem, 'problemId' | 'problemTitle' | 'problem
 export type ProblemContent = {
   problemId: number;
   problemContent: string;
-  
+
   // renderStyledNewlines함수사용 위해 배열로 변환
   sampleInputs: string[]; 
   sampleOutputs: string[]; 
 }
 
+
+// ProblemItem 컴포넌트 props 타입
+export interface ProblemItemProps {
+  pid: number;
+  ptitle: string;
+  grade: number;
+  answerId: number | null;
+  state: string;
+}
 
 
 // 사용자_관리자모드

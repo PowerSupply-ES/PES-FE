@@ -2,15 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledListItem } from "styles/styledComponent/ListItem-styled";
 import Button from "@mui/joy/Button";
-
-// ProblemItem 컴포넌트 props 타입
-interface ProblemItemProps {
-  pid: number;
-  ptitle: string;
-  grade: number;
-  answerId: number | null;
-  state: string;
-}
+import { ProblemItemProps } from "model/Store";
 
 const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();
