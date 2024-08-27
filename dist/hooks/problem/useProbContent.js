@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import getProbContent from "apis/problem/getProbContent";
 import { useState, useEffect, useCallback } from "react";
 // 문제 내용 get HOOK
-const useProbContent = (problemId) => __awaiter(void 0, void 0, void 0, function* () {
-    const [problem, setProblem] = useState([]);
+const useProbContent = (problemId) => {
+    const [problem, setProblem] = useState(null);
     const fetchProblem = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const response = yield getProbContent(problemId);
@@ -25,5 +25,5 @@ const useProbContent = (problemId) => __awaiter(void 0, void 0, void 0, function
         fetchProblem();
     }, [fetchProblem]);
     return problem;
-});
+};
 export default useProbContent;

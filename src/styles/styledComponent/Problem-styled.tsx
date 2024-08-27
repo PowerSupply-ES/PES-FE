@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const StyledProblem = styled.div`
+// state를 받아들이는 스타일 컴포넌트 정의
+interface StyledListItemProps {
+    state: string;
+}
+
+export const StyledProblem = styled.div<StyledListItemProps>`
     .problem_header {
         width: 80%;
         height: 78px;

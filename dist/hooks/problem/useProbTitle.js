@@ -10,8 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import getProbTitle from "apis/problem/getProbTitle";
 import { useState, useEffect, useCallback } from "react";
 // 문제 제목 get HOOK
-const useProbTitle = (problemId) => __awaiter(void 0, void 0, void 0, function* () {
-    const [title, setTitle] = useState([]);
+const useProbTitle = (problemId) => {
+    const [title, setTitle] = useState(null);
     // problemId가 변경되지 않는 한, 매번 동일한 함수로 재사용
     const fetchTitle = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
         try {
@@ -26,5 +26,5 @@ const useProbTitle = (problemId) => __awaiter(void 0, void 0, void 0, function* 
         fetchTitle();
     }, [fetchTitle]);
     return title;
-});
+};
 export default useProbTitle;

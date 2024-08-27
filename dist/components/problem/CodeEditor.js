@@ -1,5 +1,4 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import React from "react";
 import AceEditor from "react-ace";
 import "styles/css/App.css";
 import "ace-builds/src-noconflict/mode-c_cpp"; // C/C++ 언어 모드 import

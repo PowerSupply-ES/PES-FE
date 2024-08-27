@@ -4,9 +4,9 @@ import CodeEditor from "components/problem/CodeEditor";
 import useProbPage from "hooks/problem/useProbPage";
 import { renderNewlines, renderStyledNewlines } from "components/common/Common";
 
-const ProblemPage = () => {
+const ProblemPage: React.FC = () => {
   let url = new URL(window.location.href);
-  let problemId = url.pathname.split("/")[2];
+  let problemId = Number(url.pathname.split("/")[2]); // 문자열을 숫자로 변환
 
   // 관련 HOOK 호출
   const { title, problem, detail, isLogin, textHandler, submitCode } =
@@ -14,12 +14,13 @@ const ProblemPage = () => {
 
   // 문제 UI 렌더링 함수
   const renderProbUI = () => {
+
     return (
       <StyledProblem state={"null"}>
         <div className="problem_header">
           <div className="problem_group">
             <div className="problem_id">문제{problemId}</div>
-            <div className="header_title">{title.problemTitle}</div>
+            <div className="header_title">{title?.problemTitle}</div>
             <div className="header_answer_state">미완료</div>
           </div>
         </div>
@@ -31,7 +32,7 @@ const ProblemPage = () => {
               <p className="underline">문제</p>
               <div className="prob_text">
                 {/* renderNewlines : '\n' 기준으로 줄바꿈 함수 */}
-                {problem.problemContent &&
+                {problem?.problemContent &&
                   renderNewlines(problem.problemContent)}
               </div>
             </div>
@@ -41,7 +42,7 @@ const ProblemPage = () => {
               <div className="sample_inputs" style={{ whiteSpace: "pre" }}>
                 <p className="underline">Sample Inputs</p>
                 <div className="input_text">
-                  {problem.sampleInputs &&
+                  {problem?.sampleInputs &&
                     problem.sampleInputs.map((input, index) => (
                       <React.Fragment key={index}>
                         {/* renderStyledNewlines : '\n\n' 기준으로 줄바꿈 함수 */}
@@ -54,7 +55,7 @@ const ProblemPage = () => {
               <div className="sample_outputs" style={{ whiteSpace: "pre" }}>
                 <p className="underline">Sample Outputs</p>
                 <div className="output_text">
-                  {problem.sampleOutputs &&
+                  {problem?.sampleOutputs &&
                     problem.sampleOutputs.map((output, index) => (
                       <React.Fragment key={index}>
                         {renderStyledNewlines(output)}
@@ -70,7 +71,11 @@ const ProblemPage = () => {
             {isLogin ? (
               <>
                 {/* 변경코드 */}
-                <CodeEditor onChange={textHandler} />
+                <CodeEditor
+                  code={""} // 현재 코드 상태
+                  onChange={textHandler} // 코드 변경 핸들러
+                  readOnly={false} // 읽기 전용 여부
+                />
 
                 {detail !== null && detail !== undefined && (
                   <div className="detail_container">

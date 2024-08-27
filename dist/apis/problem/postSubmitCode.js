@@ -19,7 +19,14 @@ const postSubmitCode = (request, problemId) => __awaiter(void 0, void 0, void 0,
     }
     catch (error) {
         console.log(error);
-        return { status: error.response ? error.response.status : 500 };
+        // error가 AxiosError인지 확인
+        if (axios.isAxiosError(error)) {
+            return { status: error.response ? error.response.status : 500 };
+        }
+        else {
+            // 예상하지 못한 다른 에러의 경우
+            return { status: 500 };
+        }
     }
 });
 export default postSubmitCode;

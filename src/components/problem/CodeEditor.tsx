@@ -4,9 +4,15 @@ import "styles/css/App.css";
 import "ace-builds/src-noconflict/mode-c_cpp"; // C/C++ 언어 모드 import
 import "ace-builds/src-noconflict/theme-monokai"; // 다크 모드 테마 import
 
-const CodeEditor = ({ code, onChange, readOnly }) => {
+interface CodeEditorProps{
+  code: string;  // 코드 내용
+  onChange: (text: string) => void;  // 코드 변경 핸들러
+  readOnly?: boolean;  // 읽기 전용 여부
+}
+
+const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, readOnly }) => {
   // 부모 컴포넌트 코드 상태 업데이트
-  const handleChange = (newCode) => {
+  const handleChange = (newCode: string) => {
     onChange(newCode);
   };
 

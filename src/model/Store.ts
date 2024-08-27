@@ -15,7 +15,22 @@ export interface MyProbProps {
   navigate: NavigateFunction
 }
 
-// 사용자
+// ProblemTitle 타입
+export type ProblemTitle = Pick<Problem, 'problemId' | 'problemTitle' | 'problemScore'>;
+
+// ProblemContent 타입
+export type ProblemContent = {
+  problemId: number;
+  problemContent: string;
+  
+  // renderStyledNewlines함수사용 위해 배열로 변환
+  sampleInputs: string[]; 
+  sampleOutputs: string[]; 
+}
+
+
+
+// 사용자_관리자모드
 export type Member = {
   memberId: string;
   memberName: string;
