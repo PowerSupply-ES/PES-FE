@@ -7,16 +7,16 @@ const useMenu = () => {
   const navigate = useNavigate();
 
   // 현재 경로에 따라 초기 탭 인덱스 설정
-  const getInitialIndex = () => {
+  const getInitialIndex = (): number | null => {
     if (location.pathname === "/list") return 0;
     if (location.pathname === "/notice") return 1;
     return null; // 홈이나 기타 경로인 경우 탭이 선택되지 않도록
   };
 
-  const [index, setIndex] = useState(getInitialIndex());
+  const [index, setIndex] = useState<number | null>(getInitialIndex());
 
   // 탭 이동
-  const toggleTab = (value) => {
+  const toggleTab = (value: number) => {
     setIndex(value);
     if (value === 0) {
       navigate("/list");
