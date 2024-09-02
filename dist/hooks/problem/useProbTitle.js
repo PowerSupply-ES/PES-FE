@@ -12,14 +12,20 @@ import { useState, useEffect, useCallback } from "react";
 // 문제 제목 get HOOK
 const useProbTitle = (problemId) => {
     const [title, setTitle] = useState(null);
-    // problemId가 변경되지 않는 한, 매번 동일한 함수로 재사용
+    // problemId가 변경되지 않는 한, 동일한 함수로 재사용
     const fetchTitle = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const res = yield getProbTitle(problemId);
-            setTitle(res);
+            const titleData = yield getProbTitle(problemId);
+            if (titleData) {
+                setTitle(titleData); // titleData가 존재할 때만 state 업데이트
+            }
+            else {
+                setTitle(null);
+            }
         }
         catch (error) {
             console.error(error);
+            setTitle(null);
         }
     }), [problemId]);
     useEffect(() => {

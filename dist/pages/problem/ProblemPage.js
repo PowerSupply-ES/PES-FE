@@ -22,6 +22,6 @@ const ProblemPage = () => {
                         }
                     }, children: "\uC81C\uCD9C" })] }));
     };
-    return (_jsx("div", { children: problem ? renderProbUI() : _jsx("div", { className: "loading", children: "Loading..." }) }));
+    return (_jsx("div", { children: title && problem ? renderProbUI() : _jsx("div", { className: "loading", children: "Loading..." }) }));
 };
 export default ProblemPage;

@@ -6,13 +6,18 @@ import { ProblemTitle } from "model/Store";
 const useProbTitle = (problemId: number): ProblemTitle | null => {
   const [title, setTitle] = useState<ProblemTitle | null>(null);
 
-  // problemId가 변경되지 않는 한, 매번 동일한 함수로 재사용
+  // problemId가 변경되지 않는 한, 동일한 함수로 재사용
   const fetchTitle = useCallback(async () => {
     try {
-      const res = await getProbTitle(problemId);
-      setTitle(res);
+      const titleData = await getProbTitle(problemId);
+      if (titleData) {
+        setTitle(titleData); // titleData가 존재할 때만 state 업데이트
+      } else {
+        setTitle(null);
+      }
     } catch (error: unknown) {
       console.error(error);
+      setTitle(null);
     }
   }, [problemId]);
 

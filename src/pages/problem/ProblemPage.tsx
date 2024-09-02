@@ -120,7 +120,7 @@ const ProblemPage: React.FC = () => {
 
   return (
     <div>
-      {problem ? renderProbUI() : <div className="loading">Loading...</div>}
+      {title && problem ? renderProbUI() : <div className="loading">Loading...</div>}
     </div>
   );
 };

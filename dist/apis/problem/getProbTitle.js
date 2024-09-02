@@ -11,10 +11,10 @@ import axios from "axios";
 // 문제 제목 get 요청
 const getProbTitle = (problemId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { data } = yield axios.get(`/api2/problemtitle/${problemId}`, {
+        const res = yield axios.get(`/api2/problemtitle/${problemId}`, {
             withCredentials: true,
         });
-        return data;
+        return res.data;
     }
     catch (error) {
         console.log(error);
