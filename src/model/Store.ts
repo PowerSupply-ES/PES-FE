@@ -137,3 +137,21 @@ export type QuesAnswerType = {
   answerSec: string;
   answerState: string;
 }
+
+
+
+// 로그인 폼 데이터 타입
+export type SignInFormData = {
+  memberId: string;
+  memberPw: string;
+}
+// 회원가입 폼 데이터 타입
+export type SignupFormData = {
+  memberPw: string;
+  memberId: string;
+  memberEmail: string;
+  memberName: string;
+  memberGen: number;
+  memberMajor: string;
+  memberPhone: string;
+}

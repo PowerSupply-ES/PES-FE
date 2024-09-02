@@ -18,24 +18,21 @@ const useSignup = () => {
         memberEmail: "",
         memberPw: "",
         memberName: "",
-        memberGen: "",
+        memberGen: 0,
         memberMajor: "",
         memberPhone: "",
     });
     // 이메일 형식 검사
     const isEmailValid = (email) => {
-        // 이메일 형식 검사 정규식
-        // const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         // 이메일이 .net 또는 .com 으로 끝나는지 확인
+        // some() : 하나라도 일치하면 true반환
         const validEndings = [".net", ".com"];
         const hasValidEnding = validEndings.some((ending) => email.endsWith(ending));
-        // return emailRegex.test(email) && hasValidEnding;
         return hasValidEnding;
     };
     // 회원가입 폼이 제출될 때 호출
     const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
-        // 기본 제출 동작 막기
-        e.preventDefault();
+        e.preventDefault(); // 기본 제출 동작 막기
         try {
             const responseData = yield postSignup(formData, isEmailValid);
             const resultMessage = responseData.message;
@@ -43,7 +40,12 @@ const useSignup = () => {
             navigate("/signin");
         }
         catch (error) {
-            alert(error.message);
+            if (error instanceof Error) {
+                alert(error.message);
+            }
+            else {
+                alert("알 수 없는 오류가 발생했습니다.");
+            }
         }
     });
     //입력필드 값 변경될때마다 호출

@@ -16,7 +16,7 @@ import useSignIn from "hooks/sign/useSignIn";
 
 const defaultTheme = createTheme();
 
-function LoginTemp() {
+const LoginTemp: React.FC = () => {
   const { formData, handleSubmit, handleInputChange } = useSignIn();
 
   return (
@@ -36,6 +36,7 @@ function LoginTemp() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
+          
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"

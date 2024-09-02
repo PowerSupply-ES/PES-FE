@@ -20,15 +20,15 @@ const postLogin = (formData) => __awaiter(void 0, void 0, void 0, function* () {
         return res.data;
     }
     catch (error) {
-        if (error.response && error.response.status === 401) {
-            throw new Error("일치하는 정보가 없습니다");
+        if (axios.isAxiosError(error)) {
+            if (error.response && error.response.status === 401) {
+                throw new Error("일치하는 정보가 없습니다");
+            }
+            else if (error.response) {
+                throw new Error(`${error.response.status} ${error.response.statusText}`);
+            }
         }
-        else if (error.response) {
-            throw new Error(`${error.response.status} ${error.response.statusText}`);
-        }
-        else {
-            throw new Error("네트워크 오류가 발생했습니다");
-        }
+        throw new Error("네트워크 오류가 발생했습니다");
     }
 });
 export default postLogin;

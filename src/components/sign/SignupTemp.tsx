@@ -17,7 +17,7 @@ import useSignup from "hooks/sign/useSignup";
 
 const defaultTheme = createTheme();
 
-function SignupTemp() {
+const SignupTemp: React.FC = () => {
   const { formData, handleSubmit, handleInputChange } = useSignup();
 
   return (
@@ -102,12 +102,12 @@ function SignupTemp() {
               </Grid>
 
               <Grid item xs={12}>
-                {/* 전화번호 형식 지정 */}
-                <InputMask
+                {/* 전화번호 형식 지정 - 호환성 문제로 삭제*/}
+                {/* <InputMask
                   mask="010-9999-9999"
                   value={formData.memberPhone}
                   onChange={handleInputChange}
-                >
+                > 
                   {(inputProps) => (
                     <TextField
                       {...inputProps}
@@ -119,6 +119,18 @@ function SignupTemp() {
                     />
                   )}
                 </InputMask>
+                */}
+                <TextField
+                value={formData.memberPhone}
+                id="memberPhone"
+                label="전화번호"
+                name="memberPhone"
+                autoComplete="tel"
+                fullWidth
+                required
+                onChange={handleInputChange}
+                placeholder="전화번호를 입력해주세요"
+              />
               </Grid>
 
               <Grid item xs={12} sm={6}>
@@ -171,6 +183,6 @@ function SignupTemp() {
       </Container>
     </ThemeProvider>
   );
-}
+};
 
 export default SignupTemp;

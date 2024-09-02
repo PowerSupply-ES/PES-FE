@@ -26,12 +26,17 @@ const useSignIn = () => {
             const resultMessage = responseData.message;
             alert(resultMessage);
             navigate("/");
-            window.location.reload(); // 페이지 새로 고침
-            sessionStorage.setItem("status", true);
+            window.location.reload(); // 페이지 새로고침
+            sessionStorage.setItem("status", "true");
             sessionStorage.setItem("memberId", formData.memberId);
         }
         catch (error) {
-            alert(error.message);
+            if (error instanceof Error) {
+                alert(error.message);
+            }
+            else {
+                alert("알 수 없는 오류가 발생했습니다.");
+            }
         }
     });
     //입력필드 값 변경될때마다 호출
