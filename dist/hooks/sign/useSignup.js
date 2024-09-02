@@ -35,9 +35,12 @@ const useSignup = () => {
         e.preventDefault(); // 기본 제출 동작 막기
         try {
             const responseData = yield postSignup(formData, isEmailValid);
-            const resultMessage = responseData.message;
-            alert(resultMessage);
-            navigate("/signin");
+            // responseData가 undefined 아닌지 확인
+            if (responseData && responseData.message) {
+                const resultMessage = responseData.message;
+                alert(resultMessage);
+                navigate("/signin");
+            }
         }
         catch (error) {
             if (error instanceof Error) {
