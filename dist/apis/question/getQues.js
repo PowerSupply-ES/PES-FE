@@ -11,10 +11,10 @@ import axios from "axios";
 // 질문, 답변 블러오기 (get)
 const getQues = (answerId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield axios.get(`/api/answer/${answerId}`, {
+        const response = yield axios.get(`/api/answer/${answerId}`, {
             withCredentials: true,
         });
-        return data;
+        return response.data;
     }
     catch (error) {
         console.log(error);

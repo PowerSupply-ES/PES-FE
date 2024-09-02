@@ -12,8 +12,8 @@ import axios from "axios";
 const postAnswers = (answerId, answerFst, answerSec) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield axios.post(`/api/answer/${answerId}`, {
-            answerFst: answerFst,
-            answerSec: answerSec,
+            answerFst,
+            answerSec
         });
     }
     catch (error) {

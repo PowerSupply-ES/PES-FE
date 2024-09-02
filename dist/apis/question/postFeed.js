@@ -11,8 +11,8 @@ import axios from "axios";
 // 댓글 달기 (post)
 const postFeed = (answerId, comment, selected) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield axios.post(`/api/comment/${answerId}`, {
-            comment: comment,
+        return yield axios.post(`/api/comment/${answerId}`, {
+            comment, // 댓글
             commentPassFail: selected,
         });
     }

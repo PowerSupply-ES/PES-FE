@@ -11,10 +11,10 @@ import axios from "axios";
 // 댓글 불러오기 (get)
 const getFeed = (answerId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield axios.get(`/api/comment/${answerId}`, {
+        const res = yield axios.get(`/api/comment/${answerId}`, {
             withCredentials: true,
         });
-        return data;
+        return res.data;
     }
     catch (error) {
         console.log(error);

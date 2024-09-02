@@ -118,3 +118,22 @@ export type PostNoticeType = {
   content: string;
   isImportant: boolean;
 }
+
+
+// 댓글(comment) 타입
+export type CommentListType = {
+  writerId: string;
+  writerGen: number;
+  writerName: string;
+  commentContent: string;
+  commentPassFail: number;
+}
+
+// 질문, 답변 타입
+export type QuesAnswerType = {
+  questionContentFst: string;
+  questionContentSec: string;
+  answerFst: string;
+  answerSec: string;
+  answerState: string;
+}

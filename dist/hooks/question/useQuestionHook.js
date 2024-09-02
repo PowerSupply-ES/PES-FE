@@ -7,17 +7,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import { useState, useEffect, useCallback } from "react";
+import axios from "axios";
 import getFeed from "apis/question/getFeed";
 import getCode from "apis/question/getCode";
-import { useState, useEffect, useCallback } from "react";
 import getQues from "apis/question/getQues";
 import postAnswers from "apis/question/postAnswers";
 import postFeed from "apis/question/postFeed";
-// 질문테스트(question) 관련 HOOK 관리
+// 질문테스트(question) 관련 HOOK들 관리
 const useQuestionHook = (answerId, getAlert) => {
     const [state, setState] = useState("");
     const [code, setCode] = useState("");
-    const [qnA, setQnA] = useState([]);
+    const [qnA, setQnA] = useState(null);
     const [feedbacks, setFeedbacks] = useState([]);
     const [passCount, setPassCount] = useState(0);
     // 사용자 코드 get HOOK
@@ -49,14 +50,22 @@ const useQuestionHook = (answerId, getAlert) => {
             window.location.reload();
         }
         catch (error) {
-            if (error.response && error.response.status === 400) {
-                alert("이미 답변이 등록되어 있습니다.");
-            }
-            else if (error.response && error.response.status === 403) {
-                alert("접근할 수 있는 사용자가 아닙니다.");
+            // error가 AxiosError인지 확인
+            if (axios.isAxiosError(error)) {
+                const status = error.response ? error.response.status : null;
+                if (status === 400) {
+                    alert("이미 답변이 등록되어 있습니다.");
+                }
+                else if (status === 403) {
+                    alert("접근할 수 있는 사용자가 아닙니다.");
+                }
+                else {
+                    console.log("알 수 없는 서버 오류가 발생했습니다.", error);
+                }
             }
             else {
-                console.log(error);
+                // AxiosError가 아닌 다른 오류 처리
+                console.log("예상하지 못한 오류가 발생했습니다.", error);
             }
         }
     });
@@ -79,6 +88,7 @@ const useQuestionHook = (answerId, getAlert) => {
     }), [answerId]);
     // 댓글 post HOOK
     const postFeedback = (comment, selected) => __awaiter(void 0, void 0, void 0, function* () {
+        var _a;
         try {
             const response = yield postFeed(answerId, comment, selected);
             getFeedback();
@@ -86,15 +96,21 @@ const useQuestionHook = (answerId, getAlert) => {
             window.location.reload();
         }
         catch (error) {
-            // 403에러 예외처리 추가 by.성임
-            if (error.response && error.response.status === 403) {
-                alert("권한이 없습니다!");
-            }
-            else if (error.response && error.response.status === 400) {
-                alert("이미 댓글을 달았어요!");
+            if (axios.isAxiosError(error)) {
+                // AxiosError 타입 확인 후 처리
+                const status = (_a = error.response) === null || _a === void 0 ? void 0 : _a.status;
+                if (status === 403) { // 403에러 예외처리 추가 by.성임
+                    alert("권한이 없습니다!");
+                }
+                else if (status === 400) {
+                    alert("이미 댓글을 달았어요!");
+                }
+                else {
+                    console.log("알 수 없는 오류가 발생했습니다.", error);
+                }
             }
             else {
-                console.log(error);
+                console.log("예상하지 못한 오류가 발생했습니다.", error);
             }
         }
     });

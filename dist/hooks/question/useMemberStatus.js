@@ -8,31 +8,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { useEffect, useState } from "react";
-function useMemberStatus({ children }) {
+import axios from "axios";
+// 상단 사용자 정보 HOOK
+const useMemberStatus = () => {
     const [memberStatus, setMemberStatus] = useState(null);
     const uri = "api/exp";
     const memberEmail = sessionStorage.getItem("memberEmail");
     useEffect(() => {
-        const userInfo = () => __awaiter(this, void 0, void 0, function* () {
+        const userInfo = () => __awaiter(void 0, void 0, void 0, function* () {
+            var _a;
             fetch(`${uri}?memberEmail=${memberEmail}`, {
                 method: "GET",
-            })
-                .then((response) => {
-                if (!response.ok) {
-                    console.log("서버응답:", response);
-                    throw new Error(`데이터 가져오기 실패: ${response.status} ${response.statusText}`);
-                }
-                return response.json();
-            })
-                .then((data) => {
-                setMemberStatus(data.memberStatus);
-            })
-                .catch((error) => {
-                console.error("데이터 가져오기 실패:", error);
             });
+            try {
+                const response = yield axios.get(`${uri}?memberEmail=${memberEmail}`);
+                // 응답의 data를 바로 사용
+                setMemberStatus(response.data.memberStatus);
+            }
+            catch (error) {
+                if (axios.isAxiosError(error)) {
+                    // Axios의 에러 처리
+                    console.error(`데이터 가져오기 실패: ${(_a = error.response) === null || _a === void 0 ? void 0 : _a.status} ${error.message}`);
+                }
+                else {
+                    // Axios 이외의 에러 처리
+                    console.error("데이터 가져오기 실패:", error);
+                }
+            }
         });
         userInfo();
-    }, []);
-    return children(memberStatus);
-}
+    }, [memberEmail]);
+    return memberStatus;
+};
 export default useMemberStatus;
