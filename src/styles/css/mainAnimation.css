@@ -9,10 +9,12 @@
   margin-top: 100px;
   transform: translate(-50%, -50%);
   /* translate(-50%, -50%)으로 
-  left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
+    left와 top의 값을 조정하여 정확한 중앙 위치로 조정 */
   z-index: 3;
 }
-.main_btn .btn1, .main_btn .btn2, .main_btn .btn3 {
+.main_btn .btn1,
+.main_btn .btn2,
+.main_btn .btn3 {
   border-radius: 18px;
   font-size: 20px;
   color: #ffffff;
@@ -31,11 +33,13 @@
 .main_btn .btn1:hover {
   background-color: rgba(255, 255, 255, 0.201);
 }
-.main_btn .btn2, .main_btn .btn3 {
+.main_btn .btn2,
+.main_btn .btn3 {
   background-color: #724fd2;
   border: solid #724fd2 2px;
 }
-.main_btn .btn2:hover, .main_btn .btn3:hover {
+.main_btn .btn2:hover,
+.main_btn .btn3:hover {
   background-color: #8b71d3;
   border: solid #8b71d3 2px;
 }

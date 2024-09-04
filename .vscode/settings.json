@@ -1,0 +1,11 @@
+{
+    "liveSassCompile.settings.generateMap": false, //불필요한 map파일 생성x
+    "liveSassCompile.settings.formats": [
+        {
+            "format" : "expanded", //css컴파일 스타일
+            "extensionName": ".css",
+            "savePath": "~/.."
+        }
+    ],
+    
+}

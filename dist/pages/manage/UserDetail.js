@@ -1,0 +1,13 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+// 회원상세페이지
+// TODO : 관리자모드에서 수정할 예정
+import "styles/css/manage.css";
+import "styles/css/mypage.css";
+import SideTab from "components/manage/SideTab";
+import { FaCircleUser } from "react-icons/fa6";
+import useUserDetail from "hooks/manage/useUserDetail";
+const UserDetail = () => {
+    const { memberData } = useUserDetail();
+    return (_jsx("div", { className: "content_container", children: _jsxs("div", { className: "manageuser_container", children: [_jsx(SideTab, {}), _jsx("div", { className: "userlist_wrapper", children: !memberData ? (_jsx("div", { children: "Loading..." })) : (_jsxs("div", { className: "mypage_content", children: [_jsxs("div", { className: "left", children: [_jsxs("div", { className: "memberInfo", children: [_jsxs("div", { className: "info_name", children: [_jsx(FaCircleUser, { size: 40, style: { color: "grey" } }), _jsx("p", { children: memberData.memberName })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uD559 \uBC88" }), _jsx("p", { children: memberData.memberId })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uC774\uBA54\uC77C" }), _jsx("p", { children: memberData.memberEmail })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uAE30 \uC218" }), _jsx("p", { children: memberData.memberGen })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uC0C1 \uD0DC" }), _jsx("p", { children: memberData.memberStatus })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uD559 \uACFC" }), _jsx("p", { children: memberData.memberMajor })] }), _jsxs("div", { className: "text", children: [_jsx("div", { children: "\uC804\uD654 \uBC88\uD638" }), _jsx("p", { children: memberData.memberPhone })] })] }), _jsxs("div", { className: "manage_btn_container", children: [_jsx("button", { className: "btn_editmem", children: "\uD68C\uC6D0 \uC218\uC815" }), _jsx("button", { className: "btn_deletemem", children: "\uD68C\uC6D0 \uC0AD\uC81C" })] })] }), _jsxs("div", { className: "right", children: [_jsxs("div", { className: "top", children: [_jsxs("div", { className: "prob_top", children: [_jsx("div", { className: "mypage_btn", children: "\uD47C \uBB38\uC81C" }), _jsx("div", { className: "probNum", children: "\uBA87 \uAC1C" })] }), _jsx("div", { className: "myProblem" })] }), _jsxs("div", { className: "bottom", children: [_jsxs("div", { className: "feed_top", children: [_jsx("div", { className: "mypage_btn", children: "feedback" }), _jsx("div", { className: "feedNum", children: "\uBA87 \uAC1C" })] }), _jsx("div", { className: "myFeedback" })] })] })] })) })] }) }));
+};
+export default UserDetail;
