@@ -134,8 +134,8 @@ export type CommentListType = {
 export type QuesAnswerType = {
   questionContentFst: string;
   questionContentSec: string;
-  answerFst: string;
-  answerSec: string;
+  answerFst?: string;
+  answerSec?: string;
   answerState: string;
 }
 // question hook 반환타입
