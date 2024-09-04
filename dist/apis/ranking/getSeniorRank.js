@@ -7,23 +7,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import getJuniorRank from "apis/ranking/getJuniorRank";
 import { useState, useEffect, useCallback } from "react";
-// 신입생 등수 GET
-const useJuniorRank = () => {
-    const [memberGen, setMemberGen] = useState(35); // memberGen 35기로 기본 설정
+import axios from "axios";
+// 재학생 등수 GET
+const GetSeniorsRank = () => {
     const [newRank, setNewRank] = useState([]);
-    const handleSelectChange = (e) => {
-        setMemberGen(parseInt(e.target.value, 10));
-    };
-    // get API 호출
-    const fetchNewRank = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield getJuniorRank(memberGen);
-        setNewRank(data);
-    }), [memberGen]);
+    // GET api 호출
+    const getSeniorRank = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const config = {
+                withCredentials: true,
+            };
+            const response = yield axios.get(`/api/rank/senior`, config);
+            if (response.status !== 204)
+                setNewRank(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }), []);
     useEffect(() => {
-        fetchNewRank();
-    }, [fetchNewRank]);
-    return { newRank, handleSelectChange, memberGen };
+        getSeniorRank();
+    }, [getSeniorRank]);
+    return { newRank };
 };
-export default useJuniorRank;
+export default GetSeniorsRank;

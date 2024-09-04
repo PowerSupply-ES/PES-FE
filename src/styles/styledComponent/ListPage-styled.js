@@ -64,3 +64,26 @@ export const StyledListPage = styled.div`
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
   }
 `;
+
+// 랭킹 제목 스타일
+export const RankingItemStyled = styled.div`
+  margin-bottom: 1px;
+  align-items: center;
+  font-size: 18px;
+  height: 40px;
+  display: flex;
+  background-color: white;
+  width: 100%;
+  border-radius: 8px;
+
+  .ranking_id {
+    width: 20%;
+  }
+  .member_name {
+    text-align: left;
+    flex: 1 1 0%;
+  }
+  .score {
+    width: 20%;
+  }
+`;

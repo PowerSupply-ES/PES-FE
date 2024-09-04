@@ -55,7 +55,7 @@ const ListPage: React.FC<ListPageProps> = () => {
               className="student_button"
               color="primary"
               size="large"
-              variant={juniorButtonVariant as "contained" | "outlined" | "text"} // Cast to valid MUI variants
+              variant={juniorButtonVariant as "contained" | "outlined" | "text"}
               onClick={() => handleOption("junior")}
             >
               신입생
@@ -65,7 +65,7 @@ const ListPage: React.FC<ListPageProps> = () => {
               className="student_button"
               color="primary"
               size="large"
-              variant={seniorButtonVariant as "contained" | "outlined" | "text"} // Cast to valid MUI variants
+              variant={seniorButtonVariant as "contained" | "outlined" | "text"}
               onClick={() => handleOption("senior")}
             >
               재학생

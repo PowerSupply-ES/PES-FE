@@ -1,7 +1,8 @@
 import axios from "axios";
+import { MemberRankList } from "model/Store";
 
 // 재학생 rank GET 요청
-const getJuniorRank = async (memberGen) => {
+const getJuniorRank = async (memberGen: number) => {
   try {
     const config = {
       withCredentials: true,
@@ -10,13 +11,13 @@ const getJuniorRank = async (memberGen) => {
       },
     };
 
-    const response = await axios.get(`/api/rank/junior`, config);
+    const response = await axios.get<MemberRankList[]>(`/api/rank/junior`, config);
 
     if (response.status !== 204) {
       return response.data;
     }
     return []; // 데이터가 없을 때 빈 배열 반환
-  } catch (error) {
+  } catch (error: unknown) {
     console.log(error);
     return []; // 오류 발생 시 빈 배열 반환
   }

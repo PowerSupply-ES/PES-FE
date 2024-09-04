@@ -155,3 +155,11 @@ export type SignupFormData = {
   memberMajor: string;
   memberPhone: string;
 }
+
+
+// 랭킹 리스트 타입
+export type MemberRankList = {
+  memberName: string;
+  score: number;
+  rank: number;
+}

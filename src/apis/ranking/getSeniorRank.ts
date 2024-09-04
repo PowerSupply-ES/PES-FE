@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { MemberRankList } from "model/Store";
 
 // 재학생 등수 GET
 const GetSeniorsRank = () => {
-  const [newRank, setNewRank] = useState([]);
+  const [newRank, setNewRank] = useState<MemberRankList[]>([]);
 
   // GET api 호출
   const getSeniorRank = useCallback(async () => {
@@ -12,10 +13,10 @@ const GetSeniorsRank = () => {
         withCredentials: true,
       };
 
-      const response = await axios.get(`/api/rank/senior`, config);
+      const response = await axios.get<MemberRankList[]>(`/api/rank/senior`, config);
 
       if (response.status !== 204) setNewRank(response.data);
-    } catch (error) {
+    } catch (error: unknown) {
       console.log(error);
     }
   }, []);

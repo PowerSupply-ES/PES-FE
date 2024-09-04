@@ -1,4 +1,4 @@
-import { StyledListPage } from "styles/styledComponent/ListPage-styled";
+import { StyledListPage, RankingItemStyled } from "styles/styledComponent/ListPage-styled";
 import RankingItem from "./RankingItem";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
@@ -13,12 +13,21 @@ const JuniorRank = () => {
       <Select
         placeholder="35기"
         className="select_box"
-        value={memberGen}
-        onChange={handleSelectChange}
+        value={memberGen.toString()}
+        onChange={(e) => handleSelectChange}
       >
         <Option value="35">35기</Option>
+        {/* TODO: 기수 추가하기 */}
       </Select>
-      <RankingItem rank="순위" memberName="이름" score="점수" />
+      
+      {/* 제목 */}
+      <RankingItemStyled >
+        <div className="ranking_id">순위</div>
+        <div className="member_name">이름</div>
+        <div className="score">점수</div>
+      </RankingItemStyled>
+
+
       <div className="ranking-list">
         {newRank.map((rank, index) => (
           <RankingItem

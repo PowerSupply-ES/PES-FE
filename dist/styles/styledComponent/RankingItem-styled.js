@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// 랭킹 요소 스타일
 export const StyledRankingItem = styled.div `
   margin-bottom: 1px;
   align-items: center;

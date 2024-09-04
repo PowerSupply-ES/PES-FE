@@ -1,19 +1,22 @@
-import { StyledListPage } from "styles/styledComponent/ListPage-styled";
+import { StyledListPage, RankingItemStyled } from "styles/styledComponent/ListPage-styled";
 import RankingItem from "./RankingItem";
-import GetSeniorsRank from "apis/ranking/GetSeniorsRank";
+import GetSeniorsRank from "apis/ranking/getSeniorRank";
+import React from "react";
 
-const SeniorRank = () => {
+const SeniorRank: React.FC = () => {
   // 재학생 순위 get Api 호출
   const { newRank } = GetSeniorsRank();
 
   return (
     <StyledListPage>
-      <RankingItem
-        rank="순위"
-        memberName="이름"
-        score="답변수"
-        style="margin-bottom: 10px;"
-      />
+
+      {/* 제목 */}
+      <RankingItemStyled >
+        <div className="ranking_id">순위</div>
+        <div className="member_name">이름</div>
+        <div className="score">점수</div>
+      </RankingItemStyled>
+
       <div className="ranking-list">
         {newRank.map((rank, index) => (
           <RankingItem
