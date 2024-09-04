@@ -47,6 +47,8 @@ const QuestionPage: React.FC = () => {
     return <div className="loading">Loading...</div>;
   }
 
+  
+  console.log("qnA = ",qnA);
   return (
     <div
       className={

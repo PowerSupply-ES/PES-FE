@@ -32,6 +32,7 @@ const QuestionPage = () => {
     if (memberStatus === null || qnA === null) {
         return _jsx("div", { className: "loading", children: "Loading..." });
     }
+    console.log("qnA = ", qnA);
     return (_jsx("div", { className: state === "success"
             ? "successPage"
             : state === "fail"
