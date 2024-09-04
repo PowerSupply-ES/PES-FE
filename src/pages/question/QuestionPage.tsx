@@ -42,9 +42,9 @@ const QuestionPage: React.FC = () => {
   } = useQuestionHook(answerId, getAlert);
 
   // useMemberStatus HOOK 호출
-  const memberStatus = useMemberStatus();
+  const { memberStatus, loading } = useMemberStatus();
 
-  if (memberStatus === null || qnA === null) {
+  if (loading || qnA === null) {
     return <div className="loading">Loading...</div>;
   }
 

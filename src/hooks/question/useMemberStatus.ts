@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // 상단 사용자 정보 HOOK
-const useMemberStatus = (): string | null => {
+const useMemberStatus = () => {
   const [memberStatus, setMemberStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // 로딩상태관리
 
   const uri = "api/exp";
   const memberEmail = sessionStorage.getItem("memberEmail");
@@ -20,15 +21,19 @@ const useMemberStatus = (): string | null => {
       } catch (error: unknown) {
         console.error("데이터 가져오기 실패:", error);
         setMemberStatus(null); // 에러 발생 시 null로 설정
+      } finally {
+        setLoading(false); // 로딩 완료
       }
     };
 
     if (memberEmail) {
       userInfo();
+    } else {
+      setLoading(false); // 이메일이 없을 경우도 로딩 완료
     }
   }, [memberEmail]);
 
-  return memberStatus;
+  return { memberStatus, loading };
 };
 
 export default useMemberStatus;
