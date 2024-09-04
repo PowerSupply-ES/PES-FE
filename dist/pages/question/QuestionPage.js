@@ -27,8 +27,7 @@ const QuestionPage = () => {
     };
     // question 관련 HOOK 호출
     const { code, qnA, state, feedbacks, passCount, postFeedback, postAnswer, setCode, } = useQuestionHook(answerId, getAlert);
-    // useMemberStatus HOOK 호출 - 수정: sessionStorage 사용
-    //const memberStatus = useMemberStatus();
+    // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
     const memberStatus = sessionStorage.getItem("memberStatus");
     if (memberStatus === null || qnA === null) {
         return _jsx("div", { className: "loading", children: "Loading..." });

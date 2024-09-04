@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useRef } from "react";
-import useMemberStatus from "hooks/question/useMemberStatus";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import RenderAnswerUI from "components/question/RenderAnswerUI";
@@ -41,8 +40,7 @@ const QuestionPage: React.FC = () => {
     setCode,
   } = useQuestionHook(answerId, getAlert);
 
-  // useMemberStatus HOOK 호출 - 수정: sessionStorage 사용
-  //const memberStatus = useMemberStatus();
+  // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
   const memberStatus =sessionStorage.getItem("memberStatus");
 
   if (memberStatus === null || qnA === null) {
