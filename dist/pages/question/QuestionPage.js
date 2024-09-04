@@ -1,6 +1,5 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useRef } from "react";
-import useMemberStatus from "hooks/question/useMemberStatus";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import RenderAnswerUI from "components/question/RenderAnswerUI";
@@ -28,9 +27,10 @@ const QuestionPage = () => {
     };
     // question 관련 HOOK 호출
     const { code, qnA, state, feedbacks, passCount, postFeedback, postAnswer, setCode, } = useQuestionHook(answerId, getAlert);
-    // useMemberStatus HOOK 호출
-    const { memberStatus, loading } = useMemberStatus();
-    if (loading || qnA === null) {
+    // useMemberStatus HOOK 호출 - 수정: sessionStorage 사용
+    //const memberStatus = useMemberStatus();
+    const memberStatus = sessionStorage.getItem("memberStatus");
+    if (memberStatus === null || qnA === null) {
         return _jsx("div", { className: "loading", children: "Loading..." });
     }
     return (_jsx("div", { className: state === "success"

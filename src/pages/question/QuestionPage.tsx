@@ -41,10 +41,11 @@ const QuestionPage: React.FC = () => {
     setCode,
   } = useQuestionHook(answerId, getAlert);
 
-  // useMemberStatus HOOK 호출
-  const { memberStatus, loading } = useMemberStatus();
+  // useMemberStatus HOOK 호출 - 수정: sessionStorage 사용
+  //const memberStatus = useMemberStatus();
+  const memberStatus =sessionStorage.getItem("memberStatus");
 
-  if (loading || qnA === null) {
+  if (memberStatus === null || qnA === null) {
     return <div className="loading">Loading...</div>;
   }
 
