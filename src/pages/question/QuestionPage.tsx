@@ -42,13 +42,15 @@ const QuestionPage: React.FC = () => {
 
   // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
   const memberStatus =sessionStorage.getItem("memberStatus");
+  console.log("getItem! = ");
 
   if (memberStatus === null || qnA === null) {
     return <div className="loading">Loading...</div>;
   }
 
-  
+
   console.log("qnA = ",qnA);
+
   return (
     <div
       className={
@@ -58,7 +60,7 @@ const QuestionPage: React.FC = () => {
           ? "failPage"
           : "nonePage"
       }
-    >
+    > 
       <div>
         {/* qnA가 null일 경우 처리 */}
         {qnA && (
