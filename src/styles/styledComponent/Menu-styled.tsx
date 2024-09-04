@@ -4,9 +4,11 @@ import { createTheme } from "@mui/material";
 import Box from "@mui/joy/Box";
 import TabList from "@mui/joy/TabList";
 import { tabClasses } from "@mui/joy/Tab";
+
 export const theme = createTheme();
+
 // StyledTabList를 index 값에 따라 스타일을 다르게 적용
-export const StyledTabList = styled(TabList) `
+export const StyledTabList = styled(TabList)<{ index: number }>`
   padding-top: 8px;
   justify-content: left;
 
@@ -15,14 +17,15 @@ export const StyledTabList = styled(TabList) `
     background-color: transparent;
 
     &.${tabClasses.selected} {
-      ${({ index }) => index === 0
-    ? css `
+      ${({ index }) =>
+        index === 0
+          ? css`
               color: inherit; /* 기본 색상으로 유지 */
               &::after {
                 display: none; /* 밑줄 숨김 */
               }
             `
-    : css `
+          : css`
               color: ${(props) => props.theme.palette.primary.main};
 
               &::after {
@@ -40,7 +43,8 @@ export const StyledTabList = styled(TabList) `
     font-size: 26px;
   }
 `;
-export const StyledBox = styled(Box) `
+
+export const StyledBox = styled(Box)`
   flex-grow: 1;
   margin: -2px;
   overflow-x: hidden;

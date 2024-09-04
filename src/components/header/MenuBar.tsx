@@ -20,7 +20,7 @@ const MenuBar: React.FC = () => {
       <StyledBox>
         <Tabs
           aria-label="Pipeline"
-          value={index !== null ? index : undefined} // index가 null일 경우 undefined로 설정
+          value={index}
           onChange={(event, value) => {
             // value가 string | number | null이므로, 10진수로 변환
             if (value !== undefined && value !== null) {
@@ -32,9 +32,9 @@ const MenuBar: React.FC = () => {
             }
           }}
         >
-          <StyledTabList>
-            <Tab indicatorInset value={0}>문제</Tab>
-            <Tab indicatorInset value={1}>공지사항</Tab>
+          <StyledTabList index={index}>
+            <Tab value={1}>문제</Tab>
+            <Tab value={2}>공지사항</Tab>
           </StyledTabList>
         </Tabs>
       </StyledBox>
