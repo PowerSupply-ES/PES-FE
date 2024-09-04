@@ -36,7 +36,7 @@ const useQuestionHook = (answerId, getAlert) => {
         try {
             const response = yield getQues(answerId);
             setQnA(response);
-            setState(response.answerState);
+            setState(response.answerState || ""); // 기본값으로 빈 문자열 설정
         }
         catch (error) {
             console.log(error);
@@ -99,7 +99,8 @@ const useQuestionHook = (answerId, getAlert) => {
             if (axios.isAxiosError(error)) {
                 // AxiosError 타입 확인 후 처리
                 const status = (_a = error.response) === null || _a === void 0 ? void 0 : _a.status;
-                if (status === 403) { // 403에러 예외처리 추가 by.성임
+                if (status === 403) {
+                    // 403에러 예외처리 추가 by.성임
                     alert("권한이 없습니다!");
                 }
                 else if (status === 400) {

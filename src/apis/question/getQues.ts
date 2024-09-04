@@ -2,7 +2,7 @@ import axios from "axios";
 import { QuesAnswerType } from "model/Store";
 
 // 질문, 답변 블러오기 (get)
-const getQues = async (answerId: number) => {
+const getQues = async (answerId: number): Promise<QuesAnswerType> => {
   try {
     const response = await axios.get<QuesAnswerType>(`/api/answer/${answerId}`, {
       withCredentials: true,

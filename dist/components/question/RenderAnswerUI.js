@@ -11,16 +11,16 @@ const RenderAnswerUI = ({ navigate, code, qnA, state, setCode, textFst, handleTe
     };
     // 답변 제출 함수
     const submitAnswer = () => {
-        if (!textFst.current || !textSec.current) {
+        if (!textFst.current || !textSec) { // 수정: !textSec.current -> !textSec
             alert("내용을 입력해주세요!");
         }
         else {
             const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
             if (isConfirmed) {
-                postAnswer(textFst.current, textSec.current);
+                postAnswer(textFst.current.value, textSec); // 수정: textFst.current, textSec.current -> textFst.current.value, textSec
             }
         }
     };
-    return (_jsxs(StyledQuestion, { className: "problem_answer_section", children: [_jsx(ProbHeader, { code: code, navigate: navigate }), _jsx(ProbCode, { FstHandler: handleTextFstChange, SecHandler: handleTextSecChange, code: code, qnA: qnA, setCode: setCode }), state === "question" && (!qnA.answerFst || !qnA.answerSec) && (_jsx("div", { className: "btn_container", children: _jsx("button", { className: "button answer", onClick: submitAnswer, children: "\uB2F5\uBCC0\uD558\uAE30" }) }))] }));
+    return (_jsxs(StyledQuestion, { className: "problem_answer_section", children: [_jsx(ProbHeader, { state: state, navigate: navigate }), "  ", qnA && (_jsx(ProbCode, { FstHandler: handleTextFstChange, SecHandler: handleTextSecChange, code: code, qnA: qnA, setCode: setCode })), state === "question" && (!qnA.answerFst || !qnA.answerSec) && (_jsx("div", { className: "btn_container", children: _jsx("button", { className: "button answer", onClick: submitAnswer, children: "\uB2F5\uBCC0\uD558\uAE30" }) }))] }));
 };
 export default RenderAnswerUI;

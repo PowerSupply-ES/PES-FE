@@ -6,19 +6,18 @@ import getQues from "apis/question/getQues";
 import postAnswers from "apis/question/postAnswers";
 import postFeed from "apis/question/postFeed";
 import { CommentListType, QuesAnswerType } from "model/Store";
+import { UseQuestionHookResult } from "model/Store";
 
 // 질문테스트(question) 관련 HOOK들 관리
 const useQuestionHook = (
   answerId: number,
   getAlert: (responseStatus: number) => void
-  ) => {
-    
+): UseQuestionHookResult => {
   const [state, setState] = useState<string>("");
   const [code, setCode] = useState<string>("");
   const [qnA, setQnA] = useState<QuesAnswerType | null>(null);
   const [feedbacks, setFeedbacks] = useState<CommentListType[]>([]);
   const [passCount, setPassCount] = useState<number>(0);
-
 
   // 사용자 코드 get HOOK
   const getCodes = useCallback(async () => {
@@ -30,18 +29,16 @@ const useQuestionHook = (
     }
   }, [answerId]);
 
-
   // 질문, 답변 get HOOK
   const getQuestions = useCallback(async () => {
     try {
       const response = await getQues(answerId);
       setQnA(response);
-      setState(response.answerState);
+      setState(response.answerState || ""); // 기본값으로 빈 문자열 설정
     } catch (error) {
       console.log(error);
     }
   }, [answerId]);
-
 
   // 답변 post HOOK
   const postAnswer = async (answerFst: string, answerSec: string) => {
@@ -68,7 +65,6 @@ const useQuestionHook = (
     }
   };
 
-
   // 댓글 get HOOK
   const getFeedback = useCallback(async () => {
     try {
@@ -86,8 +82,6 @@ const useQuestionHook = (
     }
   }, [answerId]);
 
-
-
   // 댓글 post HOOK
   const postFeedback = async (comment: string, selected: number) => {
     try {
@@ -99,7 +93,8 @@ const useQuestionHook = (
       if (axios.isAxiosError(error)) {
         // AxiosError 타입 확인 후 처리
         const status = error.response?.status;
-        if (status === 403) {  // 403에러 예외처리 추가 by.성임
+        if (status === 403) {
+          // 403에러 예외처리 추가 by.성임
           alert("권한이 없습니다!");
         } else if (status === 400) {
           alert("이미 댓글을 달았어요!");

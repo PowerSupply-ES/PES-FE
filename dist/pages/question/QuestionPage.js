@@ -1,5 +1,5 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from "react";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { useRef } from "react";
 import useMemberStatus from "hooks/question/useMemberStatus";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
@@ -9,11 +9,13 @@ const QuestionPage = () => {
     const navigate = useNavigate();
     let url = new URL(window.location.href);
     let answerId = parseInt(url.pathname.split("/")[2]);
-    // 첫번재 답변 관리
-    const [textFst, setTextFst] = useState("");
-    // 첫번재 답변 핸들러
+    // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리
+    const textFst = useRef(null);
+    // 첫번재 답변 작성 핸들러
     const handleTextFstChange = (e) => {
-        setTextFst(e.target.value);
+        if (textFst.current) {
+            textFst.current.value = e.target.value;
+        }
     };
     // 댓글 제출 결과 alert 함수
     const getAlert = (responseStatus) => {
@@ -35,6 +37,6 @@ const QuestionPage = () => {
             ? "successPage"
             : state === "fail"
                 ? "failPage"
-                : "nonePage", children: _jsxs("div", { children: [_jsx(RenderAnswerUI, { navigate: navigate, code: code, qnA: qnA, state: state, setCode: setCode, textFst: textFst, handleTextFstChange: handleTextFstChange, postAnswer: postAnswer }), _jsx(RenderFeed, { navigate: navigate, memberStatus: memberStatus, feedbacks: feedbacks, passCount: passCount, state: state, postFeedback: postFeedback, textFst: textFst, handleTextFstChange: handleTextFstChange })] }) }));
+                : "nonePage", children: _jsx("div", { children: qnA && (_jsxs(_Fragment, { children: [_jsx(RenderAnswerUI, { navigate: navigate, code: code, qnA: qnA, state: state, setCode: setCode, textFst: textFst, handleTextFstChange: handleTextFstChange, postAnswer: postAnswer }), _jsx(RenderFeed, { navigate: navigate, memberStatus: memberStatus, feedbacks: feedbacks, passCount: passCount, state: state, postFeedback: postFeedback, textFst: textFst, handleTextFstChange: handleTextFstChange })] })) }) }));
 };
 export default QuestionPage;

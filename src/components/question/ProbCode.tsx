@@ -1,9 +1,25 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import CodeEditor from "components/problem/CodeEditor";
 import { renderNewlines } from "components/common/Common";
+import { QuesAnswerType } from "model/Store";
+
+// ProbCode Props 타입 정의
+interface ProbCodeProps {
+  FstHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  SecHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  code: string;
+  qnA: QuesAnswerType;
+  setCode: (code: string) => void;
+}
 
 // 작성했던 코드 출력 컴포넌트
-const ProbCode = ({ FstHandler, SecHandler, code, qnA, setCode }) => {
+const ProbCode: React.FC<ProbCodeProps> = ({
+  FstHandler,
+  SecHandler,
+  code,
+  qnA,
+  setCode,
+}) => {
   return (
     <div className="code_question_container">
       <div className="code_container">
@@ -13,10 +29,9 @@ const ProbCode = ({ FstHandler, SecHandler, code, qnA, setCode }) => {
           readOnly={true} // 코드 수정 비활성화
           code={code}
         ></CodeEditor>
-        {/* {code} */}
       </div>
       <div className="question_container">
-        {!qnA.answerFst || !qnA.answerSec ? (
+        {qnA.answerState === "question" ? (   // 기존 : !qnA.answerState || !qnA.answerSec
           // answerState: question (qnA만 있음, 답변해야 하는 상태)
           <>
             <div className="question_layout">

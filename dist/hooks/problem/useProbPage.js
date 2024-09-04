@@ -13,7 +13,7 @@ const useProbPage = (problemId) => {
         detail,
         isLogin,
         textHandler,
-        submitCode,
+        submitCode
     };
 };
 export default useProbPage;

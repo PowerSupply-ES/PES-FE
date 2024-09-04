@@ -26,7 +26,7 @@ const useProbPage = (problemId: number): UseProbPageReturnType => {
     detail,
     isLogin,
     textHandler,
-    submitCode,
+    submitCode
   };
 };
 
