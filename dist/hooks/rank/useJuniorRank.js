@@ -18,8 +18,10 @@ const useJuniorRank = () => {
     };
     // get API 호출
     const fetchNewRank = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield getJuniorRank(memberGen);
-        setNewRank(data);
+        if (memberGen) { // memberGen이 유효할 때만 호출
+            const data = yield getJuniorRank(memberGen);
+            setNewRank(data);
+        }
     }), [memberGen]);
     useEffect(() => {
         fetchNewRank();
