@@ -44,7 +44,7 @@ const QuestionPage: React.FC = () => {
   // useMemberStatus HOOK 호출
   const memberStatus = useMemberStatus();
 
-  if (memberStatus === null) {
+  if (memberStatus === null || qnA === null) {
     return <div className="loading">Loading...</div>;
   }
 

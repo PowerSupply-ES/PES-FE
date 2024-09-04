@@ -16,27 +16,23 @@ const useMemberStatus = () => {
     const memberEmail = sessionStorage.getItem("memberEmail");
     useEffect(() => {
         const userInfo = () => __awaiter(void 0, void 0, void 0, function* () {
-            var _a;
-            fetch(`${uri}?memberEmail=${memberEmail}`, {
-                method: "GET",
-            });
             try {
                 const response = yield axios.get(`${uri}?memberEmail=${memberEmail}`);
-                // 응답의 data를 바로 사용
-                setMemberStatus(response.data.memberStatus);
-            }
-            catch (error) {
-                if (axios.isAxiosError(error)) {
-                    // Axios의 에러 처리
-                    console.error(`데이터 가져오기 실패: ${(_a = error.response) === null || _a === void 0 ? void 0 : _a.status} ${error.message}`);
+                if (response.data && response.data.memberStatus) {
+                    setMemberStatus(response.data.memberStatus);
                 }
                 else {
-                    // Axios 이외의 에러 처리
-                    console.error("데이터 가져오기 실패:", error);
+                    setMemberStatus(null); // 데이터가 없을 경우 null로 설정
                 }
             }
+            catch (error) {
+                console.error("데이터 가져오기 실패:", error);
+                setMemberStatus(null); // 에러 발생 시 null로 설정
+            }
         });
-        userInfo();
+        if (memberEmail) {
+            userInfo();
+        }
     }, [memberEmail]);
     return memberStatus;
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 // 상단 사용자 정보 HOOK
-const useMemberStatus = (): string | null  => {
+const useMemberStatus = (): string | null => {
   const [memberStatus, setMemberStatus] = useState<string | null>(null);
 
   const uri = "api/exp";
@@ -10,27 +10,22 @@ const useMemberStatus = (): string | null  => {
 
   useEffect(() => {
     const userInfo = async () => {
-
-
-      fetch(`${uri}?memberEmail=${memberEmail}`, {
-        method: "GET",
-      })
-        try {
-          const response = await axios.get(`${uri}?memberEmail=${memberEmail}`);
-          // 응답의 data를 바로 사용
+      try {
+        const response = await axios.get(`${uri}?memberEmail=${memberEmail}`);
+        if (response.data && response.data.memberStatus) {
           setMemberStatus(response.data.memberStatus);
-        } catch (error: unknown) {
-          if (axios.isAxiosError(error)) {
-            // Axios의 에러 처리
-            console.error(`데이터 가져오기 실패: ${error.response?.status} ${error.message}`);
-          } else {
-            // Axios 이외의 에러 처리
-            console.error("데이터 가져오기 실패:", error);
-          }
+        } else {
+          setMemberStatus(null); // 데이터가 없을 경우 null로 설정
         }
+      } catch (error: unknown) {
+        console.error("데이터 가져오기 실패:", error);
+        setMemberStatus(null); // 에러 발생 시 null로 설정
+      }
     };
 
-    userInfo();
+    if (memberEmail) {
+      userInfo();
+    }
   }, [memberEmail]);
 
   return memberStatus;
