@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// List페이지 스타일
 export const StyledListPage = styled.div`
   .list_container {
     margin-right: 5%;
@@ -39,6 +40,12 @@ export const StyledListPage = styled.div`
     text-align: center;
   }
 
+  /* 클릭된 버튼 스타일 */
+  .student_button_active {
+    background-color: #cccccc;
+    color: #fff;
+  }
+
   .select_box {
     border-radius: 10px;
     margin-bottom: 10px;
@@ -68,6 +75,7 @@ export const StyledListPage = styled.div`
 // 랭킹 제목 스타일
 export const RankingItemStyled = styled.div`
   margin-bottom: 1px;
+  padding: 0 10px;
   align-items: center;
   font-size: 18px;
   height: 40px;
@@ -78,6 +86,7 @@ export const RankingItemStyled = styled.div`
 
   .ranking_id {
     width: 20%;
+    margin-right: 2px;
   }
   .member_name {
     text-align: left;

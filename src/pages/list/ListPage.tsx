@@ -52,7 +52,7 @@ const ListPage: React.FC<ListPageProps> = () => {
           {/* 신입생, 재학생 선택 버튼 */}
           <div className="student_container">
             <Button
-              className="student_button"
+               className={`student_button ${selectedOption === "junior" ? "student_button_active" : ""}`}
               color="primary"
               size="large"
               variant={juniorButtonVariant as "contained" | "outlined" | "text"}
@@ -62,7 +62,7 @@ const ListPage: React.FC<ListPageProps> = () => {
             </Button>
 
             <Button
-              className="student_button"
+              className={`student_button ${selectedOption === "senior" ? "student_button_active" : ""}`}
               color="primary"
               size="large"
               variant={seniorButtonVariant as "contained" | "outlined" | "text"}
