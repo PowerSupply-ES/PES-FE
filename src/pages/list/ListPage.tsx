@@ -1,12 +1,10 @@
-import AdPart from "components/list/AdPart";
-import ProblemItem from "components/list/ListItem";
-import JuniorRank from "components/ranking/JuniorRank";
-import SeniorRank from "components/ranking/SeniorRank";
+import React from "react";
+import {JuniorRank, SeniorRank} from "components/ranking";
+import {AdPart, ProblemItem} from "components/list";
 import { StyledListPage } from "styles/styledComponent/ListPage-styled";
 import Button from "@mui/material/Button";
 import useListHook from "hooks/list/useListHook";
 import { Problem } from "model/Store";
-import React from "react";
 
 // Props 타입(현재는 props가 없으므로 빈 객체로 정의)
 interface ListPageProps {}

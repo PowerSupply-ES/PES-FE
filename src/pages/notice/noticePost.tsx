@@ -1,8 +1,8 @@
-import "styles/css/notice.css";
+import React from "react";
 import { PiNotePencilFill } from "react-icons/pi";
+import "styles/css/notice.css";
 import { goBack } from "components/common/Common";
 import useNoticePost from "hooks/notice/useNoticePost";
-import React from "react";
 
 const NoticePost: React.FC = () => {
   const { notice, handleInputChange, handleSubmit } = useNoticePost();

@@ -1,11 +1,11 @@
 // 회원상세페이지
 // TODO : 관리자모드에서 수정할 예정
+import React from "react";
 import "styles/css/manage.css";
 import "styles/css/mypage.css";
 import SideTab from "components/manage/SideTab";
 import { FaCircleUser } from "react-icons/fa6";
 import useUserDetail from "hooks/manage/useUserDetail";
-import React from "react";
 
 const UserDetail: React.FC = () => {
   const { memberData } = useUserDetail();

@@ -1,6 +1,5 @@
 import "styles/css/manage.css";
-import SideTab from "components/manage/SideTab";
-import UserList from "components/manage/UserList";
+import {SideTab, UserList} from "components/manage";
 import useUserList from "hooks/manage/useUserList";
 import React from "react";
 

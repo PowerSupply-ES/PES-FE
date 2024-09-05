@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
-import CodeEditor from "components/problem/CodeEditor";
 import useProbPage from "hooks/problem/useProbPage";
+import CodeEditor from "components/problem/CodeEditor";
 import { renderNewlines, renderStyledNewlines } from "components/common/Common";
 
 const ProblemPage: React.FC = () => {

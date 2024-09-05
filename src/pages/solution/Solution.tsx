@@ -1,7 +1,6 @@
 import "styles/css/solution.css";
 import SolvingList from "components/solution/SolvingList";
-import useSoluProb from "hooks/solution/useSoluProb";
-import useSoluList from "hooks/solution/useSoluList";
+import {useSoluProb, useSoluList} from "hooks/solution";
 
 const Solution = () => {
   // TODO : split한 problemId와 solveData.problemId 구분하기

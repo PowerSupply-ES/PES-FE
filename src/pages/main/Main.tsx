@@ -1,6 +1,5 @@
-import MovingImage from "components/main/MovingImage";
-import ScrollImage from "components/main/ScrollImage";
 import React from "react";
+import {MovingImage, ScrollImage} from "components/main";
 import "styles/css/App.css";
 import "styles/css/mainAnimation.css";
 

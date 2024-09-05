@@ -1,8 +1,7 @@
 import React, { ChangeEvent, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
-import RenderAnswerUI from "components/question/RenderAnswerUI";
-import RenderFeed from "components/question/RenderFeed";
+import {RenderAnswerUI, RenderFeed} from "components/question";
 
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();

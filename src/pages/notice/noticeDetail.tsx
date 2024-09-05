@@ -1,11 +1,10 @@
-import "styles/css/notice.css";
-import { HiSpeakerphone } from "react-icons/hi";
-import { transferTime, goBack } from "components/common/Common";
-import delNotice from "apis/notice/delNotice";
-import fetchNotice from "apis/notice/fetchNotice";
-import useNoticeDetail from "hooks/notice/useNoticeDetail";
-import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { HiSpeakerphone } from "react-icons/hi";
+import "styles/css/notice.css";
+import { transferTime, goBack } from "components/common/Common";
+import {delNotice, fetchNotice} from "apis/notice";
+import useNoticeDetail from "hooks/notice/useNoticeDetail";
 
 const NoticeDetail: React.FC = () => {
   const navigate = useNavigate();

@@ -1,9 +1,7 @@
-import MyFeedList from "components/mypage/MyFeedList";
-import MyInfo from "components/mypage/MyInfo";
-import MyProbList from "components/mypage/MyProbList";
 import React from "react";
 import "styles/css/App.css";
 import "styles/css/mypage.css";
+import {MyFeedList, MyInfo, MyProbList} from "components/mypage";
 
 // MyPage 컴포넌트 Props 타입
 interface MyPageProps {}
