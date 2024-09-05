@@ -10,7 +10,7 @@ const useListHook = () => {
     useEffect(() => {
         getList(setList);
     }, [memberStatus]);
-    // junior, senior 선택
+    // junior, senior 선택에 따른 버튼상태 변화
     const handleOption = (option) => {
         setSelectedOption(option);
         if (option === "junior") {

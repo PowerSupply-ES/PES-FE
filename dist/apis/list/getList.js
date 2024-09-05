@@ -14,8 +14,8 @@ const getList = (setList) => __awaiter(void 0, void 0, void 0, function* () {
         const config = {
             withCredentials: true,
         };
-        const { data: response } = yield axios.get(`/api/problemlist`, config);
-        setList(response);
+        const response = yield axios.get(`/api/problemlist`, config);
+        setList(response.data);
     }
     catch (error) {
         console.log("Failed to fetch list:", error);

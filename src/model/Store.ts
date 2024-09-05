@@ -21,6 +21,11 @@ export interface MyProbProps {
   myProb: Problem[];
   navigate: NavigateFunction
 }
+// problemList 타입 - TODO: 적절히 사용 요망
+// export type ProblemList = {
+//   problem: Problem;
+//   answerCount?: number;  // 푼사람 수
+// };
 
 // ProblemTitle 타입
 export type ProblemTitle = Pick<Problem, 'problemId' | 'problemTitle' | 'problemScore'>;
