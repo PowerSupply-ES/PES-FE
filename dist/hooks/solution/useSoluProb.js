@@ -7,15 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import getSoluProb from "apis/solution/getSoluProb";
+import getProbTitle from "apis/problem/getProbTitle";
 import { useState, useEffect, useCallback } from "react";
-// 문제 get HOOk
+// 문제제목 get HOOk
 const useSoluProb = (problemId) => {
-    const [problemData, setProblemData] = useState({});
-    // 문제 get API
+    const [problemData, setProblemData] = useState(undefined);
+    // 문제제목 get API
     const sendGetProblem = useCallback(() => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const res = yield getSoluProb(problemId);
+            const res = yield getProbTitle(problemId);
             setProblemData(res);
         }
         catch (error) {
