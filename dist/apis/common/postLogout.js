@@ -25,17 +25,28 @@ const postLogout = (navigate) => __awaiter(void 0, void 0, void 0, function* () 
         window.location.reload(); // 페이지 새로 고침
     }
     catch (error) {
-        if (error.response) {
-            // 서버가 응답을 반환했지만 오류 상태 코드
-            console.error("로그아웃 실패:", error.response.status, error.response.statusText);
-        }
-        else if (error.request) {
-            // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
-            console.error("로그아웃 실패: 요청이 실패했습니다.");
+        // axios 에러인 경우
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                // 서버가 응답을 반환했지만 오류 상태 코드
+                console.error("로그아웃 실패:", error.response.status, error.response.statusText);
+                alert(`로그아웃 실패: 서버 응답 에러 (${error.response.status})`);
+            }
+            else if (error.request) {
+                // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
+                console.error("로그아웃 실패: 요청이 실패했습니다.");
+                alert("로그아웃 실패: 서버 응답 없음.");
+            }
+            else {
+                // 요청 설정 중 오류 발생
+                console.error("로그아웃 실패:", error.message);
+                alert("로그아웃 실패: 요청 설정 에러.");
+            }
         }
         else {
-            // 요청 설정 중 오류 발생
-            console.error("로그아웃 실패:", error.message);
+            // axios 외의 다른 일반적인 에러 처리
+            console.error("로그아웃 실패 (일반 에러):", error.message);
+            alert("로그아웃 실패: 알 수 없는 오류가 발생했습니다.");
         }
     }
 });

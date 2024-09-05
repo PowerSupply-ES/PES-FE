@@ -4,8 +4,10 @@ import { BiLogoInstagramAlt } from "react-icons/bi";
 import { FaGithub } from "react-icons/fa";
 import postLogout from "apis/common/postLogout";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
   const status = sessionStorage.getItem("status");
 
   return (
@@ -45,7 +47,7 @@ const Footer: React.FC = () => {
 
         {/* 로그아웃 상태시 안보이게 */}
         {status ? (
-          <div onClick={postLogout} className="footer_logout">
+          <div onClick={() => postLogout(navigate)} className="footer_logout">
             로그아웃
           </div>
         ) : (
