@@ -1,5 +1,5 @@
-import getJuniorRank from "apis/ranking/getJuniorRank";
 import { useState, useEffect, useCallback } from "react";
+import getJuniorRank from "apis/ranking/getJuniorRank";
 import { MemberRankList } from "model/Store";
 import { SelectChangeEvent } from "@mui/material";
 

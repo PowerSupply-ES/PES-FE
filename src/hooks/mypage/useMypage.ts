@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import getMyInfo from "apis/mypage/getMyInfo";
-import getMyProb from "apis/mypage/getMyProb";
-import getMyFeed from "apis/mypage/getMyFeed";
 import { useNavigate } from "react-router-dom";
+import {getMyInfo, getMyProb, getMyFeed} from "apis/mypage";
 import { MemberDetail, Problem, MyFeedback } from "model/Store";
 
 // useMypage HOOK 반환 타입

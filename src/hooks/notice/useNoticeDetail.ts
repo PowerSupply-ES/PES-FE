@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import getNoticeDetail from "apis/notice/getNoticeDetail";
 import { NoticeDetailType } from "model/Store";
 
-
 // user 세부정보 호출 HOOK
 const useNoticeDetail = () => {
   const memberStatus: string | null = sessionStorage.getItem("memberStatus");

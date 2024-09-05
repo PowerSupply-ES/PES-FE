@@ -1,8 +1,5 @@
-import useProbContent from "./useProbContent";
-import useProbTitle from "./useProbTitle";
-import useSubmitCode from "./useSubmitCode";
-import { ProblemTitle } from "model/Store";
-import { ProblemContent } from "model/Store";
+import {useProbContent, useProbTitle, useSubmitCode} from ".";
+import { ProblemTitle, ProblemContent } from "model/Store";
 
 interface UseProbPageReturnType {
   title: ProblemTitle | null;

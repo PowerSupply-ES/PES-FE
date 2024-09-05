@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
-import postSubmitCode from "apis/problem/postSubmitCode";
 import { useNavigate } from "react-router-dom";
-
+import postSubmitCode from "apis/problem/postSubmitCode";
 
 // 문제 post 요청
 const useSubmitCode = (problemId: number) => {
@@ -18,7 +17,10 @@ const useSubmitCode = (problemId: number) => {
     if (!text.current) {
       alert("코드를 입력해주세요!");
     } else {
-      const { data: response, status } = await postSubmitCode(text.current, problemId);
+      const { data: response, status } = await postSubmitCode(
+        text.current,
+        problemId
+      );
 
       if (!response) {
         alert("오류!");

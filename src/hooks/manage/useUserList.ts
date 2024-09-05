@@ -1,7 +1,7 @@
-import "styles/css/manage.css";
 import { useEffect, useState } from "react";
 import getUsersList from "apis/manage/getUsersList";
 import { Member } from "model/Store";
+import "styles/css/manage.css";
 
 // user 목록 관리 HOOK
 const useUserList = (): Member[] => {

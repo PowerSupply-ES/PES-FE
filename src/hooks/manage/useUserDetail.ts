@@ -1,5 +1,5 @@
-import getUserDetail from "apis/manage/getUserDetail";
 import { useState, useEffect } from "react";
+import getUserDetail from "apis/manage/getUserDetail";
 import { MemberDetail } from "model/Store";
 
 const useUserDetail = () => {

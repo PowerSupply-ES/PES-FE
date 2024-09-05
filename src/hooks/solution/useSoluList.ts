@@ -1,6 +1,6 @@
-import getSoluList from "apis/solution/getSoluList";
-import { SolutionList } from "model/Store";
 import { useState, useEffect, useCallback } from "react";
+import { SolutionList } from "model/Store";
+import getSoluList from "apis/solution/getSoluList";
 
 // 풀이 get HOOk
 const useSoluList = (problemId: number): SolutionList[] => {
