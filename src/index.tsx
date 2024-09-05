@@ -21,7 +21,7 @@
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import "styles/css/Font.css";
+import "./styles/css/Font.css";
 
 ReactDOM.render(
   <BrowserRouter>

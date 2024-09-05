@@ -10,6 +10,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'], // 파일 확장자 설정
+    alias: { // 절대경로 설정
+      components: path.resolve(__dirname, 'src/components/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
+      apis: path.resolve(__dirname, 'src/apis/'),
+      styles: path.resolve(__dirname, 'src/styles/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
+    }
   },
   module: {
     rules: [
@@ -30,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // HTML 템플릿 파일
+      template: './public/index.html', // HTML 템플릿 파일
     }),
   ],
   devServer: {
