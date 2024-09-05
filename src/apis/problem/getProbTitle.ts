@@ -10,6 +10,7 @@ const getProbTitle = async (problemId: number) => {
   } catch (error: unknown) {
     console.log(error);
   }
+  console.log("problemId:", problemId);
 };
 
 export default getProbTitle;

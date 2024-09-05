@@ -9,8 +9,8 @@ const SolvingList = ({ solveData }) => {
         navigate(`/question/${answerId}`);
     };
     return (_jsx("div", { className: "solving_list", children: solveData.map((it) => 
-        // answerId가 "question"과 일치하지 않을 때에만 렌더링
-        it.answerId !== "question" && (_jsxs("div", { className: "solving", children: [_jsxs("div", { className: "left", children: [_jsxs("div", { className: "userGen", children: [it.memberGen, _jsx("p", { children: "\uAE30 " })] }), _jsx("div", { className: "userName", children: it.memberName })] }), _jsxs("div", { className: "right", children: [_jsxs("div", { className: "process_num", children: [it.commentCount, "/2"] }), _jsx("div", { className: `${it.answerState === "success"
+        // answerState가 "question"과 일치하지 않을 때에만 렌더링( 수정: answerId -> answerState )
+        it.answerState !== "question" && (_jsxs("div", { className: "solving", children: [_jsxs("div", { className: "left", children: [_jsxs("div", { className: "userGen", children: [it.memberGen, _jsx("p", { children: "\uAE30 " })] }), _jsx("div", { className: "userName", children: it.memberName })] }), _jsxs("div", { className: "right", children: [_jsxs("div", { className: "process_num", children: [it.commentCount, "/2"] }), _jsx("div", { className: `${it.answerState === "success"
                                 ? "btn_success"
                                 : it.answerState === "fail"
                                     ? "btn_fail"

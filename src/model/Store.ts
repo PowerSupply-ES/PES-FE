@@ -21,6 +21,10 @@ export interface MyProbProps {
   myProb: Problem[];
   navigate: NavigateFunction
 }
+// solution prob 타입
+export type SoluProb = Pick<Problem, 'problemId' | 'problemTitle' | 'problemScore'>;
+
+
 // problemList 타입 - TODO: 적절히 사용 요망
 // export type ProblemList = {
 //   problem: Problem;
@@ -195,3 +199,15 @@ export type MemberRankList = {
   score: number;
   rank: number;
 }
+
+
+// 풀이(solution) 타입
+export type SolutionList = {
+  answerId: number;
+  memberGen: number;
+  memberName: string;
+  commentCount: number;
+  answerState: string;
+}
+
+

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from "axios";
 // 풀이 get API
 const getSoluList = (problemId) => __awaiter(void 0, void 0, void 0, function* () {
-    const uri = "../api/answerlist/";
+    const uri = "/api/answerlist/";
     try {
         const response = yield axios.get(`${uri}${problemId}`);
         console.log("서버응답:", response.data);
@@ -18,6 +18,7 @@ const getSoluList = (problemId) => __awaiter(void 0, void 0, void 0, function* (
     }
     catch (error) {
         console.error("데이터 가져오기 실패:", error);
+        return []; // 오류 발생 시 빈 배열 반환
     }
 });
 export default getSoluList;

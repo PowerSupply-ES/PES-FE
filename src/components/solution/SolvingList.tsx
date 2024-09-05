@@ -1,11 +1,19 @@
+import { SolutionList } from "model/Store";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
+// SolvingList props 타입
+interface SolvingListProps {
+  solveData: SolutionList[];
+}
+
+
 // 풀이list 컴포넌트
-const SolvingList = ({ solveData }) => {
+const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {
   const navigate = useNavigate();
 
   // 해당 풀이로 이동
-  const gotoProblem = (answerId) => {
+  const gotoProblem = (answerId : number) => {
     console.log("answerId: ", answerId);
     navigate(`/question/${answerId}`);
   };
@@ -14,8 +22,8 @@ const SolvingList = ({ solveData }) => {
     <div className="solving_list">
       {solveData.map(
         (it) =>
-          // answerId가 "question"과 일치하지 않을 때에만 렌더링
-          it.answerId !== "question" && (
+          // answerState가 "question"과 일치하지 않을 때에만 렌더링( 수정: answerId -> answerState )
+          it.answerState !== "question" && (
             <div className="solving" key={it.answerId}>
               <div className="left">
                 <div className="userGen">

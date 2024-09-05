@@ -19,5 +19,6 @@ const getProbTitle = (problemId) => __awaiter(void 0, void 0, void 0, function* 
     catch (error) {
         console.log(error);
     }
+    console.log("problemId:", problemId);
 });
 export default getProbTitle;
