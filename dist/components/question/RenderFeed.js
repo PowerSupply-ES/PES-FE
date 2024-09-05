@@ -3,7 +3,7 @@ import { useState } from "react";
 import { renderNewlines } from "components/common/Common";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
 // feedback 렌더링 컴포넌트
-const RenderFeed = ({ navigate, memberStatus, feedbacks, passCount, state, postFeedback, textFst, handleTextFstChange, }) => {
+const RenderFeed = ({ navigate, state, textFst, handleTextFstChange, memberStatus, feedbacks, passCount, postFeedback }) => {
     const [buttonColor1, setButtonColor1] = useState("rgba(4, 202, 0, 0.6)");
     const [buttonColor2, setButtonColor2] = useState("rgba(244, 117, 117, 0.6)");
     const [selectedOption, setSelectedOption] = useState(null);
@@ -21,19 +21,19 @@ const RenderFeed = ({ navigate, memberStatus, feedbacks, passCount, state, postF
     const handleOption = (option) => {
         setSelectedOption(option);
     };
-    // 댓글 제출 함수
+    // 댓글 제출 함수 - TODO : return확인 요함
     const submitComment = () => {
-        if (!textFst.current) {
+        if (!textFst.current || !textFst.current.value) {
             alert("내용을 입력해주세요!");
+            return;
         }
         if (!selectedOption) {
             alert("통과 여부를 선택해주세요!");
+            return;
         }
-        else {
-            const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
-            if (isConfirmed) {
-                postFeedback(textFst.current, selectedOption);
-            }
+        const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+        if (isConfirmed) {
+            postFeedback(textFst.current.value, parseInt(selectedOption, 10));
         }
     };
     // 객체 값을 배열로 변환
@@ -48,10 +48,14 @@ const RenderFeed = ({ navigate, memberStatus, feedbacks, passCount, state, postF
                         state === "comment" && (_jsx("div", { className: "feedback_waiting_bar", onClick: () => navigate(`/`), children: "\uD53C\uB4DC\uBC31\uC744 \uAE30\uB2E4\uB9AC\uB294 \uC911\uC785\uB2C8\uB2E4..." })), feedbackArray.length > 0 &&
                         feedbackArray.map((feedback, index) => (_jsxs("div", { className: "feedback_container", children: [feedback.commentPassFail === 1 ? (_jsx("div", { className: "feedback_result_pass", children: "PASS" })) : (_jsx("div", { className: "feedback_result_fail", children: "FAIL" })), _jsxs("div", { className: "question_header", children: [_jsx("div", { className: "feedback_index", children: `Feedback ${index + 1}` }), _jsxs("div", { className: "feedback_writer", children: [feedback.writerGen, "\uAE30"] }), _jsx("div", { className: "feedback_writer", children: feedback.writerName })] }), _jsx("div", { className: "feedback_content display", children: renderNewlines(feedback.commentContent) })] }, index))), (memberStatus === "재학생" || memberStatus === "관리자") &&
                         feedbackArray.length <= 1 &&
-                        state === "comment" && (_jsxs("div", { className: "feed_section", children: [_jsx("div", { className: "question_header", children: _jsx("div", { className: "feedback_index", children: "Feedback" }) }), _jsx("textarea", { className: "feedback_content input", placeholder: "\uD53C\uB4DC\uBC31\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", onChange: handleTextFstChange }), _jsxs("div", { className: "feedback_select_section", children: [_jsxs("div", { className: "button_container", children: [_jsx("div", { className: "select_button pass", isSelected: selectedOption === "1", style: { color: buttonColor1 }, onClick: () => {
+                        state === "comment" && (_jsxs("div", { className: "feed_section", children: [_jsx("div", { className: "question_header", children: _jsx("div", { className: "feedback_index", children: "Feedback" }) }), _jsx("textarea", { className: "feedback_content input", placeholder: "\uD53C\uB4DC\uBC31\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694.", onChange: handleTextFstChange }), _jsxs("div", { className: "feedback_select_section", children: [_jsxs("div", { className: "button_container", children: [_jsx("div", { className: "select_button pass", 
+                                                // isSelected={selectedOption === "1"}
+                                                style: { color: buttonColor1 }, onClick: () => {
                                                     handleOption("1");
                                                     passButtonClick();
-                                                }, children: "PASS" }), _jsx("div", { className: "select_button fail", isSelected: selectedOption === "0", style: { color: buttonColor2 }, onClick: () => {
+                                                }, children: "PASS" }), _jsx("div", { className: "select_button fail", 
+                                                // isSelected={selectedOption === "0"}
+                                                style: { color: buttonColor2 }, onClick: () => {
                                                     handleOption("0");
                                                     failButtonClick();
                                                 }, children: "FAIL" })] }), _jsx("p", { className: "select_comment", children: "PASS \uD639\uC740 FAIL\uC744 \uC120\uD0DD\uD574\uC8FC\uC138\uC694." })] }), _jsx("button", { className: "feedback_button", onClick: submitComment, children: "\uB2F5\uBCC0\uD558\uAE30" })] }))] }), feedbackArray.length >= 2 && (_jsxs("div", { className: "result_container", children: [_jsx("div", { className: passCount >= 1 && feedbackArray.length > 1

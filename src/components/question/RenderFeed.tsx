@@ -1,21 +1,35 @@
-import { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { renderNewlines } from "components/common/Common";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
+import { CommentListType } from "model/Store";
+
+// RenderFeed props 타입
+interface RenderFeedProps {
+  navigate: (path: string) => void;
+  state: string;
+  textFst: React.RefObject<HTMLTextAreaElement>;
+  handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  memberStatus: string | null;
+  feedbacks: CommentListType[]
+  passCount: number;
+  postFeedback: (comment: string, selected: number) => void;
+}
+
 
 // feedback 렌더링 컴포넌트
-const RenderFeed = ({
+const RenderFeed: React.FC<RenderFeedProps> = ({
   navigate,
+  state,
+  textFst,
+  handleTextFstChange,
   memberStatus,
   feedbacks,
   passCount,
-  state,
-  postFeedback,
-  textFst,
-  handleTextFstChange,
+  postFeedback
 }) => {
-  const [buttonColor1, setButtonColor1] = useState("rgba(4, 202, 0, 0.6)");
-  const [buttonColor2, setButtonColor2] = useState("rgba(244, 117, 117, 0.6)");
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [buttonColor1, setButtonColor1] = useState<string>("rgba(4, 202, 0, 0.6)");
+  const [buttonColor2, setButtonColor2] = useState<string>("rgba(244, 117, 117, 0.6)");
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   // pass버튼 클릭 핸들러
   const passButtonClick = () => {
@@ -30,25 +44,25 @@ const RenderFeed = ({
   };
 
   // pass, fail 선택 핸들러
-  const handleOption = (option) => {
+  const handleOption = (option: string) => {
     setSelectedOption(option);
   };
 
-  // 댓글 제출 함수
+
+  // 댓글 제출 함수 - TODO : return확인 요함
   const submitComment = () => {
-    if (!textFst.current) {
+    if (!textFst.current || !textFst.current.value) {
       alert("내용을 입력해주세요!");
+      return;
     }
     if (!selectedOption) {
       alert("통과 여부를 선택해주세요!");
-    } else {
-      const isConfirmed = window.confirm(
-        "수정이 불가능합니다. 정말 제출하시겠습니까?"
-      );
-
-      if (isConfirmed) {
-        postFeedback(textFst.current, selectedOption);
-      }
+      return;
+    } 
+    
+    const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
+    if (isConfirmed) {
+      postFeedback(textFst.current.value, parseInt(selectedOption, 10));
     }
   };
 
@@ -116,7 +130,7 @@ const RenderFeed = ({
                 <div className="button_container">
                   <div
                     className="select_button pass"
-                    isSelected={selectedOption === "1"}
+                    // isSelected={selectedOption === "1"}
                     style={{ color: buttonColor1 }}
                     onClick={() => {
                       handleOption("1");
@@ -127,7 +141,7 @@ const RenderFeed = ({
                   </div>
                   <div
                     className="select_button fail"
-                    isSelected={selectedOption === "0"}
+                    // isSelected={selectedOption === "0"}
                     style={{ color: buttonColor2 }}
                     onClick={() => {
                       handleOption("0");
