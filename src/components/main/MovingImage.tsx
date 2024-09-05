@@ -4,7 +4,7 @@ import img0_0 from "assets/images/backImg_right.png";
 import useMovingImages from "hooks/home/useMovingImages";
 
 // 홈화면 첫번째 슬라이딩 이미지 애니메이션
-const MovingImage = () => {
+const MovingImage: React.FC = () => {
   const { animationFinished } = useMovingImages(); // 슬라이딩 HOOK
   const status = sessionStorage.getItem("status");
 

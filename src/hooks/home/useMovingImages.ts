@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 const useMovingImages = () => {
   // 이미지 움직임(progress증가시키면서 움직이기)
-  const [animationProgress, setAnimationProgress] = useState(0);
+  const [animationProgress, setAnimationProgress] = useState<number>(0);
   // 애니메이션 완료 여부
-  const [animationFinished, setAnimationFinished] = useState(false);
+  const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
   // 페이지 로드될 때 애니메이션 효과를 주기 위한 useEffect 사용
   useEffect(() => {

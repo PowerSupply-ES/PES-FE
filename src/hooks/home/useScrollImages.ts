@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
 const useScrollImages = () => {
-  const [opacity2, setOpacity2] = useState(0);
-  const [opacity3, setOpacity3] = useState(0);
-  const [opacity4, setOpacity4] = useState(0);
+  const [opacity2, setOpacity2] = useState<number>(0);
+  const [opacity3, setOpacity3] = useState<number>(0);
+  const [opacity4, setOpacity4] = useState<number>(0);
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;

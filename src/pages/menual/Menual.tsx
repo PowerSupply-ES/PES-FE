@@ -8,10 +8,11 @@ import img_pass_feed from "assets/images/pass_feedback.png";
 import img_fail from "assets/images/fail.png";
 import img_fail_feed from "assets/images/fail_feedback.png";
 import img_solvingList from "assets/images/solvingList.png";
+import React from "react";
 
 // 소개 페이지
 // TODO : 라이브러리 적용 및 파일 분리 예정
-const Menual = () => {
+const Menual: React.FC = () => {
   const navigate = useNavigate();
 
   return (

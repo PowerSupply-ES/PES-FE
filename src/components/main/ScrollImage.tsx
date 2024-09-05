@@ -2,9 +2,10 @@ import img2 from "assets/images/main_2.png";
 import img3 from "assets/images/main_3.png";
 import img4 from "assets/images/main_4.png";
 import useScrollImages from "hooks/home/useScrollImages";
+import React from "react";
 
 // 스크롤에 따른 홈화면 애니메이션 효과
-const ScrollImage = () => {
+const ScrollImage: React.FC = () => {
   const { opacity2, opacity3, opacity4 } = useScrollImages();
 
   return (
