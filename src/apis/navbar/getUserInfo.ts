@@ -10,7 +10,7 @@ export interface GetUserInfoProps{
 
 // 상단바 user 정보 API 요청
 const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
-  const uri = "api/exp";
+  const uri = "/api/exp";
   const memberEmail = sessionStorage.getItem("memberEmail");
 
   try {
@@ -21,6 +21,7 @@ const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
     // 데이터 처리
     const data = response.data;
     setMemberData(data);
+    
     sessionStorage.setItem("memberName", data.memberName);
     sessionStorage.setItem("memberStatus", data.memberStatus);
     sessionStorage.setItem("hasNewNotices", data.hasNewNotices.toString());

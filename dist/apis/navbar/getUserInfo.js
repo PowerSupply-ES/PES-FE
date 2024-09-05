@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import axios from "axios";
 // 상단바 user 정보 API 요청
 const getUserInfo = (_a) => __awaiter(void 0, [_a], void 0, function* ({ navigate, setMemberData }) {
-    const uri = "api/exp";
+    const uri = "/api/exp";
     const memberEmail = sessionStorage.getItem("memberEmail");
     try {
         const response = yield axios.get(uri, {

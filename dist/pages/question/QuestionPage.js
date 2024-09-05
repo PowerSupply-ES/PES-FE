@@ -7,7 +7,7 @@ import RenderFeed from "components/question/RenderFeed";
 const QuestionPage = () => {
     const navigate = useNavigate();
     let url = new URL(window.location.href);
-    let answerId = parseInt(url.pathname.split("/")[2]);
+    let answerId = Number(url.pathname.split("/")[2]);
     // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리
     const textFst = useRef(null);
     // 첫번재 답변 작성 핸들러
@@ -29,7 +29,6 @@ const QuestionPage = () => {
     const { code, qnA, state, feedbacks, passCount, postFeedback, postAnswer, setCode, } = useQuestionHook(answerId, getAlert);
     // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
     const memberStatus = sessionStorage.getItem("memberStatus");
-    console.log("getItem! = ");
     if (memberStatus === null || qnA === null) {
         return _jsx("div", { className: "loading", children: "Loading..." });
     }

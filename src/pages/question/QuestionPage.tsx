@@ -7,7 +7,7 @@ import RenderFeed from "components/question/RenderFeed";
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();
   let url = new URL(window.location.href);
-  let answerId: number = parseInt(url.pathname.split("/")[2]);
+  let answerId = Number(url.pathname.split("/")[2]);
 
   // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리
   const textFst = useRef<HTMLTextAreaElement>(null);
@@ -42,7 +42,6 @@ const QuestionPage: React.FC = () => {
 
   // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
   const memberStatus =sessionStorage.getItem("memberStatus");
-  console.log("getItem! = ");
 
   if (memberStatus === null || qnA === null) {
     return <div className="loading">Loading...</div>;
