@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { StyledQuestionProps } from "model/Store";
 
-export const StyledQuestion = styled.div`
+
+export const StyledQuestion = styled.div<StyledQuestionProps>`
   .code_question_container {
     width: 95%;
     display: flex;

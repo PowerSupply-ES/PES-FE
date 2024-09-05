@@ -5,7 +5,9 @@ import { NavigateFunction } from "react-router-dom";
 export interface StyledProps {
   state: string;
 }
-
+export interface StyledQuestionProps {
+  isSelected?: boolean;
+}
 
 // problem
 export type Problem = {
