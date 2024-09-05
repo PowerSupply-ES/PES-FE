@@ -1,5 +1,5 @@
-import { StyledRankingItem } from "styles/styledComponent/RankingItem-styled";
 import React from "react";
+import { StyledRankingItem } from "styles/styledComponent";
 
 // RankingItem props 타입
 interface RankingItemProps {

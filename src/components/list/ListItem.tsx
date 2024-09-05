@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StyledListItem } from "styles/styledComponent/ListItem-styled";
-import Button from "@mui/joy/Button";
+import { StyledListItem } from "styles/styledComponent";
 import { ProblemItemProps } from "model/Store";
+import Button from "@mui/joy/Button";
 
 const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();

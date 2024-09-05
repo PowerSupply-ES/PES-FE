@@ -1,6 +1,6 @@
-import MenuBar from "components/header/MenuBar";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import MenuBar from "components/header/MenuBar";
 
 // 로그인x 경우 넷바
 const HeaderForAny: React.FC = () => {

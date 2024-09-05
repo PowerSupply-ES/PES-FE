@@ -1,10 +1,10 @@
-import MenuBar from "components/header/MenuBar";
-import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { UserInfo } from "model/Store";
+import MenuBar from "components/header/MenuBar";
 import postLogout from "apis/common/postLogout";
 import getUserInfo from "apis/navbar/getUserInfo";
-import { UserInfo } from "model/Store";
 
 // 로그인o 경우 넷바
 const HeaderForUser: React.FC = () => {

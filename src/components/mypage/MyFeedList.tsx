@@ -1,7 +1,7 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import MyFeed from "./MyFeed";
 import useMypage from "hooks/mypage/useMypage";
-import React from "react";
 
 // MyFeedList 타입 정의
 interface MyFeedListProps {};

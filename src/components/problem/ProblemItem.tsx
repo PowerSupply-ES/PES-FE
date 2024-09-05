@@ -6,7 +6,7 @@ import {
   ProblemTitle,
   Grade,
   Button,
-} from "styles/styledComponent/ProblemItem-styled";
+} from "styles/styledComponent";
 import { ProblemItemProps } from "model/Store";
 
 const ProblemItem: React.FC<ProblemItemProps> = (props) => {

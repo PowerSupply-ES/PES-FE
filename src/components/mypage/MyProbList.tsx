@@ -1,7 +1,7 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import useMypage from "hooks/mypage/useMypage";
 import MyProb from "./MyProb";
-import { useNavigate } from "react-router-dom";
-import React from "react";
 
 // MyProbList 타입 정의
 interface MyProbListProps {};

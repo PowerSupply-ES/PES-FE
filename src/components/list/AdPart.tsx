@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import React, { useRef, useEffect } from "react";
+import styled from "styled-components";
 
 const AdPart:React.FC = () => {
   // 카카오 에드핏 광고

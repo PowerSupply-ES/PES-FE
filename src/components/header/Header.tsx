@@ -1,10 +1,9 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import "styles/css/topDropdown.css";
 import "styles/css/navbar.css";
 import "styles/css/footer.css";
-import { Outlet } from "react-router-dom";
-import HeaderForAny from "components/header/HeaderForAny";
-import HeaderForUser from "components/header/HeaderForUser";
+import {HeaderForAny, HeaderForUser} from "components/header";
 import Footer from "components/footer/Footer";
 
 // Header props 타입 정의

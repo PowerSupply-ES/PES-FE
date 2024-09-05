@@ -1,7 +1,7 @@
-import useProbPage from "hooks/problem/useProbPage";
 import React, { useEffect, useState } from "react";
-import { StyledProblem } from "styles/styledComponent/Problem-styled";
+import useProbPage from "hooks/problem/useProbPage";
 import { renderNewlines } from "components/common/Common";
+import { StyledProblem } from "styles/styledComponent/Problem-styled";
 
 // ProbHeader Props 타입
 interface ProbHeaderProps {

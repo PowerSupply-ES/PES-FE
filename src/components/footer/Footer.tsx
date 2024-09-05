@@ -1,10 +1,9 @@
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { IoIosMail } from "react-icons/io";
-import { BiLogoInstagramAlt } from "react-icons/bi";
-import { FaGithub } from "react-icons/fa";
-import postLogout from "apis/common/postLogout";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaMapMarkerAlt, FaGithub } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
+import { BiLogoInstagramAlt } from "react-icons/bi";
+import postLogout from "apis/common/postLogout";
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();

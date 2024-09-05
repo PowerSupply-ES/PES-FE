@@ -1,8 +1,6 @@
-import img2 from "assets/images/main_2.png";
-import img3 from "assets/images/main_3.png";
-import img4 from "assets/images/main_4.png";
-import useScrollImages from "hooks/home/useScrollImages";
 import React from "react";
+import {img_main_2, img_main_3, img_main_4} from "assets/images";
+import useScrollImages from "hooks/home/useScrollImages";
 
 // 스크롤에 따른 홈화면 애니메이션 효과
 const ScrollImage: React.FC = () => {
@@ -12,7 +10,7 @@ const ScrollImage: React.FC = () => {
     <div className="scroll_container">
       <div className="content2">
         <img
-          src={img2}
+          src={img_main_2}
           alt="introduce Image1"
           className="scroll-img"
           style={{ opacity: opacity2, transition: "opacity 2s ease" }}
@@ -20,7 +18,7 @@ const ScrollImage: React.FC = () => {
       </div>
       <div className="content3">
         <img
-          src={img3}
+          src={img_main_3}
           alt="introduce Image2"
           className="scroll-img"
           style={{ opacity: opacity3, transition: "opacity 3s ease" }}
@@ -28,7 +26,7 @@ const ScrollImage: React.FC = () => {
       </div>
       <div className="content4">
         <img
-          src={img4}
+          src={img_main_4}
           alt="introduce Image3"
           className="scroll-img"
           style={{ opacity: opacity4, transition: "opacity 4s ease" }}

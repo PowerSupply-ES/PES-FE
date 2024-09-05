@@ -1,8 +1,8 @@
-import { StyledListPage, RankingItemStyled } from "styles/styledComponent/ListPage-styled";
+import { StyledListPage, RankingItemStyled } from "styles/styledComponent";
 import RankingItem from "./RankingItem";
+import useJuniorRank from "hooks/rank/useJuniorRank";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
-import useJuniorRank from "hooks/rank/useJuniorRank";
 
 const JuniorRank = () => {
   // 신입생 순위 get Api 호출

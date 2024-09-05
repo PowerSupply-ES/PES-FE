@@ -1,6 +1,6 @@
+import React from "react";
 import { transferTime } from "components/common/Common";
 import { NoticeListProps } from "model/Store";
-import React from "react";
 
 // 공지사항 컴포넌트
 const NoticeList: React.FC<NoticeListProps> = ({ noticeList, navigate }) => {

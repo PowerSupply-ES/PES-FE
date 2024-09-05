@@ -12,8 +12,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logo from "assets/images/sign_logo.png";
 import Copyright from "./Copyright";
-import InputMask from "react-input-mask";
 import useSignup from "hooks/sign/useSignup";
+import InputMask from "react-input-mask";
 
 const defaultTheme = createTheme();
 

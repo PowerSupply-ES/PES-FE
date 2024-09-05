@@ -1,7 +1,7 @@
-import postLogout from "apis/common/postLogout";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
+import postLogout from "apis/common/postLogout";
 
 const SideTab: React.FC = () => {
   const navigate = useNavigate();

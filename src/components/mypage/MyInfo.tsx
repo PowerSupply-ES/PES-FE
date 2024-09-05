@@ -1,6 +1,6 @@
+import React from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import useMypage from "hooks/mypage/useMypage";
-import React from "react";
 
 // MyInfo 타입 정의
 interface MyInfoProps {}

@@ -1,6 +1,5 @@
 import React from "react";
-import img0 from "assets/images/backImg.png";
-import img0_0 from "assets/images/backImg_right.png";
+import {img_backImage, img_backImage_right} from "assets/images";
 import useMovingImages from "hooks/home/useMovingImages";
 
 // 홈화면 첫번째 슬라이딩 이미지 애니메이션
@@ -11,10 +10,10 @@ const MovingImage: React.FC = () => {
   return (
     <div className="content0">
       {/* 바탕이미지 */}
-      <img src={img0} className="bg-img" alt="" />
+      <img src={img_backImage} className="bg-img" alt="" />
       {/* 오른쪽이미지 */}
       <img
-        src={img0_0}
+        src={img_backImage_right}
         className="moving-img"
         alt="Moving graphic showing animation"
         style={{

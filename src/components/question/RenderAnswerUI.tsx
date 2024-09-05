@@ -1,6 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import ProbHeader from "components/question/ProbHeader";
-import ProbCode from "components/question/ProbCode";
+import {ProbHeader, ProbCode} from "components/question";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
 import { RenderAnswerUIProps } from "model/Store";
 
