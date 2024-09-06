@@ -1,4 +1,4 @@
-import {useProbContent, useProbTitle, useSubmitCode} from ".";
+import {useProbContent, useProbTitle, useSubmitCode} from "./index";
 import { ProblemTitle, ProblemContent } from "model/Store";
 
 interface UseProbPageReturnType {

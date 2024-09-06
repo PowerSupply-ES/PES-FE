@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: 'ts-loader',
+        use: 'ts-loader', // TypeScript를 직접 컴파일
         exclude: /node_modules/,
       },
       {
