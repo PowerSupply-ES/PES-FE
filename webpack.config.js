@@ -59,10 +59,17 @@ module.exports = {
   ],
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
+    proxy: [
+      {
+        context: ['/api'],  // 프록시를 적용할 경로
+        target: 'http://localhost:8080',  // 외부 API 서버 도메인
+        changeOrigin: true,  // CORS 문제 해결을 위해 필요
+      },
+    ],
     static: path.resolve(__dirname, "dist"),
     compress: true,
     port: 3000,  // 기본포트는 9000
     historyApiFallback: true,  // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
-  mode: "development", // 또는 'production'
+  mode: "development",
 };
