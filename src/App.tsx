@@ -14,6 +14,7 @@ import NoticeDetail from "pages/notice/noticeDetail";
 import ManageUser from "pages/manage/ManageUser";
 import UserDetail from "pages/manage/UserDetail";
 import Header from "components/header/Header";
+import React from "react";
 
 const App: React.FC = () => {
   return (

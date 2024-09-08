@@ -30,7 +30,7 @@ module.exports = {
             options: {
               presets: [
                 "@babel/preset-env",
-                "@babel/preset-react",
+                ["@babel/preset-react", { "runtime": "automatic" }],
                 "@babel/preset-typescript",
               ], // Babel, TypeScript 프리셋
             },
@@ -41,16 +41,10 @@ module.exports = {
       }, 
       {
         test: /\.(png|jpe?g|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'images/[name].[hash:8].[ext]', // images 폴더 아래에 저장
-              esModule: false, // CommonJS 모듈을 사용
-            },
-          },
-        ],
-        //type: "asset/resource",
+        type: "asset/resource",
+        generator: {
+          filename: 'images/[name].[hash:8][ext][query]', // 이미지 파일의 경로 및 이름 설정
+        },
       },
       {
         test: /\.css$/,
@@ -63,10 +57,12 @@ module.exports = {
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
     }),
   ],
+  // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
     static: path.resolve(__dirname, "dist"),
     compress: true,
-    port: 9000,
+    port: 3000,  // 기본포트는 9000
+    historyApiFallback: true,  // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
   mode: "development", // 또는 'production'
 };
