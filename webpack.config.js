@@ -25,19 +25,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [
-                "@babel/preset-env",
-                ["@babel/preset-react", { "runtime": "automatic" }],
-                "@babel/preset-typescript",
-              ], // Babel, TypeScript 프리셋
-            },
-          },
-          //'ts-loader' // TypeScript를 처리하기 위해 ts-loader 사용
-        ],
+        use: "babel-loader",
         exclude: /node_modules/,
       }, 
       {
