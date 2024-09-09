@@ -1,7 +1,7 @@
 // MUI 템플릿 - manageUser페이지
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
-import SideMenu from "./SideMenu";
 import { styled } from "@mui/material/styles";
 import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
@@ -10,7 +10,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 // import getDashboardTheme from './theme/getDashboardTheme';
-import { useNavigate } from "react-router-dom";
+import SideMenu from "./SideMenu";
+
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   position: "relative",

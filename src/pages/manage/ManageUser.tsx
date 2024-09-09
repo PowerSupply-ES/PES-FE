@@ -2,7 +2,7 @@ import "styles/css/manage.css";
 import { UserList } from "components/manage";
 import useUserList from "hooks/manage/useUserList";
 import React from "react";
-import TemplateFrame from "../../components/manage/TemplateFrame";
+import TemplateFrame from "components/manage/TemplateFrame";
 
 const ManageUser: React.FC = () => {
   // 사용자 리스트 get HOOK

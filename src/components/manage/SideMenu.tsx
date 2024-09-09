@@ -6,10 +6,10 @@ import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import MenuContent from "./MenuContent";
-import OptionsMenu from "./OptionsMenu";
 import Divider from "@mui/material/Divider";
 import SelectContent from "./SelectContent";
+import {MenuContent, OptionsMenu} from "./index";
+
 
 const drawerWidth = 240;
 
