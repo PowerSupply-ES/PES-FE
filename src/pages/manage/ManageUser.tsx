@@ -1,5 +1,5 @@
 import "styles/css/manage.css";
-import { SideTab, UserList } from "components/manage";
+import { UserList } from "components/manage";
 import useUserList from "hooks/manage/useUserList";
 import React from "react";
 import TemplateFrame from "../../components/manage/TemplateFrame";
@@ -16,8 +16,6 @@ const ManageUser: React.FC = () => {
 
         {/* 본문 */}
         <div className="manageuser_container">
-          {/* 좌측 메뉴탭 */}
-          {/* <SideTab></SideTab> */}
 
           {/* 우측 유저 목록 */}
           <div className="userlist_wrapper">

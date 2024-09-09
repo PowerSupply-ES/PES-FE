@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Problem } from "model/Store";
+import { Problem } from "model/problemType"; 
 
 // myProb 상태관리 HOOK setMyProb 타입
 type SetMyProblem = React.Dispatch<React.SetStateAction<Problem[]>>;

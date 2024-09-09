@@ -3,7 +3,6 @@
 import React from "react";
 import "styles/css/manage.css";
 import "styles/css/mypage.css";
-import SideTab from "components/manage/SideTab";
 import { FaCircleUser } from "react-icons/fa6";
 import useUserDetail from "hooks/manage/useUserDetail";
 
@@ -11,11 +10,10 @@ const UserDetail: React.FC = () => {
   const { memberData } = useUserDetail();
 
   return (
+    // TODO: 템플릿 적용 
     <div className="content_container">
       {/* 본문 */}
       <div className="manageuser_container">
-        {/* 좌측 메뉴탭 */}
-        <SideTab></SideTab>
 
         {/* 우측 유저 정보 */}
         <div className="userlist_wrapper">

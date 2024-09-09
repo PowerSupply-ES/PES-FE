@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import getUserDetail from "apis/manage/getUserDetail";
-import { MemberDetail } from "model/Store";
+import { MemberDetail } from "model/userType"; 
 
 const useUserDetail = () => {
   const [memberData, setMemberData] = useState<MemberDetail | null>(null);

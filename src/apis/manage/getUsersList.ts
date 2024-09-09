@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Member } from "model/Store";
+import { Member } from "model/userType"; 
 
 // 회원 데이터 상태관리 훅 setMemDate의 타입
 type SetMemDate = React.Dispatch<React.SetStateAction<Member[]>>;

@@ -5,7 +5,7 @@ import { HiSpeakerphone } from "react-icons/hi";
 import { PiNotePencilFill } from "react-icons/pi";
 import getNoticeList from "apis/notice/getNoticeList";
 import NoticeList from "components/notice/NoticeList";
-import { NoticeListType } from "model/Store";
+import { NoticeListType } from "model/noticeType"; 
 
 const Notice: React.FC = () => {
   const navigate = useNavigate();

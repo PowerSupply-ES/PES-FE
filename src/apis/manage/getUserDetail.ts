@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MemberDetail } from "model/Store";
+import { MemberDetail } from "model/userType"; 
 
 // 회원 데이터 상태관리 HOOK setMemDate 타입
 type SetMemDetail = React.Dispatch<React.SetStateAction<MemberDetail | null>>;

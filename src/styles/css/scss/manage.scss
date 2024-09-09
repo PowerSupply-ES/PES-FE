@@ -7,44 +7,6 @@
     display: flex;
     height: calc(100vh + 100px);
 
-    .tab_wrapper {
-      flex: 1;
-      display: flex;
-      justify-content: space-between;
-
-      display: flex;
-      flex-direction: column;
-      background-color: #484848;
-      color: white;
-
-      .tab_btn_wrapper {
-        display: flex;
-        flex-direction: column;
-
-        button {
-          height: 52px;
-          background-color: inherit;
-          color: inherit;
-          font-size: 16px;
-          font-weight: 600;
-
-          &:hover {
-            background-color: #6c6c6c;
-          }
-        }
-      }
-      .btn_mng_logout {
-        background-color: inherit;
-        color: inherit;
-        display: flex;
-        justify-content: right;
-        padding: 0 20px 20px 0;
-        &:hover {
-          background-color: #484848;
-        }
-      }
-    }
-
     .userlist_wrapper {
       flex: 9;
       display: flex;
