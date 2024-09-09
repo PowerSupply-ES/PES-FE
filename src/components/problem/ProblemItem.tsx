@@ -7,7 +7,7 @@ import {
   Grade,
   Button,
 } from "styles/styledComponent";
-import { ProblemItemProps } from "model/Store";
+import { ProblemItemProps } from "model/problemType";
 
 const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();

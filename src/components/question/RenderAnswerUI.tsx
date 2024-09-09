@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import {ProbHeader, ProbCode} from "components/question";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
-import { RenderAnswerUIProps } from "model/Store";
+import { RenderAnswerUIProps } from "model/questionType";
 
 // 답변(answer) 렌더링 컴포넌트
 const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({

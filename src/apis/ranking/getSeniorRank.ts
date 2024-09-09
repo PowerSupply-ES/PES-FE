@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { MemberRankList } from "model/Store";
+import { MemberRankList } from "model/userType";
 
 // 재학생 등수 GET
 const GetSeniorsRank = () => {

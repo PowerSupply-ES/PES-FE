@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
-import { UserInfo } from "model/Store";
+import { UserInfo } from "model/userType";
 
 // getUserInfo props 타입
 export interface GetUserInfoProps{

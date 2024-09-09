@@ -1,6 +1,6 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
-import { NoticeDetailType } from "model/Store";
+import { NoticeDetailType } from "model/noticeType";
 
 // 공지사항 수정 API 요청
 const fetchNotice = async (

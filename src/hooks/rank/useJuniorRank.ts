@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import getJuniorRank from "apis/ranking/getJuniorRank";
-import { MemberRankList } from "model/Store";
+import { MemberRankList } from "model/userType";
 import { SelectChangeEvent } from "@mui/material";
 
 // 신입생 등수 GET

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { NoticeDetailType } from "model/Store";
+import { NoticeDetailType } from "model/noticeType";
 
 // NoticeDetail 상태관리 HOOK setDetail 타입
 type SetNoticeDetail = React.Dispatch<React.SetStateAction<NoticeDetailType | null>>;

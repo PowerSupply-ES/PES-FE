@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MemberRankList } from "model/Store";
+import { MemberRankList } from "model/userType";
 
 // 재학생 rank GET 요청
 const getJuniorRank = async (memberGen: number) => {

@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import CodeEditor from "components/problem/CodeEditor";
 import { renderNewlines } from "components/common/Common";
-import { QuesAnswerType } from "model/Store";
+import { QuesAnswerType } from "model/questionType";
 
 // ProbCode Props 타입 정의
 interface ProbCodeProps {

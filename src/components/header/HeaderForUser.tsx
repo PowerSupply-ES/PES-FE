@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
-import { UserInfo } from "model/Store";
+import { UserInfo } from "model/userType";
 import MenuBar from "components/header/MenuBar";
 import postLogout from "apis/common/postLogout";
 import getUserInfo from "apis/navbar/getUserInfo";

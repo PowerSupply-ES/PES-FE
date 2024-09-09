@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { SignupFormData } from "model/Store";
+import { SignupFormData } from "model/userType";
 
 // 응답 데이터 타입
 interface SignupResponseData {

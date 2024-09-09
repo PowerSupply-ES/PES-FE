@@ -1,5 +1,5 @@
 import React from "react";
-import { MyFeedProps } from "model/Store";
+import { MyFeedProps } from "model/userType";
 
 // 내 피드백 컴포넌트
 const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {

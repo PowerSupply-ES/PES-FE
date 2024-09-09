@@ -1,5 +1,5 @@
 import axios from "axios";
-import { QuesAnswerType } from "model/Store";
+import { QuesAnswerType } from "model/questionType";
 
 // 질문, 답변 블러오기 (get)
 const getQues = async (answerId: number): Promise<QuesAnswerType> => {

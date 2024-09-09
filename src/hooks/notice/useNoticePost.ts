@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postNotice from "apis/notice/postNotice";
-import { PostNoticeType } from "model/Store";
+import { PostNoticeType } from "model/noticeType";
 
 // TODO : hook들 모두 반환타입 지정하기
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { NoticeListType } from "model/Store";
+import { NoticeListType } from "model/noticeType";
 
 // NoticeList 상태관리 HOOK setNoticeList 타입
 type SetNoticeList = React.Dispatch<React.SetStateAction<NoticeListType[]>>;

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { SolutionList } from "model/Store";
+import { SolutionList } from "model/userType";
 import getSoluList from "apis/solution/getSoluList";
 
 // 풀이 get HOOk

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledQuestionProps } from "model/Store";
+import { StyledQuestionProps } from "model/questionType"; 
 
 
 export const StyledQuestion = styled.div<StyledQuestionProps>`

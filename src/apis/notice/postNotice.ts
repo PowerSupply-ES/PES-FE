@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PostNoticeType } from "model/Store";
+import { PostNoticeType } from "model/noticeType";
 import { NavigateFunction } from "react-router-dom";
 
 // 공지사항 post API 호출

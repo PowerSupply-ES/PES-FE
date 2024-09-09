@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SolutionList } from "model/Store";
+import { SolutionList } from "model/userType";
 
 // SolvingList props 타입
 interface SolvingListProps {

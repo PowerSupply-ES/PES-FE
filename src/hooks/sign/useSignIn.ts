@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postLogin from "apis/sign/postLogin";
-import { SignInFormData } from "model/Store";
+import { SignInFormData } from "model/userType";
 
 // 로그인 관련 HOOK
 const useSignIn = () => {

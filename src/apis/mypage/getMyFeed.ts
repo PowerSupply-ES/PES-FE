@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { MyFeedback } from "model/Store";
+import { MyFeedback } from "model/userType"; 
 
 // myFeedback 상태관리 HOOK setMyFeedback 타입
 type SetMyFeed = React.Dispatch<React.SetStateAction<MyFeedback[]>>;

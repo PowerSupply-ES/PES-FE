@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import {getFeed, getCode, getQues, postAnswers, postFeed} from "apis/question";
-import { CommentListType, QuesAnswerType, UseQuestionHookResult } from "model/Store";
+import { CommentListType, QuesAnswerType, UseQuestionHookResult } from "model/questionType";
 
 // 질문테스트(question) 관련 HOOK들 관리
 const useQuestionHook = (

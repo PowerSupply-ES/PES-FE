@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SolutionList } from "model/Store";
+import { SolutionList } from "model/userType";
 
 // 풀이 get API
 const getSoluList = async (problemId: number): Promise<SolutionList[]> => {

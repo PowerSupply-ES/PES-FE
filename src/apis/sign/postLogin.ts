@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SignInFormData } from "model/Store";
+import { SignInFormData } from "model/userType";
 
 const postLogin = async (formData: SignInFormData) => {
   const uri = "api/signin";

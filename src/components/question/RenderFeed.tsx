@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { renderNewlines } from "components/common/Common";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
-import { CommentListType } from "model/Store";
+import { CommentListType } from "model/questionType"; 
 
 // RenderFeed props 타입
 interface RenderFeedProps {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledProps } from "model/Store";
+import { StyledProps } from "model/problemType"; 
 
 export const Container = styled.div<StyledProps>`
   width: 1374px;
