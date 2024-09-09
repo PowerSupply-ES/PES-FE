@@ -33,7 +33,7 @@ const useMypage = ():UseMypageReturnType => {
       console.log("로그인 안돼있음");
 
       alert("로그인 해주세요.");
-      navigate("main");
+      navigate("/signin");
       return;
     }
     getMyProb(setMyProb); // 내가 푼 문제 GET요청

@@ -4,6 +4,7 @@ import { NavigateFunction } from "react-router-dom";
 //로그아웃 api호출 함수
 const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
   const uri = "/api/logout";
+  console.log("logout!!");
 
   try {
     const response = await axios.post(uri, {
@@ -31,6 +32,7 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
           error.response.statusText
         );
         alert(`로그아웃 실패: 서버 응답 에러 (${error.response.status})`);
+        navigate('/');
       } else if (error.request) {
         // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
         console.error("로그아웃 실패: 요청이 실패했습니다.");
