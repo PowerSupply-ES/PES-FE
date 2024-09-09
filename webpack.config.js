@@ -7,6 +7,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true, // 이전 빌드 파일 삭제
+    publicPath: "/", // 새로고침을 했을 때도 파일이 정상적으로 참조
   },
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".jsx", ".css", ".scss"], // 파일 확장자 설정
@@ -61,9 +62,16 @@ module.exports = {
   devServer: {
     proxy: [
       {
-        context: ['/api'],  // 프록시를 적용할 경로
+       // JAVA 서버
+        context: ['/api'], // 프록시를 적용할 경로
         target: 'http://localhost:8080',  // 외부 API 서버 도메인
         changeOrigin: true,  // CORS 문제 해결을 위해 필요
+      },
+      {
+        // 파이썬서버
+        context: ['/api2'],
+        target: 'http://localhost:8000',
+        changeOrigin: true,
       },
     ],
     static: path.resolve(__dirname, "dist"),
