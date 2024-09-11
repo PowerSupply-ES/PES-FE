@@ -1,7 +1,40 @@
 /* -----마이페이지----- */
+
+// 900px이하시, 세로로 정렬
+@media (max-width: 1200px) {
+  .mypage_content {
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+  }
+
+  .right {
+    width: 100%; /* 오른쪽 영역을 전체 너비로 설정 */
+  }
+}
+
+.content_mypage {
+  padding-top: 80px;
+  background-color: #f2f1fe;
+  min-width: fit-content;
+  height: fit-content;
+  padding-bottom: 300px;
+  margin-bottom: -300px;
+
+  h2 {
+    width: 100%;
+    text-align: left;
+    margin-left: 40px;
+    color: #000000;
+    opacity: 60%;
+    font-size: 26px;
+  }
+}
+
 .mypage_content {
   display: flex;
   width: 90%;
+  height: fit-content;
   justify-content: center;
   margin: 0 auto;
 
@@ -77,25 +110,9 @@
 .feed_top,
 .prob_top {
   margin-top: 20px;
+  width: 800px;
   display: flex;
   justify-content: space-between;
-}
-
-.content_mypage {
-  padding-top: 80px;
-  background-color: #f2f1fe;
-  height: calc(100vh + 80px);
-  padding-bottom: 300px;
-  margin-bottom: -300px;
-
-  h2 {
-    width: 100%;
-    text-align: left;
-    margin-left: 40px;
-    color: #000000;
-    opacity: 60%;
-    font-size: 26px;
-  }
 }
 
 .noFeed,

@@ -8,7 +8,6 @@ const getMyFeed = async (setMyFeedback: SetMyFeed): Promise<void> => {
   try {
     const response = await axios.get<MyFeedback[]>(uri);
     setMyFeedback(response.data);
-    console.log("response : ", response.data);
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {  //axios error인지 확인
       // 서버가 응답을 반환했지만 상태 코드가 오류를 나타내는 경우
