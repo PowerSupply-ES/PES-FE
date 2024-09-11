@@ -7,12 +7,12 @@ import {RenderAnswerUI, RenderFeed} from "components/question";
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();
 
-  // questionId 저장
+  // questionId 저장 - 사용자 풀이에 사용
   let url = new URL(window.location.href);
   let answerId = Number(url.pathname.split("/")[2]);
   console.log("answerId= ",answerId);
 
-  // problemId 가져오기
+  // problemId 가져오기 - 해당 문제 정보에 사용
   const problemId = Number(sessionStorage.getItem("problemId"));
 
   // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리

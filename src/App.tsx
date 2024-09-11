@@ -6,7 +6,7 @@ import Signin from "pages/sign/Signin";
 import Signup from "pages/sign/Signup";
 import Main from "pages/main/Main";
 import Mypage from "pages/mypage/Mypage";
-import Solution from "pages/solution/Solution";
+import SolutionPage from "pages/solution/SolutionPage";
 import Menual from "pages/menual/Menual";
 import Notice from "pages/notice/notice";
 import NoticePost from "pages/notice/noticePost";
@@ -29,7 +29,7 @@ const App: React.FC = () => {
           <Route path="/notice" element={<Notice />} />
           <Route path="/noticePost" element={<NoticePost />} />
 
-          <Route path="/solution/:id" element={<Solution />} />
+          <Route path="/solution/:id" element={<SolutionPage />} />
           <Route path="/list" element={<ListPage />} />
           <Route path="/problem/:id" element={<ProblemPage />} />
           <Route path="/question/:id" element={<QuestionPage />} />

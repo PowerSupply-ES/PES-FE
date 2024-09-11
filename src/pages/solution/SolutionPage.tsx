@@ -2,7 +2,7 @@ import "styles/css/solution.css";
 import SolvingList from "components/solution/SolvingList";
 import {useSoluProb, useSoluList} from "hooks/solution";
 
-const Solution = () => {
+const SolutionPage = () => {
   // TODO : split한 problemId와 solveData.problemId 구분하기
   let url = new URL(window.location.href);
   let problemId = (url.pathname.split("/")[2]);
@@ -44,4 +44,4 @@ const Solution = () => {
   );
 }
 
-export default Solution;
+export default SolutionPage;
