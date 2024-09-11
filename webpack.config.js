@@ -53,14 +53,13 @@ module.exports = {
     //server: 'https',
     proxy: [
       {
-       // TODO: 배포환경은 proxy 사용x
+       // TODO: 배포환경은 proxy 사용x (process.env.NODE_ENV사용)
         context: ['/api', '/api2'], // 프록시 적용할 경로
         target: 'https://pes23.com/',  // 외부 API 서버 도메인
         changeOrigin: true,  // CORS 문제 해결을 위해 필요
         secure: false,  // HTTPS 인증서 오류 무시 
         onProxyReq: (proxyReq, req, res) => {
           console.log(`Proxying request to: ${proxyReq.path}`);
-          // 필요한 추가 로깅을 이곳에 추가할 수 있습니다.
       }
       },
 
@@ -72,7 +71,6 @@ module.exports = {
       //    secure: true,  // HTTPS 인증서를 무시하도록 설정
       //    onProxyReq: (proxyReq, req, res) => {
       //      console.log(`Proxying request to: ${proxyReq.path}`);
-      //      // 필요한 추가 로깅을 이곳에 추가할 수 있습니다.
       //  }
       //  },
       // {

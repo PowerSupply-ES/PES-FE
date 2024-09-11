@@ -10,7 +10,10 @@ const ProblemItem: React.FC<ProblemItemProps> = (props) => {
 
   const goToProb = (answerId: number | null) => {
     if (answerId) {
+      // problemId 저장
       sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
+      const problemId = sessionStorage.getItem("problemId");
+      console.log("problemId = ", problemId );
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);

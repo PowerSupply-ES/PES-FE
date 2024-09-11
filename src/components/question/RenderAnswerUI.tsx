@@ -16,6 +16,9 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
 }) => {
   const [textSec, setTextSec] = useState<string>("");
 
+  // problemId 가져오기 - 이동하기
+  const problemId = Number(sessionStorage.getItem("problemId"));
+
   const handleTextSecChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextSec(e.target.value);
   };
@@ -38,9 +41,8 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
   return (
     <StyledQuestion className="problem_answer_section">
       {/* 문제 헤더 컴포넌트 */}
-      <ProbHeader state={state} navigate={navigate} />  {/* 수정: code -> state*/}
+      <ProbHeader state={state} navigate={navigate} problemId={problemId}/>  {/* 수정: code -> state*/}
       
-
       {/* 코드 출력 컴포넌트 */}
       {qnA && (
         <ProbCode
@@ -49,6 +51,7 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
           code={code}
           qnA={qnA}
           setCode={setCode}
+          problemId={problemId}
         />
       )}
 

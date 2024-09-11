@@ -10,6 +10,7 @@ interface ProbCodeProps {
   code: string;
   qnA: QuesAnswerType;
   setCode: (code: string) => void;
+  problemId: number;
 }
 
 // 작성했던 코드 출력 컴포넌트
@@ -19,6 +20,7 @@ const ProbCode: React.FC<ProbCodeProps> = ({
   code,
   qnA,
   setCode,
+  problemId
 }) => {
   return (
     <div className="code_question_container">

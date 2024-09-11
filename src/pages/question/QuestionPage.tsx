@@ -3,10 +3,17 @@ import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import {RenderAnswerUI, RenderFeed} from "components/question";
 
+
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();
+
+  // questionId 저장
   let url = new URL(window.location.href);
   let answerId = Number(url.pathname.split("/")[2]);
+  console.log("answerId= ",answerId);
+
+  // problemId 가져오기
+  const problemId = Number(sessionStorage.getItem("problemId"));
 
   // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리
   const textFst = useRef<HTMLTextAreaElement>(null);
@@ -37,7 +44,7 @@ const QuestionPage: React.FC = () => {
     postFeedback,
     postAnswer,
     setCode,
-  } = useQuestionHook(answerId, getAlert);
+  } = useQuestionHook(answerId, getAlert, problemId);
 
   // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
   const memberStatus =sessionStorage.getItem("memberStatus");
@@ -46,10 +53,8 @@ const QuestionPage: React.FC = () => {
     return <div className="loading">Loading...</div>;
   }
 
-
-  console.log("qnA = ",qnA);
-
   return (
+    // 성공 or 실패에 따른 배경색
     <div
       className={
         state === "success"

@@ -6,7 +6,8 @@ import { CommentListType, QuesAnswerType, UseQuestionHookResult } from "model/qu
 // 질문테스트(question) 관련 HOOK들 관리
 const useQuestionHook = (
   answerId: number,
-  getAlert: (responseStatus: number) => void
+  getAlert: (responseStatus: number) => void,
+  problemId: number
 ): UseQuestionHookResult => {
   const [state, setState] = useState<string>("");
   const [code, setCode] = useState<string>("");
@@ -14,11 +15,17 @@ const useQuestionHook = (
   const [feedbacks, setFeedbacks] = useState<CommentListType[]>([]);
   const [passCount, setPassCount] = useState<number>(0);
 
+  console.log("problemId는말이죵 : ",problemId);
+
   // 사용자 코드 get HOOK
   const getCodes = useCallback(async () => {
     try {
       const code = await getCode(answerId); // get API 호출
-      setCode(code);
+      if(code !== null && code !== undefined){
+        setCode(code);
+        console.log("code는 말이죵 ", code);
+      }
+
     } catch (error) {
       console.log(error);
     }
