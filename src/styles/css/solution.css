@@ -1,8 +1,7 @@
 @charset "UTF-8";
 /* 풀이타이틀 */
 .solution_container {
-  width: 100%;
-  min-width: 1142px;
+  max-width: 1142px;
   height: -moz-fit-content;
   height: fit-content;
   margin: 60px auto;
