@@ -18,7 +18,7 @@ const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {
             <p className="problemId">{it.answerId}</p>
 
             <p className="memberGenName">
-              {it.memberGen}기&nbsp;&nbsp;
+              {it.memberGen}기&nbsp;
               {it.memberName}
             </p>
 

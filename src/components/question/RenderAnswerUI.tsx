@@ -11,29 +11,36 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
   state,
   setCode,
   textFst,
-  handleTextFstChange,
+  handleTextFstChange, // 질문1 입력 핸들러
   postAnswer,
 }) => {
-  const [textSec, setTextSec] = useState<string>("");
 
   // problemId 가져오기 - 이동하기
   const problemId = Number(sessionStorage.getItem("problemId"));
 
+  const [textSec, setTextSec] = useState<string>("");
+
+  // 질문2 입력 핸들러
   const handleTextSecChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextSec(e.target.value);
+    console.log("textSec:", e.target.value);
   };
 
   // 답변 제출 함수
   const submitAnswer = () => {
-    if (!textFst.current || !textSec) { // 수정: !textSec.current -> !textSec
+
+    if (!textFst || !textSec) { // 수정: !textSec.current -> !textSec
       alert("내용을 입력해주세요!");
+
+      console.log("에잉", textFst);
+      console.log("에잉", textSec);
     } else {
       const isConfirmed = window.confirm(
         "수정이 불가능합니다. 정말 제출하시겠습니까?"
       );
 
       if (isConfirmed) {
-        postAnswer(textFst.current.value, textSec); // 수정: textFst.current, textSec.current -> textFst.current.value, textSec
+        postAnswer(textFst, textSec); // 수정: textFst.current, textSec.current -> textFst.current.value, textSec
       }
     }
   };

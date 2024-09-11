@@ -15,7 +15,8 @@ const UserDetail: React.FC = () => {
       {/* 본문 */}
       <div className="manageuser_container">
 
-        {/* 우측 유저 정보 */}
+
+        {/* 유저 정보 */}
         <div className="userlist_wrapper">
           {/* <div className="list_container"> */}
 
@@ -23,6 +24,8 @@ const UserDetail: React.FC = () => {
             <div>Loading...</div>
           ) : (
             <div className="mypage_content">
+
+              {/* 좌측 컴포넌트 */}
               <div className="left">
                 {/* 사용자 정보 */}
                 <div className="memberInfo">
@@ -65,6 +68,8 @@ const UserDetail: React.FC = () => {
                 </div>
               </div>
 
+
+              {/* 우측 컴포넌트 */}
               <div className="right">
                 {/* 내가 푼 문제 */}
                 <div className="top">

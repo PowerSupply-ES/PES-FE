@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import {RenderAnswerUI, RenderFeed} from "components/question";
@@ -16,13 +16,13 @@ const QuestionPage: React.FC = () => {
   const problemId = Number(sessionStorage.getItem("problemId"));
 
   // 첫번재 답변 관리 - useRef로 필요 시점에만 상태 관리
-  const textFst = useRef<HTMLTextAreaElement>(null);
+  const [textFst, setTextFst] = useState<string>("");
+
 
   // 첫번재 답변 작성 핸들러
   const handleTextFstChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    if (textFst.current) {
-      textFst.current.value = e.target.value;
-    }
+    setTextFst(e.target.value)
+    console.log("e.target.value = ", e.target.value);
   };
 
   // 댓글 제출 결과 alert 함수

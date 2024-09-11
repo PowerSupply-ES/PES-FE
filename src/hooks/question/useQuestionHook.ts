@@ -15,15 +15,12 @@ const useQuestionHook = (
   const [feedbacks, setFeedbacks] = useState<CommentListType[]>([]);
   const [passCount, setPassCount] = useState<number>(0);
 
-  console.log("problemId는말이죵 : ",problemId);
-
   // 사용자 코드 get HOOK
   const getCodes = useCallback(async () => {
     try {
       const code = await getCode(answerId); // get API 호출
       if(code !== null && code !== undefined){
         setCode(code);
-        console.log("code는 말이죵 ", code);
       }
 
     } catch (error) {

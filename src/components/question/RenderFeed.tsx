@@ -7,7 +7,7 @@ import { CommentListType } from "model/questionType";
 interface RenderFeedProps {
   navigate: (path: string) => void;
   state: string;
-  textFst: React.RefObject<HTMLTextAreaElement>;
+  textFst: string;
   handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   memberStatus: string | null;
   feedbacks: CommentListType[]
@@ -51,7 +51,7 @@ const RenderFeed: React.FC<RenderFeedProps> = ({
 
   // 댓글 제출 함수 - TODO : return확인 요함
   const submitComment = () => {
-    if (!textFst.current || !textFst.current.value) {
+    if (!textFst || !textFst) {
       alert("내용을 입력해주세요!");
       return;
     }
@@ -62,7 +62,7 @@ const RenderFeed: React.FC<RenderFeedProps> = ({
     
     const isConfirmed = window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?");
     if (isConfirmed) {
-      postFeedback(textFst.current.value, parseInt(selectedOption, 10));
+      postFeedback(textFst, parseInt(selectedOption, 10));
     }
   };
 

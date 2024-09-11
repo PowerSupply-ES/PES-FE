@@ -24,6 +24,8 @@ const ProbCode: React.FC<ProbCodeProps> = ({
 }) => {
   return (
     <div className="code_question_container">
+
+      {/* 좌측 코드에디터 컴포넌트 */}
       <div className="code_container">
         {/* 에디터로 수정_by성임 */}
         <CodeEditor
@@ -32,6 +34,8 @@ const ProbCode: React.FC<ProbCodeProps> = ({
           code={code}
         ></CodeEditor>
       </div>
+
+      {/* 우측 질문답변 컴포넌트 */}
       <div className="question_container">
         {qnA.answerState === "question" ? (   // 기존 : !qnA.answerState || !qnA.answerSec
           // answerState: question (qnA만 있음, 답변해야 하는 상태)
@@ -53,6 +57,7 @@ const ProbCode: React.FC<ProbCodeProps> = ({
             </div>
           </>
         ) : (
+          // < answerState 참고 >
           // answerState: comment (qnA O / qnA.answerFst, qnA.answerSec O / feedback 0개 or 1개)
           // answerState: success
           // answerState: fail

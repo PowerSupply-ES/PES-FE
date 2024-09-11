@@ -43,7 +43,7 @@ export interface RenderAnswerUIProps {
   qnA: QuesAnswerType;
   state: string;
   setCode: (code: string) => void;
-  textFst: RefObject<HTMLTextAreaElement>;
+  textFst: string;
   handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   postAnswer: (textFst: string, textSec: string) => void;
 }
