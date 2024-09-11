@@ -1,10 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { SignupFormData } from "model/userType";
+import { SignupFormData, SignupResponseData } from "model/userType";
 
-// 응답 데이터 타입
-interface SignupResponseData {
-  message: string;
-}
 
 const postSignup = async (
   formData: SignupFormData,

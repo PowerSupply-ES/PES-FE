@@ -1,14 +1,9 @@
 import React from "react";
 import { StyledRankingItem } from "styles/styledComponent";
+import { RankingItemProps } from "model/userType";
 
-// RankingItem props 타입
-interface RankingItemProps {
-  rank: number;
-  memberName: string;
-  score: string;
-  style?: React.CSSProperties;
-}
 
+// 랭킹 요소 컴포넌트
 const RankingItem: React.FC<RankingItemProps> = ({ rank, memberName, score, style }) => {
   return (
     <StyledRankingItem style={style}>

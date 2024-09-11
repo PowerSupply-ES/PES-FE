@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {getMyInfo, getMyProb, getMyFeed} from "apis/mypage";
-import { MyFeedback, MemberDetail } from "model/userType";
+import { MyFeedback, MemberDetail, UseMypageReturnType } from "model/userType";
 import { Problem } from "model/problemType";
 
-// useMypage HOOK 반환 타입
-interface UseMypageReturnType {
-  memberData: MemberDetail | undefined;
-  myProb: Problem[];
-  myFeedback: MyFeedback[];
-}
+
 
 const useMypage = ():UseMypageReturnType => {
   const navigate = useNavigate();

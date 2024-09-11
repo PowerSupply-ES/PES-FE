@@ -1,16 +1,16 @@
-// MUI 템플릿 - manageUser페이지
-import * as React from "react";
+// 관리자 페이지 MUI 템플릿
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
 // import getDashboardTheme from './theme/getDashboardTheme';
 import SideMenu from "./SideMenu";
+import { TemplateFrameProps } from "model/userType";
 
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
@@ -27,9 +27,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
   flex: "0 0 auto",
 }));
-interface TemplateFrameProps {
-  children: React.ReactNode;
-}
+
 
 export default function TemplateFrame({ children }: TemplateFrameProps) {
   const navigate = useNavigate();

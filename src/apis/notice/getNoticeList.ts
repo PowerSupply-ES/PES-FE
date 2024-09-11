@@ -1,9 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { NoticeListType } from "model/noticeType";
-
-// NoticeList 상태관리 HOOK setNoticeList 타입
-type SetNoticeList = React.Dispatch<React.SetStateAction<NoticeListType[]>>;
+import { SetNoticeList } from "model/noticeType";
 
 // 공지사항 리스트 get API 요청
 const getNoticeList = async (setNoticeList: SetNoticeList): Promise<void> => {

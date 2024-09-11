@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 import getList from "apis/list/getList";
 import { Problem } from "model/problemType"; 
-
-// HOOK 반환 타입 정의
-interface UseListHookReturn {
-  list: Problem[];
-  selectedOption: string;
-  juniorButtonVariant: string;
-  seniorButtonVariant: string;
-  handleOption: (option: 'junior' | 'senior') => void;
-}
+import { UseListHookReturn } from "model/userType";
 
 // 문제 list 호출 HOOK
 const useListHook = (): UseListHookReturn => {

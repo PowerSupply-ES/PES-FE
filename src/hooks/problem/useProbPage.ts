@@ -1,14 +1,6 @@
 import {useProbContent, useProbTitle, useSubmitCode} from "./index";
-import { ProblemTitle, ProblemContent } from "model/problemType"
-
-interface UseProbPageReturnType {
-  title: ProblemTitle | null;
-  problem: ProblemContent | null;
-  detail: string | null;
-  isLogin: string | null;
-  textHandler: (text: string) => void;
-  submitCode: () => void;
-}
+import { UseProbPageReturnType } from "model/problemType";
+// 문제 관련 HOOK 반환타입
 
 // 문제 관련 HOOK 관리 - ProblemPage에 사용
 const useProbPage = (problemId: number): UseProbPageReturnType => {

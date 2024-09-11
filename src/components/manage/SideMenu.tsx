@@ -1,4 +1,4 @@
-// SideMenu 컴포넌트
+// 관리자 SideMenu MUI 컴포넌트
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";

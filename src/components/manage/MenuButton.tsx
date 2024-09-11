@@ -1,4 +1,4 @@
-import * as React from 'react';
+// 관리자 버튼 클릭 MUI 컴포넌트
 import Badge, { badgeClasses } from '@mui/material/Badge';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 

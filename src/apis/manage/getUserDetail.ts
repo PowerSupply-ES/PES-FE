@@ -1,8 +1,6 @@
 import axios from "axios";
-import { MemberDetail } from "model/userType"; 
+import { MemberDetail, SetMemDetail } from "model/userType";
 
-// 회원 데이터 상태관리 HOOK setMemDate 타입
-type SetMemDetail = React.Dispatch<React.SetStateAction<MemberDetail | null>>;
 
 const getUserDetail = async (setMemberData: SetMemDetail): Promise<void> => {
   let url = new URL(window.location.href);

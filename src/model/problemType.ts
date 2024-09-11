@@ -1,5 +1,4 @@
 // 문제 관련 타입 정의
-import { NavigateFunction } from "react-router-dom";
 
 // state를 받아들이는 스타일 컴포넌트
 export interface StyledProps {
@@ -15,11 +14,8 @@ export type Problem = {
   answerState: string;
   finalScore?: number;
 };
-// MyProb props 데이터 타입
-export interface MyProbProps {
-  myProb: Problem[];
-  navigate: NavigateFunction;
-}
+
+
 // solution prob 타입
 export type SoluProb = Pick<
   Problem,
@@ -38,6 +34,13 @@ export type ProblemTitle = Pick<
   "problemId" | "problemTitle" | "problemScore"
 >;
 
+// ProbHeader Props 타입
+export type ProbHeaderProps = {
+  state: string;
+  navigate: (path: string) => void;
+  problemId: number;
+}
+
 // ProblemContent 타입
 export type ProblemContent = {
   problemId: number;
@@ -49,10 +52,26 @@ export type ProblemContent = {
 };
 
 // ProblemItem 컴포넌트 props 타입
-export interface ProblemItemProps {
+export type ProblemItemProps = {
   pid: number;
   ptitle: string;
   grade: number;
   answerId: number | null;
   state: string;
+}
+
+
+export type CodeEditorProps = {
+  code: string;  // 코드 내용
+  onChange: (text: string) => void;  // 코드 변경 핸들러
+  readOnly?: boolean;  // 읽기 전용 여부
+}
+
+export type UseProbPageReturnType = {
+  title: ProblemTitle | null;
+  problem: ProblemContent | null;
+  detail: string | null;
+  isLogin: string | null;
+  textHandler: (text: string) => void;
+  submitCode: () => void;
 }

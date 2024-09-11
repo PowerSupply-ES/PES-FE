@@ -1,8 +1,7 @@
 import axios from "axios";
 import { Problem } from "model/problemType"; 
+import { SetMyProblem } from "model/userType";
 
-// myProb 상태관리 HOOK setMyProb 타입
-type SetMyProblem = React.Dispatch<React.SetStateAction<Problem[]>>;
 
 // 내가 푼 문제 GET요청
 const getMyProb = async (setMyProb: SetMyProblem): Promise<void> => {

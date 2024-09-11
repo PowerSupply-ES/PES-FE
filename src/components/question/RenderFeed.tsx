@@ -1,23 +1,10 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { renderNewlines } from "components/common/Common";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
-import { CommentListType } from "model/questionType"; 
-
-// RenderFeed props 타입
-interface RenderFeedProps {
-  navigate: (path: string) => void;
-  state: string;
-  textFst: string;
-  handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  memberStatus: string | null;
-  feedbacks: CommentListType[]
-  passCount: number;
-  postFeedback: (comment: string, selected: number) => void;
-}
-
+import { RenderFeedProps } from "model/questionType"; 
 
 // feedback 렌더링 컴포넌트
-const RenderFeed: React.FC<RenderFeedProps> = ({
+const RenderFeed: React.FC<RenderFeedProps> = ({  // RenderFeed props 타입
   navigate,
   state,
   textFst,

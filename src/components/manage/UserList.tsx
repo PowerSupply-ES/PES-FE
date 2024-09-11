@@ -1,12 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
-import { Member } from "model/userType"; 
+import { UserListProps } from "model/userType"; 
 
-// UserList 컴포넌트의 props 타입 정의
-interface UserListProps {
-  memberData: Member[];
-}
 
 // 회원목록 컴포넌트
 const UserList: React.FC<UserListProps> = ({ memberData }) => {

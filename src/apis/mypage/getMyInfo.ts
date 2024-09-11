@@ -1,8 +1,5 @@
 import axios from "axios";
-import { MemberDetail } from "model/userType"; 
-
-// memberData 상태관리 HOOK setMemberData 타입
-type SetMyDetail = React.Dispatch<React.SetStateAction<MemberDetail | undefined>>;
+import { MemberDetail, SetMyDetail } from "model/userType"; 
 
 // 내 정보 GET 요청
 const getMyInfo = async (setMemberData: SetMyDetail): Promise<void> => {

@@ -1,9 +1,5 @@
 import axios from "axios";
-import React from "react";
-import { MyFeedback } from "model/userType"; 
-
-// myFeedback 상태관리 HOOK setMyFeedback 타입
-type SetMyFeed = React.Dispatch<React.SetStateAction<MyFeedback[]>>;
+import { MyFeedback, SetMyFeed } from "model/userType"; 
 
 // 내 feedback GET요청
 const getMyFeed = async (setMyFeedback: SetMyFeed): Promise<void> => {

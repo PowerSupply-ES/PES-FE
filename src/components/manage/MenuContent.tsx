@@ -1,5 +1,5 @@
-// SideMenu 요소
-import * as React from 'react';
+// 관리자 SideMenu 탭 MUI 컴포넌트
+import { useNavigate } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -13,7 +13,6 @@ import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
-import { useNavigate } from 'react-router-dom';
 
 
 // 탭 메뉴 목록

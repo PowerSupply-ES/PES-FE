@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import useProbPage from "hooks/problem/useProbPage";
 import { renderNewlines } from "components/common/Common";
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
+import { ProbHeaderProps } from "model/problemType";
 
-// ProbHeader Props 타입
-interface ProbHeaderProps {
-  state: string;
-  navigate: (path: string) => void;
-  problemId: number;
-}
+
 
 // 문제 헤더 컴포넌트
 const ProbHeader: React.FC<ProbHeaderProps> = ({ state, navigate, problemId }) => {

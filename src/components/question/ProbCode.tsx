@@ -1,17 +1,7 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import CodeEditor from "components/problem/CodeEditor";
 import { renderNewlines } from "components/common/Common";
-import { QuesAnswerType } from "model/questionType";
-
-// ProbCode Props 타입 정의
-interface ProbCodeProps {
-  FstHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  SecHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  code: string;
-  qnA: QuesAnswerType;
-  setCode: (code: string) => void;
-  problemId: number;
-}
+import { ProbCodeProps } from "model/questionType";
 
 // 작성했던 코드 출력 컴포넌트
 const ProbCode: React.FC<ProbCodeProps> = ({

@@ -1,11 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SolutionList } from "model/userType";
+import { SolvingListProps } from "model/userType";
 
-// SolvingList props 타입
-interface SolvingListProps {
-  solveData: SolutionList[];
-}
 
 // 풀이list 컴포넌트
 const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {

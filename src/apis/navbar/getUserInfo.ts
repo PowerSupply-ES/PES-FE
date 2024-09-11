@@ -1,12 +1,6 @@
 import axios from "axios";
-import { NavigateFunction } from "react-router-dom";
-import { UserInfo } from "model/userType";
+import { UserInfo, GetUserInfoProps } from "model/userType";
 
-// getUserInfo props 타입
-export interface GetUserInfoProps{
-  navigate: NavigateFunction;
-  setMemberData: (data: UserInfo) => void;
-}
 
 // 상단바 user 정보 API 요청
 const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {

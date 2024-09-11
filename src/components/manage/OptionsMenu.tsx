@@ -1,4 +1,4 @@
-// SideMenu 하단 옵션
+// 관리자 SideMenu 하단 옵션 컴포넌트
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';

@@ -47,3 +47,25 @@ export interface RenderAnswerUIProps {
   handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   postAnswer: (textFst: string, textSec: string) => void;
 }
+
+// RenderFeed props 타입
+export interface RenderFeedProps {
+  navigate: (path: string) => void;
+  state: string;
+  textFst: string;
+  handleTextFstChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  memberStatus: string | null;
+  feedbacks: CommentListType[];
+  passCount: number;
+  postFeedback: (comment: string, selected: number) => void;
+}
+
+// ProbCode Props 타입 정의
+export type ProbCodeProps = {
+  FstHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  SecHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  code: string;
+  qnA: QuesAnswerType;
+  setCode: (code: string) => void;
+  problemId: number;
+}
