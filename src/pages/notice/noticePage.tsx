@@ -7,7 +7,7 @@ import getNoticeList from "apis/notice/getNoticeList";
 import NoticeList from "components/notice/NoticeList";
 import { NoticeListType } from "model/noticeType"; 
 
-const Notice: React.FC = () => {
+const NoticePage: React.FC = () => {
   const navigate = useNavigate();
   const memberStatus = sessionStorage.getItem("memberStatus");
 
@@ -50,4 +50,4 @@ const Notice: React.FC = () => {
     </div>
   );
 };
-export default Notice;
+export default NoticePage;

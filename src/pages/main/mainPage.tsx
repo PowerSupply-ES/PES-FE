@@ -3,7 +3,7 @@ import {MovingImage, ScrollImage} from "components/main";
 import "styles/css/App.css";
 import "styles/css/mainAnimation.css";
 
-const Main: React.FC = () => {
+const MainPage: React.FC = () => {
   return (
     <div className="mainPage">
       <div className="content">
@@ -17,4 +17,4 @@ const Main: React.FC = () => {
   );
 }
 
-export default Main;
+export default MainPage;
