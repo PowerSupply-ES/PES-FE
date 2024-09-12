@@ -1,7 +1,6 @@
 import axios from "axios";
 import { SetUserDetail, UserDetail } from "model/userType";
 
-
 const getUserDetail = async (setMemberData: SetUserDetail): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];

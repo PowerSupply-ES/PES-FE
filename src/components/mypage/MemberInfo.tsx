@@ -2,7 +2,6 @@ import React from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { MemberInfoProps } from "model/userType";
 
-
 // 사용자 정보 컴포넌트
 const MemberInfo: React.FC<MemberInfoProps> = ({
   memberName,

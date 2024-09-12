@@ -1,5 +1,4 @@
 // 회원상세페이지
-// TODO : 관리자모드에서 수정할 예정
 import React from "react";
 import "styles/css/manage.css";
 import "styles/css/mypage.css";
@@ -8,6 +7,8 @@ import MemberInfo from "components/mypage/MemberInfo";
 import MemberProb from "components/mypage/MemberProb";
 import { useNavigate } from "react-router-dom";
 import MemberFeed from "components/mypage/MemberFeed";
+import deleteMem from "apis/manage/deleteMem";
+import fetchMem from "apis/manage/fetchMem/fetchMem";
 
 
 const UserDetail: React.FC = () => {
@@ -29,7 +30,7 @@ const UserDetail: React.FC = () => {
           ) : (
             <div className="mypage_content">
 
-              {/* 유저 정보 컴포넌트 */}
+              {/* 좌측 컴포넌트 - 유저 정보 */}
               <div className="userinfo_container">
                 <MemberInfo
                   memberName={userData.memberName}
@@ -41,15 +42,14 @@ const UserDetail: React.FC = () => {
                   memberPhone={userData.memberPhone}
                 />
                 <div className="manage_btn_container">
-                  <button className="btn_editmem">회원 수정</button>
-                  <button className="btn_deletemem">회원 삭제</button>
+                  {/* TODO : 추후 필요시 추가 */}
+                  {/* <button className="btn_editmem">회원 수정</button> */}
+                  <button className="btn_deletemem" onClick={() => deleteMem(navigate)}>회원 삭제</button>
                 </div>
               </div>
 
-
               {/* 우측 컴포넌트 */}
               <div className="right">
-
                 {/* 내가 푼 문제 */}
                 <MemberProb myProb={userData.mySolveResponse} navigate={navigate}/>
 
