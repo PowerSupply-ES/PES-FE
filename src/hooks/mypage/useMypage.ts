@@ -5,7 +5,6 @@ import { MyFeedback, MemberDetail, UseMypageReturnType } from "model/userType";
 import { Problem } from "model/problemType";
 
 
-
 const useMypage = ():UseMypageReturnType => {
   const navigate = useNavigate();
 

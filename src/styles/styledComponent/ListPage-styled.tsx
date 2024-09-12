@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 // List페이지 스타일
 export const StyledListPage = styled.div`
+  
+  .list_wrapper {
+    display: flex;
+    
+  }
   .list_container {
     margin-right: 5%;
     width: 60%;

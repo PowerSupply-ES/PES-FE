@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import getUserDetail from "apis/manage/getUserDetail";
-import { MemberDetail } from "model/userType"; 
+import { UserDetail } from "model/userType"; 
 
 const useUserDetail = () => {
-  const [memberData, setMemberData] = useState<MemberDetail | null>(null);
+  const [userData, setUserData] = useState<UserDetail | null>(null);
 
   useEffect(() => {
-    getUserDetail(setMemberData);
+    getUserDetail(setUserData);
   }, []);
 
   // TODO : 회원수정, 회원삭제 로직 추가하기
 
-  return { memberData };
+  return { userData };
 };
 export default useUserDetail;

@@ -39,6 +39,16 @@ export type UserInfo = {
   memberScore: number;
   hasNewNotices: boolean;
 };
+// 사용자 정보 props 타입
+export type MemberInfoProps = {
+  memberName: string;
+  memberId: string;
+  memberEmail: string;
+  memberGen: number;
+  memberStatus: string;
+  memberMajor: string;
+  memberPhone: string;
+}
 // memberData 상태관리 HOOK setMemDate 타입
 export type SetMemDetail = React.Dispatch<React.SetStateAction<MemberDetail | null>>;
 
@@ -90,6 +100,8 @@ export type UseMypageReturnType = {
 export type TemplateFrameProps = {
   children: React.ReactNode;
 }
+
+// 마이페이지 - 사용자 정보
 export type Member = {
   memberId: string;
   memberName: string;
@@ -100,8 +112,15 @@ export interface MemberDetail extends Member {
   memberEmail: string;
   memberGen: number;
   memberPhone: string;
-  // TODO : mySolveResponse, myFeedbackResponse 추가
 }
+
+// 관리자 - 사용자 상세정보
+export interface UserDetail extends MemberDetail {
+  mySolveResponse: Problem[]; 
+  myFeedbackResponse: MyFeedback[];
+}
+// UserData 상태관리 HOOK setUserDate 타입
+export type SetUserDetail = React.Dispatch<React.SetStateAction<UserDetail | null>>;
 
 // HOOK 반환 타입 정의
 export interface UseListHookReturn {

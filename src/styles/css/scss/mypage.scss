@@ -38,49 +38,65 @@
   justify-content: center;
   margin: 0 auto;
 
-  .left {
-    margin: 48px 60px 0 0;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    align-items: center;
+  .userinfo_container{
+    // 좌측 사용자 컴포넌트 
+    .left {
+      margin: 48px 60px 0 0;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      align-items: center;
 
-    button {
-      height: 32px;
-      width: 160px;
-      border: solid 1px;
-      border-radius: 10px;
-      color: white;
-      font-size: 14px;
-      font-weight: 600;
-      // margin-left: 8px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-
-    .btn_deletemem {
-      background-color: #ff2d2d;
-      opacity: 80%;
-      border-color: #ff2d2d;
-      margin-left: 8px;
-
-      &:hover {
-        background-color: #ff2d2d;
-        opacity: 95%;
+      .memberInfo{
+        height: fit-content;
       }
     }
-    .btn_editmem {
-      background-color: #35383dca;
-      opacity: 80%;
-      border-color: #35383dca;
-      margin-left: 8px;
 
-      &:hover {
+    .manage_btn_container{
+      display: flex;
+      width: 90%;
+      justify-content: center;
+
+      button {
+        height: 36px;
+        width: 160px;
+        border: solid 1px;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        // margin-left: 8px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+      
+      .btn_deletemem {
+        background-color: #ff2d2d;
+        opacity: 80%;
+        border-color: #ff2d2d;
+        margin-left: 8px;
+  
+        &:hover {
+          background-color: #ff2d2d;
+          opacity: 95%;
+        }
+      }
+      .btn_editmem {
         background-color: #35383dca;
-        opacity: 95%;
+        opacity: 80%;
+        border-color: #35383dca;
+        margin-left: 8px;
+  
+        &:hover {
+          background-color: #35383dca;
+          opacity: 95%;
+        }
       }
     }
   }
+  
+
+  // 우측 문제 & 피드백 컴포넌트 
   .right {
     display: flex;
     flex-direction: column;

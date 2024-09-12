@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
-import { UserListProps } from "model/userType"; 
-
+import { UserListProps } from "model/userType";
 
 // 회원목록 컴포넌트
 const UserList: React.FC<UserListProps> = ({ memberData }) => {

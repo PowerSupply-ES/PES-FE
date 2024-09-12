@@ -1,18 +1,26 @@
 import axios from "axios";
-import { MemberDetail, SetMemDetail } from "model/userType";
+import { SetUserDetail, UserDetail } from "model/userType";
 
 
-const getUserDetail = async (setMemberData: SetMemDetail): Promise<void> => {
+const getUserDetail = async (setMemberData: SetUserDetail): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];
 
   const uri = `/api/admin/member/${memberId}`;
 
   try {
-    const res = await axios.get<MemberDetail>(uri);
+    const res = await axios.get<UserDetail>(uri);
     const memDetail = res.data;
-    setMemberData(memDetail);
-  } catch (error) {
+    
+    // `mySolveResponse`와 `myFeedbackResponse`가 없을 경우 기본값 설정
+    const userDetail: UserDetail = {
+      ...memDetail,
+      mySolveResponse: memDetail.mySolveResponse || [],  // 기본값으로 빈 배열
+      myFeedbackResponse: memDetail.myFeedbackResponse || []  // 기본값으로 빈 배열
+    };
+
+    setMemberData(userDetail);
+  } catch (error: unknown) {
     console.error(error);
   }
   // TODO : 예외처리하기

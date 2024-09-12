@@ -3,11 +3,16 @@
 import React from "react";
 import "styles/css/manage.css";
 import "styles/css/mypage.css";
-import { FaCircleUser } from "react-icons/fa6";
 import useUserDetail from "hooks/manage/useUserDetail";
+import MemberInfo from "components/mypage/MemberInfo";
+import MemberProb from "components/mypage/MemberProb";
+import { useNavigate } from "react-router-dom";
+import MemberFeed from "components/mypage/MemberFeed";
+
 
 const UserDetail: React.FC = () => {
-  const { memberData } = useUserDetail();
+  const { userData } = useUserDetail();
+  const navigate = useNavigate;
 
   return (
     // TODO: 템플릿 적용 
@@ -15,53 +20,26 @@ const UserDetail: React.FC = () => {
       {/* 본문 */}
       <div className="manageuser_container">
 
-
         {/* 유저 정보 */}
         <div className="userlist_wrapper">
           {/* <div className="list_container"> */}
 
-          {!memberData ? (
+          {!userData ? (
             <div>Loading...</div>
           ) : (
             <div className="mypage_content">
 
-              {/* 좌측 컴포넌트 */}
-              <div className="left">
-                {/* 사용자 정보 */}
-                <div className="memberInfo">
-                  <div className="info_name">
-                    <FaCircleUser
-                      size={40}
-                      style={{ color: "grey" }}
-                    ></FaCircleUser>
-                    <p>{memberData.memberName}</p>
-                    {/* <p>님</p> */}
-                  </div>
-                  <div className="text">
-                    <div>학 번</div>
-                    <p>{memberData.memberId}</p>
-                  </div>
-                  <div className="text">
-                    <div>이메일</div>
-                    <p>{memberData.memberEmail}</p>
-                  </div>
-                  <div className="text">
-                    <div>기 수</div>
-                    <p>{memberData.memberGen}</p>
-                  </div>
-                  <div className="text">
-                    <div>상 태</div>
-                    <p>{memberData.memberStatus}</p>
-                  </div>
-                  <div className="text">
-                    <div>학 과</div>
-                    <p>{memberData.memberMajor}</p>
-                  </div>
-                  <div className="text">
-                    <div>전화 번호</div>
-                    <p>{memberData.memberPhone}</p>
-                  </div>
-                </div>
+              {/* 유저 정보 컴포넌트 */}
+              <div className="userinfo_container">
+                <MemberInfo
+                  memberName={userData.memberName}
+                  memberId={userData.memberId}
+                  memberEmail={userData.memberEmail}
+                  memberGen={userData.memberGen}
+                  memberStatus={userData.memberStatus}
+                  memberMajor={userData.memberMajor}
+                  memberPhone={userData.memberPhone}
+                />
                 <div className="manage_btn_container">
                   <button className="btn_editmem">회원 수정</button>
                   <button className="btn_deletemem">회원 삭제</button>
@@ -71,36 +49,15 @@ const UserDetail: React.FC = () => {
 
               {/* 우측 컴포넌트 */}
               <div className="right">
-                {/* 내가 푼 문제 */}
-                <div className="top">
-                  <div className="prob_top">
-                    <div className="mypage_btn">푼 문제</div>
-                    <div className="probNum">몇 개</div>
-                  </div>
 
-                  {/* TODO : mySolveResponse 연결*/}
-                  <div className="myProblem">
-                    {/* <MyProblem myProb={myProb}></MyProblem> */}
-                  </div>
-                </div>
+                {/* 내가 푼 문제 */}
+                <MemberProb myProb={userData.mySolveResponse} navigate={navigate}/>
 
                 {/* 내 피드백 */}
-                {/* TODO : myFeedbackResponse 연결*/}
-                {/* TODO : 신입생,재학생에 따라 feedback 띄워주기 */}
-                <div className="bottom">
-                  <div className="feed_top">
-                    <div className="mypage_btn">feedback</div>
-                    <div className="feedNum">몇 개</div>
-                  </div>
-
-                  <div className="myFeedback">
-                    {/* <MyFeed myFeedback={myFeedback}></MyFeed> */}
-                  </div>
-                </div>
+                <MemberFeed myFeedback={userData.myFeedbackResponse} navigate={navigate}/>
               </div>
             </div>
           )}
-          {/* </div> */}
         </div>
       </div>
     </div>

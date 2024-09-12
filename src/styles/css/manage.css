@@ -124,4 +124,6 @@
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
   flex: 3;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
