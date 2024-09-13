@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import getList from "apis/list/getList";
 import { Problem } from "model/problemType"; 
 import { UseListHookReturn } from "model/userType";
+import { useLocation } from "react-router-dom";
 
 // 문제 list 호출 HOOK
 const useListHook = (): UseListHookReturn => {
@@ -12,9 +13,11 @@ const useListHook = (): UseListHookReturn => {
   const [juniorButtonVariant, setJuniorButtonVariant] = useState<'solid' | 'soft'>("solid");
   const [seniorButtonVariant, setSeniorButtonVariant] = useState<'solid' | 'soft'>("soft");
 
+  const location = useLocation();
+
   useEffect(() => {
-    getList(setList);
-  }, [memberStatus]);
+    getList(setList, location);
+  }, [memberStatus, location]);
 
   // junior, senior 선택에 따른 버튼상태 변화
   const handleOption = (option: 'junior' | 'senior') => {

@@ -123,13 +123,18 @@ export interface UserDetail extends MemberDetail {
 export type SetUserDetail = React.Dispatch<React.SetStateAction<UserDetail | null>>;
 
 // HOOK 반환 타입 정의
-export interface UseListHookReturn {
+export type UseListHookReturn = {
   list: Problem[];
   selectedOption: string;
   juniorButtonVariant: string;
   seniorButtonVariant: string;
   handleOption: (option: 'junior' | 'senior') => void;
 }
+// 관리자 - 문제 list HOOK 반환 타입 정의
+export type ProbListHookReturn ={
+  list: Problem[];
+}
+
 // 랭킹 리스트 타입
 export type MemberRankList = {
   memberName: string;
