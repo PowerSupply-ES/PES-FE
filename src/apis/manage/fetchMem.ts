@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { NavigateFunction } from 'react-router-dom';
 
+// 회원 등업 update API
 const fetchMem = async(navigate: NavigateFunction): Promise<void> => {
     let url = new URL(window.location.href);
     let memberId = url.pathname.split("/")[2];
   
     const uri = `/api/admin/member/${memberId}`;
   
-    const confirmDelete = window.confirm("해당 회원 정보를 수정하시겠습니까?");
+    // TODO : 관리자 vs 재학생 중 선택하기
+    const confirmDelete = window.confirm('해당 회원을 "재학생"으로 등업하시겠습니까?');
   
     // 수정 취소 시
     if (!confirmDelete) {
@@ -15,12 +17,15 @@ const fetchMem = async(navigate: NavigateFunction): Promise<void> => {
     }
   
     try {
-      const res = await axios.put(uri)
+      // TODO : body에 memberStatus보내기
+      const res = await axios.put(uri, {
+        memberStatus: "재학생"
+      })
   
       // 성공 시
       if (res.status === 200) {
-        alert("회원이 성공적으로 수정되었습니다.");
-        navigate("/manageUser"); // 삭제 후 목록 페이지로 이동
+        alert("회원이 성공적으로 등업되었습니다.");
+        navigate("/manageUser");
       }
     } catch (error: unknown) {
       // axios에러 && response있는 경우
@@ -37,7 +42,7 @@ const fetchMem = async(navigate: NavigateFunction): Promise<void> => {
         }
         // 그 외 서버 오류
         else {
-          alert("회원 수정에 실패했습니다. 다시 시도해 주세요.");
+          alert("회원 등업에 실패했습니다. 다시 시도해 주세요.");
         }
       } else {
         // 서버 응답이 없거나 다른 문제가 발생한 경우

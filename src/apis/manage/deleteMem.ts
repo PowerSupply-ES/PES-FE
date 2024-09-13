@@ -1,6 +1,7 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 
+// 회원 delete API
 const deleteMem = async (navigate: NavigateFunction): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { SetUserDetail, UserDetail } from "model/userType";
 
+// 회원 상세 정보 get API
 const getUserDetail = async (setMemberData: SetUserDetail): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];

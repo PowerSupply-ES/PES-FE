@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
 import { UserListProps } from "model/userType";
+import fetchMem from "apis/manage/fetchMem";
 
 // 회원목록 컴포넌트
 const UserList: React.FC<UserListProps> = ({ memberData }) => {
@@ -35,7 +36,6 @@ const UserList: React.FC<UserListProps> = ({ memberData }) => {
           <li className="title_stunum">{mem.memberId}</li>
           <li className="title_studep">{mem.memberMajor}</li>
           <li className="title_none">
-            <button className="levelup_btn">등업</button>
             <button
               className="info_btn"
               onClick={() => gotoDetail(mem.memberId)}
