@@ -1,17 +1,13 @@
 import React from "react";
-import useMypage from "hooks/mypage/useMypage";
 import MemberInfo from "./MemberInfo";
+import { MemberDetail } from "model/userType";
 
 // MyInfo 타입 정의
-interface MyInfoProps {}
+interface MyInfoProps {
+  memberData: MemberDetail;
+}
 
-const MyInfo: React.FC<MyInfoProps> = () => {
-  const { memberData } = useMypage();
-
-  if (!memberData) {
-    return <div>Loading...</div>;
-  }
-
+const MyInfo: React.FC<MyInfoProps> = ({ memberData }) => {
   return (
     <MemberInfo
       memberName={memberData.memberName}

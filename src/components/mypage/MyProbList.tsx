@@ -1,15 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useMypage from "hooks/mypage/useMypage";
 import MemberProb from "./MemberProb";
+import { Problem } from "model/problemType";
 
 // MyProbList 타입 정의
-interface MyProbListProps {};
+interface MyProbListProps {
+  myProb: Problem[]
+};
 
 // 내가 푼 문제 목록
-const MyProbList: React.FC<MyProbListProps> = () => {
+const MyProbList: React.FC<MyProbListProps> = ({ myProb }) => {
   const navigate = useNavigate();
-  const { myProb } = useMypage();
 
   return (
     <MemberProb myProb={myProb} navigate={navigate}/>
