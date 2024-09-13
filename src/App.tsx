@@ -18,6 +18,7 @@ import UserDetailPage from "pages/manage/userDetailPage";
 import Header from "components/header/Header";
 import React from "react";
 import ManageMenu from "components/manage/ManageMenu";
+import AdminRoute from "components/common/AdminRoute";
 
 const App: React.FC = () => {
   return (
@@ -41,11 +42,11 @@ const App: React.FC = () => {
           <Route path="/manageUser/:id" element={<UserDetailPage />} />
         </Route>
 
-        {/* 관리자 메뉴 */}
+        {/* 관리자 메뉴 - AdminRoute로 보호*/}
         <Route path="/" element={<ManageMenu />}>
-          <Route path="/manageUser" element={<UserListPage />} />
-          <Route path="/manageProb" element={<UserProbPage />} />
-          <Route path="/manageFeed" element={<UserFeedPage />} />
+          <Route path="/manageUser" element={<AdminRoute><UserListPage /></AdminRoute>} />
+          <Route path="/manageProb" element={<AdminRoute><UserProbPage /></AdminRoute>} />
+          <Route path="/manageFeed" element={<AdminRoute><UserFeedPage /></AdminRoute>} />
         </Route>
       </Routes>
     </div>
