@@ -12,6 +12,8 @@ import NoticePage from "pages/notice/noticePage";
 import NoticePost from "pages/notice/noticePostPage";
 import NoticeDetail from "pages/notice/noticeDetailPage";
 import UserListPage from "pages/manage/userListPage";
+import UserProbPage from "pages/manage/userProbPage";
+import UserFeedPage from "pages/manage/userFeedPage";
 import UserDetailPage from "pages/manage/userDetailPage";
 import Header from "components/header/Header";
 import React from "react";
@@ -42,6 +44,8 @@ const App: React.FC = () => {
         {/* 관리자 메뉴 */}
         <Route path="/" element={<ManageMenu />}>
           <Route path="/manageUser" element={<UserListPage />} />
+          <Route path="/manageProb" element={<UserProbPage />} />
+          <Route path="/manageFeed" element={<UserFeedPage />} />
         </Route>
       </Routes>
     </div>
