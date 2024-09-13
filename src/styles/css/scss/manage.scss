@@ -103,10 +103,10 @@
           .title_state_new,
           .title_state_old,
           .title_state_manage {
-            flex: 1;
+            flex: 1.5;
           }
           .title_name {
-            flex: 1;
+            flex: 2;
           }
           .title_stunum {
             flex: 2;
@@ -115,7 +115,7 @@
             flex: 2;
           }
           .title_none {
-            flex: 3;
+            flex: 2;
             min-width: fit-content;
           }
         }

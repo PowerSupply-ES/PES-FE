@@ -15,11 +15,13 @@ import UserListPage from "pages/manage/userListPage";
 import UserDetailPage from "pages/manage/userDetailPage";
 import Header from "components/header/Header";
 import React from "react";
+import ManageMenu from "components/manage/ManageMenu";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <Routes>
+        {/* Topbar */}
         <Route path="/" element={<Header />}>
           <Route path="" element={<MainPage />} />
           <Route path="/signin" element={<Signin />} />
@@ -36,8 +38,11 @@ const App: React.FC = () => {
           <Route path="/notice/:id" element={<NoticeDetail />} />
           <Route path="/manageUser/:id" element={<UserDetailPage />} />
         </Route>
-        <Route path="/manageUser" element={<UserListPage />} />
 
+        {/* 관리자 메뉴 */}
+        <Route path="/" element={<ManageMenu />}>
+          <Route path="/manageUser" element={<UserListPage />} />
+        </Route>
       </Routes>
     </div>
   );

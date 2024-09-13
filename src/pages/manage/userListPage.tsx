@@ -2,18 +2,14 @@ import "styles/css/manage.css";
 import { UserList } from "components/manage";
 import useUserList from "hooks/manage/useUserList";
 import React from "react";
-import TemplateFrame from "components/manage/TemplateFrame";
 
 const UserListPage: React.FC = () => {
   // 사용자 리스트 get HOOK
   const memberData = useUserList();
 
   return (
-    <div className="content_container">
-      {/* MUI 템플릿 적용 */}
-      <TemplateFrame>
-        {/* <TemplateFrame><div></div></TemplateFrame> */}
-
+    <>
+      <div className="content_container">
         {/* 본문 */}
         <div className="manageuser_container">
 
@@ -35,8 +31,8 @@ const UserListPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </TemplateFrame>
-    </div>
+      </div>
+    </>
   );
 };
 

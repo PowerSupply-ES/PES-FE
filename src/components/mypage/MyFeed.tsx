@@ -11,7 +11,7 @@ const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {
   return (
     <div className="FeedList">
       {myFeedback.length === 0 ? (
-        <div className="noFeed">아직 받은 피드백이 없어요!</div>
+        <div className="noFeed">아직 남긴 피드백이 없어요!</div>
       ) : (
         myFeedback.map((it) => (
           <div className="feeds" key={it.answerId}>

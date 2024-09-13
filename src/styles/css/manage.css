@@ -98,11 +98,11 @@
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
-  flex: 1;
+  flex: 1.5;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
-  flex: 1;
+  flex: 2;
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_stunum,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum {
@@ -114,7 +114,7 @@
 }
 .content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none,
 .content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
-  flex: 3;
+  flex: 2;
   min-width: -moz-fit-content;
   min-width: fit-content;
 }

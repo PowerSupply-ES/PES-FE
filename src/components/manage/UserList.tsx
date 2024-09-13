@@ -2,8 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
 import { UserListProps } from "model/userType";
-import fetchMem from "apis/manage/fetchMem";
-
 // 회원목록 컴포넌트
 const UserList: React.FC<UserListProps> = ({ memberData }) => {
   const navigate = useNavigate();
