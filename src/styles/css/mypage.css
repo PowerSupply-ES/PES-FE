@@ -47,9 +47,24 @@
   align-items: baseline;
   align-items: center;
 }
-.mypage_content .left .memberInfo {
-  height: -moz-fit-content;
-  height: fit-content;
+.mypage_content .left button {
+  height: 36px;
+  width: 160px;
+  border: solid 1px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mypage_content .left .btn_goto_manage {
+  background-color: #323232;
+  opacity: 80%;
+  border-color: #000000;
+  margin-right: 60px;
+}
+.mypage_content .left .btn_goto_manage:hover {
+  background-color: #444444;
 }
 .mypage_content .manage_btn_container {
   display: flex;
