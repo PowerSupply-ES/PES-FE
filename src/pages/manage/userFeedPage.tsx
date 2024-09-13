@@ -1,6 +1,7 @@
 import React from 'react'
 
-const userFeedPage = () => {
+// 피드백관리 페이지
+const userFeedPage: React.FC = () => {
   return (
     <div>
       피드백 관리

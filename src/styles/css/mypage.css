@@ -38,7 +38,7 @@
   justify-content: center;
   margin: 0 auto;
 }
-.mypage_content .userinfo_container .left {
+.mypage_content .left {
   margin: 48px 60px 0 0;
   height: -moz-fit-content;
   height: fit-content;
@@ -47,16 +47,16 @@
   align-items: baseline;
   align-items: center;
 }
-.mypage_content .userinfo_container .left .memberInfo {
+.mypage_content .left .memberInfo {
   height: -moz-fit-content;
   height: fit-content;
 }
-.mypage_content .userinfo_container .manage_btn_container {
+.mypage_content .manage_btn_container {
   display: flex;
   width: 90%;
   justify-content: center;
 }
-.mypage_content .userinfo_container .manage_btn_container button {
+.mypage_content .manage_btn_container button {
   height: 36px;
   width: 160px;
   border: solid 1px;
@@ -66,32 +66,32 @@
   font-weight: 600;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.mypage_content .userinfo_container .manage_btn_container .levelup_btn {
+.mypage_content .manage_btn_container .levelup_btn {
   background-color: #ffd66b;
   opacity: 80%;
   border-color: #ffd66b;
 }
-.mypage_content .userinfo_container .manage_btn_container .levelup_btn:hover {
+.mypage_content .manage_btn_container .levelup_btn:hover {
   background-color: #ffd66b;
   opacity: 95%;
 }
-.mypage_content .userinfo_container .manage_btn_container .btn_deletemem {
+.mypage_content .manage_btn_container .btn_deletemem {
   background-color: #ff2d2d;
   opacity: 80%;
   border-color: #ff2d2d;
   margin-left: 8px;
 }
-.mypage_content .userinfo_container .manage_btn_container .btn_deletemem:hover {
+.mypage_content .manage_btn_container .btn_deletemem:hover {
   background-color: #ff2d2d;
   opacity: 95%;
 }
-.mypage_content .userinfo_container .manage_btn_container .btn_editmem {
+.mypage_content .manage_btn_container .btn_editmem {
   background-color: rgba(53, 56, 61, 0.7921568627);
   opacity: 80%;
   border-color: rgba(53, 56, 61, 0.7921568627);
   margin-left: 8px;
 }
-.mypage_content .userinfo_container .manage_btn_container .btn_editmem:hover {
+.mypage_content .manage_btn_container .btn_editmem:hover {
   background-color: rgba(53, 56, 61, 0.7921568627);
   opacity: 95%;
 }

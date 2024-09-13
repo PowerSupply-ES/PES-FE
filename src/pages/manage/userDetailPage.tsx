@@ -1,7 +1,6 @@
 // 회원상세페이지
 import React from "react";
 import "styles/css/manage.css";
-import "styles/css/mypage.css";
 import useUserDetail from "hooks/manage/useUserDetail";
 import MemberInfo from "components/mypage/MemberInfo";
 import MemberProb from "components/mypage/MemberProb";

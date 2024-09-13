@@ -1,6 +1,7 @@
 import React from 'react'
 
-const userProbPage = () => {
+// 문제관리 페이지
+const userProbPage: React.FC = () => {
   return (
     <div>
       문제관리
