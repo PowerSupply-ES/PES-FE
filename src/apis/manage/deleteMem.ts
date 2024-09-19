@@ -17,6 +17,7 @@ const deleteMem = async (navigate: NavigateFunction): Promise<void> => {
 
   try {
     const res = await axios.delete(uri);
+    console.log("res는용 = ", res);
 
     // 성공 시
     if (res.status === 200) {

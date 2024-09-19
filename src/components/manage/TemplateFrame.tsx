@@ -54,7 +54,6 @@ export default function TemplateFrame({ children }: TemplateFrameProps) {
               startIcon={<ArrowBackRoundedIcon />}
               component="a"
               onClick={() => navigate("/mypage")}
-              href="/material-ui/getting-started/templates/"
               sx={{ display: { xs: "none", sm: "flex" } }}
             >
               Back to MyPage
@@ -64,7 +63,6 @@ export default function TemplateFrame({ children }: TemplateFrameProps) {
               size="small"
               aria-label="Back to templates"
               component="a"
-              href="/material-ui/getting-started/templates/"
               sx={{ display: { xs: 'auto', sm: 'none' } }}
             >
               <ArrowBackRoundedIcon />

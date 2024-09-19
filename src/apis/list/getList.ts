@@ -3,6 +3,7 @@ import { Problem } from "model/problemType";
 import { Location } from "react-router-dom";
 
 // 문제 목록 불러오기 (get)
+// TODO: 관리자 문제불러오기 타입은 SoluProb로
 const getList = async (
   setList: React.Dispatch<React.SetStateAction<Problem[]>>,
   location: Location<any>

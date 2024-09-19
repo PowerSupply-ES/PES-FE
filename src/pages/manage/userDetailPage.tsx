@@ -12,7 +12,7 @@ import fetchMem from "apis/manage/fetchMem";
 
 const UserDetail: React.FC = () => {
   const { userData } = useUserDetail();
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   return (
     // TODO: 템플릿 적용 

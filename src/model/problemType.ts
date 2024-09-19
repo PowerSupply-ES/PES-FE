@@ -15,7 +15,6 @@ export type Problem = {
   finalScore?: number;
 };
 
-
 // solution prob 타입
 export type SoluProb = Pick<
   Problem,
