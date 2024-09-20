@@ -69,46 +69,46 @@ PES 웹 url : https://pes23.com/
 
 ### 🧑‍💻 사용 방법
 - HOME
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/782e70dc-144e-4dd8-a341-eab4ee48c507"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/782e70dc-144e-4dd8-a341-eab4ee48c507"/>
 </br></br>
 
 - 로그인 및 회원가입
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e8a630b9-d575-44b1-b9ae-e0a38ce82c0b"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e8a630b9-d575-44b1-b9ae-e0a38ce82c0b"/>
 </br></br>
 
 - 문제 리스트 페이지
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e3a96fce-423d-4368-8edb-56631c582d91"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e3a96fce-423d-4368-8edb-56631c582d91"/>
 
 상단에 카카오 에드핏 광고를 통해 수익 창출</br>
 문제 리스트와 랭킹 제공
 </br></br>
 
 - 문제 풀이 페이지
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/5eb64662-ddc3-455b-bc68-0685519fa555"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/5eb64662-ddc3-455b-bc68-0685519fa555"/>
 
 왼쪽의 문제와 sample input, sample output을 보고, 적절한 코드를 오른쪽의 코드 에디터에 입력</br>
 </br></br>
 
 - 질문 테스트
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/1d4004ba-b23b-49e1-b289-b5803dc5973f"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/1d4004ba-b23b-49e1-b289-b5803dc5973f"/>
 
 입력코드가 정답일때(test case에 맞고 컴파일러 오류가 나지 않을 시) 질문 테스트 페이지로 넘어감 </br>
 질문테스트에 답변을 하면, 문제풀이 과정이 끝나게 됨
 </br></br>
 
 - pass/fail 부여 (재학생 기능)
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/7d90a8c7-dc76-428c-9611-c23c1c3727e3"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/7d90a8c7-dc76-428c-9611-c23c1c3727e3"/>
   
 신입생의 풀이 밑부분에 comment와 pass/fail을 결정하는 UI가 있음</br>
 2명의 재학생이 신입생의 풀이에 comment를 완료할 시, 풀이 결과가 나오게 됨
 </br></br>
 
 - 문제 풀이 결과
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e1f1afa2-4547-4b60-924b-a33fc96bc584"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/e1f1afa2-4547-4b60-924b-a33fc96bc584"/>
 
 `결과가 pass일 때`
 
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/58c98f01-2593-468f-b4d8-b1db7e443705"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/58c98f01-2593-468f-b4d8-b1db7e443705"/>
 
 
 `결과가 fail일 때`
@@ -117,17 +117,17 @@ PES 웹 url : https://pes23.com/
 </br></br>
 
 - 다른 이용자들의 풀이보기
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/d0b62510-9007-43e3-8ebd-d32cd8af5d5c"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/d0b62510-9007-43e3-8ebd-d32cd8af5d5c"/>
   
 문제풀이를 완료한 신입생 혹은 관리자, 재학생은 다른 학생의 풀이와 결과를 열람할 수 있음
 </br></br>
 
 - 마이페이지(내가 푼 문제/내가 준 feedback)
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/4bdbff2b-0c34-473a-b4e7-5cf67850caa5"  width="260" height="220"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/4bdbff2b-0c34-473a-b4e7-5cf67850caa5"/>
 
 우측상단의 Navbar 버튼을 통해 이동가능</br>
 </br>
-<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/812979df-0c8e-4d47-b26a-d8883ca71abd"  width="840" height="400"/>
+<img src="https://github.com/PowerSupply-ES/.github/assets/107929413/812979df-0c8e-4d47-b26a-d8883ca71abd"/>
 
 본인의 정보와 푼 문제, 남긴 feedback정보 열람 가능</br>
 feedback이나 문제를 클릭하면 해당 페이지로 이동</br>
