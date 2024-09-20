@@ -84,5 +84,5 @@ module.exports = {
     compress: true,
     historyApiFallback: true,  // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
-  mode: "production",
+  mode: "development",
 };
