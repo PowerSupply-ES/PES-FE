@@ -46,4 +46,5 @@ jobs:
             --application-name code-deploy-front \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --deployment-group-name code-deploy-group \
-            --s3-location bucket=pes-front-deploy,key=build-app.zip,bundleType=zip
+            --s3-location bucket=pes-front-deploy,key=build-app.zip,bundleType=zip \
+            --ignore-application-stop-failures
