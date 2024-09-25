@@ -12,17 +12,17 @@ export const StyledListItem = styled.div<StyledProps>`
     border-radius: 8px;
 
     background-color: ${(props) =>
-      props.state === "locked"
+      props.state === null
         ? "#DEDEDE"
         : props.state === "comment"
         ? "rgba(243, 242, 242, 0.737)"
         : props.state === "question"
         ? "rgba(243, 242, 242, 0.737)"
         : "white"};
-    transition: background-color 0.3s; /* Add transition for smooth color change */
+    transition: background-color 0.3s; 
     &:hover {
       background-color: ${(props) =>
-        props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
+        props.state === null ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
     }
   }
 
@@ -41,7 +41,7 @@ export const StyledListItem = styled.div<StyledProps>`
   }
 
   .problem_title {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     font-size: 20px;
     text-align: left;
     font-weight: bold;

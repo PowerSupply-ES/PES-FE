@@ -50,7 +50,7 @@ export type ProblemContent = {
   sampleOutputs: string[];
 };
 
-// ProblemItem 컴포넌트 props 타입
+// ProblemItem(ListItem) 컴포넌트 props 타입
 export type ProblemItemProps = {
   pid: number;
   ptitle: string;

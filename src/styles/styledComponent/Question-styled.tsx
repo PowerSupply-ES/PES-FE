@@ -399,9 +399,9 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
     padding: 40px 20px;
     position: absolute;
     top: 40px;
-    right: 0px;
+    right: -10px;
 
-    width: 480px;
+    width: 520px;
     min-width: 200px;
     z-index: 999;
     color: black;

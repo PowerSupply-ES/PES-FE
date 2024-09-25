@@ -1,19 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StyledListItem } from "styles/styledComponent";
-import { ProblemItemProps } from "model/problemType"; 
-import Button from "@mui/joy/Button";
+import { ProblemItemProps } from "model/problemType";
+import Button from "@mui/material/Button";
 
-const ProblemItem: React.FC<ProblemItemProps> = (props) => {
+const ListItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();
   const memberStatus = sessionStorage.getItem("memberStatus");
 
+  console.log("props결과 = ", props);
+  console.log("props.state = ", props.state);
+
+  // 해당 문제로 이동 메서드
   const goToProb = (answerId: number | null) => {
     if (answerId) {
       // problemId 저장
       sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
       const problemId = sessionStorage.getItem("problemId");
-      console.log("problemId = ", problemId );
+      console.log("problemId = ", problemId);
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);
@@ -21,9 +25,12 @@ const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   };
 
   //추가 by성임
-  // status가 "재학생"일 때는 props.state 값을 "pass"로 설정,
-  //그 외에는 props.state 값 그대로 사용
+  // status가 "재학생"일 때는 props.state 값을 "success"로 설정,
+  // 그 외에는 props.state 값 그대로 사용
   const state = memberStatus === "재학생" || "관리자" ? "success" : props.state;
+  console.log("state = ", state);
+  console.log("props.state = ", props.state);
+  console.log("memberStatus = ", memberStatus);
 
   return (
     <StyledListItem state={state}>
@@ -48,6 +55,7 @@ const ProblemItem: React.FC<ProblemItemProps> = (props) => {
         <button
           className="button"
           onClick={() => navigate(`/solution/${props.pid}`)}
+          disabled={state === null} // state가 null일 때 버튼 비활성화
         >
           풀이보기
         </button>
@@ -67,4 +75,4 @@ const ProblemItem: React.FC<ProblemItemProps> = (props) => {
   );
 };
 
-export default ProblemItem;
+export default ListItem;

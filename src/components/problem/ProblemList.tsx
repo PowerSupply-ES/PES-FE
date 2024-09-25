@@ -1,4 +1,4 @@
-import { ProblemItem } from "components/list";
+import { ListItem } from "components/list";
 import { Problem } from "model/problemType";
 import React from "react";
 
@@ -11,7 +11,7 @@ const ProblemList: React.FC<ProblemListProps> = ({ problmeList }) => {
   return (
     <div className="problem_wrapper">
       {problmeList.map((problem: Problem) => (
-        <ProblemItem
+        <ListItem
           key={problem.problemId}
           pid={problem.problemId}
           ptitle={problem.problemTitle}
