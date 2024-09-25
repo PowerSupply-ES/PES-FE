@@ -7,10 +7,10 @@ REPOSITORY=/home/ubuntu/PES-FE
 cd $REPOSITORY
 
 # 의존성 설치
-sudo npm install --legacy-peer-deps
+npm install --legacy-peer-deps
 
 # 빌드
-sudo npm run build
+npm run build
 
 # Nginx 설정
 sudo cp -r build/* /var/www/html/

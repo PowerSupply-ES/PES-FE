@@ -12,6 +12,7 @@ permissions:
     group: ubuntu
     mode: 755
 hooks:
+  ApplicationStop: []
   AfterInstall:
     - location: deploy.sh
       timeout: 300
