@@ -8,7 +8,7 @@ const fetchMem = async (navigate: NavigateFunction): Promise<void> => {
 
   const uri = `/api/admin/member/${memberId}`;
 
-  // TODO : 관리자 vs 재학생 중 선택하기
+  // TODO : 관리자 vs 재학생 vs 관리자 중 선택하기
   const confirmDelete = window.confirm(
     '해당 회원을 "재학생"으로 등업하시겠습니까?'
   );
@@ -22,7 +22,6 @@ const fetchMem = async (navigate: NavigateFunction): Promise<void> => {
     const res = await axios.put(uri, {
       memberStatus: "재학생",
     });
-    console.log("res는용 = ", res);
 
     // 성공 시
     if (res.status === 200) {

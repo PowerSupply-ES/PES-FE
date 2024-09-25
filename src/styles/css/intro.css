@@ -7,39 +7,12 @@
   padding-top: 40px;
 }
 
-.intro {
-  background-color: #ccd1ff;
+.sign-wrapper2 {
+  height: -moz-fit-content;
+  height: fit-content;
   margin-bottom: -300px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.intro .introduce {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  justify-content: center;
-  margin-right: 180px;
-  width: 38vh;
-  height: 60vh;
-}
-.intro .introduce * {
-  color: #ffffff;
-  word-break: keep-all;
-  font-weight: bold;
-}
-.intro .introduce :first-child {
-  color: rgba(0, 0, 0, 0.5019607843);
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.intro .introduce :last-child {
-  font-size: 20px;
-}
-.intro .introduce h2 {
-  margin-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.5960784314);
+  padding: 100px;
 }
 
 h2 {
