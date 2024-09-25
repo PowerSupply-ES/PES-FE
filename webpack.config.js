@@ -27,13 +27,29 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: "babel-loader",
         exclude: /node_modules/,
-      }, 
+      },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         type: "asset/resource",
         generator: {
-          filename: 'images/[name].[hash:8][ext][query]', // 이미지 파일의 경로 및 이름 설정
+          filename: "images/[name].[hash:8][ext][query]", // 이미지 파일의 경로 및 이름 설정
         },
+        // 이미지 최적화
+        use: [
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65, // 품질 설정
+              },
+              pngquant: {
+                quality: [0.65, 0.9], // PNG 품질 설정
+                speed: 4,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -49,18 +65,18 @@ module.exports = {
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
     host: "localhost",
-    port: 3000,  // 기본포트는 9000
+    port: 3000, // 기본포트는 9000
     //server: 'https',
     proxy: [
       {
-       // TODO: 배포환경은 proxy 사용x (process.env.NODE_ENV사용)
-        context: ['/api', '/api2'], // 프록시 적용할 경로
-        target: 'https://pes23.com/',  // 외부 API 서버 도메인
-        changeOrigin: true,  // CORS 문제 해결을 위해 필요
-        secure: false,  // HTTPS 인증서 오류 무시 
+        // TODO: 배포환경은 proxy 사용x (process.env.NODE_ENV사용)
+        context: ["/api", "/api2"], // 프록시 적용할 경로
+        target: "https://pes23.com/", // 외부 API 서버 도메인
+        changeOrigin: true, // CORS 문제 해결을 위해 필요
+        secure: false, // HTTPS 인증서 오류 무시
         onProxyReq: (proxyReq, req, res) => {
           console.log(`Proxying request to: ${proxyReq.path}`);
-      }
+        },
       },
 
       // local에서 돌릴때
@@ -82,7 +98,7 @@ module.exports = {
     ],
     static: path.resolve(__dirname, "dist"),
     compress: true,
-    historyApiFallback: true,  // 개발 서버에서 라우팅 경로를 처리할 때 사용
+    historyApiFallback: true, // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
   mode: "production",
 };
