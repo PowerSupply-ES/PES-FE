@@ -86,12 +86,27 @@
 }
 .solving_list .solving .right .btn_fail,
 .solving_list .solving .right .btn_success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
   width: 80px;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: 18px;
-  padding: 7px 12px;
-  margin-left: 20px;
+  height: 28px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  font-weight: bold;
+  padding: 7px 0;
+}
+.solving_list .solving .right .btn_success {
+  border: solid 3px #5094f9;
+  color: #5094f9;
+}
+.solving_list .solving .right .btn_fail {
+  border: solid 3px #eb3434;
+  opacity: 80%;
+  color: #eb3434;
 }
 .solving_list .solving .right .process_num {
   color: black;

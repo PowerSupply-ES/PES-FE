@@ -20,6 +20,7 @@ const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {
           // answerState가 "question"과 일치하지 않을 때에만 렌더링( 수정: answerId -> answerState )
           it.answerState !== "question" && (
             <div className="solving" key={it.answerId}>
+              {/* 풀이컴포넌트 좌측 요소 */}
               <div className="left">
                 <div className="userGen">
                   {it.memberGen}
@@ -27,6 +28,8 @@ const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {
                 </div>
                 <div className="userName">{it.memberName}</div>
               </div>
+
+              {/* 풀이컴포넌트 우측 요소 */}
               <div className="right">
                 <div className="process_num">{it.commentCount}/2</div>
                 <div
