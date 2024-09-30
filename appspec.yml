@@ -17,3 +17,6 @@ hooks:
     - location: deploy.sh
       timeout: 300
       runas: ubuntu
+    - location: cleanup.sh
+      timeout: 300
+      runas: ubuntu
