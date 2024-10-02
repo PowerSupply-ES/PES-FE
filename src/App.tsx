@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "components/header/Header";
 import ManageMenu from "components/manage/ManageMenu";
 import AdminRoute from "components/common/AdminRoute";
+import Loading from "components/common/Loading";
 
 // 동적 로딩
 const ListPage = React.lazy(() => import("pages/list/listPage"));
@@ -26,7 +27,7 @@ const UserDetailPage = React.lazy(() => import("pages/manage/userDetailPage"));
 const App: React.FC = () => {
   return (
     <div className="App" style={{ backgroundColor: "#f5f5f5" }}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading/>}>
         <Routes>
           {/* Topbar */}
           <Route path="/" element={<Header />}>

@@ -5,6 +5,7 @@ import "styles/css/notice.css";
 import { transferTime, goBack } from "components/common/Common";
 import {delNotice, fetchNotice} from "apis/notice";
 import useNoticeDetail from "hooks/notice/useNoticeDetail";
+import Loading from "components/common/Loading";
 
 const NoticeDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const NoticeDetail: React.FC = () => {
 
    // noticeDetail이 null인 경우
   if (!noticeDetail) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   return (

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import MemberFeed from "components/mypage/MemberFeed";
 import deleteMem from "apis/manage/deleteMem";
 import fetchMem from "apis/manage/fetchMem";
+import Loading from "components/common/Loading";
 
 
 const UserDetail: React.FC = () => {
@@ -25,7 +26,7 @@ const UserDetail: React.FC = () => {
           {/* <div className="list_container"> */}
 
           {!userData ? (
-            <div>Loading...</div>
+            <Loading/>
           ) : (
             <div className="mypage_content">
 

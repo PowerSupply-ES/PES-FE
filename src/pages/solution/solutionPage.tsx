@@ -1,6 +1,7 @@
 import "styles/css/solution.css";
 import SolvingList from "components/solution/SolvingList";
 import {useSoluProb, useSoluList} from "hooks/solution";
+import Loading from "components/common/Loading";
 
 const SolutionPage = () => {
   // TODO : split한 problemId와 solveData.problemId 구분하기
@@ -17,7 +18,7 @@ const SolutionPage = () => {
 
   // 조건부 렌더링
   if (!problemData || !solveData.length) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   return (

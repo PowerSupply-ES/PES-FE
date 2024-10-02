@@ -8,7 +8,7 @@ const HeaderForAny: React.FC = () => {
 
   return (
     <div className="container">
-      <a className="logout" href="/signin">
+      <a className="logout" href="/signin"  style={{ textDecoration: 'none', color: '#555555' }}>
         로그인
       </a>
 

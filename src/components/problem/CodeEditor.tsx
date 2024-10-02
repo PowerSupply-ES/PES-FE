@@ -5,6 +5,7 @@ import { CodeEditorProps } from "model/problemType";
 import AceEditor from 'ace/ace';  // 커스텀 빌드된 ace.js 사용
 import "ace/mode-c_cpp"; // C/C++ 언어 모드 import
 import "ace/theme-monokai"; // 다크 모드 테마 import
+import Loading from "components/common/Loading";
 // const AceEditor = React.lazy(() => import("react-ace")); // AceEditor 동적 로드
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, readOnly }) => {
@@ -14,7 +15,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, readOnly }) => 
   };
 
   return (
-    <Suspense fallback={<div>Loading Editor...</div>}>
+    <Suspense fallback={<Loading/>}>
       <AceEditor
         mode="c_cpp"
         theme="monokai"

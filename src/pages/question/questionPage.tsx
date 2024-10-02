@@ -2,6 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import { RenderAnswerUI, RenderFeed } from "components/question";
+import Loading from "components/common/Loading";
 
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const QuestionPage: React.FC = () => {
   },[memberStatus, qnA, navigate]);
 
   if(qnA === null){
-    return(<>Loading...</>)
+    return(<Loading/>)
   }
   
   return (

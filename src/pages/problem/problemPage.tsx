@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import useProbPage from "hooks/problem/useProbPage";
 import { renderNewlines, renderStyledNewlines } from "components/common/Common";
+import Loading from "components/common/Loading";
 const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
 
 const ProblemPage: React.FC = () => {
@@ -71,7 +72,7 @@ const ProblemPage: React.FC = () => {
             {isLogin ? (
               <>
                 {/* 변경코드 by성임 - Lazy Loading 적용 */}
-                <Suspense fallback={<div>Loading Code Editor...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <CodeEditor
                     code={""} // 현재 코드 상태
                     onChange={textHandler} // 코드 변경 핸들러
@@ -122,7 +123,7 @@ const ProblemPage: React.FC = () => {
 
   return (
     <div>
-      {title && problem ? renderProbUI() : <div className="loading">Loading...</div>}
+      {title && problem ? renderProbUI() : <Loading/>}
     </div>
   );
 };

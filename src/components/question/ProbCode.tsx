@@ -1,6 +1,7 @@
 import React, {Suspense } from "react";
 import { renderNewlines } from "components/common/Common";
 import { ProbCodeProps } from "model/questionType";
+import Loading from "components/common/Loading";
 // Lazy Loading 적용
 const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
 
@@ -20,7 +21,7 @@ const ProbCode: React.FC<ProbCodeProps> = ({
       <div className="code_container">
 
         {/* 에디터로 수정_by성임 - Lazy Loading 적용*/}
-        <Suspense fallback={<div>Loading Code Editor...</div>}>
+        <Suspense fallback={<Loading/>}>
           <CodeEditor
             onChange={setCode}
             readOnly={true} // 코드 수정 비활성화

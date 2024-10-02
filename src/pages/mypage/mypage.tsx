@@ -5,6 +5,7 @@ import "styles/css/mypage.css";
 import {MyFeedList, MyInfo, MyProbList} from "components/mypage";
 import { useNavigate } from "react-router-dom";
 import useMypage from "hooks/mypage/useMypage";
+import Loading from "components/common/Loading";
 
 // MyPage 컴포넌트 Props 타입
 interface MyPageProps {}
@@ -18,7 +19,7 @@ const MyPage:React.FC<MyPageProps> = () => {
   const { memberData, myProb, myFeedback } = useMypage();
 
   if (!memberData) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   return (
