@@ -27,6 +27,7 @@ module.exports = {
       apis: path.resolve(__dirname, "src/apis/"),
       styles: path.resolve(__dirname, "src/styles/"),
       hooks: path.resolve(__dirname, "src/hooks/"),
+      ace: path.resolve(__dirname, 'src/libs/ace'),
     },
   },
   module: {
@@ -79,7 +80,7 @@ module.exports = {
     //   threshold: 10240, // 10KB 이상의 파일만 압축
     //   minRatio: 0.8, // 압축 비율
     // }),
-    new BundleAnalyzerPlugin(), // 번들 크기 분석 플러그인 추가- 테스트용
+    // new BundleAnalyzerPlugin(), // 번들 크기 분석 플러그인 추가- 테스트용
   ],
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
@@ -107,7 +108,7 @@ module.exports = {
     splitChunks: {
       chunks: "all", // 모든 청크에 대해 코드 분할 적용
       minSize: 10000, // 최소 청크 크기
-      maxSize: 200000, // 최대 청크 크기 (200 KiB 이하로 제한)
+      maxSize: 200000, // 최대 청크 크기 (150 KiB 이하로 제한)
       cacheGroups: {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/, // node_modules의 모든 모듈을 분리
@@ -123,6 +124,8 @@ module.exports = {
           reuseExistingChunk: true, // 이미 분리된 청크 재사용
         },
       },
+      usedExports: true, // Tree shaking 활성화
+      // minimize: true, // 코드 최소화
     },
     runtimeChunk: "single", // 런타임 청크 분리
   },
