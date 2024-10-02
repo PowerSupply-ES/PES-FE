@@ -60,7 +60,11 @@ module.exports = {
       },
     ],
   },
-  
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
@@ -93,7 +97,7 @@ module.exports = {
       chunks: "all", // 모든 청크에 대해 코드 분할 적용
       maxInitialRequests: 20, // 초기 로딩 시 한 번에 로드할 수 있는 파일 수 제한
       minSize: 50000, // 최소 청크 크기
-      maxSize: 200000, // 최대 청크 크기 (150 KiB 이하로 제한)
+      maxSize: 200000, // 최대 청크 크기 (200 KiB 이하로 제한)
       cacheGroups: {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/, // node_modules의 모든 모듈을 분리
