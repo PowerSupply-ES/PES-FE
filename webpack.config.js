@@ -60,6 +60,7 @@ module.exports = {
       },
     ],
   },
+  // 임시로 오류메시지 차단
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

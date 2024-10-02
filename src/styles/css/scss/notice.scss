@@ -4,6 +4,7 @@
 }
 
 /* -----info 페이지----- */
+// TODO : button은 cursor:pointer 공통으로 적용하기
 
 .info_body {
   min-height: 100vh;
@@ -66,13 +67,14 @@
       /* color: #7450e4b8; */
       color: #939393;
       font-weight: bold;
+      cursor: pointer;
+
     }
-    .info_list > .info > .title_2 {
+    .title_2 {
       font-weight: bold;
       cursor: pointer;
     }
-    .info_list > .info > .title_3,
-    .info_list > .info > .title_4 {
+    .title_3, .title_4 {
       color: #7a7a7a;
     }
     display: flex;
@@ -174,7 +176,9 @@
   width: 90%;
   text-align: right;
   margin: auto;
+  
   button {
+    cursor: pointer;
     width: fit-content;
     padding: 8px 20px;
     background-color: #686666;
@@ -217,6 +221,7 @@
   border-radius: 20px;
   font-size: 18px;
   padding: 8px 24px;
+  cursor: pointer;
   box-shadow: 1px 2px #ccc9c9;
 }
 .btn_submit,

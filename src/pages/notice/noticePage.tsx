@@ -36,6 +36,7 @@ const NoticePage: React.FC = () => {
           <p>등록하기</p>
         </div>
 
+        {/* 제목 컴포넌트 */}
         <div className="info_title">
           <div className="title_0"> </div>
           <div className="title_1">번호</div>
