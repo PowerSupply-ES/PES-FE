@@ -17,6 +17,7 @@ hooks:
     - location: deploy.sh
       timeout: 300
       runas: ubuntu
+  ApplicationStart:
     - location: cleanup.sh
       timeout: 300
       runas: ubuntu
