@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-const AdPart:React.FC = () => {
+const AdPart: React.FC = () => {
   // 카카오 에드핏 광고
   // useRef훅이 div HTML 요소를 참조하기 때문에 HTMLDivElement를 타입으로 지정
   const scriptElement = useRef<HTMLDivElement | null>(null);

@@ -1,10 +1,9 @@
 import React from "react";
-import { CssBaseline } from "@mui/material";
-import Tabs from "@mui/joy/Tabs";
-import Tab from "@mui/joy/Tab";
 import useMenu from "hooks/menu/useMenu";
-import { ThemeProvider } from "styled-components";
-import { StyledBox, theme, StyledTabList } from "styles/styledComponent";
+import { CssBaseline, Box, Tabs, Tab, createTheme, ThemeProvider } from "@mui/material";
+
+// MUI 테마 생성
+const theme = createTheme();
 
 const MenuBar: React.FC = () => {
   // 훅 사용
@@ -13,7 +12,7 @@ const MenuBar: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <StyledBox>
+      <Box sx={{ flexGrow: 1, mt: 2, overflow: "hidden" }}>
         <Tabs
           aria-label="Pipeline"
           value={index}
@@ -28,14 +27,30 @@ const MenuBar: React.FC = () => {
               }
             }
           }}
+          sx={{ display: 'flex', justifyContent: 'flex-start', pt: 1 }}
         >
-          <StyledTabList index={index}>
-            <Tab value={1}>문제</Tab>
-            <Tab value={2}>공지사항</Tab>
-          </StyledTabList>
+          <Tab label="문제" value={1} sx={getTabStyle(index, 1)} />
+          <Tab label="공지사항" value={2} sx={getTabStyle(index, 2)} />
         </Tabs>
-      </StyledBox>
+      </Box>
     </ThemeProvider>
   );
 };
+
+// Tab의 스타일 설정 함수
+const getTabStyle = (currentIndex: number, tabIndex: number) => ({
+  flex: 'initial',
+  fontSize: '26px',
+  color: currentIndex === tabIndex ? 'primary.main' : 'inherit',
+  '&::after': {
+    content: '""',
+    display: currentIndex === tabIndex ? 'block' : 'none',
+    height: '2.5px',
+    borderTopLeftRadius: '3px',
+    borderTopRightRadius: '3px',
+    backgroundColor: 'primary.main',
+    marginTop: '8px',
+  },
+});
+
 export default MenuBar;

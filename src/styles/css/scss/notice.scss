@@ -7,9 +7,9 @@
 // TODO : button은 cursor:pointer 공통으로 적용하기
 
 .info_body {
-  min-height: 100vh;
+  min-height: fit-content;
   height: 100vh;
-  overflow: auto; /* 내용물이 넘칠 경우 스크롤이 가능하도록 설정 */
+  // overflow: auto;
   padding: 40px 0 80px;
   margin-bottom: -300px; //footer margin 상쇄
   background-color: #f9f9ff;

@@ -62,7 +62,8 @@
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
   background-color: #ffffff;
-  height: 132px;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .navbar {

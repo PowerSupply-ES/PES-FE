@@ -25,7 +25,7 @@ const UserDetailPage = React.lazy(() => import("pages/manage/userDetailPage"));
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: "#f5f5f5" }}>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {/* Topbar */}

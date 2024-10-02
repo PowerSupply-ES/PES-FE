@@ -7,6 +7,7 @@ module.exports = {
     react: "React",
     "react-dom": "ReactDOM",
     axios: "axios", // axios를 CDN에서 로드
+    // TODO : suspense도 추가하기
   },
   entry: "./src/index.tsx", // TypeScript 진입점 파일
   output: {
@@ -88,9 +89,9 @@ module.exports = {
         },
       },
     ],
+    historyApiFallback: true, // 개발 서버에서 라우팅 경로를 처리할 때 사용
     static: path.resolve(__dirname, "dist"),
     compress: true,
-    historyApiFallback: true, // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
   mode: "production", // production모드에서 자동으로 트리쉐이킹(by TerserPlugin)
   optimization: {
