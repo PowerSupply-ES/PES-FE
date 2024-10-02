@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import useProbPage from "hooks/problem/useProbPage";
-import CodeEditor from "components/problem/CodeEditor";
 import { renderNewlines, renderStyledNewlines } from "components/common/Common";
+const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
 
 const ProblemPage: React.FC = () => {
   let url = new URL(window.location.href);
@@ -70,12 +70,14 @@ const ProblemPage: React.FC = () => {
           <div className="code_section">
             {isLogin ? (
               <>
-                {/* 변경코드 */}
-                <CodeEditor
-                  code={""} // 현재 코드 상태
-                  onChange={textHandler} // 코드 변경 핸들러
-                  readOnly={false} // 읽기 전용 여부
-                />
+                {/* 변경코드 by성임 - Lazy Loading 적용 */}
+                <Suspense fallback={<div>Loading Code Editor...</div>}>
+                  <CodeEditor
+                    code={""} // 현재 코드 상태
+                    onChange={textHandler} // 코드 변경 핸들러
+                    readOnly={false} // 읽기 전용 여부
+                  />
+                </Suspense>
 
                 {detail !== null && detail !== undefined && (
                   <div className="detail_container">

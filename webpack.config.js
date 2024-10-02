@@ -1,11 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-  externals: { // react, react-dom 같은 라이브러리를 CDN에서 로드
+  externals: { // react, react-dom, axios 같은 라이브러리를 CDN에서 로드
     react: "React",
     "react-dom": "ReactDOM",
+    axios: "axios", // axios를 CDN에서 로드
   },
   entry: "./src/index.tsx", // TypeScript 진입점 파일
   output: {
@@ -35,7 +37,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i, // 기존 이미지 파일을 WebP로 변환
+        test: /\.(png|jpe?g|gif|svg|webp)$/i, // 기존 이미지 파일을 WebP로 변환
         type: "asset/resource",
         generator: {
           filename: "images/[name].[hash:8][ext]", // 이미지 파일의 경로 및 이름 설정
@@ -71,7 +73,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
     }),
-    //new BundleAnalyzerPlugin(), // 번들 크기 분석 플러그인 추가- 테스트용
+    // new CompressionPlugin({
+    //   algorithm: "gzip", // 또는 "brotliCompress"
+    //   test: /\.(js|css|html|svg)$/,
+    //   threshold: 10240, // 10KB 이상의 파일만 압축
+    //   minRatio: 0.8, // 압축 비율
+    // }),
+    new BundleAnalyzerPlugin(), // 번들 크기 분석 플러그인 추가- 테스트용
   ],
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
@@ -99,7 +107,7 @@ module.exports = {
     splitChunks: {
       chunks: "all", // 모든 청크에 대해 코드 분할 적용
       minSize: 10000, // 최소 청크 크기
-      maxSize: 244000, // 최대 청크 크기 (244 KiB 이하로 제한)
+      maxSize: 200000, // 최대 청크 크기 (200 KiB 이하로 제한)
       cacheGroups: {
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/, // node_modules의 모든 모듈을 분리

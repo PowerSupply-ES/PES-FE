@@ -1,7 +1,8 @@
-import React from "react";
-import CodeEditor from "components/problem/CodeEditor";
+import React, {Suspense } from "react";
 import { renderNewlines } from "components/common/Common";
 import { ProbCodeProps } from "model/questionType";
+// Lazy Loading 적용
+const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
 
 // 작성했던 코드 출력 컴포넌트
 const ProbCode: React.FC<ProbCodeProps> = ({
@@ -17,12 +18,15 @@ const ProbCode: React.FC<ProbCodeProps> = ({
 
       {/* 좌측 코드에디터 컴포넌트 */}
       <div className="code_container">
-        {/* 에디터로 수정_by성임 */}
-        <CodeEditor
-          onChange={setCode}
-          readOnly={true} // 코드 수정 비활성화
-          code={code}
-        ></CodeEditor>
+
+        {/* 에디터로 수정_by성임 - Lazy Loading 적용*/}
+        <Suspense fallback={<div>Loading Code Editor...</div>}>
+          <CodeEditor
+            onChange={setCode}
+            readOnly={true} // 코드 수정 비활성화
+            code={code}
+          ></CodeEditor>
+        </Suspense>
       </div>
 
       {/* 우측 질문답변 컴포넌트 */}

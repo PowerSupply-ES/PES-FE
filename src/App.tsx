@@ -13,7 +13,7 @@ const Signup = React.lazy(() => import("pages/sign/signUpPage"));
 const MainPage = React.lazy(() => import("pages/main/mainPage"));
 const Mypage = React.lazy(() => import("pages/mypage/mypage"));
 const SolutionPage = React.lazy(() => import("pages/solution/solutionPage"));
-const Menual = React.lazy(() => import("pages/menual/menualPage"));
+// const Menual = React.lazy(() => import("pages/menual/menualPage"));
 const NoticePage = React.lazy(() => import("pages/notice/noticePage"));
 const NoticePost = React.lazy(() => import("pages/notice/noticePostPage"));
 const NoticeDetail = React.lazy(() => import("pages/notice/noticeDetailPage"));
@@ -34,7 +34,7 @@ const App: React.FC = () => {
             <Route path="/signin" element={<Signin />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/mypage" element={<Mypage />} />
-            <Route path="/menual" element={<Menual />} />
+            {/* <Route path="/menual" element={<Menual />} /> */}
             <Route path="/notice" element={<NoticePage />} />
             <Route path="/noticePost" element={<NoticePost />} />
 
