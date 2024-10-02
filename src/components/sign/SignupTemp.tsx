@@ -1,6 +1,6 @@
 // MUI이용 회원가입 form
 import React from "react";
-import logo from "assets/images/sign_logo.png";
+import logo from "assets/images/sign_logo.webp";
 import Copyright from "./Copyright";
 import useSignup from "hooks/sign/useSignup";
 // import InputMask from "react-input-mask";

@@ -1,6 +1,6 @@
 // MUI이용 로그인 form
 import React from "react";
-import logo from "assets/images/sign_logo.png";
+import logo from "assets/images/sign_logo.webp";
 import Copyright from "./Copyright";
 import useSignIn from "hooks/sign/useSignIn";
 

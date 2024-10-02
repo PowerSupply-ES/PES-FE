@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-//const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   externals: { // react, react-dom, axios 같은 라이브러리를 CDN에서 로드
@@ -38,7 +37,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpe?g|gif|svg|webp)$/i, // 기존 이미지 파일을 WebP로 변환
+        test: /\.webp$/i, // Webp확장자 이미지만 처리
         type: "asset/resource",
         generator: {
           filename: "images/[name].[hash:8][ext]", // 이미지 파일의 경로 및 이름 설정
@@ -48,16 +47,8 @@ module.exports = {
           {
             loader: "image-webpack-loader",
             options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 40, // 품질 설정
-              },
-              pngquant: {
-                quality: [0.5, 0.65], // PNG 품질 설정
-                speed: 4,
-              },
               webp: {
-                quality: 50, // WebP 변환 품질 설정 (높을수록 품질이 좋으나 용량이 큼)
+                quality: 30, // WebP 변환 품질 설정 (높을수록 품질이 좋으나 용량이 큼)
               }
             },
           },
@@ -74,13 +65,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
     }),
-    // new CompressionPlugin({
-    //   algorithm: "gzip", // 또는 "brotliCompress"
-    //   test: /\.(js|css|html|svg)$/,
-    //   threshold: 10240, // 10KB 이상의 파일만 압축
-    //   minRatio: 0.8, // 압축 비율
-    // }),
-    // new BundleAnalyzerPlugin(), // 번들 크기 분석 플러그인 추가- 테스트용
   ],
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
@@ -103,11 +87,12 @@ module.exports = {
     compress: true,
     historyApiFallback: true, // 개발 서버에서 라우팅 경로를 처리할 때 사용
   },
-  mode: "production", // production모드에서 자동을 트리쉐이킹
+  mode: "production", // production모드에서 자동으로 트리쉐이킹(by TerserPlugin)
   optimization: {
     splitChunks: {
       chunks: "all", // 모든 청크에 대해 코드 분할 적용
-      minSize: 10000, // 최소 청크 크기
+      maxInitialRequests: 20, // 초기 로딩 시 한 번에 로드할 수 있는 파일 수 제한
+      minSize: 50000, // 최소 청크 크기
       maxSize: 200000, // 최대 청크 크기 (150 KiB 이하로 제한)
       cacheGroups: {
         defaultVendors: {
@@ -124,9 +109,9 @@ module.exports = {
           reuseExistingChunk: true, // 이미 분리된 청크 재사용
         },
       },
-      usedExports: true, // Tree shaking 활성화
-      // minimize: true, // 코드 최소화
     },
+    usedExports: true, // Tree shaking 활성화
+    minimize: true, // 코드 최소화
     runtimeChunk: "single", // 런타임 청크 분리
   },
 };
