@@ -1,14 +1,14 @@
 // 관리자 SideMenu MUI 컴포넌트
-import * as React from "react";
+import {MenuContent, OptionsMenu} from "./index";
+
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import SelectContent from "./SelectContent";
-import {MenuContent, OptionsMenu} from "./index";
+// import Divider from "@mui/material/Divider";
+// import SelectContent from "./SelectContent";
 
 
 const drawerWidth = 240;

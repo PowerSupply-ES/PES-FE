@@ -11,8 +11,8 @@ import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
 import PeopleRoundedIcon from '@mui/icons-material/PeopleRounded';
 import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
-import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
-import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+// import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
+// import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 
 
 // 탭 메뉴 목록

@@ -1,16 +1,17 @@
 // 관리자 페이지 MUI 템플릿
 import { useNavigate } from "react-router-dom";
+import SideMenu from "./SideMenu";
+import { TemplateFrameProps } from "model/userType";
+
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import FormControl from "@mui/material/FormControl";
-import IconButton from "@mui/material/IconButton";
+// import FormControl from "@mui/material/FormControl";
+// import IconButton from "@mui/material/IconButton";
 // import getDashboardTheme from './theme/getDashboardTheme';
-import SideMenu from "./SideMenu";
-import { TemplateFrameProps } from "model/userType";
 
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({

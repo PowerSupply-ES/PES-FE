@@ -47,13 +47,18 @@ const QuestionPage: React.FC = () => {
   // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
   const memberStatus = sessionStorage.getItem("memberStatus");
 
+
+  
   useEffect(()=>{
-    if (memberStatus === null || qnA === null) {
+    if (memberStatus === null) {
       alert("풀이 열람 권한이 없습니다!");
       navigate(-1);
     }
   },[memberStatus, qnA, navigate]);
 
+  if(qnA === null){
+    return(<>Loading...</>)
+  }
   
   return (
     // 성공 or 실패에 따른 배경색

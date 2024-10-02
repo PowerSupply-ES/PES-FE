@@ -1,5 +1,10 @@
 // MUI이용 회원가입 form
-import * as React from "react";
+import React from "react";
+import logo from "assets/images/sign_logo.png";
+import Copyright from "./Copyright";
+import useSignup from "hooks/sign/useSignup";
+// import InputMask from "react-input-mask";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,10 +15,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import logo from "assets/images/sign_logo.png";
-import Copyright from "./Copyright";
-import useSignup from "hooks/sign/useSignup";
-import InputMask from "react-input-mask";
 
 const defaultTheme = createTheme();
 

@@ -330,6 +330,7 @@
 .feeds .memberGenName {
   justify-content: left;
   width: 12%;
+  min-width: fit-content;
   font-weight: bold;
   color: #262626;
 }
@@ -360,6 +361,7 @@
   align-items: center;
   border-radius: 5px;
   width: 80px;
+  min-width: fit-content;
   height: 28px;
   font-weight: bold;
 }
@@ -380,6 +382,8 @@
   color: #999999;
   opacity: 80%;
   font-size: 16px;
+  padding: 6px 4px;
+  text-align: center;
 }
 
 .text :first-child {

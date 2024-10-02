@@ -1,6 +1,6 @@
-import { StyledListPage, RankingItemStyled } from "styles/styledComponent";
 import RankingItem from "./RankingItem";
 import useJuniorRank from "hooks/rank/useJuniorRank";
+import { StyledListPage, RankingItemStyled } from "styles/styledComponent";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 

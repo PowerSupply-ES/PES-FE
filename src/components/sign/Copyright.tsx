@@ -1,6 +1,6 @@
+import { CopyrightProps } from "model/userType";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import { CopyrightProps } from "model/userType";
 
 // 하단 copyright
 const Copyright: React.FC<CopyrightProps> = (props) => {

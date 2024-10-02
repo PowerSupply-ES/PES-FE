@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { CssBaseline } from "@mui/material";
 import Tabs from "@mui/joy/Tabs";
 import Tab from "@mui/joy/Tab";

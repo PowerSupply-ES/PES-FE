@@ -39,7 +39,7 @@ $none-bg: #e9e9eb;
 }
 
 .failPage {
-  @include page-style($fail-b);
+  @include page-style($fail-bg);
 }
 .successPage {
   @include page-style($success-bg);
