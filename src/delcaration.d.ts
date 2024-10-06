@@ -3,9 +3,9 @@ declare module '*.jpg'
 declare module '*.gif'
 declare module '*.webp'
 
-declare module 'ace/ace';
-declare module 'ace/mode-c_cpp';
-declare module 'ace/theme-monokai';
+declare module 'libs/ace';
+declare module 'libs/mode-c_cpp';
+declare module 'libs/theme-monokai';
 
 // declare module 'ace-builds/src-noconflict/ace';
 // declare module 'ace-builds/src-noconflict/mode-javascript';

@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
-import { RenderAnswerUI, RenderFeed } from "components/question";
+import RenderAnswerUI from "components/question/RenderAnswerUI";
+import RenderFeed from "components/question/RenderFeed";
 import Loading from "components/common/Loading";
 
 const QuestionPage: React.FC = () => {
@@ -74,9 +75,8 @@ const QuestionPage: React.FC = () => {
     >
       <div>
         {/* qnA가 null일 경우 처리 */}
-        {qnA && (
+        {qnA ? (
           <>
-            {/* 답변 컴포넌트 */}
             <RenderAnswerUI
               navigate={navigate}
               code={code}
@@ -88,7 +88,6 @@ const QuestionPage: React.FC = () => {
               postAnswer={postAnswer}
             />
 
-            {/* feedback 컴포넌트 */}
             <RenderFeed
               navigate={navigate}
               memberStatus={memberStatus}
@@ -100,6 +99,8 @@ const QuestionPage: React.FC = () => {
               handleTextFstChange={handleTextFstChange}
             />
           </>
+        ) : (
+          <Loading />
         )}
       </div>
     </div>

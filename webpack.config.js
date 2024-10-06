@@ -27,7 +27,7 @@ module.exports = {
       apis: path.resolve(__dirname, "src/apis/"),
       styles: path.resolve(__dirname, "src/styles/"),
       hooks: path.resolve(__dirname, "src/hooks/"),
-      ace: path.resolve(__dirname, 'src/libs/ace'),
+      libs: path.resolve(__dirname, "src/libs/"),
     },
   },
   module: {
@@ -71,6 +71,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
     }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: "server",
+    //   openAnalyzer: true,
+    // }),
   ],
   // 개발 서버를 제공하여 실시간으로 애플리케이션을 빌드하고 업데이트할
   devServer: {
