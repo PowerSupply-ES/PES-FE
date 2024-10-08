@@ -7,7 +7,6 @@ module.exports = {
     react: "React",
     "react-dom": "ReactDOM",
     axios: "axios", // axios를 CDN에서 로드
-    // TODO : suspense도 추가하기
   },
   entry: "./src/index.tsx", // TypeScript 진입점 파일
   output: {
