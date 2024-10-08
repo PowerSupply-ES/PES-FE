@@ -120,7 +120,7 @@ module.exports = {
       },
     },
     usedExports: true, // Tree shaking 활성화
-    minimize: true, // 코드 최소화
+    //minimize: true, // 코드 최소화
     runtimeChunk: "single", // 런타임 청크 분리
   },
 };
