@@ -44,7 +44,7 @@ const UserDetail: React.FC = () => {
                 <div className="manage_btn_container">
                   {/* TODO : 추후 필요시 추가 */}
                   {/* <button className="btn_editmem">회원 수정</button> */}
-                  <button className="levelup_btn" onClick={() => fetchMem(navigate)} >등업</button>
+                  <button className="levelup_btn" onClick={() => fetchMem(navigate, userData.memberStatus)}>등급변경</button>
                   <button className="btn_deletemem" onClick={() => deleteMem(navigate)}>회원 삭제</button>
                 </div>
               </div>

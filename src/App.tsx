@@ -5,7 +5,7 @@ import ManageMenu from "components/manage/ManageMenu";
 import AdminRoute from "components/common/AdminRoute";
 import Loading from "components/common/Loading";
 
-// 동적 로딩
+// 동적 임포트
 const ListPage = React.lazy(() => import("pages/list/listPage"));
 const ProblemPage = React.lazy(() => import("pages/problem/problemPage"));
 const QuestionPage = React.lazy(() => import("pages/question/questionPage"));

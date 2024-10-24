@@ -2,15 +2,22 @@ import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 
 // 회원 등업 update API
-const fetchMem = async (navigate: NavigateFunction): Promise<void> => {
+const fetchMem = async (navigate: NavigateFunction, memberStatus:string): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];
 
   const uri = `/api/admin/member/${memberId}`;
 
-  // TODO : 관리자 vs 재학생 vs 관리자 중 선택하기
+  // 관리자 vs 재학생 vs 관리자 중 선택하기
+  const levelUpLevel = memberStatus==='신입생'
+    ? "재학생"
+    : memberStatus==='재학생'
+    ? "관리자"
+    : memberStatus==='관리자'
+    ? "재학생"
+    : ''
   const confirmDelete = window.confirm(
-    '해당 회원을 "재학생"으로 등업하시겠습니까?'
+    `해당 회원을 ${levelUpLevel} 등급으로 변경하시겠습니까?`
   );
 
   // 수정 취소 시
@@ -20,15 +27,15 @@ const fetchMem = async (navigate: NavigateFunction): Promise<void> => {
 
   try {
     const res = await axios.put(uri, {
-      memberStatus: "재학생",
+      memberStatus: `${levelUpLevel}`,
     });
 
     // 성공 시
     if (res.status === 200) {
-      alert("회원이 성공적으로 등업되었습니다.");
+      alert("회원등급이 성공적으로 변경되었습니다.");
       navigate("/manageUser");
     } else {
-      alert("회원 등업에 실패했습니다. 다시 시도해 주세요1.");
+      alert("회원등급 변경에 실패했습니다. 다시 시도해 주세요1.");
     }
   } catch (error: unknown) {
     // axios에러 && response있는 경우
@@ -45,7 +52,7 @@ const fetchMem = async (navigate: NavigateFunction): Promise<void> => {
       }
       // 그 외 서버 오류
       else {
-        alert("회원 등업에 실패했습니다. 다시 시도해 주세요2.");
+        alert("서버오류가 발생했습니다.");
       }
     } else {
       // 서버 응답이 없거나 다른 문제가 발생한 경우
