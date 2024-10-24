@@ -5,7 +5,7 @@ import { MyFeedProps } from "model/userType";
 const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {
   const gotoFeed = (problemId: number) => {
     console.log("problemId: ", problemId);
-    navigate(`question/${problemId}`);
+    navigate(`/question/${problemId}`);
   };
 
   return (

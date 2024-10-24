@@ -5,7 +5,7 @@ import { MyProbProps } from "model/userType";
 const MyProb: React.FC<MyProbProps> = ({ myProb, navigate }) => {
   const gotoProb = (problemId: number) => {
     console.log("problemId: ", problemId);
-    navigate(`question/${problemId}`);
+    navigate(`/question/${problemId}`);
     // question/answerid
   };
 

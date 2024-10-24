@@ -105,7 +105,7 @@ const NoticeDetail: React.FC = () => {
               }
             />
           ) : (
-            <p className="text">{renderNewlines(noticeDetail.content)}</p> // TODO : 줄바꿈인식, 내용초과시 break, scroll기능넣기
+            <p className="text">{renderNewlines(noticeDetail.content)}</p> // TODO : 내용초과시 break, scroll기능넣기
           )}
         </div>
 
