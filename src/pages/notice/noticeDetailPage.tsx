@@ -6,6 +6,7 @@ import { transferTime, goBack } from "components/common/Common";
 import {delNotice, fetchNotice} from "apis/notice";
 import useNoticeDetail from "hooks/notice/useNoticeDetail";
 import Loading from "components/common/Loading";
+import { renderNewlines } from "components/common/Common";
 
 const NoticeDetail: React.FC = () => {
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ const NoticeDetail: React.FC = () => {
               }
             />
           ) : (
-            <p className="text">{noticeDetail.content}</p> // 줄바꿈인식, 내용초과시 break, scroll기능넣기
+            <p className="text">{renderNewlines(noticeDetail.content)}</p> // TODO : 줄바꿈인식, 내용초과시 break, scroll기능넣기
           )}
         </div>
 
