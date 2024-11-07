@@ -28,7 +28,6 @@ const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
         if (error.response.status === 403) {
           alert("로그인이 만료됐습니다!");
           sessionStorage.clear();
-          localStorage.clear();
           navigate("/signin");
         } else {
           console.error(

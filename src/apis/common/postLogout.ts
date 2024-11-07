@@ -15,7 +15,6 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
 
     // 로컬 스토리지 클리어
     sessionStorage.clear();
-    localStorage.clear();
     alert(response.data.message);
 
     navigate("/");

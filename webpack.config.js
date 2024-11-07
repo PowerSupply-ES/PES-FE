@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-  externals: { // react, react-dom, axios 같은 라이브러리를 CDN에서 로드
+  externals: { // react, react-dom, axios를 CDN에서 로드
     react: "React",
     "react-dom": "ReactDOM",
     axios: "axios", // axios를 CDN에서 로드
