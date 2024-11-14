@@ -20,5 +20,6 @@ export const StyledRankingItem = styled.div`
   }
   .score {
     width: 20%;
+    min-width: fit-content;
   }
 `;

@@ -14,6 +14,8 @@ export const StyledListPage = styled.div`
 
   .ranking_container {
     width: 20%;
+    min-width: fit-content;
+
   }
 
   .container_header {

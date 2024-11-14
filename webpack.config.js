@@ -58,6 +58,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
   // 임시로 오류메시지 차단
@@ -92,7 +96,7 @@ module.exports = {
         },
       },
     ],
-    historyApiFallback: true, // 개발 서버에서 라우팅 경로를 처리할 때 사용
+    historyApiFallback: true, // 잘못된 URL 요청을 기본 HTML로 리디렉션
     static: path.resolve(__dirname, "dist"),
     compress: true,
   },

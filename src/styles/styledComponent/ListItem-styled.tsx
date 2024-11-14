@@ -6,6 +6,7 @@ export const StyledListItem = styled.div<StyledProps>`
     display: flex;
     flex-direction: row;
     height: fit-content;
+    min-width: fit-content;
     align-items: center;
     margin: auto;
     padding: 8px 16px 8px 0px;
@@ -45,7 +46,6 @@ export const StyledListItem = styled.div<StyledProps>`
     font-size: 20px;
     text-align: left;
     font-weight: bold;
-
     &:hover {
       cursor: pointer;
     }
@@ -65,7 +65,8 @@ export const StyledListItem = styled.div<StyledProps>`
 
   .button {
     width: fit-content;
-    height: fit-content;
+    min-width: fit-content;
+    height: fit-content;    
     padding: 7px 30px;
     box-shadow: 1px 1px #ccc9c9;
 

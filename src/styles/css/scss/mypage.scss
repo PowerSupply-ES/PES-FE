@@ -339,7 +339,7 @@
 .feeds {
   .memberGenName {
     justify-content: left;
-    width: 12%;
+    width: 14%;
     font-weight: bold;
     color: #262626;
   }
@@ -369,8 +369,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  width: 80px;
-  height: 28px;
+  width: 88px;
+  min-width: fit-content;
+  height: 32px;
   font-weight: bold;
 }
 .btn_success {

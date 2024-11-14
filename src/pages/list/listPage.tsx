@@ -45,6 +45,7 @@ const ListPage: React.FC<ListPageProps> = () => {
               size="large"
               variant={juniorButtonVariant as "contained" | "outlined" | "text"}
               onClick={() => handleOption("junior")}
+              sx={{ minWidth: "fit-content" }}
             >
               신입생
             </Button>
@@ -55,6 +56,7 @@ const ListPage: React.FC<ListPageProps> = () => {
               size="large"
               variant={seniorButtonVariant as "contained" | "outlined" | "text"}
               onClick={() => handleOption("senior")}
+              sx={{ minWidth: "fit-content" }}
             >
               재학생
             </Button>
