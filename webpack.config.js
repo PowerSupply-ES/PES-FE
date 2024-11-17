@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   externals: { // react, react-dom, axios를 CDN에서 로드
@@ -56,11 +57,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        //use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"], // CSS를 별도로 추출
       },
       {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        //use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"], // SCSS도 별도로 추출
       },
     ],
   },
@@ -73,6 +76,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"), // 절대 경로로 수정
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css", // 추출된 CSS 파일 이름 설정
+      chunkFilename: "[id].[contenthash].css",
     }),
     // new BundleAnalyzerPlugin({
     //   analyzerMode: "server",

@@ -60,22 +60,22 @@ const NoticeDetail: React.FC = () => {
           <ul className="noticeInfo">
             {/* 작성자정보 */}
             <li>
-              <p>작성자</p>
-              {noticeDetail.writerGen}기 {noticeDetail.writer}
+              <p className="leftInfo">작성자</p>
+              <p>{noticeDetail.writerGen}기 {noticeDetail.writer}</p>
             </li>
             {/* 시간 정보 */}
             <li>
-              <p>생성시간</p>
-              {transferTime(noticeDetail.createdTime)}
+              <p className="leftInfo">생성시간</p>
+              <p>{transferTime(noticeDetail.createdTime)}</p>
             </li>
             <li>
-              <p>수정시간</p>
-              {transferTime(noticeDetail.updatedTime)}
+              <p className="leftInfo">수정시간</p>
+              <p>{transferTime(noticeDetail.updatedTime)}</p>
             </li>
             {/* 조회수정보 */}
             <li>
-              <p>조회수</p>
-              {noticeDetail.noticeHit}회
+              <p className="leftInfo">조회수</p>
+              <p>{noticeDetail.noticeHit}회</p>
             </li>
           </ul>
         </div>

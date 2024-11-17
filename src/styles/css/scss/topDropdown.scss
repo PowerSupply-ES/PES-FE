@@ -33,12 +33,14 @@
     opacity: 75%;
     border-top: solid 3px #d7d6d6;
 
-    * {
+    *{
       width: 100%;
       padding: 10px 8px;
     }
     .btn_mypage {
       border-right: solid 3px #d7d6d6;
+      color: #000000;
+
     }
   }
 }

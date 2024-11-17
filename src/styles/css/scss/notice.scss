@@ -22,6 +22,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: bold;
   margin: 40px auto;
@@ -157,7 +158,7 @@
   text-align: left;
   li {
     display: flex;
-    p {
+    .leftInfo {
       font-weight: bold;
       margin-right: 20px;
       width: 60px;

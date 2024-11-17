@@ -1,4 +1,8 @@
 /* ---------- footer ---------- */
+.mainPage .footer {
+  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
+}
+
 .footer {
   max-height: 240px;
   min-height: fit-content;
@@ -10,65 +14,62 @@
   :not(.logo, .info1, .info2, .footer_logout) {
     color: #ffffffec;
   }
-}
-.mainPage .footer {
-  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
-}
-.footer_left {
-  width: 60%;
-  .info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-left: 40px;
-    * {
+
+  .footer_left {
+    width: 60%;
+    .info {
       display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-      p {
-        margin-left: 12px;
+      flex-direction: column;
+      text-align: left;
+      margin-left: 40px;
+      * {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        p {
+          margin-left: 12px;
+        }
       }
     }
-  }
-  .logo {
-    width: 140px;
-    height: 100px;
-    font-size: 40px;
-    font-weight: bold;
-    margin-top: 28px;
-    color: #ffffffec;
-  }
-}
-.footer_right {
-  height: 80%;
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  margin-top: 12px;
-  .sns {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 12px;
-    cursor: pointer;
-    *:first-child {
-      margin-right: 12px;
+    .logo {
+      width: 140px;
+      height: 100px;
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 28px;
+      color: #ffffffec;
     }
   }
-}
-
-.info1,
-.info2 {
-  color: #c8c4c4;
-  opacity: 57%;
-}
-.about {
-  margin-bottom: 8px;
-}
-.footer_logout {
-  text-align: right;
-  margin: 8px 20px 0 0;
-  color: #d4d4d4;
-  cursor: pointer;
+  .footer_right {
+    height: 80%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: 12px;
+    .sns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      cursor: pointer;
+      *:first-child {
+        margin-right: 12px;
+      }
+    }
+    .info1,
+    .info2 {
+      color: #c8c4c4;
+      opacity: 57%;
+    }
+    .about {
+      margin-bottom: 8px;
+    }
+    .footer_logout {
+      text-align: right;
+      margin: 8px 20px 0 0;
+      color: #d4d4d4;
+      cursor: pointer;
+    }
+  }
 }
