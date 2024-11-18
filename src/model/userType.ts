@@ -31,12 +31,22 @@ export type GetUserInfoProps = {
   setMemberData: (data: UserInfo) => void;
 }
 
-// user 정보 관리
+// redux user 타입
+export type UserState = {
+  user: {
+    status: boolean;
+    memberName: string;
+    memberStatus: string;
+    hasNewNotices: boolean;
+  };
+}
+
+// user 정보 타입
 export type UserInfo = {
   memberName: string;
   memberStatus: string;
-  memberGen: number;
-  memberScore: number;
+  memberGen?: number;
+  memberScore?: number;
   hasNewNotices: boolean;
 };
 // 사용자 정보 props 타입

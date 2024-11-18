@@ -1,10 +1,10 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logoutAction } from "stores/actions/sign"; // logout 액션 추가
+import { logoutAction } from "stores/actions/userAction"; // logout 액션 추가
 
 //로그아웃 api호출 함수
-const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
+const postLogout = async (navigate: NavigateFunction): Promise<void> => {
   const dispatch = useDispatch(); // dispatch 초기화
   const uri = "/api/logout";
   console.log("logout!!");
@@ -25,7 +25,6 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
     navigate("/");
     window.location.reload(); // 페이지 새로 고침
   } catch (error: unknown) {
-
     // axios 에러인 경우
     if (axios.isAxiosError(error)) {
       if (error.response) {
@@ -36,7 +35,7 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
           error.response.statusText
         );
         alert(`로그아웃 실패: 서버 응답 에러 (${error.response.status})`);
-        navigate('/');
+        navigate("/");
       } else if (error.request) {
         // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
         console.error("로그아웃 실패: 요청이 실패했습니다.");
@@ -46,7 +45,7 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
         console.error("로그아웃 실패:", error.message);
         alert("로그아웃 실패: 요청 설정 에러.");
       }
-    }else {
+    } else {
       // axios 외의 다른 일반적인 에러 처리
       console.error("로그아웃 실패 (일반 에러):", (error as Error).message);
       alert("로그아웃 실패: 알 수 없는 오류가 발생했습니다.");

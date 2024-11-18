@@ -7,7 +7,7 @@
       "assets/*": ["assets/*"],
       "apis/*": ["apis/*"],
       "styles/*": ["styles/*"],
-      "store/*": ["stores/*"],
+      "stores/*": ["stores/*"],
       "ace/*": ["libs/ace/*"],
     },
     // "outDir": "./dist",  // webpack이처리

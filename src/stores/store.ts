@@ -1,10 +1,11 @@
 import { createStore, combineReducers } from "redux";
 // Provider: state값 전달역할 /useSelector: 어떤 state값 쓸지 선택 / useDispatch: state값 변경
-import sign from "stores/reducers/sign"
+import {signReducer, userInfoReducer} from "stores/reducers/userReducer";
 
 // Reducers 한꺼번에 관리
 const rootReducer = combineReducers({
-  auth: sign,
+  sign: signReducer,
+  user: userInfoReducer,
 });
 
 // Redux DevTools 설정

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"; // dispatch 추가
 import postLogin from "apis/sign/postLogin";
 import { SignInFormData } from "model/userType";
-import { loginAction } from "stores/actions/sign"; // login 액션 추가
+import { loginAction } from "stores/actions/userAction"; // login 액션 추가
 
 // 로그인 관련 HOOK
 const useSignIn = () => {
@@ -28,7 +28,7 @@ const useSignIn = () => {
       dispatch(loginAction(formData.memberId)); // 로그인 액션 디스패치
 
       navigate("/");
-      window.location.reload(); // 페이지 새로고침
+      // window.location.reload(); // 페이지 새로고침
 
       // sessionStorage.setItem("status", "true");
       // sessionStorage.setItem("memberId", formData.memberId);
