@@ -1,8 +1,11 @@
 import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "stores/actions/sign"; // logout 액션 추가
 
 //로그아웃 api호출 함수
 const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
+  const dispatch = useDispatch(); // dispatch 초기화
   const uri = "/api/logout";
   console.log("logout!!");
 
@@ -13,8 +16,10 @@ const postLogout = async (navigate: NavigateFunction):Promise<void>  => {
       },
     });
 
+    dispatch(logoutAction()); // 로그인 액션 디스패치
+
     // 로컬 스토리지 클리어
-    sessionStorage.clear();
+    // sessionStorage.clear();
     alert(response.data.message);
 
     navigate("/");

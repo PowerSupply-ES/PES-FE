@@ -37,6 +37,7 @@
 }
 .dropdown-content .navbar_bottom .btn_mypage {
   border-right: solid 3px #d7d6d6;
+  color: #000000;
 }
 
 .navbarInfo {
@@ -78,6 +79,10 @@
 }
 @charset "UTF-8";
 /* ---------- footer ---------- */
+.mainPage .footer {
+  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
+}
+
 .footer {
   max-height: 240px;
   min-height: -moz-fit-content;
@@ -91,29 +96,24 @@
 .footer :not(.logo, .info1, .info2, .footer_logout) {
   color: rgba(255, 255, 255, 0.9254901961);
 }
-
-.mainPage .footer {
-  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
-}
-
-.footer_left {
+.footer .footer_left {
   width: 60%;
 }
-.footer_left .info {
+.footer .footer_left .info {
   display: flex;
   flex-direction: column;
   text-align: left;
   margin-left: 40px;
 }
-.footer_left .info * {
+.footer .footer_left .info * {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
 }
-.footer_left .info * p {
+.footer .footer_left .info * p {
   margin-left: 12px;
 }
-.footer_left .logo {
+.footer .footer_left .logo {
   width: 140px;
   height: 100px;
   font-size: 40px;
@@ -121,8 +121,7 @@
   margin-top: 28px;
   color: rgba(255, 255, 255, 0.9254901961);
 }
-
-.footer_right {
+.footer .footer_right {
   height: 80%;
   width: 40%;
   display: flex;
@@ -130,28 +129,25 @@
   justify-content: end;
   margin-top: 12px;
 }
-.footer_right .sns {
+.footer .footer_right .sns {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 12px;
   cursor: pointer;
 }
-.footer_right .sns *:first-child {
+.footer .footer_right .sns *:first-child {
   margin-right: 12px;
 }
-
-.info1,
-.info2 {
+.footer .footer_right .info1,
+.footer .footer_right .info2 {
   color: #c8c4c4;
   opacity: 57%;
 }
-
-.about {
+.footer .footer_right .about {
   margin-bottom: 8px;
 }
-
-.footer_logout {
+.footer .footer_right .footer_logout {
   text-align: right;
   margin: 8px 20px 0 0;
   color: #d4d4d4;

@@ -22,6 +22,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: bold;
   margin: 40px auto;
@@ -167,7 +168,7 @@
 .noticeInfo li {
   display: flex;
 }
-.noticeInfo li p {
+.noticeInfo li .leftInfo {
   font-weight: bold;
   margin-right: 20px;
   width: 60px;
