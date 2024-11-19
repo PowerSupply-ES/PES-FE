@@ -29,9 +29,6 @@ const useSignIn = () => {
 
       navigate("/");
       // window.location.reload(); // 페이지 새로고침
-
-      // sessionStorage.setItem("status", "true");
-      // sessionStorage.setItem("memberId", formData.memberId);
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert(error.message);

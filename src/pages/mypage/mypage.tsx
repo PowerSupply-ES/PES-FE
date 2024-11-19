@@ -6,14 +6,15 @@ import {MyFeedList, MyInfo, MyProbList} from "components/mypage";
 import { useNavigate } from "react-router-dom";
 import useMypage from "hooks/mypage/useMypage";
 import Loading from "components/common/Loading";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store"; // RootState 임포트
 
 // MyPage 컴포넌트 Props 타입
 interface MyPageProps {}
 
 const MyPage:React.FC<MyPageProps> = () => {
   const navigate = useNavigate();
-  const memberStatus = sessionStorage.getItem('memberStatus');
-  console.log('memberStatus = ', memberStatus);
+  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
   // useMypage HOOK 호출
   const { memberData, myProb, myFeedback } = useMypage();

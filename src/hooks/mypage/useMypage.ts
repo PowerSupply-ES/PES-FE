@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import {getMyInfo, getMyProb, getMyFeed} from "apis/mypage";
 import { MyFeedback, MemberDetail, UseMypageReturnType } from "model/userType";
 import { Problem } from "model/problemType";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store";
 
 // 마이페이지 api HOOK
 const useMypage = ():UseMypageReturnType => {
@@ -17,7 +19,7 @@ const useMypage = ():UseMypageReturnType => {
 
   // 관련 API요청 HOOK
   useEffect(() => {
-    const status = sessionStorage.getItem("status");
+    const { status } = useSelector((state: RootState) => state.sign); // redux에서 가져오기
 
     // 비로그인시
     if (status === null || status === undefined) {

@@ -1,4 +1,112 @@
-"use strict";(self.webpackChunkpes_fe=self.webpackChunkpes_fe||[]).push([[838],{2394:(e,t,o)=>{o.d(t,{A:()=>s});var a=o(3719),n=o.n(a);const s=async e=>{try{return(await n().get(`/api2/problemtitle/${e}`,{withCredentials:!0})).data}catch(e){console.log(e)}console.log("problemId:",e)}},6385:(e,t,o)=>{o.d(t,{$2:()=>l,OE:()=>r,i0:()=>c,zg:()=>i});var a=o(1594),n=o.n(a),s=o(4848);const i=e=>e?e.replace("T"," "):"",r=()=>{window.history.back()},c=e=>e.split("\n").map(((e,t)=>(0,s.jsxs)(n().Fragment,{children:[e,(0,s.jsx)("br",{})]},t))),l=e=>e.split("\n\n").map(((e,t)=>(0,s.jsxs)("span",{children:[e,(0,s.jsx)("br",{})]},t)))},947:(e,t,o)=>{o.d(t,{A:()=>d});var a=o(1594),n=o(3719),s=o.n(n);const i=e=>{const[t,o]=(0,a.useState)(null),n=(0,a.useCallback)((async()=>{try{const t=await(async e=>{try{const{data:t}=await s().get(`/api2/problem/${e}`,{withCredentials:!0});return t}catch(e){console.log(e)}})(e);o(t)}catch(e){console.error(e)}}),[e]);return(0,a.useEffect)((()=>{n()}),[n]),t};var r=o(2394);var c=o(7767);const l=e=>{const t=(0,c.Zp)(),o=(0,a.useRef)(""),[n,i]=(0,a.useState)(null);return{detail:n,textHandler:function(e){o.current=e},submitCode:async()=>{if(o.current){const{data:a,status:n}=await(async(e,t)=>{try{const o=await s().post(`/api2/submit/${t}`,{code:e,problemId:t});return{data:o.data,status:o.status}}catch(e){return console.log(e),s().isAxiosError(e)?{status:e.response?e.response.status:500}:{status:500}}})(o.current,e);a?201===n?(console.log(a),alert("문제를 맞혔습니다! 질의응답 페이지로 이동합니다."),sessionStorage.setItem("problemId",e.toString()),t(`/question/${a.answer_id}`)):202===n?(i(a.detail),alert("문제를 틀렸습니다! 다시 풀어보세요.")):500===n&&alert(`server가 응답하지 않네요! 관리자에게 상황을 공유해주세요! : ${a.message}`):alert("오류!")}else alert("코드를 입력해주세요!")}}},d=e=>{const t=(e=>{const[t,o]=(0,a.useState)(null),n=(0,a.useCallback)((async()=>{try{const t=await(0,r.A)(e);o(t||null)}catch(e){console.error(e),o(null)}}),[e]);return(0,a.useEffect)((()=>{n()}),[n]),t})(e),o=i(e),{textHandler:n,submitCode:s,detail:c}=l(e);return{title:t,problem:o,detail:c,isLogin:sessionStorage.getItem("status"),textHandler:n,submitCode:s}}},3838:(e,t,o)=>{o.r(t),o.d(t,{default:()=>_});var a=o(1594),n=o.n(a),s=o(7767),i=o(3719),r=o.n(i);const c=(e,t,o)=>{const[n,s]=(0,a.useState)(""),[i,c]=(0,a.useState)(""),[l,d]=(0,a.useState)(null),[p,x]=(0,a.useState)([]),[u,b]=(0,a.useState)(0),f=(0,a.useCallback)((async()=>{try{const t=await(async e=>{try{const{data:t}=await r().get(`/api2/question/${e}`,{withCredentials:!0});return t.code}catch(e){throw console.log(e),e}})(e);null!=t&&c(t)}catch(e){console.log(e)}}),[e]),h=(0,a.useCallback)((async()=>{try{const t=await(async e=>{try{return(await r().get(`/api/answer/${e}`,{withCredentials:!0})).data}catch(e){throw console.log(e),e}})(e);d(t),s(t.answerState||"")}catch(e){console.log(e)}}),[e]),g=(0,a.useCallback)((async()=>{try{const t=await(async e=>{try{return(await r().get(`/api/comment/${e}`,{withCredentials:!0})).data}catch(e){throw console.log(e),e}})(e);let o=0;x(t);for(let e=0;e<t.length;e++)1===t[e].commentPassFail&&o++;b(o)}catch(e){console.log(e)}}),[e]);return(0,a.useEffect)((()=>{f(),h()}),[f,h]),(0,a.useEffect)((()=>{"comment"!==n&&"success"!==n&&"fail"!==n||g()}),[n,g]),{code:i,qnA:l,state:n,feedbacks:p,passCount:u,getCodes:f,getQuestions:h,postAnswer:async(t,o)=>{try{await(async(e,t,o)=>{try{await r().post(`/api/answer/${e}`,{answerFst:t,answerSec:o})}catch(e){throw console.error(e),e}})(e,t,o),alert("성공적으로 답변을 등록했습니다."),window.location.reload()}catch(e){if(r().isAxiosError(e)){const t=e.response?e.response.status:null;400===t?alert("이미 답변이 등록되어 있습니다."):403===t?alert("접근할 수 있는 사용자가 아닙니다."):console.log("알 수 없는 서버 오류가 발생했습니다.",e)}else console.log("예상하지 못한 오류가 발생했습니다.",e)}},postFeedback:async(o,a)=>{try{const n=await(async(e,t,o)=>{try{return await r().post(`/api/comment/${e}`,{comment:t,commentPassFail:o})}catch(e){throw console.error(e),e}})(e,o,a);g(),t(n.status),window.location.reload()}catch(e){if(r().isAxiosError(e)){const t=e.response?.status;403===t?alert("권한이 없습니다!"):400===t?alert("이미 댓글을 달았어요!"):console.log("알 수 없는 오류가 발생했습니다.",e)}else console.log("예상하지 못한 오류가 발생했습니다.",e)}},setCode:c}};var l=o(6385),d=o(3124),p=o(4848);const x=n().lazy((()=>Promise.all([o.e(102),o.e(401)]).then(o.bind(o,6102)))),u=e=>{let{FstHandler:t,SecHandler:o,code:n,qnA:s,setCode:i,problemId:r}=e;return(0,p.jsxs)("div",{className:"code_question_container",children:[(0,p.jsx)("div",{className:"code_container",children:(0,p.jsx)(a.Suspense,{fallback:(0,p.jsx)(d.A,{}),children:(0,p.jsx)(x,{onChange:i,readOnly:!0,code:n})})}),(0,p.jsx)("div",{className:"question_container",children:"question"===s.answerState?(0,p.jsxs)(p.Fragment,{children:[(0,p.jsxs)("div",{className:"question_layout",children:[(0,p.jsxs)("div",{className:"question_header",children:[(0,p.jsx)("div",{className:"question_id",children:"질문 1"}),(0,p.jsx)("div",{className:"header_title",children:s.questionContentFst})]}),(0,p.jsx)("textarea",{className:"answer_input",onChange:t})]}),(0,p.jsxs)("div",{className:"question_layout",children:[(0,p.jsxs)("div",{className:"question_header",children:[(0,p.jsx)("div",{className:"question_id",children:"질문 2"}),(0,p.jsx)("div",{className:"header_title",children:s.questionContentSec})]}),(0,p.jsx)("textarea",{className:"answer_input",onChange:o})]})]}):(0,p.jsxs)(p.Fragment,{children:[(0,p.jsxs)("div",{className:"question_header",children:[(0,p.jsx)("div",{className:"question_id",children:"질문 1"}),(0,p.jsx)("div",{className:"header_title",children:s.questionContentFst})]}),(0,p.jsx)("div",{className:"answer_input display",children:(0,l.i0)(s.answerFst)}),(0,p.jsxs)("div",{className:"question_header",children:[(0,p.jsx)("div",{className:"question_id",children:"질문 2"}),(0,p.jsx)("div",{className:"header_title",children:s.questionContentSec})]}),(0,p.jsx)("div",{className:"answer_input display",children:(0,l.i0)(s.answerSec)})]})})]})};var b=o(947),f=o(8246);const h=e=>{let{state:t,navigate:o,problemId:s}=e;const[i,r]=(0,a.useState)(!1),{title:c,problem:d}=(0,b.A)(s??-1),x=c?c.problemTitle:"제목 없음",u=d?d.problemContent:"문제 내용 없음",h=d?d.sampleInputs:[],g=d?d.sampleOutputs:[];return null===s||-1===s?(0,p.jsx)(f.f,{className:"problem_header_section",state:t,children:(0,p.jsx)("div",{className:"problem_header",children:(0,p.jsxs)("div",{className:"problem_group",children:[(0,p.jsx)("div",{className:"problem_id",children:"알수없음"}),(0,p.jsx)("div",{className:"header_title",children:"제목 없음"}),(0,p.jsx)("div",{className:"header_answer_state",children:"알수없음"})]})})}):(0,p.jsxs)(f.f,{className:"problem_header_section",state:t,children:[(0,p.jsx)("div",{className:"problem_header",children:(0,p.jsxs)("div",{className:"problem_group",children:[(0,p.jsxs)("div",{className:"problem_id",children:["문제",null!==s?s:"정보 없음"]}),(0,p.jsx)("div",{className:"header_title",children:x}),(0,p.jsx)("div",{className:"header_answer_state",children:"success"===t?"성공":"fail"===t?"실패":"미완료"})]})}),(0,p.jsxs)("div",{className:"button_group",children:[(0,p.jsxs)("button",{className:"button_problem",onClick:()=>{r((e=>!e))},children:["문제보기",i&&(0,p.jsxs)("div",{className:"dropdown_content",children:[(0,p.jsx)("div",{className:"content",style:{whiteSpace:"pre"},children:(0,l.i0)(u)}),(0,p.jsxs)("div",{className:"sample_inputs",children:[(0,p.jsx)("h3",{children:"Sample Inputs:"}),h.map(((e,t)=>(0,p.jsx)(n().Fragment,{children:(0,l.i0)(e)},t)))]}),(0,p.jsxs)("div",{className:"sample_outputs",style:{whiteSpace:"pre"},children:[(0,p.jsx)("h3",{children:"Sample Outputs:"}),g.map(((e,t)=>(0,p.jsx)(n().Fragment,{children:(0,l.i0)(e)},t)))]})]})]}),("success"===t||"fail"===t)&&(0,p.jsx)("button",{className:"button_solution",onClick:()=>o(`/solution/${s}`),children:"다른 풀이 보기"})]})]})};var g=o(6553);const m=e=>{let{navigate:t,state:o,textFst:n,handleTextFstChange:s,memberStatus:i,feedbacks:r,passCount:c,postFeedback:d}=e;const[x,u]=(0,a.useState)("rgba(4, 202, 0, 0.6)"),[b,f]=(0,a.useState)("rgba(244, 117, 117, 0.6)"),[h,m]=(0,a.useState)(null),w=e=>{m(e)},_=r?Object.values(r):[];return(0,p.jsxs)(g.k,{className:"feedback_section_1",children:[(0,p.jsx)("hr",{style:{height:2,border:"none",backgroundColor:"gray",marginTop:100}}),(0,p.jsxs)("div",{className:"feedback_section",children:["신입생"===i&&_.length<=0&&"comment"===o&&(0,p.jsx)("div",{className:"feedback_waiting_bar",onClick:()=>t("/"),children:"피드백을 기다리는 중입니다..."}),_.length>0&&_.map(((e,t)=>(0,p.jsxs)("div",{className:"feedback_container",children:[1===e.commentPassFail?(0,p.jsx)("div",{className:"feedback_result_pass",children:"PASS"}):(0,p.jsx)("div",{className:"feedback_result_fail",children:"FAIL"}),(0,p.jsxs)("div",{className:"question_header",children:[(0,p.jsx)("div",{className:"feedback_index",children:`Feedback ${t+1}`}),(0,p.jsxs)("div",{className:"feedback_writer",children:[e.writerGen,"기"]}),(0,p.jsx)("div",{className:"feedback_writer",children:e.writerName})]}),(0,p.jsx)("div",{className:"feedback_content display",children:(0,l.i0)(e.commentContent)})]},t))),("재학생"===i||"관리자"===i)&&_.length<=1&&"comment"===o&&(0,p.jsxs)("div",{className:"feed_section",children:[(0,p.jsx)("div",{className:"question_header",children:(0,p.jsx)("div",{className:"feedback_index",children:"Feedback"})}),(0,p.jsx)("textarea",{className:"feedback_content input",placeholder:"피드백을 입력해주세요.",onChange:s}),(0,p.jsxs)("div",{className:"feedback_select_section",children:[(0,p.jsxs)("div",{className:"button_container",children:[(0,p.jsx)("div",{className:"select_button pass",style:{color:x},onClick:()=>{w("1"),f("rgba(244, 117, 117, 0.6)"),u("rgba(4, 202, 0, 1)")},children:"PASS"}),(0,p.jsx)("div",{className:"select_button fail",style:{color:b},onClick:()=>{w("0"),u("rgba(4, 202, 0, 0.6)"),f("rgba(244, 117, 117, 1)")},children:"FAIL"})]}),(0,p.jsx)("p",{className:"select_comment",children:"PASS 혹은 FAIL을 선택해주세요."})]}),(0,p.jsx)("button",{className:"feedback_button",onClick:()=>{n&&n?h?window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?")&&d(n,parseInt(h,10)):alert("통과 여부를 선택해주세요!"):alert("내용을 입력해주세요!")},children:"답변하기"})]})]}),_.length>=2&&(0,p.jsxs)("div",{className:"result_container",children:[(0,p.jsx)("div",{className:c>=1&&_.length>1?"result success":"result fail",onClick:()=>t("/"),children:c>=1&&_.length>1?`축하합니다! 성공적으로 통과했습니다!  ( ${c}/2 )`:`질문테스트에 통과하지 못했습니다.  ( ${c}/2 )`}),(0,p.jsx)("p",{children:"클릭시 홈화면으로 이동합니다"})]})]})},w=e=>{let{navigate:t,code:o,qnA:n,state:s,setCode:i,textFst:r,handleTextFstChange:c,postAnswer:l}=e;const d=Number(sessionStorage.getItem("problemId")),[x,b]=(0,a.useState)("");return(0,p.jsxs)(g.k,{className:"problem_answer_section",children:[(0,p.jsx)(h,{state:s,navigate:t,problemId:d}),"  ",n&&(0,p.jsx)(u,{FstHandler:c,SecHandler:e=>{b(e.target.value)},code:o,qnA:n,setCode:i,problemId:d}),"question"===s&&(!n.answerFst||!n.answerSec)&&(0,p.jsx)("div",{className:"btn_container",children:(0,p.jsx)("button",{className:"button answer",onClick:()=>{r&&x?window.confirm("수정이 불가능합니다. 정말 제출하시겠습니까?")&&l(r,x):alert("내용을 입력해주세요!")},children:"답변하기"})})]})},_=()=>{const e=(0,s.Zp)();let t=new URL(window.location.href),o=Number(t.pathname.split("/")[2]);console.log("answerId= ",o);Number(sessionStorage.getItem("problemId"));const[n,i]=(0,a.useState)(""),r=e=>{i(e.target.value),console.log("e.target.value = ",e.target.value)},{code:l,qnA:x,state:u,feedbacks:b,passCount:f,postFeedback:h,postAnswer:g,setCode:_}=c(o,(e=>{400===e?alert("이미 댓글을 달았습니다."):403===e&&alert("접근할 수 있는 사용자가 아닙니다.")})),k=sessionStorage.getItem("memberStatus");return(0,a.useEffect)((()=>{null===k&&(alert("풀이 열람 권한이 없습니다!"),e(-1))}),[k,x,e]),null===x?(0,p.jsx)(d.A,{}):(0,p.jsx)("div",{className:"success"===u?"successPage":"fail"===u?"failPage":"nonePage",children:(0,p.jsx)("div",{children:x?(0,p.jsxs)(p.Fragment,{children:[(0,p.jsx)(w,{navigate:e,code:l,qnA:x,state:u,setCode:_,textFst:n,handleTextFstChange:r,postAnswer:g}),(0,p.jsx)(m,{navigate:e,memberStatus:k,feedbacks:b,passCount:f,state:u,postFeedback:h,textFst:n,handleTextFstChange:r})]}):(0,p.jsx)(d.A,{})})})}},8246:(e,t,o)=>{o.d(t,{f:()=>a});const a=o(1250).Ay.div`
+"use strict";(self.webpackChunkpes_fe=self.webpackChunkpes_fe||[]).push([[188],{7858:(t,e,o)=>{o.d(e,{A:()=>r});var i=o(3719),n=o.n(i);const r=async(t,e)=>{const o="/manageFeed"===e.pathname?"/api/admin/problemlist":"/api/problemlist";try{const e={withCredentials:!0};t((await n().get(o,e)).data)}catch(t){console.log("Failed to fetch list:",t)}}},5945:(t,e,o)=>{o.d(e,{H:()=>a,c:()=>p});var i=o(1594),n=o(1250),r=o(4848);const a=()=>{const t=(0,i.useRef)(null);return(0,i.useEffect)((()=>{const e=document.createElement("script");e.setAttribute("src","https://t1.daumcdn.net/kas/static/ba.min.js"),e.setAttribute("charset","utf-8"),e.setAttribute("async","true");const o=t.current;return o&&o.appendChild(e),()=>{o&&o.removeChild(e)}}),[]),(0,r.jsx)(c,{children:(0,r.jsx)("div",{ref:t,children:(0,r.jsx)("ins",{className:"kakao_ad_area",style:{display:"none"},"data-ad-unit":"DAN-vGny0Q5scRDlw6pg","data-ad-width":"728","data-ad-height":"90"})})})},c=n.Ay.div`
+  display: flex;
+  align-items: center;
+  background-color: #272727;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  padding: 20px 0;
+  margin: auto;
+  margin-bottom: 48px;
+`;var d=o(7767),s=o(1330),l=o(1468);const p=t=>{const e=(0,d.Zp)(),{memberStatus:o}=(0,l.d4)((t=>t.user)),i=o=>{if(o){sessionStorage.setItem("problemId",t.pid.toString());const o=sessionStorage.getItem("problemId");console.log("problemId = ",o),e(`/question/${t.answerId}`)}else e(`/problem/${t.pid}`)};return(0,r.jsx)(s.HF,{state:"success",children:(0,r.jsxs)("div",{className:"container",children:[(0,r.jsx)("div",{className:"problem_id",onClick:()=>{i(t.answerId)},children:t.pid}),(0,r.jsx)("div",{className:"problem_title",onClick:()=>{i(t.answerId)},children:t.ptitle}),(0,r.jsxs)("div",{className:"grade",children:["점수 ",t.grade]}),(0,r.jsx)("button",{className:"button",onClick:()=>e(`/solution/${t.pid}`),disabled:!1,children:"풀이보기"})]})})}},597:(t,e,o)=>{o.d(e,{A:()=>r});var i=o(5945),n=(o(1594),o(4848));const r=t=>{let{problmeList:e}=t;return(0,n.jsx)("div",{className:"problem_wrapper",children:e.map((t=>(0,n.jsx)(i.c,{pid:t.problemId,ptitle:t.problemTitle,grade:t.problemScore,answerId:t.answerId,state:t.answerState},t.problemId)))})}},8188:(t,e,o)=>{o.r(e),o.d(e,{default:()=>s});var i=o(597),n=o(7858),r=o(1594),a=o(7767),c=o(1468);var d=o(4848);const s=()=>{const{list:t}=(()=>{const{memberStatus:t}=(0,c.d4)((t=>t.user)),[e,o]=(0,r.useState)([]),i=(0,a.zy)();return(0,r.useEffect)((()=>{(0,n.A)(o,i)}),[t,i]),{list:e}})();return(0,d.jsx)(i.A,{problmeList:t})}},5546:(t,e,o)=>{o.d(e,{J:()=>r,L:()=>n});var i=o(1250);const n=i.Ay.div`
+  
+  .list_wrapper {
+    display: flex;
+    
+  }
+  .list_container {
+    margin-right: 5%;
+    width: 60%;
+  }
+
+  .ranking_container {
+    width: 20%;
+    min-width: fit-content;
+
+  }
+
+  .container_header {
+    margin-bottom: 20px;
+    font-weight: bold;
+    align-items: center;
+    font-size: 30px;
+    display: flex;
+    width: 100%;
+  }
+
+  .student_container {
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+    font-size: 18px;
+    display: flex;
+    width: 100%;
+  }
+
+  .student_button {
+    width: 48%;
+    height: fit-content;
+    padding: 7px 30px;
+    box-shadow: rgb(204, 201, 201) 1px 1px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* 클릭된 버튼 스타일 */
+  .student_button_active {
+    background-color: #cccccc;
+    color: #fff;
+  }
+
+  .select_box {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    height: 40px;
+    display: flex;
+    width: 50%;
+  }
+
+  .ranking-list {
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+  }
+  .problem_wrapper {
+    height: fit-content;
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+  }
+`,r=i.Ay.div`
+  margin-bottom: 1px;
+  padding: 0 10px;
+  align-items: center;
+  font-size: 18px;
+  height: 40px;
+  display: flex;
+  background-color: white;
+  width: 100%;
+  border-radius: 8px;
+
+  .ranking_id {
+    width: 20%;
+    margin-right: 2px;
+  }
+  .member_name {
+    text-align: left;
+    flex: 1 1 0%;
+  }
+  .score {
+    width: 20%;
+  }
+`},8246:(t,e,o)=>{o.d(e,{f:()=>i});const i=o(1250).Ay.div`
     .problem_header {
         width: 80%;
         height: 78px;
@@ -51,14 +159,14 @@
     .header_answer_state {
         width: fit-content;
         padding: 8px 16px;
-        // color: ${e=>"success"===e.state?"#5094F9":"fail"===e.state?"rgba(235, 52, 52, 0.8)":"#6A6B6F"};
+        // color: ${t=>"success"===t.state?"#5094F9":"fail"===t.state?"rgba(235, 52, 52, 0.8)":"#6A6B6F"};
         // background-color: #ffffff;
 
-        /* border: solid 3px ${e=>"success"===e.state?"#5094F9":"fail"===e.state?"rgba(235, 52, 52, 0.8)":"#DEDEDE"};
-        background-color: ${e=>"success"===e.state?"#0025cae0; opacity:70%;":"fail"===e.state?"rgb(255, 53, 53, 0.9)":"#3B3B3B; opacity:70%"}; */
+        /* border: solid 3px ${t=>"success"===t.state?"#5094F9":"fail"===t.state?"rgba(235, 52, 52, 0.8)":"#DEDEDE"};
+        background-color: ${t=>"success"===t.state?"#0025cae0; opacity:70%;":"fail"===t.state?"rgb(255, 53, 53, 0.9)":"#3B3B3B; opacity:70%"}; */
         
-        color: ${e=>"success"===e.state?"#0025cae0; opacity:70%;":"fail"===e.state?"rgb(255, 53, 53, 0.9)":"#3B3B3B; opacity:70%"};
-        border: solid 3px ${e=>"success"===e.state?"#0025cae0; opacity:70%;":"fail"===e.state?"rgb(246, 73, 73, 0.9)":"#3B3B3B; opacity:70%"};
+        color: ${t=>"success"===t.state?"#0025cae0; opacity:70%;":"fail"===t.state?"rgb(255, 53, 53, 0.9)":"#3B3B3B; opacity:70%"};
+        border: solid 3px ${t=>"success"===t.state?"#0025cae0; opacity:70%;":"fail"===t.state?"rgb(246, 73, 73, 0.9)":"#3B3B3B; opacity:70%"};
 
         font-size: 19px;
         font-weight: bold;
@@ -293,7 +401,7 @@
         font-size: 20px;
         border-radius: 15px;
     }
-`},6553:(e,t,o)=>{o.d(t,{k:()=>a});const a=o(1250).Ay.div`
+`},6553:(t,e,o)=>{o.d(e,{k:()=>i});const i=o(1250).Ay.div`
   .code_question_container {
     width: 95%;
     display: flex;
@@ -592,14 +700,14 @@
     cursor: pointer;
   }
   .select_button.pass {
-    color: ${e=>e.isSelected?"rgba(4, 202, 0, 1)":"rgba(4, 202, 0, 0.6)"};
+    color: ${t=>t.isSelected?"rgba(4, 202, 0, 1)":"rgba(4, 202, 0, 0.6)"};
     &:hover {
       color: rgba(4, 202, 0, 1);
     }
     margin-right: 20px;
   }
   .select_button.fail {
-    color: ${e=>e.isSelected?"rgba(244, 117, 117, 1)":"rgba(244, 117, 117, 0.6)"};
+    color: ${t=>t.isSelected?"rgba(244, 117, 117, 1)":"rgba(244, 117, 117, 0.6)"};
     &:hover {
       color: rgba(244, 117, 117, 1);
     }
@@ -708,5 +816,98 @@
   }
   .sample_outputs {
     text-align: left;
+  }
+`},1330:(t,e,o)=>{o.d(e,{JW:()=>r.J,HF:()=>n,Lb:()=>r.L,HU:()=>a});var i=o(1250);const n=i.Ay.div`
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    min-width: fit-content;
+    align-items: center;
+    margin: auto;
+    padding: 8px 16px 8px 0px;
+    border-radius: 8px;
+
+    background-color: ${t=>null===t.state?"#DEDEDE":"comment"===t.state||"question"===t.state?"rgba(243, 242, 242, 0.737)":"white"};
+    transition: background-color 0.3s; 
+    &:hover {
+      background-color: ${t=>null===t.state?"#DEDEDE":"rgba(243, 242, 242, 0.737)"};
+    }
+  }
+
+  .problem_id {
+    width: 100px;
+    height: 34px;
+    color: ${t=>"success"===t.state?"#04CA00":"fail"===t.state?"#FF8412":"black"};
+    font-size: 18px;
+    text-align: center;
+    line-height: 34px;
+  }
+
+  .problem_title {
+    flex: 1;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+    color: #000000;
+    opacity: 70%;
+  }
+
+  .grade {
+    height: 34px;
+    font-size: 16px;
+    margin-right: 20px;
+    line-height: 34px;
+    font-weight: bold;
+    color: #000000;
+    opacity: 60%;
+  }
+
+  .button {
+    width: fit-content;
+    min-width: fit-content;
+    height: fit-content;    
+    padding: 7px 30px;
+    box-shadow: 1px 1px #ccc9c9;
+
+    color: ${t=>"success"===t.state||"fail"===t.state?"white":"#56565692"};
+
+    background-color: ${t=>"success"===t.state?"rgba(109, 99, 228, 0.8)":"fail"===t.state?"rgba(244, 117, 117, 0.8)":(t.state,"white")};
+    &:hover {
+      background-color: ${t=>"success"===t.state?"rgba(109, 99, 228, 1.0)":"fail"===t.state?"rgba(244, 117, 117, 1.0)":""};
+    }
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+
+    text-align: center;
+    border: ${t=>"success"===t.state||"fail"===t.state?"none":null===t.state?"#d6d6d6cc":"2px solid #DEDEDE"};
+    transition: background-color 0.3s;
+    margin-right: 14px;
+    pointer-events: ${t=>"success"===t.state||"fail"===t.state?"auto":"none"};
+  }
+`;var r=o(5546);o(8246),o(6553);const a=i.Ay.div`
+  margin-bottom: 1px;
+  align-items: center;
+  font-size: 18px;
+  height: 40px;
+  display: flex;
+  background-color: white;
+  width: 100%;
+  border-radius: 8px;
+
+  .ranking_id {
+    width: 20%;
+  }
+  .member_name {
+    text-align: left;
+    flex: 1 1 0%;
+  }
+  .score {
+    width: 20%;
+    min-width: fit-content;
   }
 `}}]);

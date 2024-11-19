@@ -23,6 +23,7 @@ const postLogout = async (
 
     // 로컬 스토리지 클리어
     localStorage.clear();
+    sessionStorage.clear();
     alert(response.data.message);
 
     navigate("/");

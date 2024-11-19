@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { StyledListItem } from "styles/styledComponent";
 import { ProblemItemProps } from "model/problemType";
 // import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store"; // RootState 임포트
 
 const ListItem: React.FC<ProblemItemProps> = (props) => {
   const navigate = useNavigate();
-  const memberStatus = sessionStorage.getItem("memberStatus");
+  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
   // 해당 문제로 이동 메서드
   const goToProb = (answerId: number | null) => {

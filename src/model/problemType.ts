@@ -70,7 +70,7 @@ export type UseProbPageReturnType = {
   title: ProblemTitle | null;
   problem: ProblemContent | null;
   detail: string | null;
-  isLogin: string | null;
+  isLogin: boolean | null;
   textHandler: (text: string) => void;
   submitCode: () => void;
 }

@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useQuestionHook from "hooks/question/useQuestionHook";
 import RenderAnswerUI from "components/question/RenderAnswerUI";
 import RenderFeed from "components/question/RenderFeed";
 import Loading from "components/common/Loading";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store"; // RootState 임포트
 
 const QuestionPage: React.FC = () => {
   const navigate = useNavigate();
@@ -46,11 +48,9 @@ const QuestionPage: React.FC = () => {
     setCode,
   } = useQuestionHook(answerId, getAlert, problemId);
 
-  // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용
-  const memberStatus = sessionStorage.getItem("memberStatus");
+  // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용 -> redux사용
+  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
-
-  
   useEffect(()=>{
     if (memberStatus === null) {
       alert("풀이 열람 권한이 없습니다!");

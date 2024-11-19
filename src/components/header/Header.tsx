@@ -11,8 +11,8 @@ import "styles/css/navbar.css";
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-  // useSelector에서 RootState를 사용하여 sign 상태의 status를 가져옴
-  const { status } = useSelector((state: RootState) => state.sign);
+  
+  const { status } = useSelector((state: RootState) => state.sign); // useSelector에서 RootState를 사용하여 sign 상태의 status를 가져옴
 
   return (
     <div>

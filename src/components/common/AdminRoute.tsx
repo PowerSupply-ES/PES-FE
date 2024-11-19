@@ -1,9 +1,13 @@
 // 관리자 이외 접근 보호용 컴포넌트
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store";
 
 const AdminRoute = ({ children }: { children: JSX.Element }) => {
-  const isAdmin = sessionStorage.getItem('memberStatus') === '관리자';
+  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
+
+  const isAdmin = memberStatus === '관리자';
   const navigate = useNavigate();
 
   useEffect(() => {

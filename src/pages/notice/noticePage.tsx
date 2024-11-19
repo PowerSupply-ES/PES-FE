@@ -6,10 +6,12 @@ import { PiNotePencilFill } from "react-icons/pi";
 import getNoticeList from "apis/notice/getNoticeList";
 import NoticeList from "components/notice/NoticeList";
 import { NoticeListType } from "model/noticeType"; 
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store"; // RootState 임포트
 
 const NoticePage: React.FC = () => {
   const navigate = useNavigate();
-  const memberStatus = sessionStorage.getItem("memberStatus");
+  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
   // 공지사항 리스트
   const [noticeList, setNoticeList] = useState<NoticeListType[]>([]);
