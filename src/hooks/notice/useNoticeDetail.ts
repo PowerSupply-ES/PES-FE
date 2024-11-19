@@ -6,8 +6,7 @@ import { RootState } from "stores/store";
 
 // user 세부정보 호출 HOOK
 const useNoticeDetail = () => {
-  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
-  // const memberStatus: string | null = sessionStorage.getItem("memberStatus");
+  const { memberStatus } : { memberStatus: string | null} = useSelector((state: RootState) => state.user); // redux에서 가져오기
   const [noticeDetail, setDetail] = useState<NoticeDetailType | null>(null); //공지사항 세부정보
   const [isEditing, setIsEditing] = useState<boolean>(false); //수정상태
 

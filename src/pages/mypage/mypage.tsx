@@ -15,9 +15,10 @@ interface MyPageProps {}
 const MyPage:React.FC<MyPageProps> = () => {
   const navigate = useNavigate();
   const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
+  const { status } = useSelector((state: RootState) => state.sign);
 
   // useMypage HOOK 호출
-  const { memberData, myProb, myFeedback } = useMypage();
+  const { memberData, myProb, myFeedback } = useMypage(status);
 
   if (!memberData) {
     return <Loading/>;

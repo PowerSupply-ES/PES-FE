@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkpes_fe=self.webpackChunkpes_fe||[]).push([[136],{9136:(e,s,c)=>{c.r(s),c.d(s,{default:()=>p}),c(1594);var f=c(4848);const p=()=>(0,f.jsx)("div",{children:"피드백 관리"})}}]);

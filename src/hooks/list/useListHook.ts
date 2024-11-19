@@ -8,8 +8,7 @@ import { RootState } from "stores/store";
 
 // 문제 list 호출 HOOK
 const useListHook = (): UseListHookReturn => {
-  const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
-  // const memberStatus = sessionStorage.getItem("memberStatus") || '';
+  const { memberStatus } = useSelector((state: RootState) => state.user) || ''; // redux에서 가져오기
 
   const [list, setList] = useState<Problem[]>([]);
   const [selectedOption, setSelectedOption] = useState<'junior' | 'senior'>("junior");

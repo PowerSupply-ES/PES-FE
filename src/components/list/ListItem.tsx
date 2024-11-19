@@ -27,9 +27,6 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
   // status가 "재학생"일 때는 props.state 값을 "success"로 설정,
   // 그 외에는 props.state 값 그대로 사용
   const state = memberStatus === "재학생" || "관리자" ? "success" : props.state;
-  // console.log("state = ", state);
-  // console.log("props.state = ", props.state);
-  // console.log("memberStatus = ", memberStatus);
 
   return (
     <StyledListItem state={state}>
