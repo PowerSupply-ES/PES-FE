@@ -26,7 +26,7 @@ const postLogout = async (
     alert(response.data.message);
 
     navigate("/");
-    //window.location.reload(); // 페이지 새로 고침
+    window.location.reload(); // 페이지 새로 고침
   } catch (error: unknown) {
     // axios 에러인 경우
     if (axios.isAxiosError(error)) {

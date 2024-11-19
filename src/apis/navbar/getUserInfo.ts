@@ -1,11 +1,13 @@
 import axios from "axios";
 import { UserInfo, GetUserInfoProps } from "model/userType";
-import { useDispatch } from "react-redux";
 import { userInfoAction } from "stores/actions/userAction";
 
 // 상단바 user 정보 API 요청
-const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
-  const dispatch = useDispatch();
+const getUserInfo = async ({
+  navigate,
+  setMemberData,
+  dispatch,
+}: GetUserInfoProps) => {
   const uri = "/api/exp";
   const memberEmail = sessionStorage.getItem("memberEmail");
 
@@ -17,13 +19,14 @@ const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
     // 데이터 처리
     const data = response.data;
     setMemberData(data);
-
-    // sessionStorage 저장에서 Redux 저장으로 변경
-    dispatch(
+    
+    dispatch( // sessionStorage 저장에서 Redux 저장으로 변경
       userInfoAction({
         memberName: data.memberName,
         memberStatus: data.memberStatus,
         hasNewNotices: data.hasNewNotices,
+        memberScore: data.memberScore,
+        memberGen: data.memberGen,
       })
     );
 

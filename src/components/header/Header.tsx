@@ -14,8 +14,6 @@ const Header: React.FC<HeaderProps> = () => {
   // useSelector에서 RootState를 사용하여 sign 상태의 status를 가져옴
   const { status } = useSelector((state: RootState) => state.sign);
 
-  console.log(status);
-
   return (
     <div>
       {/* 로그인이 완료되었는지에 따라 다른 Header를 렌더링 */}

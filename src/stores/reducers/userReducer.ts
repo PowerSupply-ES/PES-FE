@@ -45,6 +45,15 @@ export const userInfoReducer = (
   switch (action.type) {
     case "SET_USER_INFO":
       return { ...currentState, ...action.payload };
+    case "LOGOUT":
+      return {
+        ...currentState,
+        memberName: "",
+        memberStatus: "",
+        hasNewNotices: false,
+        memberGen: 0,
+        memberScore: 0,
+      };
     default:
       return currentState;
   }

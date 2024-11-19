@@ -29,7 +29,7 @@ const HeaderForUser: React.FC = () => {
 
   // 넷바 사용자 정보 요청
   useEffect(() => {
-    getUserInfo({ navigate, setMemberData });
+    getUserInfo({ navigate, setMemberData, dispatch });
   }, [navigate]);
 
   // 로그아웃 호출 함수
