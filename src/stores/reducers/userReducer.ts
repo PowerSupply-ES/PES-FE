@@ -3,7 +3,7 @@ import { UserAction } from "stores/actions/userAction";
 import { UserInfo } from "model/userType";
 
 // initialSignin 타입
-type SignState = {
+export type SignState = {
   status: boolean;
   memberId: string | null;
 };
@@ -14,7 +14,7 @@ const initialSignin: SignState = {
 };
 
 // userInfo 기본 상태
-const initialInfo = {
+const initialInfo: UserInfo = {
   memberName: "",
   memberStatus: "",
   hasNewNotices: false,

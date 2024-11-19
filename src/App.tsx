@@ -1,11 +1,9 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
 import Header from "components/header/Header";
 import ManageMenu from "components/manage/ManageMenu";
 import AdminRoute from "components/common/AdminRoute";
 import Loading from "components/common/Loading";
-import store from "stores/store";
 
 // 동적 임포트
 const ListPage = React.lazy(() => import("pages/list/listPage"));
@@ -27,60 +25,57 @@ const UserDetailPage = React.lazy(() => import("pages/manage/userDetailPage"));
 
 const App: React.FC = () => {
   return (
-    // Redux 적용
-    <Provider store={store}>
-      <div className="App" style={{ backgroundColor: "#f5f5f5" }}>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            {/* Topbar */}
-            <Route path="/" element={<Header />}>
-              <Route path="" element={<MainPage />} />
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/mypage" element={<Mypage />} />
-              {/* <Route path="/menual" element={<Menual />} /> */}
-              <Route path="/notice" element={<NoticePage />} />
-              <Route path="/postNotice" element={<NoticePost />} />
+    <div className="App" style={{ backgroundColor: "#f5f5f5" }}>
+      <Suspense fallback={<Loading />}> {/* 동적 로드된 컴포넌트(React.lazy)가 로드되는 동안 보여줄 로딩 화면 */}
+        <Routes>
+          {/* Topbar */}
+          <Route path="/" element={<Header />}>
+            <Route path="" element={<MainPage />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/mypage" element={<Mypage />} />
+            {/* <Route path="/menual" element={<Menual />} /> */}
+            <Route path="/notice" element={<NoticePage />} />
+            <Route path="/postNotice" element={<NoticePost />} />
 
-              <Route path="/solution/:id" element={<SolutionPage />} />
-              <Route path="/list" element={<ListPage />} />
-              <Route path="/problem/:id" element={<ProblemPage />} />
-              <Route path="/question/:id" element={<QuestionPage />} />
-              <Route path="/notice/:id" element={<NoticeDetail />} />
-              <Route path="/manageUser/:id" element={<UserDetailPage />} />
-            </Route>
+            <Route path="/solution/:id" element={<SolutionPage />} />
+            <Route path="/list" element={<ListPage />} />
+            <Route path="/problem/:id" element={<ProblemPage />} />
+            <Route path="/question/:id" element={<QuestionPage />} />
+            <Route path="/notice/:id" element={<NoticeDetail />} />
+            <Route path="/manageUser/:id" element={<UserDetailPage />} />
+          </Route>
 
-            {/* 관리자 메뉴 - AdminRoute로 보호*/}
-            <Route path="/" element={<ManageMenu />}>
-              <Route
-                path="/manageUser"
-                element={
-                  <AdminRoute>
-                    <UserListPage />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/manageProb"
-                element={
-                  <AdminRoute>
-                    <UserProbPage />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/manageFeed"
-                element={
-                  <AdminRoute>
-                    <UserFeedPage />
-                  </AdminRoute>
-                }
-              />
-            </Route>
-          </Routes>
-        </Suspense>
-      </div>
-    </Provider>
+          {/* 관리자 메뉴 - AdminRoute로 보호*/}
+          <Route path="/" element={<ManageMenu />}>
+            <Route
+              path="/manageUser"
+              element={
+                <AdminRoute>
+                  <UserListPage />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/manageProb"
+              element={
+                <AdminRoute>
+                  <UserProbPage />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/manageFeed"
+              element={
+                <AdminRoute>
+                  <UserFeedPage />
+                </AdminRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </Suspense>
+    </div>
   );
 };
 
