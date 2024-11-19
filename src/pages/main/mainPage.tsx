@@ -2,14 +2,8 @@ import React from "react";
 import {MovingImage, ScrollImage} from "components/main";
 import "styles/css/App.css";
 import "styles/css/mainAnimation.css";
-import { useSelector } from "react-redux";
-import { UserState } from "model/userType";
 
 const MainPage: React.FC = () => {
-  const { status } = useSelector(
-    (state: UserState) => state.user
-  );
-  console.log(status);
   return (
     <div className="mainPage">
       <div className="content">

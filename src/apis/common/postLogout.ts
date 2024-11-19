@@ -2,10 +2,13 @@ import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "stores/actions/userAction"; // logout 액션 추가
+import { Dispatch } from "redux";
 
 //로그아웃 api호출 함수
-const postLogout = async (navigate: NavigateFunction): Promise<void> => {
-  const dispatch = useDispatch(); // dispatch 초기화
+const postLogout = async (
+  navigate: NavigateFunction,
+  dispatch: Dispatch
+): Promise<void> => {
   const uri = "/api/logout";
   console.log("logout!!");
 
@@ -19,11 +22,11 @@ const postLogout = async (navigate: NavigateFunction): Promise<void> => {
     dispatch(logoutAction()); // 로그인 액션 디스패치
 
     // 로컬 스토리지 클리어
-    // sessionStorage.clear();
+    localStorage.clear();
     alert(response.data.message);
 
     navigate("/");
-    window.location.reload(); // 페이지 새로 고침
+    //window.location.reload(); // 페이지 새로 고침
   } catch (error: unknown) {
     // axios 에러인 경우
     if (axios.isAxiosError(error)) {
