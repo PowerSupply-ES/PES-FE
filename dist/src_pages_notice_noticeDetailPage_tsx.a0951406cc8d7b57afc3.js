@@ -325,7 +325,6 @@ const useNoticeDetail = () => {
   const {
     memberStatus
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.user); // redux에서 가져오기
-  // const memberStatus: string | null = sessionStorage.getItem("memberStatus");
   const [noticeDetail, setDetail] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null); //공지사항 세부정보
   const [isEditing, setIsEditing] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); //수정상태
 
@@ -517,4 +516,4 @@ const NoticeDetail = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_notice_noticeDetailPage_tsx.281cb96895c32887044e.js.map
+//# sourceMappingURL=src_pages_notice_noticeDetailPage_tsx.a0951406cc8d7b57afc3.js.map

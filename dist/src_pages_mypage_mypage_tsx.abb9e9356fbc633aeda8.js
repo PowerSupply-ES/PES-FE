@@ -577,13 +577,11 @@ const MyProbList = _ref => {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var apis_mypage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/mypage */ "./src/apis/mypage/index.ts");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/dist/react-redux.mjs");
-
 
 
 
 // 마이페이지 api HOOK
-const useMypage = () => {
+const useMypage = status => {
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
 
   // 내정보
@@ -595,10 +593,6 @@ const useMypage = () => {
 
   // 관련 API요청 HOOK
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const {
-      status
-    } = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(state => state.sign); // redux에서 가져오기
-
     // 비로그인시
     if (status === null || status === undefined) {
       alert("로그인 해주세요");
@@ -667,13 +661,16 @@ const MyPage = () => {
   const {
     memberStatus
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_8__.useSelector)(state => state.user); // redux에서 가져오기
+  const {
+    status
+  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_8__.useSelector)(state => state.sign);
 
   // useMypage HOOK 호출
   const {
     memberData,
     myProb,
     myFeedback
-  } = (0,hooks_mypage_useMypage__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  } = (0,hooks_mypage_useMypage__WEBPACK_IMPORTED_MODULE_4__["default"])(status);
   if (!memberData) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_common_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], {});
   }
@@ -728,4 +725,4 @@ const MyPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_mypage_mypage_tsx.74dfcaf949bbdc2b70b3.js.map
+//# sourceMappingURL=src_pages_mypage_mypage_tsx.abb9e9356fbc633aeda8.js.map

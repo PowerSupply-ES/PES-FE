@@ -149,10 +149,6 @@ const ListItem = props => {
   // status가 "재학생"일 때는 props.state 값을 "success"로 설정,
   // 그 외에는 props.state 값 그대로 사용
   const state = memberStatus === "재학생" || "관리자" ? "success" : 0;
-  // console.log("state = ", state);
-  // console.log("props.state = ", props.state);
-  // console.log("memberStatus = ", memberStatus);
-
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_1__.StyledListItem, {
     state: state,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -265,8 +261,7 @@ const ProblemList = _ref => {
 const useProbList = () => {
   const {
     memberStatus
-  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.user); // redux에서 가져오기
-  // const memberStatus = sessionStorage.getItem("memberStatus") || "";
+  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.user) || ''; // redux에서 가져오기
   const [list, setList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
@@ -1331,4 +1326,4 @@ const StyledRankingItem = styled_components__WEBPACK_IMPORTED_MODULE_0__["defaul
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userProbPage_tsx.3a1db57e0f8613dff797.js.map
+//# sourceMappingURL=src_pages_manage_userProbPage_tsx.adb116a4d69e544c761d.js.map

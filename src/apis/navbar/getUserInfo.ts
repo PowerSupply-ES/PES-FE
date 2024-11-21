@@ -30,7 +30,6 @@ const getUserInfo = async ({
       })
     );
 
-    console.log("hasNewNotices = ", data.hasNewNotices);
   } catch (error: unknown) {
     // Axios에러인 경우
     if (axios.isAxiosError(error)) {

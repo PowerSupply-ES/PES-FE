@@ -38,7 +38,7 @@ const MenuBar: React.FC = () => {
 };
 
 // Tab의 스타일 설정 함수
-const getTabStyle = (currentIndex: number, tabIndex: number) => ({
+const getTabStyle = (currentIndex: number | false, tabIndex: number) => ({
   flex: 'initial',
   fontSize: '26px',
   color: currentIndex === tabIndex ? 'primary.main' : 'inherit',
