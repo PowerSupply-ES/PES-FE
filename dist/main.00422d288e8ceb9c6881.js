@@ -224,7 +224,6 @@ const getUserInfo = async _ref => {
       memberScore: data.memberScore,
       memberGen: data.memberGen
     }));
-    console.log("hasNewNotices = ", data.hasNewNotices);
   } catch (error) {
     // Axios에러인 경우
     if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error)) {
@@ -1398,40 +1397,29 @@ const UserList = _ref => {
 const useMenu = () => {
   const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useLocation)();
   const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-
-  // 현재 경로에 따라 초기 탭 인덱스 설정
-  // const getInitialIndex = (): number | null => {
-  //   if (location.pathname === "/list")
-  //     return 1;
-  //   else if (location.pathname === "/notice") 
-  //     return 2;
-  //   else
-  //     return null; // 홈이나 기타 경로인 경우 탭이 선택되지 않도록
-  // };
-
-  // 탭 구분위한 index state
-  const [index, setIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const [index, setIndex] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // 탭 value값
 
   // 탭 이동
   const toggleTab = value => {
     setIndex(value);
-    console.log("value = ", value);
     if (value === 1) {
       navigate("/list");
     } else if (value === 2) {
       navigate("/notice");
     }
   };
+
+  // 탭 이동 훅
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     // 경로가 '/'일 때 아무 탭도 선택되지 않도록 설정
     if (location.pathname === "/") {
-      setIndex(0);
+      setIndex(false);
     } else if (location.pathname === "/list") {
       setIndex(1);
     } else if (location.pathname === "/notice") {
       setIndex(2);
     } else {
-      setIndex(0); // 기타 경로일 경우 기본값으로 설정
+      setIndex(false); // 기타 경로일 경우 기본값으로 설정
     }
   }, [location.pathname, index]);
   return {
@@ -1738,4 +1726,4 @@ module.exports = axios;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.2788190c0f7a2da958c8.js.map
+//# sourceMappingURL=main.00422d288e8ceb9c6881.js.map

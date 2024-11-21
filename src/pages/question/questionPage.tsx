@@ -13,7 +13,6 @@ const QuestionPage: React.FC = () => {
   // questionId 저장 - 사용자 풀이에 사용
   let url = new URL(window.location.href);
   let answerId = Number(url.pathname.split("/")[2]);
-  console.log("answerId= ", answerId);
 
   // problemId 가져오기 - 해당 문제 정보에 사용
   const problemId = Number(sessionStorage.getItem("problemId"));
@@ -24,7 +23,6 @@ const QuestionPage: React.FC = () => {
   // 첫번재 답변 작성 핸들러
   const handleTextFstChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextFst(e.target.value);
-    console.log("e.target.value = ", e.target.value);
   };
 
   // 댓글 제출 결과 alert 함수
@@ -51,17 +49,17 @@ const QuestionPage: React.FC = () => {
   // useMemberStatus HOOK 호출 -> 수정: sessionStorage 사용 -> redux사용
   const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
-  useEffect(()=>{
+  useEffect(() => {
     if (memberStatus === null) {
       alert("풀이 열람 권한이 없습니다!");
       navigate(-1);
     }
-  },[memberStatus, qnA, navigate]);
+  }, [memberStatus, qnA, navigate]);
 
-  if(qnA === null){
-    return(<Loading/>)
+  if (qnA === null) {
+    return <Loading />;
   }
-  
+
   return (
     // 성공 or 실패에 따른 배경색
     <div

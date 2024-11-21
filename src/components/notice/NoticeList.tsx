@@ -6,7 +6,6 @@ import { NoticeListProps } from "model/noticeType";
 const NoticeList: React.FC<NoticeListProps> = ({ noticeList, navigate }) => {
   // 해당 공지사항으로 이동 함수
   const gotoNotice = (noticeId: number) => {
-    console.log("noticeId: ", noticeId);
     navigate(`/notice/${noticeId}`);
   };
 

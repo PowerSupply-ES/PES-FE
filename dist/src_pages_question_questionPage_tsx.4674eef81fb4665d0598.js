@@ -1230,7 +1230,6 @@ const QuestionPage = () => {
   // questionId 저장 - 사용자 풀이에 사용
   let url = new URL(window.location.href);
   let answerId = Number(url.pathname.split("/")[2]);
-  console.log("answerId= ", answerId);
 
   // problemId 가져오기 - 해당 문제 정보에 사용
   const problemId = Number(sessionStorage.getItem("problemId"));
@@ -1241,7 +1240,6 @@ const QuestionPage = () => {
   // 첫번재 답변 작성 핸들러
   const handleTextFstChange = e => {
     setTextFst(e.target.value);
-    console.log("e.target.value = ", e.target.value);
   };
 
   // 댓글 제출 결과 alert 함수
@@ -2056,4 +2054,4 @@ const StyledQuestion = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"]
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_question_questionPage_tsx.1d9aa22a1345cfdd3dd5.js.map
+//# sourceMappingURL=src_pages_question_questionPage_tsx.4674eef81fb4665d0598.js.map

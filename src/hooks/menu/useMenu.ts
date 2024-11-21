@@ -11,7 +11,6 @@ const useMenu = () => {
   // 탭 이동
   const toggleTab = (value: number) => {
     setIndex(value);
-    console.log("value = ", value);
 
     if (value === 1) {
       navigate("/list");

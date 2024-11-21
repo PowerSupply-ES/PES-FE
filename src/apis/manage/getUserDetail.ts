@@ -11,12 +11,12 @@ const getUserDetail = async (setMemberData: SetUserDetail): Promise<void> => {
   try {
     const res = await axios.get<UserDetail>(uri);
     const memDetail = res.data;
-    
+
     // `mySolveResponse`와 `myFeedbackResponse`가 없을 경우 기본값 설정
     const userDetail: UserDetail = {
       ...memDetail,
-      mySolveResponse: memDetail.mySolveResponse || [],  // 기본값으로 빈 배열
-      myFeedbackResponse: memDetail.myFeedbackResponse || []  // 기본값으로 빈 배열
+      mySolveResponse: memDetail.mySolveResponse || [], // 기본값으로 빈 배열
+      myFeedbackResponse: memDetail.myFeedbackResponse || [], // 기본값으로 빈 배열
     };
 
     setMemberData(userDetail);

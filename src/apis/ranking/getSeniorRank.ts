@@ -13,7 +13,10 @@ const GetSeniorsRank = () => {
         withCredentials: true,
       };
 
-      const response = await axios.get<MemberRankList[]>(`/api/rank/senior`, config);
+      const response = await axios.get<MemberRankList[]>(
+        `/api/rank/senior`,
+        config
+      );
 
       if (response.status !== 204) setNewRank(response.data);
     } catch (error: unknown) {

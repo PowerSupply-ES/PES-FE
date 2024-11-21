@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import getProbTitle from "apis/problem/getProbTitle";
-import { ProblemTitle } from "model/problemType"; 
+import { ProblemTitle } from "model/problemType";
 
 // 문제 제목 get HOOK
 const useProbTitle = (problemId: number): ProblemTitle | null => {

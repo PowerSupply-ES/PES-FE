@@ -19,8 +19,9 @@ const getUserInfo = async ({
     // 데이터 처리
     const data = response.data;
     setMemberData(data);
-    
-    dispatch( // sessionStorage 저장에서 Redux 저장으로 변경
+
+    dispatch(
+      // sessionStorage 저장에서 Redux 저장으로 변경
       userInfoAction({
         memberName: data.memberName,
         memberStatus: data.memberStatus,
@@ -29,7 +30,6 @@ const getUserInfo = async ({
         memberGen: data.memberGen,
       })
     );
-
   } catch (error: unknown) {
     // Axios에러인 경우
     if (axios.isAxiosError(error)) {

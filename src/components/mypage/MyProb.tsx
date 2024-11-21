@@ -4,7 +4,6 @@ import { MyProbProps } from "model/userType";
 // 내가 푼 문제 컴포넌트
 const MyProb: React.FC<MyProbProps> = ({ myProb, navigate }) => {
   const gotoProb = (problemId: number) => {
-    console.log("problemId: ", problemId);
     navigate(`/question/${problemId}`);
     // question/answerid
   };

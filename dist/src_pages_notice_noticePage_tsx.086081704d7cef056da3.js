@@ -117,7 +117,6 @@ const NoticeList = _ref => {
   } = _ref;
   // 해당 공지사항으로 이동 함수
   const gotoNotice = noticeId => {
-    console.log("noticeId: ", noticeId);
     navigate(`/notice/${noticeId}`);
   };
 
@@ -269,4 +268,4 @@ const NoticePage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_notice_noticePage_tsx.680656d0ca39e096bbb1.js.map
+//# sourceMappingURL=src_pages_notice_noticePage_tsx.086081704d7cef056da3.js.map

@@ -339,7 +339,6 @@ const MyFeed = _ref => {
     navigate
   } = _ref;
   const gotoFeed = problemId => {
-    console.log("problemId: ", problemId);
     navigate(`/question/${problemId}`);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -464,7 +463,6 @@ const MyProb = _ref => {
     navigate
   } = _ref;
   const gotoProb = problemId => {
-    console.log("problemId: ", problemId);
     navigate(`/question/${problemId}`);
     // question/answerid
   };
@@ -725,4 +723,4 @@ const MyPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_mypage_mypage_tsx.abb9e9356fbc633aeda8.js.map
+//# sourceMappingURL=src_pages_mypage_mypage_tsx.4d8bcad0b99e93c64719.js.map

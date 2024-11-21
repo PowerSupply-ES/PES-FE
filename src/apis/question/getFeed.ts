@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CommentListType } from "model/questionType"; 
+import { CommentListType } from "model/questionType";
 
 // 댓글 불러오기 (get)
 const getFeed = async (answerId: number) => {

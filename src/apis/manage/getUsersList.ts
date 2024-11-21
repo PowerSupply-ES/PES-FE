@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Member, SetMemDate } from "model/userType"; 
+import { Member, SetMemDate } from "model/userType";
 
 // 회원목록 api호출
 const getUsersList = async (setMemDate: SetMemDate): Promise<void> => {

@@ -26,7 +26,6 @@ const deleteMem = async navigate => {
   }
   try {
     const res = await axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"](uri);
-    console.log("res는용 = ", res);
 
     // 성공 시
     if (res.status === 200) {
@@ -80,7 +79,7 @@ const fetchMem = async (navigate, memberStatus) => {
   const uri = `/api/admin/member/${memberId}`;
 
   // 관리자 vs 재학생 vs 관리자 중 선택하기
-  const levelUpLevel = memberStatus === '신입생' ? "재학생" : memberStatus === '재학생' ? "관리자" : memberStatus === '관리자' ? "재학생" : '';
+  const levelUpLevel = memberStatus === "신입생" ? "재학생" : memberStatus === "재학생" ? "관리자" : memberStatus === "관리자" ? "재학생" : "";
   const confirmDelete = window.confirm(`해당 회원을 ${levelUpLevel} 등급으로 변경하시겠습니까?`);
 
   // 수정 취소 시
@@ -374,7 +373,6 @@ const MyFeed = _ref => {
     navigate
   } = _ref;
   const gotoFeed = problemId => {
-    console.log("problemId: ", problemId);
     navigate(`/question/${problemId}`);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -426,7 +424,6 @@ const MyProb = _ref => {
     navigate
   } = _ref;
   const gotoProb = problemId => {
-    console.log("problemId: ", problemId);
     navigate(`/question/${problemId}`);
     // question/answerid
   };
@@ -598,4 +595,4 @@ const UserDetail = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userDetailPage_tsx.bc2b7f66e09b350539b1.js.map
+//# sourceMappingURL=src_pages_manage_userDetailPage_tsx.e7eeef81c7aa200d411d.js.map

@@ -138,7 +138,6 @@ const ListItem = props => {
       // problemId 저장
       sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
       const problemId = sessionStorage.getItem("problemId");
-      console.log("problemId = ", problemId);
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);
@@ -1326,4 +1325,4 @@ const StyledRankingItem = styled_components__WEBPACK_IMPORTED_MODULE_0__["defaul
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userProbPage_tsx.adb116a4d69e544c761d.js.map
+//# sourceMappingURL=src_pages_manage_userProbPage_tsx.387199f70513dad68818.js.map

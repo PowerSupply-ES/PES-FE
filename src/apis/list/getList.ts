@@ -8,12 +8,11 @@ const getList = async (
   setList: React.Dispatch<React.SetStateAction<Problem[]>>,
   location: Location<any>
 ): Promise<void> => {
-  
   // 조건에 따라 uri를 설정
-  const uri = location.pathname === "/manageFeed" 
-    ? `/api/admin/problemlist` 
-    : `/api/problemlist`;
-
+  const uri =
+    location.pathname === "/manageFeed"
+      ? `/api/admin/problemlist`
+      : `/api/problemlist`;
 
   try {
     const config = {

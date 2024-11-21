@@ -11,7 +11,10 @@ const getJuniorRank = async (memberGen: number) => {
       },
     };
 
-    const response = await axios.get<MemberRankList[]>(`/api/rank/junior`, config);
+    const response = await axios.get<MemberRankList[]>(
+      `/api/rank/junior`,
+      config
+    );
 
     if (response.status !== 204) {
       return response.data;

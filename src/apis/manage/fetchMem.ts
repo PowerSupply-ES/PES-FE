@@ -2,20 +2,24 @@ import axios from "axios";
 import { NavigateFunction } from "react-router-dom";
 
 // 회원 등업 update API
-const fetchMem = async (navigate: NavigateFunction, memberStatus:string): Promise<void> => {
+const fetchMem = async (
+  navigate: NavigateFunction,
+  memberStatus: string
+): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];
 
   const uri = `/api/admin/member/${memberId}`;
 
   // 관리자 vs 재학생 vs 관리자 중 선택하기
-  const levelUpLevel = memberStatus==='신입생'
-    ? "재학생"
-    : memberStatus==='재학생'
-    ? "관리자"
-    : memberStatus==='관리자'
-    ? "재학생"
-    : ''
+  const levelUpLevel =
+    memberStatus === "신입생"
+      ? "재학생"
+      : memberStatus === "재학생"
+      ? "관리자"
+      : memberStatus === "관리자"
+      ? "재학생"
+      : "";
   const confirmDelete = window.confirm(
     `해당 회원을 ${levelUpLevel} 등급으로 변경하시겠습니까?`
   );
