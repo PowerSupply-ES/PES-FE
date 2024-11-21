@@ -47,7 +47,6 @@ const getSoluList = async problemId => {
   const uri = "/api/answerlist/";
   try {
     const response = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`${uri}${problemId}`);
-    console.log("서버응답:", response.data);
     return response.data;
   } catch (error) {
     console.error("데이터 가져오기 실패:", error);
@@ -298,4 +297,4 @@ const SolutionPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_solution_solutionPage_tsx.216d29612139291ac98e.js.map
+//# sourceMappingURL=src_pages_solution_solutionPage_tsx.feda2348e888692d3136.js.map

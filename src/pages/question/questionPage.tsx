@@ -50,7 +50,7 @@ const QuestionPage: React.FC = () => {
   const { memberStatus } = useSelector((state: RootState) => state.user); // redux에서 가져오기
 
   useEffect(() => {
-    if (memberStatus === null) {
+    if (memberStatus === '' || memberStatus ===null) {
       alert("풀이 열람 권한이 없습니다!");
       navigate(-1);
     }

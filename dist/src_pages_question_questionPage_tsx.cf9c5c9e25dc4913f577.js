@@ -1269,7 +1269,7 @@ const QuestionPage = () => {
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_7__.useSelector)(state => state.user); // redux에서 가져오기
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (memberStatus === null) {
+    if (memberStatus === '' || memberStatus === null) {
       alert("풀이 열람 권한이 없습니다!");
       navigate(-1);
     }
@@ -2054,4 +2054,4 @@ const StyledQuestion = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"]
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_question_questionPage_tsx.4674eef81fb4665d0598.js.map
+//# sourceMappingURL=src_pages_question_questionPage_tsx.cf9c5c9e25dc4913f577.js.map
