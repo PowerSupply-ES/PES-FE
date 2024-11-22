@@ -178,7 +178,25 @@
   padding: 20px;
 }
 .memberInfo .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 3px;
+}
+.memberInfo .text :first-child {
+  width: 22%;
+  text-align: left;
+  margin-right: 12px;
+  color: #a7a7a7;
+  font-weight: bold;
+  font-size: 17px;
+}
+.memberInfo .text :last-child {
+  width: 78%;
+  text-align: left;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.725);
+  font-size: 17px;
 }
 .memberInfo .info_name {
   margin: 20px 0 40px 0;
@@ -352,50 +370,3 @@
 }
 
 /* 성공여부에 따라 버튼색 변화 */
-.btn_fail,
-.btn_success,
-.btn_state {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  width: 88px;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  height: 32px;
-  font-weight: bold;
-}
-
-.btn_success {
-  border: solid 3px #5094f9;
-  color: #5094f9;
-}
-
-.btn_fail {
-  border: solid 3px #eb3434;
-  opacity: 80%;
-  color: #eb3434;
-}
-
-.btn_state {
-  border: solid 3px #c2c2c2;
-  color: #999999;
-  opacity: 80%;
-  font-size: 16px;
-}
-
-.text :first-child {
-  width: 22%;
-  text-align: left;
-  margin-right: 12px;
-  color: #a7a7a7;
-  font-weight: bold;
-  font-size: 17px;
-}
-.text :last-child {
-  width: 78%;
-  text-align: left;
-  font-weight: bold;
-  color: hsla(0, 0%, 0%, 0.725);
-  font-size: 17px;
-}

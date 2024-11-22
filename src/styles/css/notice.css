@@ -1,9 +1,4 @@
 @charset "UTF-8";
-.App {
-  text-align: center;
-  font-family: "Pretendard-Regular";
-}
-
 /* -----info 페이지----- */
 .info_body {
   min-height: -moz-fit-content;
@@ -261,7 +256,6 @@
   font-size: 18px;
   height: 40px;
   padding: 4px 12px;
-  font-family: var(--Font1);
 }
 
 .input_container {
@@ -275,7 +269,6 @@
   font-weight: bold;
   font-size: 18px;
   padding: 20px 12px;
-  font-family: var(--Font1);
 }
 
 .textarea_content,

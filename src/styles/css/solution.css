@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* -----풀이페이지----- */
 /* 풀이타이틀 */
 .solution_container {
   max-width: 1142px;
@@ -24,10 +25,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-medium);
 }
 .solution_container .solution_bar {
   justify-content: space-between;
+  font-size: 20px;
 }
 .solution_container .solution_bar .solution {
   width: 90%;
@@ -47,15 +48,17 @@
   margin-right: 60px;
 }
 .solution_container .solution_bar .solution .prob_score {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   display: flex;
   font-weight: bold;
-  font-size: 20px;
   color: #04ca00;
+  display: flex;
+  align-items: center;
 }
 
 /* 풀이목록 */
 .solving_list {
-  margin-top: var(--margin-middle);
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -69,6 +72,7 @@
   width: 44px;
   font-size: 20px;
   display: flex;
+  align-items: center;
   color: #04ca00;
   font-weight: bold;
   margin-right: 20px;
@@ -81,35 +85,11 @@
 }
 .solving_list .solving .right {
   display: flex;
-  font-size: var(--font-medium);
-  /* 풀이 버튼 */
-}
-.solving_list .solving .right .btn_fail,
-.solving_list .solving .right .btn_success {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  width: 80px;
-  height: 28px;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-  font-weight: bold;
-  padding: 7px 0;
-}
-.solving_list .solving .right .btn_success {
-  border: solid 3px #5094f9;
-  color: #5094f9;
-}
-.solving_list .solving .right .btn_fail {
-  border: solid 3px #eb3434;
-  opacity: 80%;
-  color: #eb3434;
+  font-size: 20px;
+  /* 풀이 버튼은 global style */
 }
 .solving_list .solving .right .process_num {
-  color: black;
+  color: #696969;
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;

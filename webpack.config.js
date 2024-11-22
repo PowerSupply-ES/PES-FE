@@ -108,8 +108,8 @@ module.exports = {
     static: path.resolve(__dirname, "dist"),
     compress: true,
   },
-  //mode: "production", // production모드에서 자동으로 트리쉐이킹(by TerserPlugin)
-  mode: "development", // 개발모드
+  mode: "production", // production모드에서 자동으로 트리쉐이킹(by TerserPlugin)
+  //mode: "development", // 개발모드
   devtool: 'source-map', // 소스맵 활성화
   optimization: {
     splitChunks: {

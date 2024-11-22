@@ -14,14 +14,14 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon, { listItemIconClasses } from '@mui/material/ListItemIcon';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MoreVertRoundedIcon from '@mui/icons-material/MoreVertRounded';
-
-
+import { useDispatch } from 'react-redux';
 
 const MenuItem = styled(MuiMenuItem)({
   margin: '2px 0',
 });
 
 export default function OptionsMenu() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -65,7 +65,7 @@ export default function OptionsMenu() {
         <Divider />
         <MenuItem
           // 로그아웃
-          onClick={() => postLogout(navigate)}
+          onClick={() => postLogout(navigate, dispatch)}
           sx={{
             [`& .${listItemIconClasses.root}`]: {
               ml: 'auto',

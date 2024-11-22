@@ -1,8 +1,3 @@
-.App {
-  text-align: center;
-  font-family: "Pretendard-Regular";
-}
-
 /* -----info 페이지----- */
 // TODO : button은 cursor:pointer 공통으로 적용하기
 
@@ -249,7 +244,6 @@
   font-size: 18px;
   height: 40px;
   padding: 4px 12px;
-  font-family: var(--Font1);
 }
 .input_container {
   width: 90%;
@@ -264,7 +258,6 @@
   font-size: 18px;
 
   padding: 20px 12px;
-  font-family: var(--Font1);
 }
 
 .textarea_content,

@@ -31,7 +31,7 @@ const SolutionPage = () => {
           </div>
 
           <div className="prob_score">
-            {problemData.problemScore}
+            <p>{problemData.problemScore}</p>
             <p>점</p>
           </div>
         </div>

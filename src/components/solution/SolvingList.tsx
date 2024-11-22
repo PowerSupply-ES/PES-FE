@@ -23,7 +23,7 @@ const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {
               {/* 풀이컴포넌트 좌측 요소 */}
               <div className="left">
                 <div className="userGen">
-                  {it.memberGen}
+                  <p>{it.memberGen}</p>
                   <p>기 </p>
                 </div>
                 <div className="userName">{it.memberName}</div>

@@ -26,7 +26,11 @@ const UserDetailPage = React.lazy(() => import("pages/manage/userDetailPage"));
 const App: React.FC = () => {
   return (
     <div className="App" style={{ backgroundColor: "#f5f5f5" }}>
-      <Suspense fallback={<Loading />}> {/* 동적 로드된 컴포넌트(React.lazy)가 로드되는 동안 보여줄 로딩 화면 */}
+      {" "}
+      {/* 글로벌 스타일 적용 */}
+      <Suspense fallback={<Loading />}>
+        {" "}
+        {/* 동적 로드된 컴포넌트(React.lazy)가 로드되는 동안 보여줄 로딩 화면 */}
         <Routes>
           {/* Topbar */}
           <Route path="/" element={<Header />}>

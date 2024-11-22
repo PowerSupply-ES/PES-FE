@@ -1,0 +1,399 @@
+.dropdown-content {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0;
+  background-color: #fefdfd;
+  border: solid 2px rgb(200, 200, 200);
+  border-radius: 4px;
+  padding-top: 16px;
+  z-index: 999;
+}
+.dropdown-content .memberName {
+  color: rgb(37, 37, 37);
+  font-size: 17px;
+  margin: 16px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.dropdown-content .navbar_bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 14px;
+  color: #000000;
+  opacity: 75%;
+  border-top: solid 3px #d7d6d6;
+}
+.dropdown-content .navbar_bottom * {
+  width: 100%;
+  padding: 10px 8px;
+}
+.dropdown-content .navbar_bottom .btn_mypage {
+  border-right: solid 3px #d7d6d6;
+  color: #000000;
+}
+
+.navbarInfo {
+  width: 30%;
+  text-align: left;
+}
+.navbarInfo * {
+  font-size: 15px;
+  color: #808080;
+}
+.navbarInfo .memberScore {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.navbarInfo .memberScore p {
+  color: #04ca00;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.userImage {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(212, 212, 212);
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.btn_mypage,
+.btn_top_logout {
+  font-size: 13px;
+}
+.btn_mypage :hover,
+.btn_top_logout :hover {
+  color: #000000;
+  font-weight: bold;
+  background-color: #ebebeb;
+}
+@charset "UTF-8";
+/* ---------- footer ---------- */
+.mainPage .footer {
+  margin-top: 0; /* mainPage 클래스 안에 속해있을 때 margin-top 효과 제거 */
+}
+
+.footer {
+  max-height: 240px;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  width: 100%;
+  background-color: #272727;
+  margin-top: 300px;
+  display: flex;
+  padding: 20px 0;
+}
+.footer :not(.logo, .info1, .info2, .footer_logout) {
+  color: rgba(255, 255, 255, 0.9254901961);
+}
+.footer .footer_left {
+  width: 60%;
+}
+.footer .footer_left .info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 40px;
+}
+.footer .footer_left .info * {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.footer .footer_left .info * p {
+  margin-left: 12px;
+}
+.footer .footer_left .logo {
+  width: 140px;
+  height: 100px;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.9254901961);
+}
+.footer .footer_right {
+  height: 80%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-top: 12px;
+}
+.footer .footer_right .sns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.footer .footer_right .sns *:first-child {
+  margin-right: 12px;
+}
+.footer .footer_right .info1,
+.footer .footer_right .info2 {
+  color: #c8c4c4;
+  opacity: 57%;
+}
+.footer .footer_right .about {
+  margin-bottom: 8px;
+}
+.footer .footer_right .footer_logout {
+  text-align: right;
+  margin: 8px 20px 0 0;
+  color: #d4d4d4;
+  cursor: pointer;
+}
+@charset "UTF-8";
+/* -----네비게이션바----- */
+.logout,
+.userId,
+.userLevel {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px 30px;
+  color: white;
+  border: solid white;
+  border-radius: 10px;
+}
+
+.logout {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #ffffff;
+  margin: 15px 50px 0px auto;
+  color: #555555;
+  font-weight: bold;
+  font-size: 17px;
+  border: solid 3px #7d7d7d;
+  border-radius: 80px;
+}
+.logout:hover {
+  background-color: #414141;
+  border-color: #414141;
+  color: #ffffff;
+}
+
+.container > .btns > .userId {
+  width: -moz-fit-content;
+  width: fit-content;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: rgba(90, 44, 218, 0.8235294118);
+  border-radius: 80px;
+}
+.container > .btns > .userId:hover {
+  background-color: rgba(120, 119, 119, 0.8549019608);
+}
+
+.userLevel {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+.btns {
+  display: flex;
+  margin: 20px 60px 0px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* 수직으로 배치 */
+  align-items: center;
+  background-color: #ffffff;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.navbar {
+  display: flex;
+  width: 90%;
+  margin: 0px auto;
+  align-items: center;
+}
+.navbar * {
+  display: flex;
+}
+.navbar .logo {
+  width: 120px;
+  height: 80px;
+  margin-right: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgba(28, 28, 29, 0.7647058824);
+  cursor: pointer;
+}
+
+.menu1,
+.menu2,
+.menu3 {
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 26px;
+  margin-left: 56px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #686868;
+}
+
+.menu1:hover {
+  border-radius: 5px;
+  color: #000000;
+}
+
+.menu3 {
+  padding: 20px 0;
+  padding-bottom: 0;
+}
+
+.noticeAlertBtn {
+  background-color: rgb(255, 89, 89);
+  border: solid rgb(255, 89, 89);
+  width: 23px;
+  height: 23px;
+  padding: 8px;
+  border-radius: 40px;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+@charset "UTF-8";
+.content_container {
+  height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
+}
+.content_container .manageuser_container {
+  display: flex;
+  height: calc(100vh + 100px);
+}
+.content_container .manageuser_container .userlist_wrapper {
+  flex: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  background-color: #e9e9eb;
+  padding-bottom: 40px;
+  overflow-y: auto;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-thumb {
+  background: #c0c0c0; /* 스크롤바 색상 */
+  border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.content_container .manageuser_container .userlist_wrapper::-webkit-scrollbar-track {
+  background: rgba(231, 230, 246, 0.5882352941); /*스크롤바 뒷 배경 색상*/
+}
+.content_container .manageuser_container .userlist_wrapper .list_container {
+  width: 72%;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper {
+  background-color: #f8f8f8;
+  border-top: solid #acacac 1px;
+  border-bottom: solid #acacac 1px;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
+  background-color: #ffffff;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper button {
+  height: 28px;
+  width: 80px;
+  border: solid 1px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn {
+  background-color: #434349;
+  opacity: 80%;
+  border-color: #434349;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .info_btn:hover {
+  background-color: #434349;
+  opacity: 95%;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new {
+  color: #ffb862;
+  font-weight: 600;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old {
+  color: rgba(50, 83, 255, 0.768627451);
+  font-weight: 600;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
+  color: white;
+  background-color: #434349;
+  padding: 4px 0px;
+  font-size: 15px;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7490196078);
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+  color: rgba(0, 0, 0, 0.7490196078);
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper {
+  display: inherit;
+  height: 40px;
+  align-items: center;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_new,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_old,
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_state_manage,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_new,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_old,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_state_manage {
+  flex: 1.5;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_name,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_name {
+  flex: 2;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_stunum,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_stunum {
+  flex: 2;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_studep,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_studep {
+  flex: 2;
+}
+.content_container .manageuser_container .userlist_wrapper .list_container .title_wrapper .title_none,
+.content_container .manageuser_container .userlist_wrapper .list_container .list_wrapper .title_none {
+  flex: 2;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+/*# sourceMappingURL=main.796664b913b0f78d6dfa.css.map*/

@@ -45,6 +45,7 @@ export const StyledListPage = styled.div`
     font-size: 17px;
     font-weight: bold;
     text-align: center;
+    font-family: "Pretendard-Regular";
   }
 
   /* 클릭된 버튼 스타일 */

@@ -1,3 +1,5 @@
+/* -----풀이페이지----- */
+
 /* 풀이타이틀 */
 .solution_container {
   max-width: 1142px;
@@ -23,11 +25,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-medium);
+    // font-size: 20px;
   }
 
   .solution_bar {
     justify-content: space-between;
+    font-size: 20px;
 
     .solution {
       width: 90%;
@@ -50,10 +53,12 @@
       }
 
       .prob_score {
+        min-width: fit-content;
         display: flex;
         font-weight: bold;
-        font-size: 20px;
         color: #04ca00;
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -61,8 +66,8 @@
 
 /* 풀이목록 */
 .solving_list {
-  margin-top: var(--margin-middle);
   height: fit-content;
+
 
   .solving {
     width: 90%;
@@ -75,6 +80,7 @@
         width: 44px;
         font-size: 20px;
         display: flex;
+        align-items: center;
         color: #04ca00;
         font-weight: bold;
         margin-right: 20px;
@@ -89,44 +95,12 @@
 
     .right {
       display: flex;
-      font-size: var(--font-medium);
+      font-size: 20px;
 
-      /* 풀이 버튼 */
-      .btn_fail,
-      .btn_success{
-        // width: 80px;
-        // height: fit-content;
-        // font-size: 18px;
-        // padding: 7px 12px;
-        // margin-left: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-        width: 80px;
-        height: 28px;
-        min-width: fit-content;
-        min-height: fit-content;
-        font-weight: bold;
-        padding: 7px 0;
-      }
-      .btn_success {
-        border: solid 3px #5094f9;
-        color: #5094f9;
-      }
-      .btn_fail {
-        border: solid 3px #eb3434;
-        opacity: 80%;
-        color: #eb3434;
-      }
-      // .process_num{
-      //   border: solid 3px #5f5f5f;
-      //   opacity: 80%;
-      //   color: #696969;
-      // }
+      /* 풀이 버튼은 global style */
 
       .process_num {
-        color: black;
+        color: #696969;
         font-size: 20px;
         font-weight: bold;
         margin-right: 20px;

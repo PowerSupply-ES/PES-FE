@@ -49,6 +49,7 @@ export const StyledListItem = styled.div<StyledProps>`
     &:hover {
       cursor: pointer;
     }
+
     color: #000000;
     opacity: 70%;
   }

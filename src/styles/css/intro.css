@@ -16,8 +16,6 @@
 }
 
 h2 {
-  /* display: flex;
-    justify-content: center; */
   color: #424242;
   font-size: 32px;
 }
@@ -54,7 +52,6 @@ h2 {
 
 .signup-container {
   width: 380px;
-  /* width: 38vh; */
   height: 90%;
   height: -moz-fit-content;
   height: fit-content;

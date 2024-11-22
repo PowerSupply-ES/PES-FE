@@ -1,0 +1,183 @@
+@charset "UTF-8";
+/* 로그인, 회원가입 공통body */
+.sign-wrapper {
+  height: 100vh;
+  margin-bottom: -300px;
+  background-color: rgba(255, 255, 255, 0.5960784314);
+  padding-top: 40px;
+}
+
+.sign-wrapper2 {
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: -300px;
+  background-color: rgba(255, 255, 255, 0.5960784314);
+  padding: 100px;
+}
+
+h2 {
+  color: #424242;
+  font-size: 32px;
+}
+
+#signin-form,
+#signup-form {
+  margin-top: 20px;
+}
+
+.login-container {
+  width: 380px;
+  height: 76%;
+  border: solid 2px #c3c2c2;
+  border-radius: 10px;
+  background-color: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.login-container h4 {
+  color: #949494;
+  margin: 12px auto 32px;
+}
+.login-container form {
+  width: 100%;
+  margin-top: 10px;
+}
+.login-container a {
+  margin: 24px 15px 25px auto;
+  font-size: 13px;
+  color: #6b6b6b;
+}
+
+.signup-container {
+  width: 380px;
+  height: 90%;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: solid 2px #c3c2c2;
+  border-radius: 10px;
+  background-color: #f6f8fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.signup-container h4 {
+  color: #949494;
+  margin: 12px auto 40px;
+}
+.signup-container form {
+  width: 100%;
+  margin-top: 10px;
+}
+.signup-container a {
+  margin: 24px 15px 25px auto;
+  font-size: 13px;
+  color: #6b6b6b;
+}
+
+.login-input {
+  width: 100%;
+  margin: 0 auto 12px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-input label {
+  width: 70%;
+  display: block;
+  margin: 3px;
+  color: #3d3d3d;
+  font-weight: bold;
+  font-size: 14px;
+}
+.login-input input[type=text],
+.login-input input[type=password] {
+  width: 68%;
+  padding: 10px;
+  border: 1px solid #5094f9;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-top: 4px;
+}
+
+.signup-input {
+  width: 80%;
+  margin: 0 auto 15px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signup-input label {
+  width: 25%;
+  display: block;
+  margin: 3px;
+  color: #3d3d3d;
+  font-weight: bold;
+  font-size: 14px;
+}
+.signup-input input[type=text],
+.signup-input input[type=password],
+.signup-input input[type=email],
+.signup-input input[type=tel],
+.signup-input input[type=number] {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #5094f9;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+/* 로그인,회원가입 버튼 */
+.btn_signin,
+.btn_signup {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  background-color: rgba(90, 44, 218, 0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+}
+.btn_signin:hover,
+.btn_signup:hover {
+  background-color: rgba(90, 44, 218, 0.7764705882);
+}
+
+.btn_signup {
+  margin: 40px auto 40px;
+}
+
+.btn_signin {
+  margin: 52px auto 0;
+}
+
+/* --------------로그인 페이지-------------- */
+/* 회원가입링크 */
+.move {
+  display: flex;
+  justify-content: center;
+}
+.move a {
+  margin: 24px 30px 45px 0;
+  font-size: 14px;
+}
+.move a:last-child {
+  margin-right: 0; /* 마지막 요소의 오른쪽 마진을 0으로 설정하여 간격 조절 */
+}
+
+/* 링크 스타일 수정 */
+a {
+  color: #555; /* 글자색을 검은색으로 설정 */
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=817.040dcaf7fe3237c1dd29.css.map*/
