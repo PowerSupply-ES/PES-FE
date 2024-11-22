@@ -1,3 +1,5 @@
+@charset "UTF-8";
+/* ---------- Topbar 드롭다운 ---------- */
 .dropdown-content {
   position: absolute;
   top: 60px;

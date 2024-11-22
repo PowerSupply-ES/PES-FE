@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* -----마이페이지----- */
+/* ---------- 마이페이지 ---------- */
 @media (max-width: 1200px) {
   .mypage_content {
     flex-direction: column;

@@ -1,5 +1,9 @@
 @charset "UTF-8";
-/* -----info 페이지----- */
+/* ---------- 공지사항 페이지 ---------- */
+* {
+  text-align: center;
+}
+
 .info_body {
   min-height: -moz-fit-content;
   min-height: fit-content;

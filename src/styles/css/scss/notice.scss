@@ -1,5 +1,8 @@
-/* -----info 페이지----- */
+/* ---------- 공지사항 페이지 ---------- */
 // TODO : button은 cursor:pointer 공통으로 적용하기
+*{
+  text-align: center;
+}
 
 .info_body {
   min-height: fit-content;

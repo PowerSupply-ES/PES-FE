@@ -1,11 +1,4 @@
-/* -----글로벌 스타일----- */
-
-.App {
-  text-align: center;
-  background-color: #e9e9eb;
-  margin: 0px;
-  padding: 0px;
-}
+/* ---------- 글로벌 스타일 ---------- */
 
 @font-face {
   font-family: "Pretendard-Regular";
@@ -22,6 +15,13 @@
 }
 button:hover {
   cursor: pointer;
+}
+
+.App {
+  text-align: center;
+  background-color: #e9e9eb;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* 성공여부에 따라 버튼색 변화 */

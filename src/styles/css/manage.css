@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* ---------- 관리자 페이지 ---------- */
 .content_container {
   height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
 }
