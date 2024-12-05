@@ -18,10 +18,13 @@ const SolutionPage = React.lazy(() => import("pages/solution/solutionPage"));
 const NoticePage = React.lazy(() => import("pages/notice/noticePage"));
 const NoticePost = React.lazy(() => import("pages/notice/noticePostPage"));
 const NoticeDetail = React.lazy(() => import("pages/notice/noticeDetailPage"));
+
 const UserListPage = React.lazy(() => import("pages/manage/userListPage"));
 const UserProbPage = React.lazy(() => import("pages/manage/userProbPage"));
 const UserFeedPage = React.lazy(() => import("pages/manage/userFeedPage"));
 const UserDetailPage = React.lazy(() => import("pages/manage/userDetailPage"));
+const ProbDetailPage = React.lazy(() => import("pages/manage/ProbDetailPage"));
+
 
 const App: React.FC = () => {
   return (
@@ -47,7 +50,6 @@ const App: React.FC = () => {
             <Route path="/problem/:id" element={<ProblemPage />} />
             <Route path="/question/:id" element={<QuestionPage />} />
             <Route path="/notice/:id" element={<NoticeDetail />} />
-            <Route path="/manageUser/:id" element={<UserDetailPage />} />
           </Route>
 
           {/* 관리자 메뉴 - AdminRoute로 보호*/}
@@ -61,10 +63,26 @@ const App: React.FC = () => {
               }
             />
             <Route
+              path="/manageUser/:id"
+              element={
+                <AdminRoute>
+                  <UserDetailPage />
+                </AdminRoute>
+              }
+            />
+            <Route
               path="/manageProb"
               element={
                 <AdminRoute>
                   <UserProbPage />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/manageProb/:id"
+              element={
+                <AdminRoute>
+                  <ProbDetailPage />
                 </AdminRoute>
               }
             />
@@ -76,6 +94,7 @@ const App: React.FC = () => {
                 </AdminRoute>
               }
             />
+            
           </Route>
         </Routes>
       </Suspense>

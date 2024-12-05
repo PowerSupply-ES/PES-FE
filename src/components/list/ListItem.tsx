@@ -12,10 +12,14 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
 
   // 해당 문제로 이동 메서드
   const goToProb = (answerId: number | null) => {
-    if (answerId) {
-      // problemId 저장
-      sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
-      const problemId = sessionStorage.getItem("problemId");
+    // problemId 저장
+    const problemId = props.pid.toString();
+    sessionStorage.setItem("problemId", problemId);
+
+    if(location.pathname === "/manageProb"){  // 관리자 페이지에서는 probDetail로 이동
+      navigate(`/manageProb/${problemId}`);
+    }
+    else if (answerId) {
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);
@@ -25,7 +29,7 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
   //추가 by성임
   // status가 "재학생"일 때는 props.state 값을 "success"로 설정,
   // 그 외에는 props.state 값 그대로 사용
-  const state = memberStatus === "재학생" || "관리자" ? "success" : props.state;
+  const state = memberStatus === "재학생" || memberStatus ==="관리자" ? "success" : props.state;
 
   return (
     <StyledListItem state={state}>
