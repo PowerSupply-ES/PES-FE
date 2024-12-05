@@ -10,7 +10,7 @@ const getList = async (
 ): Promise<void> => {
   // 조건에 따라 uri를 설정
   const uri =
-    location.pathname === "/manageFeed"
+    location.pathname === "/manageProb"
       ? `/api/admin/problemlist`
       : `/api/problemlist`;
 

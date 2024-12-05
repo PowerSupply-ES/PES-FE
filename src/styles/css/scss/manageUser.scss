@@ -16,7 +16,6 @@
   list-style-type: none;
   text-decoration: none;
   font-family: "Pretendard-Regular";
-  text-align: center;
   button:hover {
     cursor: pointer;
   }
@@ -30,6 +29,8 @@
   .manageuser_container {
     display: flex;
     height: calc(100vh + 100px);
+    text-align: center;
+
 
     .userlist_wrapper {
       flex: 9;

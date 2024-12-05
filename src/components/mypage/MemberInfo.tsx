@@ -2,7 +2,7 @@ import React from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { MemberInfoProps } from "model/userType";
 import "styles/css/mypage.css";
-import "styles/css/manage.css";
+import "styles/css/manageUser.css";
 
 // 사용자 정보 컴포넌트
 const MemberInfo: React.FC<MemberInfoProps> = ({

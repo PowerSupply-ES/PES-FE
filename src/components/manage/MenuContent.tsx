@@ -19,7 +19,7 @@ import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 const mainListItems = [
   { text: '회원 관리', icon: <PeopleRoundedIcon />, path: '/manageUser'},
   { text: '문제 관리', icon: <AssignmentRoundedIcon />, path: '/manageProb'},
-  { text: '피드백 관리', icon: <AnalyticsRoundedIcon />, path: '/manageFeed'},
+  { text: '질문 관리', icon: <AnalyticsRoundedIcon />, path: '/manageFeed'},
 ];
 const secondaryListItems = [
   { text: 'Home', icon: <HomeRoundedIcon />, path: '/'  },

@@ -14,7 +14,6 @@
   list-style-type: none;
   text-decoration: none;
   font-family: "Pretendard-Regular";
-  text-align: center;
 }
 * button:hover {
   cursor: pointer;
@@ -26,6 +25,7 @@
 .content_container .manageuser_container {
   display: flex;
   height: calc(100vh + 100px);
+  text-align: center;
 }
 .content_container .manageuser_container .userlist_wrapper {
   flex: 9;

@@ -1,5 +1,5 @@
 // 관리자_회원목록 페이지
-import "styles/css/manage.css";
+import "styles/css/manageUser.css";
 import { UserList } from "components/manage";
 import useUserList from "hooks/manage/useUserList";
 import React from "react";
