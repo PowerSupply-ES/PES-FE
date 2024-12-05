@@ -1,0 +1,82 @@
+/*!**************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/css/App.css ***!
+  \**************************************************************************/
+@charset "UTF-8";
+/* ---------- 글로벌 스타일 ---------- */
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+/* 공통요소 */
+* {
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Pretendard-Regular";
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.App {
+  text-align: center;
+  background-color: #e9e9eb;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* 성공여부에 따라 버튼색 변화 */
+.btn_fail,
+.btn_success,
+.btn_state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 88px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  height: 32px;
+  font-weight: bold;
+}
+
+.btn_success {
+  border: solid 3px #5094f9;
+  color: #5094f9;
+}
+
+.btn_fail {
+  border: solid 3px #eb3434;
+  opacity: 80%;
+  color: #eb3434;
+}
+
+.btn_state {
+  border: solid 3px #c2c2c2;
+  color: #999999;
+  opacity: 80%;
+  font-size: 16px;
+}
+
+/* question페이지에서 fail/pass에 따른 배경화면 변화 */
+.failPage {
+  background-color: #f8e7e7;
+  padding: 10px 0 140px;
+  margin-bottom: -300px;
+}
+
+.successPage {
+  background-color: #ebebfc;
+  padding: 10px 0 140px;
+  margin-bottom: -300px;
+}
+
+.nonePage {
+  background-color: #e9e9eb;
+  padding: 10px 0 140px;
+  margin-bottom: -300px;
+}
+
+/*# sourceMappingURL=src_components_problem_CodeEditor_tsx.3c0246f24b3a2ebc4df9.css.map*/

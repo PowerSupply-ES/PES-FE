@@ -185,11 +185,26 @@
   margin: 36px auto 20px;
   justify-content: center;
   padding: 20px;
+  
+  .info_name {
+    margin: 20px 0 40px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 32px;
+    color: #060606;
+    p {
+      font-size: 26px;
+      color: #000000;
+      margin-top: 12px;
+    }
+  }
   .text {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 3px;
+    //margin-bottom: 3px;
     :first-child {
       width: 22%;
       text-align: left;
@@ -204,20 +219,6 @@
       font-weight: bold;
       color: hsla(0, 0%, 0%, 0.725);
       font-size: 17px;
-    }
-  }
-  .info_name {
-    margin: 20px 0 40px 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-weight: bold;
-    font-size: 32px;
-    color: #060606;
-    p {
-      font-size: 26px;
-      color: #000000;
-      margin-top: 12px;
     }
   }
   *:not(:first-child) {

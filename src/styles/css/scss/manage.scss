@@ -1,5 +1,27 @@
 /* ---------- 관리자 페이지 ---------- */
 
+/* 공통요소 */
+// TODO : App.scss 적용으로 교체
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Pretendard-Regular";
+  text-align: center;
+  button:hover {
+    cursor: pointer;
+  }
+}
+
 .content_container {
   height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
   // 믹스인 사용해서 중복 줄여보기
@@ -14,7 +36,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 40px;
+      padding-top: 40px;
       background-color: #e9e9eb;
       // height: fit-content;
       padding-bottom: 40px;
@@ -31,11 +53,11 @@
         background: #e7e6f696; /*스크롤바 뒷 배경 색상*/
       }
 
+      // 회원 정보 제목 wrapper
       .list_container {
         width: 72%;
         height: fit-content;
         padding: 8px;
-
         display: flex;
         flex-direction: column;
 

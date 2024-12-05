@@ -6,14 +6,13 @@
   font-weight: 400;
   font-style: normal;
 }
-/* -----공통요소----- */
+/* 공통요소 */
 * {
   list-style-type: none;
   text-decoration: none;
   font-family: "Pretendard-Regular";
 }
-
-button:hover {
+* button:hover {
   cursor: pointer;
 }
 

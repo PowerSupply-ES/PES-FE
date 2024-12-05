@@ -1,3 +1,4 @@
+// 관리자_회원목록 페이지
 import "styles/css/manage.css";
 import { UserList } from "components/manage";
 import useUserList from "hooks/manage/useUserList";
@@ -17,7 +18,7 @@ const UserListPage: React.FC = () => {
           <div className="userlist_wrapper">
             <div className="list_container">
               {/* 제목 */}
-              {/* 이것도 UserList컴포넌트로 제작하기 */}
+              {/* TODO : 이것도 UserList컴포넌트로 제작하기 */}
               <div className="title_wrapper">
                 <div className="title_state">상태</div>
                 <div className="title_name">이름</div>

@@ -1,3 +1,4 @@
+// 관리자_회원 컴포넌트
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "styles/css/manage.css";
