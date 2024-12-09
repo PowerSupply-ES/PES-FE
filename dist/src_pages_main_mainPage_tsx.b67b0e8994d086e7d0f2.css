@@ -15,8 +15,7 @@
   text-decoration: none;
   font-family: "Pretendard-Regular";
 }
-
-button:hover {
+* button:hover {
   cursor: pointer;
 }
 
@@ -167,4 +166,4 @@ button:hover {
   z-index: 2;
 }
 
-/*# sourceMappingURL=src_pages_main_mainPage_tsx.68a2ba22a72bcd3bea71.css.map*/
+/*# sourceMappingURL=src_pages_main_mainPage_tsx.b67b0e8994d086e7d0f2.css.map*/

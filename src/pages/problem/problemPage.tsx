@@ -18,6 +18,8 @@ const ProblemPage: React.FC = () => {
 
     return (
       <StyledProblem state={"null"}>
+        
+        {/* 상단 title */}
         <div className="problem_header">
           <div className="problem_group">
             <div className="problem_id">문제{problemId}</div>
@@ -27,6 +29,7 @@ const ProblemPage: React.FC = () => {
         </div>
 
         <div className="problem_section">
+          {/* 좌측 문제 */}
           <div className="content_container">
             {/* 상단문제 */}
             <div className="top" style={{ whiteSpace: "pre" }}>

@@ -16,11 +16,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-// 피드백관리 페이지
+// 질문관리 페이지
 
 const userFeedPage = () => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    children: "\uD53C\uB4DC\uBC31 \uAD00\uB9AC"
+    children: "\uC9C8\uBB38 \uAD00\uB9AC"
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (userFeedPage);
@@ -28,4 +28,4 @@ const userFeedPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userFeedPage_tsx.f17a1e571c2da6a63cc8.js.map
+//# sourceMappingURL=src_pages_manage_userFeedPage_tsx.9da0ed46b7d00c455e92.js.map

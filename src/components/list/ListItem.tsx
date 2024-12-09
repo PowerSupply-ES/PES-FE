@@ -33,6 +33,7 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
 
   return (
     <StyledListItem state={state}>
+      {/* 문제 클릭 시 페이지 이동*/}
       <div className="container">
         <div
           className="problem_id"
@@ -51,13 +52,17 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
           {props.ptitle}
         </div>
         <div className="grade">점수 {props.grade}</div>
-        <button
-          className="button"
-          onClick={() => navigate(`/solution/${props.pid}`)}
-          disabled={state === null} // state가 null일 때 버튼 비활성화
-        >
-          풀이보기
-        </button>
+
+        {/* 풀이보기 버튼: 관리자 페이지에서는 숨기기 */}
+        {location.pathname !== "/manageProb" && (
+          <button
+            className="button"
+            onClick={() => navigate(`/solution/${props.pid}`)}
+            disabled={state === null} // state가 null일 때 버튼 비활성화
+          >
+            풀이보기
+          </button>
+        )}
 
         {/* TODO : 비로그인 시 풀이보기 선택안되도록 */}
         {/* TODO : 상태에 따른 버튼UI 적용하기 */}

@@ -180,11 +180,24 @@
   justify-content: center;
   padding: 20px;
 }
+.memberInfo .info_name {
+  margin: 20px 0 40px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 32px;
+  color: #060606;
+}
+.memberInfo .info_name p {
+  font-size: 26px;
+  color: #000000;
+  margin-top: 12px;
+}
 .memberInfo .text {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3px;
 }
 .memberInfo .text :first-child {
   width: 22%;
@@ -200,20 +213,6 @@
   font-weight: bold;
   color: hsla(0, 0%, 0%, 0.725);
   font-size: 17px;
-}
-.memberInfo .info_name {
-  margin: 20px 0 40px 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 32px;
-  color: #060606;
-}
-.memberInfo .info_name p {
-  font-size: 26px;
-  color: #000000;
-  margin-top: 12px;
 }
 .memberInfo *:not(:first-child) {
   width: 100%;
@@ -374,4 +373,4 @@
 
 /* 성공여부에 따라 버튼색 변화 */
 
-/*# sourceMappingURL=src_pages_manage_userDetailPage_tsx.4b777a9b782cd098775e.css.map*/
+/*# sourceMappingURL=src_pages_manage_userDetailPage_tsx.6c094b3d7668c223a10a.css.map*/

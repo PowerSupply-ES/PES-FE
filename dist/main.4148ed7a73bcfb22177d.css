@@ -286,24 +286,44 @@
   justify-content: center;
   margin-top: 5px;
 }
-/*!*****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/css/manage.css ***!
-  \*****************************************************************************/
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/css/manageUser.css ***!
+  \*********************************************************************************/
 @charset "UTF-8";
-/* ---------- 관리자 페이지 ---------- */
+/* ---------- 회원관리 페이지 ---------- */
+/* 공통요소 */
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: "Pretendard-Regular";
+}
+* button:hover {
+  cursor: pointer;
+}
+
 .content_container {
   height: calc(100vh - 200px); /* header, footer 높이 뺀 값 */
 }
 .content_container .manageuser_container {
   display: flex;
   height: calc(100vh + 100px);
+  text-align: center;
 }
 .content_container .manageuser_container .userlist_wrapper {
   flex: 9;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 40px;
+  padding-top: 40px;
   background-color: #e9e9eb;
   padding-bottom: 40px;
   overflow-y: auto;
@@ -411,4 +431,4 @@
   min-width: fit-content;
 }
 
-/*# sourceMappingURL=main.4d2eecf11139998452f8.css.map*/
+/*# sourceMappingURL=main.4148ed7a73bcfb22177d.css.map*/

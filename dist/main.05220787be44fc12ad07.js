@@ -43,6 +43,7 @@ const UserListPage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().l
 const UserProbPage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_pages_manage_userProbPage_tsx").then(__webpack_require__.bind(__webpack_require__, /*! pages/manage/userProbPage */ "./src/pages/manage/userProbPage.tsx")));
 const UserFeedPage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_pages_manage_userFeedPage_tsx").then(__webpack_require__.bind(__webpack_require__, /*! pages/manage/userFeedPage */ "./src/pages/manage/userFeedPage.tsx")));
 const UserDetailPage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_pages_manage_userDetailPage_tsx").then(__webpack_require__.bind(__webpack_require__, /*! pages/manage/userDetailPage */ "./src/pages/manage/userDetailPage.tsx")));
+const ProbDetailPage = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().lazy(() => __webpack_require__.e(/*! import() */ "src_pages_manage_ProbDetailPage_tsx").then(__webpack_require__.bind(__webpack_require__, /*! pages/manage/ProbDetailPage */ "./src/pages/manage/ProbDetailPage.tsx")));
 const App = () => {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "App",
@@ -88,9 +89,6 @@ const App = () => {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
             path: "/notice/:id",
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(NoticeDetail, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-            path: "/manageUser/:id",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserDetailPage, {})
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
           path: "/",
@@ -101,9 +99,19 @@ const App = () => {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserListPage, {})
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+            path: "/manageUser/:id",
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(components_common_AdminRoute__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserDetailPage, {})
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
             path: "/manageProb",
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(components_common_AdminRoute__WEBPACK_IMPORTED_MODULE_3__["default"], {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(UserProbPage, {})
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+            path: "/manageProb/:id",
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(components_common_AdminRoute__WEBPACK_IMPORTED_MODULE_3__["default"], {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(ProbDetailPage, {})
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
             path: "/manageFeed",
@@ -885,7 +893,7 @@ const mainListItems = [{
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AssignmentRounded__WEBPACK_IMPORTED_MODULE_2__["default"], {}),
   path: '/manageProb'
 }, {
-  text: '피드백 관리',
+  text: '질문 관리',
   icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_icons_material_AnalyticsRounded__WEBPACK_IMPORTED_MODULE_3__["default"], {}),
   path: '/manageFeed'
 }];
@@ -1309,8 +1317,9 @@ function TemplateFrame(_ref2) {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var styles_css_manage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/css/manage.css */ "./src/styles/css/manage.css");
+/* harmony import */ var styles_css_manageUser_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/css/manageUser.css */ "./src/styles/css/manageUser.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// 관리자_회원 컴포넌트
 
 
 
@@ -1646,10 +1655,10 @@ const persistor = (0,redux_persist__WEBPACK_IMPORTED_MODULE_0__.persistStore)(st
 
 /***/ }),
 
-/***/ "./src/styles/css/manage.css":
-/*!***********************************!*\
-  !*** ./src/styles/css/manage.css ***!
-  \***********************************/
+/***/ "./src/styles/css/manageUser.css":
+/*!***************************************!*\
+  !*** ./src/styles/css/manageUser.css ***!
+  \***************************************/
 /***/ (() => {
 
 // extracted by mini-css-extract-plugin
@@ -1716,4 +1725,4 @@ module.exports = axios;
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=main.8e7edf175520c63f2167.js.map
+//# sourceMappingURL=main.05220787be44fc12ad07.js.map

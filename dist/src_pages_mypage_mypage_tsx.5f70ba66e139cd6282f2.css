@@ -15,8 +15,7 @@
   text-decoration: none;
   font-family: "Pretendard-Regular";
 }
-
-button:hover {
+* button:hover {
   cursor: pointer;
 }
 
@@ -260,11 +259,24 @@ button:hover {
   justify-content: center;
   padding: 20px;
 }
+.memberInfo .info_name {
+  margin: 20px 0 40px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 32px;
+  color: #060606;
+}
+.memberInfo .info_name p {
+  font-size: 26px;
+  color: #000000;
+  margin-top: 12px;
+}
 .memberInfo .text {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3px;
 }
 .memberInfo .text :first-child {
   width: 22%;
@@ -280,20 +292,6 @@ button:hover {
   font-weight: bold;
   color: hsla(0, 0%, 0%, 0.725);
   font-size: 17px;
-}
-.memberInfo .info_name {
-  margin: 20px 0 40px 0;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 32px;
-  color: #060606;
-}
-.memberInfo .info_name p {
-  font-size: 26px;
-  color: #000000;
-  margin-top: 12px;
 }
 .memberInfo *:not(:first-child) {
   width: 100%;
@@ -454,4 +452,4 @@ button:hover {
 
 /* 성공여부에 따라 버튼색 변화 */
 
-/*# sourceMappingURL=src_pages_mypage_mypage_tsx.46a917f554b7c1550c22.css.map*/
+/*# sourceMappingURL=src_pages_mypage_mypage_tsx.5f70ba66e139cd6282f2.css.map*/

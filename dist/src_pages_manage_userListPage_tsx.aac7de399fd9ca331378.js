@@ -41,7 +41,7 @@ const getUsersList = async setMemDate => {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var apis_manage_getUsersList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/manage/getUsersList */ "./src/apis/manage/getUsersList.ts");
-/* harmony import */ var styles_css_manage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/css/manage.css */ "./src/styles/css/manage.css");
+/* harmony import */ var styles_css_manageUser_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/css/manageUser.css */ "./src/styles/css/manageUser.css");
 
 
 
@@ -68,12 +68,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var styles_css_manage_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styles/css/manage.css */ "./src/styles/css/manage.css");
+/* harmony import */ var styles_css_manageUser_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styles/css/manageUser.css */ "./src/styles/css/manageUser.css");
 /* harmony import */ var components_manage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/manage */ "./src/components/manage/index.ts");
 /* harmony import */ var hooks_manage_useUserList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hooks/manage/useUserList */ "./src/hooks/manage/useUserList.ts");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// 관리자_회원목록 페이지
 
 
 
@@ -123,4 +124,4 @@ const UserListPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userListPage_tsx.e9df5029baad50219624.js.map
+//# sourceMappingURL=src_pages_manage_userListPage_tsx.aac7de399fd9ca331378.js.map

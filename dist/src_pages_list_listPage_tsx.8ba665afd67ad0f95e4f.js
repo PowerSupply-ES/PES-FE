@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkpes_fe"] = self["webpackChunkpes_fe"] || []).push([["src_pages_manage_userProbPage_tsx"],{
+(self["webpackChunkpes_fe"] = self["webpackChunkpes_fe"] || []).push([["src_pages_list_listPage_tsx"],{
 
 /***/ "./src/apis/list/getList.ts":
 /*!**********************************!*\
@@ -17,7 +17,7 @@
 // TODO: 관리자 문제불러오기 타입은 SoluProb로
 const getList = async (setList, location) => {
   // 조건에 따라 uri를 설정
-  const uri = location.pathname === "/manageFeed" ? `/api/admin/problemlist` : `/api/problemlist`;
+  const uri = location.pathname === "/manageProb" ? `/api/admin/problemlist` : `/api/problemlist`;
   try {
     const config = {
       withCredentials: true
@@ -29,6 +29,83 @@ const getList = async (setList, location) => {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getList);
+
+/***/ }),
+
+/***/ "./src/apis/ranking/getJuniorRank.ts":
+/*!*******************************************!*\
+  !*** ./src/apis/ranking/getJuniorRank.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+// 재학생 rank GET 요청
+const getJuniorRank = async memberGen => {
+  try {
+    const config = {
+      withCredentials: true,
+      params: {
+        memberGen
+      }
+    };
+    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/rank/junior`, config);
+    if (response.status !== 204) {
+      return response.data;
+    }
+    return []; // 데이터가 없을 때 빈 배열 반환
+  } catch (error) {
+    console.log(error);
+    return []; // 오류 발생 시 빈 배열 반환
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getJuniorRank);
+
+/***/ }),
+
+/***/ "./src/apis/ranking/getSeniorRank.ts":
+/*!*******************************************!*\
+  !*** ./src/apis/ranking/getSeniorRank.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+// 재학생 등수 GET
+const GetSeniorsRank = () => {
+  const [newRank, setNewRank] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+
+  // GET api 호출
+  const getSeniorRank = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
+    try {
+      const config = {
+        withCredentials: true
+      };
+      const response = await axios__WEBPACK_IMPORTED_MODULE_1___default().get(`/api/rank/senior`, config);
+      if (response.status !== 204) setNewRank(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    getSeniorRank();
+  }, [getSeniorRank]);
+  return {
+    newRank
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GetSeniorsRank);
 
 /***/ }),
 
@@ -134,10 +211,13 @@ const ListItem = props => {
 
   // 해당 문제로 이동 메서드
   const goToProb = answerId => {
-    if (answerId) {
-      // problemId 저장
-      sessionStorage.setItem("problemId", props.pid.toString()); // sessionStorage저장은 문자열로 해야함
-      const problemId = sessionStorage.getItem("problemId");
+    // problemId 저장
+    const problemId = props.pid.toString();
+    sessionStorage.setItem("problemId", problemId);
+    if (location.pathname === "/manageProb") {
+      // 관리자 페이지에서는 probDetail로 이동
+      navigate(`/manageProb/${problemId}`);
+    } else if (answerId) {
       navigate(`/question/${props.answerId}`);
     } else {
       navigate(`/problem/${props.pid}`);
@@ -147,7 +227,7 @@ const ListItem = props => {
   //추가 by성임
   // status가 "재학생"일 때는 props.state 값을 "success"로 설정,
   // 그 외에는 props.state 값 그대로 사용
-  const state = memberStatus === "재학생" || "관리자" ? "success" : 0;
+  const state = memberStatus === "재학생" || memberStatus === "관리자" ? "success" : props.state;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_1__.StyledListItem, {
     state: state,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -238,72 +318,367 @@ const ProblemList = _ref => {
 
 /***/ }),
 
-/***/ "./src/hooks/manage/useProbList.ts":
-/*!*****************************************!*\
-  !*** ./src/hooks/manage/useProbList.ts ***!
-  \*****************************************/
+/***/ "./src/components/ranking/JuniorRank.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/ranking/JuniorRank.tsx ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var apis_list_getList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apis/list/getList */ "./src/apis/list/getList.ts");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _RankingItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RankingItem */ "./src/components/ranking/RankingItem.tsx");
+/* harmony import */ var hooks_rank_useJuniorRank__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooks/rank/useJuniorRank */ "./src/hooks/rank/useJuniorRank.ts");
+/* harmony import */ var styles_styledComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/styledComponent */ "./src/styles/styledComponent/index.ts");
+/* harmony import */ var _mui_joy_Select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/joy/Select */ "./node_modules/@mui/joy/Select/Select.js");
+/* harmony import */ var _mui_joy_Option__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/joy/Option */ "./node_modules/@mui/joy/Option/Option.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+const JuniorRank = () => {
+  // 신입생 순위 get Api 호출
+  const {
+    newRank,
+    handleSelectChange,
+    memberGen
+  } = (0,hooks_rank_useJuniorRank__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_2__.StyledListPage, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_joy_Select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      placeholder: "35\uAE30",
+      className: "select_box",
+      value: memberGen.toString(),
+      onChange: e => handleSelectChange,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_mui_joy_Option__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        value: "35",
+        children: "35\uAE30"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_2__.RankingItemStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "ranking_id",
+        children: "\uC21C\uC704"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "member_name",
+        children: "\uC774\uB984"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "score",
+        children: "\uC810\uC218"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "ranking-list",
+      children: newRank.map((rank, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RankingItem__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        rank: rank.rank,
+        memberName: rank.memberName,
+        score: `${rank.score}점`
+      }, index))
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (JuniorRank);
+
+/***/ }),
+
+/***/ "./src/components/ranking/RankingItem.tsx":
+/*!************************************************!*\
+  !*** ./src/components/ranking/RankingItem.tsx ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styles_styledComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/styledComponent */ "./src/styles/styledComponent/index.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+// 랭킹 요소 컴포넌트
+const RankingItem = _ref => {
+  let {
+    rank,
+    memberName,
+    score,
+    style
+  } = _ref;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_1__.StyledRankingItem, {
+    style: style,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "ranking_id",
+      children: rank
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "member_name",
+      children: memberName
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "score",
+      children: score
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RankingItem);
+
+/***/ }),
+
+/***/ "./src/components/ranking/SeniorRank.tsx":
+/*!***********************************************!*\
+  !*** ./src/components/ranking/SeniorRank.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _RankingItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RankingItem */ "./src/components/ranking/RankingItem.tsx");
+/* harmony import */ var apis_ranking_getSeniorRank__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! apis/ranking/getSeniorRank */ "./src/apis/ranking/getSeniorRank.ts");
+/* harmony import */ var styles_styledComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styles/styledComponent */ "./src/styles/styledComponent/index.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+const SeniorRank = () => {
+  // 재학생 순위 get Api 호출
+  const {
+    newRank
+  } = (0,apis_ranking_getSeniorRank__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_3__.StyledListPage, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(styles_styledComponent__WEBPACK_IMPORTED_MODULE_3__.RankingItemStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ranking_id",
+        children: "\uC21C\uC704"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "member_name",
+        children: "\uC774\uB984"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "score",
+        children: "\uC810\uC218"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "ranking-list",
+      children: newRank.map((rank, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RankingItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        rank: rank.rank,
+        memberName: rank.memberName,
+        score: `${rank.score}개`
+      }, index))
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SeniorRank);
+
+/***/ }),
+
+/***/ "./src/components/ranking/index.ts":
+/*!*****************************************!*\
+  !*** ./src/components/ranking/index.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   JuniorRank: () => (/* reexport safe */ _JuniorRank__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   SeniorRank: () => (/* reexport safe */ _SeniorRank__WEBPACK_IMPORTED_MODULE_2__["default"])
+/* harmony export */ });
+/* harmony import */ var _JuniorRank__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JuniorRank */ "./src/components/ranking/JuniorRank.tsx");
+/* harmony import */ var _RankingItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RankingItem */ "./src/components/ranking/RankingItem.tsx");
+/* harmony import */ var _SeniorRank__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SeniorRank */ "./src/components/ranking/SeniorRank.tsx");
+// components/ranking 디렉토리 export 관리
+
+
+
+
+/***/ }),
+
+/***/ "./src/hooks/list/useListHook.ts":
+/*!***************************************!*\
+  !*** ./src/hooks/list/useListHook.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apis_list_getList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/list/getList */ "./src/apis/list/getList.ts");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/dist/react-redux.mjs");
 
 
 
 
-// 관리자 - 문제 list 호출 HOOK
-const useProbList = () => {
+// 문제 list 호출 HOOK
+const useListHook = () => {
   const {
     memberStatus
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.user) || ''; // redux에서 가져오기
-  const [list, setList] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+
+  const [list, setList] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [selectedOption, setSelectedOption] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("junior");
+  const [juniorButtonVariant, setJuniorButtonVariant] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("solid");
+  const [seniorButtonVariant, setSeniorButtonVariant] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("soft");
   const location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    (0,apis_list_getList__WEBPACK_IMPORTED_MODULE_0__["default"])(setList, location);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    (0,apis_list_getList__WEBPACK_IMPORTED_MODULE_1__["default"])(setList, location);
   }, [memberStatus, location]);
+
+  // junior, senior 선택에 따른 버튼상태 변화
+  const handleOption = option => {
+    setSelectedOption(option);
+    if (option === "junior") {
+      setJuniorButtonVariant("solid");
+      setSeniorButtonVariant("soft");
+    } else if (option === "senior") {
+      setJuniorButtonVariant("soft");
+      setSeniorButtonVariant("solid");
+    }
+  };
   return {
-    list
+    list,
+    selectedOption,
+    juniorButtonVariant,
+    seniorButtonVariant,
+    handleOption
   };
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useProbList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useListHook);
 
 /***/ }),
 
-/***/ "./src/pages/manage/userProbPage.tsx":
-/*!*******************************************!*\
-  !*** ./src/pages/manage/userProbPage.tsx ***!
-  \*******************************************/
+/***/ "./src/hooks/rank/useJuniorRank.ts":
+/*!*****************************************!*\
+  !*** ./src/hooks/rank/useJuniorRank.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var apis_ranking_getJuniorRank__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/ranking/getJuniorRank */ "./src/apis/ranking/getJuniorRank.ts");
+
+
+// 신입생 등수 GET
+const useJuniorRank = () => {
+  const [memberGen, setMemberGen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(35); // memberGen 35기로 기본 설정
+  const [newRank, setNewRank] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const handleSelectChange = e => {
+    setMemberGen(parseInt(e.target.value, 10));
+  };
+
+  // get API 호출
+  const fetchNewRank = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
+    if (memberGen) {
+      // memberGen이 유효할 때만 호출
+      const data = await (0,apis_ranking_getJuniorRank__WEBPACK_IMPORTED_MODULE_1__["default"])(memberGen);
+      setNewRank(data);
+    }
+  }, [memberGen]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    fetchNewRank();
+  }, [fetchNewRank]);
+  return {
+    newRank,
+    handleSelectChange,
+    memberGen
+  };
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useJuniorRank);
+
+/***/ }),
+
+/***/ "./src/pages/list/listPage.tsx":
+/*!*************************************!*\
+  !*** ./src/pages/list/listPage.tsx ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var components_problem_ProblemList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! components/problem/ProblemList */ "./src/components/problem/ProblemList.tsx");
-/* harmony import */ var hooks_manage_useProbList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! hooks/manage/useProbList */ "./src/hooks/manage/useProbList.ts");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var components_ranking__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/ranking */ "./src/components/ranking/index.ts");
+/* harmony import */ var components_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! components/list */ "./src/components/list/index.ts");
+/* harmony import */ var styles_styledComponent_ListPage_styled__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styles/styledComponent/ListPage-styled */ "./src/styles/styledComponent/ListPage-styled.tsx");
+/* harmony import */ var hooks_list_useListHook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! hooks/list/useListHook */ "./src/hooks/list/useListHook.ts");
+/* harmony import */ var components_problem_ProblemList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/problem/ProblemList */ "./src/components/problem/ProblemList.tsx");
+/* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
-// 문제관리 페이지
 
-const UserProbPage = () => {
+
+
+
+// Props 타입(현재는 props가 없으므로 빈 객체로 정의)
+
+const ListPage = () => {
   const {
-    list
-  } = (0,hooks_manage_useProbList__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(components_problem_ProblemList__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    problmeList: list
+    list,
+    selectedOption,
+    juniorButtonVariant,
+    seniorButtonVariant,
+    handleOption
+  } = (0,hooks_list_useListHook__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_list__WEBPACK_IMPORTED_MODULE_2__.AdPart, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(styles_styledComponent_ListPage_styled__WEBPACK_IMPORTED_MODULE_3__.StyledListPage, {
+      style: {
+        width: "100%",
+        display: "flex",
+        justifyContent: "center"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "list_container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "container_header",
+          children: "\uD83D\uDDA5\uFE0F \uBB38\uC81C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_problem_ProblemList__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          problmeList: list
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "ranking_container",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "container_header",
+          children: "\uD83C\uDFC6 \uB7AD\uD0B9"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "student_container",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            className: `student_button ${selectedOption === "junior" ? "student_button_active" : ""}`,
+            color: "primary",
+            size: "large",
+            variant: juniorButtonVariant,
+            onClick: () => handleOption("junior"),
+            sx: {
+              minWidth: "fit-content"
+            },
+            children: "\uC2E0\uC785\uC0DD"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_mui_material_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+            className: `student_button ${selectedOption === "senior" ? "student_button_active" : ""}`,
+            color: "primary",
+            size: "large",
+            variant: seniorButtonVariant,
+            onClick: () => handleOption("senior"),
+            sx: {
+              minWidth: "fit-content"
+            },
+            children: "\uC7AC\uD559\uC0DD"
+          })]
+        }), selectedOption === "junior" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_ranking__WEBPACK_IMPORTED_MODULE_1__.JuniorRank, {}), selectedOption === "senior" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_ranking__WEBPACK_IMPORTED_MODULE_1__.SeniorRank, {})]
+      })]
+    })]
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserProbPage);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListPage);
 
 /***/ }),
 
@@ -1327,4 +1702,4 @@ const StyledRankingItem = styled_components__WEBPACK_IMPORTED_MODULE_0__["defaul
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_manage_userProbPage_tsx.235b42e5069cf275aead.js.map
+//# sourceMappingURL=src_pages_list_listPage_tsx.8ba665afd67ad0f95e4f.js.map

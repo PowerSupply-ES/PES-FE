@@ -1,9 +1,9 @@
 "use strict";
-(self["webpackChunkpes_fe"] = self["webpackChunkpes_fe"] || []).push([["src_pages_mypage_mypage_tsx"],{
+(self["webpackChunkpes_fe"] = self["webpackChunkpes_fe"] || []).push([["src_pages_manage_userDetailPage_tsx"],{
 
-/***/ "./src/apis/mypage/getMyFeed.ts":
+/***/ "./src/apis/manage/deleteMem.ts":
 /*!**************************************!*\
-  !*** ./src/apis/mypage/getMyFeed.ts ***!
+  !*** ./src/apis/manage/deleteMem.ts ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -13,34 +13,57 @@
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-// 내 feedback GET요청
-const getMyFeed = async setMyFeedback => {
-  const uri = "api/mypage/myfeedback";
+// 회원 delete API
+const deleteMem = async navigate => {
+  let url = new URL(window.location.href);
+  let memberId = url.pathname.split("/")[2];
+  const uri = `/api/admin/member/${memberId}`;
+  const confirmDelete = window.confirm("정말 해당 회원을 삭제하시겠습니까?");
+
+  // 삭제 취소 시
+  if (!confirmDelete) {
+    return;
+  }
   try {
-    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri);
-    setMyFeedback(response.data);
+    const res = await axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"](uri);
+
+    // 성공 시
+    if (res.status === 200) {
+      alert("회원이 성공적으로 삭제되었습니다.");
+      navigate("/manageUser"); // 삭제 후 목록 페이지로 이동
+    }
   } catch (error) {
-    if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error)) {
-      //axios error인지 확인
-      // 서버가 응답을 반환했지만 상태 코드가 오류를 나타내는 경우
-      console.error("Axios 오류 발생:", error.response?.status, error.response?.statusText);
-    } else if (error instanceof Error) {
-      //js오류인지 확인
-      // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
-      console.error("일반 오류 발생:", error.message);
+    // axios에러 && response있는 경우
+    if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error) && error.response) {
+      const statusCode = error.response.status;
+
+      // 403: 권한 없음 (관리자가 아님)
+      if (statusCode === 403) {
+        alert("권한이 없습니다. 관리자 계정으로 로그인 해주세요.");
+      }
+      // 404: 해당 memberId가 없음
+      else if (statusCode === 404) {
+        alert("해당 회원을 찾을 수 없습니다. memberId를 확인해 주세요.");
+      }
+      // 그 외 서버 오류
+      else {
+        alert("회원 삭제에 실패했습니다. 다시 시도해 주세요.");
+      }
     } else {
-      console.error("알 수 없는 오류 발생:", error);
+      // 서버 응답이 없거나 다른 문제가 발생한 경우
+      console.error(error);
+      alert("네트워크 오류가 발생했습니다. 다시 시도해 주세요.");
     }
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMyFeed);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deleteMem);
 
 /***/ }),
 
-/***/ "./src/apis/mypage/getMyInfo.ts":
-/*!**************************************!*\
-  !*** ./src/apis/mypage/getMyInfo.ts ***!
-  \**************************************/
+/***/ "./src/apis/manage/fetchMem.ts":
+/*!*************************************!*\
+  !*** ./src/apis/manage/fetchMem.ts ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -49,34 +72,64 @@ const getMyFeed = async setMyFeedback => {
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-// 내 정보 GET 요청
-const getMyInfo = async setMemberData => {
-  const uri = "/api/mypage/information";
+// 회원 등업 update API
+const fetchMem = async (navigate, memberStatus) => {
+  let url = new URL(window.location.href);
+  let memberId = url.pathname.split("/")[2];
+  const uri = `/api/admin/member/${memberId}`;
+
+  // 관리자 vs 재학생 vs 관리자 중 선택하기
+  const levelUpLevel = memberStatus === "신입생" ? "재학생" : memberStatus === "재학생" ? "관리자" : memberStatus === "관리자" ? "재학생" : "";
+  const confirmDelete = window.confirm(`해당 회원을 ${levelUpLevel} 등급으로 변경하시겠습니까?`);
+
+  // 수정 취소 시
+  if (!confirmDelete) {
+    return;
+  }
   try {
-    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri);
-    setMemberData(response.data);
-  } catch (error) {
-    if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error)) {
-      //axios error인지 확인
-      // 서버가 응답을 반환했지만 상태 코드가 오류를 나타내는 경우
-      console.error("Axios 오류 발생:", error.response?.status, error.response?.statusText);
-    } else if (error instanceof Error) {
-      //js오류인지 확인
-      // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
-      console.error("일반 오류 발생:", error.message);
+    const res = await axios__WEBPACK_IMPORTED_MODULE_0___default().put(uri, {
+      memberStatus: `${levelUpLevel}`
+    });
+
+    // 성공 시
+    if (res.status === 200) {
+      alert("회원등급이 성공적으로 변경되었습니다.");
+      navigate("/manageUser");
     } else {
-      console.error("알 수 없는 오류 발생:", error);
+      alert("회원등급 변경에 실패했습니다. 다시 시도해 주세요1.");
+    }
+  } catch (error) {
+    // axios에러 && response있는 경우
+    if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error) && error.response) {
+      const statusCode = error.response.status;
+
+      // 403: 권한 없음 (관리자가 아님)
+      if (statusCode === 403) {
+        alert("권한이 없습니다. 관리자 계정으로 로그인 해주세요.");
+      }
+      // 404: 해당 memberId가 없음
+      else if (statusCode === 404) {
+        alert("해당 회원을 찾을 수 없습니다. memberId를 확인해 주세요.");
+      }
+      // 그 외 서버 오류
+      else {
+        alert("서버오류가 발생했습니다.");
+      }
+    } else {
+      // 서버 응답이 없거나 다른 문제가 발생한 경우
+      console.error(error);
+      alert("네트워크 오류가 발생했습니다. 다시 시도해 주세요.");
     }
   }
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMyInfo);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (fetchMem);
 
 /***/ }),
 
-/***/ "./src/apis/mypage/getMyProb.ts":
-/*!**************************************!*\
-  !*** ./src/apis/mypage/getMyProb.ts ***!
-  \**************************************/
+/***/ "./src/apis/manage/getUserDetail.ts":
+/*!******************************************!*\
+  !*** ./src/apis/manage/getUserDetail.ts ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -85,48 +138,29 @@ const getMyInfo = async setMemberData => {
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-// 내가 푼 문제 GET요청
-const getMyProb = async setMyProb => {
-  const uri = "api/mypage/mysolve";
+// 회원 상세 정보 get API
+const getUserDetail = async setMemberData => {
+  let url = new URL(window.location.href);
+  let memberId = url.pathname.split("/")[2];
+  const uri = `/api/admin/member/${memberId}`;
   try {
-    const response = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri);
-    setMyProb(response.data);
+    const res = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(uri);
+    const memDetail = res.data;
+
+    // `mySolveResponse`와 `myFeedbackResponse`가 없을 경우 기본값 설정
+    const userDetail = {
+      ...memDetail,
+      mySolveResponse: memDetail.mySolveResponse || [],
+      // 기본값으로 빈 배열
+      myFeedbackResponse: memDetail.myFeedbackResponse || [] // 기본값으로 빈 배열
+    };
+    setMemberData(userDetail);
   } catch (error) {
-    if (axios__WEBPACK_IMPORTED_MODULE_0___default().isAxiosError(error)) {
-      //axios error인지 확인
-      // 서버가 응답을 반환했지만 상태 코드가 오류를 나타내는 경우
-      console.error("Axios 오류 발생:", error.response?.status, error.response?.statusText);
-    } else if (error instanceof Error) {
-      //js오류인지 확인
-      // 요청이 서버로 전송되었지만 응답을 받지 못한 경우
-      console.error("일반 오류 발생:", error.message);
-    } else {
-      console.error("알 수 없는 오류 발생:", error);
-    }
+    console.error(error);
   }
+  // TODO : 예외처리하기
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getMyProb);
-
-/***/ }),
-
-/***/ "./src/apis/mypage/index.ts":
-/*!**********************************!*\
-  !*** ./src/apis/mypage/index.ts ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getMyFeed: () => (/* reexport safe */ _getMyFeed__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   getMyInfo: () => (/* reexport safe */ _getMyInfo__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   getMyProb: () => (/* reexport safe */ _getMyProb__WEBPACK_IMPORTED_MODULE_2__["default"])
-/* harmony export */ });
-/* harmony import */ var _getMyFeed__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getMyFeed */ "./src/apis/mypage/getMyFeed.ts");
-/* harmony import */ var _getMyInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getMyInfo */ "./src/apis/mypage/getMyInfo.ts");
-/* harmony import */ var _getMyProb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getMyProb */ "./src/apis/mypage/getMyProb.ts");
-// apis/mypage 디렉토리 export 관리
-
-
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getUserDetail);
 
 /***/ }),
 
@@ -189,7 +223,7 @@ const MemberFeed = _ref => {
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_icons_fa6__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa6 */ "./node_modules/react-icons/fa6/index.mjs");
 /* harmony import */ var styles_css_mypage_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/css/mypage.css */ "./src/styles/css/mypage.css");
-/* harmony import */ var styles_css_manage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/css/manage.css */ "./src/styles/css/manage.css");
+/* harmony import */ var styles_css_manageUser_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/css/manageUser.css */ "./src/styles/css/manageUser.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -369,79 +403,6 @@ const MyFeed = _ref => {
 
 /***/ }),
 
-/***/ "./src/components/mypage/MyFeedList.tsx":
-/*!**********************************************!*\
-  !*** ./src/components/mypage/MyFeedList.tsx ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _MemberFeed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberFeed */ "./src/components/mypage/MemberFeed.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-// MyFeedList 타입 정의
-
-;
-
-// 내 피드백 list
-const MyFeedList = _ref => {
-  let {
-    myFeedback
-  } = _ref;
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_MemberFeed__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    myFeedback: myFeedback,
-    navigate: navigate
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyFeedList);
-
-/***/ }),
-
-/***/ "./src/components/mypage/MyInfo.tsx":
-/*!******************************************!*\
-  !*** ./src/components/mypage/MyInfo.tsx ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MemberInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberInfo */ "./src/components/mypage/MemberInfo.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-// MyInfo 타입 정의
-
-const MyInfo = _ref => {
-  let {
-    memberData
-  } = _ref;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_MemberInfo__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    memberName: memberData.memberName,
-    memberId: memberData.memberId,
-    memberEmail: memberData.memberEmail,
-    memberGen: memberData.memberGen,
-    memberStatus: memberData.memberStatus,
-    memberMajor: memberData.memberMajor,
-    memberPhone: memberData.memberPhone
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyInfo);
-
-/***/ }),
-
 /***/ "./src/components/mypage/MyProb.tsx":
 /*!******************************************!*\
   !*** ./src/components/mypage/MyProb.tsx ***!
@@ -500,10 +461,10 @@ const MyProb = _ref => {
 
 /***/ }),
 
-/***/ "./src/components/mypage/MyProbList.tsx":
-/*!**********************************************!*\
-  !*** ./src/components/mypage/MyProbList.tsx ***!
-  \**********************************************/
+/***/ "./src/hooks/manage/useUserDetail.ts":
+/*!*******************************************!*\
+  !*** ./src/hooks/manage/useUserDetail.ts ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -511,120 +472,29 @@ const MyProb = _ref => {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var _MemberProb__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberProb */ "./src/components/mypage/MemberProb.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var apis_manage_getUserDetail__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/manage/getUserDetail */ "./src/apis/manage/getUserDetail.ts");
 
 
-
-
-// MyProbList 타입 정의
-
-;
-
-// 내가 푼 문제 목록
-const MyProbList = _ref => {
-  let {
-    myProb
-  } = _ref;
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_MemberProb__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    myProb: myProb,
-    navigate: navigate
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyProbList);
-
-/***/ }),
-
-/***/ "./src/components/mypage/index.ts":
-/*!****************************************!*\
-  !*** ./src/components/mypage/index.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   MyFeedList: () => (/* reexport safe */ _MyFeedList__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   MyInfo: () => (/* reexport safe */ _MyInfo__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   MyProbList: () => (/* reexport safe */ _MyProbList__WEBPACK_IMPORTED_MODULE_4__["default"])
-/* harmony export */ });
-/* harmony import */ var _MyFeed__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyFeed */ "./src/components/mypage/MyFeed.tsx");
-/* harmony import */ var _MyFeedList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyFeedList */ "./src/components/mypage/MyFeedList.tsx");
-/* harmony import */ var _MyInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MyInfo */ "./src/components/mypage/MyInfo.tsx");
-/* harmony import */ var _MyProb__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyProb */ "./src/components/mypage/MyProb.tsx");
-/* harmony import */ var _MyProbList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyProbList */ "./src/components/mypage/MyProbList.tsx");
-// components/mypage 디렉토리 export 관리
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/hooks/mypage/useMypage.ts":
-/*!***************************************!*\
-  !*** ./src/hooks/mypage/useMypage.ts ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var apis_mypage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! apis/mypage */ "./src/apis/mypage/index.ts");
-
-
-
-// 마이페이지 api HOOK
-const useMypage = status => {
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-
-  // 내정보
-  const [memberData, setMemberData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)();
-  // 내문제리스트
-  const [myProb, setMyProb] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-  // 내피드백리스트
-  const [myFeedback, setMyFeedback] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-
-  // 관련 API요청 HOOK
+const useUserDetail = () => {
+  const [userData, setUserData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    // 비로그인시
-    if (status === null || status === undefined) {
-      alert("로그인 해주세요");
-      navigate("/signin");
-      return;
-    }
+    (0,apis_manage_getUserDetail__WEBPACK_IMPORTED_MODULE_1__["default"])(setUserData);
+  }, []);
 
-    // 로그인 상태일 때 API 요청
-    const fetchData = async () => {
-      try {
-        (0,apis_mypage__WEBPACK_IMPORTED_MODULE_1__.getMyInfo)(setMemberData); // 내 정보 GET요청
-        (0,apis_mypage__WEBPACK_IMPORTED_MODULE_1__.getMyProb)(setMyProb); // 내가 푼 문제 GET요청
-        (0,apis_mypage__WEBPACK_IMPORTED_MODULE_1__.getMyFeed)(setMyFeedback); // 내 feedback GET요청
-      } catch (error) {
-        console.error("데이터를 가져오는 중 오류 발생:", error);
-      }
-    };
-    fetchData();
-  }, [navigate]); // navigate가 최신상태인지 확인
+  // TODO : 회원수정, 회원삭제 로직 추가하기
 
   return {
-    memberData,
-    myProb,
-    myFeedback
+    userData
   };
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useMypage);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useUserDetail);
 
 /***/ }),
 
-/***/ "./src/pages/mypage/mypage.tsx":
-/*!*************************************!*\
-  !*** ./src/pages/mypage/mypage.tsx ***!
-  \*************************************/
+/***/ "./src/pages/manage/userDetailPage.tsx":
+/*!*********************************************!*\
+  !*** ./src/pages/manage/userDetailPage.tsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -633,15 +503,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styles_css_App_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/css/App.css */ "./src/styles/css/App.css");
-/* harmony import */ var styles_css_mypage_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styles/css/mypage.css */ "./src/styles/css/mypage.css");
-/* harmony import */ var components_mypage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/mypage */ "./src/components/mypage/index.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var hooks_mypage_useMypage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! hooks/mypage/useMypage */ "./src/hooks/mypage/useMypage.ts");
-/* harmony import */ var components_common_Loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/common/Loading */ "./src/components/common/Loading.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/dist/react-redux.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// 마이페이지
+/* harmony import */ var styles_css_manageUser_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styles/css/manageUser.css */ "./src/styles/css/manageUser.css");
+/* harmony import */ var hooks_manage_useUserDetail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hooks/manage/useUserDetail */ "./src/hooks/manage/useUserDetail.ts");
+/* harmony import */ var components_mypage_MemberInfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! components/mypage/MemberInfo */ "./src/components/mypage/MemberInfo.tsx");
+/* harmony import */ var components_mypage_MemberProb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! components/mypage/MemberProb */ "./src/components/mypage/MemberProb.tsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var components_mypage_MemberFeed__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! components/mypage/MemberFeed */ "./src/components/mypage/MemberFeed.tsx");
+/* harmony import */ var apis_manage_deleteMem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! apis/manage/deleteMem */ "./src/apis/manage/deleteMem.ts");
+/* harmony import */ var apis_manage_fetchMem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! apis/manage/fetchMem */ "./src/apis/manage/fetchMem.ts");
+/* harmony import */ var components_common_Loading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! components/common/Loading */ "./src/components/common/Loading.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+// 회원상세페이지
 
 
 
@@ -650,64 +522,64 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// RootState 임포트
 
-// MyPage 컴포넌트 Props 타입
 
-const MyPage = () => {
-  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
+
+const UserDetail = () => {
   const {
-    memberStatus
-  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_8__.useSelector)(state => state.user); // redux에서 가져오기
-  const {
-    status
-  } = (0,react_redux__WEBPACK_IMPORTED_MODULE_8__.useSelector)(state => state.sign);
-
-  // useMypage HOOK 호출
-  const {
-    memberData,
-    myProb,
-    myFeedback
-  } = (0,hooks_mypage_useMypage__WEBPACK_IMPORTED_MODULE_4__["default"])(status);
-  if (!memberData) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_common_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], {});
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-    className: "content_mypage",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-      className: "mypage_content",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "left",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_mypage__WEBPACK_IMPORTED_MODULE_3__.MyInfo, {
-          memberData: memberData
-        }), memberStatus === "관리자" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
-          className: "btn_goto_manage",
-          onClick: () => navigate('/manageUser'),
-          children: "\uAD00\uB9AC\uC790\uBAA8\uB4DC"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {})]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "right",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_mypage__WEBPACK_IMPORTED_MODULE_3__.MyProbList, {
-          myProb: myProb
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(components_mypage__WEBPACK_IMPORTED_MODULE_3__.MyFeedList, {
-          myFeedback: myFeedback
-        })]
-      })]
+    userData
+  } = (0,hooks_manage_useUserDetail__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  const navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)();
+  return (
+    /*#__PURE__*/
+    // TODO: 템플릿 적용 
+    (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      className: "content_container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        className: "manageuser_container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          className: "userlist_wrapper",
+          children: !userData ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(components_common_Loading__WEBPACK_IMPORTED_MODULE_8__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+            className: "mypage_content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "userinfo_container",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(components_mypage_MemberInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
+                memberName: userData.memberName,
+                memberId: userData.memberId,
+                memberEmail: userData.memberEmail,
+                memberGen: userData.memberGen,
+                memberStatus: userData.memberStatus,
+                memberMajor: userData.memberMajor,
+                memberPhone: userData.memberPhone
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+                className: "manage_btn_container",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                  className: "levelup_btn",
+                  onClick: () => (0,apis_manage_fetchMem__WEBPACK_IMPORTED_MODULE_7__["default"])(navigate, userData.memberStatus),
+                  children: "\uB4F1\uAE09\uBCC0\uACBD"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                  className: "btn_deletemem",
+                  onClick: () => (0,apis_manage_deleteMem__WEBPACK_IMPORTED_MODULE_6__["default"])(navigate),
+                  children: "\uD68C\uC6D0 \uC0AD\uC81C"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              className: "right",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(components_mypage_MemberProb__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                myProb: userData.mySolveResponse,
+                navigate: navigate
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(components_mypage_MemberFeed__WEBPACK_IMPORTED_MODULE_5__["default"], {
+                myFeedback: userData.myFeedbackResponse,
+                navigate: navigate
+              })]
+            })]
+          })
+        })
+      })
     })
-  });
+  );
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyPage);
-
-/***/ }),
-
-/***/ "./src/styles/css/App.css":
-/*!********************************!*\
-  !*** ./src/styles/css/App.css ***!
-  \********************************/
-/***/ (() => {
-
-// extracted by mini-css-extract-plugin
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserDetail);
 
 /***/ }),
 
@@ -723,4 +595,4 @@ const MyPage = () => {
 /***/ })
 
 }]);
-//# sourceMappingURL=src_pages_mypage_mypage_tsx.4d8bcad0b99e93c64719.js.map
+//# sourceMappingURL=src_pages_manage_userDetailPage_tsx.2afbf369a5a2c5c6583f.js.map

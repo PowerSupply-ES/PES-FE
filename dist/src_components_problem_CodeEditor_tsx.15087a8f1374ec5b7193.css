@@ -15,8 +15,7 @@
   text-decoration: none;
   font-family: "Pretendard-Regular";
 }
-
-button:hover {
+* button:hover {
   cursor: pointer;
 }
 
@@ -79,4 +78,4 @@ button:hover {
   margin-bottom: -300px;
 }
 
-/*# sourceMappingURL=src_components_problem_CodeEditor_tsx.3c0246f24b3a2ebc4df9.css.map*/
+/*# sourceMappingURL=src_components_problem_CodeEditor_tsx.15087a8f1374ec5b7193.css.map*/
