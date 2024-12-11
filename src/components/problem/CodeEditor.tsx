@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import "styles/css/App.css";
+// import "styles/css/App.css";
 import { CodeEditorProps } from "model/problemType";
-
 import ace from "libs/ace";  // 커스텀 빌드된 ace.js 사용
 import "libs/mode-c_cpp"; // C/C++ 언어 모드 import
 import "libs/theme-monokai"; // 다크 모드 테마 import
 // import { ace as ace, mode_c_cpp, theme_monokai } from "libs"
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, readOnly }) => {
-
   const editorRef = useRef<HTMLDivElement | null>(null); // 커스텀빌드 라이브러리 사용위한 HOOK
 
   useEffect(() => {

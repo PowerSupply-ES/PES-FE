@@ -1,5 +1,6 @@
 // 관리자_문제 상세 페이지
 import axios from "axios";
+import Loading from "components/common/Loading";
 import { useCallback, useEffect, useState } from "react"
 
 // ProblemContent 타입
@@ -52,13 +53,24 @@ const ProbDetailPage = () => {
   console.log("problem",problem);
 
 
-
-
-
-  
   return (
     <div>
-      ProbDetail페이지
+      {problem ? (
+        <>
+          <div>problemTitle : {problem.problemTitle}</div>
+          <div>context : {problem.context}</div>
+          <div>inputs : {problem.inputs}</div>
+          <div>outputs : {problem.outputs}</div>
+          <div>problemTitle : {problem.problemTitle}</div>
+          <div>problemId : {problem.problemId}</div>
+          <div>problemScore : {problem.problemScore}</div>
+          <div>sample : {problem.sample}</div>
+        </>
+        ) : (
+          <Loading />
+        )
+
+      }
     </div>
   )
 }

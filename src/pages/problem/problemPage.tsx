@@ -1,9 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { StyledProblem } from "styles/styledComponent/Problem-styled";
 import useProbPage from "hooks/problem/useProbPage";
-import { renderNewlines, renderStyledNewlines } from "components/common/Common";
 import Loading from "components/common/Loading";
-const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
+import ProblemContent from "components/problem/ProblemContent";
+import SampleContent from "components/problem/SampleContent";
+import CodeInputArea from "components/problem/CodeInputArea";
 
 const ProblemPage: React.FC = () => {
   let url = new URL(window.location.href);
@@ -15,10 +16,8 @@ const ProblemPage: React.FC = () => {
 
   // 문제 UI 렌더링 함수
   const renderProbUI = () => {
-
     return (
       <StyledProblem state={"null"}>
-        
         {/* 상단 title */}
         <div className="problem_header">
           <div className="problem_group">
@@ -31,73 +30,15 @@ const ProblemPage: React.FC = () => {
         <div className="problem_section">
           {/* 좌측 문제 */}
           <div className="content_container">
-            {/* 상단문제 */}
-            <div className="top" style={{ whiteSpace: "pre" }}>
-              <p className="underline">문제</p>
-              <div className="prob_text">
-                {/* renderNewlines : '\n' 기준으로 줄바꿈 함수 */}
-                {problem?.problemContent &&
-                  renderNewlines(problem.problemContent)}
-              </div>
-            </div>
+            {/* 상단문제 컴포넌트 */}
+            <ProblemContent problem={problem} />
 
-            {/* 하단 sample input */}
-            <div className="bottom">
-              <div className="sample_inputs" style={{ whiteSpace: "pre" }}>
-                <p className="underline">Sample Inputs</p>
-                <div className="input_text">
-                  {problem?.sampleInputs &&
-                    problem.sampleInputs.map((input, index) => (
-                      <React.Fragment key={index}>
-                        {/* renderStyledNewlines : '\n\n' 기준으로 줄바꿈 함수 */}
-                        {renderStyledNewlines(input)}
-                      </React.Fragment>
-                    ))}
-                </div>
-              </div>
-
-              <div className="sample_outputs" style={{ whiteSpace: "pre" }}>
-                <p className="underline">Sample Outputs</p>
-                <div className="output_text">
-                  {problem?.sampleOutputs &&
-                    problem.sampleOutputs.map((output, index) => (
-                      <React.Fragment key={index}>
-                        {renderStyledNewlines(output)}
-                      </React.Fragment>
-                    ))}
-                </div>
-              </div>
-            </div>
+            {/* 하단 sample 컴포넌트 */}
+            <SampleContent problem={problem} />
           </div>
 
-          {/* 우측 코드 입력 */}
-          <div className="code_section">
-            {isLogin ? (
-              <>
-                {/* 변경코드 by성임 - Lazy Loading 적용 */}
-                <Suspense fallback={<Loading/>}>
-                  <CodeEditor
-                    code={""} // 현재 코드 상태
-                    onChange={textHandler} // 코드 변경 핸들러
-                    readOnly={false} // 읽기 전용 여부
-                  />
-                </Suspense>
-
-                {detail !== null && detail !== undefined && (
-                  <div className="detail_container">
-                    <h3>틀린 이유</h3>
-                    <div className="detail_content">{detail}</div>
-                  </div>
-                )}
-              </>
-            ) : (
-              <textarea
-                disabled
-                className="code_input"
-                placeholder="로그인 후 이용해주세요."
-              />
-            )}
-          </div>
+          {/* 우측 코드 입력 컴포넌트 */}
+          <CodeInputArea isLogin={isLogin} detail={detail} textHandler={textHandler}/>
         </div>
 
         <button
@@ -124,11 +65,7 @@ const ProblemPage: React.FC = () => {
     );
   };
 
-  return (
-    <div>
-      {title && problem ? renderProbUI() : <Loading/>}
-    </div>
-  );
+  return <div>{title && problem ? renderProbUI() : <Loading />}</div>;
 };
 
 export default ProblemPage;

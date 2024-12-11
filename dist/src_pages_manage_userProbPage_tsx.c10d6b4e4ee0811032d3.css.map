@@ -1,1 +1,0 @@
-{"version":3,"file":"src_pages_manage_userProbPage_tsx.c10d6b4e4ee0811032d3.css","mappings":";;;AAAA,gBAAgB;AAChB,mCAAmC;AACnC;EACE,sBAAsB;AACxB,C","sources":["webpack://pes-fe/./src/styles/css/manageProb.css"],"sourcesContent":["@charset \"UTF-8\";\n/* ---------- 문제관리 페이지 ---------- */\n.probWrapper {\n  padding: 100px 100px 0;\n}"],"names":[],"sourceRoot":""}
