@@ -11,12 +11,12 @@ const JuniorRank = () => {
   return (
     <StyledListPage>
       <Select
-        placeholder="35기"
+        placeholder="36기"
         className="select_box"
         value={memberGen.toString()}
         onChange={(e) => handleSelectChange}
       >
-        <Option value="35">35기</Option>
+        <Option value="36">36기</Option>
         {/* TODO: 기수 추가하기 */}
       </Select>
       
