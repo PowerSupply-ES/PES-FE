@@ -1,20 +1,26 @@
 import axios from "axios";
-import { MemberDetail } from "model/Store";
+import { SetUserDetail, UserDetail } from "model/userType";
 
-// 회원 데이터 상태관리 HOOK setMemDate 타입
-type SetMemDetail = React.Dispatch<React.SetStateAction<MemberDetail | null>>;
-
-const getUserDetail = async (setMemberData: SetMemDetail): Promise<void> => {
+// 회원 상세 정보 get API
+const getUserDetail = async (setMemberData: SetUserDetail): Promise<void> => {
   let url = new URL(window.location.href);
   let memberId = url.pathname.split("/")[2];
 
   const uri = `/api/admin/member/${memberId}`;
 
   try {
-    const res = await axios.get<MemberDetail>(uri);
+    const res = await axios.get<UserDetail>(uri);
     const memDetail = res.data;
-    setMemberData(memDetail);
-  } catch (error) {
+
+    // `mySolveResponse`와 `myFeedbackResponse`가 없을 경우 기본값 설정
+    const userDetail: UserDetail = {
+      ...memDetail,
+      mySolveResponse: memDetail.mySolveResponse || [], // 기본값으로 빈 배열
+      myFeedbackResponse: memDetail.myFeedbackResponse || [], // 기본값으로 빈 배열
+    };
+
+    setMemberData(userDetail);
+  } catch (error: unknown) {
     console.error(error);
   }
   // TODO : 예외처리하기

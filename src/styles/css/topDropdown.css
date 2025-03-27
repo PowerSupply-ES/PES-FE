@@ -1,3 +1,5 @@
+@charset "UTF-8";
+/* ---------- Topbar 드롭다운 ---------- */
 .dropdown-content {
   position: absolute;
   top: 60px;
@@ -12,7 +14,6 @@
   border-radius: 4px;
   padding-top: 16px;
   z-index: 999;
-  font-family: var(--Font1);
 }
 .dropdown-content .memberName {
   color: rgb(37, 37, 37);
@@ -37,6 +38,7 @@
 }
 .dropdown-content .navbar_bottom .btn_mypage {
   border-right: solid 3px #d7d6d6;
+  color: #000000;
 }
 
 .navbarInfo {

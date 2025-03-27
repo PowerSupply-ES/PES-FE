@@ -1,17 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import getFeed from "apis/question/getFeed";
-import getCode from "apis/question/getCode";
-import getQues from "apis/question/getQues";
-import postAnswers from "apis/question/postAnswers";
-import postFeed from "apis/question/postFeed";
-import { CommentListType, QuesAnswerType } from "model/Store";
-import { UseQuestionHookResult } from "model/Store";
+import {getFeed, getCode, getQues, postAnswers, postFeed} from "apis/question";
+import { CommentListType, QuesAnswerType, UseQuestionHookResult } from "model/questionType";
 
 // 질문테스트(question) 관련 HOOK들 관리
 const useQuestionHook = (
   answerId: number,
-  getAlert: (responseStatus: number) => void
+  getAlert: (responseStatus: number) => void,
+  problemId: number
 ): UseQuestionHookResult => {
   const [state, setState] = useState<string>("");
   const [code, setCode] = useState<string>("");
@@ -23,7 +19,10 @@ const useQuestionHook = (
   const getCodes = useCallback(async () => {
     try {
       const code = await getCode(answerId); // get API 호출
-      setCode(code);
+      if(code !== null && code !== undefined){
+        setCode(code);
+      }
+
     } catch (error) {
       console.log(error);
     }

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"; // dispatch 추가
 import postLogin from "apis/sign/postLogin";
-import { SignInFormData } from "model/Store";
+import { SignInFormData } from "model/userType";
+import { loginAction } from "stores/actions/userAction"; // login 액션 추가
 
 // 로그인 관련 HOOK
 const useSignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // dispatch 초기화
   const [formData, setFormData] = useState<SignInFormData>({
     memberId: "",
     memberPw: "",
@@ -20,11 +23,12 @@ const useSignIn = () => {
       const responseData = await postLogin(formData);
       const resultMessage = responseData.message;
       alert(resultMessage);
-      navigate("/");
-      window.location.reload(); // 페이지 새로고침
 
-      sessionStorage.setItem("status", "true");
-      sessionStorage.setItem("memberId", formData.memberId);
+      // 로그인 성공 후 Redux 상태 변경
+      dispatch(loginAction(formData.memberId)); // 로그인 액션 디스패치
+
+      navigate("/");
+      // window.location.reload(); // 페이지 새로고침
     } catch (error: unknown) {
       if (error instanceof Error) {
         alert(error.message);
@@ -36,7 +40,6 @@ const useSignIn = () => {
 
   //입력필드 값 변경될때마다 호출
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
     setFormData({
       // formData복사, 변경된 필드만 업데이트
       ...formData,

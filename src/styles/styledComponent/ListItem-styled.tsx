@@ -1,28 +1,29 @@
 import styled from "styled-components";
-import { StyledProps } from "model/Store";
+import { StyledProps } from "model/problemType"; 
 
 export const StyledListItem = styled.div<StyledProps>`
   .container {
     display: flex;
     flex-direction: row;
     height: fit-content;
+    min-width: fit-content;
     align-items: center;
     margin: auto;
     padding: 8px 16px 8px 0px;
     border-radius: 8px;
 
     background-color: ${(props) =>
-      props.state === "locked"
+      props.state === null
         ? "#DEDEDE"
         : props.state === "comment"
         ? "rgba(243, 242, 242, 0.737)"
         : props.state === "question"
         ? "rgba(243, 242, 242, 0.737)"
         : "white"};
-    transition: background-color 0.3s; /* Add transition for smooth color change */
+    transition: background-color 0.3s; 
     &:hover {
       background-color: ${(props) =>
-        props.state === "locked" ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
+        props.state === null ? "#DEDEDE" : "rgba(243, 242, 242, 0.737)"};
     }
   }
 
@@ -41,14 +42,14 @@ export const StyledListItem = styled.div<StyledProps>`
   }
 
   .problem_title {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     font-size: 20px;
     text-align: left;
     font-weight: bold;
-
     &:hover {
       cursor: pointer;
     }
+
     color: #000000;
     opacity: 70%;
   }
@@ -65,7 +66,8 @@ export const StyledListItem = styled.div<StyledProps>`
 
   .button {
     width: fit-content;
-    height: fit-content;
+    min-width: fit-content;
+    height: fit-content;    
     padding: 7px 30px;
     box-shadow: 1px 1px #ccc9c9;
 

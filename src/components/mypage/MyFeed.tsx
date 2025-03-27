@@ -1,24 +1,23 @@
 import React from "react";
-import { MyFeedProps } from "model/Store";
+import { MyFeedProps } from "model/userType";
 
 // 내 피드백 컴포넌트
 const MyFeed: React.FC<MyFeedProps> = ({ myFeedback, navigate }) => {
   const gotoFeed = (problemId: number) => {
-    console.log("problemId: ", problemId);
-    navigate(`question/${problemId}`);
+    navigate(`/question/${problemId}`);
   };
 
   return (
     <div className="FeedList">
       {myFeedback.length === 0 ? (
-        <div className="noFeed">아직 받은 피드백이 없어요!</div>
+        <div className="noFeed">아직 남긴 피드백이 없어요!</div>
       ) : (
         myFeedback.map((it) => (
           <div className="feeds" key={it.answerId}>
             <p className="problemId">{it.answerId}</p>
 
             <p className="memberGenName">
-              {it.memberGen}기&nbsp;&nbsp;
+              {it.memberGen}기&nbsp;
               {it.memberName}
             </p>
 

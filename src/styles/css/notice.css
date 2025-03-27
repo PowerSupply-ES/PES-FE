@@ -1,14 +1,13 @@
 @charset "UTF-8";
-.App {
+/* ---------- 공지사항 페이지 ---------- */
+* {
   text-align: center;
-  font-family: "Pretendard-Regular";
 }
 
-/* -----info 페이지----- */
 .info_body {
-  min-height: 100vh;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
   height: 100vh;
-  overflow: auto; /* 내용물이 넘칠 경우 스크롤이 가능하도록 설정 */
   padding: 40px 0 80px;
   margin-bottom: -300px;
   background-color: #f9f9ff;
@@ -22,6 +21,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: bold;
   margin: 40px auto;
@@ -75,13 +75,13 @@
   /* color: #7450e4b8; */
   color: #939393;
   font-weight: bold;
+  cursor: pointer;
 }
-.info_list .info .info_list > .info > .title_2 {
+.info_list .info .title_2 {
   font-weight: bold;
   cursor: pointer;
 }
-.info_list .info .info_list > .info > .title_3,
-.info_list .info .info_list > .info > .title_4 {
+.info_list .info .title_3, .info_list .info .title_4 {
   color: #7a7a7a;
 }
 
@@ -167,7 +167,7 @@
 .noticeInfo li {
   display: flex;
 }
-.noticeInfo li p {
+.noticeInfo li .leftInfo {
   font-weight: bold;
   margin-right: 20px;
   width: 60px;
@@ -187,6 +187,7 @@
   margin: auto;
 }
 .btn_back button {
+  cursor: pointer;
   width: -moz-fit-content;
   width: fit-content;
   padding: 8px 20px;
@@ -230,6 +231,7 @@
   border-radius: 20px;
   font-size: 18px;
   padding: 8px 24px;
+  cursor: pointer;
   box-shadow: 1px 2px #ccc9c9;
 }
 
@@ -258,7 +260,6 @@
   font-size: 18px;
   height: 40px;
   padding: 4px 12px;
-  font-family: var(--Font1);
 }
 
 .input_container {
@@ -272,7 +273,6 @@
   font-weight: bold;
   font-size: 18px;
   padding: 20px 12px;
-  font-family: var(--Font1);
 }
 
 .textarea_content,

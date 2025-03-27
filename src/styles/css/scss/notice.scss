@@ -1,14 +1,13 @@
-.App {
+/* ---------- 공지사항 페이지 ---------- */
+// TODO : button은 cursor:pointer 공통으로 적용하기
+*{
   text-align: center;
-  font-family: "Pretendard-Regular";
 }
 
-/* -----info 페이지----- */
-
 .info_body {
-  min-height: 100vh;
+  min-height: fit-content;
   height: 100vh;
-  overflow: auto; /* 내용물이 넘칠 경우 스크롤이 가능하도록 설정 */
+  // overflow: auto;
   padding: 40px 0 80px;
   margin-bottom: -300px; //footer margin 상쇄
   background-color: #f9f9ff;
@@ -21,6 +20,7 @@
 
 .header {
   display: flex;
+  align-items: center;
   font-size: 24px;
   font-weight: bold;
   margin: 40px auto;
@@ -66,13 +66,14 @@
       /* color: #7450e4b8; */
       color: #939393;
       font-weight: bold;
+      cursor: pointer;
+
     }
-    .info_list > .info > .title_2 {
+    .title_2 {
       font-weight: bold;
       cursor: pointer;
     }
-    .info_list > .info > .title_3,
-    .info_list > .info > .title_4 {
+    .title_3, .title_4 {
       color: #7a7a7a;
     }
     display: flex;
@@ -155,7 +156,7 @@
   text-align: left;
   li {
     display: flex;
-    p {
+    .leftInfo {
       font-weight: bold;
       margin-right: 20px;
       width: 60px;
@@ -174,7 +175,9 @@
   width: 90%;
   text-align: right;
   margin: auto;
+  
   button {
+    cursor: pointer;
     width: fit-content;
     padding: 8px 20px;
     background-color: #686666;
@@ -217,6 +220,7 @@
   border-radius: 20px;
   font-size: 18px;
   padding: 8px 24px;
+  cursor: pointer;
   box-shadow: 1px 2px #ccc9c9;
 }
 .btn_submit,
@@ -243,7 +247,6 @@
   font-size: 18px;
   height: 40px;
   padding: 4px 12px;
-  font-family: var(--Font1);
 }
 .input_container {
   width: 90%;
@@ -258,7 +261,6 @@
   font-size: 18px;
 
   padding: 20px 12px;
-  font-family: var(--Font1);
 }
 
 .textarea_content,

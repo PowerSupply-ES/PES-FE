@@ -1,7 +1,7 @@
-import { StyledListPage, RankingItemStyled } from "styles/styledComponent/ListPage-styled";
+import React from "react";
 import RankingItem from "./RankingItem";
 import GetSeniorsRank from "apis/ranking/getSeniorRank";
-import React from "react";
+import { StyledListPage, RankingItemStyled } from "styles/styledComponent";
 
 const SeniorRank: React.FC = () => {
   // 재학생 순위 get Api 호출

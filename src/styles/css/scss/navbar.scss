@@ -1,4 +1,5 @@
-/* -----네비게이션바----- */
+/* ---------- 네비게이션바 ---------- */
+
 .logout,
 .userId,
 .userLevel {
@@ -8,7 +9,6 @@
   color: white;
   border: solid white;
   border-radius: 10px;
-  font-family: var(--Font1);
 }
 .logout {
   width: fit-content;
@@ -54,7 +54,7 @@
   flex-direction: column; /* 수직으로 배치 */
   align-items: center;
   background-color: #ffffff;
-  height: 132px;
+  height: fit-content;
 }
 .navbar {
   display: flex;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import postSignup from "apis/sign/postSignup";
-import { SignupFormData } from "model/Store";
+import { SignupFormData } from "model/userType";
 
 // 회원가입 관련 HOOK
 const useSignup = () => {

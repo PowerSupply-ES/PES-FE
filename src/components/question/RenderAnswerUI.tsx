@@ -1,8 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
-import ProbHeader from "components/question/ProbHeader";
-import ProbCode from "components/question/ProbCode";
+import {ProbHeader, ProbCode} from "components/question";
 import { StyledQuestion } from "styles/styledComponent/Question-styled";
-import { RenderAnswerUIProps } from "model/Store";
+import { RenderAnswerUIProps } from "model/questionType";
 
 // 답변(answer) 렌더링 컴포넌트
 const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
@@ -12,18 +11,24 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
   state,
   setCode,
   textFst,
-  handleTextFstChange,
+  handleTextFstChange, // 질문1 입력 핸들러
   postAnswer,
 }) => {
+
+  // problemId 가져오기 - 이동하기
+  const problemId = Number(sessionStorage.getItem("problemId"));
+
   const [textSec, setTextSec] = useState<string>("");
 
+  // 질문2 입력 핸들러
   const handleTextSecChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTextSec(e.target.value);
   };
 
   // 답변 제출 함수
   const submitAnswer = () => {
-    if (!textFst.current || !textSec) { // 수정: !textSec.current -> !textSec
+
+    if (!textFst || !textSec) { // 수정: !textSec.current -> !textSec
       alert("내용을 입력해주세요!");
     } else {
       const isConfirmed = window.confirm(
@@ -31,7 +36,7 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
       );
 
       if (isConfirmed) {
-        postAnswer(textFst.current.value, textSec); // 수정: textFst.current, textSec.current -> textFst.current.value, textSec
+        postAnswer(textFst, textSec); // 수정: textFst.current, textSec.current -> textFst.current.value, textSec
       }
     }
   };
@@ -39,9 +44,8 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
   return (
     <StyledQuestion className="problem_answer_section">
       {/* 문제 헤더 컴포넌트 */}
-      <ProbHeader state={state} navigate={navigate} />  {/* 수정: code -> state*/}
+      <ProbHeader state={state} navigate={navigate} problemId={problemId}/>  {/* 수정: code -> state*/}
       
-
       {/* 코드 출력 컴포넌트 */}
       {qnA && (
         <ProbCode
@@ -50,6 +54,7 @@ const RenderAnswerUI: React.FC<RenderAnswerUIProps> = ({
           code={code}
           qnA={qnA}
           setCode={setCode}
+          problemId={problemId}
         />
       )}
 

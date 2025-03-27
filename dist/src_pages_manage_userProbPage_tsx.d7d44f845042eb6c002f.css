@@ -1,0 +1,13 @@
+/*!*********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/css/manageProb.css ***!
+  \*********************************************************************************/
+@charset "UTF-8";
+/* ---------- 문제관리 페이지 ---------- */
+.probWrapper {
+  padding: 80px;
+  background-color: #f3f3f3;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+/*# sourceMappingURL=src_pages_manage_userProbPage_tsx.d7d44f845042eb6c002f.css.map*/

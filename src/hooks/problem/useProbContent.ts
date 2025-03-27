@@ -1,6 +1,6 @@
-import getProbContent from "apis/problem/getProbContent";
 import { useState, useEffect, useCallback } from "react";
-import { ProblemContent } from "model/Store";
+import getProbContent from "apis/problem/getProbContent";
+import { ProblemContent } from "model/problemType";
 
 // 문제 내용 get HOOK
 const useProbContent = (problemId: number): ProblemContent | null => {

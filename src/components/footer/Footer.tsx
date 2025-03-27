@@ -1,12 +1,17 @@
-import { FaMapMarkerAlt } from "react-icons/fa";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { FaMapMarkerAlt, FaGithub } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { BiLogoInstagramAlt } from "react-icons/bi";
-import { FaGithub } from "react-icons/fa";
 import postLogout from "apis/common/postLogout";
-import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store";
 
 const Footer: React.FC = () => {
-  const status = sessionStorage.getItem("status");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { status } = useSelector((state: RootState) => state.sign); // redux에서 가져오기
 
   return (
     <div className="footer">
@@ -45,7 +50,7 @@ const Footer: React.FC = () => {
 
         {/* 로그아웃 상태시 안보이게 */}
         {status ? (
-          <div onClick={postLogout} className="footer_logout">
+          <div onClick={() => postLogout(navigate, dispatch)} className="footer_logout">
             로그아웃
           </div>
         ) : (

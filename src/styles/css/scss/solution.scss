@@ -1,9 +1,11 @@
+/* ---------- 풀이 페이지 ---------- */
+
+
 /* 풀이타이틀 */
 .solution_container {
-  width: 1142px;
+  max-width: 1142px;
   height: fit-content;
   margin: 60px auto;
-
   display: flex;
   flex-direction: column;
 
@@ -24,11 +26,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-medium);
+    // font-size: 20px;
   }
 
   .solution_bar {
     justify-content: space-between;
+    font-size: 20px;
 
     .solution {
       width: 90%;
@@ -51,10 +54,12 @@
       }
 
       .prob_score {
+        min-width: fit-content;
         display: flex;
         font-weight: bold;
-        font-size: 20px;
         color: #04ca00;
+        display: flex;
+        align-items: center;
       }
     }
   }
@@ -62,8 +67,8 @@
 
 /* 풀이목록 */
 .solving_list {
-  margin-top: var(--margin-middle);
   height: fit-content;
+
 
   .solving {
     width: 90%;
@@ -76,6 +81,7 @@
         width: 44px;
         font-size: 20px;
         display: flex;
+        align-items: center;
         color: #04ca00;
         font-weight: bold;
         margin-right: 20px;
@@ -90,20 +96,12 @@
 
     .right {
       display: flex;
-      font-size: var(--font-medium);
+      font-size: 20px;
 
-      /* 풀이 버튼 */
-      .btn_fail,
-      .btn_success {
-        width: 80px;
-        height: fit-content;
-        font-size: 18px;
-        padding: 7px 12px;
-        margin-left: 20px;
-      }
+      /* 풀이 버튼은 global style */
 
       .process_num {
-        color: black;
+        color: #696969;
         font-size: 20px;
         font-weight: bold;
         margin-right: 20px;

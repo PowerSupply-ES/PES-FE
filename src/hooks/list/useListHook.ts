@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react";
 import getList from "apis/list/getList";
-import { Problem } from "model/Store";
-
-// HOOK 반환 타입 정의
-interface UseListHookReturn {
-  list: Problem[];
-  selectedOption: string;
-  juniorButtonVariant: string;
-  seniorButtonVariant: string;
-  handleOption: (option: 'junior' | 'senior') => void;
-}
+import { Problem } from "model/problemType"; 
+import { UseListHookReturn } from "model/userType";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store";
 
 // 문제 list 호출 HOOK
 const useListHook = (): UseListHookReturn => {
-  const memberStatus = sessionStorage.getItem("memberStatus") || '';
+  const { memberStatus } = useSelector((state: RootState) => state.user) || ''; // redux에서 가져오기
 
   const [list, setList] = useState<Problem[]>([]);
   const [selectedOption, setSelectedOption] = useState<'junior' | 'senior'>("junior");
   const [juniorButtonVariant, setJuniorButtonVariant] = useState<'solid' | 'soft'>("solid");
   const [seniorButtonVariant, setSeniorButtonVariant] = useState<'solid' | 'soft'>("soft");
 
-  useEffect(() => {
-    getList(setList);
-  }, [memberStatus]);
+  const location = useLocation();
 
-  // junior, senior 선택
+  useEffect(() => {
+    getList(setList, location);
+  }, [memberStatus, location]);
+
+  // junior, senior 선택에 따른 버튼상태 변화
   const handleOption = (option: 'junior' | 'senior') => {
     setSelectedOption(option);
 

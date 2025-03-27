@@ -1,14 +1,16 @@
-import MenuBar from "components/header/MenuBar";
-import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { UserInfo } from "model/userType";
+import MenuBar from "components/header/MenuBar";
 import postLogout from "apis/common/postLogout";
 import getUserInfo from "apis/navbar/getUserInfo";
-import { UserInfo } from "model/Store";
+import { useDispatch } from "react-redux";
 
 // 로그인o 경우 넷바
 const HeaderForUser: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   // user 정보 관리
@@ -27,13 +29,13 @@ const HeaderForUser: React.FC = () => {
 
   // 넷바 사용자 정보 요청
   useEffect(() => {
-    getUserInfo({ navigate, setMemberData });
+    getUserInfo({ navigate, setMemberData, dispatch });
   }, [navigate]);
 
   // 로그아웃 호출 함수
   const handleLogoutClick = () => {
     console.log("로그아웃");
-    postLogout(navigate);
+    postLogout(navigate, dispatch); // dispatch 전달
   };
 
   return (
@@ -87,6 +89,6 @@ const HeaderForUser: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default HeaderForUser;

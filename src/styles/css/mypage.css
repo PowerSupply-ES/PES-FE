@@ -1,8 +1,40 @@
 @charset "UTF-8";
-/* -----마이페이지----- */
+/* ---------- 마이페이지 ---------- */
+@media (max-width: 1200px) {
+  .mypage_content {
+    flex-direction: column;
+    align-items: center;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .right {
+    width: 100%; /* 오른쪽 영역을 전체 너비로 설정 */
+  }
+}
+.content_mypage {
+  padding-top: 80px;
+  background-color: #f2f1fe;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-bottom: 300px;
+  margin-bottom: -300px;
+}
+.content_mypage h2 {
+  width: 100%;
+  text-align: left;
+  margin-left: 40px;
+  color: #000000;
+  opacity: 60%;
+  font-size: 26px;
+}
+
 .mypage_content {
   display: flex;
   width: 90%;
+  height: -moz-fit-content;
+  height: fit-content;
   justify-content: center;
   margin: 0 auto;
 }
@@ -16,32 +48,65 @@
   align-items: center;
 }
 .mypage_content .left button {
-  height: 32px;
+  height: 36px;
   width: 160px;
   border: solid 1px;
   border-radius: 10px;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-.mypage_content .left .btn_deletemem {
+.mypage_content .left .btn_goto_manage {
+  background-color: #323232;
+  opacity: 80%;
+  border-color: #000000;
+  margin-right: 60px;
+}
+.mypage_content .left .btn_goto_manage:hover {
+  background-color: #444444;
+}
+.mypage_content .manage_btn_container {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+}
+.mypage_content .manage_btn_container button {
+  height: 36px;
+  width: 160px;
+  border: solid 1px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.mypage_content .manage_btn_container .levelup_btn {
+  background-color: #ffd66b;
+  opacity: 80%;
+  border-color: #ffd66b;
+}
+.mypage_content .manage_btn_container .levelup_btn:hover {
+  background-color: #ffd66b;
+  opacity: 95%;
+}
+.mypage_content .manage_btn_container .btn_deletemem {
   background-color: #ff2d2d;
   opacity: 80%;
   border-color: #ff2d2d;
   margin-left: 8px;
 }
-.mypage_content .left .btn_deletemem:hover {
+.mypage_content .manage_btn_container .btn_deletemem:hover {
   background-color: #ff2d2d;
   opacity: 95%;
 }
-.mypage_content .left .btn_editmem {
+.mypage_content .manage_btn_container .btn_editmem {
   background-color: rgba(53, 56, 61, 0.7921568627);
   opacity: 80%;
   border-color: rgba(53, 56, 61, 0.7921568627);
   margin-left: 8px;
 }
-.mypage_content .left .btn_editmem:hover {
+.mypage_content .manage_btn_container .btn_editmem:hover {
   background-color: rgba(53, 56, 61, 0.7921568627);
   opacity: 95%;
 }
@@ -77,24 +142,9 @@
 .feed_top,
 .prob_top {
   margin-top: 20px;
+  width: 800px;
   display: flex;
   justify-content: space-between;
-}
-
-.content_mypage {
-  padding-top: 80px;
-  background-color: #f2f1fe;
-  height: calc(100vh + 80px);
-  padding-bottom: 300px;
-  margin-bottom: -300px;
-}
-.content_mypage h2 {
-  width: 100%;
-  text-align: left;
-  margin-left: 40px;
-  color: #000000;
-  opacity: 60%;
-  font-size: 26px;
 }
 
 .noFeed,
@@ -127,9 +177,6 @@
   justify-content: center;
   padding: 20px;
 }
-.memberInfo .text {
-  margin-bottom: 3px;
-}
 .memberInfo .info_name {
   margin: 20px 0 40px 0;
   display: flex;
@@ -143,6 +190,26 @@
   font-size: 26px;
   color: #000000;
   margin-top: 12px;
+}
+.memberInfo .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.memberInfo .text :first-child {
+  width: 22%;
+  text-align: left;
+  margin-right: 12px;
+  color: #a7a7a7;
+  font-weight: bold;
+  font-size: 17px;
+}
+.memberInfo .text :last-child {
+  width: 78%;
+  text-align: left;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.725);
+  font-size: 17px;
 }
 .memberInfo *:not(:first-child) {
   width: 100%;
@@ -279,7 +346,7 @@
 
 .feeds .memberGenName {
   justify-content: left;
-  width: 12%;
+  width: 14%;
   font-weight: bold;
   color: #262626;
 }
@@ -302,49 +369,3 @@
 }
 
 /* 성공여부에 따라 버튼색 변화 */
-.btn_fail,
-.btn_success,
-.btn_state {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  width: 80px;
-  height: 28px;
-  font-weight: bold;
-}
-
-.btn_success {
-  border: solid 3px #5094f9;
-  color: #5094f9;
-}
-
-.btn_fail {
-  border: solid 3px #eb3434;
-  opacity: 80%;
-  color: #eb3434;
-  opacity: 80%;
-}
-
-.btn_state {
-  border: solid 3px #c2c2c2;
-  color: #999999;
-  opacity: 80%;
-  font-size: 16px;
-}
-
-.text :first-child {
-  width: 22%;
-  text-align: left;
-  margin-right: 12px;
-  color: #a7a7a7;
-  font-weight: bold;
-  font-size: 17px;
-}
-.text :last-child {
-  width: 78%;
-  text-align: left;
-  font-weight: bold;
-  color: hsla(0, 0%, 0%, 0.725);
-  font-size: 17px;
-}

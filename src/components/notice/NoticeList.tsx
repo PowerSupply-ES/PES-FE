@@ -1,13 +1,12 @@
-import { transferTime } from "components/common/Common";
-import { NoticeListProps } from "model/Store";
 import React from "react";
+import { transferTime } from "components/common/Common";
+import { NoticeListProps } from "model/noticeType";
 
 // 공지사항 컴포넌트
 const NoticeList: React.FC<NoticeListProps> = ({ noticeList, navigate }) => {
   // 해당 공지사항으로 이동 함수
   const gotoNotice = (noticeId: number) => {
-    console.log("noticeId: ", noticeId);
-    navigate(`notice/${noticeId}`);
+    navigate(`/notice/${noticeId}`);
   };
 
   // TODO : 함수 말고 API로 대체하기
@@ -39,11 +38,9 @@ const NoticeList: React.FC<NoticeListProps> = ({ noticeList, navigate }) => {
           {/* 공지사항id */}
           <div className="title_1">{it.noticeId}</div>
 
-          {/* TODO : infoDetail 연결제대로하기*/}
           {/* 제목 */}
           <div className="title_2" onClick={() => gotoNotice(it.noticeId)}>
-            {/* {it.title} */}
-            {index}
+            {it.title}
           </div>
 
           {/* 작성날짜 */}

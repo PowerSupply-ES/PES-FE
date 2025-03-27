@@ -6,10 +6,11 @@
       "pages/*": ["pages/*"],
       "assets/*": ["assets/*"],
       "apis/*": ["apis/*"],
-      "styles/*": ["styles/*"]
+      "styles/*": ["styles/*"],
+      "stores/*": ["stores/*"],
+      "ace/*": ["libs/ace/*"],
     },
-    
-    "outDir": "./dist",
+    // "outDir": "./dist",  // webpack이처리
     "target": "es6",
     "module": "esnext",
     "lib": ["dom", "dom.iterable", "esnext", "es6"],
@@ -23,7 +24,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitAny": false, // 타입 못찾을때 any타입으로 처리
+    "noEmit": true,  // TypeScript가 출력 파일을 생성하지 않도록 설정
+    "noEmitOnError": true // 오류가 있을 경우 빌드하지 않도록 설정
   },
   "include": ["src"],
   "exclude": [

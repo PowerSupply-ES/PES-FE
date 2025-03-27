@@ -1,17 +1,18 @@
 import React from "react";
-import "styles/css/topDropdown.css";
-import "styles/css/navbar.css";
-import "styles/css/footer.css";
 import { Outlet } from "react-router-dom";
-import HeaderForAny from "components/header/HeaderForAny";
-import HeaderForUser from "components/header/HeaderForUser";
+import { HeaderForAny, HeaderForUser } from "components/header";
+import { useSelector } from "react-redux";
+import { RootState } from "stores/store"; // RootState 임포트
 import Footer from "components/footer/Footer";
+import "styles/css/topDropdown.css";
+import "styles/css/footer.css";
+import "styles/css/navbar.css";
 
-// Header props 타입 정의
-interface HeaderProps {};
+interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
-  const status = sessionStorage.getItem("status");
+  
+  const { status } = useSelector((state: RootState) => state.sign); // useSelector에서 RootState를 사용하여 sign 상태의 status를 가져옴
 
   return (
     <div>
@@ -21,6 +22,6 @@ const Header: React.FC<HeaderProps> = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Header;

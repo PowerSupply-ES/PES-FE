@@ -1,16 +1,14 @@
 import axios from "axios";
-import { UserInfo } from "model/Store";
-import { NavigateFunction } from "react-router-dom";
-
-// getUserInfo props 타입
-export interface GetUserInfoProps{
-  navigate: NavigateFunction;
-  setMemberData: (data: UserInfo) => void;
-}
+import { UserInfo, GetUserInfoProps } from "model/userType";
+import { userInfoAction } from "stores/actions/userAction";
 
 // 상단바 user 정보 API 요청
-const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
-  const uri = "api/exp";
+const getUserInfo = async ({
+  navigate,
+  setMemberData,
+  dispatch,
+}: GetUserInfoProps) => {
+  const uri = "/api/exp";
   const memberEmail = sessionStorage.getItem("memberEmail");
 
   try {
@@ -21,10 +19,17 @@ const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
     // 데이터 처리
     const data = response.data;
     setMemberData(data);
-    sessionStorage.setItem("memberName", data.memberName);
-    sessionStorage.setItem("memberStatus", data.memberStatus);
-    sessionStorage.setItem("hasNewNotices", data.hasNewNotices.toString());
-    console.log("hasNewNotices = ", data.hasNewNotices);
+
+    dispatch(
+      // sessionStorage 저장에서 Redux 저장으로 변경
+      userInfoAction({
+        memberName: data.memberName,
+        memberStatus: data.memberStatus,
+        hasNewNotices: data.hasNewNotices,
+        memberScore: data.memberScore,
+        memberGen: data.memberGen,
+      })
+    );
   } catch (error: unknown) {
     // Axios에러인 경우
     if (axios.isAxiosError(error)) {
@@ -32,7 +37,6 @@ const getUserInfo = async ({ navigate, setMemberData }: GetUserInfoProps) => {
         // 서버 응답이 있는 경우
         if (error.response.status === 403) {
           alert("로그인이 만료됐습니다!");
-          sessionStorage.clear();
           localStorage.clear();
           navigate("/signin");
         } else {

@@ -1,11 +1,6 @@
+import { CopyrightProps } from "model/userType";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import { SxProps, Theme } from "@mui/material/styles";
-
-// 스타일 속성 타입
-interface CopyrightProps {
-  sx?: SxProps<Theme>;
-}
 
 // 하단 copyright
 const Copyright: React.FC<CopyrightProps> = (props) => {

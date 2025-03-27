@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 // List페이지 스타일
 export const StyledListPage = styled.div`
+  
+  .list_wrapper {
+    display: flex;
+    
+  }
   .list_container {
     margin-right: 5%;
     width: 60%;
@@ -9,6 +14,8 @@ export const StyledListPage = styled.div`
 
   .ranking_container {
     width: 20%;
+    min-width: fit-content;
+
   }
 
   .container_header {
@@ -38,6 +45,7 @@ export const StyledListPage = styled.div`
     font-size: 17px;
     font-weight: bold;
     text-align: center;
+    font-family: "Pretendard-Regular";
   }
 
   /* 클릭된 버튼 스타일 */
