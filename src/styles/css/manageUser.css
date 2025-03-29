@@ -13,7 +13,6 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  font-family: "Pretendard-Regular";
 }
 * button:hover {
   cursor: pointer;
@@ -28,6 +27,7 @@
   text-align: center;
 }
 .content_container .manageuser_container .userlist_wrapper {
+  font-family: "Pretendard-Regular";
   flex: 9;
   display: flex;
   flex-direction: column;

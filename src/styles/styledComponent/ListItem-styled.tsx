@@ -9,17 +9,18 @@ export const StyledListItem = styled.div<StyledProps>`
     min-width: fit-content;
     align-items: center;
     margin: auto;
-    padding: 8px 16px 8px 0px;
+    padding: 20px 16px;
     border-radius: 8px;
 
-    background-color: ${(props) =>
-      props.state === null
-        ? "#DEDEDE"
-        : props.state === "comment"
-        ? "rgba(243, 242, 242, 0.737)"
-        : props.state === "question"
-        ? "rgba(243, 242, 242, 0.737)"
-        : "white"};
+    background-color: 
+      ${(props) =>
+        props.state === null
+          ? "#DEDEDE"
+          : props.state === "comment"
+          ? "rgba(243, 242, 242, 0.737)"
+          : props.state === "question"
+          ? "rgba(243, 242, 242, 0.737)"
+          : "white"};
     transition: background-color 0.3s; 
     &:hover {
       background-color: ${(props) =>

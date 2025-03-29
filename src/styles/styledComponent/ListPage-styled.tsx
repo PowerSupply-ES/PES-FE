@@ -10,12 +10,14 @@ export const StyledListPage = styled.div`
   .list_container {
     margin-right: 5%;
     width: 60%;
+    font-family: "Pretendard-Regular";
+
   }
 
   .ranking_container {
     width: 20%;
     min-width: fit-content;
-
+    font-family: "Pretendard-Regular";
   }
 
   .container_header {
@@ -73,10 +75,11 @@ export const StyledListPage = styled.div`
   }
   .problem_wrapper {
     height: fit-content;
-    background-color: white;
+
+    /* background-color: white;
     padding: 12px;
     border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05); */
   }
 `;
 

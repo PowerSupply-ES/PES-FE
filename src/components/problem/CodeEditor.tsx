@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-// import "styles/css/App.css";
+//import "styles/css/App.css";
 import { CodeEditorProps } from "model/problemType";
 import ace from "libs/ace";  // 커스텀 빌드된 ace.js 사용
 import "libs/mode-c_cpp"; // C/C++ 언어 모드 import
@@ -20,12 +20,15 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, readOnly }) => 
 
       // 에디터 옵션 설정
       editor.setOptions({
+        //fontFamily: "Courier New, monospace", // 고정 폭 폰트
+        fontSize: "16px",
         enableBasicAutocompletion: true,
         enableLiveAutocompletion: true,
         enableSnippets: true,
         showLineNumbers: true,
         tabSize: 4,
         cursorWidth: 2,
+        //wrap: true, // 긴 줄 자동 줄바꿈
       });
 
       // 코드 변경 이벤트 처리

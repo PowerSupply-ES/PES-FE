@@ -18,6 +18,7 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
     font-size: 20px;
   }
   .question_container {
+    font-family: "Pretendard-Regular";
     width: 40%;
   }
   .question_layout {
@@ -115,6 +116,7 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
     box-shadow: 1px 3px #ccc9c9;
   }
   .button.answer {
+    font-family: "Pretendard-Regular";
     background-color: #ac6dfd;
     margin: 60px auto;
     &:hover {
@@ -130,6 +132,7 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
   }
 
   .button_problem {
+    font-family: "Pretendard-Regular";
     width: fit-content;
     height: fit-content;
     position: relative;
@@ -174,6 +177,7 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
   }
   /* feedback (comment) */
   .feedback_section {
+    font-family: "Pretendard-Regular";
     width: 80%;
     justify-content: space-between;
     display: flex;
@@ -338,6 +342,8 @@ export const StyledQuestion = styled.div<StyledQuestionProps>`
   }
 
   .result_container > p {
+    font-family: "Pretendard-Regular";
+    text-align: center;
     color: #665f5f;
     opacity: 60%;
   }

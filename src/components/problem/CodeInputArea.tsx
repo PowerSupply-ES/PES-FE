@@ -2,6 +2,7 @@
 import React, { Suspense } from "react";
 const CodeEditor = React.lazy(() => import("components/problem/CodeEditor"));
 import Loading from "components/common/Loading";
+// import "styles/css/App.css";
 
 const CodeInputArea = ({ isLogin, detail, textHandler }) => {
   return (

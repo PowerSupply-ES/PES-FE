@@ -38,6 +38,7 @@
   font-weight: bold;
   background-color: rgba(90, 44, 218, 0.8235294118);
   border-radius: 80px;
+  font-family: "Pretendard-Regular";
 }
 .container > .btns > .userId:hover {
   background-color: rgba(120, 119, 119, 0.8549019608);

@@ -13,6 +13,7 @@ export const StyledProblem = styled.div<StyledProps>`
         left: 50%;
         transform: translateX(-50%);
         justify-content: space-between;
+        font-family: "Pretendard-Regular";
     }
     .button_group{
         width: 80%;
@@ -108,6 +109,11 @@ export const StyledProblem = styled.div<StyledProps>`
         justify-content: flex-start;
         margin: auto 0;
         height:100%;
+
+        padding: 0 !important;
+        margin: 0 !important;
+        letter-spacing: 0 !important; /* 글자 간격 초기화 */
+        line-height: normal !important; /* 줄 높이 초기화 */
     }
 
     .content_container {
@@ -119,11 +125,7 @@ export const StyledProblem = styled.div<StyledProps>`
         display: flex;
         flex-direction: column;
         margin-right: 60px;
-        // background-color: #ffffff;
-        // border-radius : 20px;
-        // box-shadow: 1px 3px #CCC9C9;
-        //   overflow-y: auto;
-
+        font-family: "Pretendard-Regular";
     }
     .content_container > .top,
     .content_container > .bottom{
@@ -221,7 +223,6 @@ export const StyledProblem = styled.div<StyledProps>`
         height: 100%;
         min-height: 564px;
         font-size: 18px;
-        // color: #ffffff;
         display: flex;
         justify-content: center;
         background-color: #3e3e3e;
@@ -247,6 +248,7 @@ export const StyledProblem = styled.div<StyledProps>`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
+        font-family: "Pretendard-Regular";
     }
     .submit_button.disabled {
         background-color: #dedede;
@@ -276,13 +278,13 @@ export const StyledProblem = styled.div<StyledProps>`
     }
     .result_container {
         width: 1376px;
-    height: auto;
-    background-color: #eee;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    font-size: 20px;
-    white-space: pre-line; 
-    text-align: left;
+        height: auto;
+        background-color: #eee;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 20px;
+        white-space: pre-line; 
+        text-align: left;
     }
     .loading {
         height: 1500px

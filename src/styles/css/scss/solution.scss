@@ -23,6 +23,8 @@
   .solving,
   .left,
   .right {
+    font-family: "Pretendard-Regular";
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,6 +125,33 @@
           border-color: #262626;
         }
       }
+      .btn_fail,
+      .btn_success,
+      .btn_state {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        width: 88px;
+        min-width: fit-content;
+        height: 32px;
+        font-weight: bold;
+      }
+      .btn_success {
+        border: solid 3px #5094f9;
+        color: #5094f9;
+      }
+      .btn_fail {
+        border: solid 3px #eb3434;
+        opacity: 80%;
+        color: #eb3434;
+      }
+      .btn_state {
+        border: solid 3px #c2c2c2;
+        color: #999999;
+        opacity: 80%;
+        font-size: 16px;
+      }
     }
   }
 }
@@ -166,3 +195,6 @@
 .solution_score {
   font-size: 20px;
 }
+
+
+
