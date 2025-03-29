@@ -27,6 +27,7 @@
   text-align: center;
 }
 .content_container .manageuser_container .userlist_wrapper {
+  font-family: "Pretendard-Regular";
   flex: 9;
   display: flex;
   flex-direction: column;

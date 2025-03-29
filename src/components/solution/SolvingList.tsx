@@ -59,3 +59,4 @@ const SolvingList: React.FC<SolvingListProps> = ({ solveData }) => {
 };
 
 export default SolvingList;
+
