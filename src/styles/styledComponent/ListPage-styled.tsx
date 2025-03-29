@@ -75,10 +75,11 @@ export const StyledListPage = styled.div`
   }
   .problem_wrapper {
     height: fit-content;
-    background-color: white;
+
+    /* background-color: white;
     padding: 12px;
     border-radius: 8px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05); */
   }
 `;
 

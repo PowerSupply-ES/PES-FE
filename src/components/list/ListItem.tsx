@@ -66,14 +66,14 @@ const ListItem: React.FC<ProblemItemProps> = (props) => {
 
         {/* TODO : 비로그인 시 풀이보기 선택안되도록 */}
         {/* TODO : 상태에 따른 버튼UI 적용하기 */}
-        {/* <Button
-                    // className="button"
-                    color="primary"
-                    onClick={() => navigate(`/solution/${props.pid}`)}
-                    size="lg"
-                    variant="outlined"
-                    state={state}
-                >풀이보기</Button> */}
+          {/* <Button
+              // className="button"
+              color="primary"
+              onClick={() => navigate(`/solution/${props.pid}`)}
+              size="lg"
+              variant="outlined"
+              state={state}
+          >풀이보기</Button> */}
       </div>
     </StyledListItem>
   );
