@@ -13,6 +13,7 @@ export const StyledProblem = styled.div<StyledProps>`
         left: 50%;
         transform: translateX(-50%);
         justify-content: space-between;
+        font-family: "Pretendard-Regular";
     }
     .button_group{
         width: 80%;
@@ -124,6 +125,7 @@ export const StyledProblem = styled.div<StyledProps>`
         display: flex;
         flex-direction: column;
         margin-right: 60px;
+        font-family: "Pretendard-Regular";
     }
     .content_container > .top,
     .content_container > .bottom{
@@ -246,6 +248,7 @@ export const StyledProblem = styled.div<StyledProps>`
         align-items: center;
         cursor: pointer;
         box-shadow: 1px 3px #CCC9C9;
+        font-family: "Pretendard-Regular";
     }
     .submit_button.disabled {
         background-color: #dedede;

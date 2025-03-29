@@ -10,12 +10,14 @@ export const StyledListPage = styled.div`
   .list_container {
     margin-right: 5%;
     width: 60%;
+    font-family: "Pretendard-Regular";
+
   }
 
   .ranking_container {
     width: 20%;
     min-width: fit-content;
-
+    font-family: "Pretendard-Regular";
   }
 
   .container_header {
